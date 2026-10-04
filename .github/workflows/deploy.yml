@@ -25,5 +25,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ cfat_Q1EM6No1XmJxpMNEtI3uf6yJvXbyfMZjhaC4Dxgm09240fc1  }}
-          accountId: ${{ 80d743b2c4f0e00b585a017c2588d940 }}
+          accountId: ${{ 80d743b2c4f0e00b585a017c2588d940  }}
           command: pages deploy .vercel/output/static --project-name=trendiverse
