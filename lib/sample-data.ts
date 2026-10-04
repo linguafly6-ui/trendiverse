@@ -144,10 +144,7 @@ export const SAMPLE_ARTICLES: Article[] = [
   a(4, 'Copa mundial de la FIFA 2026: guía completa de grupos, sedes y expectativas del torneo', 'copa-mundial-fifa-2026-guia', 'gaming', 'Desglosamos el formato, las sedes y la emoción global del Mundial 2026.', 'mundialguia', 9, 101500, 0, mundialGuiaContent),
 ]
 
-export const SAMPLE_DEALS: Deal[] = [
-  { id: 1, product_name: 'Auriculares inalámbricos ANC', original_price: 129.99, discount_price: 79.99, discount_percent: 38, image_url: img('aud', 400, 300), affiliate_url: 'https://example.com/aff/audifonos', expires_at: iso(2), category_id: null },
-  { id: 2, product_name: 'Teclado mecánico RGB', original_price: 89.9, discount_price: 49.9, discount_percent: 44, image_url: img('tec', 400, 300), affiliate_url: 'https://example.com/aff/teclado', expires_at: iso(5), category_id: null },
-]
+export const SAMPLE_DEALS: Deal[] = []
 
 export const SAMPLE_TOOLS: Tool[] = [
   { id: 1, title: 'Calculadora de porcentajes', slug: 'porcentajes', description: 'Calcula porcentajes rápidamente', type: 'percentage', config: '{}' },
@@ -155,8 +152,4 @@ export const SAMPLE_TOOLS: Tool[] = [
   { id: 3, title: 'Generador de contraseñas', slug: 'password', description: 'Crea contraseñas seguras', type: 'password', config: '{}' },
 ]
 
-export const SAMPLE_CODES = [
-  { game: 'Genshin Impact', code: 'GENSHINGIFT', reward: '60 Protogemas', note: 'Canjea en la web oficial o en el juego.' },
-  { game: 'Fortnite', code: 'FNCREATIVE', reward: 'Cosmético gratuito', note: 'Solo una vez por cuenta.' },
-  { game: 'Honkai Star Rail', code: 'STARRAILGIFT', reward: '50 Jades estelares', note: 'Válido hasta fin de mes.' },
-]
+export const SAMPLE_CODES: { game: string; code: string; reward: string; note: string }[] = []

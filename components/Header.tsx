@@ -73,8 +73,6 @@ export default function Header() {
             🔍 <kbd className="hidden rounded border px-1 text-xs sm:inline">⌘K</kbd>
           </button>
           <ThemeToggle />
-          <button aria-label="Notificaciones" className="h-9 w-9 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">🔔</button>
-          <button aria-label="Usuario" className="h-9 w-9 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">👤</button>
         </div>
       </div>
       <CategoryNav />

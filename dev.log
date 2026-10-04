@@ -1,0 +1,13 @@
+   ▲ Next.js 15.5.27
+   - Local:        http://localhost:3000
+   - Network:      http://169.254.0.21:3000
+
+ ✓ Starting...
+ ✓ Ready in 1370ms
+ ○ Compiling / ...
+ ✓ Compiled / in 6.1s (867 modules)
+ GET / 200 in 6693ms
+ ○ Compiling /articles/[slug] ...
+ ✓ Compiled /articles/[slug] in 874ms (891 modules)
+ GET /articles/copa-del-mundo-fifa-2026 200 in 1499ms
+[?25h

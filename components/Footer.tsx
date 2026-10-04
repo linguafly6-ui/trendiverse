@@ -15,8 +15,6 @@ export default function Footer() {
           ))}
         </ul>
         <div className="text-sm">
-          <a href="https://t.me/trendiverse" target="_blank" rel="noopener noreferrer" className="mb-3 inline-block rounded-lg bg-brand-violet px-3 py-2 text-white">Suscribirse por Telegram</a>
-          <br />
           <Link href="/privacidad" className="mr-3">Privacidad</Link>
           <Link href="/terminos">Términos</Link>
         </div>

@@ -2,6 +2,7 @@ import CopyButton from './CopyButton'
 import { SAMPLE_CODES } from '@/lib/sample-data'
 
 export default function GamingCodes() {
+  if (SAMPLE_CODES.length === 0) return null
   return (
     <section aria-label="Códigos de juegos" className="rounded-2xl border border-cat-gaming/40 p-4">
       <h2 className="mb-3 text-xl font-bold">🎮 Códigos activos</h2>

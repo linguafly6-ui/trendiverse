@@ -58,7 +58,7 @@ export default function ArticleFeed({ initial, category: fixed }: { initial: Art
         </div>
       )}
       <div className="space-y-3">{items.map((a) => <ArticleCard key={a.id} article={a} />)}</div>
-      {items.length === 0 && !loading && <p className="text-slate-500">No hay artículos todavía.</p>}
+      {items.length === 0 && !loading && <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500 dark:border-slate-700">No hay artículos en esta categoría todavía. Vuelve pronto.</p>}
       <div ref={sentinel} className="h-10 text-center text-sm text-slate-500">{loading ? 'Cargando…' : ''}</div>
     </section>
   )
