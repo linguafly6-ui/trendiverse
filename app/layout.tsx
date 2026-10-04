@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 }
 
+const iubendaConfig = `var _iub=_iub||[];_iub.csConfiguration={"siteId":4706473,"cookiePolicyId":59947253,"lang":"es","storage":{"useSiteId":true}};`
+
 const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,6 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: iubendaConfig }} />
+        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4706473.js" />
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js" />
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charSet="UTF-8" async />
       </head>
       <body>
         <Header />
