@@ -8,10 +8,7 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "deploy:cloudflare": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name trendiverse",
-    "migrate:cf": "wrangler d1 migrations apply trendiverse-db --remote",
-    "migrate:local": "wrangler d1 migrations apply trendiverse-db --local",
-    "seed:db": "node scripts/seed.js"
+    "deploy:cloudflare": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name trendiverse"
   },
   "dependencies": {
     "next": "^15.1.0",
