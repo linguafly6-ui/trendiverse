@@ -15,12 +15,27 @@ export default function ShareButtons({ slug, title }: { slug: string; title: str
     window.open(links[platform], '_blank', 'noopener,noreferrer')
   }
 
+  const buttons = [
+    { platform: 'twitter', label: 'X', color: 'hover:bg-slate-900 hover:text-white' },
+    { platform: 'facebook', label: 'Facebook', color: 'hover:bg-blue-600 hover:text-white' },
+    { platform: 'whatsapp', label: 'WhatsApp', color: 'hover:bg-green-600 hover:text-white' },
+  ]
+
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-sm text-slate-500">Compartir:</span>
-      <button onClick={(e) => share(e, 'twitter')} className="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700" aria-label="Compartir en X">X</button>
-      <button onClick={(e) => share(e, 'facebook')} className="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700" aria-label="Compartir en Facebook">Facebook</button>
-      <button onClick={(e) => share(e, 'whatsapp')} className="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700" aria-label="Compartir en WhatsApp">WhatsApp</button>
+    <div className="flex flex-wrap items-center gap-3">
+      <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">Compartir:</span>
+      <div className="flex gap-2">
+        {buttons.map((btn) => (
+          <button
+            key={btn.platform}
+            onClick={(e) => share(e, btn.platform)}
+            className={`rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium transition dark:bg-slate-800 ${btn.color}`}
+            aria-label={`Compartir en ${btn.label}`}
+          >
+            {btn.label}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }

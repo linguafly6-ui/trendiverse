@@ -1,6 +1,8 @@
 export type ArticleBlock =
-  | { type: 'heading'; id: string; text: string }
+  | { type: 'heading'; id: string; text: string; level: 2 | 3 }
   | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[]; ordered: boolean }
+  | { type: 'quote'; text: string }
 
 const slugify = (s: string) =>
   s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'seccion'
@@ -13,15 +15,36 @@ export function parseArticleContent(content: string | null | undefined): Article
     .map((p) => p.trim())
     .filter(Boolean)
     .map((p): ArticleBlock => {
-      const m = /^#{2,3}\s+(.+)$/.exec(p)
-      if (!m) return { type: 'paragraph', text: p }
-      const base = slugify(m[1])
-      const n = used.get(base) ?? 0
-      used.set(base, n + 1)
-      return { type: 'heading', id: n ? `${base}-${n}` : base, text: m[1].trim() }
+      // Headings: ## or ###
+      const h = /^(#{2,3})\s+(.+)$/.exec(p)
+      if (h) {
+        const level = h[1].length === 2 ? 2 : 3
+        const base = slugify(h[2])
+        const n = used.get(base) ?? 0
+        used.set(base, n + 1)
+        return { type: 'heading', id: n ? `${base}-${n}` : base, text: h[2].trim(), level }
+      }
+      // Blockquote: lines starting with >
+      if (/^>\s+/.test(p)) {
+        const text = p.split('\n').map((l) => l.replace(/^>\s+/, '')).join(' ')
+        return { type: 'quote', text }
+      }
+      // Unordered list: lines starting with - or *
+      if (/^[\-\*]\s+/.test(p)) {
+        const items = p.split('\n').map((l) => l.replace(/^[\-\*]\s+/, '').trim()).filter(Boolean)
+        return { type: 'list', items, ordered: false }
+      }
+      // Ordered list: lines starting with 1. 2. etc.
+      if (/^\d+\.\s+/.test(p)) {
+        const items = p.split('\n').map((l) => l.replace(/^\d+\.\s+/, '').trim()).filter(Boolean)
+        return { type: 'list', items, ordered: true }
+      }
+      return { type: 'paragraph', text: p }
     })
 }
 
 export function getHeadings(blocks: ArticleBlock[]) {
-  return blocks.flatMap((b) => (b.type === 'heading' ? [{ id: b.id, text: b.text }] : []))
+  return blocks.flatMap((b) =>
+    b.type === 'heading' && b.level === 2 ? [{ id: b.id, text: b.text }] : []
+  )
 }
