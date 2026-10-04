@@ -1,4 +1,5 @@
 import type { Article } from './types'
+import { peugeotContent } from './peugeot-article'
 
 const content = `Castellón vs AD Ceuta dejó un empate 1-1 en un partido que resumió muy bien por qué LaLiga Hypermotion es una de las competiciones más imprevisibles y exigentes del fútbol español. El CD Castellón llegaba con una dinámica excelente, instalado en la zona alta de la tabla, mientras que AD Ceuta necesitaba sumar para no quedarse descolgado en la pelea por salir de la parte baja. El resultado final, aunque corto en goles, dejó muchos matices tácticos, estadísticos y clasificatorios. En este artículo te contamos el resultado, quién marcó, qué dicen los números, cómo queda la tabla y por qué este empate puede ser importante para ambos equipos.
 
@@ -124,5 +125,19 @@ export const EXTRA_ARTICLES: Article[] = [
     views: 64000,
     trending: 0,
     published_at: '2026-10-04T19:00:00.000Z',
+  },
+  {
+    id: 11,
+    title: 'Novedades Peugeot 2026: modelos, autonomía, precios y guía de compra',
+    slug: 'novedades-peugeot-2026',
+    category: 'coches',
+    excerpt: 'Todo sobre las novedades de Peugeot 2026: nuevo 208 eléctrico, e-208 GTi, e-308, 408, e-3008 y e-5008 con autonomía, precios aproximados y guía de compra.',
+    content: peugeotContent,
+    image_url: 'https://picsum.photos/seed/peugeot-2026/1200/630',
+    thumbnail_url: 'https://picsum.photos/seed/peugeot-2026/400/225',
+    read_time_minutes: 12,
+    views: 52000,
+    trending: 1,
+    published_at: '2026-10-04T20:00:00.000Z',
   },
 ]
