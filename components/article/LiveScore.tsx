@@ -7,14 +7,16 @@ interface MatchData {
   awayTeam: string
   homeScore: number
   awayScore: number
-  status: string
+  statusText: string
   clock: string
-  period: string
   venue: string
   competition: string
   isLive: boolean
   isFinished: boolean
   isPending: boolean
+  fetchedAt: string
+  cached?: boolean
+  stale?: boolean
 }
 
 interface LiveScoreProps {
@@ -23,82 +25,23 @@ interface LiveScoreProps {
   awayTeam: string
 }
 
-const STATUS_MAP: Record<string, string> = {
-  'in': 'EN VIVO',
-  'pre': 'POR EMPEZAR',
-  'post': 'FINAL',
-}
-
-const PERIOD_MAP: Record<string, string> = {
-  '1': '1ª Tiempo',
-  '2': '2ª Tiempo',
-  'first_half': '1ª Tiempo',
-  'second_half': '2ª Tiempo',
-  'halftime': 'Descanso',
-  'extra_time': 'Prórroga',
-  'penalty_shootout': 'Penaltis',
-  'shootout': 'Penaltis',
-}
-
 export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps) {
   const [match, setMatch] = useState<MatchData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const [lastUpdate, setLastUpdate] = useState<string>('')
 
   useEffect(() => {
     let mounted = true
 
     const fetchScore = async () => {
       try {
-        const res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard`)
+        const params = new URLSearchParams({ league, home: homeTeam, away: awayTeam })
+        const res = await fetch(`/api/live-score?${params}`)
         if (!res.ok) throw new Error('Failed to fetch')
-        const data: any = await res.json()
-
-        const games = data.events || []
-        const found = games.find((g: any) => {
-          const comps = g.competitions?.[0]?.competitors || []
-          if (comps.length < 2) return false
-          const home = comps.find((c: any) => c.homeAway === 'home')?.team?.displayName || ''
-          const away = comps.find((c: any) => c.homeAway === 'away')?.team?.displayName || ''
-          return (
-            home.toLowerCase().includes(homeTeam.toLowerCase()) ||
-            away.toLowerCase().includes(awayTeam.toLowerCase()) ||
-            home.toLowerCase().includes(awayTeam.toLowerCase()) ||
-            away.toLowerCase().includes(homeTeam.toLowerCase())
-          )
-        })
-
-        if (!found) {
-          if (mounted) setError(true)
-          return
-        }
-
-        const comps = found.competions?.[0]?.competitors || []
-        const home = comps.find((c: any) => c.homeAway === 'home')
-        const away = comps.find((c: any) => c.homeAway === 'away')
-        const status = found.status || {}
-
-        const isLive = status.type?.state === 'in'
-        const isFinished = status.type?.state === 'post'
-        const isPending = status.type?.state === 'pre'
+        const data: MatchData = await res.json()
 
         if (mounted) {
-          setMatch({
-            homeTeam: home?.team?.displayName || homeTeam,
-            awayTeam: away?.team?.displayName || awayTeam,
-            homeScore: parseInt(home?.score || '0'),
-            awayScore: parseInt(away?.score || '0'),
-            status: status.type?.shortDetail || '',
-            clock: status.displayClock || '',
-            period: status.period || '',
-            venue: found.competitions?.[0]?.venue?.fullName || '',
-            competition: found.competitions?.[0]?.league?.name || '',
-            isLive,
-            isFinished,
-            isPending,
-          })
-          setLastUpdate(new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' }))
+          setMatch(data)
           setError(false)
         }
       } catch {
@@ -109,7 +52,7 @@ export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps
     }
 
     fetchScore()
-    const interval = setInterval(fetchScore, 30000)
+    const interval = setInterval(fetchScore, 20000)
 
     return () => {
       mounted = false
@@ -140,11 +83,17 @@ export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps
     )
   }
 
-  const statusText = match.isLive
-    ? `EN VIVO${match.clock ? ` · ${match.clock}` : ''}`
+  const fetchedTime = new Date(match.fetchedAt).toLocaleTimeString('es-ES', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })
+
+  const statusBadge = match.isLive
+    ? { text: `EN VIVO${match.clock ? ` · ${match.clock}` : ''}`, class: 'animate-pulse bg-red-500 text-white' }
     : match.isFinished
-    ? 'FINAL'
-    : 'POR EMPEZAR'
+    ? { text: 'FINAL', class: 'bg-slate-600 text-white' }
+    : { text: 'POR EMPEZAR', class: 'bg-amber-500 text-white' }
 
   return (
     <div className="mx-auto my-6 max-w-prose overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-violet-50 dark:border-slate-800 dark:from-slate-900 dark:to-violet-950/30">
@@ -153,14 +102,8 @@ export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps
         <span className="text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">
           {match.competition || 'Partido'}
         </span>
-        <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
-          match.isLive
-            ? 'animate-pulse bg-red-500 text-white'
-            : match.isFinished
-            ? 'bg-slate-500 text-white'
-            : 'bg-amber-500 text-white'
-        }`}>
-          {statusText}
+        <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${statusBadge.class}`}>
+          {statusBadge.text}
         </span>
       </div>
 
@@ -185,12 +128,19 @@ export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-slate-200 bg-white/50 px-5 py-2 dark:border-slate-800 dark:bg-slate-900/50">
-        {match.venue && (
+        {match.venue ? (
           <span className="text-xs text-slate-500 dark:text-slate-500">{match.venue}</span>
+        ) : (
+          <span />
         )}
-        <span className="ml-auto text-xs text-slate-400 dark:text-slate-600">
-          {match.isLive ? 'Actualizado' : 'Datos'}: {lastUpdate}
-        </span>
+        <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-600">
+          {match.stale && (
+            <span className="rounded bg-amber-100 px-1.5 py-0.5 font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+              Datos en caché
+            </span>
+          )}
+          <span>Actualizado: {fetchedTime}</span>
+        </div>
       </div>
     </div>
   )
