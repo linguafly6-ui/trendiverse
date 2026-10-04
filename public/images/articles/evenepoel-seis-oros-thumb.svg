@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="0.5" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" fill="url(#g)"/>
+  <rect x="0" y="0" width="30" height="180" fill="#000" opacity="0.8"/>
+  <rect x="30" y="0" width="30" height="180" fill="#facc15" opacity="0.8"/>
+  <rect x="60" y="0" width="30" height="180" fill="#dc2626" opacity="0.8"/>
+  <circle cx="200" cy="80" r="35" fill="#fde047" stroke="#fff" stroke-width="3"/>
+  <text x="200" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#78350f">6</text>
+  <text x="200" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#78350f">OROS</text>
+  <text x="100" y="50" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff">EVENEPOEL</text>
+  <text x="100" y="68" font-family="Arial, sans-serif" font-size="10" fill="#fde047">CIERRA LA COLECCIÓN</text>
+  <rect x="0" y="155" width="320" height="25" fill="#0f172a" opacity="0.9"/>
+  <text x="160" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fde047">EUROPEO CICLISMO 2026</text>
+</svg>

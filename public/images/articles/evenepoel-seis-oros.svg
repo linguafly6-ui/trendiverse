@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="0.5" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde047"/>
+      <stop offset="1" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <!-- Gold medal circle -->
+  <circle cx="600" cy="280" r="100" fill="url(#gold)" stroke="#fff" stroke-width="4" opacity="0.95"/>
+  <text x="600" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#78350f">6</text>
+  <text x="600" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#78350f">OROS</text>
+  <!-- Bicycle icon -->
+  <g transform="translate(600, 420)" opacity="0.9">
+    <circle cx="-30" cy="0" r="25" fill="none" stroke="#fff" stroke-width="5"/>
+    <circle cx="30" cy="0" r="25" fill="none" stroke="#fff" stroke-width="5"/>
+    <path d="M-30,0 L-10,-20 L15,-20 L30,0 M-10,-20 L5,0 M-30,0 L5,0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Belgium flag colors -->
+  <rect x="0" y="0" width="40" height="630" fill="#000" opacity="0.8"/>
+  <rect x="40" y="0" width="40" height="630" fill="#facc15" opacity="0.8"/>
+  <rect x="80" y="0" width="40" height="630" fill="#dc2626" opacity="0.8"/>
+  <!-- Title text -->
+  <text x="600" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#fff">EVENEPOEL</text>
+  <text x="600" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#fde047">CIERRA LA COLECCIÓN</text>
+  <!-- Bottom bar -->
+  <rect x="0" y="540" width="1200" height="90" fill="#0f172a" opacity="0.9"/>
+  <text x="600" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#fde047">CAMPEONATO DE EUROPA DE CICLISMO 2026</text>
+  <text x="600" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#a78bfa">4 OCT 2026 · LIUBLIANA, ESLOVENIA</text>
+</svg>
