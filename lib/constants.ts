@@ -1,6 +1,6 @@
 export const SITE_NAME = 'TrendiVerse'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://trendiverse.pages.dev'
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ''
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-EWER6X3E24'
 
 export interface CategoryInfo {
   slug: string
