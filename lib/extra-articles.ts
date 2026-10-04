@@ -1,85 +1,128 @@
 import type { Article } from './types'
 
-const content = `Warhammer 40,000: Space Marine 2 vuelve a estar en el centro de la conversación por una decisión que ha enfadado a buena parte de la comunidad: el escudo Victrix Guard, un cosmético muy pedido desde el lanzamiento del juego, ha quedado bloqueado detrás de una suscripción de Twitch de 6 dólares. La controversia no gira solo en torno al objeto en sí, sino al modelo de acceso elegido por Saber Interactive y a la sensación de que se está monetizando un contenido muy deseado mediante una plataforma externa. En esta guía te contamos qué ha pasado, por qué los fans están molestos y qué opciones tienen los jugadores.
+const content = `Castellón vs AD Ceuta dejó un empate 1-1 en un partido que resumió muy bien por qué LaLiga Hypermotion es una de las competiciones más imprevisibles y exigentes del fútbol español. El CD Castellón llegaba con una dinámica excelente, instalado en la zona alta de la tabla, mientras que AD Ceuta necesitaba sumar para no quedarse descolgado en la pelea por salir de la parte baja. El resultado final, aunque corto en goles, dejó muchos matices tácticos, estadísticos y clasificatorios. En este artículo te contamos el resultado, quién marcó, qué dicen los números, cómo queda la tabla y por qué este empate puede ser importante para ambos equipos.
 
-## Qué ha pasado con el escudo de Space Marine 2
+## Resultado de Castellón vs AD Ceuta
 
-La polémica empezó con la nueva oleada de Twitch Drops asociada a la actualización aniversario del juego. Dentro de esas recompensas, el Victrix Guard Shield se convirtió en el elemento más comentado porque no se obtiene simplemente viendo directos, sino comprando o regalando una suscripción de Twitch. El coste señalado por la prensa internacional es de 6 dólares, una cifra que ha molestado a muchos jugadores por tratarse de un cosmético largamente solicitado y visible desde hace tiempo en la campaña del juego.
+El partido se jugó el 4 de octubre de 2026 y terminó con empate 1-1. Castellón se adelantó muy pronto gracias a un gol de Israel Suero en el minuto 2, mientras que AD Ceuta logró empatar en la segunda parte por medio de Jordi Escobar, que marcó en el minuto 53.
 
-La clave del problema no es solo el precio, sino el mensaje que transmite. Para muchos usuarios, poner un escudo tan deseado detrás de una sub de Twitch equivale a un doble peaje: primero hay que comprar el juego, y después pagar a una plataforma de terceros para acceder a un objeto concreto. Esa mezcla ha sido suficiente para disparar la crítica en foros, comunidades y redes sociales.
+El marcador deja dos lecturas opuestas. Por un lado, Castellón mantiene su gran arranque de temporada, aunque deja escapar la opción de sumar otra victoria que consolidara todavía más su posición entre los favoritos. Por otro, Ceuta logra rescatar un punto valioso en un campo difícil, algo que puede ser clave para ganar confianza en las próximas jornadas.
 
-## Por qué los fans están enfadados
+## Datos clave del partido
 
-La reacción negativa nace de varios factores. El primero es la percepción de abuso comercial. Muchos jugadores consideran que el escudo debería haber estado disponible en el juego sin necesidad de pasar por Twitch. El segundo es la sensación de que el contenido se presenta como una recompensa “especial” cuando en realidad está ligado a una compra.
+- Competición: LaLiga Hypermotion.
+- Fecha: 4 de octubre de 2026.
+- Resultado: CD Castellón 1-1 AD Ceuta.
+- Goleadores: Israel Suero (Castellón, 2') y Jordi Escobar (Ceuta, 53').
+- Posesión: Castellón 67%, AD Ceuta 33%.
+- Disparos totales: Castellón 3, AD Ceuta 10.
 
-El tercer factor es el tiempo. El Victrix Guard Shield lleva tiempo siendo uno de los elementos más solicitados por la comunidad, así que el hecho de que aparezca ahora en este formato se ha interpretado como una oportunidad perdida para premiar a los jugadores de forma más directa. En palabras sencillas: la comunidad quería una recompensa dentro del juego, no una barrera de pago externa.
+Los números son muy interesantes porque muestran una paradoja habitual en el fútbol: el equipo que más domina el balón no siempre es el que más amenaza genera. Castellón controló la pelota durante muchos minutos, pero Ceuta fue más directo y llegó más veces con peligro al área rival.
 
-## Qué es exactamente el Victrix Guard Shield
+## Qué significa este empate para Castellón
 
-El Victrix Guard Shield es un escudo cosmético muy identificado con la estética de Space Marine 2 y con el imaginario de los Ultramarines. Su presencia en la campaña había generado expectativas desde el principio porque muchos jugadores lo veían como un objeto natural para personalizar al personaje. Precisamente por eso ha dolido tanto que el acceso se haya condicionado a una suscripción de Twitch.
+Para Castellón, el punto sabe a poco si se mira el contexto. El equipo llegaba como segundo clasificado, con 19 puntos en 7 jornadas, una cifra que refleja un arranque de temporada muy fuerte: 6 victorias y 1 empate. Sin embargo, el empate ante Ceuta también mantiene intacta la sensación de solidez general. No es un tropiezo grave, pero sí un recordatorio de que la competencia en la categoría es extrema.
 
-No estamos hablando de una pieza menor o de un detalle invisible, sino de un cosmético muy visible y muy demandado. En un juego donde la personalización tiene peso, este tipo de decisiones afectan directamente a la percepción de valor del contenido.
+El CD Castellón ha demostrado que puede competir con autoridad, pero este tipo de partidos exigen dar un paso más: convertir la posesión en más ocasiones claras y no depender tanto de acciones tempranas. Si quiere seguir en la parte alta, tendrá que mejorar su capacidad para cerrar encuentros que empiezan bien.
 
-## Qué dicen los jugadores
+## Qué significa este empate para AD Ceuta
 
-La comunidad ha reaccionado con enfado y sarcasmo. Muchos comentarios se centran en la idea de que no quieren pagar seis dólares por un escudo, especialmente cuando ya han invertido dinero en el juego, posibles expansiones o contenido adicional. También ha surgido la crítica de que, si el cosmético iba a terminar en el juego de todas formas, debería haber llegado directamente a la tienda interna y no a una campaña de Twitch.
+Para AD Ceuta, el empate es mucho más positivo desde la perspectiva emocional. El equipo llegaba a la jornada con una situación delicada: 21.º puesto, solo 4 puntos y un balance de 1 victoria, 1 empate y 5 derrotas. Puntuar en el campo de un rival tan fuerte no arregla todos los problemas, pero sí puede servir como punto de partida para reaccionar.
 
-Este tipo de discusión no es nueva en el mundo del videojuego, pero en Space Marine 2 ha tocado un nervio especialmente sensible porque el juego había sido bien valorado en general y esta decisión se percibe como un desvío respecto al tono habitual de su monetización.
+Además, Ceuta consiguió algo importante: no descomponerse tras encajar un gol tan temprano. El equipo supo resistir, encontrar su momento y empatar gracias a Jordi Escobar. En una categoría donde la confianza influye mucho, salir de un estadio complicado con un punto puede tener más valor del que parece.
 
-## La respuesta de los desarrolladores
+## El guion del encuentro
 
-Según la cobertura de la prensa especializada, los desarrolladores han indicado que el escudo acabará llegando a la tienda de Accolades en una futura actualización, aunque sin concretar una fecha. Ese matiz calma parcialmente la tensión, pero no elimina el enfado inicial: muchos usuarios consideran que el problema no es solo cuándo llegará, sino que primero se haya usado Twitch como barrera de acceso.
+El partido empezó con un golpe inmediato de Castellón. Israel Suero marcó en el minuto 2, lo que parecía anunciar una tarde cómoda para los locales. Sin embargo, AD Ceuta no se hundió. Fue creciendo con el paso de los minutos, ordenó mejor su estructura y terminó encontrando el empate en la segunda parte.
 
-La promesa de que el objeto acabará en el juego deja abierta una segunda lectura. Para algunos, significa que la exclusividad de Twitch es temporal. Para otros, confirma que la comunidad tendrá que esperar mientras una parte de los jugadores obtiene el objeto antes, pagando por una suscripción externa.
+A partir de ese momento, el choque se convirtió en una batalla de ritmos. Castellón quiso recuperar el control desde la posesión, mientras que Ceuta buscó sus opciones a través de transiciones y ataques más verticales. El 1-1 final refleja ese equilibrio entre dos estilos distintos.
 
-## Twitch Drops, suscripciones y monetización
+## Las estadísticas que explican el partido
 
-Conviene distinguir entre un Twitch Drop clásico y lo que ha ocurrido aquí. Normalmente, un drop se obtiene viendo transmisiones durante un tiempo concreto. En este caso, el acceso al escudo depende de comprar o regalar una suscripción, lo que cambia por completo la naturaleza de la promoción.
+Más allá del marcador, las cifras ayudan a entender el desarrollo real del encuentro:
 
-Esa diferencia es importante porque el jugador ya no solo invierte tiempo, sino dinero. Por eso muchos usuarios no lo ven como una simple campaña promocional, sino como una forma de monetización indirecta que beneficia tanto a la plataforma como al juego.
+- Castellón tuvo el 67% de posesión.
+- AD Ceuta se quedó en un 33%.
+- Castellón solo registró 3 disparos totales.
+- AD Ceuta llegó a 10 disparos.
 
-## Impacto en la imagen del juego
+Esto sugiere que el dominio de Castellón fue, en parte, estéril. Tener el balón no bastó para generar suficiente amenaza. Ceuta, con menos tiempo de posesión, fue más eficiente en la creación de peligro. Esa diferencia entre posesión y producción ofensiva es una de las claves tácticas del partido.
 
-Space Marine 2 había construido una reputación bastante positiva entre los jugadores, así que este episodio tiene un impacto reputacional claro. Aunque no sea un desastre de magnitud enorme, sí puede erosionar la confianza de una parte de la comunidad si se percibe como una estrategia agresiva o poco transparente.
+## Los protagonistas del marcador
 
-En juegos con fuerte componente de comunidad, la percepción importa tanto como el contenido. Un cosmético mal planteado puede generar una conversación mucho más grande que el propio objeto. Y eso es justo lo que ha pasado aquí: el escudo ya no es solo un escudo, sino el símbolo de una mala decisión de monetización para muchos fans.
+### Israel Suero
+Fue el encargado de poner por delante a Castellón apenas en el minuto 2. Su gol confirmó el gran arranque local y reflejó el buen inicio de partido del equipo. Aunque su tanto no acabó siendo decisivo para la victoria, sí marcó el tono del encuentro.
 
-## Qué opciones tiene el jugador
+### Jordi Escobar
+Marcó el empate para AD Ceuta en el minuto 53. Su gol fue fundamental porque cambió la dinámica emocional del partido y premió la insistencia visitante. En un contexto de mucha presión, igualar el marcador en casa de un rival fuerte tiene un valor especial.
 
-Si te interesa ese contenido, hoy existen tres opciones prácticas:
+## Castellón sigue siendo uno de los equipos más sólidos
 
-- suscribirte o regalar una suscripción de Twitch para desbloquear la recompensa,
-- esperar a que el escudo llegue a la tienda de Accolades dentro del juego,
-- o simplemente ignorar la promoción y seguir jugando sin pasar por el sistema de Twitch.
+A pesar del empate, Castellón mantiene una imagen de equipo fiable, competitivo y bien estructurado. Con 19 puntos en 7 partidos, ocupa la segunda posición y se consolida como uno de los grandes aspirantes de la temporada. Esa regularidad es valiosa en una liga tan cambiante como LaLiga Hypermotion.
 
-Para muchos usuarios, la segunda opción será la más sensata. No solo evita el gasto extra, sino que también premia la paciencia si el objeto termina llegando por medios internos.
+El reto para las próximas jornadas será transformar esa solidez en una mayor capacidad de decisión. Los equipos que pelean por ascender suelen tener algo en común: saben ganar también cuando no juegan su mejor partido. Castellón todavía transmite esa sensación, aunque este empate recuerda que no se puede bajar el nivel.
 
-## Qué nos dice esta polémica sobre la industria
+## AD Ceuta necesita estabilidad, pero el empate puede ayudar
 
-La polémica refleja una tensión cada vez más común en el videojuego moderno: hasta dónde puede llegar la monetización sin que la comunidad lo interprete como un abuso. Las promociones cruzadas con Twitch pueden tener sentido si ofrecen visibilidad o recompensas menores, pero cuando bloquean un cosmético muy deseado, el equilibrio se rompe con facilidad.
+AD Ceuta sigue en una situación complicada, pero este resultado puede servir como pequeña inyección de moral. El equipo necesitaba un partido así: uno en el que no se viniera abajo tras el primer golpe, uno en el que pudiera sostener el ritmo y sumar algo positivo. En ligas largas, este tipo de puntos pueden marcar la diferencia al final de la temporada.
 
-El caso de Space Marine 2 muestra que la comunidad tolera mejor los cosméticos opcionales cuando están claramente integrados en el juego. En cambio, cuando el acceso depende de una suscripción externa, la reacción suele ser mucho más dura.
+El problema principal sigue siendo la posición en la tabla. Con solo 4 puntos, el margen de maniobra es limitado. Pero un empate en un escenario complicado siempre tiene valor, especialmente si puede ser el inicio de una dinámica mejor.
+
+## Qué nos dice este partido sobre LaLiga Hypermotion
+
+LaLiga Hypermotion vuelve a demostrar por qué es tan difícil de predecir. Un equipo muy bien clasificado no consigue imponerse pese a tener más balón, mientras que otro que necesita reaccionar logra resistir y sumar. Ese equilibrio es parte de la esencia de la categoría.
+
+Partidos como Castellón vs AD Ceuta explican por qué esta competición tiene tanto interés: la diferencia entre aspirantes, equipos en forma y equipos en crecimiento nunca es tan grande como parece. Cada jornada puede alterar la percepción de la temporada.
+
+## Qué puede pasar en las próximas jornadas
+
+Para Castellón, el objetivo es seguir en la zona alta y evitar que empates como este frenen la inercia positiva. Para Ceuta, la prioridad es convertir el punto en un punto de inflexión. En ambos casos, el calendario siguiente será clave para ver si este resultado se queda en una anécdota o si marca una tendencia.
+
+Si Castellón convierte este empate en un aprendizaje, seguirá siendo una de las grandes referencias de la categoría. Si Ceuta logra encadenar un buen resultado más, el empate en Castellón puede convertirse en el inicio de una recuperación.
+
+## Preguntas frecuentes
+
+### ¿Cuánto quedó Castellón vs AD Ceuta?
+
+Empataron 1-1.
+
+### ¿Quién marcó los goles?
+
+Israel Suero marcó para Castellón y Jordi Escobar para AD Ceuta.
+
+### ¿En qué competición se jugó?
+
+En LaLiga Hypermotion.
+
+### ¿Cómo queda Castellón en la clasificación?
+
+Castellón se mantiene en la zona alta, con 19 puntos y la segunda posición.
+
+### ¿Cómo queda AD Ceuta?
+
+Ceuta sigue en la parte baja, con 4 puntos y la 21.ª posición.
 
 ## Conclusión
 
-El escudo Victrix Guard de Warhammer 40,000: Space Marine 2 se ha convertido en un pequeño gran problema de comunicación y monetización. Lo que podría haber sido una promoción más ha terminado generando frustración porque muchos jugadores sienten que el contenido deseado se ha puesto detrás de una barrera de pago en Twitch. Aunque el desarrollador haya prometido que acabará llegando a la tienda del juego, la polémica ya ha dejado una lección clara: cuando un objeto es muy esperado, la forma de distribuirlo importa casi tanto como el objeto en sí.
+Castellón vs AD Ceuta dejó un empate que, aunque parezca corto en goles, tiene mucha lectura. Castellón dominó la posesión y abrió el marcador muy pronto, pero Ceuta resistió, reaccionó y consiguió un punto muy valioso fuera de casa. La clasificación confirma que el equipo local sigue siendo uno de los más fuertes del campeonato, mientras que Ceuta encuentra un pequeño respiro en una temporada que exige resultados cuanto antes.
 
-Si la industria quiere evitar este tipo de choques, tendrá que pensar mejor cuándo usar Twitch como canal promocional y cuándo no. En este caso, la comunidad parece tener una opinión bastante clara: seis dólares por un escudo era demasiado.`
+En una categoría tan dura como LaLiga Hypermotion, estos partidos cuentan mucho más de lo que aparentan. Castellón pierde una oportunidad de ampliar su ventaja, y Ceuta suma una base desde la que intentar crecer. Para ambos, el siguiente partido será una nueva prueba de madurez.
+
+Nota: este artículo se ha elaborado con información pública consultada el 4 de octubre de 2026 y puede actualizarse según avance la temporada.`
 
 export const EXTRA_ARTICLES: Article[] = [
   {
-    id: 9,
-    title: 'Space Marine 2 y Twitch: por qué el escudo Victrix Guard ha indignado a los fans',
-    slug: 'space-marine-2-twitch-escudo-victrix-guard',
+    id: 10,
+    title: 'Castellón vs AD Ceuta: resultado, clasificación y análisis del empate en LaLiga Hypermotion',
+    slug: 'castellon-ad-ceuta',
     category: 'virales',
-    excerpt: 'Warhammer 40,000: Space Marine 2 ha bloqueado el escudo Victrix Guard detrás de una suscripción de Twitch de 6 dólares y la comunidad está molesta.',
+    excerpt: 'Castellón y AD Ceuta empataron 1-1 en un partido con mucho análisis. Resultado, goleadores, estadísticas y clasificación actualizada.',
     content,
-    image_url: 'https://picsum.photos/seed/space-marine-twitch/1200/630',
-    thumbnail_url: 'https://picsum.photos/seed/space-marine-twitch/400/225',
+    image_url: 'https://picsum.photos/seed/castellon-ceuta/1200/630',
+    thumbnail_url: 'https://picsum.photos/seed/castellon-ceuta/400/225',
     read_time_minutes: 8,
-    views: 72000,
-    trending: 1,
-    published_at: '2026-10-04T18:30:00.000Z',
+    views: 64000,
+    trending: 0,
+    published_at: '2026-10-04T19:00:00.000Z',
   },
 ]
-
