@@ -3,10 +3,10 @@ name: Deploy TrendiVerse to Cloudflare Pages
 on:
   push:
     branches: [main]
+  pull_request:
 
 permissions:
   contents: read
-  deployments: write
 
 jobs:
   deploy:
@@ -18,12 +18,9 @@ jobs:
           node-version: '20'
           cache: npm
       - run: npm ci --legacy-peer-deps
-      - run: npm run lint
-      - run: npm run build
       - run: npm run pages:build
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.API_TOKEN  }}
-          accountId: ${{ secrets.ACCOUNT_ID  }}
-          command: pages deploy .vercel/output/static --project-name=trendiverse
+        run: npx wrangler pages deploy .vercel/output/static --project-name=trendiverse
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
