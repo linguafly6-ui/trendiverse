@@ -19,6 +19,12 @@ jobs:
           cache: npm
       - run: npm ci --legacy-peer-deps
       - run: npm run pages:build
+      - name: Configure D1 database ID
+        run: |
+          : "${CLOUDFLARE_D1_DATABASE_ID:?CLOUDFLARE_D1_DATABASE_ID secret is required}"
+          sed -i "s/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/$CLOUDFLARE_D1_DATABASE_ID/" wrangler.toml
+        env:
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
       - name: Deploy to Cloudflare Pages
         run: npx wrangler pages deploy .vercel/output/static --project-name=trendiverse
         env:
