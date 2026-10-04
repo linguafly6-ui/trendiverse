@@ -6,3 +6,6 @@ out
 *.tsbuildinfo
 next-env.d.ts
 .dev.vars
+dev.log
+dev2.log
+start.log
