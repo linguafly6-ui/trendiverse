@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="0.5" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="leftFlag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e40af"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="rightFlag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dc2626"/>
+      <stop offset="1" stop-color="#991b1b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <!-- Left side - Portugal colors -->
+  <rect x="0" y="0" width="400" height="630" fill="url(#leftFlag)" opacity="0.85"/>
+  <!-- Right side - Norway colors -->
+  <rect x="800" y="0" width="400" height="630" fill="url(#rightFlag)" opacity="0.85"/>
+  <!-- Portugal flag cross (simplified) -->
+  <rect x="0" y="0" width="160" height="630" fill="#059669" opacity="0.6"/>
+  <rect x="120" y="250" width="280" height="130" fill="#ef4444" opacity="0.5"/>
+  <!-- Norway flag cross (simplified) -->
+  <rect x="880" y="0" width="60" height="630" fill="#fff" opacity="0.4"/>
+  <rect x="800" y="285" width="400" height="60" fill="#fff" opacity="0.4"/>
+  <rect x="900" y="0" width="30" height="630" fill="#1e3a8a" opacity="0.6"/>
+  <rect x="800" y="300" width="400" height="30" fill="#1e3a8a" opacity="0.6"/>
+  <!-- Center circle with ball -->
+  <circle cx="600" cy="315" r="120" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+  <circle cx="600" cy="315" r="80" fill="#fff" opacity="0.95"/>
+  <path d="M600 275 L635 300 L620 340 L580 340 L565 300 Z" fill="#1e3a8a"/>
+  <path d="M600 275 L600 245 M635 300 L665 285 M620 340 L635 370 M580 340 L565 370 M565 300 L535 285" stroke="#1e3a8a" stroke-width="5" fill="none"/>
+  <!-- VS text -->
+  <text x="490" y="330" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff" opacity="0.9">POR</text>
+  <text x="660" y="330" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff" opacity="0.9">NOR</text>
+  <!-- Bottom bar -->
+  <rect x="0" y="540" width="1200" height="90" fill="#0f172a" opacity="0.9"/>
+  <text x="600" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#fff">UEFA NATIONS LEAGUE 2026/27</text>
+  <text x="600" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#a78bfa">4 OCT 2026 · ESTÁDIO DO DRAGÃO</text>
+</svg>
