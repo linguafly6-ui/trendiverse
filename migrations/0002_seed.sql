@@ -2,6 +2,8 @@ INSERT OR IGNORE INTO categories (name, slug, color, icon, description) VALUES
  ('Virales & Pop Culture', 'virales', '#EF4444', '🔥', 'Noticias de tendencia, celebridades y memes'),
  ('Gaming & Guías', 'gaming', '#10B981', '🎮', 'Trucos, códigos y guías de juegos'),
  ('Micro-Herramientas', 'herramientas', '#3B82F6', '🛠️', 'Calculadoras, convertidores y tools útiles'),
+ ('Coches & Novedades', 'coches', '#0EA5E9', '🚗', 'Novedades, pruebas y guías del mundo del motor'),
+ ('Tecnología & Novedades', 'tecnologia', '#8B5CF6', '💻', 'Últimas novedades y análisis de tecnología'),
  ('Chollos & Descuentos', 'chollos', '#F97316', '🏷️', 'Ofertas y descuentos en línea');
 
 INSERT OR IGNORE INTO tools (title, slug, description, type, config) VALUES
