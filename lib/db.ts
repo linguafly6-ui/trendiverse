@@ -5,8 +5,9 @@ import { AUDI_ARTICLES } from './audi-article'
 import { IPHONE_ARTICLES } from './iphone-article'
 import { BARCELONA_REAL_MADRID_ARTICLES } from './barcelona-real-madrid-article'
 import { PORTUGAL_NORUEGA_ARTICLES } from './portugal-noruega-article'
+import { GIRONA_MALLORCA_ARTICLES } from './girona-mallorca-article'
 
-const SAMPLE_ARTICLES: Article[] = [...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES]
+const SAMPLE_ARTICLES: Article[] = [...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES]
 
 interface Env {
   DB?: D1Database

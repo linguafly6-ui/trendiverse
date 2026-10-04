@@ -7,6 +7,7 @@ import ReadingProgress from '@/components/article/ReadingProgress'
 import RelatedArticles from '@/components/article/RelatedArticles'
 import TableOfContents from '@/components/article/TableOfContents'
 import ShareButtons from '@/components/article/ShareButtons'
+import LiveScore from '@/components/article/LiveScore'
 import { getArticleBySlug, getRelatedArticles } from '@/lib/db'
 import { getHeadings, parseArticleContent } from '@/lib/article-content'
 import { formatDate } from '@/lib/utils'
@@ -59,6 +60,12 @@ export default async function ArticlePage({ params }: Props) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={article.image_url ?? ''} alt="" width={1200} height={630} fetchPriority="high" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />
         <TableOfContents headings={getHeadings(blocks)} />
+        {article.slug === 'portugal-noruega-nations-league' && (
+          <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />
+        )}
+        {article.slug === 'girona-mallorca-laliga-hypermotion' && (
+          <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />
+        )}
         <ArticleBody blocks={blocks} />
         <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800">
           <ShareButtons slug={article.slug} title={article.title} />
