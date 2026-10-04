@@ -1,125 +1,145 @@
 import type { Article } from './types'
 
-const content = `El Clásico femenino de la Liga F Moeve 2026/2027 ya tiene su primer capítulo: el FC Barcelona Femenino y el Real Madrid Femenino empataron 0-0 el 4 de octubre de 2026 en la jornada 6, en el Spotify Camp Nou. Ambos equipos llegaban invictos y entre los primeros puestos de la tabla, así que el resultado mantiene la pugna por el liderato completamente abierta. En esta guía repasamos el resultado, el contexto, la clasificación, las jugadoras que marcan la temporada y lo que viene después.
+const content = `UD Las Palmas y Real Valladolid protagonizaron un partido muy interesante en el Estadio de Gran Canaria el 4 de octubre de 2026, correspondiente a la jornada 8 de LaLiga Hypermotion. El choque terminó con victoria visitante por 1-2 y dejó una fotografía muy clara: Las Palmas controló más el balón, pero Valladolid fue mucho más eficaz en las áreas. Para el seguidor que busca el resultado, la clasificación y el análisis de lo ocurrido, aquí tienes una guía completa y actualizada.
 
-## Resultado del Barcelona - Real Madrid Femenino
+## Resultado de UD Las Palmas vs Valladolid
 
-El marcador final fue FC Barcelona Femenino 0-0 Real Madrid Femenino. Según las crónicas y fichas de partido publicadas por medios como AS, Marca, Eurosport y Superdeporte, fue un encuentro muy igualado, sin goles y con dos equipos que se respetaron mucho en un duelo de máxima exigencia. Era el primer Clásico de la temporada en la Liga F Moeve y se disputó en el Spotify Camp Nou, uno de los escenarios que más ha crecido en los últimos años para el fútbol femenino.
+El partido terminó con triunfo del Real Valladolid por 1-2. Las Palmas se adelantó pronto gracias a Valentín Pezzolesi, pero el conjunto pucelano reaccionó con personalidad y remontó gracias a los goles de Juanmi Latasa y Julien Ponceau. Fue una victoria importante para los visitantes y una derrota que deja preguntas para los locales, sobre todo por la poca producción ofensiva a pesar de tener más posesión.
 
-Un 0-0 en un Clásico no es un resultado habitual, y por eso tiene tanta lectura. Para el Barcelona supone no ganar un partido que, por trayectoria reciente, suele afrontar como favorito. Para el Real Madrid, en cambio, es un punto de peso ante el gran dominador del fútbol femenino español durante la última década, y la confirmación de que el proyecto madridista compite de tú a tú en los partidos grandes.
+En un encuentro de este tipo, el marcador final refleja mejor la eficacia que el volumen de juego. Las Palmas tuvo más balón, pero no convirtió esa posesión en peligro real. Valladolid, en cambio, fue más directo, más concreto y más contundente.
 
 ## Datos clave del partido
 
-- Competición: Liga F Moeve, temporada 2026/2027.
-- Jornada: 6.
+- Competición: LaLiga Hypermotion.
+- Jornada: 8.
 - Fecha: 4 de octubre de 2026.
-- Estadio: Spotify Camp Nou.
-- Resultado: FC Barcelona Femenino 0-0 Real Madrid Femenino.
-- Contexto: primer Clásico liguero de la temporada, con ambos equipos invictos.
+- Estadio: Estadio de Gran Canaria.
+- Resultado: UD Las Palmas 1-2 Real Valladolid.
+- Goleadores: Valentín Pezzolesi (Las Palmas), Juanmi Latasa y Julien Ponceau (Valladolid).
 
-Si buscas el resultado del Barça - Real Madrid femenino de hoy, estos son los datos esenciales. Para el minuto a minuto, las alineaciones y las estadísticas completas, lo recomendable es consultar las páginas oficiales de la competición y de los clubes, que actualizan la información de forma continua.
+Las cifras del partido ayudan a entender por qué el resultado fue favorable al equipo visitante:
+- posesión: 53% para Las Palmas y 47% para Valladolid,
+- disparos totales: 1 para Las Palmas y 7 para Valladolid,
+- xG: 0.11 para Las Palmas y 1.34 para Valladolid.
 
-## Cómo queda la clasificación de la Liga F
+Con esos números, la victoria de Valladolid no parece casualidad. El equipo generó mucho más peligro real y supo aprovechar mejor sus momentos.
 
-Según los datos consultados tras el partido, la parte alta de la tabla de la Liga F queda así:
+## Qué significa este resultado para Las Palmas
 
-- 1.º FC Barcelona Femenino: 16 puntos en 6 partidos (5 victorias y 1 empate).
-- 2.º Real Madrid Femenino: 14 puntos en 6 partidos (4 victorias y 2 empates).
-- 3.º Madrid CFF: 13 puntos.
-- 4.º Athletic Club: 11 puntos.
-- 5.º Eibar: 11 puntos.
+Para UD Las Palmas, la derrota deja una sensación agridulce. El equipo no fue inferior en posesión, pero sí en profundidad y en capacidad para transformar el dominio en ocasiones. Tener el balón no sirve de mucho si no se puede romper la estructura del rival o finalizar las jugadas con claridad.
 
-El Barcelona mantiene el liderato con dos puntos de ventaja sobre el Real Madrid. Es una diferencia corta, pero el empate en el Clásico evita que el conjunto azulgrana pueda marcar distancias en la primera cuarta parte del campeonato. Ten en cuenta que la clasificación cambia cada jornada, por lo que conviene verificar la tabla oficial para ver la situación más reciente.
+Con 10 puntos en 7 partidos y una 11.ª posición en la tabla, Las Palmas sigue en una zona de transición: no está en problemas graves, pero tampoco se ha instalado en la parte alta. Para crecer en la clasificación, necesita aumentar su amenaza ofensiva y mejorar su rendimiento en los metros finales.
 
-## Un Clásico entre dos equipos invictos
+## Qué significa este resultado para Real Valladolid
 
-Uno de los aspectos más llamativos del duelo es que ambos equipos llegaban sin perder. Eso eleva la tensión: cuando dos candidatos al título se enfrentan sin derrotas previas, el margen de error es mínimo y los dos entrenadores tienden a priorizar el orden defensivo y no conceder ocasiones claras. Los partidos así suelen decidirse por detalles, y esta vez ninguno de los dos logró inclinar la balanza.
+Para el Real Valladolid, ganar en Gran Canaria es un impulso importante. No solo suma tres puntos: también envía un mensaje. El equipo fue capaz de levantarse tras encajar el 1-0 y de sostener el plan de partido con suficiente madurez como para llevarse el triunfo.
 
-El resultado, además, tiene un efecto psicológico. El Madrid demuestra que puede competir en el Camp Nou y salir con un punto, algo que hace unos años parecía lejano. El Barça, por su parte, recuerda que sigue líder y que su plantilla tiene recursos de sobra para recuperar el pulso ganador en las próximas jornadas.
+Con 8 puntos y la 17.ª posición, la victoria no resuelve todos los problemas, pero sí puede actuar como punto de inflexión. En una liga tan igualada como LaLiga Hypermotion, enlazar una buena racha puede cambiar por completo la dinámica de un equipo.
 
-## Las jugadoras que marcan la temporada
+## El guion del partido
 
-Los datos estadísticos de la temporada destacan a varias protagonistas de ambos equipos:
+El arranque fue prometedor para los locales. Pezzolesi abrió el marcador temprano, lo que parecía poner a Las Palmas en una posición favorable para controlar el ritmo. Sin embargo, Valladolid respondió muy rápido con el empate de Latasa y luego completó la remontada con el tanto de Ponceau.
 
-- Goleadoras: Claudia Pina (Barcelona) y Felicia Schröder (Real Madrid) aparecen con 5 goles cada una entre las máximas realizadoras del campeonato.
-- Porteras: Gemma Font (Barcelona) y Merle Frohms (Real Madrid) figuran entre las guardametas más destacadas.
-- Asistencias: Caroline Graham Hansen (Barcelona) y Andreia Jacinto (Real Madrid) lideran el apartado de pases de gol en sus equipos.
+A partir de ahí, el partido se inclinó hacia una lógica muy conocida en el fútbol: el que golpea con más claridad, manda. Las Palmas trató de sostener la posesión, pero se encontró con una defensa más organizada de lo que esperaba. Valladolid, por su parte, supo cuándo acelerar y cuándo cerrar espacios.
 
-Que las dos máximas goleadoras no pudieran marcar en el Clásico habla de la solidez defensiva del encuentro. También refuerza una idea importante: el nivel competitivo de la Liga F crece cuando los dos grandes se igualan, y eso beneficia al espectáculo y al interés del aficionado.
+## Jugadores destacados
 
-## El Barcelona Femenino: el gran referente
+### Valentín Pezzolesi
+Fue el autor del gol de Las Palmas y el primer protagonista del encuentro. Su tanto confirmó el buen arranque local, aunque no fue suficiente para cambiar el desenlace.
 
-El FC Barcelona Femenino lleva años como referencia del fútbol femenino europeo, con una identidad de juego muy reconocible basada en la posesión, la presión alta y la circulación rápida. Su dominio liguero ha sido muy amplio, y por eso cualquier tropiezo, como este empate, genera atención. Aun así, mantenerse líder con 16 puntos tras seis jornadas confirma que el equipo sigue en una dinámica muy sólida.
+### Juanmi Latasa
+Firmó el empate del Valladolid y fue clave para cambiar el estado emocional del partido. Su gol devolvió la confianza al conjunto visitante.
 
-Para el Barça, el reto de las próximas semanas será convertir esa solidez en victorias convincentes, mantener la regularidad en una liga que cada año es más competida y compaginar la Liga F con las exigencias europeas. La profundidad de plantilla es su gran argumento.
+### Julien Ponceau
+Marcó el gol decisivo del triunfo. Su tanto no solo valió tres puntos, sino que consolidó la remontada visitante.
 
-## El Real Madrid Femenino: un proyecto que se consolida
+### Víctor Fernández e Iván Jaime
+Ambos aparecen en las acciones ofensivas más destacadas del encuentro, según las fuentes consultadas. En partidos tan cerrados, las asistencias y las conexiones entre líneas suelen ser tan importantes como el remate final.
 
-El Real Madrid Femenino ha dado un salto importante en los últimos años. Ser segundo con 14 puntos, invicto y con cuatro victorias y dos empates, refleja un equipo ordenado, competitivo y con jugadoras de peso en cada línea. El empate en el Camp Nou añade un argumento más a su candidatura: no es solo un aspirante circunstancial, sino un rival que puede puntuar en los escenarios más difíciles.
+## La foto de la clasificación
 
-Para el conjunto madridista, el siguiente paso es mantener esa regularidad y mejorar el acierto de cara a puerta en los partidos de máxima exigencia. Con la tabla tan ajustada en la zona alta, cada punto cuenta.
+Después del partido, la clasificación de ambos equipos quedaba así:
 
-## Madrid CFF, Athletic y Eibar: la pelea por detrás
+- UD Las Palmas: 11.º puesto, 10 puntos, con 3 victorias, 1 empate y 3 derrotas.
+- Real Valladolid: 17.º puesto, 8 puntos, con 2 victorias, 2 empates y 3 derrotas.
 
-Más allá del Clásico, la Liga F tiene una zona alta muy interesante. El Madrid CFF suma 13 puntos y se mantiene a un punto del Real Madrid, mientras que Athletic Club y Eibar acumulan 11 puntos cada uno. Esa proximidad indica que la competición no es cosa de dos y que cualquier equipo de arriba puede dar la sorpresa y alterar el reparto de posiciones de Liga de Campeones y del resto de objetivos.
+Esa tabla deja claro que ambos equipos todavía tienen margen de crecimiento. Las Palmas necesita más regularidad si quiere mirar hacia arriba con ambición, mientras que Valladolid debe convertir esta victoria en una base para salir de la zona baja.
 
-Para el aficionado neutral, esta igualdad es una buena noticia: más equipos peleando por los primeros puestos significa más partidos con trascendencia y más seguimiento durante toda la temporada.
+## Qué dice este partido sobre el estilo de ambos equipos
 
-## Qué significa este empate para la carrera por el título
+Este duelo deja una lectura táctica bastante clara. Las Palmas quiso dominar desde la pelota, pero le faltó profundidad. Valladolid, sin monopolizar la posesión, fue más peligroso en los momentos clave. Esa diferencia suele ser decisiva en categorías muy equilibradas: no gana el que más toca el balón, sino el que más castiga al rival.
 
-En términos de clasificación, el 0-0 beneficia ligeramente al Barcelona, que conserva el liderato, y deja al Real Madrid con la sensación de haber dado un paso adelante. Con un empate no se decide una liga, pero sí se marca el tono del campeonato. Si el Barça no logra distanciarse y el Madrid sigue sumando, la lucha por el título puede alargarse hasta el tramo final.
+En este sentido, el encuentro ofrece una lección útil para analizar LaLiga Hypermotion: el control territorial no basta si no se acompaña de una buena ocupación del área, remates claros y transiciones bien trabajadas. Valladolid entendió mejor ese guion.
 
-Hay además un factor clave: el calendario. Aún quedan muchas jornadas y un segundo Clásico en la segunda vuelta, por lo que lo ocurrido en el Camp Nou es un episodio importante, pero no definitivo.
+## El contexto reciente de Las Palmas
 
-## Cuándo es el próximo Barcelona - Real Madrid Femenino
+Las Palmas llegaba con una secuencia de resultados irregulares:
+- derrota ante Eibar (2-3),
+- derrota ante Burgos (1-2),
+- victoria ante Cádiz (1-0),
+- empate ante Leganés (0-0),
+- derrota ante Girona (2-5).
 
-La segunda cita liguera entre ambos equipos corresponde a la segunda vuelta de la Liga F Moeve, que previsiblemente se disputará a comienzos de 2027. En el momento de redactar este artículo, la fecha y la hora concretas no están confirmadas en las fuentes consultadas, por lo que te recomendamos revisar el calendario oficial de la Liga F y las webs de los clubes. Los equipos también pueden cruzarse en otras competiciones, como la Supercopa o la Copa de la Reina, según sorteo y clasificaciones.
+Ese recorrido explica por qué el equipo aún no ha encontrado una estabilidad sólida. Tiene momentos de buen fútbol, pero también tramos en los que le cuesta sostener la intensidad y cerrar los partidos.
 
-## Dónde ver el Clásico femenino y seguir la Liga F
+## El contexto reciente de Valladolid
 
-La Liga F Moeve se emite a través de las plataformas y canales que tengan los derechos en cada temporada, y los grandes partidos suelen contar con cobertura destacada. Para seguir los resultados en directo puedes recurrir a las páginas de seguimiento de medios deportivos y a la web oficial de la competición. Antes de cada jornada, revisa dónde se retransmite el partido, ya que los derechos y las franjas pueden variar.
+Valladolid también venía con altibajos:
+- victoria ante Córdoba (3-1),
+- empate ante AD Ceuta (1-1),
+- derrota ante Real Oviedo (0-3),
+- victoria ante Andorra (1-0),
+- empate ante Cádiz (1-1).
+
+Por eso, el triunfo en Gran Canaria puede leerse como una señal de madurez. No fue una victoria simple: fue una remontada fuera de casa en un campo difícil.
+
+## Lo que viene ahora
+
+Las Palmas necesita reaccionar rápido para que esta derrota no se convierta en un freno emocional. El calendario seguirá dictando si el equipo puede volver a enganchar una racha positiva. Valladolid, en cambio, buscará aprovechar la moral del triunfo para consolidar una evolución positiva en la tabla.
+
+Como suele pasar en LaLiga Hypermotion, el margen entre una semana buena y una mala es muy pequeño. Por eso este tipo de partidos son tan importantes: pueden cambiar la percepción de toda una temporada.
 
 ## Preguntas frecuentes
 
-### ¿Cuánto quedó el Barcelona - Real Madrid Femenino?
+### ¿Cuánto quedó UD Las Palmas vs Valladolid?
 
-Quedó 0-0 el 4 de octubre de 2026, en la jornada 6 de la Liga F Moeve 2026/2027, en el Spotify Camp Nou.
+Terminó 1-2 a favor del Real Valladolid.
 
-### ¿Quién es líder de la Liga F?
+### ¿Quién marcó los goles?
 
-Tras el Clásico, el FC Barcelona Femenino lidera con 16 puntos en 6 partidos, seguido del Real Madrid Femenino con 14.
+Valentín Pezzolesi marcó para Las Palmas; Juanmi Latasa y Julien Ponceau marcaron para Valladolid.
 
-### ¿Quiénes son las máximas goleadoras?
+### ¿En qué competición se jugó?
 
-Claudia Pina (Barcelona) y Felicia Schröder (Real Madrid) aparecen con 5 goles cada una entre las goleadoras destacadas de la temporada.
+En LaLiga Hypermotion.
 
-### ¿Cuándo se vuelven a ver las caras?
+### ¿Dónde se jugó el partido?
 
-El segundo Clásico liguero será en la segunda vuelta, probablemente a principios de 2027. La fecha exacta debe consultarse en el calendario oficial.
+En el Estadio de Gran Canaria.
 
-### ¿Estaban invictos ambos equipos?
+### ¿Cómo queda la clasificación?
 
-Sí. Barcelona y Real Madrid llegaron sin perder al partido y siguen invictos tras el empate.
+Las Palmas queda 11.º con 10 puntos y Valladolid 17.º con 8 puntos, según los datos consultados.
 
 ## Conclusión
 
-El Barcelona - Real Madrid Femenino de la jornada 6 terminó sin goles, pero deja mucha información: un Barcelona líder que no logra romper el partido, un Real Madrid que compite de igual a igual y una Liga F con una zona alta muy disputada. Todo apunta a una temporada emocionante, con dos equipos invictos, grandes nombres propios como Claudia Pina y Felicia Schröder y un segundo Clásico ya en el horizonte. Seguiremos actualizando esta información a medida que avance el campeonato.
+UD Las Palmas y Real Valladolid nos dejaron un partido que resume muy bien la lógica del fútbol: dominar no siempre significa ganar. Las Palmas tuvo más posesión, pero Valladolid tuvo más pegada, más claridad y más eficiencia. El 1-2 final deja a los pucelanos con una victoria muy valiosa y a los canarios con la obligación de ajustar su producción ofensiva si quieren escalar posiciones.
 
-Nota: los datos de este artículo proceden de fuentes públicas consultadas el 4 de octubre de 2026 y pueden variar con las siguientes jornadas.`
+Nota: este artículo se ha elaborado con información pública consultada el 4 de octubre de 2026 y puede variar con las siguientes jornadas.`
 
 export const EXTRA_ARTICLES: Article[] = [
   {
-    id: 7,
-    title: 'Barcelona - Real Madrid Femenino: resultado, clasificación Liga F y próximo Clásico',
-    slug: 'barcelona-real-madrid-femenino',
+    id: 8,
+    title: 'UD Las Palmas vs Valladolid: resultado, goles y clasificación actualizada',
+    slug: 'ud-las-palmas-valladolid',
     category: 'virales',
-    excerpt: 'El Clásico femenino terminó 0-0 en el Camp Nou. Resultado, clasificación de la Liga F, goleadoras y cuándo es el próximo partido.',
+    excerpt: 'Valladolid ganó 1-2 en Gran Canaria. Resultado, goleadores, estadísticas y cómo queda la clasificación de LaLiga Hypermotion.',
     content,
-    image_url: 'https://picsum.photos/seed/barca-madrid-femenino/1200/630',
-    thumbnail_url: 'https://picsum.photos/seed/barca-madrid-femenino/400/225',
-    read_time_minutes: 9,
-    views: 150000,
+    image_url: 'https://picsum.photos/seed/las-palmas-valladolid/1200/630',
+    thumbnail_url: 'https://picsum.photos/seed/las-palmas-valladolid/400/225',
+    read_time_minutes: 8,
+    views: 98000,
     trending: 1,
-    published_at: '2026-10-04T17:00:00.000Z',
+    published_at: '2026-10-04T18:00:00.000Z',
   },
 ]
