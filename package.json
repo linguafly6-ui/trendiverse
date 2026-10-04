@@ -14,7 +14,7 @@
     "seed:db": "node scripts/seed.js"
   },
   "dependencies": {
-    "next": "^15.1.0",
+    "next": "^15.5.27",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -29,5 +29,10 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.0",
     "wrangler": "^3.90.0"
+  },
+  "overrides": {
+    "@cloudflare/next-on-pages": {
+      "next": "$next"
+    }
   }
 }
