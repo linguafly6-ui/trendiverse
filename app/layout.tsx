@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        <meta name="msvalidate.01" content="26683077CE62A57AE507DFDF4C488D53" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="text/javascript" dangerouslySetInnerHTML={{ __html: iubendaConfig }} />
         <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4706473.js" />
