@@ -2,14 +2,14 @@ import type { Article, Deal, Tool } from './types'
 
 const day = 86400000
 const iso = (ago: number) => new Date(Date.now() - ago * day).toISOString()
-const img = (s: string, w: number, h: number) => `https://picsum.photos/seed/${s}/${w}/${h}`
+const img = (s: string, thumb = false) => `/images/articles/${s}${thumb ? '-thumb' : ''}.svg`
 
 const a = (
   id: number, title: string, slug: string, category: string, excerpt: string,
   seed: string, read: number, views: number, trending: number, content?: string
 ): Article => ({
   id, title, slug, category, excerpt, content: content ?? excerpt + ' ' + excerpt,
-  image_url: img(seed, 1200, 630), thumbnail_url: img(seed, 400, 225),
+  image_url: img(seed), thumbnail_url: img(seed, true),
   read_time_minutes: read, views, trending, published_at: iso(id / 4),
 })
 
