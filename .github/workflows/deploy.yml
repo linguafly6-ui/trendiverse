@@ -24,6 +24,6 @@ jobs:
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN = cfat_Q1EM6No1XmJxpMNEtI3uf6yJvXbyfMZjhaC4Dxgm09240fc1  }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID = 80d743b2c4f0e00b585a017c2588d940 }}
           command: pages deploy .vercel/output/static --project-name=trendiverse
