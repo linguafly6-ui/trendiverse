@@ -1,8 +1,9 @@
 import type { Article, Deal, Tool } from './types'
 import { SAMPLE_ARTICLES as BASE_SAMPLE_ARTICLES, SAMPLE_DEALS, SAMPLE_TOOLS } from './sample-data'
 import { EXTRA_ARTICLES } from './extra-articles'
+import { AUDI_ARTICLES } from './audi-article'
 
-const SAMPLE_ARTICLES: Article[] = [...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES]
+const SAMPLE_ARTICLES: Article[] = [...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES]
 
 interface Env {
   DB?: D1Database
