@@ -106,3 +106,10 @@ export async function getToolBySlug(slug: string): Promise<Tool | null> {
   const tools = await getTools()
   return tools.find((t) => t.slug === slug) ?? null
 }
+
+// Same-category articles first, then trending, then most recent.
+export async function getRelatedArticles(article: Article, limit = 4): Promise<Article[]> {
+  const pool = (await getArticles({ limit: 50 })).filter((x) => x.id !== article.id)
+  const score = (x: Article) => (x.category === article.category ? 2 : 0) + (x.trending ? 1 : 0)
+  return pool.sort((x, y) => score(y) - score(x)).slice(0, limit)
+}
