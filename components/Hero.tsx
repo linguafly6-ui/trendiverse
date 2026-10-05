@@ -14,6 +14,7 @@ function HeroCard({ a, big }: { a: Article; big?: boolean }) {
           width={1200}
           height={630}
           priority={big}
+          fetchPriority={big ? "high" : "auto"}
           sizes={big ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
           className="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
         />
