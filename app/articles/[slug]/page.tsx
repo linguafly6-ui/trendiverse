@@ -70,7 +70,7 @@ export default async function ArticlePage({ params }: Props) {
             {article.views > 0 && <><span className="text-slate-300 dark:text-slate-700">·</span><span>{article.views.toLocaleString('es-ES')} vistas</span></>}
           </div>
         </header>
-        {article.image_url && <Image src={article.image_url} alt={article.title} width={1200} height={630} priority sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />}
+        {article.image_url && <Image src={article.image_url} alt={article.title} width={1200} height={630} priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />}
         <TableOfContents headings={getHeadings(blocks)} />
         {article.slug === 'portugal-noruega-nations-league' && <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />}
         {article.slug === 'girona-mallorca-laliga-hypermotion' && <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />}
