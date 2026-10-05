@@ -13,6 +13,8 @@ export interface CategoryInfo {
 }
 
 export const CATEGORIES: CategoryInfo[] = [
+  { slug: 'politica', name: 'Política & Actualidad', short: 'Política', icon: '🏛️', color: '#6366F1', seoTitle: 'Política y actualidad: últimas noticias de España y el mundo', description: 'Actualidad política, elecciones, gobiernos, partidos, decisiones institucionales y las noticias que marcan la agenda.' },
+  { slug: 'economia', name: 'Economía & Mercados', short: 'Economía', icon: '📈', color: '#059669', seoTitle: 'Economía y mercados: últimas noticias y análisis', description: 'Economía, mercados, divisas, empresas, adquisiciones y tendencias que afectan a hogares, inversores y negocios.' },
   { slug: 'deportes', name: 'Deportes', short: 'Deportes', icon: '⚽', color: '#F59E0B', seoTitle: 'Deportes: resultados, partidos y actualidad', description: 'Resultados, partidos, horarios, clasificaciones y actualidad de fútbol, ciclismo y otros deportes.' },
   { slug: 'virales', name: 'Virales & Pop Culture', short: 'Virales', icon: '🔥', color: '#EF4444', seoTitle: 'Virales y cultura pop: últimas tendencias', description: 'Noticias virales, tendencias de internet, cultura pop y temas que están dando que hablar en España y el mundo.' },
   { slug: 'gaming', name: 'Gaming & Guías', short: 'Gaming', icon: '🎮', color: '#10B981', seoTitle: 'Gaming y guías: noticias, trucos y códigos', description: 'Noticias de videojuegos, guías, trucos, códigos y novedades de gaming para PC, PlayStation, Xbox, Nintendo y móvil.' },
