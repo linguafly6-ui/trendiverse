@@ -9,7 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `${SITE_NAME} — Virales, Gaming, Herramientas y Chollos`, template: `%s | ${SITE_NAME}` },
   description: 'Lo más viral, guías y códigos de juegos, micro-herramientas útiles y los mejores chollos.',
-  openGraph: { type: 'website', siteName: SITE_NAME, locale: 'es_ES' },
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true },
+  openGraph: { type: 'website', siteName: SITE_NAME, locale: 'es_ES', url: SITE_URL },
   twitter: { card: 'summary_large_image' },
 }
 
