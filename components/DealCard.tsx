@@ -5,9 +5,20 @@ import type { Deal } from '@/lib/types'
 export default function DealCard({ deal }: { deal: Deal }) {
   return (
     <article className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800">
-      <span className="absolute left-2 top-2 rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">-{deal.discount_percent}%</span>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={deal.image_url ?? ''} alt={deal.product_name} width={400} height={300} loading="lazy" className="h-36 w-full bg-slate-200 object-cover dark:bg-slate-800" />
+      <span className="absolute left-2 top-2 z-10 rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">-{deal.discount_percent}%</span>
+      {deal.image_url ? (
+        <Image
+          src={deal.image_url}
+          alt=""
+          width={400}
+          height={300}
+          sizes="(max-width: 640px) 100vw, 50vw"
+          loading="lazy"
+          className="h-36 w-full bg-slate-200 object-cover dark:bg-slate-800"
+        />
+      ) : (
+        <div aria-hidden="true" className="h-36 w-full bg-slate-200 dark:bg-slate-800" />
+      )}
       <div className="p-3">
         <h3 className="font-semibold">{deal.product_name}</h3>
         <p className="mt-1">
