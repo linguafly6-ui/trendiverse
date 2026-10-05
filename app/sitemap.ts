@@ -16,11 +16,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     articleEntries.push({
       url: `${base}/articles/${encodeURIComponent(a.slug)}`,
       ...(isNaN(+d) ? {} : { lastModified: d }),
+      changeFrequency: 'weekly', priority: 0.8,
     })
   }
   return [
-    { url: `${base}/` },
-    ...CATEGORIES.map((c) => ({ url: `${base}/articles/category/${c.slug}` })),
+    { url: `${base}/`, changeFrequency: 'daily', priority: 1 },
+    ...CATEGORIES.map((c) => ({ url: `${base}/articles/category/${c.slug}`, changeFrequency: 'daily' as const, priority: 0.9 })),
     ...articleEntries,
     ...tools.map((t) => ({ url: `${base}/tools/${encodeURIComponent(t.slug)}` })),
     { url: `${base}/privacidad` },
