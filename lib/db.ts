@@ -7,8 +7,15 @@ import { BARCELONA_REAL_MADRID_ARTICLES } from './barcelona-real-madrid-article'
 import { PORTUGAL_NORUEGA_ARTICLES } from './portugal-noruega-article'
 import { GIRONA_MALLORCA_ARTICLES } from './girona-mallorca-article'
 import { EVENEPOEL_ARTICLES } from './evenepoel-article'
+import { EDITORIAL_ARTICLES } from './editorial-articles'
 
-const SAMPLE_ARTICLES: Article[] = [...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES]
+// Keeps the first record per slug (earlier entries take precedence).
+function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
+  const seen = new Set<string>()
+  return list.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)))
+}
+
+const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
 
 interface Env {
   DB?: D1Database
@@ -16,7 +23,11 @@ interface Env {
 }
 
 // Returns Cloudflare bindings when running on Pages/Workers, otherwise {}
+let envOverride: (() => Env) | null = null
+export function setEnvResolverForTests(fn: (() => Env) | null) { envOverride = fn }
+
 async function getEnv(): Promise<Env> {
+  if (envOverride) return envOverride()
   try {
     const { getRequestContext } = await import('@cloudflare/next-on-pages')
     return getRequestContext().env as unknown as Env
@@ -47,20 +58,35 @@ export interface ArticleQuery {
   offset?: number
 }
 
+function matchesQuery(x: Article, opts: ArticleQuery): boolean {
+  if (opts.category && x.category !== opts.category) return false
+  if (opts.trending && !x.trending) return false
+  if (opts.q) {
+    const q = opts.q.toLowerCase()
+    if (!(x.title + ' ' + (x.excerpt ?? '')).toLowerCase().includes(q)) return false
+  }
+  return true
+}
+
+// Newest first; ties broken by slug so ordering is stable across sources.
+function byRecency(x: Article, y: Article): number {
+  const d = (+new Date(y.published_at) || 0) - (+new Date(x.published_at) || 0)
+  return d || x.slug.localeCompare(y.slug)
+}
+
+// Bundled editorial records take precedence over D1 rows with the same slug.
+function mergeWithEditorial(rows: Article[]): Article[] {
+  return dedupeBySlug([...EDITORIAL_ARTICLES, ...rows])
+}
+
 export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   const limit = Math.min(Math.max(opts.limit ?? 12, 1), 50)
   const offset = Math.max(opts.offset ?? 0, 0)
   const { DB } = await getEnv()
 
   if (!DB) {
-    let list = [...SAMPLE_ARTICLES]
-    if (opts.category) list = list.filter((x) => x.category === opts.category)
-    if (opts.trending) list = list.filter((x) => x.trending)
-    if (opts.q) {
-      const q = opts.q.toLowerCase()
-      list = list.filter((x) => (x.title + ' ' + (x.excerpt ?? '')).toLowerCase().includes(q))
-    }
-    list.sort((x, y) => +new Date(y.published_at) - +new Date(x.published_at))
+    const list = SAMPLE_ARTICLES.filter((x) => matchesQuery(x, opts))
+    list.sort(byRecency)
     return list.slice(offset, offset + limit)
   }
 
@@ -73,26 +99,36 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
     const like = `%${opts.q.replace(/[\\%_]/g, '\\$&')}%`
     params.push(like, like)
   }
+  // Fetch enough D1 rows from the top so that, after bundled records are merged in and
+  // duplicates removed, the requested page is still exact.
+  const fetchLimit = offset + limit + EDITORIAL_ARTICLES.length
   const sql = `SELECT * FROM articles ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
-    ORDER BY published_at DESC LIMIT ? OFFSET ?`
-  params.push(limit, offset)
+    ORDER BY published_at DESC LIMIT ?`
+  params.push(fetchLimit)
   const run = async () => (await DB.prepare(sql).bind(...params).all<Article>()).results
-  if (opts.q) return run()
-  return cached(`articles:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${limit}:${offset}`, 60, run)
+  const rows = opts.q
+    ? await run()
+    : await cached(`articles:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${fetchLimit}`, 60, run)
+  const merged = mergeWithEditorial(rows).filter((x) => matchesQuery(x, opts))
+  merged.sort(byRecency)
+  return merged.slice(offset, offset + limit)
 }
 
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
   if (!DB) return [...SAMPLE_ARTICLES].sort((a, b) => b.views - a.views).slice(0, limit)
-  return cached(`top:${limit}`, 300, async () =>
-    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit).all<Article>()).results
+  const rows = await cached(`top:${limit + EDITORIAL_ARTICLES.length}`, 300, async () =>
+    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + EDITORIAL_ARTICLES.length).all<Article>()).results
   )
+  return mergeWithEditorial(rows).sort((a, b) => b.views - a.views || byRecency(a, b)).slice(0, limit)
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  const bundled = EDITORIAL_ARTICLES.find((a) => a.slug === slug)
+  if (bundled) return bundled
   const { DB } = await getEnv()
   if (!DB) return SAMPLE_ARTICLES.find((a) => a.slug === slug) ?? null
-  return DB.prepare('SELECT * FROM articles WHERE slug = ?').bind(slug).first<Article>()
+  return (await DB.prepare('SELECT * FROM articles WHERE slug = ?').bind(slug).first<Article>()) ?? null
 }
 
 export async function getDeals(limit = 10): Promise<Deal[]> {
@@ -127,5 +163,9 @@ export async function getRelatedArticles(article: Article, limit = 4): Promise<A
 export async function getAllArticleSlugs(): Promise<{ slug: string; published_at: string }[]> {
   const { DB } = await getEnv()
   if (!DB) return SAMPLE_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at }))
-  return (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
+  const rows = (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
+  return dedupeBySlug([
+    ...EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
+    ...rows,
+  ])
 }
