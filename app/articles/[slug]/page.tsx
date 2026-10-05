@@ -38,6 +38,18 @@ export default async function ArticlePage({ params }: Props) {
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: article.image_url ? [article.image_url] : undefined, datePublished: article.published_at, dateModified: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
+  const faqPairs = blocks.reduce<{ question: string; answer: string }[]>((acc, b, i) => {
+    if (b.type === 'heading' && /^(qué|quien|quién|cómo|como|cuándo|cuando|dónde|donde|cuánto|cuanto|por qué|por que|en qué|en que)/i.test(b.text)) {
+      const next = blocks[i + 1]
+      if (next?.type === 'paragraph') acc.push({ question: b.text, answer: next.text })
+    }
+    return acc
+  }, [])
+  const faqSchema = faqPairs.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqPairs.map((x) => ({ '@type': 'Question', name: x.question, acceptedAnswer: { '@type': 'Answer', text: x.answer } })),
+  } : null
   const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL }, ...(category ? [{ '@type': 'ListItem', position: 2, name: category.name, item: `${SITE_URL}/articles/category/${category.slug}` }] : []), { '@type': 'ListItem', position: category ? 3 : 2, name: article.title, item: url }] }
   return (
     <div className="grid gap-8 lg:grid-cols-10">
@@ -45,6 +57,7 @@ export default async function ArticlePage({ params }: Props) {
       <article className="min-w-0 lg:col-span-7">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
         <nav aria-label="Migas de pan" className="mx-auto mb-4 max-w-prose text-sm text-slate-500"><a href="/" className="hover:text-brand-violet">Inicio</a>{category && <> <span aria-hidden="true">/</span> <a href={`/articles/category/${category.slug}`} className="hover:text-brand-violet">{category.name}</a></>} <span aria-hidden="true">/</span> <span>{article.title}</span></nav>
         <header className="mx-auto max-w-prose">
           <CategoryBadge slug={article.category} />
