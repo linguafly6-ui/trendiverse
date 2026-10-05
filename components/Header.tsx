@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
 import CategoryNav from './CategoryNav'
-import SearchButton from './SearchButton'
+import SearchButtonLoader from './SearchButtonLoader'
 
 export default function Header() {
   return (
@@ -11,7 +11,7 @@ export default function Header() {
           <span className="animate-pulse text-brand-violet" aria-hidden>⚡</span>
           Trendi<span className="text-brand-violet">Verse</span>
         </Link>
-        <div className="flex items-center gap-1"><SearchButton /><ThemeToggle /></div>
+        <div className="flex items-center gap-1"><SearchButtonLoader /><ThemeToggle /></div>
       </div>
       <CategoryNav />
     </header>
