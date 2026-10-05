@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import ArticleCard from '@/components/ArticleCard'
 import CategoryClusterLinks from '@/components/CategoryClusterLinks'
 import Sidebar from '@/components/Sidebar'
-import { getCategory, getTopic, SITE_NAME, SITE_URL, TOPICS } from '@/lib/constants'
+import { getCategory, getTopic, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getArticles } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -67,20 +67,19 @@ export default async function TopicPage({ params }: Props) {
         <header>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{topic.name}</h1>
           <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-400">{topic.description}</p>
-          <p className="mt-2 text-sm text-slate-500">
-            {articles.length} contenidos relacionados.
-          </p>
+          <p className="mt-2 text-sm text-slate-500">{articles.length} contenidos relacionados.</p>
         </header>
 
-        <section aria-labelledby="topic-content-title">\n          <h2 id="topic-content-title" className="mb-3 text-xl font-extrabold">Últimos contenidos sobre {topic.name}</h2>\n          <div className="space-y-3">{articles.slice(0, 12).map((article) => <ArticleCard key={article.id} article={article} />)}</div>\n        </section>
+        <section aria-labelledby="topic-content-title">
+          <h2 id="topic-content-title" className="mb-3 text-xl font-extrabold">Últimos contenidos sobre {topic.name}</h2>
+          <div className="space-y-3">
+            {articles.slice(0, 12).map((article) => <ArticleCard key={article.id} article={article} />)}
+          </div>
+        </section>
 
         {category && <CategoryClusterLinks active={category.slug} />}
       </main>
       <div className="lg:col-span-3"><Sidebar /></div>
     </div>
   )
-}
-
-export async function generateStaticParams() {
-  return TOPICS.map((topic) => ({ topic: topic.slug }))
 }
