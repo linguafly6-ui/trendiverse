@@ -1,4 +1,8 @@
-import type { Article } from './types'\n\n// Canonical editorial articles bundled with the app. lib/db.ts merges these with D1 rows by slug,\n// so they are served in production regardless of D1 contents (no remote DB writes needed).\nexport const EDITORIAL_ARTICLES: Article[] = [
+import type { Article } from './types'
+
+// Canonical editorial articles bundled with the app. lib/db.ts merges these with D1 rows by slug,
+// so they are served in production regardless of D1 contents (no remote DB writes needed).
+export const EDITORIAL_ARTICLES: Article[] = [
   {
     "id": 301,
     "title": "Batería externa Philips de Action: cuál elegir y qué mirar",
