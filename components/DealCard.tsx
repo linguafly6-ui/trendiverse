@@ -6,7 +6,7 @@ export default function DealCard({ deal }: { deal: Deal }) {
     <article className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800">
       <span className="absolute left-2 top-2 rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">-{deal.discount_percent}%</span>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={deal.image_url ?? ''} alt="" width={400} height={300} loading="lazy" className="h-36 w-full bg-slate-200 object-cover dark:bg-slate-800" />
+      <img src={deal.image_url ?? ''} alt={a.title} width={400} height={300} loading="lazy" className="h-36 w-full bg-slate-200 object-cover dark:bg-slate-800" />
       <div className="p-3">
         <h3 className="font-semibold">{deal.product_name}</h3>
         <p className="mt-1">
