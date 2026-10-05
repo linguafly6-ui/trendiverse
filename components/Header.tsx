@@ -1,20 +1,7 @@
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
 import CategoryNav from './CategoryNav'
-
-const SearchButton = dynamic(() => import('./SearchButton'), {
-  ssr: false,
-  loading: () => (
-    <button
-      type="button"
-      aria-label="Buscar"
-      className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm hover:bg-slate-200 dark:hover:bg-slate-800"
-    >
-      🔍 <kbd className="hidden rounded border px-1 text-xs sm:inline">⌘K</kbd>
-    </button>
-  ),
-})
+import SearchButtonLoader from './SearchButtonLoader'
 
 export default function Header() {
   return (
@@ -24,7 +11,7 @@ export default function Header() {
           <span className="animate-pulse text-brand-violet" aria-hidden>⚡</span>
           Trendi<span className="text-brand-violet">Verse</span>
         </Link>
-        <div className="flex items-center gap-1"><SearchButton /><ThemeToggle /></div>
+        <div className="flex items-center gap-1"><SearchButtonLoader /><ThemeToggle /></div>
       </div>
       <CategoryNav />
     </header>
