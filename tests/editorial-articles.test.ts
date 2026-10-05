@@ -29,8 +29,7 @@ const EXPECTED_SLUGS = [
   'zelestra-edp-baterias-almacenamiento-espana',
 ]
 
-const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({
-  id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
+const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({ id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
   read_time_minutes: 1, views: 0, trending, published_at,
 })
 
@@ -67,7 +66,7 @@ function fakeD1(rows: Article[]) {
 const d1Rows = [
   mk(1, 'old-d1-article', '2026-01-01T00:00:00.000Z'),
   mk(2, 'newer-d1-article', '2026-10-06T00:00:00.000Z', 'tecnologia', 1),
-  // stale duplicate of an editorial slug: must not appear twice
+  // stale duplicate of an editorial slug: bundled editorial data must win
   mk(3, EXPECTED_SLUGS[0], '2026-01-02T00:00:00.000Z', 'chollos'),
 ]
 
@@ -94,14 +93,14 @@ test('editorial records are valid and unique', () => {
   }
 })
 
-test('D1-bound: all editorial slugs slugs resolve by direct lookup', async () => {
+test('D1-bound: all editorial slugs resolve by direct lookup', async () => {
   const calls = bind()
   for (const slug of EXPECTED_SLUGS) {
     const a = await getArticleBySlug(slug)
     assert.equal(a?.slug, slug)
     assert.notEqual(a?.title.startsWith('D1 '), true)
   }
-  assert.equal((await getArticleBySlug('old-d1-article'))?.id, 1) // falls through to D1
+  assert.equal((await getArticleBySlug('old-d1-article'))?.id, 1)
   assert.equal(await getArticleBySlug('missing'), null)
   assert.ok(calls.length > 0, 'D1 was exercised')
 })
@@ -114,7 +113,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
   assert.equal(slugs[0], 'newer-d1-article')
-  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'chollos')
+  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
   }
@@ -136,18 +135,21 @@ test('D1-bound: category, search and trending semantics', async () => {
   bind()
   const chollos = await getArticles({ category: 'chollos', limit: 50 })
   assert.ok(chollos.every((a) => a.category === 'chollos'))
-  assert.equal(chollos.filter((a) => a.slug === EXPECTED_SLUGS[0]).length, 1)
+  assert.equal(chollos.filter((a) => a.slug === EXPECTED_SLUGS[1]).length, 1)
+
   const tecnologia = (await getArticles({ category: 'tecnologia', limit: 50 })).map((a) => a.slug)
-  for (const s of [EXPECTED_SLUGS[1], EXPECTED_SLUGS[2], EXPECTED_SLUGS[3]]) assert.ok(tecnologia.includes(s), s)
+  for (const s of [EXPECTED_SLUGS[3], EXPECTED_SLUGS[4], EXPECTED_SLUGS[5], EXPECTED_SLUGS[7], EXPECTED_SLUGS[17]]) assert.ok(tecnologia.includes(s), s)
+
   const search = async (q: string) => (await getArticles({ q, limit: 50 })).map((a) => a.slug)
-  assert.ok((await search('osteopontina')).includes(EXPECTED_SLUGS[3]))
-  assert.ok((await search('DoorDash')).includes(EXPECTED_SLUGS[4]))
-  assert.ok((await search('Bercovich')).includes(EXPECTED_SLUGS[8]))
-  assert.ok((await search('nanofabricación')).includes(EXPECTED_SLUGS[6]))
+  assert.ok((await search('osteopontina')).includes('cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos'))
+  assert.ok((await search('DoorDash')).includes('doordash-nueva-york-acuerdo-repartidores-131-millones'))
+  assert.ok((await search('Bercovich')).includes('premios-nacionales-musica-2026-laura-vega-cecilia-bercovich'))
+  assert.ok((await search('nanofabricación')).includes('csic-barcelona-area-nanofabricacion-cuantica-imb-cnm'))
+
   const trending = await getArticles({ trending: true, limit: 50 })
   assert.ok(trending.every((a) => a.trending))
   assert.ok(trending.some((a) => a.slug === 'newer-d1-article'))
-  assert.ok(trending.some((a) => a.slug === EXPECTED_SLUGS[3]))
+  assert.ok(trending.some((a) => a.slug === 'ciberataque-dinamarca-datos-88-millones-personas'))
 })
 
 test('D1-bound: sitemap data has all editorial slugs plus D1 rows, deduped', async () => {
