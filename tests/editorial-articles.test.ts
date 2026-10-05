@@ -149,7 +149,7 @@ test('D1-bound: category, search and trending semantics', async () => {
   const trending = await getArticles({ trending: true, limit: 50 })
   assert.ok(trending.every((a) => a.trending))
   assert.ok(trending.some((a) => a.slug === 'newer-d1-article'))
-  assert.ok(trending.some((a) => a.slug === 'ciberataque-dinamarca-datos-88-millones'))
+  assert.ok(trending.some((a) => a.slug === 'ciberataque-dinamarca-datos-88-millones-personas'))
 })
 
 test('D1-bound: sitemap data has all editorial slugs plus D1 rows, deduped', async () => {
