@@ -24,4 +24,22 @@ export const CATEGORIES: CategoryInfo[] = [
   { slug: 'chollos', name: 'Chollos & Descuentos', short: 'Chollos', icon: '🏷️', color: '#F97316', seoTitle: 'Chollos y ofertas: descuentos y oportunidades', description: 'Ofertas, descuentos y oportunidades de compra seleccionadas, con precios y condiciones para comparar antes de comprar.' },
 ]
 
+export interface TopicInfo {
+  slug: string
+  name: string
+  seoTitle: string
+  description: string
+  query: string
+  category?: string
+}
+
+export const TOPICS: TopicInfo[] = [
+  { slug: 'mundial-2026', name: 'Mundial 2026', seoTitle: 'Mundial 2026: fechas, sedes, grupos y noticias', description: 'Guías y noticias sobre el Mundial 2026: calendario, sedes, formato, grupos y claves del torneo.', query: 'Mundial 2026', category: 'deportes' },
+  { slug: 'inteligencia-artificial', name: 'Inteligencia artificial', seoTitle: 'Inteligencia artificial: noticias, herramientas y tendencias', description: 'Noticias y análisis sobre inteligencia artificial, nuevas herramientas, modelos y aplicaciones prácticas.', query: 'inteligencia artificial', category: 'tecnologia' },
+  { slug: 'iphone', name: 'iPhone', seoTitle: 'iPhone: novedades, modelos, funciones y guías', description: 'Noticias y guías sobre iPhone, modelos, funciones, actualizaciones y novedades de Apple.', query: 'iPhone', category: 'tecnologia' },
+  { slug: 'coches-electricos', name: 'Coches eléctricos', seoTitle: 'Coches eléctricos: modelos, autonomía y novedades', description: 'Actualidad sobre coches eléctricos, nuevos modelos, autonomía, tecnología y movilidad.', query: 'coches eléctricos', category: 'coches' },
+  { slug: 'vivienda', name: 'Vivienda', seoTitle: 'Vivienda: precios, alquiler, hipotecas y actualidad', description: 'Noticias y guías sobre vivienda, alquiler, hipotecas, precios y cambios normativos que afectan a los hogares.', query: 'vivienda', category: 'politica' },
+]
+
 export const getCategory = (slug: string) => CATEGORIES.find((c) => c.slug === slug)
+export const getTopic = (slug: string) => TOPICS.find((t) => t.slug === slug)
