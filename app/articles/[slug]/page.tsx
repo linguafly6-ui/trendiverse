@@ -42,8 +42,9 @@ export default async function ArticlePage({ params }: Props) {
   const related = await getRelatedArticles(article, 4)
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
+  const authorUrl = `${SITE_URL}/autor/equipo-editorial`
   const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
-  const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: imageUrl ? [imageUrl] : undefined, datePublished: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
+  const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: imageUrl ? [imageUrl] : undefined, datePublished: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', '@id': `${SITE_URL}/#editorial-team`, name: 'Equipo Editorial', url: authorUrl }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
   const faqItems = blocks.reduce<{ question: string; answer: string }[]>((items, block, index) => {
     if (block.type !== 'heading' || block.level !== 3) return items
     const question = block.text.trim()
@@ -68,7 +69,7 @@ export default async function ArticlePage({ params }: Props) {
           <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{article.title}</h1>
           {article.excerpt && <p className="mt-4 border-l-4 border-violet-400 pl-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">{article.excerpt}</p>}
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-            <span>Por <strong className="font-medium text-slate-700 dark:text-slate-300">{SITE_NAME}</strong></span><span>·</span><time dateTime={article.published_at} className="font-medium">{formatDate(article.published_at)}</time>
+            <span>Por <a href={authorUrl} className="font-medium text-slate-700 hover:text-brand-violet dark:text-slate-300">Equipo Editorial</a></span><span>·</span><time dateTime={article.published_at} className="font-medium">{formatDate(article.published_at)}</time>
             <span className="text-slate-300 dark:text-slate-700">·</span><span>{article.read_time_minutes ?? 1} min de lectura</span>
             {article.views > 0 && <><span className="text-slate-300 dark:text-slate-700">·</span><span>{article.views.toLocaleString('es-ES')} vistas</span></>}
           </div>
