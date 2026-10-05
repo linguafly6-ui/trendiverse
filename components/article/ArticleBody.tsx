@@ -1,4 +1,5 @@
 import type { ArticleBlock } from '@/lib/article-content'
+import ChargingPointsMap from '@/components/article/ChargingPointsMap'
 
 /**
  * Renders inline markdown: **bold** and *italic*.
@@ -43,6 +44,7 @@ export default function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
     <div className="mx-auto max-w-prose">
       <div className="space-y-6 text-[1.075rem] leading-8 text-slate-700 dark:text-slate-300">
         {blocks.map((b, i) => {
+          if (b.type === 'charging-map') return <ChargingPointsMap key={i} />
           if (b.type === 'heading' && b.level === 2) {
             return (
               <h2

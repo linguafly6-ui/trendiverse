@@ -3,6 +3,7 @@ export type ArticleBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'list'; items: string[]; ordered: boolean }
   | { type: 'quote'; text: string }
+  | { type: 'charging-map' }
 
 const slugify = (s: string) =>
   s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'seccion'
@@ -15,6 +16,7 @@ export function parseArticleContent(content: string | null | undefined): Article
     .map((p) => p.trim())
     .filter(Boolean)
     .map((p): ArticleBlock => {
+      if (p === '[[charging-map]]') return { type: 'charging-map' }
       // Headings: ## or ###
       const h = /^(#{2,3})\s+(.+)$/.exec(p)
       if (h) {
