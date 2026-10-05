@@ -17,8 +17,11 @@ export default function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="group flex gap-3 overflow-hidden rounded-xl border border-slate-200 p-3 transition hover:border-brand-violet hover:shadow-md dark:border-slate-800 dark:hover:border-brand-violet">
       <Link href={`/articles/${article.slug}`} prefetch={false} className="shrink-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={article.thumbnail_url ?? ''} alt={article.title} width={160} height={90} loading="lazy" className="h-[90px] w-[160px] rounded-lg bg-slate-200 object-cover dark:bg-slate-800" />
+        {article.thumbnail_url ? (
+          <Image src={article.thumbnail_url} alt="" width={160} height={90} sizes="160px" loading="lazy" className="h-[90px] w-[160px] rounded-lg bg-slate-200 object-cover dark:bg-slate-800" />
+        ) : (
+          <div aria-hidden="true" className="h-[90px] w-[160px] rounded-lg bg-slate-200 dark:bg-slate-800" />
+        )}
       </Link>
       <div className="min-w-0">
         <CategoryBadge slug={article.category} />
