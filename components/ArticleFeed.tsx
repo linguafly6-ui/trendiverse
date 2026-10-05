@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/constants'
 import type { Article } from '@/lib/types'
+import ArticleCard from './ArticleCard'
 import ArticleFeedMore from './ArticleFeedMore'
 
 export default function ArticleFeed({ initial, category: fixed }: { initial: Article[]; category?: string }) {
@@ -16,7 +17,16 @@ export default function ArticleFeed({ initial, category: fixed }: { initial: Art
           ))}
         </nav>
       )}
-      <ArticleFeedMore initial={initial} category={fixed} />
+      {initial.length > 0 ? (
+        <div className="space-y-3">
+          {initial.map((article) => <ArticleCard key={article.id} article={article} />)}
+        </div>
+      ) : (
+        <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500 dark:border-slate-700">
+          No hay artículos en esta categoría todavía. Vuelve pronto.
+        </p>
+      )}
+      <ArticleFeedMore initialCount={initial.length} category={fixed} />
     </section>
   )
 }
