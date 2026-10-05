@@ -63,46 +63,19 @@ export default async function ArticlePage({ params }: Props) {
         <header className="mx-auto max-w-prose">
           <CategoryBadge slug={article.category} />
           <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{article.title}</h1>
-          {article.excerpt && (
-            <p className="mt-4 border-l-4 border-violet-400 pl-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-              {article.excerpt}
-            </p>
-          )}
+          {article.excerpt && <p className="mt-4 border-l-4 border-violet-400 pl-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">{article.excerpt}</p>}
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-500">
             <span>Por <strong className="font-medium text-slate-700 dark:text-slate-300">{SITE_NAME}</strong></span><span>·</span><time dateTime={article.published_at} className="font-medium">{formatDate(article.published_at)}</time>
-            <span className="text-slate-300 dark:text-slate-700">·</span>
-            <span>{article.read_time_minutes ?? 1} min de lectura</span>
-            {article.views > 0 && (
-              <>
-                <span className="text-slate-300 dark:text-slate-700">·</span>
-                <span>{article.views.toLocaleString('es-ES')} vistas</span>
-              </>
-            )}
+            <span className="text-slate-300 dark:text-slate-700">·</span><span>{article.read_time_minutes ?? 1} min de lectura</span>
+            {article.views > 0 && <><span className="text-slate-300 dark:text-slate-700">·</span><span>{article.views.toLocaleString('es-ES')} vistas</span></>}
           </div>
         </header>
-        {article.image_url && (
-          <Image src={article.image_url} alt={article.title} width={1200} height={630} priority sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />
-          <Image
-            src={article.image_url}
-            alt={article.title}
-            width={1200}
-            height={630}
-            priority
-            sizes="(min-width: 1024px) 70vw, 100vw"
-            className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800"
-          />
-        )}
+        {article.image_url && <Image src={article.image_url} alt={article.title} width={1200} height={630} priority sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />}
         <TableOfContents headings={getHeadings(blocks)} />
-        {article.slug === 'portugal-noruega-nations-league' && (
-          <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />
-        )}
-        {article.slug === 'girona-mallorca-laliga-hypermotion' && (
-          <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />
-        )}
+        {article.slug === 'portugal-noruega-nations-league' && <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />}
+        {article.slug === 'girona-mallorca-laliga-hypermotion' && <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />}
         <ArticleBody blocks={blocks} />
-        <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800">
-          <ShareButtons slug={article.slug} title={article.title} />
-        </div>
+        <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800"><ShareButtons slug={article.slug} title={article.title} /></div>
         <RelatedArticles articles={related} />
       </article>
       <div className="lg:col-span-3"><Sidebar /></div>
