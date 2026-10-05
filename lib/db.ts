@@ -122,3 +122,10 @@ export async function getRelatedArticles(article: Article, limit = 4): Promise<A
   const score = (x: Article) => (x.category === article.category ? 2 : 0) + (x.trending ? 1 : 0)
   return pool.sort((x, y) => score(y) - score(x)).slice(0, limit)
 }
+
+// All article slugs (no pagination limit) for the sitemap.
+export async function getAllArticleSlugs(): Promise<{ slug: string; published_at: string }[]> {
+  const { DB } = await getEnv()
+  if (!DB) return SAMPLE_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at }))
+  return (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
+}
