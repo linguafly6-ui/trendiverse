@@ -1,7 +1,7 @@
 'use client'
 
 export default function ShareButtons({ slug, title }: { slug: string; title: string }) {
-  const url = typeof window !== 'undefined' ? window.location.href : `https://trendiverse.pages.dev/articles/${slug}`
+  const url = typeof window !== 'undefined' ? window.location.href : `https://trendiverse.org/articles/${slug}`
 
   const share = (e: React.MouseEvent<HTMLButtonElement>, platform: string) => {
     e.preventDefault()
