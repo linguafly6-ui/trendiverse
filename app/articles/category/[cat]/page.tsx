@@ -5,7 +5,7 @@ import CategoryNav from '@/components/CategoryNav'
 import DealCard from '@/components/DealCard'
 import GamingCodes from '@/components/GamingCodes'
 import Sidebar from '@/components/Sidebar'
-import { getCategory } from '@/lib/constants'
+import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getArticles, getDeals } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -14,7 +14,9 @@ type Props = { params: Promise<{ cat: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = getCategory((await params).cat)
-  return c ? { title: c.name } : {}
+  if (!c) return {}
+  const url = `${SITE_URL}/articles/category/${c.slug}`
+  return { title: c.seoTitle, description: c.description, alternates: { canonical: url }, robots: { index: true, follow: true }, openGraph: { title: c.seoTitle, description: c.description, type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' } }
 }
 
 export default async function CategoryPage({ params }: Props) {
@@ -25,9 +27,13 @@ export default async function CategoryPage({ params }: Props) {
     getArticles({ category: cat, limit: 10 }),
     cat === 'chollos' ? getDeals(10) : Promise.resolve([]),
   ])
+  const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL }, { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE_URL}/articles/category/${c.slug}` }] }
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <div className="space-y-6 lg:col-span-7">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <nav aria-label="Migas de pan" className="text-sm text-slate-500"><a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>{c.name}</span></nav>
+        <p className="max-w-3xl text-slate-600 dark:text-slate-400">{c.description}</p>
         <h1 className="text-3xl font-extrabold" style={{ color: c.color }}>{c.icon} {c.name}</h1>
         <CategoryNav active={cat} />
         {cat === 'gaming' && <GamingCodes />}
