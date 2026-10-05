@@ -152,11 +152,19 @@ export async function getToolBySlug(slug: string): Promise<Tool | null> {
   return tools.find((t) => t.slug === slug) ?? null
 }
 
-// Same-category articles first, then trending, then most recent.
+// Prefer topical relevance first, then category and freshness signals.
 export async function getRelatedArticles(article: Article, limit = 4): Promise<Article[]> {
   const pool = (await getArticles({ limit: 50 })).filter((x) => x.id !== article.id)
-  const score = (x: Article) => (x.category === article.category ? 2 : 0) + (x.trending ? 1 : 0)
-  return pool.sort((x, y) => score(y) - score(x)).slice(0, limit)
+  const tokens = (article.title + ' ' + (article.excerpt ?? '')).toLowerCase()
+    .split(/[^a-záéíóúüñ0-9]+/i)
+    .filter((t) => t.length >= 5)
+  const tokenSet = new Set(tokens)
+  const score = (x: Article) => {
+    const candidate = (x.title + ' ' + (x.excerpt ?? '')).toLowerCase()
+    const overlap = [...tokenSet].filter((t) => candidate.includes(t)).length
+    return overlap * 2 + (x.category === article.category ? 3 : 0) + (x.trending ? 1 : 0)
+  }
+  return pool.sort((x, y) => score(y) - score(x) || byRecency(x, y)).slice(0, limit)
 }
 
 // All article slugs (no pagination limit) for the sitemap.
