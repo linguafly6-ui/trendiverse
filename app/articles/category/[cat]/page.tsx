@@ -5,6 +5,7 @@ import CategoryNav from '@/components/CategoryNav'
 import DealCard from '@/components/DealCard'
 import GamingCodes from '@/components/GamingCodes'
 import Sidebar from '@/components/Sidebar'
+import PoliticsHub from '@/components/PoliticsHub'
 import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getArticles, getDeals } from '@/lib/db'
 
@@ -37,6 +38,7 @@ export default async function CategoryPage({ params }: Props) {
         <h1 className="text-3xl font-extrabold" style={{ color: c.color }}>{c.icon} {c.name}</h1>
         <CategoryNav active={cat} />
         {cat === 'gaming' && <GamingCodes />}
+        {cat === 'politica' && <PoliticsHub />}
         {deals.length > 0 && <div className="grid gap-4 sm:grid-cols-2">{deals.map((d) => <DealCard key={d.id} deal={d} />)}</div>}
         <ArticleFeed key={cat} initial={articles} category={cat} />
       </div>
