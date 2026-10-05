@@ -128,7 +128,7 @@ export const EDITORIAL_ARTICLES: Article[] = [
     "views": 0,
     "trending": 0,
     "published_at": "2026-10-05T09:20:00.000Z"
-  }
+  },
   {
   "id": 311,
   "title": "Álex Sola, detenido tras un accidente y dar positivo en alcohol: qué ha pasado",
