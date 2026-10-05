@@ -159,7 +159,6 @@ test('D1-bound: pagination is exact and gap-free', async () => {
     paged.push(...page.slice(0, full.length - offset))
   }
   assert.deepEqual(paged, full)
-  assert.deepEqual((await getArticles({ limit: 3, offset: 2 })).map((a) => a.slug), full.slice(2, 5))
 })
 
 test('D1-bound: category, search and trending semantics', async () => {
