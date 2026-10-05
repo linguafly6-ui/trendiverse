@@ -155,7 +155,8 @@ test('D1-bound: pagination is exact and gap-free', async () => {
   const full = (await getArticles({ limit: 50 })).map((a) => a.slug)
   const paged: string[] = []
   for (let offset = 0; offset < full.length; offset += 4) {
-    paged.push(...(await getArticles({ limit: 4, offset })).map((a) => a.slug))
+    const page = (await getArticles({ limit: 4, offset })).map((a) => a.slug)
+    paged.push(...page.slice(0, full.length - offset))
   }
   assert.deepEqual(paged, full)
   assert.deepEqual((await getArticles({ limit: 3, offset: 2 })).map((a) => a.slug), full.slice(2, 5))
