@@ -8,11 +8,6 @@ import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
-  'desahucios-decretos-vivienda-rechazados-que-sigue-vigente-2026',
-  'espana-sin-presupuestos-prorrogados-consecuencias-ciudadanos-2026',
-  'reforma-financiacion-autonomica-2026-que-propone-y-que-falta',
-  'gobierno-en-funciones-espana-que-puede-hacer-elecciones-2026',
-  'leyes-pendientes-elecciones-anticipadas-espana-2026-29n',
   'alex-sola-detenido-accidente-positivo-alcohol',
   'bateria-externa-philips-action',
   'brasil-segunda-vuelta-lula-flavio-bolsonaro-25-octubre-2026',
@@ -65,6 +60,12 @@ const EXPECTED_SLUGS = [
   'plataformas-tecnologicas-2026-seis-millones-innovacion-empresas',
   'diez-millones-personal-tecnico-gestion-idi-2026',
   '75-millones-399-proyectos-investigacion-salud-espana-2026',
+  'desahucios-decretos-vivienda-rechazados-que-sigue-vigente-2026',
+  'espana-sin-presupuestos-prorrogados-consecuencias-ciudadanos-2026',
+  'reforma-financiacion-autonomica-2026-que-propone-y-que-falta',
+  'gobierno-en-funciones-espana-que-puede-hacer-elecciones-2026',
+  'leyes-pendientes-elecciones-anticipadas-espana-2026-29n',
+
 ]
 
 const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({ id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
