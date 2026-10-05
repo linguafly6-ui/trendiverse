@@ -1,12 +1,19 @@
 import type { MetadataRoute } from 'next'
-import { CATEGORIES, SITE_URL } from '@/lib/constants'
-import { getAllArticleSlugs, getTools } from '@/lib/db'
+import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
+import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
 export const runtime = 'edge'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE_URL.replace(/\/$/, '')
-  const [articles, tools] = await Promise.all([getAllArticleSlugs(), getTools()])
+  const [articles, tools, topicArticles] = await Promise.all([
+    getAllArticleSlugs(),
+    getTools(),
+    Promise.all(TOPICS.map(async (topic) => ({
+      topic,
+      count: (await getArticles({ q: topic.query, category: topic.category, limit: 50 })).length,
+    }))),
+  ])
   const seen = new Set<string>()
   const articleEntries: MetadataRoute.Sitemap = []
 
@@ -22,6 +29,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
+  const topicEntries = topicArticles
+    .filter(({ count }) => count >= 3)
+    .map(({ topic }) => ({
+      url: base + '/articles/topic/' + topic.slug,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }))
+
   return [
     { url: base + '/', changeFrequency: 'daily', priority: 1 },
     { url: base + '/articles', changeFrequency: 'daily', priority: 0.95 },
@@ -30,6 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as const,
       priority: 0.9,
     })),
+    ...topicEntries,
     ...articleEntries,
     ...tools.map((t) => ({
       url: base + '/tools/' + encodeURIComponent(t.slug),
@@ -39,3 +55,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: base + '/privacidad', changeFrequency: 'yearly' as const, priority: 0.2 },
     { url: base + '/terminos', changeFrequency: 'yearly' as const, priority: 0.2 },
   ]
+}
