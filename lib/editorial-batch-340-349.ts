@@ -14,7 +14,7 @@ type Topic = {
 }
 
 const faq = (keyword: string, answers: string[]) =>
-  \`## Preguntas frecuentes
+  `## Preguntas frecuentes
 
 ### ¿Qué es exactamente ${keyword}?
 ${answers[0]}
@@ -38,79 +38,79 @@ ${answers[5]}
 ${answers[6]}
 
 ### ¿Dónde consultar la información oficial?
-${answers[7]}\`
+${answers[7]}`
 
 function buildContent(t: Topic): string {
   const [f1, f2, f3, f4] = t.facts
   const sections = [
-    \`La ciencia española afronta el otoño de 2026 con una agenda especialmente intensa. ${t.angle} La novedad es relevante porque la investigación no avanza únicamente cuando aparece un descubrimiento: también necesita convocatorias previsibles, personal especializado, infraestructuras, cooperación entre instituciones y mecanismos que permitan transformar una idea en un resultado comprobable.\`,
-    \`El dato central de esta noticia es claro: ${f1}. Esta cifra debe interpretarse con precisión. Una dotación presupuestaria identifica los recursos máximos previstos para una convocatoria o programa, pero no significa que todo el dinero se entregue automáticamente a una sola entidad ni que todos los proyectos alcancen el mismo nivel de financiación. La concesión depende de las bases, la evaluación competitiva y las condiciones de cada línea.\`,
-    \`En el contexto actual, ${f2}. Para una persona que busca información sobre ${t.keyword}, esto significa que conviene distinguir entre presupuesto disponible, número de ayudas, duración y finalidad. Son conceptos relacionados, pero no equivalentes. Explicar cada uno evita que una noticia de financiación se convierta en una promesa de resultados que todavía no existen.\`,
-    \`El cuarto elemento que merece atención es ${f3}. La investigación de calidad necesita continuidad. Un proyecto puede durar varios años, una carrera científica requiere diferentes etapas y una tecnología puede necesitar mucho tiempo entre el laboratorio y el mercado. Por eso las políticas públicas suelen combinar financiación de proyectos, contratación de investigadores, apoyo técnico y cooperación empresarial.\`,
-    \`También importa ${f4}. En términos económicos, una inversión en I+D puede generar actividad más allá de la organización que recibe la ayuda: contratación de personal, adquisición de equipamiento, colaboración con proveedores, creación de conocimiento y oportunidades de transferencia. No obstante, el impacto final debe medirse con resultados reales y no atribuirse por adelantado a una convocatoria recién anunciada.\`,
-    \`## Qué se ha anunciado y qué significa
+    `La ciencia española afronta el otoño de 2026 con una agenda especialmente intensa. ${t.angle} La novedad es relevante porque la investigación no avanza únicamente cuando aparece un descubrimiento: también necesita convocatorias previsibles, personal especializado, infraestructuras, cooperación entre instituciones y mecanismos que permitan transformar una idea en un resultado comprobable.`,
+    `El dato central de esta noticia es claro: ${f1}. Esta cifra debe interpretarse con precisión. Una dotación presupuestaria identifica los recursos máximos previstos para una convocatoria o programa, pero no significa que todo el dinero se entregue automáticamente a una sola entidad ni que todos los proyectos alcancen el mismo nivel de financiación. La concesión depende de las bases, la evaluación competitiva y las condiciones de cada línea.`,
+    `En el contexto actual, ${f2}. Para una persona que busca información sobre ${t.keyword}, esto significa que conviene distinguir entre presupuesto disponible, número de ayudas, duración y finalidad. Son conceptos relacionados, pero no equivalentes. Explicar cada uno evita que una noticia de financiación se convierta en una promesa de resultados que todavía no existen.`,
+    `El cuarto elemento que merece atención es ${f3}. La investigación de calidad necesita continuidad. Un proyecto puede durar varios años, una carrera científica requiere diferentes etapas y una tecnología puede necesitar mucho tiempo entre el laboratorio y el mercado. Por eso las políticas públicas suelen combinar financiación de proyectos, contratación de investigadores, apoyo técnico y cooperación empresarial.`,
+    `También importa ${f4}. En términos económicos, una inversión en I+D puede generar actividad más allá de la organización que recibe la ayuda: contratación de personal, adquisición de equipamiento, colaboración con proveedores, creación de conocimiento y oportunidades de transferencia. No obstante, el impacto final debe medirse con resultados reales y no atribuirse por adelantado a una convocatoria recién anunciada.`,
+    `## Qué se ha anunciado y qué significa
 
 La convocatoria o programa analizado tiene una lógica que va más allá de una cifra aislada. Busca resolver una parte concreta del ciclo de innovación: producir conocimiento, incorporar talento, conectar investigadores con empresas o facilitar tecnologías estratégicas. Esa especialización es importante porque cada fase tiene necesidades distintas. Un grupo que está generando conocimiento no afronta los mismos problemas que una empresa que necesita validar un prototipo o contratar a un investigador doctor.
 
-Para el lector, la clave está en entender qué se financia. Las ayudas públicas pueden cubrir costes de personal, proyectos de investigación, actividades de coordinación, equipamiento o colaboración, pero siempre dentro de las categorías y límites fijados en la convocatoria. El hecho de que una noticia mencione una cantidad elevada no permite asumir que todo el presupuesto pueda gastarse libremente.\`,
-    \`## Por qué la financiación científica importa
+Para el lector, la clave está en entender qué se financia. Las ayudas públicas pueden cubrir costes de personal, proyectos de investigación, actividades de coordinación, equipamiento o colaboración, pero siempre dentro de las categorías y límites fijados en la convocatoria. El hecho de que una noticia mencione una cantidad elevada no permite asumir que todo el presupuesto pueda gastarse libremente.`,
+    `## Por qué la financiación científica importa
 
 La investigación tiene una característica que la diferencia de muchas inversiones convencionales: la incertidumbre forma parte del proceso. Un experimento puede no confirmar una hipótesis, un prototipo puede necesitar varias iteraciones o una tecnología puede tardar más de lo previsto en encontrar un mercado. La financiación competitiva permite asumir parte de ese riesgo y mantener líneas de trabajo que pueden resultar estratégicas aunque todavía no tengan un retorno inmediato.
 
-En España, además, la financiación pública ayuda a construir capacidades que después pueden ser aprovechadas por universidades, centros tecnológicos, hospitales, administraciones y empresas. El objetivo no es sustituir la inversión privada, sino crear condiciones para que exista más investigación y para que el conocimiento pueda circular entre organizaciones. Esa conexión es especialmente importante en sectores como inteligencia artificial, biotecnología, energía, semiconductores, salud y tecnologías limpias.\`,
-    \`## El papel del talento investigador
+En España, además, la financiación pública ayuda a construir capacidades que después pueden ser aprovechadas por universidades, centros tecnológicos, hospitales, administraciones y empresas. El objetivo no es sustituir la inversión privada, sino crear condiciones para que exista más investigación y para que el conocimiento pueda circular entre organizaciones. Esa conexión es especialmente importante en sectores como inteligencia artificial, biotecnología, energía, semiconductores, salud y tecnologías limpias.`,
+    `## El papel del talento investigador
 
 Ningún programa de innovación funciona sin personas capaces de diseñar experimentos, analizar datos, manejar equipos y convertir resultados en nuevas preguntas. Por eso las convocatorias de proyectos suelen estar acompañadas por programas de contratación. La combinación de financiación y talento permite que un centro no reciba solamente recursos para una actividad puntual, sino que pueda mantener una línea de trabajo y desarrollar equipos con experiencia.
 
-La movilidad también es relevante. Una carrera investigadora puede pasar por universidades, centros tecnológicos, organismos públicos y empresas. Las convocatorias que facilitan esas conexiones ayudan a reducir la separación entre el mundo académico y el productivo. Para jóvenes doctores, investigadores consolidados y profesionales técnicos, esa diversidad puede abrir nuevas oportunidades sin abandonar el componente científico de su trabajo.\`,
-    \`## De la investigación al mercado
+La movilidad también es relevante. Una carrera investigadora puede pasar por universidades, centros tecnológicos, organismos públicos y empresas. Las convocatorias que facilitan esas conexiones ayudan a reducir la separación entre el mundo académico y el productivo. Para jóvenes doctores, investigadores consolidados y profesionales técnicos, esa diversidad puede abrir nuevas oportunidades sin abandonar el componente científico de su trabajo.`,
+    `## De la investigación al mercado
 
 Uno de los grandes retos de cualquier política de innovación es la transferencia. Un resultado científico puede ser excelente y, aun así, necesitar ingeniería adicional, protección de propiedad intelectual, validación regulatoria, financiación privada y clientes antes de convertirse en un producto. Por eso las ayudas que fomentan la colaboración entre empresas y centros de conocimiento son estratégicas: permiten que las capacidades creadas en un laboratorio encuentren vías de aplicación.
 
-En el caso de las tecnologías estratégicas, esta transferencia tiene además una dimensión industrial. Europa busca reducir dependencias en ámbitos considerados críticos, desde la microelectrónica hasta la energía limpia y determinadas áreas de biotecnología. Para España, participar en esas cadenas de valor significa desarrollar conocimiento propio, pero también aprender a fabricar, escalar, certificar y vender soluciones competitivas.\`,
-    \`## Qué oportunidades aparecen para empresas
+En el caso de las tecnologías estratégicas, esta transferencia tiene además una dimensión industrial. Europa busca reducir dependencias en ámbitos considerados críticos, desde la microelectrónica hasta la energía limpia y determinadas áreas de biotecnología. Para España, participar en esas cadenas de valor significa desarrollar conocimiento propio, pero también aprender a fabricar, escalar, certificar y vender soluciones competitivas.`,
+    `## Qué oportunidades aparecen para empresas
 
 Las empresas pueden beneficiarse de varias maneras. Una compañía tecnológica puede incorporar a una persona investigadora, participar en un consorcio, subcontratar conocimiento especializado o utilizar una plataforma sectorial para identificar socios. Una pyme puede encontrar en estas convocatorias una vía para compartir el riesgo de un proyecto que sería difícil financiar únicamente con recursos propios.
 
-La oportunidad no se limita a las grandes corporaciones. De hecho, muchos instrumentos de innovación están diseñados para favorecer la participación de pymes o para exigir su presencia en determinados consorcios. Esto puede mejorar la conexión entre empresas jóvenes, centros tecnológicos y universidades. La condición esencial es estudiar las bases y no confundir una noticia de anuncio con una concesión automática.\`,
-    \`## Impacto territorial y colaboración
+La oportunidad no se limita a las grandes corporaciones. De hecho, muchos instrumentos de innovación están diseñados para favorecer la participación de pymes o para exigir su presencia en determinados consorcios. Esto puede mejorar la conexión entre empresas jóvenes, centros tecnológicos y universidades. La condición esencial es estudiar las bases y no confundir una noticia de anuncio con una concesión automática.`,
+    `## Impacto territorial y colaboración
 
 La ciencia española no se concentra en una sola ciudad. Universidades, hospitales, centros tecnológicos y empresas innovadoras están distribuidos por todo el territorio. Los programas competitivos pueden ayudar a crear redes entre comunidades autónomas y a conectar capacidades que, por separado, serían más pequeñas. Esa cooperación resulta especialmente útil cuando una tecnología necesita conocimientos complementarios.
 
-La dimensión europea también gana importancia. Los proyectos de investigación actuales se apoyan con frecuencia en consorcios internacionales, infraestructuras compartidas y programas competitivos. Mejorar la capacidad española para preparar propuestas y participar en redes internacionales puede aumentar la llegada de conocimiento, talento y oportunidades empresariales.\`,
-    \`## Qué deben mirar investigadores y empresas
+La dimensión europea también gana importancia. Los proyectos de investigación actuales se apoyan con frecuencia en consorcios internacionales, infraestructuras compartidas y programas competitivos. Mejorar la capacidad española para preparar propuestas y participar en redes internacionales puede aumentar la llegada de conocimiento, talento y oportunidades empresariales.`,
+    `## Qué deben mirar investigadores y empresas
 
 Antes de preparar una solicitud conviene revisar cuatro cuestiones: quién puede ser beneficiario, qué gastos son elegibles, qué criterios se utilizan para evaluar las propuestas y cuál es el calendario. Una buena idea puede quedar fuera si no encaja con el ámbito temático o si la entidad solicitante no cumple las condiciones administrativas. La planificación temprana es especialmente importante cuando la convocatoria exige consorcios o documentación técnica compleja.
 
-También es recomendable separar el objetivo científico del impacto esperado. Las evaluaciones suelen valorar la calidad de la propuesta, la trayectoria del equipo, la viabilidad y el impacto. Un proyecto debe explicar qué problema quiere resolver, cómo lo investigará, qué recursos necesita y cómo se comprobará si ha funcionado. El lenguaje comercial no sustituye a una metodología sólida.\`,
-    \`## Qué puede cambiar en los próximos años
+También es recomendable separar el objetivo científico del impacto esperado. Las evaluaciones suelen valorar la calidad de la propuesta, la trayectoria del equipo, la viabilidad y el impacto. Un proyecto debe explicar qué problema quiere resolver, cómo lo investigará, qué recursos necesita y cómo se comprobará si ha funcionado. El lenguaje comercial no sustituye a una metodología sólida.`,
+    `## Qué puede cambiar en los próximos años
 
 El efecto de estas políticas se verá progresivamente. En investigación básica, los resultados pueden aparecer en forma de publicaciones, datos, métodos o nuevas hipótesis. En investigación aplicada, pueden surgir prototipos, patentes, software, procesos o servicios. En el ámbito empresarial, el indicador puede ser la creación de productos, empleo cualificado, nuevas inversiones o entrada en mercados internacionales.
 
-La prudencia es importante. Una convocatoria no garantiza que todos los proyectos financiados tengan éxito y tampoco permite calcular de antemano el retorno económico. Lo que sí puede afirmarse es que una mayor capacidad de financiación crea más oportunidades para que investigadores y empresas intenten resolver problemas relevantes. El resultado final dependerá de la calidad de los proyectos y de su ejecución.\`,
-    \`## Una señal positiva para la innovación española
+La prudencia es importante. Una convocatoria no garantiza que todos los proyectos financiados tengan éxito y tampoco permite calcular de antemano el retorno económico. Lo que sí puede afirmarse es que una mayor capacidad de financiación crea más oportunidades para que investigadores y empresas intenten resolver problemas relevantes. El resultado final dependerá de la calidad de los proyectos y de su ejecución.`,
+    `## Una señal positiva para la innovación española
 
 El conjunto de iniciativas de 2026 muestra una estrategia más amplia que una simple sucesión de subvenciones. Hay recursos para generar conocimiento, incorporar investigadores, apoyar personal técnico, conectar plataformas, financiar cooperación empresarial y orientar la innovación hacia tecnologías estratégicas. Esa combinación puede reforzar el ecosistema si se mantiene la continuidad y se acompaña de evaluación rigurosa.
 
-Para la ciudadanía, el beneficio final no debería medirse solamente en millones anunciados. La pregunta importante es qué conocimiento nuevo se genera, qué tecnologías llegan a utilizarse, qué tratamientos o servicios mejoran, qué empresas consiguen crecer y cuántos profesionales encuentran oportunidades para desarrollar su carrera. Esa es la medida que permitirá evaluar el impacto real de estas inversiones.\`,
-    \`## Qué queda por demostrar
+Para la ciudadanía, el beneficio final no debería medirse solamente en millones anunciados. La pregunta importante es qué conocimiento nuevo se genera, qué tecnologías llegan a utilizarse, qué tratamientos o servicios mejoran, qué empresas consiguen crecer y cuántos profesionales encuentran oportunidades para desarrollar su carrera. Esa es la medida que permitirá evaluar el impacto real de estas inversiones.`,
+    `## Qué queda por demostrar
 
 El siguiente paso será la ejecución. Las convocatorias deben pasar de las bases a las solicitudes, de las solicitudes a las concesiones y de las concesiones a proyectos que produzcan resultados. En algunos casos habrá que esperar años para conocer el impacto completo. Informar de forma positiva no significa adelantar conclusiones: significa explicar por qué disponer de recursos, talento y cooperación aumenta la capacidad de intentarlo.
 
-Por eso ${t.keyword} merece seguimiento durante los próximos meses. Las fechas de solicitud, las resoluciones, los proyectos seleccionados y los primeros resultados ofrecerán una imagen mucho más precisa que cualquier anuncio inicial. Para TrendiVerse, el interés está precisamente en acompañar ese proceso con información útil, comprensible y basada en datos verificables.\`,
+Por eso ${t.keyword} merece seguimiento durante los próximos meses. Las fechas de solicitud, las resoluciones, los proyectos seleccionados y los primeros resultados ofrecerán una imagen mucho más precisa que cualquier anuncio inicial. Para TrendiVerse, el interés está precisamente en acompañar ese proceso con información útil, comprensible y basada en datos verificables.`,
     faq(t.keyword, [
-      \`Se trata de una iniciativa pública orientada a ${t.angle.toLowerCase()}. Sus condiciones concretas dependen de las bases y de la convocatoria correspondiente.\`,
-      \`${t.audience} puede encontrar oportunidades, siempre que cumpla las condiciones de beneficiario y presente una propuesta evaluable.\`,
-      \`La cifra principal es la indicada en la convocatoria: ${f1}. El presupuesto es máximo y no implica una asignación idéntica a cada participante.\`,
-      \`El calendario depende del instrumento. Cuando existe un plazo oficial, debe consultarse la convocatoria publicada por el organismo gestor antes de preparar la solicitud.\`,
-      \`Puede reforzar la capacidad investigadora, tecnológica y empresarial, aunque el impacto final dependerá de los proyectos que resulten seleccionados y de sus resultados.\`,
-      \`No. Una ayuda financia una actividad o contratación bajo unas condiciones determinadas, pero no garantiza por sí sola un descubrimiento, producto, patente o retorno económico.\`,
-      \`Porque la investigación y la innovación necesitan planificación a varios años y porque las tecnologías estratégicas están adquiriendo un peso creciente en la competitividad económica.\`,
-      \`La referencia prioritaria es la publicación del organismo convocante y, cuando procede, el Boletín Oficial del Estado. Las cifras y fechas deben comprobarse allí antes de presentar una solicitud.\`
+      `Se trata de una iniciativa pública orientada a ${t.angle.toLowerCase()}. Sus condiciones concretas dependen de las bases y de la convocatoria correspondiente.`,
+      `${t.audience} puede encontrar oportunidades, siempre que cumpla las condiciones de beneficiario y presente una propuesta evaluable.`,
+      `La cifra principal es la indicada en la convocatoria: ${f1}. El presupuesto es máximo y no implica una asignación idéntica a cada participante.`,
+      `El calendario depende del instrumento. Cuando existe un plazo oficial, debe consultarse la convocatoria publicada por el organismo gestor antes de preparar la solicitud.`,
+      `Puede reforzar la capacidad investigadora, tecnológica y empresarial, aunque el impacto final dependerá de los proyectos que resulten seleccionados y de sus resultados.`,
+      `No. Una ayuda financia una actividad o contratación bajo unas condiciones determinadas, pero no garantiza por sí sola un descubrimiento, producto, patente o retorno económico.`,
+      `Porque la investigación y la innovación necesitan planificación a varios años y porque las tecnologías estratégicas están adquiriendo un peso creciente en la competitividad económica.`,
+      `La referencia prioritaria es la publicación del organismo convocante y, cuando procede, el Boletín Oficial del Estado. Las cifras y fechas deben comprobarse allí antes de presentar una solicitud.`
     ]),
-    \`## Conclusión
+    `## Conclusión
 
-${t.title} representa una pieza de un ecosistema científico y tecnológico que necesita continuidad. La combinación de financiación, talento, cooperación y orientación a problemas concretos puede ampliar las posibilidades de España para generar conocimiento y convertirlo en soluciones. El dato más importante no será solamente cuánto dinero se moviliza, sino qué resultados verificables consiguen los proyectos y las personas que reciben el apoyo.\`
+${t.title} representa una pieza de un ecosistema científico y tecnológico que necesita continuidad. La combinación de financiación, talento, cooperación y orientación a problemas concretos puede ampliar las posibilidades de España para generar conocimiento y convertirlo en soluciones. El dato más importante no será solamente cuánto dinero se moviliza, sino qué resultados verificables consiguen los proyectos y las personas que reciben el apoyo.`
   ]
   return sections.join('\\\\n\\\\n')
 }
