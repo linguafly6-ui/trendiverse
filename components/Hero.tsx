@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next/link'\nimport Image from 'next/image'
 import { CategoryBadge } from './ArticleCard'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/lib/types'
@@ -11,10 +10,11 @@ function HeroCard({ a, big }: { a: Article; big?: boolean }) {
         <Image
           src={a.image_url}
           alt={a.title}
-          fill
-          sizes={big ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
+          width={1200}
+          height={630}
           priority={big}
-          className="object-cover opacity-70 transition group-hover:opacity-80"
+          sizes={big ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+          className="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
         />
       )}
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 text-white">
