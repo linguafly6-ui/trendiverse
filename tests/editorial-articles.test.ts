@@ -27,6 +27,16 @@ const EXPECTED_SLUGS = [
   'premios-nacionales-musica-2026-laura-vega-cecilia-bercovich',
   'schneider-electric-compra-ptc-22600-millones-ia-industrial',
   'zelestra-edp-baterias-almacenamiento-espana',
+  'sateliot-cinco-satelites-5g-espacio-octubre-2026',
+  'barcelona-polaris-resonancia-cuantica-q-aid-2026',
+  'espana-102-millones-equipamiento-cientifico-investigacion-2026',
+  'espana-138-millones-ia-tecnologias-limpias-biotecnologia-2026',
+  'ossie-taxi-espacial-espanol-uarx-2026',
+  'kapsula-kuantikoa-ciencia-cuantica-147-localidades-euskadi',
+  'nodo-nacional-datos-cancer-espana-investigacion-2026',
+  'renovables-espana-50-por-ciento-generacion-septiembre-2026',
+  'investigacion-espana-1200-millones-ayudas-ciencia-2026',
+  'catedra-arrels-innovacion-resiliencia-climatica-2026',
 ]
 
 const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({ id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
