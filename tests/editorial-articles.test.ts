@@ -65,6 +65,9 @@ const EXPECTED_SLUGS = [
   'reforma-financiacion-autonomica-2026-que-propone-y-que-falta',
   'gobierno-en-funciones-espana-que-puede-hacer-elecciones-2026',
   'leyes-pendientes-elecciones-anticipadas-espana-2026-29n',
+  'ayudas-coche-electrico-2026-plan-auto-requisitos-cuanto',
+  'coches-electricos-empresas-espana-flotas-auto-plus',
+  'viajar-coche-electrico-espana-puntos-carga-rutas-2026',
 
 ]
 
