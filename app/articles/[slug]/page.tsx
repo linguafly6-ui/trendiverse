@@ -21,13 +21,15 @@ type Props = { params: Promise<{ slug: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticleBySlug((await params).slug)
   if (!article) return {}
+  const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
+  const description = article.excerpt?.trim().slice(0, 160) || undefined
   return {
     title: article.title,
-    description: article.excerpt ?? undefined,
-    alternates: { canonical: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}` },
+    description,
+    alternates: { canonical: url },
     robots: { index: true, follow: true },
-    openGraph: { title: article.title, description: article.excerpt ?? undefined, type: 'article', images: article.image_url ? [article.image_url] : [], siteName: SITE_NAME },
-    twitter: { card: 'summary_large_image' },
+    openGraph: { title: article.title, description, type: 'article', url, images: article.image_url ? [article.image_url] : [], siteName: SITE_NAME, locale: 'es_ES' },
+    twitter: { card: 'summary_large_image', title: article.title, description, images: article.image_url ? [article.image_url] : [] },
   }
 }
 
@@ -39,12 +41,23 @@ export default async function ArticlePage({ params }: Props) {
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: article.image_url ? [article.image_url] : undefined, datePublished: article.published_at, dateModified: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
+  const faqItems = blocks.reduce<{ question: string; answer: string }[]>((items, block, index) => {
+    if (block.type !== 'heading' || block.level !== 3) return items
+    const question = block.text.trim()
+    const normalized = question.toLowerCase()
+    const startsAsQuestion = /^(qué|quien|quién|cómo|cuando|cuándo|dónde|cuánto|cuánta|cuántos|cuántas|por qué|en qué|es qué|es recomendable|puede|se puede|cuál|cuáles)\b/.test(normalized)
+    const answerBlock = blocks[index + 1]
+    if (startsAsQuestion && answerBlock?.type === 'paragraph' && answerBlock.text.trim()) items.push({ question, answer: answerBlock.text.trim() })
+    return items
+  }, [])
+  const faqSchema = faqItems.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) } : null
   const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL }, ...(category ? [{ '@type': 'ListItem', position: 2, name: category.name, item: `${SITE_URL}/articles/category/${category.slug}` }] : []), { '@type': 'ListItem', position: category ? 3 : 2, name: article.title, item: url }] }
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <ReadingProgress />
       <article className="min-w-0 lg:col-span-7">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <nav aria-label="Migas de pan" className="mx-auto mb-4 max-w-prose text-sm text-slate-500"><a href="/" className="hover:text-brand-violet">Inicio</a>{category && <> <span aria-hidden="true">/</span> <a href={`/articles/category/${category.slug}`} className="hover:text-brand-violet">{category.name}</a></>} <span aria-hidden="true">/</span> <span>{article.title}</span></nav>
         <header className="mx-auto max-w-prose">
@@ -69,6 +82,15 @@ export default async function ArticlePage({ params }: Props) {
         </header>
         {article.image_url && (
           <Image src={article.image_url} alt={article.title} width={1200} height={630} priority sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />
+          <Image
+            src={article.image_url}
+            alt={article.title}
+            width={1200}
+            height={630}
+            priority
+            sizes="(min-width: 1024px) 70vw, 100vw"
+            className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800"
+          />
         )}
         <TableOfContents headings={getHeadings(blocks)} />
         {article.slug === 'portugal-noruega-nations-league' && (

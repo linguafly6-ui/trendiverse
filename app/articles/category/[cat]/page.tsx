@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = getCategory((await params).cat)
   if (!c) return {}
   const url = `${SITE_URL}/articles/category/${c.slug}`
-  return { title: c.seoTitle, description: c.description, alternates: { canonical: url }, robots: { index: true, follow: true }, openGraph: { title: c.seoTitle, description: c.description, type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' } }
+  return { title: c.seoTitle, description: c.description.slice(0, 160), alternates: { canonical: url }, robots: { index: true, follow: true }, openGraph: { title: c.seoTitle, description: c.description.slice(0, 160), type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' } }
 }
 
 export default async function CategoryPage({ params }: Props) {

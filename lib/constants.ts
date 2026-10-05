@@ -13,6 +13,7 @@ export interface CategoryInfo {
 }
 
 export const CATEGORIES: CategoryInfo[] = [
+  { slug: 'deportes', name: 'Deportes', short: 'Deportes', icon: '⚽', color: '#F59E0B', seoTitle: 'Deportes: resultados, partidos y actualidad', description: 'Resultados, partidos, horarios, clasificaciones y actualidad de fútbol, ciclismo y otros deportes.' },
   { slug: 'virales', name: 'Virales & Pop Culture', short: 'Virales', icon: '🔥', color: '#EF4444', seoTitle: 'Virales y cultura pop: últimas tendencias', description: 'Noticias virales, tendencias de internet, cultura pop y temas que están dando que hablar en España y el mundo.' },
   { slug: 'gaming', name: 'Gaming & Guías', short: 'Gaming', icon: '🎮', color: '#10B981', seoTitle: 'Gaming y guías: noticias, trucos y códigos', description: 'Noticias de videojuegos, guías, trucos, códigos y novedades de gaming para PC, PlayStation, Xbox, Nintendo y móvil.' },
   { slug: 'herramientas', name: 'Micro-Herramientas', short: 'Herramientas', icon: '🛠️', color: '#3B82F6', seoTitle: 'Herramientas online gratis y útiles', description: 'Herramientas online rápidas y gratuitas para convertir, calcular, generar y resolver tareas cotidianas.' },

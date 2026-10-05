@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { getCategory } from '@/lib/constants'
 import { formatDate } from '@/lib/utils'

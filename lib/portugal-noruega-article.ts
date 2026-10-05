@@ -161,7 +161,7 @@ export const PORTUGAL_NORUEGA_ARTICLES: Article[] = [
     id: 20,
     title: 'Portugal vs Noruega: horario, alineaciones, pronóstico y dónde ver el partido',
     slug: 'portugal-noruega-nations-league',
-    category: 'virales',
+    category: 'deportes',
     excerpt: 'Guía completa del Portugal vs Noruega de la UEFA Nations League 2026/27: horario, alineaciones probables, jugadores clave, historial, clasificación del Grupo A4 y dónde verlo en directo.',
     content,
     image_url: '/images/articles/portugal-noruega.svg',

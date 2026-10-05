@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { formatDate, formatPrice } from '@/lib/utils'
 import type { Deal } from '@/lib/types'
 

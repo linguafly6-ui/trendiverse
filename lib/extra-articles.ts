@@ -116,7 +116,7 @@ export const EXTRA_ARTICLES: Article[] = [
     id: 10,
     title: 'Castellón vs AD Ceuta: resultado, clasificación y análisis del empate en LaLiga Hypermotion',
     slug: 'castellon-ad-ceuta',
-    category: 'virales',
+    category: 'deportes',
     excerpt: 'Castellón y AD Ceuta empataron 1-1 en un partido con mucho análisis. Resultado, goleadores, estadísticas y clasificación actualizada.',
     content,
     image_url: '/images/articles/castellon-ceuta.svg',
