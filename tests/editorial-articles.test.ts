@@ -138,7 +138,7 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.equal(chollos.filter((a) => a.slug === EXPECTED_SLUGS[1]).length, 1)
 
   const tecnologia = (await getArticles({ category: 'tecnologia', limit: 50 })).map((a) => a.slug)
-  for (const s of [EXPECTED_SLUGS[2], EXPECTED_SLUGS[3], EXPECTED_SLUGS[5]]) assert.ok(tecnologia.includes(s), s)
+  for (const s of [EXPECTED_SLUGS[3], EXPECTED_SLUGS[4], EXPECTED_SLUGS[5], EXPECTED_SLUGS[7], EXPECTED_SLUGS[17]]) assert.ok(tecnologia.includes(s), s)
 
   const search = async (q: string) => (await getArticles({ q, limit: 50 })).map((a) => a.slug)
   assert.ok((await search('osteopontina')).includes('cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos'))
