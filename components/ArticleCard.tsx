@@ -19,6 +19,17 @@ export default function ArticleCard({ article }: { article: Article }) {
       <Link href={`/articles/${article.slug}`} prefetch={false} className="shrink-0">
         {article.thumbnail_url ? (
           <Image src={article.thumbnail_url} alt="" width={160} height={90} sizes="160px" loading="lazy" className="h-[90px] w-[160px] rounded-lg bg-slate-200 object-cover dark:bg-slate-800" />
+      <Link href={`/articles/${article.slug}`} className="shrink-0">
+        {article.thumbnail_url ? (
+          <Image
+            src={article.thumbnail_url}
+            alt=""
+            width={160}
+            height={90}
+            sizes="160px"
+            loading="lazy"
+            className="h-[90px] w-[160px] rounded-lg bg-slate-200 object-cover dark:bg-slate-800"
+          />
         ) : (
           <div aria-hidden="true" className="h-[90px] w-[160px] rounded-lg bg-slate-200 dark:bg-slate-800" />
         )}
