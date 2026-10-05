@@ -7,8 +7,8 @@ import '../styles/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: `${SITE_NAME} — Virales, Gaming, Herramientas y Chollos`, template: `%s | ${SITE_NAME}` },
-  description: 'Lo más viral, guías y códigos de juegos, micro-herramientas útiles y los mejores chollos.',
+  title: { default: `Actualidad, noticias y guías | ${SITE_NAME}`, template: `%s | ${SITE_NAME}` },
+  description: 'Noticias y guías sobre política, economía, tecnología, deportes, gaming y tendencias, además de herramientas prácticas y ofertas seleccionadas.',
   openGraph: { type: 'website', siteName: SITE_NAME, locale: 'es_ES' },
   twitter: { card: 'summary_large_image' },
 }
