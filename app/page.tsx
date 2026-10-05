@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic'
 import Hero from '@/components/Hero'
 import ArticleFeed from '@/components/ArticleFeed'
 import Sidebar from '@/components/Sidebar'
 import GamingCodes from '@/components/GamingCodes'
 import DealCard from '@/components/DealCard'
-import dynamic from 'next/dynamic'\n\nconst ToolWidget = dynamic(() => import('@/components/ToolWidget'))
 import { getArticles, getDeals, getTools } from '@/lib/db'
+import ToolWidget from '@/components/ToolWidget'
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
