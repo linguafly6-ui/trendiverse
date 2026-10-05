@@ -8,15 +8,25 @@ import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'alex-sola-detenido-accidente-positivo-alcohol',
   'bateria-externa-philips-action',
-  'zelestra-edp-baterias-almacenamiento-espana',
+  'brasil-segunda-vuelta-lula-flavio-bolsonaro-25-octubre-2026',
+  'ciberataque-dinamarca-datos-88-millones-personas',
   'cic-energigune-bateria-flujo-hierro-plomo-10000-ciclos',
   'cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos',
-  'doordash-nueva-york-acuerdo-repartidores-131-millones',
-  'madrid-inteligencia-artificial-sanidad-publica-50-millones',
+  'cristiano-ronaldo-abandona-concentracion-portugal-jorge-jesus',
   'csic-barcelona-area-nanofabricacion-cuantica-imb-cnm',
   'desperdicio-alimentario-espana-2025-plan-red-electrica-2030',
+  'doordash-nueva-york-acuerdo-repartidores-131-millones',
+  'dos-jovenes-ahogados-guardamar-segura-bandera-roja',
+  'elecciones-generales-2026-29-noviembre',
+  'euro-minimos-17-meses-incertidumbre-politica-europa',
+  'inundaciones-cataluna-alertas-desaparecido-lluvias-octubre-2026',
+  'madrid-inteligencia-artificial-sanidad-publica-50-millones',
+  'muere-carlos-fernandez-lomana-hermano-carmen-lomana',
   'premios-nacionales-musica-2026-laura-vega-cecilia-bercovich',
+  'schneider-electric-compra-ptc-22600-millones-ia-industrial',
+  'zelestra-edp-baterias-almacenamiento-espana',
 ]
 
 const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({
@@ -84,7 +94,7 @@ test('editorial records are valid and unique', () => {
   }
 })
 
-test('D1-bound: all nine slugs resolve by direct lookup', async () => {
+test('D1-bound: all editorial slugs slugs resolve by direct lookup', async () => {
   const calls = bind()
   for (const slug of EXPECTED_SLUGS) {
     const a = await getArticleBySlug(slug)
@@ -96,7 +106,7 @@ test('D1-bound: all nine slugs resolve by direct lookup', async () => {
   assert.ok(calls.length > 0, 'D1 was exercised')
 })
 
-test('D1-bound: feed includes all nine, deduped, newest first', async () => {
+test('D1-bound: feed includes all editorial slugs, deduped, newest first', async () => {
   const calls = bind()
   const all = await getArticles({ limit: 50 })
   assert.ok(calls.some((s) => s.includes('FROM articles')), 'D1 was queried')
@@ -140,7 +150,7 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok(trending.some((a) => a.slug === EXPECTED_SLUGS[3]))
 })
 
-test('D1-bound: sitemap data has all nine plus D1 rows, deduped', async () => {
+test('D1-bound: sitemap data has all editorial slugs plus D1 rows, deduped', async () => {
   bind()
   const slugs = (await getAllArticleSlugs()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
