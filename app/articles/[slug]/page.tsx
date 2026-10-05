@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { CategoryBadge } from '@/components/ArticleCard'
 import Sidebar from '@/components/Sidebar'
@@ -79,8 +80,17 @@ export default async function ArticlePage({ params }: Props) {
             )}
           </div>
         </header>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={article.image_url ?? ''} alt={article.title} width={1200} height={630} fetchPriority="high" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />
+        {article.image_url && (
+          <Image
+            src={article.image_url}
+            alt={article.title}
+            width={1200}
+            height={630}
+            priority
+            sizes="(min-width: 1024px) 70vw, 100vw"
+            className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800"
+          />
+        )}
         <TableOfContents headings={getHeadings(blocks)} />
         {article.slug === 'portugal-noruega-nations-league' && (
           <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />
