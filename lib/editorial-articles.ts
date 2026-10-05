@@ -471,7 +471,7 @@ export const EDITORIAL_ARTICLES: Article[] = [
   "slug": "onalabs-barcelona-monitorizacion-salud-sudor-ia-2026",
   "category": "tecnologia",
   "excerpt": "La empresa barcelonesa Onalabs recibe 4,6 millones para desarrollar tecnología que monitoriza biomarcadores metabólicos mediante el sudor.",
-  "image_url": "/images/articles/barcelona-polaris-resonancia-cuantica-q-aid-2026.svg",
+  "image_url": "/images/articles/csic-barcelona-area-nanofabricacion-cuantica-imb-cnm.svg",
   "thumbnail_url": "/images/articles/barcelona-polaris-resonancia-cuantica-q-aid-2026-thumb.svg",
   "read_time_minutes": 10,
   "views": 0,
