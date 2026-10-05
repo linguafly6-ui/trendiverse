@@ -2,6 +2,7 @@ import type { Article } from './types'
 import { EDITORIAL_BATCH_340_349 } from './editorial-batch-340-349'
 import { ELECTION_ARTICLES_2026 } from './election-articles-2026'
 import { POLITICS_GUIDES_2026 } from './politics-guides-2026'
+import { AUTOMOTIVE_GUIDES_2026 } from './automotive-guides-2026'
 
 // Canonical editorial articles bundled with the app. lib/db.ts merges these with D1 rows by slug,
 // so they are served in production regardless of D1 contents (no remote DB writes needed).
@@ -555,4 +556,5 @@ export const EDITORIAL_ARTICLES: Article[] = [
   ...EDITORIAL_BATCH_340_349,
   ...ELECTION_ARTICLES_2026,
   ...POLITICS_GUIDES_2026,
+  ...AUTOMOTIVE_GUIDES_2026,
 ]
