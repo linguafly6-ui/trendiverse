@@ -8,6 +8,11 @@ import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'desahucios-decretos-vivienda-rechazados-que-sigue-vigente-2026',
+  'espana-sin-presupuestos-prorrogados-consecuencias-ciudadanos-2026',
+  'reforma-financiacion-autonomica-2026-que-propone-y-que-falta',
+  'gobierno-en-funciones-espana-que-puede-hacer-elecciones-2026',
+  'leyes-pendientes-elecciones-anticipadas-espana-2026-29n',
   'alex-sola-detenido-accidente-positivo-alcohol',
   'bateria-externa-philips-action',
   'brasil-segunda-vuelta-lula-flavio-bolsonaro-25-octubre-2026',
