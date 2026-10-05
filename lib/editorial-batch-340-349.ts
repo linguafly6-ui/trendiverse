@@ -16,38 +16,38 @@ type Topic = {
 const faq = (keyword: string, answers: string[]) =>
   \`## Preguntas frecuentes
 
-### ¿Qué es exactamente $${keyword}?
-$${answers[0]}
+### ¿Qué es exactamente ${keyword}?
+${answers[0]}
 
 ### ¿Quién puede beneficiarse de esta iniciativa?
-$${answers[1]}
+${answers[1]}
 
 ### ¿Cuánto dinero se moviliza?
-$${answers[2]}
+${answers[2]}
 
 ### ¿Cuándo se puede solicitar o aplicar?
-$${answers[3]}
+${answers[3]}
 
 ### ¿Qué impacto puede tener en España?
-$${answers[4]}
+${answers[4]}
 
 ### ¿La ayuda garantiza un resultado concreto?
-$${answers[5]}
+${answers[5]}
 
 ### ¿Por qué es importante ahora?
-$${answers[6]}
+${answers[6]}
 
 ### ¿Dónde consultar la información oficial?
-$${answers[7]}\`
+${answers[7]}\`
 
 function buildContent(t: Topic): string {
   const [f1, f2, f3, f4] = t.facts
   const sections = [
-    \`La ciencia española afronta el otoño de 2026 con una agenda especialmente intensa. $${t.angle} La novedad es relevante porque la investigación no avanza únicamente cuando aparece un descubrimiento: también necesita convocatorias previsibles, personal especializado, infraestructuras, cooperación entre instituciones y mecanismos que permitan transformar una idea en un resultado comprobable.\`,
-    \`El dato central de esta noticia es claro: $${f1}. Esta cifra debe interpretarse con precisión. Una dotación presupuestaria identifica los recursos máximos previstos para una convocatoria o programa, pero no significa que todo el dinero se entregue automáticamente a una sola entidad ni que todos los proyectos alcancen el mismo nivel de financiación. La concesión depende de las bases, la evaluación competitiva y las condiciones de cada línea.\`,
-    \`En el contexto actual, $${f2}. Para una persona que busca información sobre $${t.keyword}, esto significa que conviene distinguir entre presupuesto disponible, número de ayudas, duración y finalidad. Son conceptos relacionados, pero no equivalentes. Explicar cada uno evita que una noticia de financiación se convierta en una promesa de resultados que todavía no existen.\`,
-    \`El cuarto elemento que merece atención es $${f3}. La investigación de calidad necesita continuidad. Un proyecto puede durar varios años, una carrera científica requiere diferentes etapas y una tecnología puede necesitar mucho tiempo entre el laboratorio y el mercado. Por eso las políticas públicas suelen combinar financiación de proyectos, contratación de investigadores, apoyo técnico y cooperación empresarial.\`,
-    \`También importa $${f4}. En términos económicos, una inversión en I+D puede generar actividad más allá de la organización que recibe la ayuda: contratación de personal, adquisición de equipamiento, colaboración con proveedores, creación de conocimiento y oportunidades de transferencia. No obstante, el impacto final debe medirse con resultados reales y no atribuirse por adelantado a una convocatoria recién anunciada.\`,
+    \`La ciencia española afronta el otoño de 2026 con una agenda especialmente intensa. ${t.angle} La novedad es relevante porque la investigación no avanza únicamente cuando aparece un descubrimiento: también necesita convocatorias previsibles, personal especializado, infraestructuras, cooperación entre instituciones y mecanismos que permitan transformar una idea en un resultado comprobable.\`,
+    \`El dato central de esta noticia es claro: ${f1}. Esta cifra debe interpretarse con precisión. Una dotación presupuestaria identifica los recursos máximos previstos para una convocatoria o programa, pero no significa que todo el dinero se entregue automáticamente a una sola entidad ni que todos los proyectos alcancen el mismo nivel de financiación. La concesión depende de las bases, la evaluación competitiva y las condiciones de cada línea.\`,
+    \`En el contexto actual, ${f2}. Para una persona que busca información sobre ${t.keyword}, esto significa que conviene distinguir entre presupuesto disponible, número de ayudas, duración y finalidad. Son conceptos relacionados, pero no equivalentes. Explicar cada uno evita que una noticia de financiación se convierta en una promesa de resultados que todavía no existen.\`,
+    \`El cuarto elemento que merece atención es ${f3}. La investigación de calidad necesita continuidad. Un proyecto puede durar varios años, una carrera científica requiere diferentes etapas y una tecnología puede necesitar mucho tiempo entre el laboratorio y el mercado. Por eso las políticas públicas suelen combinar financiación de proyectos, contratación de investigadores, apoyo técnico y cooperación empresarial.\`,
+    \`También importa ${f4}. En términos económicos, una inversión en I+D puede generar actividad más allá de la organización que recibe la ayuda: contratación de personal, adquisición de equipamiento, colaboración con proveedores, creación de conocimiento y oportunidades de transferencia. No obstante, el impacto final debe medirse con resultados reales y no atribuirse por adelantado a una convocatoria recién anunciada.\`,
     \`## Qué se ha anunciado y qué significa
 
 La convocatoria o programa analizado tiene una lógica que va más allá de una cifra aislada. Busca resolver una parte concreta del ciclo de innovación: producir conocimiento, incorporar talento, conectar investigadores con empresas o facilitar tecnologías estratégicas. Esa especialización es importante porque cada fase tiene necesidades distintas. Un grupo que está generando conocimiento no afronta los mismos problemas que una empresa que necesita validar un prototipo o contratar a un investigador doctor.
@@ -97,11 +97,11 @@ Para la ciudadanía, el beneficio final no debería medirse solamente en millone
 
 El siguiente paso será la ejecución. Las convocatorias deben pasar de las bases a las solicitudes, de las solicitudes a las concesiones y de las concesiones a proyectos que produzcan resultados. En algunos casos habrá que esperar años para conocer el impacto completo. Informar de forma positiva no significa adelantar conclusiones: significa explicar por qué disponer de recursos, talento y cooperación aumenta la capacidad de intentarlo.
 
-Por eso $${t.keyword} merece seguimiento durante los próximos meses. Las fechas de solicitud, las resoluciones, los proyectos seleccionados y los primeros resultados ofrecerán una imagen mucho más precisa que cualquier anuncio inicial. Para TrendiVerse, el interés está precisamente en acompañar ese proceso con información útil, comprensible y basada en datos verificables.\`,
+Por eso ${t.keyword} merece seguimiento durante los próximos meses. Las fechas de solicitud, las resoluciones, los proyectos seleccionados y los primeros resultados ofrecerán una imagen mucho más precisa que cualquier anuncio inicial. Para TrendiVerse, el interés está precisamente en acompañar ese proceso con información útil, comprensible y basada en datos verificables.\`,
     faq(t.keyword, [
-      \`Se trata de una iniciativa pública orientada a $${t.angle.toLowerCase()}. Sus condiciones concretas dependen de las bases y de la convocatoria correspondiente.\`,
-      \`$${t.audience} puede encontrar oportunidades, siempre que cumpla las condiciones de beneficiario y presente una propuesta evaluable.\`,
-      \`La cifra principal es la indicada en la convocatoria: $${f1}. El presupuesto es máximo y no implica una asignación idéntica a cada participante.\`,
+      \`Se trata de una iniciativa pública orientada a ${t.angle.toLowerCase()}. Sus condiciones concretas dependen de las bases y de la convocatoria correspondiente.\`,
+      \`${t.audience} puede encontrar oportunidades, siempre que cumpla las condiciones de beneficiario y presente una propuesta evaluable.\`,
+      \`La cifra principal es la indicada en la convocatoria: ${f1}. El presupuesto es máximo y no implica una asignación idéntica a cada participante.\`,
       \`El calendario depende del instrumento. Cuando existe un plazo oficial, debe consultarse la convocatoria publicada por el organismo gestor antes de preparar la solicitud.\`,
       \`Puede reforzar la capacidad investigadora, tecnológica y empresarial, aunque el impacto final dependerá de los proyectos que resulten seleccionados y de sus resultados.\`,
       \`No. Una ayuda financia una actividad o contratación bajo unas condiciones determinadas, pero no garantiza por sí sola un descubrimiento, producto, patente o retorno económico.\`,
@@ -110,7 +110,7 @@ Por eso $${t.keyword} merece seguimiento durante los próximos meses. Las fechas
     ]),
     \`## Conclusión
 
-$${t.title} representa una pieza de un ecosistema científico y tecnológico que necesita continuidad. La combinación de financiación, talento, cooperación y orientación a problemas concretos puede ampliar las posibilidades de España para generar conocimiento y convertirlo en soluciones. El dato más importante no será solamente cuánto dinero se moviliza, sino qué resultados verificables consiguen los proyectos y las personas que reciben el apoyo.\`
+${t.title} representa una pieza de un ecosistema científico y tecnológico que necesita continuidad. La combinación de financiación, talento, cooperación y orientación a problemas concretos puede ampliar las posibilidades de España para generar conocimiento y convertirlo en soluciones. El dato más importante no será solamente cuánto dinero se moviliza, sino qué resultados verificables consiguen los proyectos y las personas que reciben el apoyo.\`
   ]
   return sections.join('\\\\n\\\\n')
 }
