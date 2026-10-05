@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import ArticleFeed from '@/components/ArticleFeed'
+import ArticleCard from '@/components/ArticleCard'
 import CategoryClusterLinks from '@/components/CategoryClusterLinks'
 import Sidebar from '@/components/Sidebar'
 import { getCategory, getTopic, SITE_NAME, SITE_URL, TOPICS } from '@/lib/constants'
@@ -72,7 +72,7 @@ export default async function TopicPage({ params }: Props) {
           </p>
         </header>
 
-        <ArticleFeed initial={articles.slice(0, 12)} category={topic.category} />
+        <section aria-labelledby="topic-content-title">\n          <h2 id="topic-content-title" className="mb-3 text-xl font-extrabold">Últimos contenidos sobre {topic.name}</h2>\n          <div className="space-y-3">{articles.slice(0, 12).map((article) => <ArticleCard key={article.id} article={article} />)}</div>\n        </section>
 
         {category && <CategoryClusterLinks active={category.slug} />}
       </main>
