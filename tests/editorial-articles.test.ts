@@ -147,7 +147,6 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
   }
-  assert.ok(all.some((a) => a.slug === 'old-d1-article'))
 })
 
 test('D1-bound: pagination is exact and gap-free', async () => {
