@@ -18,6 +18,8 @@ jobs:
           node-version: '20'
           cache: npm
       - run: npm ci --legacy-peer-deps
+      - run: npm run lint
+      - run: npm test
       - run: npm run pages:build
         env:
           NEXT_PUBLIC_SITE_URL: https://trendiverse.org
