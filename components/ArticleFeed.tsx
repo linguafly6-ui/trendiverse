@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import ArticleCard from './ArticleCard'
 import { CATEGORIES } from '@/lib/constants'
 import type { Article } from '@/lib/types'
 import ArticleFeedMore from './ArticleFeedMore'
