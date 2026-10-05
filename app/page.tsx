@@ -3,7 +3,7 @@ import ArticleFeed from '@/components/ArticleFeed'
 import Sidebar from '@/components/Sidebar'
 import GamingCodes from '@/components/GamingCodes'
 import DealCard from '@/components/DealCard'
-import dynamic from 'next/dynamic'\n\nconst ToolWidget = dynamic(() => import('@/components/ToolWidget'))
+import ToolWidget from '@/components/ToolWidget'
 import { getArticles, getDeals, getTools } from '@/lib/db'
 
 export const runtime = 'edge'

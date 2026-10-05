@@ -1,4 +1,5 @@
-import Link from 'next/link'\nimport Image from 'next/image'
+import Link from 'next/link'
+import Image from 'next/image'
 import { CategoryBadge } from './ArticleCard'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/lib/types'
