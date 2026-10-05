@@ -9,6 +9,7 @@ export default function CategoryNav({ active }: { active?: string }) {
           <li key={c.slug} className="shrink-0">
             <Link
               href={`/articles/category/${c.slug}`}
+              prefetch={false}
               style={{ backgroundColor: active === c.slug ? c.color : undefined, borderColor: c.color }}
               className={`inline-block rounded-full border px-3 py-1 text-sm font-medium ${active === c.slug ? 'text-white' : ''}`}
             >
