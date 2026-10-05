@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'\nimport Link from 'next/link'
 import ArticleFeed from '@/components/ArticleFeed'
 import CategoryNav from '@/components/CategoryNav'
 import DealCard from '@/components/DealCard'
 import GamingCodes from '@/components/GamingCodes'
 import Sidebar from '@/components/Sidebar'
 import PoliticsHub from '@/components/PoliticsHub'
-import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
+import { getCategory, SITE_NAME, SITE_URL, TOPICS } from '@/lib/constants'
 import { getArticles, getDeals } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }: Props) {
           <h1 className="mt-2 text-3xl font-extrabold" style={{ color: c.color }}>{c.icon} {c.name}</h1>
           <p className="mt-2 text-sm text-slate-500">{articles.length > 0 ? `${articles.length} artículos recientes en esta sección.` : 'Aún no hay artículos publicados en esta sección.'}</p>
         </header>
-        <CategoryNav active={cat} />
+        <CategoryNav active={cat} />\n        {TOPICS.filter((topic) => topic.category === cat).length > 0 && (\n          <section aria-labelledby="topic-clusters-title" className="rounded-xl border border-slate-200 p-4 dark:border-slate-800">\n            <h2 id="topic-clusters-title" className="font-extrabold">Explora temas de {c.short}</h2>\n            <div className="mt-3 flex flex-wrap gap-2">\n              {TOPICS.filter((topic) => topic.category === cat).map((topic) => (\n                <Link key={topic.slug} href={`/articles/topic/${topic.slug}`} className="rounded-full border border-slate-200 px-3 py-1.5 text-sm font-medium hover:border-brand-violet hover:text-brand-violet dark:border-slate-700">{topic.name}</Link>\n              ))}\n            </div>\n          </section>\n        )}
         {cat === 'gaming' && <GamingCodes />}
         {cat === 'politica' && <PoliticsHub />}
         {deals.length > 0 && <div className="grid gap-4 sm:grid-cols-2">{deals.map((d) => <DealCard key={d.id} deal={d} />)}</div>}
