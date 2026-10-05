@@ -109,6 +109,15 @@ function bind() {
   return calls
 }
 
+async function collectAllFeedArticles(): Promise<Article[]> {
+  const articles: Article[] = []
+  for (let offset = 0; ; offset += 50) {
+    const page = await getArticles({ limit: 50, offset })
+    articles.push(...page)
+    if (page.length < 50) return articles
+  }
+}
+
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
@@ -140,7 +149,7 @@ test('D1-bound: all editorial slugs resolve by direct lookup', async () => {
 
 test('D1-bound: feed includes all editorial slugs, deduped, newest first', async () => {
   const calls = bind()
-  const all = await getArticles({ limit: 50 })
+  const all = await collectAllFeedArticles()
   assert.ok(calls.some((s) => s.includes('FROM articles')), 'D1 was queried')
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
@@ -195,7 +204,7 @@ test('D1-bound: sitemap data has all editorial slugs plus D1 rows, deduped', asy
 test('empty D1 still serves editorial content', async () => {
   const { db } = fakeD1([])
   setEnvResolverForTests(() => ({ DB: db as never }))
-  const slugs = (await getArticles({ limit: 50 })).map((a) => a.slug)
+  const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(slugs.length, EXPECTED_SLUGS.length)
 })
