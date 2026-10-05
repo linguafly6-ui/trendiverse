@@ -47,6 +47,16 @@ const EXPECTED_SLUGS = [
   'renovables-espana-50-por-ciento-generacion-septiembre-2026',
   'investigacion-espana-1200-millones-ayudas-ciencia-2026',
   'catedra-arrels-innovacion-resiliencia-climatica-2026',
+  'espana-724-millones-proyectos-investigacion-formacion-doctoral-2026',
+  'ramon-y-cajal-2026-240-millones-talento-investigador-espana',
+  'juan-de-la-cierva-2026-61-millones-jovenes-investigadores',
+  'torres-quevedo-2026-doctores-empresas-espana',
+  'innterconecta-step-2026-138-millones-ia-tecnologia-limpia-biotecnologia',
+  'espana-1200-millones-nuevas-ayudas-ciencia-investigacion-2026',
+  'ramon-y-cajal-2026-proyecto-propio-200000-euros-investigador',
+  'plataformas-tecnologicas-2026-seis-millones-innovacion-empresas',
+  'diez-millones-personal-tecnico-gestion-idi-2026',
+  '75-millones-399-proyectos-investigacion-salud-espana-2026',
 ]
 
 const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({ id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
