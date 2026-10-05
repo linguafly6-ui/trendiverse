@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { CategoryBadge } from '@/components/ArticleCard'
+import CategoryClusterLinks from '@/components/CategoryClusterLinks'
 import Sidebar from '@/components/Sidebar'
 import ArticleBody from '@/components/article/ArticleBody'
 import ReadingProgress from '@/components/article/ReadingProgress'
@@ -42,7 +43,7 @@ export default async function ArticlePage({ params }: Props) {
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
-  const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: imageUrl ? [imageUrl] : undefined, datePublished: article.published_at, dateModified: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
+  const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: imageUrl ? [imageUrl] : undefined, datePublished: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
   const faqItems = blocks.reduce<{ question: string; answer: string }[]>((items, block, index) => {
     if (block.type !== 'heading' || block.level !== 3) return items
     const question = block.text.trim()
@@ -79,6 +80,7 @@ export default async function ArticlePage({ params }: Props) {
         <ArticleBody blocks={blocks} />
         <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800"><ShareButtons slug={article.slug} title={article.title} /></div>
         <RelatedArticles articles={related} />
+        {category && <CategoryClusterLinks active={category.slug} />}
       </article>
       <div className="lg:col-span-3"><Sidebar /></div>
     </div>
