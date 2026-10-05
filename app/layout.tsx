@@ -26,9 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msvalidate.01" content="26683077CE62A57AE507DFDF4C488D53" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="text/javascript" dangerouslySetInnerHTML={{ __html: iubendaConfig }} />
-        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4706473.js" />
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js" />
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charSet="UTF-8" async />
+        <Script src="https://cs.iubenda.com/autoblocking/4706473.js" strategy="beforeInteractive" />
+        <Script src="https://cdn.iubenda.com/cs/gpp/stub.js" strategy="beforeInteractive" />
+        <Script src="https://cdn.iubenda.com/cs/iubenda_cs.js" charSet="UTF-8" strategy="afterInteractive" />
       </head>
       <body>
         <Header />
