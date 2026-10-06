@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Chollos e-commerce en España 2026">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="1010" cy="120" r="190" fill="#F97316" opacity="0.10"/>
+  <circle cx="170" cy="530" r="150" fill="#EF4444" opacity="0.08"/>
+
+  <g transform="translate(880 250)">
+    <rect x="0" y="0" width="210" height="150" rx="14" fill="#F9FAFB"/>
+    <path d="M30 42h150" stroke="#111827" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+    <path d="M30 74h110" stroke="#111827" stroke-width="8" stroke-linecap="round" opacity="0.30"/>
+    <path d="M30 106h132" stroke="#111827" stroke-width="8" stroke-linecap="round" opacity="0.22"/>
+  </g>
+
+  <g transform="translate(690 236)">
+    <path d="M0 26 L26 0 L104 0 L130 26 L130 196 L0 196 Z" fill="url(#accent)"/>
+    <path d="M26 0 L26 26 L0 26" fill="none" stroke="#7C2D12" stroke-width="5" opacity="0.5"/>
+    <path d="M104 0 L104 26 L130 26" fill="none" stroke="#7C2D12" stroke-width="5" opacity="0.5"/>
+    <circle cx="65" cy="96" r="42" fill="none" stroke="#FFFFFF" stroke-width="9" opacity="0.92"/>
+    <path d="M46 96 l14 15 l26 -31" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(140 214)">
+    <text x="0" y="0" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700" fill="#FFFFFF">Chollos</text>
+    <text x="0" y="96" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700" fill="url(#accent)">E-Commerce</text>
+  </g>
+
+  <g transform="translate(140 402)">
+    <rect x="0" y="0" width="300" height="52" rx="26" fill="#F97316"/>
+    <text x="150" y="34" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF" letter-spacing="1.5">ESPAÑA 2026</text>
+  </g>
+
+  <text x="140" y="510" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#9CA3AF">Guía de ofertas reales · Verificación de precios</text>
+</svg>
