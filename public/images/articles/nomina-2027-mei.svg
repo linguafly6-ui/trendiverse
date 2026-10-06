@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="La nómina cambia en enero de 2027: subida del MEI para financiar las pensiones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%">
+        <animate attributeName="stop-color" values="#134E4A;#0F172A" dur="0s" fill="freeze"/>
+      </stop>
+      <stop offset="100%" stop-color="#134E4A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="1000" cy="150" r="210" fill="#059669" opacity="0.12"/>
+  <circle cx="150" cy="540" r="160" fill="#10B981" opacity="0.08"/>
+
+  <!-- payslip -->
+  <g transform="translate(700 176)">
+    <rect x="0" y="0" width="300" height="330" rx="16" fill="#F8FAFC"/>
+    <rect x="0" y="0" width="300" height="64" rx="16" fill="#E2E8F0"/>
+    <rect x="0" y="48" width="300" height="16" fill="#E2E8F0"/>
+    <text x="28" y="42" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F172A">NÓMINA</text>
+    <text x="228" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#059669">2027</text>
+
+    <path d="M28 96 h150" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+    <path d="M28 128 h110" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" opacity="0.40"/>
+    <path d="M28 160 h132" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" opacity="0.30"/>
+
+    <path d="M28 206 h244" stroke="#CBD5E1" stroke-width="2"/>
+
+    <!-- MEI line highlighted -->
+    <rect x="20" y="222" width="260" height="52" rx="10" fill="#D1FAE5"/>
+    <text x="34" y="256" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#065F46">MEI</text>
+    <text x="266" y="256" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#065F46">0,17%</text>
+
+    <path d="M28 296 h170" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" opacity="0.35"/>
+  </g>
+
+  <!-- up arrow -->
+  <g transform="translate(1058 150)">
+    <circle cx="0" cy="0" r="54" fill="url(#accent)"/>
+    <path d="M0 24 L0 -20 M0 -20 L-15 -3 M0 -20 L15 -3" stroke="#F8FAFC" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- headline -->
+  <g transform="translate(120 186)">
+    <text x="0" y="0" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#FFFFFF">Tu nómina</text>
+    <text x="0" y="88" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#FFFFFF">cambia en</text>
+    <text x="0" y="176" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="url(#accent)">enero 2027</text>
+  </g>
+
+  <g transform="translate(120 414)">
+    <rect x="0" y="0" width="286" height="54" rx="27" fill="url(#accent)"/>
+    <text x="143" y="36" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#06281E" letter-spacing="1.4">0,15% → 0,17%</text>
+  </g>
+
+  <text x="120" y="522" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#6EE7B7">Mecanismo de Equidad Intergeneracional (MEI)</text>
+  <text x="120" y="562" font-family="Helvetica, Arial, sans-serif" font-size="23" fill="#64748B">Cuánto supone y dónde verlo en el recibo de salarios</text>
+</svg>
