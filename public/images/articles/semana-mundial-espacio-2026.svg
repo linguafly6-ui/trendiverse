@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Semana Mundial del Espacio 2026">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1026"/>
+      <stop offset="100%" stop-color="#191A3A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="960" cy="300" r="280" fill="url(#glow)"/>
+
+  <!-- stars -->
+  <g fill="#E2E8F0">
+    <circle cx="120" cy="70" r="2.5" opacity="0.8"/>
+    <circle cx="300" cy="45" r="2" opacity="0.6"/>
+    <circle cx="520" cy="90" r="3" opacity="0.7"/>
+    <circle cx="700" cy="55" r="2" opacity="0.55"/>
+    <circle cx="1080" cy="80" r="2.5" opacity="0.75"/>
+    <circle cx="1160" cy="180" r="2" opacity="0.5"/>
+    <circle cx="90" cy="300" r="2" opacity="0.5"/>
+    <circle cx="200" cy="560" r="2.5" opacity="0.6"/>
+    <circle cx="640" cy="580" r="2" opacity="0.55"/>
+    <circle cx="780" cy="520" r="2.5" opacity="0.65"/>
+    <circle cx="880" cy="600" r="2" opacity="0.5"/>
+    <circle cx="420" cy="520" r="2" opacity="0.45"/>
+  </g>
+
+  <!-- rocket -->
+  <g transform="translate(920 200) rotate(28)">
+    <path d="M60 0 C 96 40 104 96 100 150 L20 150 C 16 96 24 40 60 0 Z" fill="#F8FAFC"/>
+    <circle cx="60" cy="62" r="19" fill="#0B1026"/>
+    <circle cx="60" cy="62" r="11" fill="url(#accent)"/>
+    <path d="M20 116 L -8 168 L 20 162 Z" fill="#8B5CF6"/>
+    <path d="M100 116 L 128 168 L 100 162 Z" fill="#8B5CF6"/>
+    <path d="M44 150 L60 214 L76 150 Z" fill="#F97316"/>
+    <path d="M52 150 L60 186 L68 150 Z" fill="#FDE047"/>
+  </g>
+
+  <!-- orbit arc -->
+  <path d="M700 480 C 880 560 1080 470 1160 330" fill="none" stroke="#38BDF8" stroke-width="4" opacity="0.35" stroke-dasharray="14 12"/>
+
+  <!-- headline -->
+  <g transform="translate(120 178)">
+    <text x="0" y="0" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF">Semana Mundial</text>
+    <text x="0" y="84" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF">del Espacio</text>
+    <text x="0" y="168" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="url(#accent)">2026</text>
+  </g>
+
+  <g transform="translate(120 404)">
+    <rect x="0" y="0" width="330" height="52" rx="26" fill="url(#accent)"/>
+    <text x="165" y="34" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#0B1026" letter-spacing="1.2">4 – 10 OCTUBRE</text>
+  </g>
+
+  <text x="120" y="508" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#A5B4FC">La Revolución de los Cohetes</text>
+  <text x="120" y="550" font-family="Helvetica, Arial, sans-serif" font-size="23" fill="#64748B">Actividades en España · Qué ver en el cielo</text>
+</svg>
