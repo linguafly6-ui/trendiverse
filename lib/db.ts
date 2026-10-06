@@ -1,6 +1,6 @@
 import type { Article, Deal, Tool } from './types'
-import { SAMPLE_ARTICLES as BASE_SAMPLE_ARTICLES, SAMPLE_DEALS, SAMPLE_TOOLS } from './sample-data'
-import { EXTRA_ARTICLES } from './sample-data'
+import { SAMPLE_ARTICLES as BASE_SAMPLE_ARTICLES, SAMPLE_DEALS, SAMPLE_TOOLS } from './chollos-otono'
+import { EXTRA_ARTICLES } from './extra-articles'
 import { AUDI_ARTICLES } from './audi-article'
 import { IPHONE_ARTICLES } from './iphone-article'
 import { BARCELONA_REAL_MADRID_ARTICLES } from './barcelona-real-madrid-article'

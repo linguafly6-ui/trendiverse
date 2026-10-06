@@ -1,5 +1,5 @@
 import CopyButton from './CopyButton'
-import { SAMPLE_CODES } from '@/lib/sample-data'
+import { SAMPLE_CODES } from '@/lib/chollos-otono'
 
 export default function GamingCodes() {
   if (SAMPLE_CODES.length === 0) return null
