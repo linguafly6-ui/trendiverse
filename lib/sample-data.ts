@@ -107,6 +107,22 @@ export const SAMPLE_ARTICLES: Article[] = [
   },
 ]
 
-export const SAMPLE_CODES = []
+export const SAMPLE_CODES: any[] = [
+  {
+    game: 'Genshin Impact',
+    code: 'GENSHIN2026OCT',
+    reward: '60 Protogemas + 5 Experiencia',
+    expires: '2026-10-31',
+    note: 'Válido hasta finales de octubre',
+  },
+  {
+    game: 'Honkai: Star Rail',
+    code: 'STARRAILOCT26',
+    reward: '50 Stellar Jade',
+    expires: '2026-10-31',
+    note: 'Válido hasta finales de octubre',
+  },
+]
+
 export const SAMPLE_DEALS: any[] = []
 export const SAMPLE_TOOLS: any[] = []
