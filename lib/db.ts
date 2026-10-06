@@ -15,7 +15,7 @@ function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
   return list.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)))
 }
 
-const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
+export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
 
 interface Env {
   DB?: D1Database
