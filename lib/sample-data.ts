@@ -159,7 +159,7 @@ export const SAMPLE_CODES = [
 export const SAMPLE_DEALS: Deal[] = [
   {
     id: 1,
-    title: 'PlayStation 5 Slim + Mando DualSense Extra',
+    name: 'PlayStation 5 Slim + Mando DualSense Extra',
     store: 'Amazon',
     price: 479.99,
     original_price: 549.99,
