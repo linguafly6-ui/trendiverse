@@ -1,4 +1,4 @@
-import type { Article, Deal, Tool } from './types'
+import type { Article } from './types'
 
 const day = 86400000
 const iso = (ago: number) => new Date(Date.now() - ago * day).toISOString()
@@ -156,27 +156,6 @@ export const SAMPLE_CODES = [
   },
 ]
 
-export const SAMPLE_DEALS: Deal[] = [
-  {
-    id: 1,
-    name: 'PlayStation 5 Slim + Mando DualSense Extra',
-    store: 'Amazon',
-    price: 479.99,
-    original_price: 549.99,
-    discount_percentage: 13,
-    url: '#',
-    image_url: '/images/articles/chollos-otono.svg',
-    category: 'Gaming',
-    posted_at: iso(0.1),
-  },
-]
+export const SAMPLE_DEALS: any[] = []
 
-export const SAMPLE_TOOLS: Tool[] = [
-  {
-    id: 1,
-    name: 'Calculadora de Descuentos',
-    slug: 'calculadora-descuentos',
-    description: 'Calcula el precio final con porcentaje de rebaja aplicado.',
-    category: 'Finanzas',
-  },
-]
+export const SAMPLE_TOOLS: any[] = []
