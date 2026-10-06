@@ -8,6 +8,7 @@ import { PORTUGAL_NORUEGA_ARTICLES } from './portugal-noruega-article'
 import { GIRONA_MALLORCA_ARTICLES } from './girona-mallorca-article'
 import { EVENEPOEL_ARTICLES } from './evenepoel-article'
 import { EDITORIAL_ARTICLES } from './editorial-articles'
+import { TECNOLOGIA_2026_ARTICLES } from './tecnologia-2026'
 
 // Keeps the first record per slug (earlier entries take precedence).
 function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
@@ -15,7 +16,7 @@ function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
   return list.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)))
 }
 
-export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
+export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...TECNOLOGIA_2026_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
 
 interface Env {
   DB?: D1Database
