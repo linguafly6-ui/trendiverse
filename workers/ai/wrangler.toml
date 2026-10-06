@@ -1,0 +1,18 @@
+name = "trendiverse-ai"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[ai]
+binding = "AI"
+
+[vars]
+# Modelo por defecto. Alternativas:
+#   @cf/qwen/qwen3.8-27b       (262k contexto, buen espanol)
+#   @cf/zai-org/glm-4.7-flash  (131k contexto, ideal para resumir)
+DEFAULT_MODEL = "@cf/deepseek-ai/deepseek-v4-flash"
+
+# Dominio autorizado a llamar al Worker (CORS).
+ALLOWED_ORIGIN = "https://trendiverse.org"
+
+# Modelo de texto a voz. Si cambiara de nombre, edita src/index.js.
+# TTS_MODEL = "@cf/deepgram/aura-1"
