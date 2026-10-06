@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Cómo afecta el nuevo decreto de vivienda a arrendadores y arrendatarios">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#134E4A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="1060" cy="110" r="170" fill="#0D9488" opacity="0.10"/>
+  <circle cx="140" cy="560" r="140" fill="#0D9488" opacity="0.07"/>
+
+  <!-- two panels: landlord / tenant -->
+  <g transform="translate(760 168)">
+    <rect x="0" y="0" width="168" height="250" rx="14" fill="url(#left)" stroke="#3B82F6" stroke-width="2" opacity="0.95"/>
+    <path d="M84 44 L128 78 L128 168 L40 168 L40 78 Z" fill="none" stroke="#93C5FD" stroke-width="7" stroke-linejoin="round"/>
+    <rect x="72" y="118" width="24" height="50" fill="#93C5FD" opacity="0.7"/>
+    <text x="84" y="212" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#BFDBFE" letter-spacing="1">ARRENDADOR</text>
+  </g>
+
+  <g transform="translate(956 168)">
+    <rect x="0" y="0" width="168" height="250" rx="14" fill="url(#right)" stroke="#2DD4BF" stroke-width="2" opacity="0.95"/>
+    <circle cx="84" cy="78" r="26" fill="none" stroke="#5EEAD4" stroke-width="7"/>
+    <path d="M42 168 C 46 124 66 112 84 112 C 102 112 122 124 126 168" fill="none" stroke="#5EEAD4" stroke-width="7" stroke-linecap="round"/>
+    <text x="84" y="212" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#99F6E4" letter-spacing="1">ARRENDATARIO</text>
+  </g>
+
+  <!-- headline -->
+  <g transform="translate(112 190)">
+    <text x="0" y="0" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF">Nuevo decreto</text>
+    <text x="0" y="84" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#FFFFFF">de alquiler</text>
+    <text x="0" y="168" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="url(#accent)">2026</text>
+  </g>
+
+  <g transform="translate(112 396)">
+    <rect x="0" y="0" width="300" height="52" rx="26" fill="url(#accent)"/>
+    <text x="150" y="34" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#04201C" letter-spacing="1.2">SUBIDA MÁXIMA 2%</text>
+  </g>
+
+  <text x="112" y="500" font-family="Helvetica, Arial, sans-serif" font-size="25" fill="#5EEAD4">Prórrogas · temporada · bonificaciones IRPF</text>
+  <text x="112" y="540" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#64748B">Qué gana y qué pierde cada parte</text>
+</svg>
