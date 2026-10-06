@@ -118,9 +118,9 @@ const chollosOtonoContent = `<h2>Introducción: La Gran Temporada del Ahorro Tec
 
 <p>En <strong>Trendiverse</strong> seguiremos rastreando diariamente los principales catálogos y plataformas para seleccionar únicamente aquellas ofertas que cumplan con los estándares de calidad, garantía y ahorro real.</p>`
 
-const mundial2026Content = `La Copa del Mundo de la FIFA 2026 ya está en el centro de atención de millones de aficionados...`
+const mundial2026Content = `La Copa del Mundo de la FIFA 2026 ya está en el centro de atención de millones de aficionados. No es solo un torneo más dentro del calendario internacional: es una edición histórica, con un formato renovado, sedes repartidas en varios países y una expectativa global enorme. El Mundial 2026 será el primero en la historia en celebrarse en tres naciones anfitrionas: Estados Unidos, México y Canadá.`
 
-const mundialGuiaContent = `La Copa mundial de la FIFA 2026 será un hito dentro de la historia del fútbol internacional...`
+const mundialGuiaContent = `La Copa mundial de la FIFA 2026 será un hito dentro de la historia del fútbol internacional. No solo por la magnitud del torneo, sino por el contexto detrás de él: se celebrará en tres países, en más ciudades de lo habitual, con una evolución del formato que convierte cada partido en un acontecimiento mayor.`
 
 export const SAMPLE_ARTICLES: Article[] = [
   a(
@@ -137,4 +137,44 @@ export const SAMPLE_ARTICLES: Article[] = [
   ),
   a(1, 'Copa del Mundo de la FIFA 2026: fechas, sedes, formato y todo lo que debes saber', 'copa-del-mundo-fifa-2026', 'virales', 'La edición más grande del torneo llega con sedes en tres países y un formato sin precedentes.', 'mundial2026', 8, 145000, 1, mundial2026Content),
   a(4, 'Copa mundial de la FIFA 2026: guía completa de grupos, sedes y expectativas del torneo', 'copa-mundial-fifa-2026-guia-completa', 'virales', 'Guía con el desarrollo del torneo, los cambios en los grupos y las principales sedes.', 'mundialguia', 7, 85000, 0, mundialGuiaContent),
+]
+
+export const SAMPLE_CODES = [
+  {
+    game: 'Genshin Impact',
+    code: 'GENSHIN2026OCT',
+    reward: '60 Protogemas + 5 Experiencia',
+    expires: '2026-10-31',
+  },
+  {
+    game: 'Honkai: Star Rail',
+    code: 'STARRAILOCT26',
+    reward: '50 Stellar Jade',
+    expires: '2026-10-31',
+  },
+]
+
+export const SAMPLE_DEALS: Deal[] = [
+  {
+    id: 1,
+    title: 'PlayStation 5 Slim + Mando DualSense Extra',
+    store: 'Amazon',
+    price: 479.99,
+    original_price: 549.99,
+    discount_percentage: 13,
+    url: '#',
+    image_url: '/images/articles/chollos-otono.svg',
+    category: 'Gaming',
+    posted_at: iso(0.1),
+  },
+]
+
+export const SAMPLE_TOOLS: Tool[] = [
+  {
+    id: 1,
+    name: 'Calculadora de Descuentos',
+    slug: 'calculadora-descuentos',
+    description: 'Calcula el precio final con porcentaje de rebaja aplicado.',
+    category: 'Finanzas',
+  },
 ]
