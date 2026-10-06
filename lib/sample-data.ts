@@ -145,12 +145,14 @@ export const SAMPLE_CODES = [
     code: 'GENSHIN2026OCT',
     reward: '60 Protogemas + 5 Experiencia',
     expires: '2026-10-31',
+    note: 'Válido hasta finales de octubre',
   },
   {
     game: 'Honkai: Star Rail',
     code: 'STARRAILOCT26',
     reward: '50 Stellar Jade',
     expires: '2026-10-31',
+    note: 'Válido hasta finales de octubre',
   },
 ]
 
