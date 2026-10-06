@@ -126,3 +126,5 @@ export const SAMPLE_CODES: any[] = [
 
 export const SAMPLE_DEALS: any[] = []
 export const SAMPLE_TOOLS: any[] = []
+// lib/sample-data.ts
+export const EXTRA_ARTICLES: Article[] = []
