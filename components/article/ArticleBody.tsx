@@ -1,14 +1,21 @@
+import Link from 'next/link'
 import type { ArticleBlock } from '@/lib/article-content'
 import ChargingPointsMap from '@/components/article/ChargingPointsMap'
 
+// Only internal paths ("/...") and http(s) URLs are allowed as link targets.
+function safeHref(href: string): string | null {
+  if (href.startsWith('/') && !href.startsWith('//')) return href
+  if (/^https?:\/\//i.test(href)) return href
+  return null
+}
+
 /**
- * Renders inline markdown: **bold** and *italic*.
+ * Renders inline markdown: [text](url), **bold** and *italic*.
  * Returns an array of React nodes.
  */
 function renderInline(text: string): React.ReactNode[] {
   const nodes: React.ReactNode[] = []
-  // Regex to find **bold** or *italic* segments
-  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g
+  const regex = /(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g
   let lastIndex = 0
   let match: RegExpExecArray | null
   let key = 0
@@ -18,7 +25,26 @@ function renderInline(text: string): React.ReactNode[] {
       nodes.push(text.slice(lastIndex, match.index))
     }
     const segment = match[0]
-    if (segment.startsWith('**')) {
+    if (segment.startsWith('[')) {
+      const m = /^\[([^\]]+)\]\(([^)\s]+)\)$/.exec(segment)
+      const label = m ? m[1] : segment
+      const href = m ? safeHref(m[2]) : null
+      if (!href) {
+        nodes.push(label)
+      } else if (href.startsWith('/')) {
+        nodes.push(
+          <Link key={key++} href={href} className="font-medium text-violet-700 underline underline-offset-2 hover:text-violet-900 dark:text-violet-300">
+            {label}
+          </Link>
+        )
+      } else {
+        nodes.push(
+          <a key={key++} href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-violet-700 underline underline-offset-2 hover:text-violet-900 dark:text-violet-300">
+            {label}
+          </a>
+        )
+      }
+    } else if (segment.startsWith('**')) {
       nodes.push(
         <strong key={key++} className="font-bold text-slate-900 dark:text-white">
           {segment.slice(2, -2)}
