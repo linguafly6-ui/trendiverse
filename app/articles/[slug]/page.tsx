@@ -13,6 +13,7 @@ import LiveScore from '@/components/article/LiveScore'
 import { getArticleBySlug, getRelatedArticles } from '@/lib/db'
 import { getHeadings, parseArticleContent } from '@/lib/article-content'
 import { withRelatedLinks } from '@/lib/related-links'
+import { SEO_OVERRIDES, truncateWords } from '@/lib/seo-overrides'
 import { formatDate } from '@/lib/utils'
 import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
 
@@ -34,16 +35,18 @@ function isQuestion(text: string): boolean {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticleBySlug((await params).slug)
   if (!article) return {}
+  const seo = SEO_OVERRIDES[article.slug]
+  const title = seo?.title ?? article.title
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
-  const description = article.excerpt?.trim().slice(0, 160) || undefined
+  const description = seo?.description ?? (article.excerpt ? truncateWords(article.excerpt, 155) : undefined)
   return {
-    title: article.title,
+    title,
     description,
     alternates: { canonical: url },
     robots: { index: true, follow: true },
-    openGraph: { title: article.title, description, type: 'article', url, images: imageUrl ? [imageUrl] : [], siteName: SITE_NAME, locale: 'es_ES' },
-    twitter: { card: 'summary_large_image', title: article.title, description, images: imageUrl ? [imageUrl] : [] },
+    openGraph: { title, description, type: 'article', url, images: imageUrl ? [imageUrl] : [], siteName: SITE_NAME, locale: 'es_ES' },
+    twitter: { card: 'summary_large_image', title, description, images: imageUrl ? [imageUrl] : [] },
   }
 }
 
