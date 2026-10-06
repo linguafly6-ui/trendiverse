@@ -41,12 +41,6 @@ export default function ArticleCard({ article }: { article: Article }) {
           <span>{formatDate(article.published_at)}</span>
           <span>·</span>
           <span>{article.read_time_minutes ?? 1} min</span>
-          {article.views > 0 && (
-            <>
-              <span>·</span>
-              <span>{article.views.toLocaleString('es-ES')} vistas</span>
-            </>
-          )}
         </div>
       </div>
     </article>
