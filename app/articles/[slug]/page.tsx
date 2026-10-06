@@ -12,6 +12,7 @@ import ShareButtons from '@/components/article/ShareButtons'
 import LiveScore from '@/components/article/LiveScore'
 import { getArticleBySlug, getRelatedArticles } from '@/lib/db'
 import { getHeadings, parseArticleContent } from '@/lib/article-content'
+import { withRelatedLinks } from '@/lib/related-links'
 import { formatDate } from '@/lib/utils'
 import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
 
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
   const article = await getArticleBySlug((await params).slug)
   if (!article) notFound()
-  const blocks = parseArticleContent(article.content)
+  const blocks = parseArticleContent(withRelatedLinks(article.slug, article.content))
   const related = await getRelatedArticles(article, 4)
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
