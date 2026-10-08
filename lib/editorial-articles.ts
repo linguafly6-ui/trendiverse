@@ -3,6 +3,7 @@ import { EDITORIAL_BATCH_340_349 } from './editorial-batch-340-349'
 import { ELECTION_ARTICLES_2026 } from './election-articles-2026'
 import { RUFIAN_ARTICLE_2026 } from './rufian-article-2026'
 import { PENSIONES_SEGURIDAD_SOCIAL_2026 } from './pensiones-seguridad-social-2026'
+import { SANCHEZ_ARTICLE_2026 } from './sanchez-article-2026'
 import { POLITICS_GUIDES_2026 } from './politics-guides-2026'
 import { AUTOMOTIVE_GUIDES_2026 } from './automotive-guides-2026'
 
@@ -559,6 +560,7 @@ export const EDITORIAL_ARTICLES: Article[] = [
   ...ELECTION_ARTICLES_2026,
   RUFIAN_ARTICLE_2026,
   PENSIONES_SEGURIDAD_SOCIAL_2026,
+  SANCHEZ_ARTICLE_2026,
   ...POLITICS_GUIDES_2026,
   ...AUTOMOTIVE_GUIDES_2026,
 ]

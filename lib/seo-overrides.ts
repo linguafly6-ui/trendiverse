@@ -9,6 +9,10 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'pedro-sanchez-ultimas-noticias-29n': {
+    title: 'Sánchez y el 29N: vivienda y campaña',
+    description: 'Sánchez convocó el 29N tras caer la vivienda en el Congreso. El 6 de octubre rehízo los decretos y arranca la precampaña en Dos Hermanas.',
+  },
   'pensiones-seguridad-social-novedades-2027': {
     title: 'Pensiones 2027: subida, edad y cálculo',
     description: 'La subida de las pensiones en 2027 se liga al IPC y se cierra el 15 de diciembre. Edad de 67 años, nuevo cálculo de la base y jubilación flexible.',
