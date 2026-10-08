@@ -6,6 +6,7 @@
  */
 
 import { JORNADA_8_RELATED } from './laliga-jornada-8-2026'
+import { ASTRO_GUIDE_SLUG } from './astrology'
 
 const BOE_RDL_26_2026 = 'https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20266'
 
@@ -32,6 +33,11 @@ const A = {
 }
 
 const RELATED: Record<string, string[]> = {
+  [ASTRO_GUIDE_SLUG]: [
+    '[Horóscopo de la semana](/astrologia): los doce signos con el cielo del 8 al 14 de octubre.',
+    '[Horóscopo de Libra](/astrologia/libra): el signo que recibe la luna nueva del sábado.',
+    '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada transita este signo.',
+  ],
   ...JORNADA_8_RELATED,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': [
     `[Cristiano Ronaldo y Portugal](${A.ronaldo}): la otra pieza de la ventana de selecciones, tras el partido ante Noruega.`,

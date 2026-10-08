@@ -7,6 +7,7 @@ import DealCard from '@/components/DealCard'
 import GamingCodes from '@/components/GamingCodes'
 import Sidebar from '@/components/Sidebar'
 import PoliticsHub from '@/components/PoliticsHub'
+import AstrologyHub from '@/components/AstrologyHub'
 import { getCategory, SITE_NAME, SITE_URL, TOPICS } from '@/lib/constants'
 import { getArticles, getDeals } from '@/lib/db'
 
@@ -88,6 +89,7 @@ export default async function CategoryPage({ params }: Props) {
         )}
         {cat === 'gaming' && <GamingCodes />}
         {cat === 'politica' && <PoliticsHub />}
+        {cat === 'astrologia' && <AstrologyHub variant="strip" />}
         {deals.length > 0 && <div className="grid gap-4 sm:grid-cols-2">{deals.map((d) => <DealCard key={d.id} deal={d} />)}</div>}
         <ArticleFeed key={cat} initial={articles} category={cat} />
       </div>

@@ -1,4 +1,6 @@
 import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
+import { ASTROLOGIA_GUIA_SEO } from './astrologia-guia-2026'
+import { ASTRO_GUIDE_SLUG } from './astrology'
 
 /**
  * Títulos y descripciones SEO por artículo, independientes del título visible.
@@ -11,6 +13,7 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  [ASTRO_GUIDE_SLUG]: ASTROLOGIA_GUIA_SEO,
   ...JORNADA_8_SEO,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': {
     title: 'Guardiola vuelve al Etihad tras el fallo',
