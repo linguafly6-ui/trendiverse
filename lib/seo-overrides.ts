@@ -9,6 +9,10 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'pensiones-seguridad-social-novedades-2027': {
+    title: 'Pensiones 2027: subida, edad y cálculo',
+    description: 'La subida de las pensiones en 2027 se liga al IPC y se cierra el 15 de diciembre. Edad de 67 años, nuevo cálculo de la base y jubilación flexible.',
+  },
   'rufian-erc-ultimas-noticias-candidato-29n': {
     title: 'Rufián y el plan B de ERC para el 29N',
     description: 'Rufián no confirma si encabezará ERC el 29N. Junqueras lo defiende y el partido estudia a Jordi Albert como plan B antes del domingo.',
