@@ -17,12 +17,19 @@ const A = {
   espacio: '/articles/semana-mundial-del-espacio-2026',
   inundaciones: '/articles/inundaciones-cataluna-octubre-2026-alerta-recomendaciones',
   elecciones: '/articles/elecciones-generales-2026-29-noviembre',
+  presupuestos: '/articles/espana-sin-presupuestos-prorrogados-consecuencias-ciudadanos-2026',
+  pensiones: '/articles/pensiones-seguridad-social-novedades-2027',
   frente: '/articles/frente-amplio-espana-partidos-candidato-programa-29n',
   escanos: '/articles/como-se-reparten-escanos-voto-provincia-29n',
   electricidad: '/articles/evitar-electrocucion-ducha-seguridad-electrica-bano',
 }
 
 const RELATED: Record<string, string[]> = {
+  'pensiones-seguridad-social-novedades-2027': [
+    `[Elecciones generales del 29 de noviembre](${A.elecciones}): por qué la revalorización entra en la campaña antes de que el INE cierre el IPC.`,
+    `[España con presupuestos prorrogados](${A.presupuestos}): qué puede seguir el Estado sin unas cuentas nuevas.`,
+    `[La nómina cambia en enero de 2027](${A.nomina}): la subida del MEI, distinta de la revalorización de las pensiones.`,
+  ],
   'rufian-erc-ultimas-noticias-candidato-29n': [
     `[Elecciones generales del 29 de noviembre](${A.elecciones}): calendario, campaña y qué está ya convocado.`,
     `[Qué es el Frente Amplio](${A.frente}): partidos, candidato pendiente y relación con la izquierda.`,
@@ -39,6 +46,7 @@ const RELATED: Record<string, string[]> = {
     `[Texto del Real Decreto-ley 26/2026 en el BOE](${BOE_RDL_26_2026}), la fuente oficial.`,
   ],
   'nomina-enero-2027-mei-pensiones': [
+    `[Pensiones y Seguridad Social en 2027](${A.pensiones}): revalorización con el IPC, edad de jubilación y nuevo cálculo.`,
     `[Cómo afecta el decreto de vivienda a arrendadores e inquilinos](${A.alquiler}): lo que cambia en el alquiler y en el IRPF.`,
     `[Fondos buitre en 2026](${A.fondos}): el decreto que limita las compras especulativas de vivienda.`,
   ],
