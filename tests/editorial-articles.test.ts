@@ -69,6 +69,7 @@ const EXPECTED_SLUGS = [
   'coches-electricos-empresas-espana-flotas-auto-plus',
   'viajar-coche-electrico-espana-puntos-carga-rutas-2026',
   'rufian-erc-ultimas-noticias-candidato-29n',
+  'pensiones-seguridad-social-novedades-2027',
 
 ]
 
@@ -164,7 +165,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'rufian-erc-ultimas-noticias-candidato-29n')
+  assert.equal(slugs[0], 'pensiones-seguridad-social-novedades-2027')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -193,6 +194,7 @@ test('D1-bound: category, search and trending semantics', async () => {
 
   const search = async (q: string) => (await getArticles({ q, limit: 50 })).map((a) => a.slug)
   assert.ok((await search('Rufián')).includes('rufian-erc-ultimas-noticias-candidato-29n'))
+  assert.ok((await search('Saiz')).includes('pensiones-seguridad-social-novedades-2027'))
   assert.ok((await search('osteopontina')).includes('cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos'))
   assert.ok((await search('DoorDash')).includes('doordash-nueva-york-acuerdo-repartidores-131-millones'))
   assert.ok((await search('Bercovich')).includes('premios-nacionales-musica-2026-laura-vega-cecilia-bercovich'))
