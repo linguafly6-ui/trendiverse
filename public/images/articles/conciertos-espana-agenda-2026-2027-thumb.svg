@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#4c0519"/>
+  <rect x="40" y="36" width="720" height="378" rx="28" fill="#9f1239"/>
+  <text x="400" y="180" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#ffffff">CONCIERTOS</text>
+  <text x="400" y="240" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fecdd3">ESPANA 2026-2027</text>
+  <text x="400" y="300" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#ffe4e6">8 de octubre de 2026</text>
+</svg>

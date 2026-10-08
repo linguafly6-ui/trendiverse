@@ -1,4 +1,6 @@
 import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
+import { CONCIERTOS_AGENDA_SEO } from './conciertos-agenda-2026'
+import { CONCERTS_GUIDE_SLUG } from './concerts'
 
 /**
  * Títulos y descripciones SEO por artículo, independientes del título visible.
@@ -11,6 +13,7 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  [CONCERTS_GUIDE_SLUG]: CONCIERTOS_AGENDA_SEO,
   ...JORNADA_8_SEO,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': {
     title: 'Guardiola vuelve al Etihad tras el fallo',

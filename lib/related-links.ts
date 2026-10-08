@@ -6,6 +6,7 @@
  */
 
 import { JORNADA_8_RELATED } from './laliga-jornada-8-2026'
+import { CONCERTS_GUIDE_SLUG } from './concerts'
 
 const BOE_RDL_26_2026 = 'https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20266'
 
@@ -32,6 +33,11 @@ const A = {
 }
 
 const RELATED: Record<string, string[]> = {
+  [CONCERTS_GUIDE_SLUG]: [
+    '[Agenda de conciertos](/conciertos): las citas vigentes desde el 8 de octubre de 2026 y lo fechado para 2027.',
+    '[Primavera Sound en la agenda](/conciertos#primavera-sound-2027): del 2 al 6 de junio de 2027 en el Parc del Fòrum.',
+    '[Oasis en Barcelona](/conciertos#oasis-barcelona-2027): 10 y 11 de julio de 2027 en el Estadi Olímpic.',
+  ],
   ...JORNADA_8_RELATED,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': [
     `[Cristiano Ronaldo y Portugal](${A.ronaldo}): la otra pieza de la ventana de selecciones, tras el partido ante Noruega.`,

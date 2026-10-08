@@ -16,7 +16,7 @@ export default function CategoryClusterLinks({ active }: { active: string }) {
         {related.map((c) => (
           <Link
             key={c.slug}
-            href={`/articles/category/${c.slug}`}
+            href={c.href ?? `/articles/category/${c.slug}`}
             className="rounded-full border border-slate-200 px-3 py-1.5 text-sm font-medium hover:border-brand-violet hover:text-brand-violet dark:border-slate-700"
           >
             {c.icon} {c.short}

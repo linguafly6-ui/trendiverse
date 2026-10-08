@@ -10,6 +10,7 @@ export interface CategoryInfo {
   color: string
   seoTitle: string
   description: string
+  href?: string
 }
 
 export const CATEGORIES: CategoryInfo[] = [
@@ -22,6 +23,7 @@ export const CATEGORIES: CategoryInfo[] = [
   { slug: 'coches', name: 'Coches & Novedades', short: 'Coches', icon: '🚗', color: '#0EA5E9', seoTitle: 'Coches: novedades, lanzamientos y tecnología', description: 'Noticias de coches, nuevos modelos, movilidad, tecnología del automóvil y novedades de la industria.' },
   { slug: 'tecnologia', name: 'Tecnología & Novedades', short: 'Tecnología', icon: '💻', color: '#8B5CF6', seoTitle: 'Tecnología: últimas noticias y tendencias', description: 'Actualidad tecnológica, inteligencia artificial, ciencia aplicada, innovación, dispositivos y avances que están cambiando el mundo.' },
   { slug: 'chollos', name: 'Chollos & Descuentos', short: 'Chollos', icon: '🏷️', color: '#F97316', seoTitle: 'Chollos y ofertas: descuentos y oportunidades', description: 'Ofertas, descuentos y oportunidades de compra seleccionadas, con precios y condiciones para comparar antes de comprar.' },
+  { slug: 'conciertos', name: 'Conciertos & Festivales', short: 'Conciertos', icon: '🎤', color: '#BE123C', seoTitle: 'Conciertos en España: agenda 2026 y 2027', description: 'Agenda de conciertos y festivales en España: lo que queda de 2026 y las citas ya fechadas para 2027, con la fuente de cada anuncio.', href: '/conciertos' },
 ]
 
 export interface TopicInfo {
