@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
         <ul className="space-y-1 text-sm">
           {CATEGORIES.map((c) => (
-            <li key={c.slug}><Link href={`/articles/category/${c.slug}`}>{c.icon} {c.name}</Link></li>
+            <li key={c.slug}><Link href={c.href ?? `/articles/category/${c.slug}`}>{c.icon} {c.name}</Link></li>
           ))}
         </ul>
         <div className="text-sm">

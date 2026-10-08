@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
+import { SIGNS } from '@/lib/astrology'
+import { concertsFor } from '@/lib/concerts'
 import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -39,6 +41,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     { url: base + '/', changeFrequency: 'daily', priority: 1 },
+    { url: base + '/conciertos', changeFrequency: 'weekly', priority: 0.9 },
+    ...concertsFor().map((concert) => ({
+      url: base + '/conciertos/' + concert.id,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    { url: base + '/astrologia', changeFrequency: 'weekly', priority: 0.9 },
+    ...SIGNS.map((sign) => ({
+      url: base + '/astrologia/' + sign.slug,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
     { url: base + '/articles', changeFrequency: 'daily', priority: 0.95 },
     { url: base + '/autor/equipo-editorial', changeFrequency: 'monthly', priority: 0.6 },
     ...CATEGORIES.map((c) => ({

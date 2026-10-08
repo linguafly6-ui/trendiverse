@@ -11,7 +11,7 @@ export default function ArticleFeed({ initial, category: fixed }: { initial: Art
         <nav aria-label="Filtrar noticias" className="no-scrollbar mb-4 flex gap-2 overflow-x-auto">
           <Link href="/" className="shrink-0 rounded-full bg-brand-violet px-3 py-1 text-sm text-white">Todo</Link>
           {CATEGORIES.map((c) => (
-            <Link key={c.slug} href={`/articles/category/${c.slug}`} prefetch={false} className="shrink-0 rounded-full bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">
+            <Link key={c.slug} href={c.href ?? `/articles/category/${c.slug}`} prefetch={false} className="shrink-0 rounded-full bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">
               {c.short}
             </Link>
           ))}

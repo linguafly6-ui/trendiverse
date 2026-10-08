@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import JsonLd from '@/components/JsonLd'
 import ToolWidget from '@/components/ToolWidget'
 import { getToolBySlug } from '@/lib/db'
-import { SITE_NAME, SITE_URL } from '@/lib/constants'
+import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
+import { sectionUrl, toolGraph } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
@@ -26,10 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ToolPage({ params }: Props) {
   const tool = await getToolBySlug((await params).tool)
   if (!tool) notFound()
+  const toolsCategory = getCategory('herramientas')
   return (
     <div className="mx-auto max-w-xl">
+      <JsonLd data={toolGraph(tool)} />
       <nav aria-label="Migas de pan" className="mb-4 text-sm text-slate-500">
         <a href="/" className="hover:text-brand-violet">Inicio</a>
+        {toolsCategory && <>
+          <span aria-hidden="true"> / </span>
+          <a href={sectionUrl(toolsCategory)} className="hover:text-brand-violet">{toolsCategory.short}</a>
+        </>}
         <span aria-hidden="true"> / </span>
         <span>{tool.title}</span>
       </nav>

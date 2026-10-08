@@ -16,7 +16,9 @@ import { getHeadings, parseArticleContent } from '@/lib/article-content'
 import { withRelatedLinks } from '@/lib/related-links'
 import { SEO_OVERRIDES, truncateWords } from '@/lib/seo-overrides'
 import { formatDate } from '@/lib/utils'
+import JsonLd from '@/components/JsonLd'
 import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
+import { articleGraph, sectionUrl } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
@@ -61,7 +63,6 @@ export default async function ArticlePage({ params }: Props) {
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const authorUrl = `${SITE_URL}/autor/equipo-editorial`
   const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
-  const articleSchema = { '@context': 'https://schema.org', '@type': 'NewsArticle', headline: article.title, description: article.excerpt ?? undefined, image: imageUrl ? [imageUrl] : undefined, datePublished: article.published_at, inLanguage: 'es-ES', articleSection: category?.name, author: { '@type': 'Organization', '@id': `${SITE_URL}/#editorial-team`, name: 'Equipo Editorial', url: authorUrl }, publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL }, mainEntityOfPage: { '@type': 'WebPage', '@id': url } }
   const faqItems = blocks.reduce<{ question: string; answer: string }[]>((items, block, index) => {
     if (block.type !== 'heading' || block.level !== 3) return items
     const question = block.text.trim()
@@ -69,16 +70,12 @@ export default async function ArticlePage({ params }: Props) {
     if (isQuestion(question) && answerBlock?.type === 'paragraph' && answerBlock.text.trim()) items.push({ question, answer: answerBlock.text.trim() })
     return items
   }, [])
-  const faqSchema = faqItems.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) } : null
-  const breadcrumbSchema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL }, ...(category ? [{ '@type': 'ListItem', position: 2, name: category.name, item: `${SITE_URL}/articles/category/${category.slug}` }] : []), { '@type': 'ListItem', position: category ? 3 : 2, name: article.title, item: url }] }
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <ReadingProgress />
       <article className="min-w-0 lg:col-span-7">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-        <nav aria-label="Migas de pan" className="mx-auto mb-4 max-w-prose text-sm text-slate-500"><a href="/" className="hover:text-brand-violet">Inicio</a>{category && <> <span aria-hidden="true">/</span> <a href={`/articles/category/${category.slug}`} className="hover:text-brand-violet">{category.name}</a></>} <span aria-hidden="true">/</span> <span>{article.title}</span></nav>
+        <JsonLd data={articleGraph({ article, url, imageUrl, faqItems, match: liveMatch })} />
+        <nav aria-label="Migas de pan" className="mx-auto mb-4 max-w-prose text-sm text-slate-500"><a href="/" className="hover:text-brand-violet">Inicio</a>{category && <> <span aria-hidden="true">/</span> <a href={sectionUrl(category)} className="hover:text-brand-violet">{category.name}</a></>} <span aria-hidden="true">/</span> <span>{article.title}</span></nav>
         <header className="mx-auto max-w-prose">
           <CategoryBadge slug={article.category} />
           <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{article.title}</h1>
