@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { findMatch } from '@/lib/live-score'
 
 export const runtime = 'edge'
 
-// In-memory cache (per-edge, short-lived)
-let cache: { data: any; timestamp: number } | null = null
-const CACHE_TTL = 15000 // 15 seconds
+const caches = new Map<string, { scoreboard: { events?: unknown[] }; timestamp: number }>()
+const CACHE_TTL = 15000
+
+const LEAGUE_LABEL: Record<string, string> = {
+  'esp.1': 'LALIGA',
+  'esp.2': 'LaLiga Hypermotion',
+  'eng.1': 'Premier League',
+  'uefa.nations': 'UEFA Nations League',
+  'uefa.champs': 'Champions League',
+  'uefa.europa': 'Europa League',
+  'fifa.world': 'Mundial',
+}
 
 const LEAGUE_MAP: Record<string, string> = {
   'uefa.nations': 'https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.nations/scoreboard',
@@ -20,34 +30,40 @@ export async function GET(req: NextRequest) {
   const league = req.nextUrl.searchParams.get('league') || ''
   const home = req.nextUrl.searchParams.get('home') || ''
   const away = req.nextUrl.searchParams.get('away') || ''
+  const date = req.nextUrl.searchParams.get('date') || ''
 
   const url = LEAGUE_MAP[league]
   if (!url) {
     return NextResponse.json({ error: 'Liga no soportada' }, { status: 400 })
   }
+  if (date && !/^\d{8}$/.test(date)) {
+    return NextResponse.json({ error: 'Fecha no válida' }, { status: 400 })
+  }
 
-  // Check cache
+  const cacheKey = `${league}:${date}`
+  const endpoint = date ? `${url}?dates=${date}` : url
   const now = Date.now()
-  if (cache && cache.timestamp + CACHE_TTL > now && cache.data?.league === league) {
-    const match = findMatch(cache.data.scoreboard, home, away)
+  const cached = caches.get(cacheKey)
+  if (cached && cached.timestamp + CACHE_TTL > now) {
+    const match = findMatch(cached.scoreboard, home, away)
     if (match) {
       return NextResponse.json({
         ...match,
+        competition: match.competition || LEAGUE_LABEL[league] || '',
         cached: true,
-        fetchedAt: new Date(cache.timestamp).toISOString(),
+        fetchedAt: new Date(cached.timestamp).toISOString(),
       }, { headers: { 'Cache-Control': 'public, s-maxage=15' } })
     }
   }
 
   try {
-    const res = await fetch(url, {
+    const res = await fetch(endpoint, {
       headers: { 'User-Agent': 'TrendiVerse/1.0' },
     })
     if (!res.ok) throw new Error('ESPN API error')
-    const data: any = await res.json()
-
+    const data = await res.json() as { events?: unknown[] }
     const fetchedAt = new Date().toISOString()
-    cache = { data: { league, scoreboard: data }, timestamp: now }
+    caches.set(cacheKey, { scoreboard: data, timestamp: now })
 
     const match = findMatch(data, home, away)
     if (!match) {
@@ -56,62 +72,24 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       ...match,
+      competition: match.competition || LEAGUE_LABEL[league] || '',
       cached: false,
       fetchedAt,
     }, { headers: { 'Cache-Control': 'public, s-maxage=15' } })
   } catch {
-    // Return cached data if available, even if stale
-    if (cache && cache.data?.league === league) {
-      const match = findMatch(cache.data.scoreboard, home, away)
+    const stale = caches.get(cacheKey)
+    if (stale) {
+      const match = findMatch(stale.scoreboard, home, away)
       if (match) {
         return NextResponse.json({
           ...match,
+          competition: match.competition || LEAGUE_LABEL[league] || '',
           cached: true,
           stale: true,
-          fetchedAt: new Date(cache.timestamp).toISOString(),
+          fetchedAt: new Date(stale.timestamp).toISOString(),
         })
       }
     }
     return NextResponse.json({ error: 'No se pudo obtener el marcador' }, { status: 503 })
-  }
-}
-
-function findMatch(scoreboard: any, homeQuery: string, awayQuery: string) {
-  const events = scoreboard?.events || []
-  const found = events.find((ev: any) => {
-    const comps = ev.competitions?.[0]?.competitors || []
-    if (comps.length < 2) return false
-    const homeName = (comps.find((c: any) => c.homeAway === 'home')?.team?.displayName || '').toLowerCase()
-    const awayName = (comps.find((c: any) => c.homeAway === 'away')?.team?.displayName || '').toLowerCase()
-    const h = homeQuery.toLowerCase()
-    const a = awayQuery.toLowerCase()
-    return (
-      homeName.includes(h) || homeName.includes(a) ||
-      awayName.includes(a) || awayName.includes(h)
-    )
-  })
-
-  if (!found) return null
-
-  const comps = found.competitions?.[0]?.competitors || []
-  const home = comps.find((c: any) => c.homeAway === 'home')
-  const away = comps.find((c: any) => c.homeAway === 'away')
-  const status = found.status || {}
-  const state = status.type?.state || ''
-
-  return {
-    homeTeam: home?.team?.displayName || '',
-    awayTeam: away?.team?.displayName || '',
-    homeScore: parseInt(home?.score || '0'),
-    awayScore: parseInt(away?.score || '0'),
-    status: state,
-    statusText: status.type?.shortDetail || status.type?.detail || '',
-    clock: status.displayClock || '',
-    period: String(status.period || ''),
-    venue: found.competitions?.[0]?.venue?.fullName || '',
-    competition: found.competitions?.[0]?.league?.name || '',
-    isLive: state === 'in',
-    isFinished: state === 'post',
-    isPending: state === 'pre',
   }
 }

@@ -73,6 +73,16 @@ const EXPECTED_SLUGS = [
   'pedro-sanchez-ultimas-noticias-29n',
   'decreto-universidades-privadas-supremo-anula',
   'pep-guardiola-ultimas-noticias-vuelta-etihad',
+  'malaga-espanyol-laliga-jornada-8-2026',
+  'rayo-athletic-laliga-jornada-8-2026',
+  'alaves-atletico-laliga-jornada-8-2026',
+  'barcelona-getafe-laliga-jornada-8-2026',
+  'real-madrid-villarreal-laliga-jornada-8-2026',
+  'elche-celta-laliga-jornada-8-2026',
+  'real-sociedad-deportivo-laliga-jornada-8-2026',
+  'betis-osasuna-laliga-jornada-8-2026',
+  'racing-valencia-laliga-jornada-8-2026',
+  'levante-sevilla-laliga-jornada-8-2026',
 
 ]
 
@@ -168,7 +178,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'pep-guardiola-ultimas-noticias-vuelta-etihad')
+  assert.equal(slugs[0], 'real-madrid-villarreal-laliga-jornada-8-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -201,6 +211,8 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok((await search('Dos Hermanas')).includes('pedro-sanchez-ultimas-noticias-29n'))
   assert.ok((await search('905/2025')).includes('decreto-universidades-privadas-supremo-anula'))
   assert.ok((await search('Etihad')).includes('pep-guardiola-ultimas-noticias-vuelta-etihad'))
+  assert.ok((await search('Bernabéu')).includes('real-madrid-villarreal-laliga-jornada-8-2026'))
+  assert.ok((await search('Rosaleda')).includes('malaga-espanyol-laliga-jornada-8-2026'))
   assert.ok((await search('osteopontina')).includes('cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos'))
   assert.ok((await search('DoorDash')).includes('doordash-nueva-york-acuerdo-repartidores-131-millones'))
   assert.ok((await search('Bercovich')).includes('premios-nacionales-musica-2026-laura-vega-cecilia-bercovich'))

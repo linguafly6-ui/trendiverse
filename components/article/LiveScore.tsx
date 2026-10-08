@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface MatchData {
   homeTeam: string
@@ -23,42 +23,64 @@ interface LiveScoreProps {
   league: string
   homeTeam: string
   awayTeam: string
+  /** YYYYMMDD of the fixture, so the board can load before match day. */
+  date?: string
+  kickoffLabel?: string
 }
 
-export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps) {
+function madridStamp(now = new Date()): string {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Madrid',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(now)
+  return parts.replaceAll('-', '')
+}
+
+export default function LiveScore({ league, homeTeam, awayTeam, date, kickoffLabel }: LiveScoreProps) {
   const [match, setMatch] = useState<MatchData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const hasMatch = useRef(false)
 
   useEffect(() => {
     let mounted = true
+    let timer = 0
 
     const fetchScore = async () => {
       try {
         const params = new URLSearchParams({ league, home: homeTeam, away: awayTeam })
+        if (date) params.set('date', date)
         const res = await fetch(`/api/live-score?${params}`)
         if (!res.ok) throw new Error('Failed to fetch')
         const data: MatchData = await res.json()
 
         if (mounted) {
+          hasMatch.current = true
           setMatch(data)
           setError(false)
+          const onMatchDay = date ? madridStamp() === date : true
+          const wait = data.isLive || onMatchDay ? 15000 : 60000
+          timer = window.setTimeout(fetchScore, wait)
         }
       } catch {
-        if (mounted) setError(true)
+        if (mounted) {
+          if (!hasMatch.current) setError(true)
+          timer = window.setTimeout(fetchScore, 30000)
+        }
       } finally {
         if (mounted) setLoading(false)
       }
     }
 
     fetchScore()
-    const interval = setInterval(fetchScore, 20000)
 
     return () => {
       mounted = false
-      clearInterval(interval)
+      window.clearTimeout(timer)
     }
-  }, [league, homeTeam, awayTeam])
+  }, [league, homeTeam, awayTeam, date])
 
   if (loading) {
     return (
@@ -125,6 +147,12 @@ export default function LiveScore({ league, homeTeam, awayTeam }: LiveScoreProps
           <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{match.awayTeam}</span>
         </div>
       </div>
+
+      {match.isPending && (
+        <p className="px-5 pb-4 text-center text-sm text-slate-600 dark:text-slate-400">
+          {kickoffLabel ? `${kickoffLabel}. ` : ''}El 0-0 es el marcador de salida: el partido no ha empezado. El día del encuentro esta cifra se actualiza sola.
+        </p>
+      )}
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-slate-200 bg-white/50 px-5 py-2 dark:border-slate-800 dark:bg-slate-900/50">

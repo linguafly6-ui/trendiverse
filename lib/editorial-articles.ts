@@ -6,6 +6,7 @@ import { PENSIONES_SEGURIDAD_SOCIAL_2026 } from './pensiones-seguridad-social-20
 import { SANCHEZ_ARTICLE_2026 } from './sanchez-article-2026'
 import { UNIVERSIDADES_PRIVADAS_2026 } from './universidades-privadas-2026'
 import { GUARDIOLA_ARTICLE_2026 } from './guardiola-article-2026'
+import { LALIGA_JORNADA_8_ARTICLES } from './laliga-jornada-8-2026'
 import { POLITICS_GUIDES_2026 } from './politics-guides-2026'
 import { AUTOMOTIVE_GUIDES_2026 } from './automotive-guides-2026'
 
@@ -565,6 +566,7 @@ export const EDITORIAL_ARTICLES: Article[] = [
   SANCHEZ_ARTICLE_2026,
   UNIVERSIDADES_PRIVADAS_2026,
   GUARDIOLA_ARTICLE_2026,
+  ...LALIGA_JORNADA_8_ARTICLES,
   ...POLITICS_GUIDES_2026,
   ...AUTOMOTIVE_GUIDES_2026,
 ]

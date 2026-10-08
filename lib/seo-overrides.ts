@@ -1,3 +1,5 @@
+import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
+
 /**
  * Títulos y descripciones SEO por artículo, independientes del título visible.
  * El layout añade " | TrendiVerse" (14 caracteres), así que los títulos van
@@ -9,6 +11,7 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  ...JORNADA_8_SEO,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': {
     title: 'Guardiola vuelve al Etihad tras el fallo',
     description: 'Guardiola tiene previsto el Etihad el 14 de octubre, según ESPN. El City apeló el fallo financiero. La sanción sigue sin decidirse.',

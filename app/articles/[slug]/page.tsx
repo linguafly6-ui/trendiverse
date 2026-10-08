@@ -10,6 +10,7 @@ import RelatedArticles from '@/components/article/RelatedArticles'
 import TableOfContents from '@/components/article/TableOfContents'
 import ShareButtons from '@/components/article/ShareButtons'
 import LiveScore from '@/components/article/LiveScore'
+import { liveMatchForSlug } from '@/lib/laliga-jornada-8-2026'
 import { getArticleBySlug, getRelatedArticles } from '@/lib/db'
 import { getHeadings, parseArticleContent } from '@/lib/article-content'
 import { withRelatedLinks } from '@/lib/related-links'
@@ -53,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
   const article = await getArticleBySlug((await params).slug)
   if (!article) notFound()
+  const liveMatch = liveMatchForSlug(article.slug)
   const blocks = parseArticleContent(withRelatedLinks(article.slug, article.content))
   const related = await getRelatedArticles(article, 4)
   const category = getCategory(article.category)
@@ -90,6 +92,15 @@ export default async function ArticlePage({ params }: Props) {
         <TableOfContents headings={getHeadings(blocks)} />
         {article.slug === 'portugal-noruega-nations-league' && <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />}
         {article.slug === 'girona-mallorca-laliga-hypermotion' && <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />}
+        {liveMatch && (
+          <LiveScore
+            league={liveMatch.league}
+            homeTeam={liveMatch.espnHome}
+            awayTeam={liveMatch.espnAway}
+            date={liveMatch.date}
+            kickoffLabel={liveMatch.kickoffLabel}
+          />
+        )}
         <ArticleBody blocks={blocks} />
         <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800"><ShareButtons slug={article.slug} title={article.title} /></div>
         <RelatedArticles articles={related} />

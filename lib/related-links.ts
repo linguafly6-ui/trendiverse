@@ -5,6 +5,8 @@
  * que renderiza ArticleBody.
  */
 
+import { JORNADA_8_RELATED } from './laliga-jornada-8-2026'
+
 const BOE_RDL_26_2026 = 'https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20266'
 
 const A = {
@@ -30,6 +32,7 @@ const A = {
 }
 
 const RELATED: Record<string, string[]> = {
+  ...JORNADA_8_RELATED,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': [
     `[Cristiano Ronaldo y Portugal](${A.ronaldo}): la otra pieza de la ventana de selecciones, tras el partido ante Noruega.`,
   ],
