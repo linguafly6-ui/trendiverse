@@ -1,6 +1,7 @@
 import type { Article } from './types'
 import { EDITORIAL_BATCH_340_349 } from './editorial-batch-340-349'
 import { ELECTION_ARTICLES_2026 } from './election-articles-2026'
+import { RUFIAN_ARTICLE_2026 } from './rufian-article-2026'
 import { POLITICS_GUIDES_2026 } from './politics-guides-2026'
 import { AUTOMOTIVE_GUIDES_2026 } from './automotive-guides-2026'
 
@@ -555,6 +556,7 @@ export const EDITORIAL_ARTICLES: Article[] = [
 },
   ...EDITORIAL_BATCH_340_349,
   ...ELECTION_ARTICLES_2026,
+  RUFIAN_ARTICLE_2026,
   ...POLITICS_GUIDES_2026,
   ...AUTOMOTIVE_GUIDES_2026,
 ]

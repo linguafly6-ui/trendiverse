@@ -9,6 +9,10 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'rufian-erc-ultimas-noticias-candidato-29n': {
+    title: 'Rufián y el plan B de ERC para el 29N',
+    description: 'Rufián no confirma si encabezará ERC el 29N. Junqueras lo defiende y el partido estudia a Jordi Albert como plan B antes del domingo.',
+  },
   'fondos-buitre-2026-decreto-vivienda': {
     title: 'Fondos buitre 2026: quién no puede comprar',
     description: 'El decreto prohíbe a fondos y a dueños de más de 10 viviendas comprar por debajo del 70% de la tasación. Excepciones y efectos para quien vende.',

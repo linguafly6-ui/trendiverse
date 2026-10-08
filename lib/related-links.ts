@@ -16,10 +16,18 @@ const A = {
   tecnologia: '/articles/novedades-tecnologia-2026-tv-moviles-ordenadores',
   espacio: '/articles/semana-mundial-del-espacio-2026',
   inundaciones: '/articles/inundaciones-cataluna-octubre-2026-alerta-recomendaciones',
+  elecciones: '/articles/elecciones-generales-2026-29-noviembre',
+  frente: '/articles/frente-amplio-espana-partidos-candidato-programa-29n',
+  escanos: '/articles/como-se-reparten-escanos-voto-provincia-29n',
   electricidad: '/articles/evitar-electrocucion-ducha-seguridad-electrica-bano',
 }
 
 const RELATED: Record<string, string[]> = {
+  'rufian-erc-ultimas-noticias-candidato-29n': [
+    `[Elecciones generales del 29 de noviembre](${A.elecciones}): calendario, campaña y qué está ya convocado.`,
+    `[Qué es el Frente Amplio](${A.frente}): partidos, candidato pendiente y relación con la izquierda.`,
+    `[Cómo se reparten los escaños](${A.escanos}): por qué el resultado se decide provincia a provincia.`,
+  ],
   'fondos-buitre-2026-decreto-vivienda': [
     `[Cómo afecta el decreto de vivienda a arrendadores e inquilinos](${A.alquiler}): límite del 2% a la subida de la renta, prórrogas y bonificaciones fiscales.`,
     `[La nómina cambia en enero de 2027](${A.nomina}): qué te descontarán para financiar las pensiones.`,
