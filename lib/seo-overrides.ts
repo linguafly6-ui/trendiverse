@@ -9,6 +9,10 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'decreto-universidades-privadas-supremo-anula': {
+    title: 'Supremo anula el decreto universitario',
+    description: 'El Supremo anula el decreto de universidades por la vía de urgencia. El fondo, con el mínimo de 4.500 alumnos, no se juzgó. El Gobierno prepara otra norma.',
+  },
   'pedro-sanchez-ultimas-noticias-29n': {
     title: 'Sánchez y el 29N: vivienda y campaña',
     description: 'Sánchez convocó el 29N tras caer la vivienda en el Congreso. El 6 de octubre rehízo los decretos y arranca la precampaña en Dos Hermanas.',
