@@ -29,6 +29,11 @@ const A = {
 }
 
 const RELATED: Record<string, string[]> = {
+  'decreto-universidades-privadas-supremo-anula': [
+    `[Últimas noticias de Pedro Sánchez](${A.sanchez}): la convocatoria del 29N y el calendario en el que cae esta sentencia.`,
+    `[Elecciones generales del 29 de noviembre](${A.elecciones}): qué está ya convocado y qué se vota.`,
+    `[Gobierno en funciones](${A.funciones}): qué margen tiene el Ejecutivo para aprobar la norma que anuncia.`,
+  ],
   'pedro-sanchez-ultimas-noticias-29n': [
     `[Elecciones generales del 29 de noviembre](${A.elecciones}): calendario, convocatoria y qué se vota.`,
     `[Vivienda en el 29N](${A.vivienda29}): cómo comparar las propuestas cuando se publiquen los programas.`,
