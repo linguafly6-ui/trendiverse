@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"><rect width="800" height="450" fill="#111827"/><text x="400" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="700" fill="white">GABRIEL RUFIÁN</text><text x="400" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" fill="#a78bfa">ERC · 29 NOVIEMBRE</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#111827"/>
+  <rect x="36" y="36" width="728" height="378" rx="24" fill="#1f2937"/>
+  <text x="400" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ffffff">GABRIEL RUFI&#193;N</text>
+  <text x="400" y="258" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#a78bfa">ERC &#183; 29 NOVIEMBRE</text>
+</svg>
