@@ -2,14 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ArticleFeed from '@/components/ArticleFeed'
 import Sidebar from '@/components/Sidebar'
+import JsonLd from '@/components/JsonLd'
 import { CATEGORIES, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getArticles } from '@/lib/db'
+import { articlesIndexGraph } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
 export const metadata: Metadata = {
   title: 'Noticias, actualidad y guías por categoría',
-    description: 'Explora las últimas noticias y guías de TrendiVerse por política, economía, deportes, tecnología, gaming, coches, virales, herramientas, chollos y conciertos.',
+    description: 'Explora las noticias y guías de TrendiVerse por política, economía, deportes, tecnología, gaming, coches, virales, herramientas, chollos, conciertos y astrología.',
   alternates: { canonical: `${SITE_URL}/articles` },
   robots: { index: true, follow: true },
   openGraph: {
@@ -25,31 +27,11 @@ export const metadata: Metadata = {
 
 export default async function ArticlesPage() {
   const articles = await getArticles({ limit: 12 })
-  const url = `${SITE_URL}/articles`
-  const collectionSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Noticias, actualidad y guías por categoría',
-    description: 'Índice editorial de TrendiVerse.',
-    url,
-    inLanguage: 'es-ES',
-    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
-    mainEntity: {
-      '@type': 'ItemList',
-      numberOfItems: articles.length,
-      itemListElement: articles.map((article, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        url: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`,
-        name: article.title,
-      })),
-    },
-  }
 
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <main className="space-y-7 lg:col-span-7">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+        <JsonLd data={articlesIndexGraph(articles)} />
         <nav aria-label="Migas de pan" className="text-sm text-slate-500">
           <Link href="/" className="hover:text-brand-violet">Inicio</Link>
           <span aria-hidden="true"> / </span>
@@ -59,7 +41,7 @@ export default async function ArticlesPage() {
         <header>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Noticias, actualidad y guías</h1>
           <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-400">
-            Un índice de contenidos de TrendiVerse organizado por temas. Consulta actualidad y análisis de política y economía, tecnología, deportes, gaming, coches, virales, herramientas, chollos y conciertos.
+            Un índice de contenidos de TrendiVerse organizado por temas. Consulta actualidad y análisis de política y economía, tecnología, deportes, gaming, coches, virales, herramientas, chollos, conciertos y astrología.
           </p>
         </header>
 

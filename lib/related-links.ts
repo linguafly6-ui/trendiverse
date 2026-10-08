@@ -7,6 +7,7 @@
 
 import { JORNADA_8_RELATED } from './laliga-jornada-8-2026'
 import { CONCERTS_GUIDE_SLUG } from './concerts'
+import { ASTRO_GUIDE_SLUG } from './astrology'
 
 const BOE_RDL_26_2026 = 'https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20266'
 
@@ -35,8 +36,13 @@ const A = {
 const RELATED: Record<string, string[]> = {
   [CONCERTS_GUIDE_SLUG]: [
     '[Agenda de conciertos](/conciertos): las citas vigentes desde el 8 de octubre de 2026 y lo fechado para 2027.',
-    '[Primavera Sound en la agenda](/conciertos#primavera-sound-2027): del 2 al 6 de junio de 2027 en el Parc del Fòrum.',
-    '[Oasis en Barcelona](/conciertos#oasis-barcelona-2027): 10 y 11 de julio de 2027 en el Estadi Olímpic.',
+    '[Primavera Sound en la agenda](/conciertos/primavera-sound-2027): del 2 al 6 de junio de 2027 en el Parc del Fòrum.',
+    '[Oasis en Barcelona](/conciertos/oasis-barcelona-2027): 10 y 11 de julio de 2027 en el Estadi Olímpic.',
+  ],
+  [ASTRO_GUIDE_SLUG]: [
+    '[Horóscopo de la semana](/astrologia): los doce signos con el cielo del 8 al 14 de octubre.',
+    '[Horóscopo de Libra](/astrologia/libra): el signo que recibe la luna nueva del sábado.',
+    '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada transita este signo.',
   ],
   ...JORNADA_8_RELATED,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': [

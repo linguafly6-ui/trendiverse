@@ -458,6 +458,10 @@ export interface LiveFixtureRef {
   espnAway: string
   date: string
   kickoffLabel: string
+  startDate: string
+  venue: string
+  homeName: string
+  awayName: string
 }
 
 const LIVE = new Map<string, LiveFixtureRef>(FIXTURES.map((fx) => [fx.slug, {
@@ -466,6 +470,10 @@ const LIVE = new Map<string, LiveFixtureRef>(FIXTURES.map((fx) => [fx.slug, {
   espnAway: fx.espnAway,
   date: fx.date,
   kickoffLabel: `${fx.dayLabel}, ${fx.hour} hora peninsular`,
+  startDate: `${fx.date.slice(0, 4)}-${fx.date.slice(4, 6)}-${fx.date.slice(6, 8)}T${fx.hour}:00+02:00`,
+  venue: fx.venue,
+  homeName: fx.home.name,
+  awayName: fx.away.name,
 }]))
 
 export function liveMatchForSlug(slug: string): LiveFixtureRef | null {

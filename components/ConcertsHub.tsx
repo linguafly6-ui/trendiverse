@@ -32,7 +32,7 @@ export default function ConcertsHub({
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {next.map((concert) => (
             <li key={concert.id}>
-              <Link href={`/conciertos#${concert.id}`} className="block rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
+              <Link href={`/conciertos/${concert.id}`} className="block rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
                 <p className="text-sm font-semibold">{concert.artist}</p>
                 <p className="text-xs text-slate-500">{concert.when} · {concert.city}</p>
               </Link>
@@ -81,7 +81,9 @@ export default function ConcertsHub({
                   {concert.tier === 'confirmado' ? 'Confirmado' : 'Agenda de entradas'}
                   {concert.datesPending ? ' · días por cerrar' : ''}
                 </p>
-                <h3 className="mt-1 text-lg font-bold">{concert.artist}</h3>
+                <h3 className="mt-1 text-lg font-bold">
+                  <Link href={`/conciertos/${concert.id}`} className="hover:text-rose-700 dark:hover:text-rose-300">{concert.artist}</Link>
+                </h3>
                 <p className="text-sm font-medium">{concert.title}</p>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{concert.when}</p>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{concert.venue} · {concert.city}</p>

@@ -8,8 +8,12 @@ import GamingCodes from '@/components/GamingCodes'
 import Sidebar from '@/components/Sidebar'
 import PoliticsHub from '@/components/PoliticsHub'
 import ConcertsHub from '@/components/ConcertsHub'
+import AstrologyHub from '@/components/AstrologyHub'
+import JsonLd from '@/components/JsonLd'
 import { getCategory, SITE_NAME, SITE_URL, TOPICS } from '@/lib/constants'
 import { getArticles, getDeals } from '@/lib/db'
+import { truncateWords } from '@/lib/seo-overrides'
+import { categoryArchiveGraph } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
@@ -19,13 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = getCategory((await params).cat)
   if (!c) return {}
   const url = `${SITE_URL}/articles/category/${c.slug}`
+  const description = truncateWords(c.description, 155)
   return {
     title: c.seoTitle,
-    description: c.description.slice(0, 160),
+    description,
     alternates: { canonical: url },
     robots: { index: true, follow: true },
-    openGraph: { title: c.seoTitle, description: c.description.slice(0, 160), type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' },
-    twitter: { card: 'summary', title: c.seoTitle, description: c.description.slice(0, 160) },
+    openGraph: { title: c.seoTitle, description, type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' },
+    twitter: { card: 'summary', title: c.seoTitle, description },
   }
 }
 
@@ -37,39 +42,10 @@ export default async function CategoryPage({ params }: Props) {
     getArticles({ category: cat, limit: 10 }),
     cat === 'chollos' ? getDeals(10) : Promise.resolve([]),
   ])
-  const url = `${SITE_URL}/articles/category/${c.slug}`
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: c.name, item: url },
-    ],
-  }
-  const collectionSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: c.seoTitle,
-    description: c.description,
-    url,
-    inLanguage: 'es-ES',
-    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
-    mainEntity: {
-      '@type': 'ItemList',
-      numberOfItems: articles.length,
-      itemListElement: articles.map((article, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        url: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`,
-        name: article.title,
-      })),
-    },
-  }
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <div className="space-y-6 lg:col-span-7">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+        <JsonLd data={categoryArchiveGraph(c, articles)} />
         <nav aria-label="Migas de pan" className="text-sm text-slate-500"><a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>{c.name}</span></nav>
         <header>
           <p className="max-w-3xl text-slate-600 dark:text-slate-400">{c.description}</p>
@@ -90,6 +66,7 @@ export default async function CategoryPage({ params }: Props) {
         {cat === 'gaming' && <GamingCodes />}
         {cat === 'politica' && <PoliticsHub />}
         {cat === 'conciertos' && <ConcertsHub variant="strip" />}
+        {cat === 'astrologia' && <AstrologyHub variant="strip" />}
         {deals.length > 0 && <div className="grid gap-4 sm:grid-cols-2">{deals.map((d) => <DealCard key={d.id} deal={d} />)}</div>}
         <ArticleFeed key={cat} initial={articles} category={cat} />
       </div>

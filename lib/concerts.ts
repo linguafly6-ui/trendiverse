@@ -687,6 +687,11 @@ export function concertsFor(options: { ciudad?: string; tier?: ConcertTier } = {
     .sort((a, b) => a.start.localeCompare(b.start) || a.artist.localeCompare(b.artist, 'es'))
 }
 
+export function concertById(id: string): Concert | undefined {
+  const concert = CONCERTS.find((item) => item.id === id)
+  return concert && isCurrent(concert) ? concert : undefined
+}
+
 export function concertCities(): string[] {
   return [...new Set(CONCERTS.map((concert) => concert.city))].sort((a, b) => a.localeCompare(b, 'es'))
 }

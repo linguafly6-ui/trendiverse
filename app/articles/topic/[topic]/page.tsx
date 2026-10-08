@@ -4,8 +4,11 @@ import { notFound } from 'next/navigation'
 import ArticleCard from '@/components/ArticleCard'
 import CategoryClusterLinks from '@/components/CategoryClusterLinks'
 import Sidebar from '@/components/Sidebar'
+import JsonLd from '@/components/JsonLd'
 import { getCategory, getTopic, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getArticles } from '@/lib/db'
+import { truncateWords } from '@/lib/seo-overrides'
+import { topicGraph } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
@@ -17,13 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const articles = await getArticles({ q: topic.query, category: topic.category, limit: 50 })
   const indexable = articles.length >= 3
   const url = `${SITE_URL}/articles/topic/${topic.slug}`
+  const description = truncateWords(topic.description, 155)
   return {
     title: topic.seoTitle,
-    description: topic.description.slice(0, 160),
+    description,
     alternates: { canonical: url },
     robots: { index: indexable, follow: true },
-    openGraph: { title: topic.seoTitle, description: topic.description, type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' },
-    twitter: { card: 'summary', title: topic.seoTitle, description: topic.description },
+    openGraph: { title: topic.seoTitle, description, type: 'website', url, siteName: SITE_NAME, locale: 'es_ES' },
+    twitter: { card: 'summary', title: topic.seoTitle, description },
   }
 }
 
@@ -34,33 +38,16 @@ export default async function TopicPage({ params }: Props) {
   const articles = await getArticles({ q: topic.query, category: topic.category, limit: 50 })
   const category = topic.category ? getCategory(topic.category) : undefined
   const indexable = articles.length >= 3
-  const url = `${SITE_URL}/articles/topic/${topic.slug}`
-  const itemList = articles.slice(0, 20).map((article, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    url: `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`,
-    name: article.title,
-  }))
-  const collectionSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: topic.seoTitle,
-    description: topic.description,
-    url,
-    inLanguage: 'es-ES',
-    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
-    mainEntity: { '@type': 'ItemList', numberOfItems: itemList.length, itemListElement: itemList },
-  }
 
   return (
     <div className="grid gap-8 lg:grid-cols-10">
       <main className="space-y-7 lg:col-span-7">
-        {indexable && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />}
+        {indexable && <JsonLd data={topicGraph(topic, articles)} />}
         <nav aria-label="Migas de pan" className="text-sm text-slate-500">
           <Link href="/" className="hover:text-brand-violet">Inicio</Link>
           <span aria-hidden="true"> / </span>
           <Link href="/articles" className="hover:text-brand-violet">Noticias y guías</Link>
-          {category && <><span aria-hidden="true"> / </span><Link href={`/articles/category/${category.slug}`} className="hover:text-brand-violet">{category.name}</Link></>}
+          {category && <><span aria-hidden="true"> / </span><Link href={category.href ?? `/articles/category/${category.slug}`} className="hover:text-brand-violet">{category.name}</Link></>}
           <span aria-hidden="true"> / </span><span>{topic.name}</span>
         </nav>
 

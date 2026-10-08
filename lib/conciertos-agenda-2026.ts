@@ -2,7 +2,7 @@ import type { Article } from './types'
 import { CONCERTS_GUIDE_SLUG } from './concerts'
 
 export const CONCIERTOS_AGENDA_2026: Article = {
-  id: 376,
+  id: 377,
   title: 'Conciertos en España: la agenda verificada de 2026 y 2027',
   slug: CONCERTS_GUIDE_SLUG,
   category: 'conciertos',
