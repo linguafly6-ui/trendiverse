@@ -26,9 +26,13 @@ const A = {
   frente: '/articles/frente-amplio-espana-partidos-candidato-programa-29n',
   escanos: '/articles/como-se-reparten-escanos-voto-provincia-29n',
   electricidad: '/articles/evitar-electrocucion-ducha-seguridad-electrica-bano',
+  ronaldo: '/articles/cristiano-ronaldo-abandona-concentracion-portugal-jorge-jesus',
 }
 
 const RELATED: Record<string, string[]> = {
+  'pep-guardiola-ultimas-noticias-vuelta-etihad': [
+    `[Cristiano Ronaldo y Portugal](${A.ronaldo}): la otra pieza de la ventana de selecciones, tras el partido ante Noruega.`,
+  ],
   'decreto-universidades-privadas-supremo-anula': [
     `[Últimas noticias de Pedro Sánchez](${A.sanchez}): la convocatoria del 29N y el calendario en el que cae esta sentencia.`,
     `[Elecciones generales del 29 de noviembre](${A.elecciones}): qué está ya convocado y qué se vota.`,

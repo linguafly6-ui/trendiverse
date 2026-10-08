@@ -9,6 +9,10 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'pep-guardiola-ultimas-noticias-vuelta-etihad': {
+    title: 'Guardiola vuelve al Etihad tras el fallo',
+    description: 'Guardiola tiene previsto el Etihad el 14 de octubre, según ESPN. El City apeló el fallo financiero. La sanción sigue sin decidirse.',
+  },
   'decreto-universidades-privadas-supremo-anula': {
     title: 'Supremo anula el decreto universitario',
     description: 'El Supremo anula el decreto de universidades por la vía de urgencia. El fondo, con el mínimo de 4.500 alumnos, no se juzgó. El Gobierno prepara otra norma.',
