@@ -9,7 +9,8 @@ test('weekly horoscope uses one solar-sign reading per sign', () => {
   assert.match(WEEK_LABEL, /8 al 14 de octubre de 2026/)
   assert.match(SKY.newMoon, /15:50 UTC/)
   assert.match(SKY.venus, /Escorpio/)
-  assert.match(DISCLAIMER, /no es un pronóstico científico/i)
+  assert.match(DISCLAIMER, /entretenimiento/i)
+  assert.doesNotMatch(DISCLAIMER, /ascendente|casas/i)
   assert.equal(solarHouse('aries', 'libra'), 7)
   assert.equal(solarHouse('libra', 'libra'), 1)
   assert.equal(solarHouse('escorpio', 'libra'), 12)
@@ -22,13 +23,16 @@ test('weekly horoscope uses one solar-sign reading per sign', () => {
     assert.equal(sign.saturnHouse, solarHouse(sign.slug, 'aries'))
     assert.equal(sign.marsHouse, solarHouse(sign.slug, 'leo'))
     assert.ok(HOUSES[sign.newMoonHouse])
-    assert.match(sign.general + sign.relaciones + sign.trabajo, new RegExp(`casa ${sign.newMoonHouse}(?!\\d)`))
     assert.ok(sign.seoTitle.length <= 46, `${sign.slug} title ${sign.seoTitle.length}`)
     assert.ok(sign.description.length <= 155, `${sign.slug} description ${sign.description.length}`)
-    assert.ok(sign.pregunta.endsWith('?'))
-    const blob = `${sign.general} ${sign.relaciones} ${sign.trabajo} ${sign.ritmo}`
-    assert.ok(blob.split(/\s+/).length >= 280, `${sign.slug} short`)
+    assert.ok(sign.titulo.length > 0 && sign.titulo.length <= 60, `${sign.slug} titulo`)
+    assert.ok(sign.hook.length <= 70, `${sign.slug} hook ${sign.hook.length}`)
+    assert.ok(sign.consejo.length >= 30, `${sign.slug} consejo`)
+    const blob = `${sign.general} ${sign.relaciones} ${sign.trabajo} ${sign.dinero} ${sign.ritmo}`
+    assert.ok(blob.split(/\s+/).length >= 250, `${sign.slug} short`)
     assert.doesNotMatch(blob, /lotería|vas a enfermar|diagnóstico|debes invertir/i)
+    // La lectura principal se escribe en lenguaje cotidiano: nada de casas, retrógrados ni efemérides.
+    assert.doesNotMatch(`${blob} ${sign.consejo} ${sign.hook} ${sign.titulo}`, /casa \d|retrógrad|efemérid|grado|ascendente|tránsito|regente|UTC/i)
   }
 })
 

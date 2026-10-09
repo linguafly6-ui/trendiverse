@@ -3,6 +3,10 @@
  * Cielo fijado con efemérides públicas de la semana del 8 al 14 de octubre de 2026.
  * Las casas se cuentan en signos enteros desde el signo solar, porque el ascendente
  * del lector no está en la página. La lectura es interpretación, no un pronóstico.
+ *
+ * Los textos de cada signo están escritos en lenguaje cotidiano: amor, trabajo, dinero,
+ * bienestar y un consejo. La parte técnica (casas, retrógrados, efemérides) se muestra
+ * aparte, para quien quiera consultarla.
  */
 
 export const ASTRO_GUIDE_SLUG = 'como-leemos-el-horoscopo-astrologia-tropical'
@@ -10,7 +14,10 @@ export const ASTRO_GUIDE_SLUG = 'como-leemos-el-horoscopo-astrologia-tropical'
 export const WEEK_LABEL = '8 al 14 de octubre de 2026'
 
 export const DISCLAIMER =
-  'Esto es una lectura de astrología tropical a partir de tu signo solar. No es un pronóstico científico, ni un consejo médico, legal o financiero. Ordena la semana. No anuncia un destino. Si conoces tu ascendente, las casas se cuentan desde ahí y esta lectura cambia.'
+  'El horóscopo es un contenido de entretenimiento y reflexión. No predice tu futuro ni sustituye el consejo de un médico, un abogado o un asesor financiero.'
+
+export const METHOD_NOTE =
+  'Esta lectura usa astrología tropical a partir de tu signo solar. Las casas se cuentan de signo en signo desde el tuyo. Si conoces tu ascendente, el mapa cambia y la lectura también.'
 
 export const SKY = {
   newMoon:
@@ -64,6 +71,7 @@ export interface SignReading {
   element: 'Fuego' | 'Tierra' | 'Aire' | 'Agua'
   modality: 'Cardinal' | 'Fijo' | 'Mutable'
   ruler: string
+  /** Frase corta para la tarjeta del signo en la portada. */
   hook: string
   seoTitle: string
   description: string
@@ -71,11 +79,20 @@ export interface SignReading {
   venusHouse: number
   saturnHouse: number
   marsHouse: number
+  /** Título de la lectura principal, en una frase. */
+  titulo: string
+  /** Lectura general de la semana. */
   general: string
+  /** Amor y relaciones. */
   relaciones: string
+  /** Trabajo y estudios. */
   trabajo: string
+  /** Dinero. */
+  dinero: string
+  /** Bienestar y tiempo para ti. */
   ritmo: string
-  pregunta: string
+  /** Consejo de la semana, en una o dos frases. */
+  consejo: string
 }
 
 export function solarHouse(from: SignSlug, transit: SignSlug): number {
@@ -93,18 +110,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Fuego',
     modality: 'Cardinal',
     ruler: 'Marte',
-    hook: 'El sábado mira el acuerdo que ya tienes, antes de abrir otro.',
+    hook: 'Revisa el acuerdo que ya tienes antes de abrir otro.',
     seoTitle: 'Aries: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Aries del 8 al 14 de octubre de 2026. La luna nueva en Libra cae en la casa 7 y Saturno retrógrado sigue en tu signo.',
+    description: 'Horóscopo de Aries del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Revisa un acuerdo antes de abrir otro',
     general:
-      'Si esta semana te reconoces en Aries, el sábado te pone delante un pacto. La luna nueva cae en Libra y, desde tu signo, eso es tu casa 7: la pareja, el socio, el contrato, la persona con la que ya tienes un trato. El gesto que encaja es mirar si ese trato sigue siendo el que crees. Saturno va hacia atrás en tu propio signo. Se nota en el ritmo con el que te presentas y en los síes que das demasiado pronto. Empezar cuesta más de lo que Aries suele contar en voz alta. Esa puerta de entrada se revisa despacio, con una promesa que sí puedas cumplir entre el jueves y el miércoles.',
+      'Esta semana, el foco está en la gente con la que ya tienes un trato: tu pareja, un socio, alguien con quien compartes un compromiso. Antes de decir que sí a algo nuevo, mira si lo que ya tienes sigue funcionando como crees. Quizá notes que arrancar te cuesta más de lo habitual. No pasa nada. Ir un poco más despacio también es avanzar.',
     relaciones:
-      'Venus va hacia atrás, y Mercurio también está en Escorpio. En tu semana eso es lo compartido y lo que cuesta decir: un dinero en común, una deuda, una intimidad a medias, el tema que los dos dejáis para luego. La conversación que sirve nombra un asunto concreto y se queda ahí. Si ahora mismo no hay pareja, el mismo sitio vale para un socio, un compañero de piso o una cuenta compartida. El sábado, con la luna nueva en la zona de los pactos, sirve para releer el acuerdo que ya existe. Marte, tu regente, está en Leo, en la parte del juego y del romance. Hay ganas de que la relación se vea y se disfrute. Que el gesto sea claro y pequeño, del tamaño de algo que se pueda cumplir el martes.',
+      'Si tienes pareja, puede salir una conversación sobre algo que compartís: dinero, planes o un tema que lleváis tiempo dejando para luego. Elige un asunto concreto y habladlo con calma, sin meter todo en la misma charla. El fin de semana es buen momento para repasar cómo os repartís las cosas. Si estás soltero o soltera, lo mismo vale para un amigo, un compañero de piso o alguien con quien compartes gastos. Tienes ganas de disfrutar y de que la relación se note. Un plan sencillo y bien hecho vale más que una gran promesa.',
     trabajo:
-      'Marte y Júpiter en Leo encienden las ganas de que una idea se vea: un ensayo, una presentación, un trabajo con tu nombre. Hay impulso de sobra. Saturno, en tu signo, pide que ese impulso quepa en la semana. Una entrega. Un límite de horas. Un solo frente. Elige el que puedas enseñar el miércoles y deja los otros en una lista, quietos. Si alguien te pide un sí rápido en un contrato, el sábado está para leerlo con calma y contestar cuando hayas visto la letra pequeña.',
+      'Tienes energía de sobra y ganas de que una idea tuya se vea: una presentación, un proyecto, algo con tu nombre. Para que salga bien, elige un solo frente y ponle una fecha realista. Lo demás puede esperar en una lista. Si alguien te pide una respuesta rápida sobre un contrato o un acuerdo, pide tiempo para leerlo con tranquilidad. Contestar el lunes con la letra pequeña leída es mejor que contestar hoy sin leerla.',
+    dinero:
+      'El dinero compartido pide atención: una cuenta en común, una deuda, un gasto que paga otra persona por ti. Pon las cifras sobre la mesa y aclara quién paga qué. Si hay algo pendiente de devolver, acordad una fecha. Evita firmar o comprometer dinero con prisas esta semana.',
     ritmo:
-      'El jueves la Luna todavía está en Virgo, en la zona de la rutina. Antes del sábado, cierra una tarea pequeña del día a día: una lista, una hora de fin, una comida que no dependa de improvisar. Así se sostiene la semana. Si el cuerpo pide menos velocidad, bajar el ritmo cabe en Aries. Saturno trabaja mejor con una meta corta que con un sprint sin meta. Duerme a una hora que puedas repetir y deja el domingo con un hueco libre, para que el lunes no empiece ya cansado.',
-    pregunta: '¿Qué acuerdo mantengo por costumbre, y qué parte de ese acuerdo sí quiero seguir sosteniendo?',
+      'Tu cuerpo puede pedirte bajar el ritmo. Escúchalo. Antes del fin de semana, cierra una tarea pequeña del día a día que te quite peso: una lista, una compra, una llamada. Intenta acostarte a una hora parecida cada noche y deja un hueco libre el domingo para que el lunes no empiece ya cansado.',
+    consejo: 'Cuida los acuerdos que ya tienes antes de abrir otros nuevos. Ir despacio también es avanzar.',
   },
   {
     slug: 'tauro',
@@ -114,18 +134,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Tierra',
     modality: 'Fijo',
     ruler: 'Venus',
-    hook: 'Venus, tu regente, vuelve sobre un pacto. Míralo antes de comprar el gesto.',
+    hook: 'Ajusta tu rutina y di lo que te pesa en pareja.',
     seoTitle: 'Tauro: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Tauro del 8 al 14 de octubre de 2026. Venus retrógrada, tu regente, está en la casa 7 y la luna nueva cae en la casa 6.',
+    description: 'Horóscopo de Tauro del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Pon orden en tu día a día',
     general:
-      'Tauro suele fiarse de lo que ya está asentado. Esta semana ese suelo también se mira. Venus, tu regente, va hacia atrás en Escorpio, en la zona de la pareja y de los pactos. La pregunta es sencilla: cómo das y cómo recibes. La luna nueva del sábado cae en Libra, tu casa 6, la del horario, las tareas y la forma concreta de cuidar el día. Un acuerdo bonito que no cabe en la rutina real se arregla viendo a qué hora, con qué dinero y con qué cansancio se sostiene. El plan que no cabe en el martes puede esperar.',
+      'Esta semana toca mirar cómo organizas tus días: horarios, tareas, hábitos. Algo que funcionaba en teoría puede no encajar en tu rutina real, y ahora es buen momento para ajustarlo. También puede salir una conversación con tu pareja o con alguien cercano sobre lo que das y lo que recibes. No hace falta cambiarlo todo, solo ser sincero con lo que ya no te encaja.',
     relaciones:
-      'Con Venus hacia atrás, sale a la luz un gesto que se repite: una espera, un silencio, una costumbre de complacer o de exigir. Basta una frase precisa. Mercurio, también en Escorpio, ayuda a decirla sin adorno. Si estás solo, el mismo cielo vale para un socio o para la forma en que negocias. Entre el jueves y el miércoles elige un solo punto: el tiempo, el dinero compartido o una promesa que quedó a medias. Marte y Júpiter en Leo caen en la parte de la casa y de la familia. Piden calor de puertas adentro. Un arreglo doméstico concreto acompaña mejor que una declaración pensada para que otros la oigan.',
+      'En pareja, puede repetirse un patrón que conoces bien: esperar sin decir nada, ceder para evitar discusiones o exigir más de la cuenta. Esta semana es buen momento para nombrarlo con una frase sencilla y sin reproches. Si no tienes pareja, lo mismo vale para un socio o una amistad en la que notas un desequilibrio. En casa, hay ganas de calor y de compañía. Un gesto concreto, como arreglar algo pendiente o preparar una cena, dice más que muchas palabras.',
     trabajo:
-      'La luna nueva en tu casa 6 invita a corregir un método. Mira una tarea que se atasca siempre en el mismo paso y quítale ese paso. Saturno, hacia atrás en Aries, está en la zona de lo que ocurre entre bastidores: un cansancio de fondo que no sale en la reunión. Conviértelo en un margen. Deja una hora sin encargo antes de prometer otra entrega. El gasto que solo tapa el malestar puede esperar. El que ya está comprometido, ese sí conviene repasarlo con la cifra delante.',
+      'Hay una tarea que siempre se atasca en el mismo punto. Fíjate en cuál es ese paso y prueba a cambiarlo o quitarlo. Puede que arrastres un cansancio de fondo que no se nota en las reuniones pero sí en ti. Deja márgenes: no prometas una entrega nueva sin haber cerrado la anterior. Si alguien te mete prisa, está bien decir que lo revisas el lunes con la cabeza despejada.',
+    dinero:
+      'Antes de gastar para sentirte mejor, pregúntate si ese gasto resuelve algo o solo tapa el malestar un rato. Repasa los pagos que ya tienes comprometidos y comprueba que las cifras cuadran. Si compartes gastos de casa, aclarad quién paga qué este mes.',
     ritmo:
-      'Tauro aguanta mucho y luego se planta. Esta semana ese plante llega mejor el viernes que el domingo por la noche. Come y duerme a la hora que ya sabes que te funciona. Siete días cumpliendo el ritmo que ya tienes valen más que un plan nuevo de cuidado. Si alguien te mete prisa, tu regente hacia atrás te da una frase honesta: lo miras el lunes, con la cabeza fresca. El sábado a última hora puede quedarse para cerrar el día, no para decidir.',
-    pregunta: '¿Qué doy por sentado en un pacto, en casa o en el trabajo, solo porque ya dura?',
+      'Aguantas mucho y luego te plantas de golpe. Esta semana, intenta decir que necesitas parar antes de llegar al límite. Come y duerme a las horas que sabes que te sientan bien. No necesitas un plan nuevo de bienestar: con mantener siete días lo que ya te funciona es suficiente. El sábado por la noche, descansa en lugar de tomar decisiones.',
+    consejo: 'Ajusta tu rutina a tu vida real y di lo que te pesa antes de que te pese demasiado.',
   },
   {
     slug: 'geminis',
@@ -135,18 +158,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Aire',
     modality: 'Mutable',
     ruler: 'Mercurio',
-    hook: 'El sábado pide una idea con forma. Mercurio, tu regente, la mete en el horario.',
+    hook: 'Una idea pide forma. Elige una y termínala.',
     seoTitle: 'Géminis: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Géminis del 8 al 14 de octubre de 2026. Luna nueva en la casa 5 y Mercurio, tu regente, en Escorpio, en la casa del horario.',
+    description: 'Horóscopo de Géminis del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Dale forma a una idea',
     general:
-      'Géminis enciende ideas deprisa. Esta semana una de ellas pide forma. La luna nueva en Libra cae en tu casa 5: el juego, la creación, una cita, un proyecto con tu firma. Mercurio, tu regente, está en Escorpio, en la zona del horario y de las tareas. La idea que vale es la que cabe entre el jueves y el miércoles. Urano sigue hacia atrás en tu signo desde hace tiempo. Es un fondo de años. Sirve para reconocer que el guion de siempre ya te queda estrecho, y para elegir un cambio pequeño, del tamaño de esta semana.',
+      'Tienes la cabeza llena de ideas, como siempre. Esta semana una de ellas pide que la bajes a tierra: un proyecto creativo, un plan con alguien que te gusta, algo que lleve tu sello. Para que salga adelante, tiene que caber en tu agenda real, no solo en tu imaginación. Puede que notes que la forma de hacer las cosas de siempre ya te queda pequeña. No hace falta un cambio enorme; uno pequeño y constante vale más.',
     relaciones:
-      'Marte y Júpiter en Leo ocupan la parte de los mensajes, los hermanos, los vecinos y el chat que no cierra. Hay más texto del que puedes contestar bien. Venus, hacia atrás, pide que el cuidado de la relación pase por la agenda: quedar a una hora y cumplirla dice más que el hilo de las once de la noche. Si hay un malentendido, escríbelo en tres líneas y mándalo así. Saturno, hacia atrás en Aries, está en la zona de los grupos. Un plan de amigos o un proyecto colectivo se ha vuelto obligación. Puedes quedarte. También puedes decir, en una frase, qué parte sí es tuya.',
+      'Hay más mensajes de los que puedes contestar bien: chats de grupo, conversaciones a medias, hilos que no se cierran. Si quieres cuidar una relación, queda a una hora concreta y cúmplela. Eso dice más que escribirse hasta las once de la noche. Si hay un malentendido, resuélvelo con tres líneas claras en lugar de dar vueltas. Puede que un plan de amigos o un proyecto en grupo se haya convertido en una obligación. Está bien decir qué parte quieres seguir asumiendo y cuál no.',
     trabajo:
-      'Con tu regente en la zona del día a día, el centro de la semana es práctico: herramientas, versiones, pendientes. Un entregable corto el martes vale más que un esquema brillante que no sale del borrador. La luna nueva en tu casa 5 quiere que ese entregable tenga voz propia. Ponle tu nombre. Dos encargos creativos que compiten por la misma tarde se pisan. Géminis puede sostener dos hilos. Esta semana el segundo espera en la lista hasta el jueves 15.',
+      'El centro de la semana es práctico: herramientas, versiones, tareas pendientes. Entregar algo breve y terminado el martes vale más que un esquema brillante que no sale del borrador. Si tienes dos proyectos creativos compitiendo por la misma tarde, elige uno. El otro puede esperar a la semana que viene sin que pase nada. Pon tu nombre en lo que entregues.',
+    dinero:
+      'Las compras rápidas por impulso, sobre todo las que haces con el móvil a última hora, son las que luego cuesta recordar. Antes de pagar, deja pasar un día. Si necesitas una herramienta o un curso para tu proyecto, compáralo con calma y elige la opción que de verdad vas a usar.',
     ritmo:
-      'El exceso de estímulo se nota en el sueño y en la voz. Ciérralo con una sola nota de lo que quedó pendiente, y deja la otra ronda de mensajes para mañana. Si estudias o escribes, prueba veinticinco minutos seguidos sin cambiar de pestaña. El juego de verdad también cuenta: una hora sin rendimiento, con el móvil en otra habitación, alimenta la parte creativa de la semana. Otra pantalla de trabajo disfrazada de descanso puede esperar al día siguiente.',
-    pregunta: '¿Qué idea dejo abierta para no tener que terminarla?',
+      'Tanto estímulo se nota en el sueño y en el ánimo. Al terminar el día, apunta en una sola nota lo que queda pendiente y deja el resto de mensajes para mañana. Si estudias o escribes, prueba a estar veinticinco minutos seguidos sin cambiar de pestaña. Y reserva un rato para jugar de verdad: una hora sin móvil y sin objetivo también alimenta tus ideas.',
+    consejo: 'Elige una idea y termínala. Lo demás puede esperar en la lista.',
   },
   {
     slug: 'cancer',
@@ -156,18 +182,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Agua',
     modality: 'Cardinal',
     ruler: 'Luna',
-    hook: 'El sábado abre un hueco en casa. El trabajo, mientras, sigue pesando.',
+    hook: 'Haz sitio para tu casa sin descuidar el trabajo.',
     seoTitle: 'Cáncer: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Cáncer del 8 al 14 de octubre de 2026. La luna nueva cae en la casa 4 y Saturno retrógrado marca la casa del oficio.',
+    description: 'Horóscopo de Cáncer del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Haz sitio para tu casa',
     general:
-      'Tu regente es la Luna, y esta semana la Luna se encuentra con el Sol. El jueves todavía está en Virgo: recados, familia cercana, mensajes de la casa. El sábado se hace nueva en Libra, tu casa 4. Esa casa es la base. La vivienda, los padres, la habitación desde la que trabajas, el clima de quienes viven contigo. El comienzo que cabe ahí es pequeño: una conversación que ordena quién hace qué, o una hora que la casa se había comido y recuperas. Saturno va hacia atrás en Aries, en la zona del oficio visible. Lo de fuera pide resultado. Lo de dentro pide sitio. Las dos cosas pueden hablarse en la misma semana, cada una en su hora.',
+      'Esta semana el foco está en tu hogar y en tu familia: la casa, las personas con las que vives, el espacio desde el que trabajas. Puede ser un buen momento para ordenar quién hace qué o para recuperar una hora que la casa se había comido. Al mismo tiempo, el trabajo sigue pidiendo resultados. Las dos cosas caben en la misma semana si les das a cada una su momento.',
     relaciones:
-      'Venus, hacia atrás, y Mercurio están en Escorpio, en la parte del romance, del juego y de los hijos, si los hay. Piden una verdad sencilla, del tamaño de una tarde. Un plan en casa el fin de semana acompaña mejor a la luna nueva en tu casa 4 que una salida pensada para contarla después. Si hay distancia con alguien de la familia, di qué necesitas estos siete días y qué puedes ofrecer. Marte y Júpiter en Leo están en la zona del dinero propio. Revisa un gasto de la casa que ya no corresponde al uso real, con el número delante y sin prisa por taparlo con una compra.',
+      'En el amor, se agradece una verdad sencilla, del tamaño de una tarde juntos. Un plan en casa el fin de semana puede sentar mejor que una salida pensada para contarla después. Si estás conociendo a alguien, no hace falta impresionar: una conversación tranquila ya es un buen comienzo. Si hay distancia con alguien de la familia, di qué necesitas estos días y qué puedes ofrecer. Con eso basta para empezar.',
     trabajo:
-      'Saturno en la zona del oficio se atraviesa con una entrega clara y un límite. Elige el resultado que tu responsable, o tu cliente, puede ver el miércoles. Si el trabajo se mete en la cena todos los días, la luna nueva en la base te pide una frontera: una hora en la que la casa vuelve a ser casa. Anota qué parte del cargo es tuya y qué parte sostienes por costumbre. Esa nota cabe en media cuartilla y te ahorra una decisión tomada en caliente.',
+      'En el trabajo se te pide una entrega clara. Elige el resultado que tu responsable o tu cliente pueda ver a mitad de semana y céntrate en eso. Si el trabajo se cuela en la cena todos los días, pon una frontera: una hora a partir de la cual la casa vuelve a ser casa. Anota qué parte de tu puesto es realmente tuya y qué parte sostienes por costumbre. Esa nota te ahorrará decisiones tomadas en caliente.',
+    dinero:
+      'Hay ganas de gastar en casa y en comodidad. Antes de hacerlo, revisa algún gasto fijo del hogar que ya no corresponda al uso real, como una suscripción o un servicio que apenas usas. Mira las cifras con calma y sin prisa por tapar nada con una compra.',
     ritmo:
-      'Cáncer nota el clima de los demás en el cuerpo. Esta semana, antes de hacerte cargo del día de otra persona, termina el tuyo: una comida, una vuelta a casa a una hora decidida, la puerta un rato cerrada. Es cuidado de la base, el mismo terreno de la luna nueva. El jueves y el viernes, con la Luna todavía menguante, sirven para vaciar un cajón o una lista. La agenda de cuidados ajenos puede esperar a que el tuyo ya tenga sitio.',
-    pregunta: '¿Qué sostengo en el trabajo que le está quitando sitio a la casa, o al revés?',
+      'Notas el estado de ánimo de los demás en tu propio cuerpo. Esta semana, antes de hacerte cargo del día de otra persona, termina el tuyo: una comida tranquila, una hora fija para volver a casa, la puerta cerrada un rato. El jueves y el viernes son buenos días para vaciar un cajón o una lista. Primero tu cuidado; luego el de los demás.',
+    consejo: 'Pon una frontera entre el trabajo y la casa, y defiéndela con cariño.',
   },
   {
     slug: 'leo',
@@ -177,18 +206,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Fuego',
     modality: 'Fijo',
     ruler: 'Sol',
-    hook: 'Hay ganas de que se te vea. El sábado, el trabajo está en lo que dices.',
+    hook: 'Habla claro y no te cargues de más.',
     seoTitle: 'Leo: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Leo del 8 al 14 de octubre de 2026. Marte y Júpiter transitan tu signo y la luna nueva en Libra cae en la casa 3.',
+    description: 'Horóscopo de Leo del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Habla claro y no te cargues de más',
     general:
-      'Marte y Júpiter están en Leo, tu propio signo. Hay más ganas de actuar y de que se te vea. Van en el mismo signo, con Marte más atrás y Júpiter más adelante: el efecto de la semana es empuje, y las efemérides no los juntan grado con grado. El Sol, tu regente, está en Libra, y la luna nueva del sábado cae ahí, en tu casa 3. El foco es el mensaje, el hermano, el vecino, el texto, el trámite. Si amplías la presencia y además aclaras lo que dices, el empuje tiene contenido. Una frase que otra persona pueda repetir vale más que un gesto grande.',
+      'Esta semana, céntrate en expresar lo que necesitas y en organizar tus pendientes. Tienes energía y ganas de que se te vea, y eso está bien. Pero no tienes que hacerlo todo ni demostrar constantemente de lo que eres capaz. Elige qué merece tu atención y deja espacio para ti. Una frase clara que otra persona pueda repetir vale más que un gran gesto.',
     relaciones:
-      'Venus va hacia atrás en Escorpio, en la parte de la casa y de la familia. Ahí se revisan lealtades, en voz baja. Una conversación en la cocina acompaña mejor que una entrada triunfal. Mercurio, en el mismo signo, ayuda a ponerle palabras a algo doméstico que se venía callando. Saturno, hacia atrás en Aries, está en la zona de los viajes, los cursos y las convicciones. Pregunta si ese plan sigue siendo tuyo y, si lo es, dale una fecha. En la pareja, una frase que se pueda cumplir el martes deja más huella que un brillo de un día.',
+      'Si hay algo que quieres hablar con tu pareja, busca un momento tranquilo. Explica cómo te sientes sin esperar a que la otra persona lo adivine. Una conversación sencilla puede ser un buen comienzo, aunque no lo resolváis todo en ese momento. En casa y con la familia pueden aparecer temas que llevaban tiempo callados; una charla en la cocina sienta mejor que una gran declaración. Si estás conociendo a alguien, no necesitas impresionar con grandes planes. Un mensaje sincero o una propuesta que os apetezca a los dos puede ser suficiente.',
     trabajo:
-      'Tu casa 3 es donde se juega la semana laboral: el correo, la reunión corta, las instrucciones. Escribe lo que ofreces en cinco líneas antes de decirlo en voz alta. Júpiter en tu signo tienta a prometer de más. Marte tienta a hacerlo ya. Entre los dos, deja una versión que otra persona pueda ejecutar sin adivinarte. Si diriges a alguien, el tono de Leo esta semana se mide en la claridad. El volumen puede bajar y el encargo se entiende igual.',
+      'Tienes una idea que quieres sacar adelante. Antes de compartirla, ordénala: qué quieres hacer, qué necesitas y cuál sería el primer paso. Escríbela en cinco líneas antes de contarla en voz alta. Evita comprometerte con más de lo que puedes asumir. Si trabajas con otras personas, explica bien las tareas y los plazos. Ser claro te ayudará más que intentar estar pendiente de todo.',
+    dinero:
+      'Dedica un rato a revisar los gastos que tienes por delante. Si compartes pagos con alguien, dejad claro cuánto aporta cada uno y cuándo hay que pagarlo. ¿Te apetece darte un capricho? Comprueba primero si encaja en tu presupuesto y evita decidir con prisas.',
     ritmo:
-      'Con Marte y Júpiter en tu signo, el impulso parece suficiente para saltarte comidas y sueño. Siete días piden lo contrario: reserva una tarde sin audiencia. Venus, hacia atrás, repara la casa en lo pequeño. Una cama hecha, una cuenta doméstica, una llamada que debías. Si algo duele o el descanso no llega, eso se consulta con quien te atiende. El horóscopo ordena la semana. El cuerpo tiene su propio sitio, fuera de esta lectura.',
-    pregunta: '¿Qué quiero que se entienda de mí esta semana, en una frase que otra persona pueda repetir?',
+      'No conviertas cada rato libre en otra tarea. Busca un momento para disfrutar de algo sin exigirte un resultado: escuchar música, salir a pasear o quedar con alguien con quien estés a gusto. También puedes dejar un plan para otro día si necesitas descansar. Y si algo te duele o no descansas bien, consúltalo con quien te atiende; el horóscopo no es el sitio para eso.',
+    consejo: 'Expresa lo que necesitas, cumple lo que prometes y no te exijas llegar a todo.',
   },
   {
     slug: 'virgo',
@@ -198,18 +230,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Tierra',
     modality: 'Mutable',
     ruler: 'Mercurio',
-    hook: 'La Luna abre la semana en tu signo. El sábado toca el dinero propio.',
+    hook: 'Ponle un número a lo que vales y a lo que regalas.',
     seoTitle: 'Virgo: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Virgo del 8 al 14 de octubre de 2026. La Luna abre en tu signo y la luna nueva en Libra cae en la casa del dinero propio.',
+    description: 'Horóscopo de Virgo del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Ponle un número a lo que vales',
     general:
-      'El jueves 8 la Luna está en Virgo, menguante y fina, cerca de un 5 % de iluminación según las efemérides del día. Pasa por tu signo unas horas, y el sábado se hace nueva en Libra. Esa luna nueva cae en tu casa 2: el dinero propio, las herramientas y el valor que te asignas. Virgo a menudo demuestra ese valor trabajando de más. Esta semana pide un número. Qué cobras, qué gastas, qué das gratis y qué ya puedes dejar de dar. Mercurio, tu regente, está en Escorpio, en la zona de los mensajes. La cuenta se habla con alguien, o se escribe. Rumiarla a solas la deja en el mismo sitio.',
+      'Esta semana el tema es tu dinero y tu valor: qué cobras, qué gastas, qué das gratis y qué podrías dejar de dar. A veces demuestras lo que vales trabajando de más. Ahora toca ponerle cifras. También es una buena semana para tener esa conversación que llevas tiempo aplazando con alguien cercano. Hablarlo o escribirlo te sacará de darle vueltas a solas.',
     relaciones:
-      'Mercurio en Escorpio saca conversaciones que suelen quedar en la lista de luego. Un hermano, un compañero, un vecino, la persona con la que compartes trámites. Di el hecho. El inventario de defectos puede quedarse en el cajón. Venus, hacia atrás en esa misma zona, invita a releer un mensaje antiguo antes de enviar uno nuevo: a veces el malentendido se arregla con tres líneas. Marte y Júpiter en Leo están en la parte de lo que ocurre entre bastidores. Hay un esfuerzo que nadie ve. Decide si sigue siendo útil o si ya es costumbre, y dilo en una frase.',
+      'Salen conversaciones pendientes con hermanos, compañeros, vecinos o con la persona con la que compartes gestiones. Di lo que ha pasado, sin la lista de defectos. Antes de enviar un mensaje nuevo, relee el anterior: a veces el malentendido se arregla con tres líneas. En pareja, hay un esfuerzo que haces y que nadie ve. Decide si sigue siendo útil o si ya es solo costumbre, y dilo en una frase tranquila.',
     trabajo:
-      'Saturno va hacia atrás en Aries, en la zona de los impuestos, las deudas y el dinero que no es solo tuyo. Revisa un papel. Tres frentes abiertos a la vez se pisan. La luna nueva en tu casa 2 y ese Saturno piden separar lo propio de lo compartido. Si un cliente o un socio debe una cifra, escríbela y ponle una fecha de seguimiento después del sábado. El oficio mejora esta semana con un proceso más corto. Un estándar imposible puede esperar a la semana que viene.',
+      'Si tienes varios frentes abiertos, se pisan entre ellos. Elige tres tareas y deja la cuarta para después. Tu trabajo mejora esta semana con un proceso más corto, no con un estándar imposible. Si un cliente o un socio te debe algo, escríbelo y ponle una fecha de seguimiento después del fin de semana.',
+    dinero:
+      'Separa lo tuyo de lo compartido: impuestos, deudas, dinero que no es solo tuyo. Revisa un papel que tengas pendiente. Haz una lista sencilla de lo que entra y lo que sale este mes, y fíjate en qué estás regalando, en tiempo o en dinero, sin que nadie te lo haya pedido.',
     ritmo:
-      'Virgo a veces usa el cuidado como control. La Luna en tu signo, al empezar la semana, invita a ordenar y también a parar cuando la lista ya está hecha. Elige tres tareas. La cuarta espera. Dormir y comer son la base para que el dinero propio deje de llenarse de parches. Si la preocupación por una cifra quita el sueño, anótala por la mañana, con luz, y déjala en el papel. El horóscopo ordena la mirada. La decisión de gasto se toma con tus números, en otro momento.',
-    pregunta: '¿Qué estoy regalando —tiempo, dinero o atención— que ya no coincide con lo que vale para mí?',
+      'A veces usas el orden como forma de controlar lo que te preocupa. Esta semana, ordena, y luego para cuando la lista ya esté hecha. Dormir y comer bien es la base para no vivir de parches. Si una cifra te quita el sueño, apúntala por la mañana con luz y déjala en el papel. Las decisiones de dinero se toman con tus números delante, no a las tres de la madrugada.',
+    consejo: 'Deja de regalar lo que para ti tiene valor. Ponle un número y cuídalo.',
   },
   {
     slug: 'libra',
@@ -219,18 +254,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Aire',
     modality: 'Cardinal',
     ruler: 'Venus',
-    hook: 'La luna nueva es en tu signo. Venus, tu regente, revisa lo que vale.',
+    hook: 'Tu semana para empezar algo, aunque sea pequeño.',
     seoTitle: 'Libra: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Libra del 8 al 14 de octubre de 2026. La luna nueva cae en tu signo y Venus retrógrada revisa la casa del valor y del dinero.',
+    description: 'Horóscopo de Libra del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Esta semana empieza contigo',
     general:
-      'Esta luna nueva es tuya. Sol y Luna se encuentran en Libra, tu casa 1: la manera de empezar y de presentarte. El sábado cabe un comienzo pequeño y visible. Una frase que diga qué quieres, un corte con una costumbre, una forma más clara de entrar en la semana que viene. El Sol sigue en Libra y la temporada de Escorpio llega más adelante, hacia el 23 de octubre. Esto es el reinicio mensual dentro de tu signo. Venus, tu regente, va hacia atrás en Escorpio, en la zona del dinero y del valor. Empiezas por fuera mientras revisas, por dentro, qué te importa y qué te cuesta.',
+      'Esta es tu semana para empezar algo. Puede ser pequeño: decir en voz alta lo que quieres, cortar con una costumbre, presentarte de una manera más clara. Mientras tanto, por dentro, estás revisando qué te importa de verdad y qué te está costando más de lo que vale. Las dos cosas van juntas: empiezas por fuera mientras ordenas por dentro.',
     relaciones:
-      'Saturno va hacia atrás en Aries, en la zona de la otra persona, el socio y el contrato. Ese peso es real. Libra tiende a equilibrar cediendo. Esta semana el equilibrio se mide en lo que puedes decir que sí y en lo que puedes dejar fuera, conservando lo que sí quieres. Si hay un pacto, ponle una condición concreta y un plazo. Marte y Júpiter en Leo caen en la parte de los amigos y del grupo. Te animan, y la decisión del pacto se queda entre las dos personas que lo sostienen. El chat puede escuchar. El acuerdo se escribe en otro sitio.',
+      'En pareja o con un socio, puede que notes el peso de un compromiso. Tiendes a equilibrar cediendo; esta semana, el equilibrio pasa por decir a qué dices que sí y qué dejas fuera. Si hay un acuerdo que renegociar, ponle una condición concreta y un plazo. Tus amigos te animan y te dan ideas, pero la decisión sobre la relación es de las dos personas que la sostienen. El grupo puede escuchar; el acuerdo se cierra en otro sitio.',
     trabajo:
-      'Venus hacia atrás, en la zona del valor, invita a mirar un precio, un sueldo o una tarea que aceptas sin que te la reconozcan. Mira una cifra y una tarea, y comprueba si coinciden. Si cobras de menos para evitar el roce, el roce ya está en la cifra. Escríbela. La luna nueva en tu casa 1 pide que esa nota lleve tu nombre, delante, sin una disculpa. Un proyecto nuevo puede esperar a que el de ahora tenga un precio que reconozcas como justo.',
+      'Mira si lo que cobras corresponde a lo que haces. Si aceptas tareas sin reconocimiento para evitar roces, el roce ya está ahí, solo que lo pagas tú. Escribe una cifra y una tarea y comprueba si coinciden. Si tienes que pedir algo, hazlo con tu nombre delante y sin pedir perdón. Un proyecto nuevo puede esperar a que el actual tenga un precio justo.',
+    dinero:
+      'Evita la compra que busca hacerte sentir otra persona. Si el fin de semana ibas a gastar para cambiar de imagen, deja el dinero en el bolsillo unos días y mira si sigues queriéndolo. Repasa precios, sueldos o presupuestos que aceptaste sin pensarlo mucho.',
     ritmo:
-      'Decidir cansa a Libra más que ejecutar. Elige una sola forma nueva de presentarte esta semana: cómo respondes, qué llevas al trabajo, qué frase de entrada. El resto se queda. Venus hacia atrás invita a dejar para luego la compra que busca una identidad. Si el sábado ibas a gastar para sentirte otra persona, el dinero puede quedarse en el bolsillo. Cuida el sueño alrededor de la luna nueva. Una noche corta pide menos planes, y el domingo se agradece.',
-    pregunta: 'Si dejo de equilibrar a los demás un momento, ¿qué quiero yo que quepa en la semana?',
+      'Decidir te cansa más que hacer. Elige una sola cosa nueva en tu manera de presentarte esta semana, y deja el resto como está. Cuida el sueño alrededor del fin de semana: una noche corta pide menos planes al día siguiente. El domingo, date permiso para no hacer nada.',
+    consejo: 'Deja de equilibrar a los demás un momento y pregúntate qué quieres tú.',
   },
   {
     slug: 'escorpio',
@@ -240,18 +278,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Agua',
     modality: 'Fijo',
     ruler: 'Marte, y Plutón en la tradición moderna',
-    hook: 'Venus y Mercurio están en tu signo. El sábado pide cerrar entre bastidores.',
+    hook: 'Cierra temas y descansa. Tu momento llega después.',
     seoTitle: 'Escorpio: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Escorpio del 8 al 14 de octubre de 2026. Venus retrógrada y Mercurio transitan tu signo; la luna nueva cae en la casa 12.',
+    description: 'Horóscopo de Escorpio del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Cierra, descansa y prepara lo que viene',
     general:
-      'Venus va hacia atrás y Mercurio, directo, está en Escorpio. La semana te toca de cerca: en el deseo, en la palabra y en la forma de tratarte. Venus revisa. Un gusto, una lealtad o una atracción de estos días se mira otra vez, con calma. Mercurio permite nombrarlo. La luna nueva en Libra cae en tu casa 12, entre bastidores. El Sol entra en Escorpio más adelante, hacia el 23 de octubre. Hasta entonces, esta lunación pide cerrar, descansar y dejar el estreno grande para después. Lo que prepares ahora se enseña cuando el Sol cambie de signo. Plutón, hacia atrás en Acuario, es un ciclo de años. Estos siete días tienen otro motor.',
+      'Esta semana te toca de cerca: en lo que deseas, en cómo lo dices y en cómo te tratas a ti. Un gusto, una lealtad o una atracción se miran otra vez, con más calma. Al mismo tiempo, el momento pide cerrar temas y descansar, no estrenar nada grande. Lo que prepares ahora en silencio tendrá su momento en unas semanas, cuando llegue tu temporada.',
     relaciones:
-      'Con Venus en tu signo, la relación importante puede ser la que tienes con lo que quieres, y también la de pareja. Si hay pareja, pregunta una cosa que de verdad necesitas saber y deja sitio para la respuesta. La luna nueva en tu casa 12 prefiere la conversación privada y corta. Marte, regente tradicional de Escorpio, está en Leo junto con Júpiter, en la zona del oficio y de cómo te ven. El deseo de la semana también mira al trabajo. Una herida personal y una reunión caben en días distintos. Así cada una se escucha.',
+      'Si tienes pareja, pregúntale algo que de verdad necesitas saber y deja espacio para la respuesta. Las conversaciones privadas y cortas funcionan mejor que las largas discusiones. También es una buena semana para revisar qué quieres tú de una relación, con independencia de lo que esperen los demás. Si estás soltero o soltera, no te apresures: ahora toca aclararte, no decidir.',
     trabajo:
-      'Marte y Júpiter en la zona del oficio dan ambición visible. Úsala en una pieza de trabajo que se pueda juzgar. Saturno, hacia atrás en Aries, está en la parte del horario y del método. Por fuera el cargo luce. Por dentro la agenda está más dura. Ajusta una franja del día y deja el sobreesfuerzo heroico para otra temporada. Tu casa 12 pide un sábado de archivo y de entregas atrasadas. El anuncio puede esperar a que el Sol entre en tu signo.',
+      'Tienes ambición y ganas de que tu trabajo se note. Úsalas en algo concreto que se pueda evaluar: un informe, una propuesta, un resultado. Por fuera el puesto luce, pero por dentro tu agenda puede estar más apretada de lo que parece. Ajusta una franja de tu día y deja el sobreesfuerzo heroico para otra temporada. El sábado es buen día para archivar y ponerte al día, no para hacer anuncios.',
+    dinero:
+      'Antes de gastar por impulso, espera. Esta semana el dinero se gestiona mejor en silencio: revisa cuentas, cierra pagos pendientes y no tomes decisiones grandes hasta tener claro qué quieres. Si alguien te propone un negocio o una inversión, pide tiempo para pensarlo.',
     ritmo:
-      'Escorpio aguanta en silencio y luego corta. Esta semana el corte útil es con un hábito. Duerme. Durante la luna nueva, baja un estímulo que te tiene en alerta: un chat, una noticia, una vigilancia. Si algo te inquieta en el cuerpo o en el ánimo varios días seguidos, eso se habla con un profesional. El retroceso de Venus pasa. La vida afectiva puede seguir abierta el miércoles. Nadie te pide cerrarla antes.',
-    pregunta: '¿Qué estoy a punto de hacer visible que todavía necesita una semana entre bastidores?',
+      'Aguantas en silencio y luego cortas de golpe. Esta semana, el corte útil es con un hábito que te mantiene en alerta: un chat, una noticia, una vigilancia constante. Duerme más. Si algo te inquieta en el cuerpo o en el ánimo varios días seguidos, habla con un profesional. Las ganas de cerrar relaciones pasarán; no tomes decisiones definitivas en caliente.',
+    consejo: 'Descansa y cierra temas. Lo que quieres mostrar puede esperar una semana más.',
   },
   {
     slug: 'sagitario',
@@ -261,18 +302,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Fuego',
     modality: 'Mutable',
     ruler: 'Júpiter',
-    hook: 'Júpiter, tu regente, abre el horizonte. El sábado lo comparte un grupo.',
+    hook: 'Un plan grande pide un paso pequeño esta semana.',
     seoTitle: 'Sagitario: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Sagitario del 8 al 14 de octubre de 2026. Júpiter en Leo activa la casa 9 y la luna nueva en Libra cae en la casa 11.',
+    description: 'Horóscopo de Sagitario del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Un plan grande, un paso pequeño',
     general:
-      'Júpiter, tu regente, está en Leo, en la zona de los estudios, los viajes y las ideas que te amplían. Esta semana ese horizonte pide un paso que se pueda medir entre el jueves y el miércoles. La luna nueva en Libra cae en tu casa 11: los amigos, el grupo, el futuro compartido. Un proyecto colectivo puede arrancar el sábado en pequeño. Una reunión con orden del día. Un grupo con una tarea y un nombre al lado. Saturno va hacia atrás en Aries, en la parte del juego, el romance y la creación. Lo que antes salía solo ahora pide un compromiso, y con ese compromiso se queda.',
+      'Tienes ganas de ampliar horizontes: un viaje, un curso, una idea que te saque de lo de siempre. Esta semana ese impulso pide un paso que se pueda medir: una fecha, una reserva, una hora de estudio. También es un buen momento para arrancar algo con tu grupo de amigos o con un equipo, siempre que cada uno sepa qué le toca. Lo que antes salía solo ahora pide compromiso, y con compromiso se queda.',
     relaciones:
-      'Saturno en la zona del romance le quita prisa al afecto y lo deja en pie. Si hay una cita o una historia, dilo claro y con una próxima vez concreta. El “ya veremos” que a veces usa Sagitario puede convertirse, esta semana, en un día y una hora. Venus, hacia atrás, y Mercurio en Escorpio están en la parte de lo privado: un recuerdo, una persona que no está en la foto, un sentimiento que prefieres guardar. Escríbelo en una página o cuéntaselo a una sola persona de confianza. El grupo puede esperar.',
+      'En el amor, menos prisa y más constancia. Si hay una cita o una historia que te importa, dilo claro y propón una próxima vez concreta, con día y hora. El «ya veremos» de siempre no funciona esta semana. Por dentro, puede aparecer un recuerdo o un sentimiento que prefieres guardarte. Escríbelo o cuéntaselo a una sola persona de confianza. No hace falta compartirlo con todo el grupo.',
     trabajo:
-      'La zona de Júpiter mejora si estudias una hora con un texto real, o si preparas el viaje con fechas y con dinero, además de con ganas. Tu casa 11 mejora si el grupo sabe quién hace qué el lunes. Abres el mapa con facilidad. Esta semana el mapa cabe en una cuartilla. Marte, también en Leo, empuja ese horizonte. Enseña el argumento y deja que otro lo discuta. El tramo aburrido de un estudio forma parte del oficio. Júpiter da el horizonte y Saturno, en la creación, pide que lo sostengas.',
+      'Si estudias, dedica una hora a un texto real, no a planear cómo vas a estudiar. Si preparas un viaje, hazlo con fechas y presupuesto, no solo con ganas. En el trabajo en equipo, asegúrate de que cada persona sepa qué hace el lunes. Te encanta abrir el mapa; esta semana, el mapa cabe en una hoja. La parte aburrida también es parte del camino.',
+    dinero:
+      'Los planes grandes tienen un coste. Antes de comprometerte con un viaje o un curso, pon los números sobre la mesa: cuánto cuesta, cuándo lo pagas, qué dejas de hacer para poder permitírtelo. Si compartes gastos con amigos, aclarad las cuentas antes, no después.',
     ritmo:
-      'Moverte te regula, y también te dispersa. Elige un desplazamiento con fin: andar, un recado, una clase. El sábado puede tener un plan, y el segundo plan encadenado puede quedarse en casa. La zona privada pide una noche sin audiencia. Si el grupo te deja vacío, un límite de horas ordena la semana y las amistades siguen en su sitio. El horóscopo acompaña la pregunta. El trabajo y el viaje se deciden con fechas, con dinero y con tu criterio.',
-    pregunta: '¿Qué plan grande estoy contando en voz alta para no dar el paso pequeño de esta semana?',
+      'Moverte te regula, pero también te dispersa. Elige un movimiento con sentido: andar, un recado, una clase. El sábado puede tener un plan, pero el segundo plan encadenado puede quedarse en casa. Reserva una noche sin compañía. Si el grupo te deja vacío, pon un límite de horas; las amistades seguirán ahí.',
+    consejo: 'Da el paso pequeño de esta semana en lugar de contar el plan grande.',
   },
   {
     slug: 'capricornio',
@@ -282,18 +326,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Tierra',
     modality: 'Cardinal',
     ruler: 'Saturno',
-    hook: 'El sábado define un resultado visible. Saturno, tu regente, mira la casa.',
+    hook: 'Enseña tu trabajo sin esperar a que sea perfecto.',
     seoTitle: 'Capricornio: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Capricornio del 8 al 14 de octubre de 2026. Luna nueva en la casa 10 y Saturno retrógrado, tu regente, en la casa 4.',
+    description: 'Horóscopo de Capricornio del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Enseña tu trabajo sin esperar a que sea perfecto',
     general:
-      'La luna nueva en Libra cae en tu casa 10: el oficio visible, la reputación, la responsabilidad que los demás pueden señalar. El sábado cabe un resultado público pequeño. Un informe, una decisión, un mensaje. La carrera entera puede quedarse como está. Saturno, tu regente, va hacia atrás en Aries, en la zona de la casa, los padres y la vida privada. Esa revisión lleva un tramo y sigue después de esta semana. Lo que enseñas fuera se apoya en cómo está la casa por dentro. Cuando la base está ordenada, el oficio se sostiene con el horario real, y la familia y el trabajo caben en la misma semana.',
+      'Esta semana puedes mostrar un resultado en el trabajo: un informe, una decisión, un mensaje a quien decide. No hace falta que sea enorme. Al mismo tiempo, tu casa y tu familia piden atención, y esa revisión seguirá más allá de esta semana. Lo que enseñas fuera se sostiene mejor cuando lo de dentro está ordenado.',
     relaciones:
-      'Venus, hacia atrás, y Mercurio están en Escorpio, en la parte de los amigos, el colectivo y los planes de futuro. Pregúntate si sigues ahí porque quieres. Hablarlo en privado evita el malentendido de grupo. En casa, Saturno se arregla con una tarea compartida y un horario, en una conversación corta. Si cuidas de alguien, anota qué parte es cuidado y qué parte es control. Marte y Júpiter en Leo caen en la zona del dinero compartido, las deudas y la intimidad. Elige una cifra y mírala. El resto del simbolismo puede esperar a tener ese número claro.',
+      'Con los amigos y los grupos, pregúntate si sigues ahí porque quieres o por costumbre. Si hay algo que decir, hazlo en privado para evitar malentendidos de grupo. En casa, los conflictos se arreglan con una tarea compartida y un horario, en una conversación corta. Si cuidas de alguien, piensa qué parte es cuidado y qué parte es querer controlarlo todo. En pareja, la intimidad y el dinero compartido pueden ir de la mano esta semana: hablad de ambas cosas con sinceridad.',
     trabajo:
-      'Tu casa 10 quiere una prueba visible: un informe, una reunión con decisión, un mensaje a quien decide. Escríbelo antes del sábado y déjalo salir con los matices justos. Capricornio a veces esconde el trabajo hasta que está perfecto. La luna nueva acompaña una versión completa y mejorable. Si te ofrecen un cargo nuevo, pregunta por el horario real y míralo al lado de lo que la casa ya sostiene. El halago y el calendario pueden leerse juntos.',
+      'A veces escondes tu trabajo hasta que está perfecto. Esta semana, deja salir una versión completa y mejorable. Escríbela antes del fin de semana y envíala con los matices justos. Si te ofrecen un puesto o una responsabilidad nueva, pregunta por el horario real y mídelo con lo que tu casa ya necesita de ti. El halago y el calendario se leen juntos.',
+    dinero:
+      'Elige una cifra del dinero compartido (una deuda, una herencia, una cuenta en común, un préstamo) y mírala de frente. No hace falta resolverlo todo; basta con saber de qué número hablamos. Si hay algo que renegociar con un banco o con otra persona, prepara los datos antes de la conversación.',
     ritmo:
-      'Tu regente, hacia atrás en la zona de la casa, se nota como peso en casa. Acuéstate a una hora que puedas repetir. Deja una comida sin pantalla de trabajo. Si el sábado se convierte en otra jornada laboral, el resultado visible se come la base que Saturno te está pidiendo mirar. Esto es ritmo. El cuidado del cuerpo, cuando hace falta, se habla con quien te atiende.',
-    pregunta: '¿Qué resultado quiero que se vea, y qué necesita la casa para que ese resultado no salga del cansancio?',
+      'El peso de la casa se nota en el cuerpo. Acuéstate a una hora que puedas repetir. Haz una comida al día sin pantalla de trabajo. Si el sábado se convierte en otra jornada laboral, el resultado se comerá la base que necesitas. El cuidado del cuerpo, cuando hace falta, se habla con quien te atiende.',
+    consejo: 'Muestra lo que has hecho, y cuida la casa para que el resultado no salga del cansancio.',
   },
   {
     slug: 'acuario',
@@ -303,18 +350,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Aire',
     modality: 'Fijo',
     ruler: 'Saturno, y Urano en la tradición moderna',
-    hook: 'El sábado pide una idea con fecha. Venus revisa cómo te ven en el oficio.',
+    hook: 'Baja tu idea a una fecha o a un mensaje claro.',
     seoTitle: 'Acuario: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Acuario del 8 al 14 de octubre de 2026. La luna nueva en Libra abre la casa 9 y Venus retrógrada revisa la casa del oficio.',
+    description: 'Horóscopo de Acuario del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Baja tu idea a una fecha',
     general:
-      'La luna nueva en Libra cae en tu casa 9: una idea, un curso, un viaje, una convicción. Acuario vive cómodo en el concepto. Esta semana el concepto necesita un dato o una fecha. Saturno, regente tradicional del signo, va hacia atrás en Aries, en la zona de los mensajes, los hermanos y los trámites cercanos. Van más lentos y más serios. Decir menos, y más claro, ordena la bandeja de entrada. Urano, el regente moderno, sigue hacia atrás en Géminis: es contexto de fondo. Plutón, hacia atrás en tu signo, es un ciclo de años sobre la forma de presentarte. El sábado tiene un acontecimiento más concreto, y cabe en una fecha.',
+      'Esta semana nace una idea, un curso, un viaje o una convicción nueva. Te mueves cómodo en el terreno de las ideas, pero ahora el concepto necesita un dato o una fecha para hacerse real. Al mismo tiempo, los mensajes, los trámites y las gestiones cercanas van más lentos y pesados. Decir menos y más claro te ordenará la bandeja de entrada.',
     relaciones:
-      'Marte y Júpiter en Leo ocupan la zona de la pareja y del socio. Hay más ganas, más opinión, más escena. Venus va hacia atrás en la parte del oficio, así que el pacto entre dos y el papel laboral caben en dos charlas distintas. En una se habla de cómo estáis. En la otra, de cómo te ven en el trabajo y de si ese papel te representa. Si tu pareja también es tu proyecto público, separarlas deja cada tema en su sitio. Un amigo puede escucharte. La decisión se queda contigo.',
+      'En pareja hay más ganas, más opiniones y más intensidad. Separa dos conversaciones: una sobre cómo estáis como pareja y otra sobre tu trabajo y cómo te ven. Si tu pareja también forma parte de tu proyecto profesional, poner cada tema en su sitio os ayudará a los dos. Un amigo puede escucharte, pero la decisión es tuya. Si estás conociendo a alguien, la conexión puede ser rápida; disfrútala sin planificar demasiado.',
     trabajo:
-      'Venus, hacia atrás en Escorpio, revisa alianzas laborales, el reconocimiento y una colaboración que se dio por hecha. Relee una cláusula o una expectativa que nunca se escribió. Tu casa 9 aporta el para qué. Si el oficio echa de menos una idea que te importe, anótala y déjala reposar. Un curso corto o una lectura concreta esta semana acompaña mejor que un rediseño entero de la identidad profesional. El contrato puede seguir en pie mientras lo miras.',
+      'Es momento de revisar alianzas laborales, reconocimiento y colaboraciones que diste por hechas. Relee un acuerdo o una expectativa que nunca se puso por escrito. Si tu trabajo echa de menos una idea que te importe, anótala y déjala reposar. Un curso corto o una lectura concreta te servirá más que rediseñar toda tu identidad profesional.',
+    dinero:
+      'Si una decisión de dinero relacionada con el trabajo te quita el sueño, puede esperar a que tengas los datos. No firmes nada ni cambies de rumbo solo porque alguien opina. Si vas a invertir en formación o en un viaje, compara opciones y elige la que vayas a aprovechar de verdad.',
     ritmo:
-      'Acuario se adelanta y luego se desconecta. Saturno, en la zona de lo cercano, pide presencia: contestar lo atrasado, ir al trámite, llamar a quien toca. Hazlo en un bloque, de día. Deja tu casa 9 para una hora de estudio con luz. Come y corta la pantalla antes de dormir. Si una decisión laboral quita el sueño, puede esperar a tener los datos. Las opiniones de más pueden quedarse fuera de esa hora.',
-    pregunta: '¿Qué idea estoy defendiendo que todavía no he bajado a un mensaje claro o a una fecha?',
+      'Te adelantas y luego te desconectas. Esta semana toca presencia: contesta lo atrasado, ve al trámite, llama a quien toca. Hazlo en un solo bloque, de día. Reserva una hora para estudiar o leer con luz natural. Come bien y deja la pantalla antes de dormir.',
+    consejo: 'Convierte tu idea en un mensaje claro o en una fecha. Lo demás es ruido.',
   },
   {
     slug: 'piscis',
@@ -324,18 +374,21 @@ const readings: Omit<SignReading, 'newMoonHouse' | 'venusHouse' | 'saturnHouse' 
     element: 'Agua',
     modality: 'Mutable',
     ruler: 'Júpiter, y Neptuno en la tradición moderna',
-    hook: 'El sábado nombra un asunto compartido. Júpiter, tu regente, lo baja al horario.',
+    hook: 'Nombra lo que compartes y cuida tu día a día.',
     seoTitle: 'Piscis: horóscopo del 8 al 14 de octubre',
-    description: 'Horóscopo de Piscis del 8 al 14 de octubre de 2026. La luna nueva en Libra cae en la casa 8 y Júpiter activa la rutina de la casa 6.',
+    description: 'Horóscopo de Piscis del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar, con un consejo para la semana.',
+    titulo: 'Nombra lo que compartes',
     general:
-      'La luna nueva en Libra cae en tu casa 8: lo que se comparte, las deudas, la intimidad y lo que todavía no tiene nombre. Un asunto compartido puede dejar de ser niebla. Basta una cifra, un límite o una frase. Júpiter, regente tradicional de Piscis, está en Leo, en la zona del horario, la tarea y el cuidado diario. El crecimiento de la semana es prosaico, y por eso se puede cumplir. Neptuno, hacia atrás en Aries, ocupa la parte del dinero propio, con Saturno también en ese signo. Ese velo lleva meses. El sábado cabe aclarar una cuenta pequeña y dejar la decisión grande de dinero para cuando el número esté quieto.',
+      'Esta semana puede aclararse algo que compartes con otra persona: un dinero, una deuda, una intimidad o un tema que aún no tiene nombre. Basta una cifra, un límite o una frase sincera para que deje de ser niebla. Donde más vas a crecer es en lo cotidiano: tus horarios, tus tareas, tu cuidado diario. Es menos romántico, pero por eso se puede cumplir.',
     relaciones:
-      'Tu casa 8 es el lugar de la confianza. Venus, hacia atrás, y Mercurio en Escorpio caen en la zona de las creencias, los viajes y las conversaciones con alguien que vive en otra ciudad o en otra idea. Revisa el relato antes de ampliarlo. Si perdonas, que sea un acto concreto. Si pones un límite, dilo una vez y sostén el horario del día a día. La disponibilidad con borde es la que se puede mantener. Marte en Leo, en esa misma zona del horario, puede impacientarte con quien no cumple. Pide el hecho. La intención se entiende mejor cuando el hecho ya está dicho.',
+      'La confianza es el tema de la semana. Puede haber conversaciones con alguien que vive lejos o que piensa distinto a ti. Antes de ampliar el relato, revísalo. Si perdonas, que sea un acto concreto. Si pones un límite, dilo una vez y mantenlo en el día a día. Puedes impacientarte con quien no cumple lo que dice; pídele hechos, no intenciones. En pareja, hablad del reparto de lo que compartís con calma.',
     trabajo:
-      'Júpiter en la zona de la rutina acompaña mejorar un proceso que ya tienes. Una hora fija de trabajo profundo vale más que una inspiración a deshoras. Si compartes ingresos o un proyecto, la luna nueva en tu casa 8 quiere el reparto por escrito. Una nota clara entre dos basta cuando los dos la han leído. El horóscopo sirve para sentarte a mirar el número. El préstamo, el gasto grande y el perdón de una deuda se deciden con tus cuentas, fuera de esta lectura.',
+      'Mejora un proceso que ya tienes en lugar de inventar uno nuevo. Una hora fija de trabajo concentrado vale más que una inspiración a deshoras. Si compartes ingresos o un proyecto con alguien, pon el reparto por escrito, aunque sea en una nota sencilla. Cuando los dos la hayáis leído, será suficiente.',
+    dinero:
+      'Tu dinero propio lleva meses en una especie de niebla. Esta semana, aclara una cuenta pequeña y deja la decisión grande para cuando tengas los números claros. Un préstamo, un gasto importante o perdonar una deuda se deciden con tus cuentas delante, no con el ánimo del momento.',
     ritmo:
-      'Piscis absorbe climas. El antídoto de esta semana es concreto: sueño a una hora parecida, una comida de verdad, una tarea terminada. La luna nueva en la zona de lo compartido puede remover una emoción vieja. Una página escrita, o una charla con alguien de fiar, le da sitio. Si el ánimo se queda abajo varios días, el recurso es una persona que te atienda. El cielo ordena la pregunta. El cuidado sostenido tiene otro interlocutor.',
-    pregunta: '¿Qué asunto compartido estoy dejando en la niebla porque nombrarlo cambiaría el horario?',
+      'Absorbes el estado de ánimo de los demás. El antídoto esta semana es concreto: dormir a una hora parecida, una comida de verdad, una tarea terminada. Puede removerse una emoción vieja; escribirla o contársela a alguien de confianza le da sitio. Si el ánimo se queda bajo varios días, habla con un profesional.',
+    consejo: 'Nombra lo que compartes y cuida tu rutina. Lo pequeño y constante es lo que te sostiene.',
   },
 ]
 
