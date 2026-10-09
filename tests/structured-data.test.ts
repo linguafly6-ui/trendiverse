@@ -115,7 +115,8 @@ test('each horoscope sign is a separate article about that sign', () => {
   assert.notEqual(libra.about['@id'], escorpio.about['@id'])
   assert.notEqual(libra.about['@id'], topicId('astrologia'))
   assert.match(String(libra.about.sameAs), /Libra_/)
-  assert.match(libra.articleBody, /casa/)
+  assert.equal(libra.articleBody, SIGNS.find((sign) => sign.slug === 'libra')!.general)
+  assert.ok(libra.articleBody.length > 100)
 })
 
 test('a match article is a news piece about a sports event in deportes', () => {

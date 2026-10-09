@@ -10,7 +10,7 @@ import { astrologySectionGraph } from '@/lib/structured-data'
 export const runtime = 'edge'
 
 const title = 'Horóscopo semanal: los 12 signos'
-const description = 'Horóscopo del 8 al 14 de octubre de 2026. Luna nueva en Libra, Venus retrógrada en Escorpio y una lectura por signo solar.'
+const description = 'Horóscopo semanal del 8 al 14 de octubre de 2026, fácil de leer: amor, trabajo, dinero y bienestar para los 12 signos, con un consejo.'
 
 export const metadata: Metadata = {
   title,
@@ -33,7 +33,7 @@ export default function AstrologiaPage() {
       <CategoryNav active="astrologia" />
       <AstrologyHub />
       <p className="text-sm text-slate-500">
-        La guía del método está en{' '}
+        Si quieres saber cómo está hecho, la guía del método está en{' '}
         <Link className="font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 dark:text-indigo-300" href={`/articles/${ASTRO_GUIDE_SLUG}`}>
           cómo leemos el horóscopo
         </Link>
