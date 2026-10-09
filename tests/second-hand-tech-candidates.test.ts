@@ -40,6 +40,26 @@ test('tech candidates stay pending and do not verify or enable comparison', () =
   }
 })
 
+test('specific tech candidates stay descriptive and do not become a closed sku', () => {
+  const macbook = techCandidatesFor('macbook')
+  assert.match(macbook.map((item) => item.configuration).join(' '), /no es un único SKU|No hay un código de pedido único/)
+  const watch = techCandidatesFor('apple-watch').map((item) => item.configuration).join(' ')
+  assert.match(watch, /no como capacidad de esa altura/)
+  assert.match(watch, /No publica un identificador de modelo/)
+  for (const item of techCandidatesFor('samsung-galaxy')) {
+    assert.match(item.sourceUrl, /^https:\/\/www\.samsung\.com\/es\//)
+    assert.match(item.configuration, /ficha de España/)
+  }
+  const playstation = techCandidatesFor('playstation-5').map((item) => item.configuration).join(' ')
+  assert.match(playstation, /No asigna un código CFI/)
+  const digital = techCandidatesFor('xbox').find((item) => item.name.includes('Digital Edition'))
+  assert.ok(digital)
+  assert.match(digital.configuration, /No hay un código de modelo/)
+  const hac = techCandidatesFor('nintendo-switch').find((item) => item.name.includes('HAC-001(-01)'))
+  assert.ok(hac)
+  assert.match(hac.configuration, /no cubre una HAC-001 anterior/)
+})
+
 test('each tech family records what was left out and the list has no commercial data', async () => {
   assert.deepEqual(SECOND_HAND_TECH_CANDIDATE_GAPS.map((gap) => gap.productId), [...SECOND_HAND_TECH_SLUGS])
   for (const gap of SECOND_HAND_TECH_CANDIDATE_GAPS) assert.ok(gap.missing.trim(), gap.productId)
