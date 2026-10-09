@@ -1,6 +1,6 @@
 import type { Article } from './types'
 
-const content = `El Girona FC recibe al RCD Mallorca en el Estadi Municipal de Montilivi en un partido correspondiente a la octava jornada de LaLiga Hypermotion 2026/27. Dos equipos que compartieron destino la pasada temporada con el descenso desde LaLiga EA Sports y que ahora se miden en la categoría de plata con un objetivo claro: regresar a la élite del fútbol español lo antes posible. Ambos llegan empatados a 13 puntos y ocupan posiciones de play-off de ascenso, lo que convierte este enfrentamiento en un duelo directo por afianzarse en la zona noble de la clasificación. En esta guía completa repasamos todo lo que necesitas saber: horario, alineaciones, jugadores clave, historial, estado de forma y pronóstico.
+const content = `Girona y Mallorca se conocen bien y comparten una herida reciente: los dos bajaron de Primera la temporada pasada y los dos quieren volver cuanto antes. Este domingo se ven en Montilivi, empatados a 13 puntos y metidos en puestos de play-off, en un partido que es mucho más que tres puntos: es una manera de decirle al otro quién va más en serio en la pelea por el ascenso. Aquí te contamos, sin tecnicismos, a qué hora se juega, cómo llega cada equipo, quién puede marcar la diferencia y dónde verlo.
 
 ## Cuándo y dónde juegan Girona vs Mallorca
 
