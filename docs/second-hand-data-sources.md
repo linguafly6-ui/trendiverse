@@ -41,7 +41,7 @@ La comparación de fuentes, la arquitectura prevista, la regla de frescura de eB
 
 ## Catálogo verificable
 
-`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 están en revisión `pending`, con `externalProductId: null` y sin referencia de verificación. Ninguno se puede comparar todavía: las familias no fijan generación o capacidad, y moda, hogar y deporte son categorías, no un producto único. No hay precios ni identificadores de marketplace.
+`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 tienen una decisión auditable y siguen en `pending`: ninguna ficha oficial cierra un único modelo, así que los atributos siguen vacíos, `externalProductId` y `verificationRef` siguen en `null`, y ninguno se puede comparar. Las familias tecnológicas citan la página que deja abierta la capacidad, el lector o la región. Las categorías no tienen una ficha de un solo producto. La prioridad de revisión no es un ranking de ventas. No hay precios ni identificadores de marketplace.
 
 `lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`. Un candidato no es un expediente de verificación.
 
