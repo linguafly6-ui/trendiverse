@@ -32,15 +32,15 @@ export default async function SignPage({ params }: Props) {
   const faqs = [
     {
       q: `¿El horóscopo de ${sign.name} usa el ascendente?`,
-      a: 'No. Las casas se cuentan desde el signo solar, en signos enteros. Si conoces tu ascendente, la distribución de casas cambia.',
+      a: 'No. Contamos las casas desde tu signo solar, de signo en signo. Si conoces tu ascendente, el mapa cambia y esta lectura se te queda corta.',
     },
     {
       q: '¿La luna nueva del 10 de octubre anuncia un suceso?',
-      a: `No. Cae en Libra y, desde ${sign.name}, en la casa ${sign.newMoonHouse}: ${HOUSES[sign.newMoonHouse]}. Es una revisión, no un hecho anunciado.`,
+      a: `No. Cae en Libra y, si partes de ${sign.name}, eso es tu casa ${sign.newMoonHouse}: ${HOUSES[sign.newMoonHouse]}. Sirve para revisar esa parte de la semana, no para anunciar un hecho.`,
     },
     {
       q: '¿Sirve para una decisión médica o de dinero?',
-      a: 'No. No es un consejo médico, legal ni financiero. El dinero, cuando aparece, es una cifra que ya es tuya y conviene mirar.',
+      a: 'No. No sustituye a un médico, a un abogado ni a quien te asesora con el dinero. Si sale una cifra, es una que ya es tuya y conviene mirar con calma.',
     },
   ]
   return (
@@ -67,10 +67,10 @@ export default async function SignPage({ params }: Props) {
       <section aria-labelledby="sign-sky" className="mt-6">
         <h2 id="sign-sky" className="text-xl font-extrabold">El cielo en tus casas</h2>
         <ul className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          <li>Luna nueva en Libra: casa {sign.newMoonHouse}, {HOUSES[sign.newMoonHouse]}.</li>
-          <li>Venus retrógrada y Mercurio en Escorpio: casa {sign.venusHouse}, {HOUSES[sign.venusHouse]}.</li>
-          <li>Saturno retrógrado en Aries: casa {sign.saturnHouse}, {HOUSES[sign.saturnHouse]}.</li>
-          <li>Marte y Júpiter en Leo: casa {sign.marsHouse}, {HOUSES[sign.marsHouse]}.</li>
+          <li>La luna nueva del sábado cae en Libra, en tu casa {sign.newMoonHouse}: {HOUSES[sign.newMoonHouse]}.</li>
+          <li>Venus retrógrada y Mercurio están en Escorpio, en tu casa {sign.venusHouse}: {HOUSES[sign.venusHouse]}.</li>
+          <li>Saturno retrógrado está en Aries, en tu casa {sign.saturnHouse}: {HOUSES[sign.saturnHouse]}.</li>
+          <li>Marte y Júpiter están en Leo, en tu casa {sign.marsHouse}: {HOUSES[sign.marsHouse]}.</li>
         </ul>
         <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{SKY.newMoon} {SKY.venus}</p>
       </section>

@@ -12,15 +12,15 @@ export const GUARDIOLA_ARTICLE_2026: Article = {
   views: 0,
   trending: 1,
   published_at: '2026-10-08T23:55:00.000Z',
-  content: `Las últimas noticias de Pep Guardiola, a 8 de octubre de 2026, colocan al técnico en la grada y fuera del banquillo. Tiene 55 años y está sin equipo desde que dejó el Manchester City al cerrar la 2025-26. ESPN, citando fuentes, lo espera el miércoles 14 de octubre en el Etihad, en el partido de la fase liga de la Champions contra el Paris Saint-Germain. Sería su primera presencia en el estadio desde la marcha, y el primer partido del City en casa desde que una comisión independiente lo declaró culpable de infracciones graves de las normas financieras de la Premier League.
+  content: `Pep Guardiola tiene 55 años y está sin equipo desde que dejó el Manchester City al cerrar la 2025-26. A 8 de octubre de 2026, las crónicas lo colocan en la grada. ESPN, citando fuentes, lo espera el miércoles 14 de octubre en el Etihad, en el partido de la fase liga de la Champions contra el Paris Saint-Germain. Sería la primera vez que pisa el estadio desde la marcha, y el primer partido del City en casa desde que una comisión independiente lo declaró culpable de infracciones graves de las normas financieras de la Premier League.
 
-El club no ha publicado un comunicado sobre esa visita. EFE, Marca y Mundo Deportivo recogen el mismo día y el mismo plan. Lo que sí firmó Guardiola, en redes y al día siguiente del fallo, fue un mensaje de apoyo al club, a la propiedad, a Ferran Soriano, a la plantilla y a Enzo Maresca.
+El club no ha publicado un comunicado sobre esa visita. EFE, Marca y Mundo Deportivo recogen el mismo día y el mismo plan. Lo que Guardiola sí firmó, en redes y al día siguiente del fallo, fue un mensaje de apoyo al club, a la propiedad, a Ferran Soriano, a la plantilla y a Enzo Maresca.
 
-La apelación entró el 1 de octubre. La sanción no se ha dictado. Associated Press sitúa al City líder, con 15 puntos en cinco partidos.
+La apelación entró el 1 de octubre. La sanción sigue sin dictarse. Associated Press sitúa al City líder, con 15 puntos en cinco partidos. El texto de abajo separa esas tres piezas: la visita, el mensaje y el recurso. Cada una tiene su fuente.
 
 ## Qué se sabe de la vuelta al Etihad
 
-Rob Dawson escribió en ESPN, este jueves, que Guardiola tiene previsto asistir al City-PSG. El miércoles es, en esa crónica, el primer partido del club en el Etihad desde el fallo y la primera vez de Guardiola en la grada desde que dejó el cargo. El domingo, antes, el City juega en Anfield. Tres días después recibe al PSG, vigente campeón de Europa. Mundo Deportivo fecha ese choque el 14 de octubre, en la fase liga de la Champions.
+Rob Dawson escribió en ESPN, este jueves, que Guardiola tiene previsto asistir al City-PSG. En esa crónica, el miércoles es el primer partido del club en el Etihad desde el fallo, y la primera vez de Guardiola en la grada desde que dejó el cargo. El domingo, antes, el City juega en Anfield. Tres días después recibe al PSG, vigente campeón de Europa. Mundo Deportivo fecha ese choque el 14 de octubre, en la fase liga de la Champions.
 
 La asistencia la dan por prevista los medios. El club no ha convocado, en lo publicado, una comparecencia para anunciarla. Marca habla de un técnico sin equipo. La BBC, el 22 de mayo, escribió que se tomaría un descanso, que sería embajador global del City Football Group y que podría asesorar a los clubes del grupo. La visita del día 14, si se cumple, encaja en ese papel.
 
@@ -60,9 +60,9 @@ No hay fecha de sentencia publicada. Kaveh Solhekol, en Sky, lee las normas nuev
 
 La Premier confirma que el recurso está ante la presidencia del panel judicial y que la vista será privada. El Appeal Board tiene tres miembros, uno con cargo judicial previo, y puede estimar, desestimar o modificar lo resuelto. La sanción va por una audiencia distinta.
 
-## La sanción no se ha dictado
+## La sanción sigue en el aire
 
-Probados los cargos, el castigo queda para otra audiencia de la comisión, privada hasta que se pueda publicar. Las normas citan multas, pérdida de puntos y otras sanciones deportivas, en una lista abierta. A 8 de octubre no hay deducción ni expulsión firmadas.
+Los cargos están probados. El castigo queda para otra audiencia de la comisión, privada hasta que se pueda publicar. Las normas citan multas, pérdida de puntos y otras sanciones deportivas, en una lista abierta. A 8 de octubre no hay deducción ni expulsión firmadas.
 
 Associated Press incluye entre lo posible una resta amplia de puntos e incluso la expulsión. The Independent habla de expulsión o de una pérdida capaz de dejar el descenso como escenario probable. Son hipótesis de esos medios sobre la gravedad del fallo, no una sanción dictada. La tabla, mientras, es la del campo: AP da al City el liderato, con 15 puntos en cinco partidos jugados antes de que el veredicto moviera la clasificación.
 
@@ -88,33 +88,33 @@ En el vídeo dijo que nada es eterno. El club lo nombró embajador global del Ci
 
 ### ¿Pep Guardiola vuelve a entrenar al Manchester City?
 
-Dejó el cargo al acabar la 2025-26. Lo de octubre es una asistencia a la grada, según fuentes de ESPN. El entrenador es Enzo Maresca desde el 29 de junio de 2026, con contrato hasta el verano de 2029.
+Dejó el cargo al acabar la 2025-26. Lo que las fuentes de ESPN cuentan para octubre es una asistencia a la grada. El entrenador es Enzo Maresca desde el 29 de junio de 2026, con contrato hasta el verano de 2029.
 
 ### ¿Cuándo tiene previsto estar en el Etihad?
 
-El miércoles 14 de octubre de 2026, ante el PSG, según ESPN, EFE y Mundo Deportivo. El domingo el City juega en Anfield. Las crónicas no ponen a Guardiola en Liverpool.
+El miércoles 14 de octubre de 2026, ante el PSG, según ESPN, EFE y Mundo Deportivo. El domingo el City juega en Anfield. Las crónicas de esa visita lo sitúan en Mánchester, no en Liverpool.
 
 ### ¿Qué dijo tras el fallo del City?
 
-El 30 de septiembre, según Mundo Deportivo, publicó que está con el club, con la propiedad, con Ferran Soriano, con la plantilla, con Maresca y con la afición, y que saldrían de esta juntos. En ese texto no anuncia la vuelta al banquillo.
+El 30 de septiembre, según Mundo Deportivo, publicó que está con el club, con la propiedad, con Ferran Soriano, con la plantilla, con Maresca y con la afición, y que saldrían de esta juntos. En ese texto apoya. La vuelta al banquillo queda fuera.
 
 ### ¿La comisión lo declaró culpable a él?
 
-El fallo es del club. La Premier, el 29 de septiembre, da por probados los cargos financieros entre 2009/10 y 2017/18 y tres de cuatro cargos de cooperación. Guardiola dirigió solo las dos últimas de esas nueve temporadas.
+El fallo es del club. La Premier, el 29 de septiembre, da por probados los cargos financieros entre 2009/10 y 2017/18 y tres de cuatro cargos de cooperación. Guardiola dirigió las dos últimas de esas nueve temporadas, 2016-17 y 2017-18.
 
 ### ¿Cuántos títulos ganó en el Manchester City?
 
-La BBC habla de 17 títulos mayores, con seis Premier y la Champions del triplete de 2022-23. ESPN habla de 20 en diez años.
+La BBC habla de 17 títulos mayores: seis Premier, una Champions, tres FA Cup, cinco Copas de la Liga y un Mundial de Clubes. ESPN habla de 20 en diez años. Son dos cuentas distintas.
 
 ### ¿El City ya ha perdido puntos?
 
-La sanción está pendiente de otra audiencia, privada. A 8 de octubre no hay deducción publicada. AP lo sitúa líder, con 15 puntos en cinco partidos.
+La sanción espera otra audiencia, privada. A 8 de octubre no hay deducción publicada. AP lo sitúa líder, con 15 puntos en cinco partidos.
 
 ### ¿Cuándo se resuelve la apelación?
 
-Entró el 1 de octubre a las 19:00. El club la funda en errores materiales y en su inocencia. Sky sitúa un horizonte orientativo en enero si se aplican las normas nuevas, y recoge que el City podría discutir ese calendario. No hay fecha oficial de sentencia.
+Entró el 1 de octubre a las 19:00. El club la funda en errores materiales y en su inocencia. Sky lee un horizonte orientativo en enero si se aplican las normas nuevas, y recoge que el City podría discutir ese calendario. La fecha oficial de la sentencia sigue sin publicarse.
 
 ## Conclusión
 
-Pep Guardiola sigue sin banquillo. Según las fuentes de ESPN, el 14 de octubre estará en el Etihad para ver al City de Maresca contra el PSG: la primera vuelta al estadio desde su marcha y el primer partido en casa después del fallo. El club apeló el 1 de octubre una decisión que lo declara culpable de un esquema de más de 900 millones de libras entre 2009 y 2018, y que reserva el castigo para otra audiencia. El mensaje de Guardiola está con el City. El laudo, recurrido, sostiene los cargos. Las dos piezas siguen abiertas, y los puntos de la liga siguen donde los dejó el campo.`,
+Pep Guardiola sigue sin banquillo. Según las fuentes de ESPN, el 14 de octubre estará en el Etihad para ver al City de Maresca contra el PSG: la primera vuelta al estadio desde su marcha, y el primer partido en casa después del fallo. El club apeló el 1 de octubre una decisión que lo declara culpable de un esquema de más de 900 millones de libras entre 2009 y 2018. El castigo queda para otra audiencia. El mensaje de Guardiola está con el City. El laudo, recurrido, sostiene los cargos. La visita, el recurso y los puntos de la liga siguen cada uno en su sitio: la grada, el tribunal y el campo.`,
 }
