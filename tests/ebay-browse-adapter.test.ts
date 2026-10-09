@@ -63,6 +63,56 @@ test('the adapter module does not call the network or read secrets', () => {
   assert.doesNotMatch(source, /\bfetch\s*\(/)
   assert.doesNotMatch(source, /api\.ebay\.com/)
   assert.doesNotMatch(source, /EBAY_CLIENT|EBAY_PARTNER|process\.env/)
+  assert.match(source, /export const EBAY_BROWSE_SOURCE_ENABLED = false/)
+  const provider = source.slice(source.indexOf('export const ebayBrowseSecondHandSource'))
+  assert.match(provider, /async getProductData\(\): Promise<SecondHandPriceObservation \| null> \{\s*return null\s*\}/)
+  assert.doesNotMatch(provider, /ebayOfferToObservation|fetch\(|process\.env/)
+})
+
+test('normalization is documented and does not enable the provider or an eBay url', async () => {
+  const source = readFileSync(new URL('../lib/ebay-browse-adapter.ts', import.meta.url), 'utf8')
+  const prelude = source.slice(Math.max(0, source.indexOf('export function ebayOfferToObservation') - 900), source.indexOf('export function ebayOfferToObservation'))
+  assert.match(prelude, /Función de normalización/)
+  assert.match(prelude, /No autoriza a publicar contenido de eBay/)
+  assert.match(prelude, /gate contractual de la PR #93/)
+  assert.match(prelude, /`getProductData` no llama a esta función y devuelve siempre `null`/)
+
+  const observation = ebayOfferToObservation(offer(), verifiedMapping, NOW)
+  assert.ok(observation)
+  assert.equal(observation.sourceUrl, FIXTURE_URL)
+  assert.doesNotMatch(observation.sourceUrl, /ebay|campid|customid|mkcid|mkevt|mkrid|toolid/i)
+  assert.equal(await ebayBrowseSecondHandSource.getProductData('iphone'), null)
+  assert.equal(EBAY_BROWSE_SOURCE_ENABLED, false)
+  const products = await getSecondHandProducts()
+  for (const product of products) assert.equal(product.metrics.usedPrice, null)
+})
+
+const BLOCKED_EBAY_URLS = [
+  'https://www.ebay.es/itm/fixture',
+  'https://www.ebay.com/itm/fixture',
+  'https://ebay.es/itm/fixture',
+  'https://ebay.com/itm/fixture',
+  'http://www.ebay.co.uk/itm/fixture',
+  'https://rover.ebay.com/rover/1/fixture',
+  'https://www.ebaydesc.com/fixture',
+  'https://partner.ebay.com/fixture',
+  'https://fixture.invalid/synthetic-offer?campid=1',
+  'https://fixture.invalid/synthetic-offer?customid=1',
+  'https://fixture.invalid/synthetic-offer?mkcid=1',
+  'https://fixture.invalid/synthetic-offer?mkevt=1',
+  'https://fixture.invalid/synthetic-offer?mkrid=1',
+  'https://fixture.invalid/synthetic-offer?toolid=10001',
+  'https://fixture.invalid/synthetic-offer?CampId=1',
+  'https://www.ebay.es/itm/fixture?campid=1&customid=2&mkevt=1&mkcid=1&mkrid=1&toolid=10001',
+]
+
+test('no skeleton function accepts an eBay listing or affiliate url', async () => {
+  for (const url of BLOCKED_EBAY_URLS) {
+    assert.equal(normalizeEbaySourceUrl(url), null, url)
+    assert.equal(ebayOfferToObservation(offer({ sourceUrl: url }), verifiedMapping, NOW), null, url)
+  }
+  assert.equal(await ebayBrowseSecondHandSource.getProductData('iphone'), null)
+  assert.equal((await getSecondHandProducts())[0]?.metrics.usedPrice, null)
 })
 
 test('a synthetic fresh offer can be normalized without aggregates or score', () => {

@@ -65,7 +65,7 @@ export interface EbayNormalizedOffer {
 /**
  * IDs documentados en la guía de condiciones de eBay (definiciones de EE. UU.).
  * No afirma que el ID exista en `EBAY_ES` ni en una categoría concreta.
- * `7000` (for parts) no se publica como usado funcional.
+ * `7000` (for parts) no entra en la normalización como usado funcional.
  */
 const DOCUMENTED_CONDITION_IDS: Record<number, SecondHandCondition> = {
   1000: 'new',
@@ -86,7 +86,7 @@ const DOCUMENTED_CONDITION_IDS: Record<number, SecondHandCondition> = {
   7000: 'poor',
 }
 
-const PUBLISHABLE_CONDITIONS = new Set<SecondHandCondition>(['like-new', 'good', 'fair', 'poor'])
+const NORMALIZABLE_CONDITIONS = new Set<SecondHandCondition>(['like-new', 'good', 'fair', 'poor'])
 
 export function normalizeEbayPrice(value: unknown): number | null {
   if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return null
@@ -109,7 +109,10 @@ export function normalizeEbayCurrency(value: unknown): string | null {
   return code
 }
 
-/** Acepta solo http(s). Rechaza fichas de eBay y parámetros de afiliado: este esqueleto no publica enlaces reales. */
+/**
+ * Normaliza una URL http(s) de fixture. Rechaza fichas de eBay y parámetros de
+ * afiliado. Aceptar otra URL no autoriza a publicarla.
+ */
 export function normalizeEbaySourceUrl(value: unknown): string | null {
   if (typeof value !== 'string') return null
   let url: URL
@@ -147,15 +150,16 @@ export function isEbayListingWithinDisplayWindow(observedAt: unknown, now: numbe
 
 /**
  * Devuelve la condición normalizada solo si el ID está documentado, la
- * categoría lo admite y el resultado es un usado o reacondicionado publicable.
+ * categoría lo admite y el resultado es un usado o reacondicionado normalizable.
  * Nuevo, desconocido, piezas (`7000`) y un ID no admitido devuelven null.
+ * El resultado no autoriza a publicar contenido de eBay.
  */
 export function normalizeEbayCondition(conditionId: unknown, conditionAdmitted: boolean): SecondHandCondition | null {
   if (conditionAdmitted !== true) return null
   if (typeof conditionId !== 'number' || !Number.isInteger(conditionId)) return null
   if (conditionId === 7000) return null
   const condition = DOCUMENTED_CONDITION_IDS[conditionId]
-  if (!condition || !PUBLISHABLE_CONDITIONS.has(condition)) return null
+  if (!condition || !NORMALIZABLE_CONDITIONS.has(condition)) return null
   return condition
 }
 
@@ -168,10 +172,18 @@ export function isVerifiedEbayMapping(mapping: EbayProductMapping, productId: st
 }
 
 /**
- * Convierte una oferta sintética o, en el futuro, una oferta ya autorizada,
- * en una observación. Devuelve null si el mapping no está verificado, la
- * condición no es compatible o la oferta está caducada. No rellena ahorro,
- * mínimo, máximo ni precios de referencia.
+ * Función de normalización. Comprueba la forma de una oferta ya separada de
+ * cualquier respuesta de red y, si pasa las reglas de este esqueleto, devuelve
+ * un objeto normalizado. No autoriza a publicar contenido de eBay.
+ *
+ * La publicación sigue bloqueada hasta completar el gate contractual de la PR #93.
+ * `getProductData` no llama a esta función y devuelve siempre `null`.
+ * Un objeto devuelto aquí no sustituye al proveedor vacío ni habilita una URL
+ * de ficha o de afiliado de eBay: esas URL se rechazan.
+ *
+ * Devuelve null si el mapping no está verificado, la condición no es
+ * compatible, la oferta supera las seis horas o la URL no es un fixture
+ * http(s). No rellena ahorro, mínimo, máximo ni precios de referencia.
  */
 export function ebayOfferToObservation(
   offer: EbayNormalizedOffer,

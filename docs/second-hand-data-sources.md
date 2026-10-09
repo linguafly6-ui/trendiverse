@@ -31,7 +31,7 @@ Devuelve una observación real para el `slug` de un producto, o `null` si no hay
 
 `lib/ebay-browse-adapter.ts` implementa `SecondHandDataSource` (`id: ebay-browse`). `getProductData` devuelve siempre `null` y no es el proveedor por defecto. No hay cliente HTTP, OAuth, caché ni credenciales.
 
-Activarlo exige el gate de la PR #93: acceso de producción, autorización de EPN, `EBAY_ES`, frescura máxima de seis horas sin alargar el plazo si falla el refresco, permiso escrito para el uso de los datos, mapping verificado (`externalProductId` distinto de `null`) y credenciales solo en servidor. Ahorro, mínimo, máximo y score siguen fuera. Una condición no admitida por la categoría, un identificador no verificado o un anuncio de más de seis horas no producen una observación publicable.
+`ebayOfferToObservation` solo normaliza. Devolver un objeto no autoriza a publicarlo ni activa el proveedor. La publicación sigue bloqueada hasta el gate de la PR #93: acceso de producción, autorización de EPN, `EBAY_ES`, frescura máxima de seis horas sin alargar el plazo si falla el refresco, permiso escrito para el uso de los datos, mapping verificado (`externalProductId` distinto de `null`) y credenciales solo en servidor. Ahorro, mínimo, máximo y score siguen fuera. Una condición no admitida por la categoría, un identificador no verificado, un anuncio de más de seis horas o una URL de ficha o de afiliado de eBay no producen un objeto normalizado.
 
 ## Por qué no datos manuales o ficticios
 
