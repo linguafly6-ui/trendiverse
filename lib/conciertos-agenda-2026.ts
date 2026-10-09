@@ -14,7 +14,7 @@ export const CONCIERTOS_AGENDA_2026: Article = {
   views: 0,
   trending: 0,
   published_at: '2026-10-08T16:00:00.000Z',
-  content: `La [agenda de conciertos](/conciertos) de TrendiVerse recoge las citas grandes que seguían vigentes el 8 de octubre de 2026 y lo que ya tiene fecha para 2027. Cada ficha lleva un enlace a la fuente. No es el inventario de todas las salas de España. Una lista así cambiaría cada semana y mezclaría anuncios sólidos con carteleras que nadie ha contrastado.
+  content: `La [agenda de conciertos](/conciertos) de TrendiVerse recoge las citas grandes que seguían vigentes el 8 de octubre de 2026 y lo que ya tiene fecha para 2027. Cada ficha lleva un enlace a la fuente y otro a la página donde se venden las entradas de esa cita. No es el inventario de todas las salas de España. Una lista así cambiaría cada semana y mezclaría anuncios sólidos con carteleras que nadie ha contrastado.
 
 Esta guía explica qué entró, qué se dejó fuera y cómo leer una fecha antes de comprar un viaje.
 
@@ -96,7 +96,7 @@ No. EL PAÍS y El Confidencial cubren el anuncio del 5 de octubre de 2026. El se
 
 ### ¿Puedo comprar desde TrendiVerse?
 
-No. Cada ficha enlaza a quien publicó la fecha. La venta, si existe, está en el recinto, en la promotora o en la web del artista. Una ficha agotada en junio puede seguir agotada o puede haber un relanzamiento: se comprueba allí.
+No. TrendiVerse no vende entradas. Cada ficha enlaza la página donde se venden las de esa cita, además de la fuente que documenta la fecha. Si la taquilla está agotada o la venta no ha abierto, el enlace sigue llevando a esa página y la ficha no dice que haya localidades.
 
 ### ¿Qué hago si dos fuentes no coinciden?
 
