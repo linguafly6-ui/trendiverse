@@ -10,6 +10,8 @@ import RelatedArticles from '@/components/article/RelatedArticles'
 import TableOfContents from '@/components/article/TableOfContents'
 import ShareButtons from '@/components/article/ShareButtons'
 import LiveScore from '@/components/article/LiveScore'
+import MatchTicketBlock from '@/components/article/MatchTicketBlock'
+import { buildTicketBlock, matchTicketInfoForSlug } from '@/lib/match-tickets'
 import { liveMatchForSlug } from '@/lib/laliga-jornada-8-2026'
 import { getArticleBySlug, getRelatedArticles } from '@/lib/db'
 import { getHeadings, parseArticleContent } from '@/lib/article-content'
@@ -57,6 +59,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = await getArticleBySlug((await params).slug)
   if (!article) notFound()
   const liveMatch = liveMatchForSlug(article.slug)
+  const ticketInfo = matchTicketInfoForSlug(article.slug)
   const blocks = parseArticleContent(withRelatedLinks(article.slug, article.content))
   const related = await getRelatedArticles(article, 4)
   const category = getCategory(article.category)
@@ -98,6 +101,7 @@ export default async function ArticlePage({ params }: Props) {
             kickoffLabel={liveMatch.kickoffLabel}
           />
         )}
+        {ticketInfo && <MatchTicketBlock model={buildTicketBlock(ticketInfo)} />}
         <ArticleBody blocks={blocks} />
         <div className="mx-auto mt-10 max-w-prose border-t border-slate-200 pt-6 dark:border-slate-800"><ShareButtons slug={article.slug} title={article.title} /></div>
         <RelatedArticles articles={related} />
