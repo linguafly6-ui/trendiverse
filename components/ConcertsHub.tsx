@@ -21,7 +21,7 @@ export default function ConcertsHub({
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">Actualizado el {AGENDA_UPDATED}</p>
-            <h2 id="concerts-strip-title" className="mt-1 text-2xl font-extrabold">Conciertos en España</h2>
+            <h2 id="concerts-strip-title" className="mt-1 text-2xl font-extrabold">Entradas para conciertos en España</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               Lo que queda de 2026 y lo ya fechado para 2027. Cada cita abre su ficha y la página donde se venden las entradas.
             </p>
@@ -35,7 +35,7 @@ export default function ConcertsHub({
             <li key={concert.id}>
               <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
                 <Link href={`/conciertos/${concert.id}`} className="block">
-                  <p className="text-sm font-semibold">{concert.artist}</p>
+                  <p className="text-sm font-semibold">Entradas {concert.artist}</p>
                   <p className="text-xs text-slate-500">{concert.when} · {concert.city}</p>
                 </Link>
                 <ConcertTicketLink concert={concert} compact />
@@ -53,9 +53,9 @@ export default function ConcertsHub({
     <div className="space-y-6">
       <header>
         <p className="text-sm font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">Actualizado el {AGENDA_UPDATED}</p>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Conciertos en España, 2026 y 2027</h1>
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Entradas para conciertos en España, 2026 y 2027</h1>
         <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
-          Agenda de grandes citas que siguen vigentes desde el 8 de octubre de 2026 y de lo que ya tiene fecha en 2027. Cada ficha dice de dónde sale y enlaza la página donde se venden las entradas. Una sala de barrio puede anunciar su mes la semana que viene: eso no cabe en una lista cerrada de dos años.
+          Agenda de grandes citas que siguen vigentes desde el 8 de octubre de 2026 y de lo que ya tiene fecha en 2027. Cada ficha dice de dónde sale, si las entradas están a la venta y enlaza la página oficial donde se compran. Una sala de barrio puede anunciar su mes la semana que viene: eso no cabe en una lista cerrada de dos años.
         </p>
         <p className="mt-3 text-sm">
           <Link className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300" href={`/articles/${CONCERTS_GUIDE_SLUG}`}>
@@ -86,7 +86,7 @@ export default function ConcertsHub({
                   {concert.datesPending ? ' · días por cerrar' : ''}
                 </p>
                 <h3 className="mt-1 text-lg font-bold">
-                  <Link href={`/conciertos/${concert.id}`} className="hover:text-rose-700 dark:hover:text-rose-300">{concert.artist}</Link>
+                  <Link href={`/conciertos/${concert.id}`} className="hover:text-rose-700 dark:hover:text-rose-300">Entradas {concert.artist} en {concert.city}</Link>
                 </h3>
                 <p className="text-sm font-medium">{concert.title}</p>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{concert.when}</p>

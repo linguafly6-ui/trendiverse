@@ -187,10 +187,27 @@ export function siteGraph() {
   ])
 }
 
+/** Título y descripción con la palabra clave «entradas + artista + ciudad» delante. */
 export function concertMeta(concert: Concert): { title: string; description: string } {
-  const title = `${concert.artist} en ${concert.city}`
-  const description = truncateWords(`${concert.when}. ${concert.venue}, ${concert.city}. ${concert.detail}`, 155)
+  const full = `Entradas ${concert.artist} en ${concert.city}`
+  const title = full.length <= 46 ? full : `Entradas ${concert.artist} ${concert.city}`
+  const tickets = ticketsFor(concert)
+  const sale = tickets.state === 'abierta' ? 'a la venta en' : tickets.state === 'agotadas' ? 'agotadas en' : 'en'
+  const description = truncateWords(`Entradas ${concert.artist} en ${concert.city}: ${concert.when}, ${concert.venue}. ${cap(sale)} ${tickets.name}. ${concert.detail}`, 155)
   return { title, description }
+}
+
+function cap(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+/** Estado de la venta en una frase, para la ficha y sus preguntas frecuentes. */
+export function concertSaleAnswer(concert: Concert): string {
+  const tickets = ticketsFor(concert)
+  if (tickets.state === 'abierta') return `Sí. ${tickets.name} tiene la venta abierta para esta cita; el botón de la ficha lleva a esa página oficial. Los precios y las zonas se consultan allí, porque cambian según la fase de venta.`
+  if (tickets.state === 'agotadas') return `${tickets.name} las marca como agotadas. Si se liberan localidades, aparecerán en esa misma página oficial; evita la reventa no autorizada.`
+  if (tickets.state === 'cerrada') return `Todavía no. En ${tickets.name} esta cita no tiene la venta abierta; la página oficial es donde se anunciará la fecha de salida.`
+  return `La página oficial de la cita es la de ${tickets.name}. Allí se consulta si hay venta abierta para cada noche.`
 }
 
 function eventName(concert: Concert): string {
@@ -294,6 +311,14 @@ export function concertFaqs(concert: Concert) {
   const confirmed = concert.tier === 'confirmado'
   return [
     {
+      q: `¿Dónde comprar entradas para ${concert.artist} en ${concert.city}?`,
+      a: ticketNote(concert),
+    },
+    {
+      q: `¿Están a la venta las entradas de ${concert.artist} en ${concert.city}?`,
+      a: concertSaleAnswer(concert),
+    },
+    {
       q: `¿Cuándo es ${concert.artist} en ${concert.city}?`,
       a: concert.datesPending
         ? `${concert.when}. Los días concretos de esa cita todavía no están cerrados.`
@@ -308,10 +333,6 @@ export function concertFaqs(concert: Concert) {
       a: confirmed
         ? `De ${concert.sourceName}. La página enlaza esa fuente.`
         : `De un listado de entradas (${concert.sourceName}). Conviene confirmar hora y recinto en la taquilla antes de ir.`,
-    },
-    {
-      q: `¿Dónde se compran las entradas de ${concert.artist} en ${concert.city}?`,
-      a: ticketNote(concert),
     },
   ]
 }

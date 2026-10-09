@@ -7,6 +7,7 @@ import { liveMatchForSlug } from '../lib/laliga-jornada-8-2026'
 import {
   actKind,
   articleGraph,
+  concertFaqs,
   concertMeta,
   concertPageGraph,
   concertSectionGraph,
@@ -51,6 +52,9 @@ test('each concert is its own event and pending dates stay undated', () => {
     const meta = concertMeta(concert)
     assert.ok(meta.title.length <= 46, `${concert.id} title ${meta.title.length}`)
     assert.ok(meta.description.length <= 155, `${concert.id} description ${meta.description.length}`)
+    assert.match(meta.title, /^Entradas /, concert.id)
+    assert.match(meta.description, /^Entradas /, concert.id)
+    assert.match(concertFaqs(concert)[0].q, /^¿Dónde comprar entradas para /, concert.id)
     actKind(concert.artist)
   }
 
