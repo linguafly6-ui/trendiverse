@@ -8,6 +8,10 @@ import { SECOND_HAND_PRODUCTS } from './second-hand'
  * ni identificador externo. El esquema es compatible con el mapping del
  * adapter de eBay (`productId`, `externalProductId`, `verified`), que sigue
  * desconectado y no se importa aquí.
+ *
+ * Pasar un registro a `verified` exige el expediente de
+ * `lib/second-hand-verification-policy.ts`. Este archivo no lo rellena
+ * y no cambia `canComparePrices()`.
  */
 
 export const SECOND_HAND_REVIEW_STATUSES = ['pending', 'verified', 'rejected'] as const
