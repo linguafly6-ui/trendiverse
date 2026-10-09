@@ -1,4 +1,5 @@
 import { concertsFor, type Concert } from './concerts'
+import { ticketNote, ticketsFor } from './concert-tickets'
 import { CATEGORIES, getCategory, SITE_NAME, SITE_URL, type CategoryInfo, type TopicInfo } from './constants'
 import type { LiveFixtureRef } from './laliga-jornada-8-2026'
 import { truncateWords } from './seo-overrides'
@@ -232,6 +233,15 @@ export function eventNode(concert: Concert) {
       name: concert.artist,
     }
   }
+  const tickets = ticketsFor(concert)
+  const offer: Record<string, unknown> = {
+    '@type': 'Offer',
+    url: tickets.url,
+    seller: { '@type': 'Organization', name: tickets.name },
+  }
+  if (tickets.state === 'abierta') offer.availability = 'https://schema.org/InStock'
+  if (tickets.state === 'agotadas') offer.availability = 'https://schema.org/SoldOut'
+  node.offers = offer
   return node
 }
 
@@ -298,6 +308,10 @@ export function concertFaqs(concert: Concert) {
       a: confirmed
         ? `De ${concert.sourceName}. La página enlaza esa fuente.`
         : `De un listado de entradas (${concert.sourceName}). Conviene confirmar hora y recinto en la taquilla antes de ir.`,
+    },
+    {
+      q: `¿Dónde se compran las entradas de ${concert.artist} en ${concert.city}?`,
+      a: ticketNote(concert),
     },
   ]
 }

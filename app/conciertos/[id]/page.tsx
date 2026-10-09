@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import ConcertTicketLink from '@/components/ConcertTicketLink'
 import JsonLd from '@/components/JsonLd'
 import { concertById, concertsFor } from '@/lib/concerts'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
@@ -54,6 +55,7 @@ export default async function ConcertPage({ params }: Props) {
         <p className="mt-2 text-lg font-medium">{concert.title}</p>
         <p className="mt-3 text-slate-600 dark:text-slate-300">{concert.when}</p>
         <p className="text-slate-600 dark:text-slate-300">{concert.venue} · {concert.city}</p>
+        <ConcertTicketLink concert={concert} />
       </header>
       <p className="mt-6 leading-relaxed">{concert.detail}</p>
       <p className="mt-4 text-sm">

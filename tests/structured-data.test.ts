@@ -60,6 +60,19 @@ test('each concert is its own event and pending dates stay undated', () => {
   assert.equal(shakira.endDate, '2026-10-12')
   assert.equal((shakira.performer as Node)['@type'], 'Person')
   assert.equal(shakira.url, 'https://trendiverse.org/conciertos/shakira-madrid-2026')
+  const shakiraOffer = shakira.offers as Node
+  assert.equal(shakiraOffer['@type'], 'Offer')
+  assert.equal(shakiraOffer.availability, 'https://schema.org/InStock')
+  assert.match(String(shakiraOffer.url), /livenation\.es/)
+  assert.equal(shakiraOffer.price, undefined)
+
+  const oasisOffer = (eventNode(concertById('oasis-barcelona-2027')!).offers) as Node
+  assert.equal(oasisOffer.availability, 'https://schema.org/SoldOut')
+  assert.equal(oasisOffer.price, undefined)
+
+  const madOffer = (eventNode(concertById('mad-cool-2027')!).offers) as Node
+  assert.equal(madOffer.availability, undefined)
+  assert.equal(madOffer.url, 'https://www.madcoolfestival.es/tickets')
 
   const muse = eventNode(concertById('muse-madrid-2027')!)
   assert.equal((muse.performer as Node)['@type'], 'MusicGroup')

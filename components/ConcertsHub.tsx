@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ConcertTicketLink from '@/components/ConcertTicketLink'
 import { concertCities, concertsFor, CONCERTS_GUIDE_SLUG, groupByMonth, AGENDA_UPDATED, type ConcertTier } from '@/lib/concerts'
 
 export default function ConcertsHub({
@@ -22,7 +23,7 @@ export default function ConcertsHub({
             <p className="text-sm font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">Actualizado el {AGENDA_UPDATED}</p>
             <h2 id="concerts-strip-title" className="mt-1 text-2xl font-extrabold">Conciertos en España</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-              Lo que queda de 2026 y lo ya fechado para 2027, con la fuente al lado de cada cita.
+              Lo que queda de 2026 y lo ya fechado para 2027. Cada cita abre su ficha y la página donde se venden las entradas.
             </p>
           </div>
           <Link href="/conciertos" className="text-sm font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300">
@@ -32,10 +33,13 @@ export default function ConcertsHub({
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {next.map((concert) => (
             <li key={concert.id}>
-              <Link href={`/conciertos/${concert.id}`} className="block rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
-                <p className="text-sm font-semibold">{concert.artist}</p>
-                <p className="text-xs text-slate-500">{concert.when} · {concert.city}</p>
-              </Link>
+              <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
+                <Link href={`/conciertos/${concert.id}`} className="block">
+                  <p className="text-sm font-semibold">{concert.artist}</p>
+                  <p className="text-xs text-slate-500">{concert.when} · {concert.city}</p>
+                </Link>
+                <ConcertTicketLink concert={concert} compact />
+              </div>
             </li>
           ))}
         </ul>
@@ -51,7 +55,7 @@ export default function ConcertsHub({
         <p className="text-sm font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">Actualizado el {AGENDA_UPDATED}</p>
         <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Conciertos en España, 2026 y 2027</h1>
         <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
-          Agenda de grandes citas que siguen vigentes desde el 8 de octubre de 2026 y de lo que ya tiene fecha en 2027. Cada ficha dice de dónde sale. Una sala de barrio puede anunciar su mes la semana que viene: eso no cabe en una lista cerrada de dos años.
+          Agenda de grandes citas que siguen vigentes desde el 8 de octubre de 2026 y de lo que ya tiene fecha en 2027. Cada ficha dice de dónde sale y enlaza la página donde se venden las entradas. Una sala de barrio puede anunciar su mes la semana que viene: eso no cabe en una lista cerrada de dos años.
         </p>
         <p className="mt-3 text-sm">
           <Link className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300" href={`/articles/${CONCERTS_GUIDE_SLUG}`}>
@@ -87,6 +91,7 @@ export default function ConcertsHub({
                 <p className="text-sm font-medium">{concert.title}</p>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{concert.when}</p>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{concert.venue} · {concert.city}</p>
+                <ConcertTicketLink concert={concert} />
                 <p className="mt-2 text-sm leading-relaxed">{concert.detail}</p>
                 <p className="mt-2 text-sm">
                   <a className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300" href={concert.sourceUrl}>
