@@ -10,6 +10,7 @@ import {
   hasUnverifiedExternalId,
   isTooAmbiguousToCompare,
   isOfficialMappingDecisionSource,
+  isValidReviewPriority,
   mappingDecisionIsExplicit,
   mappingIssues,
   missingRequiredAttributes,
@@ -59,6 +60,33 @@ test('the mapping catalog matches the editorial slugs and verifies nothing', () 
   assert.match(playstation?.decisionNote ?? '', /Digital/)
   assert.equal(xbox?.reviewPriority, 2)
   assert.match(xbox?.decisionNote ?? '', /Digital Edition/)
+})
+
+test('review priority is an integer from 1 to 9, and null only on a category', () => {
+  assert.equal(isValidReviewPriority(1), true)
+  assert.equal(isValidReviewPriority(9), true)
+  assert.equal(isValidReviewPriority(0), false)
+  assert.equal(isValidReviewPriority(10), false)
+  assert.equal(isValidReviewPriority(1.5), false)
+  assert.equal(isValidReviewPriority(-1), false)
+  assert.equal(isValidReviewPriority(Number.NaN), false)
+  assert.equal(isValidReviewPriority('1'), false)
+
+  const family = SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.reviewPriority === 1)
+  const upper = SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.reviewPriority === 9)
+  const category = SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.scope === 'category')
+  assert.ok(family)
+  assert.ok(upper)
+  assert.ok(category)
+  assert.equal(family.scope, 'family')
+  assert.equal(upper.scope, 'family')
+  assert.equal(mappingDecisionIsExplicit(family), true)
+  assert.equal(mappingDecisionIsExplicit(upper), true)
+  assert.equal(mappingDecisionIsExplicit({ ...category, reviewPriority: null }), true)
+  assert.equal(mappingDecisionIsExplicit({ ...category, reviewPriority: 1 }), false)
+  for (const reviewPriority of [0, 10, 1.5, -1, Number.NaN, null, '1'] as const) {
+    assert.equal(mappingDecisionIsExplicit({ ...family, reviewPriority: reviewPriority as number | null }), false, String(reviewPriority))
+  }
 })
 
 test('incomplete mappings, unverified external ids and ambiguous products cannot be compared', () => {

@@ -259,6 +259,16 @@ const OFFICIAL_DECISION_HOSTS = new Set([
   'www.steamdeck.com',
 ])
 
+/**
+ * Forma válida de `reviewPriority`: `null`, o un entero del 1 al 9.
+ * No interpreta ventas, precios ni identificadores de marketplace.
+ * El alcance del slug decide cuál de las dos formas corresponde.
+ */
+export function isValidReviewPriority(value: unknown): boolean {
+  if (value === null) return true
+  return typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= 9
+}
+
 /** La URL de una decisión pendiente tiene que ser una ficha https del fabricante. */
 export function isOfficialMappingDecisionSource(url: string | null): boolean {
   if (!hasText(url)) return false
@@ -281,6 +291,7 @@ export function mappingDecisionIsExplicit(spec: SecondHandProductMapping): boole
     return hasText(spec.verificationRef) && missingRequiredAttributes(spec).length === 0
   }
   if (spec.externalProductId !== null || spec.verificationRef !== null) return false
+  if (!isValidReviewPriority(spec.reviewPriority)) return false
   if (spec.scope === 'category') return spec.decisionSourceUrl === null && spec.reviewPriority === null
   return isOfficialMappingDecisionSource(spec.decisionSourceUrl) && typeof spec.reviewPriority === 'number'
 }
