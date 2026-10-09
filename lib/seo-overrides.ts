@@ -1,4 +1,5 @@
 import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
+import { JORNADA_9_SEO } from './laliga-jornada-9-2026'
 import { CONCIERTOS_AGENDA_SEO } from './conciertos-agenda-2026'
 import { CONCERTS_GUIDE_SLUG } from './concerts'
 import { ASTROLOGIA_GUIA_SEO } from './astrologia-guia-2026'
@@ -18,6 +19,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
   [CONCERTS_GUIDE_SLUG]: CONCIERTOS_AGENDA_SEO,
   [ASTRO_GUIDE_SLUG]: ASTROLOGIA_GUIA_SEO,
   ...JORNADA_8_SEO,
+  ...JORNADA_9_SEO,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': {
     title: 'Guardiola vuelve al Etihad tras el fallo',
     description: 'Guardiola tiene previsto el Etihad el 14 de octubre, según ESPN. El City apeló el fallo financiero. La sanción sigue sin decidirse.',

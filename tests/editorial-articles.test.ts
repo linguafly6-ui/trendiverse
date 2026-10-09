@@ -83,6 +83,16 @@ const EXPECTED_SLUGS = [
   'betis-osasuna-laliga-jornada-8-2026',
   'racing-valencia-laliga-jornada-8-2026',
   'levante-sevilla-laliga-jornada-8-2026',
+  'deportivo-levante-laliga-jornada-9-2026',
+  'espanyol-atletico-laliga-jornada-9-2026',
+  'villarreal-elche-laliga-jornada-9-2026',
+  'betis-barcelona-laliga-jornada-9-2026',
+  'valencia-athletic-laliga-jornada-9-2026',
+  'osasuna-racing-laliga-jornada-9-2026',
+  'celta-alaves-laliga-jornada-9-2026',
+  'malaga-real-sociedad-laliga-jornada-9-2026',
+  'real-madrid-sevilla-laliga-jornada-9-2026',
+  'getafe-rayo-laliga-jornada-9-2026',
   'conciertos-espana-agenda-2026-2027',
   'como-leemos-el-horoscopo-astrologia-tropical',
 
@@ -180,7 +190,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'real-madrid-villarreal-laliga-jornada-8-2026')
+  assert.equal(slugs[0], 'real-madrid-sevilla-laliga-jornada-9-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -215,6 +225,8 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok((await search('Etihad')).includes('pep-guardiola-ultimas-noticias-vuelta-etihad'))
   assert.ok((await search('Bernabéu')).includes('real-madrid-villarreal-laliga-jornada-8-2026'))
   assert.ok((await search('Rosaleda')).includes('malaga-espanyol-laliga-jornada-8-2026'))
+  assert.ok((await search('Riazor')).includes('deportivo-levante-laliga-jornada-9-2026'))
+  assert.ok((await search('Cartuja')).includes('betis-barcelona-laliga-jornada-9-2026'))
   assert.ok((await search('Kobetamendi')).includes('conciertos-espana-agenda-2026-2027'))
   assert.ok((await search('zodiaco tropical')).includes('como-leemos-el-horoscopo-astrologia-tropical'))
   assert.ok((await search('osteopontina')).includes('cnio-osteopontina-cancer-de-mama-resistencia-antiangiogenicos'))

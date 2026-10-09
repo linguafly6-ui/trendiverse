@@ -1,42 +1,8 @@
-import type { Article } from './types'
+import { buildMatchday, type Fixture, type Side } from './laliga-matchday'
+export type { LiveFixtureRef } from './laliga-matchday'
 
-interface Side {
-  name: string
-  pos: number
-  pj: number
-  pg: number
-  pe: number
-  pp: number
-  gf: number
-  gc: number
-  pts: number
-  form: string
-}
-
-interface Fixture {
-  id: number
-  slug: string
-  home: Side
-  away: Side
-  espnHome: string
-  espnAway: string
-  date: string
-  dayLabel: string
-  hour: string
-  tv: string
-  venue: string
-  published_at: string
-  seoTitle: string
-  seoDescription: string
-  excerpt: string
-  /** Una o dos frases humanas que presentan el partido. */
-  lead: string
-  /** Narrativa de qué se juegan los dos equipos. */
-  essay: string
-  neighbors: string
-}
-
-const TABLE: Side[] = [
+/** Clasificación tras la jornada 7 (la que se usa en las previas de la jornada 8). */
+export const TABLE_AFTER_J7: Side[] = [
   { name: 'Barcelona', pos: 1, pj: 7, pg: 7, pe: 0, pp: 0, gf: 31, gc: 7, pts: 21, form: 'G G G G G' },
   { name: 'Atlético de Madrid', pos: 2, pj: 7, pg: 5, pe: 1, pp: 1, gf: 16, gc: 7, pts: 16, form: 'G P G G G' },
   { name: 'Real Betis', pos: 3, pj: 7, pg: 5, pe: 1, pp: 1, gf: 9, gc: 7, pts: 16, form: 'P G G G E' },
@@ -63,8 +29,8 @@ const FIXTURES: Fixture[] = [
   {
     id: 366,
     slug: 'malaga-espanyol-laliga-jornada-8-2026',
-    home: TABLE[19],
-    away: TABLE[14],
+    home: TABLE_AFTER_J7[19],
+    away: TABLE_AFTER_J7[14],
     espnHome: 'Málaga',
     espnAway: 'Espanyol',
     date: '20261009',
@@ -87,8 +53,8 @@ Nadie va a descender ni a salvarse esta noche. Pero el Málaga se juega algo má
   {
     id: 367,
     slug: 'rayo-athletic-laliga-jornada-8-2026',
-    home: TABLE[11],
-    away: TABLE[9],
+    home: TABLE_AFTER_J7[11],
+    away: TABLE_AFTER_J7[9],
     espnHome: 'Rayo Vallecano',
     espnAway: 'Athletic Club',
     date: '20261010',
@@ -111,8 +77,8 @@ Si gana el Athletic, se pone con 11 puntos y mira hacia Europa, con un partido t
   {
     id: 368,
     slug: 'alaves-atletico-laliga-jornada-8-2026',
-    home: TABLE[5],
-    away: TABLE[1],
+    home: TABLE_AFTER_J7[5],
+    away: TABLE_AFTER_J7[1],
     espnHome: 'Alavés',
     espnAway: 'Atlético Madrid',
     date: '20261010',
@@ -135,8 +101,8 @@ Para el Alavés, una victoria sería un golpe en la mesa: 14 puntos, por encima 
   {
     id: 369,
     slug: 'barcelona-getafe-laliga-jornada-8-2026',
-    home: TABLE[0],
-    away: TABLE[10],
+    home: TABLE_AFTER_J7[0],
+    away: TABLE_AFTER_J7[10],
     espnHome: 'Barcelona',
     espnAway: 'Getafe',
     date: '20261010',
@@ -159,8 +125,8 @@ El Getafe llega como lo que es: un equipo serio, ordenado y que marca muy poco. 
   {
     id: 370,
     slug: 'real-madrid-villarreal-laliga-jornada-8-2026',
-    home: TABLE[3],
-    away: TABLE[8],
+    home: TABLE_AFTER_J7[3],
+    away: TABLE_AFTER_J7[8],
     espnHome: 'Real Madrid',
     espnAway: 'Villarreal',
     date: '20261010',
@@ -183,8 +149,8 @@ Para el Madrid, ganar significa pasar a 18 puntos y adelantar al Atlético y al 
   {
     id: 371,
     slug: 'elche-celta-laliga-jornada-8-2026',
-    home: TABLE[17],
-    away: TABLE[13],
+    home: TABLE_AFTER_J7[17],
+    away: TABLE_AFTER_J7[13],
     espnHome: 'Elche',
     espnAway: 'Celta Vigo',
     date: '20261011',
@@ -207,8 +173,8 @@ Para el Elche, ganar supondría salir del descenso, al menos hasta que jueguen e
   {
     id: 372,
     slug: 'real-sociedad-deportivo-laliga-jornada-8-2026',
-    home: TABLE[7],
-    away: TABLE[6],
+    home: TABLE_AFTER_J7[7],
+    away: TABLE_AFTER_J7[6],
     espnHome: 'Real Sociedad',
     espnAway: 'Deportivo',
     date: '20261011',
@@ -231,8 +197,8 @@ El premio es grande: quien gane se pone con 13 puntos, a la altura del Sevilla, 
   {
     id: 373,
     slug: 'betis-osasuna-laliga-jornada-8-2026',
-    home: TABLE[2],
-    away: TABLE[12],
+    home: TABLE_AFTER_J7[2],
+    away: TABLE_AFTER_J7[12],
     espnHome: 'Real Betis',
     espnAway: 'Osasuna',
     date: '20261011',
@@ -255,8 +221,8 @@ Para el Betis, ganar significa llegar a 19 puntos y, según lo que haya hecho el
   {
     id: 374,
     slug: 'racing-valencia-laliga-jornada-8-2026',
-    home: TABLE[15],
-    away: TABLE[18],
+    home: TABLE_AFTER_J7[15],
+    away: TABLE_AFTER_J7[18],
     espnHome: 'Racing Santander',
     espnAway: 'Valencia',
     date: '20261011',
@@ -279,8 +245,8 @@ Lo que está en juego es claro. Si gana el Racing, se va a 10 puntos y se aleja 
   {
     id: 375,
     slug: 'levante-sevilla-laliga-jornada-8-2026',
-    home: TABLE[16],
-    away: TABLE[4],
+    home: TABLE_AFTER_J7[16],
+    away: TABLE_AFTER_J7[4],
     espnHome: 'Levante',
     espnAway: 'Sevilla',
     date: '20261012',
@@ -302,195 +268,19 @@ Para el Levante, ganar sería salir del agobio, ponerse con 8 puntos y coger air
   },
 ]
 
-function gd(side: Side): string {
-  const diff = side.gf - side.gc
-  if (diff > 0) return `+${diff}`
-  return String(diff)
-}
+const JORNADA_8 = buildMatchday({
+  jornada: 8,
+  tableAfterJornada: 7,
+  usualGames: 7,
+  evenGamesLine: 'Los dos han jugado siete partidos, como casi toda la Liga. Solo el Athletic y el Levante llegan con seis.',
+  standingsSummary: 'Para situarse en la tabla: el Barcelona manda con 21 puntos y pleno de victorias; Atlético y Betis le siguen con 16, y el Real Madrid tiene 15. Sevilla (13) y Alavés (11) ocupan los puestos europeos. Abajo, Elche (5), Valencia (4) y Málaga (3) están en descenso, con el Levante justo encima, también con 5 puntos pero con un partido menos.',
+  calendarText: `Si quieres seguir toda la jornada, este es el calendario, en hora peninsular. Viernes: Málaga-Espanyol (21:00). Sábado: Rayo-Athletic (14:00), Alavés-Atlético (16:15), Barcelona-Getafe (18:30) y Real Madrid-Villarreal (21:00). Domingo: Elche-Celta (14:00), Real Sociedad-Deportivo (16:15), Betis-Osasuna (18:30) y Racing-Valencia (21:00). Y el lunes 12, festivo, Levante-Sevilla (21:00).`,
+  pointsIntro: 'Vamos a lo práctico.',
+  fixtures: FIXTURES,
+})
 
-function ordinal(pos: number, fem = false): string {
-  const words: Record<number, string> = {
-    1: 'primero', 2: 'segundo', 3: 'tercero', 4: 'cuarto', 5: 'quinto', 6: 'sexto', 7: 'séptimo', 8: 'octavo', 9: 'noveno', 10: 'décimo',
-    11: 'undécimo', 12: 'duodécimo', 13: 'decimotercero', 14: 'decimocuarto', 15: 'decimoquinto', 16: 'decimosexto', 17: 'decimoséptimo',
-    18: 'decimoctavo', 19: 'penúltimo', 20: 'último',
-  }
-  const word = words[pos] ?? `${pos}.º`
-  return fem ? word.replace(/o$/, 'a') : word
-}
-
-function isFem(name: string): boolean {
-  return name === 'Real Sociedad'
-}
-
-/** «el Rayo Vallecano», «la Real Sociedad». */
-function el(name: string): string {
-  return `${isFem(name) ? 'la' : 'el'} ${name}`
-}
-
-function cap(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1)
-}
-
-/** «en el Estadio de Vallecas», «en La Rosaleda», «en Mendizorrotza». */
-function enVenue(venue: string): string {
-  if (/^(La|El) /.test(venue) || venue === 'Mendizorrotza') return `en ${venue}`
-  return `en el ${venue}`
-}
-
-function plural(n: number, one: string, many: string): string {
-  return `${n} ${n === 1 ? one : many}`
-}
-
-function portrait(side: Side): string {
-  const games = side.pj === 6 ? 'seis partidos' : 'siete partidos'
-  return `${cap(el(side.name))} va ${ordinal(side.pos, isFem(side.name))}, con ${side.pts} puntos en ${games}: ${plural(side.pg, 'victoria', 'victorias')}, ${plural(side.pe, 'empate', 'empates')} y ${plural(side.pp, 'derrota', 'derrotas')}. Ha marcado ${side.gf} goles y ha encajado ${side.gc} (diferencia ${gd(side)}).`
-}
-
-function formSummary(side: Side): string {
-  const tokens = side.form.split(/\s+/)
-  const g = tokens.filter((t) => t === 'G').length
-  const e = tokens.filter((t) => t === 'E').length
-  const p = tokens.filter((t) => t === 'P').length
-  if (g === tokens.length) return `Sus últimos ${tokens.length} partidos han sido todos victorias.`
-  if (p === tokens.length) return `Sus últimos ${tokens.length} partidos han sido todos derrotas.`
-  return `En sus últimos ${tokens.length} partidos ha sumado ${plural(g, 'victoria', 'victorias')}, ${plural(e, 'empate', 'empates')} y ${plural(p, 'derrota', 'derrotas')}.`
-}
-
-function articleContent(fx: Fixture): string {
-  const h = fx.home
-  const a = fx.away
-  const hand = [h, a].filter((s) => s.pj === 6).map((s) => s.name)
-  const handLine = hand.length
-    ? `Un detalle a tener en cuenta: ${hand.map(el).join(' y ')} ${hand.length > 1 ? 'llegan' : 'llega'} con un partido menos que casi toda la Liga, así que sus números hay que leerlos con esa pequeña diferencia.`
-    : 'Los dos han jugado siete partidos, como casi toda la Liga. Solo el Athletic y el Levante llegan con seis.'
-  const openTv = fx.tv.includes('abierto')
-    ? ' Y una buena noticia: es el único partido de la jornada que se emite en abierto.'
-    : ''
-
-  return `${cap(el(h.name))} y ${el(a.name)} se ven las caras el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${fx.lead} Aquí te contamos cómo llegan los dos equipos, qué se juegan y cómo seguir el marcador en directo sin complicaciones.
-
-## Cuándo y dónde se juega
-
-El partido es el ${fx.dayLabel} a las ${fx.hour}, hora peninsular, ${enVenue(fx.venue)}. Se puede ver en ${fx.tv}.${openTv} ${fx.neighbors} Si el club anunciara algún cambio de sede o de horario a última hora, manda ese aviso oficial.
-
-## Cómo llegan los dos equipos
-
-${portrait(h)} ${formSummary(h)}
-
-${portrait(a)} ${formSummary(a)}
-
-${handLine}
-
-Para situarse en la tabla: el Barcelona manda con 21 puntos y pleno de victorias; Atlético y Betis le siguen con 16, y el Real Madrid tiene 15. Sevilla (13) y Alavés (11) ocupan los puestos europeos. Abajo, Elche (5), Valencia (4) y Málaga (3) están en descenso, con el Levante justo encima, también con 5 puntos pero con un partido menos.
-
-## Qué se juegan
-
-${fx.essay}
-
-## Si gana, empata o pierde
-
-Vamos a lo práctico. Si gana ${el(h.name)}, pasa de ${h.pts} a ${h.pts + 3} puntos y ${el(a.name)} se queda en ${a.pts}. Si empatan, los dos suman uno: ${h.pts + 1} para ${el(h.name)} y ${a.pts + 1} para ${el(a.name)}. Si gana ${el(a.name)}, se va a ${a.pts + 3} y ${el(h.name)} se queda en ${h.pts}.
-
-Eso sí: el resto de partidos de la jornada también mueven la tabla, así que el lunes por la noche la foto puede ser distinta.
-
-## El resto de la jornada
-
-Si quieres seguir toda la jornada, este es el calendario, en hora peninsular. Viernes: Málaga-Espanyol (21:00). Sábado: Rayo-Athletic (14:00), Alavés-Atlético (16:15), Barcelona-Getafe (18:30) y Real Madrid-Villarreal (21:00). Domingo: Elche-Celta (14:00), Real Sociedad-Deportivo (16:15), Betis-Osasuna (18:30) y Racing-Valencia (21:00). Y el lunes 12, festivo, Levante-Sevilla (21:00). Cada partido tiene su propia página con marcador.
-
-## Cómo funciona el marcador en directo
-
-Arriba tienes el marcador del partido. Hasta que empiece, verás un 0-0 que no significa nada: simplemente, el partido todavía no se ha jugado. El ${fx.dayLabel}, el marcador se actualiza solo cada pocos segundos con los goles y el minuto de juego. Cuando termine, se queda el resultado final. Si en algún momento falla la conexión, verás el último dato que llegó. Aquí no encontrarás alineaciones, cambios ni tarjetas: solo el resultado, claro y al momento.
-
-## Preguntas frecuentes
-
-### ¿A qué hora juegan ${el(h.name)} y ${el(a.name)}?
-
-El ${fx.dayLabel}, a las ${fx.hour}, hora peninsular.
-
-### ¿Dónde se juega y dónde se puede ver?
-
-${cap(enVenue(fx.venue))}. En televisión, en ${fx.tv}.${fx.tv.includes('abierto') ? ' Es el único partido de la jornada en abierto.' : ''}
-
-### ¿Cómo llegan los dos equipos?
-
-${cap(el(h.name))} es ${ordinal(h.pos, isFem(h.name))} con ${h.pts} puntos y ${el(a.name)} es ${ordinal(a.pos, isFem(a.name))} con ${a.pts}. Son los datos de la clasificación tras la jornada 7.
-
-### ¿Qué pasa con los puntos según el resultado?
-
-Si gana ${el(h.name)}, llega a ${h.pts + 3}. Si empatan, ${el(h.name)} se queda en ${h.pts + 1} y ${el(a.name)} en ${a.pts + 1}. Si gana ${el(a.name)}, llega a ${a.pts + 3}.
-
-### ¿El 0-0 del marcador es el resultado?
-
-Antes del partido, no: solo indica que todavía no ha empezado. El 0-0 cuenta como resultado cuando el partido está en juego o ya ha terminado.
-
-## En resumen
-
-${cap(el(h.name))} y ${el(a.name)} juegan el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${isFem(h.name) ? 'Una' : 'Uno'} llega ${ordinal(h.pos, isFem(h.name))}, con ${h.pts} puntos; ${isFem(a.name) ? 'la otra' : 'el otro'}, ${ordinal(a.pos, isFem(a.name))}, con ${a.pts}. Si solo puedes seguir el partido de reojo, el marcador de arriba te lo cuenta en directo.`
-}
-
-function excerptOk(text: string): string {
-  if (text.length > 200) throw new Error(`excerpt ${text.length}: ${text}`)
-  return text
-}
-
-export const LALIGA_JORNADA_8_ARTICLES: Article[] = FIXTURES.map((fx) => ({
-  id: fx.id,
-  category: 'deportes',
-  title: `${fx.home.name}-${fx.away.name}: horario, previa y marcador en vivo de LaLiga`,
-  slug: fx.slug,
-  excerpt: excerptOk(fx.excerpt),
-  image_url: `/images/articles/${fx.slug}.svg`,
-  thumbnail_url: `/images/articles/${fx.slug}-thumb.svg`,
-  read_time_minutes: 11,
-  views: 0,
-  trending: 1,
-  published_at: fx.published_at,
-  content: articleContent(fx),
-}))
-
-export interface LiveFixtureRef {
-  league: 'esp.1'
-  espnHome: string
-  espnAway: string
-  date: string
-  kickoffLabel: string
-  startDate: string
-  venue: string
-  homeName: string
-  awayName: string
-}
-
-const LIVE = new Map<string, LiveFixtureRef>(FIXTURES.map((fx) => [fx.slug, {
-  league: 'esp.1',
-  espnHome: fx.espnHome,
-  espnAway: fx.espnAway,
-  date: fx.date,
-  kickoffLabel: `${fx.dayLabel}, ${fx.hour} hora peninsular`,
-  startDate: `${fx.date.slice(0, 4)}-${fx.date.slice(4, 6)}-${fx.date.slice(6, 8)}T${fx.hour}:00+02:00`,
-  venue: fx.venue,
-  homeName: fx.home.name,
-  awayName: fx.away.name,
-}]))
-
-export function liveMatchForSlug(slug: string): LiveFixtureRef | null {
-  return LIVE.get(slug) ?? null
-}
-
-export const JORNADA_8_SEO: Record<string, { title: string; description: string }> = Object.fromEntries(
-  FIXTURES.map((fx) => [fx.slug, { title: fx.seoTitle, description: fx.seoDescription }]),
-)
-
-export const JORNADA_8_SLUGS = FIXTURES.map((fx) => fx.slug)
-
-const bySlug = new Map(FIXTURES.map((fx) => [fx.slug, fx]))
-
-export const JORNADA_8_RELATED: Record<string, string[]> = Object.fromEntries(FIXTURES.map((fx) => {
-  const others = FIXTURES.filter((o) => o.slug !== fx.slug)
-  const picks = [others[0], others[4], others[others.length - 1]].filter((o, i, arr) => o && arr.findIndex((x) => x.slug === o.slug) === i && o.slug !== fx.slug).slice(0, 3)
-  const fallback = others.filter((o) => !picks.includes(o)).slice(0, 3 - picks.length)
-  const links = [...picks, ...fallback].slice(0, 3).map((o) => {
-    const match = bySlug.get(o.slug)!
-    return `[${match.home.name}-${match.away.name}, ${match.dayLabel}](/articles/${match.slug}): horario y marcador de ese partido de la jornada 8.`
-  })
-  return [fx.slug, links]
-}))
+export const LALIGA_JORNADA_8_ARTICLES = JORNADA_8.articles
+export const JORNADA_8_SEO = JORNADA_8.seo
+export const JORNADA_8_SLUGS = JORNADA_8.slugs
+export const JORNADA_8_RELATED = JORNADA_8.related
+export const liveMatchForSlug = JORNADA_8.liveMatchForSlug

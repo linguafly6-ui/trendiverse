@@ -79,7 +79,18 @@ test('registry covers match articles, only with verified official links, and ski
     'betis-osasuna-laliga-jornada-8-2026': 'buy',
     'racing-valencia-laliga-jornada-8-2026': 'official-site',
     'levante-sevilla-laliga-jornada-8-2026': 'buy',
+    'deportivo-levante-laliga-jornada-9-2026': 'official-site',
+    'espanyol-atletico-laliga-jornada-9-2026': 'buy',
+    'villarreal-elche-laliga-jornada-9-2026': 'official-site',
+    'betis-barcelona-laliga-jornada-9-2026': 'buy',
+    'valencia-athletic-laliga-jornada-9-2026': 'official-site',
+    'osasuna-racing-laliga-jornada-9-2026': 'official-site',
+    'celta-alaves-laliga-jornada-9-2026': 'official-site',
+    'malaga-real-sociedad-laliga-jornada-9-2026': 'buy',
+    'real-madrid-sevilla-laliga-jornada-9-2026': 'official-site',
+    'getafe-rayo-laliga-jornada-9-2026': 'official-site',
   }
+  assert.equal(matchTicketInfoForSlug('getafe-rayo-laliga-jornada-9-2026')?.competition, 'LaLiga EA Sports, jornada 9')
   for (const [slug, kind] of Object.entries(expected)) {
     const info = matchTicketInfoForSlug(slug)
     assert.ok(info, slug)
