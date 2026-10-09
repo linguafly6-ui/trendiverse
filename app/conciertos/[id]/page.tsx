@@ -5,7 +5,7 @@ import ConcertTicketLink from '@/components/ConcertTicketLink'
 import JsonLd from '@/components/JsonLd'
 import { concertById, concertsFor } from '@/lib/concerts'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
-import { concertFaqs, concertMeta, concertPageGraph } from '@/lib/structured-data'
+import { concertFaqs, concertMeta, concertPageGraph, concertSaleAnswer } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
@@ -55,9 +55,14 @@ export default async function ConcertPage({ params }: Props) {
         <p className="mt-2 text-lg font-medium">{concert.title}</p>
         <p className="mt-3 text-slate-600 dark:text-slate-300">{concert.when}</p>
         <p className="text-slate-600 dark:text-slate-300">{concert.venue} · {concert.city}</p>
-        <ConcertTicketLink concert={concert} />
+        <ConcertTicketLink concert={concert} compact />
       </header>
       <p className="mt-6 leading-relaxed">{concert.detail}</p>
+      <section aria-labelledby="concert-tickets" className="mt-8 rounded-2xl border border-rose-100 bg-rose-50/70 p-5 dark:border-rose-900 dark:bg-rose-950/30">
+        <h2 id="concert-tickets" className="text-xl font-extrabold">Entradas para {concert.artist} en {concert.city}</h2>
+        <p className="mt-2 leading-relaxed">{concertSaleAnswer(concert)}</p>
+        <ConcertTicketLink concert={concert} />
+      </section>
       <p className="mt-4 text-sm">
         <a className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300" href={concert.sourceUrl}>
           Fuente: {concert.sourceName}

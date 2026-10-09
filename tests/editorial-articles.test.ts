@@ -226,6 +226,12 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok((await search('Bernabéu')).includes('real-madrid-villarreal-laliga-jornada-8-2026'))
   assert.ok((await search('Rosaleda')).includes('malaga-espanyol-laliga-jornada-8-2026'))
   assert.ok((await search('Riazor')).includes('deportivo-levante-laliga-jornada-9-2026'))
+  for (const a of (await collectAllFeedArticles()).filter((x) => /laliga-jornada-\d+-2026$/.test(x.slug))) {
+    assert.match(a.title, /^Entradas /, a.slug)
+    assert.match(a.excerpt ?? '', /^Entradas y previa del /, a.slug)
+    assert.match(a.content ?? '', /## Entradas para el /, a.slug)
+    assert.match(a.content ?? '', /### ¿Dónde comprar entradas para el /, a.slug)
+  }
   assert.ok((await search('Cartuja')).includes('betis-barcelona-laliga-jornada-9-2026'))
   assert.ok((await search('Kobetamendi')).includes('conciertos-espana-agenda-2026-2027'))
   assert.ok((await search('zodiaco tropical')).includes('como-leemos-el-horoscopo-astrologia-tropical'))

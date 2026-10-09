@@ -9,8 +9,8 @@ import { concertSectionGraph } from '@/lib/structured-data'
 
 export const runtime = 'edge'
 
-const title = 'Conciertos en España: 2026 y 2027'
-const description = 'Agenda de conciertos y festivales en España desde octubre de 2026 y lo ya fechado para 2027, con la fuente de cada cita.'
+const title = 'Entradas para conciertos en España 2026-27'
+const description = 'Entradas para conciertos y festivales en España: agenda desde octubre de 2026 y lo ya fechado para 2027, con el enlace oficial de compra y la fuente de cada cita.'
 
 type Props = { searchParams: Promise<{ ciudad?: string; lista?: string }> }
 

@@ -32,8 +32,7 @@ export interface Fixture {
   tv: string
   venue: string
   published_at: string
-  seoTitle: string
-  seoDescription: string
+  /** Extracto propio del partido; el constructor le antepone la palabra clave de entradas. */
   excerpt: string
   /** Una o dos frases humanas que presentan el partido. */
   lead: string
@@ -107,6 +106,11 @@ function el(name: string): string {
   return `${isFem(name) ? 'la' : 'el'} ${name}`
 }
 
+/** «del Rayo Vallecano», «de la Real Sociedad». */
+function de(name: string): string {
+  return `${isFem(name) ? 'de la' : 'del'} ${name}`
+}
+
 function cap(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
@@ -153,11 +157,15 @@ function articleContent(cfg: MatchdayConfig, fx: Fixture): string {
     ? ' Y una buena noticia: es el único partido de la jornada que se emite en abierto.'
     : ''
 
-  return `${cap(el(h.name))} y ${el(a.name)} se ven las caras el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${fx.lead} Aquí te contamos cómo llegan los dos equipos, qué se juegan y cómo seguir el marcador en directo sin complicaciones.
+  return `${cap(el(h.name))} y ${el(a.name)} se ven las caras el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${fx.lead} Aquí te contamos dónde se compran las entradas del ${h.name}-${a.name}, cómo llegan los dos equipos, qué se juegan y cómo seguir el marcador en directo sin complicaciones.
 
 ## Cuándo y dónde se juega
 
 El partido es el ${fx.dayLabel} a las ${fx.hour}, hora peninsular, ${enVenue(fx.venue)}. Se puede ver en ${fx.tv}.${openTv} ${fx.neighbors} Si el club anunciara algún cambio de sede o de horario a última hora, manda ese aviso oficial.
+
+## Entradas para el ${h.name}-${a.name}
+
+${ticketsText(fx)}
 
 ## Cómo llegan los dos equipos
 
@@ -189,6 +197,14 @@ Arriba tienes el marcador del partido. Hasta que empiece, verás un 0-0 que no s
 
 ## Preguntas frecuentes
 
+### ¿Dónde comprar entradas para el ${h.name}-${a.name}?
+
+En la web oficial de entradas ${de(h.name)}, que es quien organiza el partido ${enVenue(fx.venue)}, o en las taquillas del estadio. Junto al marcador tienes el botón con el enlace oficial que hemos comprobado. No usamos ni recomendamos páginas de reventa.
+
+### ¿Cuánto cuestan las entradas del ${h.name}-${a.name}?
+
+El precio lo fija ${el(h.name)} y cambia según la zona del estadio, la fase de venta y si eres socio o abonado. Por eso no publicamos precios aquí: los que valen son los de la web oficial en el momento de comprar.
+
 ### ¿A qué hora juegan ${el(h.name)} y ${el(a.name)}?
 
 El ${fx.dayLabel}, a las ${fx.hour}, hora peninsular.
@@ -211,11 +227,64 @@ Antes del partido, no: solo indica que todavía no ha empezado. El 0-0 cuenta co
 
 ## En resumen
 
-${cap(el(h.name))} y ${el(a.name)} juegan el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${isFem(h.name) ? 'Una' : 'Uno'} llega ${ordinal(h.pos, isFem(h.name))}, con ${h.pts} puntos; ${isFem(a.name) ? 'la otra' : 'el otro'}, ${ordinal(a.pos, isFem(a.name))}, con ${a.pts}. Si solo puedes seguir el partido de reojo, el marcador de arriba te lo cuenta en directo.`
+${cap(el(h.name))} y ${el(a.name)} juegan el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${isFem(h.name) ? 'Una' : 'Uno'} llega ${ordinal(h.pos, isFem(h.name))}, con ${h.pts} puntos; ${isFem(a.name) ? 'la otra' : 'el otro'}, ${ordinal(a.pos, isFem(a.name))}, con ${a.pts}. Las entradas se compran solo en la web oficial ${de(h.name)} o en taquilla. Y si solo puedes seguir el partido de reojo, el marcador de arriba te lo cuenta en directo.`
+}
+
+/** «viernes 9 de octubre de 2026» → «viernes 9 de octubre». */
+function dayShort(dayLabel: string): string {
+  return dayLabel.replace(/ de \d{4}$/, '')
+}
+
+function ticketsText(fx: Fixture): string {
+  const h = fx.home
+  const a = fx.away
+  return `Si quieres ver el ${h.name}-${a.name} en el estadio, las entradas las vende ${el(h.name)}, que es el equipo local, a través de su web oficial de entradas y de las taquillas ${enVenue(fx.venue)}. Junto al marcador, al principio de esta página, tienes un botón con el enlace oficial que hemos comprobado: si lleva a la página del partido concreto pone «Comprar entradas»; si lleva a la taquilla general del club, pone «Ver entradas en la web oficial» y allí se consulta la disponibilidad de este partido; y si el club solo ha publicado la información oficial de venta (taquillas, horarios y precios), pone «Ver información de entradas».
+
+Tres consejos rápidos. Uno: los socios y abonados suelen tener venta preferente, así que la venta general puede abrirse unos días después del anuncio. Dos: los precios cambian según la zona del estadio y la fase de venta; los que valen son los que marca la web oficial en el momento de comprar, y por eso aquí no publicamos cifras. Y tres: evita la reventa no autorizada, porque las entradas suelen ser nominativas y el club puede anularlas. Cuando el partido empieza, el botón de entradas desaparece solo.`
+}
+
+const SEO_TITLE_MAX = 46
+const SEO_DESCRIPTION_MAX = 155
+const EXCERPT_MAX = 200
+
+/** Título SEO con la palabra clave «entradas» delante, dentro del límite. */
+function seoTitle(fx: Fixture): string {
+  const pair = `${fx.home.name}-${fx.away.name}`
+  for (const candidate of [`Entradas ${pair}: horario y previa`, `Entradas ${pair} y previa`, `Entradas ${pair}`]) {
+    if (candidate.length <= SEO_TITLE_MAX) return candidate
+  }
+  throw new Error(`seoTitle ${pair}`)
+}
+
+function seoDescription(fx: Fixture): string {
+  const pair = `${fx.home.name}-${fx.away.name}`
+  const when = `${cap(dayShort(fx.dayLabel))} a las ${fx.hour} ${enVenue(fx.venue)}`
+  for (const candidate of [
+    `Entradas ${pair}: dónde comprarlas en la web oficial. ${when}. Previa, cómo llegan y marcador en directo.`,
+    `Entradas ${pair}: dónde comprarlas. ${when}. Previa y marcador en directo.`,
+    `Entradas ${pair}: dónde comprarlas. ${when}. Previa y marcador.`,
+  ]) {
+    if (candidate.length <= SEO_DESCRIPTION_MAX) return candidate
+  }
+  throw new Error(`seoDescription ${pair}`)
+}
+
+/** Antepone la palabra clave al extracto y, si no cabe, recorta por frases. */
+function excerptWithTickets(fx: Fixture): string {
+  const prefix = `Entradas y previa del ${fx.home.name}-${fx.away.name}. `
+  const sentences = fx.excerpt.match(/[^.!?]+[.!?]+(\s|$)/g)?.map((t) => t.trim()) ?? [fx.excerpt]
+  let body = ''
+  for (const sentence of sentences) {
+    const next = body ? `${body} ${sentence}` : sentence
+    if ((prefix + next).length > EXCERPT_MAX) break
+    body = next
+  }
+  if (!body) throw new Error(`excerpt ${fx.slug}: la primera frase no cabe`)
+  return excerptOk(prefix + body)
 }
 
 function excerptOk(text: string): string {
-  if (text.length > 200) throw new Error(`excerpt ${text.length}: ${text}`)
+  if (text.length > EXCERPT_MAX) throw new Error(`excerpt ${text.length}: ${text}`)
   return text
 }
 
@@ -224,9 +293,9 @@ export function buildMatchday(cfg: MatchdayConfig): Matchday {
   const articles: Article[] = fixtures.map((fx) => ({
     id: fx.id,
     category: 'deportes',
-    title: `${fx.home.name}-${fx.away.name}: horario, previa y marcador en vivo de LaLiga`,
+    title: `Entradas ${fx.home.name}-${fx.away.name}: dónde comprarlas, horario y previa de LaLiga`,
     slug: fx.slug,
-    excerpt: excerptOk(fx.excerpt),
+    excerpt: excerptWithTickets(fx),
     image_url: `/images/articles/${fx.slug}.svg`,
     thumbnail_url: `/images/articles/${fx.slug}-thumb.svg`,
     read_time_minutes: 11,
@@ -248,7 +317,7 @@ export function buildMatchday(cfg: MatchdayConfig): Matchday {
     awayName: fx.away.name,
   }]))
 
-  const seo: Matchday['seo'] = Object.fromEntries(fixtures.map((fx) => [fx.slug, { title: fx.seoTitle, description: fx.seoDescription }]))
+  const seo: Matchday['seo'] = Object.fromEntries(fixtures.map((fx) => [fx.slug, { title: seoTitle(fx), description: seoDescription(fx) }]))
 
   const bySlug = new Map(fixtures.map((fx) => [fx.slug, fx]))
   const related: Matchday['related'] = Object.fromEntries(fixtures.map((fx) => {
