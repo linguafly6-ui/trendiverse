@@ -39,6 +39,10 @@ Un precio, ahorro o score inventado engaña al usuario y daña la credibilidad y
 
 La comparación de fuentes, la arquitectura prevista, la regla de frescura de eBay y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). Ninguna fuente real está conectada. Cumplir la sección «Gate antes de implementar eBay» de ese documento sigue siendo obligatorio: el esqueleto no se activa hasta entonces.
 
+## Catálogo verificable
+
+`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 están en revisión `pending`, con `externalProductId: null` y sin referencia de verificación. Ninguno se puede comparar todavía: las familias no fijan generación o capacidad, y moda, hogar y deporte son categorías, no un producto único. No hay precios ni identificadores de marketplace.
+
 ## Qué falta antes de integrar una fuente real
 
 - API oficial o acuerdo de uso (términos de servicio verificados; sin scraping frágil).
