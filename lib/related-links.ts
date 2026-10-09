@@ -6,6 +6,7 @@
  */
 
 import { JORNADA_8_RELATED } from './laliga-jornada-8-2026'
+import { JORNADA_9_RELATED } from './laliga-jornada-9-2026'
 import { CONCERTS_GUIDE_SLUG } from './concerts'
 import { ASTRO_GUIDE_SLUG } from './astrology'
 
@@ -45,6 +46,7 @@ const RELATED: Record<string, string[]> = {
     '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada transita este signo.',
   ],
   ...JORNADA_8_RELATED,
+  ...JORNADA_9_RELATED,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': [
     `[Cristiano Ronaldo y Portugal](${A.ronaldo}): la otra pieza de la ventana de selecciones, tras el partido ante Noruega.`,
   ],

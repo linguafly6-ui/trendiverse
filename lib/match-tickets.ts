@@ -1,4 +1,4 @@
-import { liveMatchForSlug } from './laliga-jornada-8-2026'
+import { LALIGA_MATCH_SLUGS, liveMatchForSlug } from './laliga-matches'
 
 export const MATCH_TIME_ZONE = 'Europe/Madrid'
 
@@ -122,29 +122,78 @@ const VERIFIED_LINKS: Record<string, VerifiedTicketLink> = {
     source: 'la web oficial del Levante UD',
     verifiedOn: '2026-10-09',
   },
+  // Jornada 9 (16-19 de octubre de 2026)
+  'deportivo-levante-laliga-jornada-9-2026': {
+    url: 'https://ticketing.rcdeportivo.es/',
+    scope: 'club',
+    source: 'el RC Deportivo',
+    verifiedOn: '2026-10-09',
+  },
+  'espanyol-atletico-laliga-jornada-9-2026': {
+    url: 'https://tickets.rcdespanyol.com/index.php/es/?option=com_abonados&view=ticketing&layout=plano&id=227',
+    scope: 'match',
+    source: 'la web oficial del RCD Espanyol',
+    verifiedOn: '2026-10-09',
+  },
+  'villarreal-elche-laliga-jornada-9-2026': {
+    url: 'https://villarrealcf.es/es/venta-de-entradas/',
+    scope: 'club',
+    source: 'el Villarreal CF',
+    verifiedOn: '2026-10-09',
+  },
+  'betis-barcelona-laliga-jornada-9-2026': {
+    url: 'https://www.realbetisbalompie.es/entradas/partido/24614/2027',
+    scope: 'match',
+    source: 'la web oficial del Real Betis',
+    verifiedOn: '2026-10-09',
+  },
+  'valencia-athletic-laliga-jornada-9-2026': {
+    url: 'https://www.valenciacf.com/entradas',
+    scope: 'club',
+    source: 'el Valencia CF',
+    verifiedOn: '2026-10-09',
+  },
+  'osasuna-racing-laliga-jornada-9-2026': {
+    url: 'https://entradas.osasuna.es/',
+    scope: 'club',
+    source: 'el CA Osasuna',
+    verifiedOn: '2026-10-09',
+  },
+  'celta-alaves-laliga-jornada-9-2026': {
+    url: 'https://rccelta.es/entradas/',
+    scope: 'club',
+    source: 'el RC Celta',
+    verifiedOn: '2026-10-09',
+  },
+  'malaga-real-sociedad-laliga-jornada-9-2026': {
+    url: 'https://www.malagacf.com/partidos/temporada-2026-2027-laliga-ea-sports-9-malaga-cf-vs-real-sociedad-3005',
+    scope: 'match',
+    source: 'la web oficial del Málaga CF',
+    verifiedOn: '2026-10-09',
+  },
+  'real-madrid-sevilla-laliga-jornada-9-2026': {
+    url: 'https://www.realmadrid.com/es-ES/entradas',
+    scope: 'club',
+    source: 'el Real Madrid',
+    verifiedOn: '2026-10-09',
+  },
+  'getafe-rayo-laliga-jornada-9-2026': {
+    url: 'https://www.getafecf.com/entradas',
+    scope: 'club',
+    source: 'el Getafe CF',
+    verifiedOn: '2026-10-09',
+  },
 }
 
-const LALIGA_JORNADA_8_SLUGS = [
-  'malaga-espanyol-laliga-jornada-8-2026',
-  'rayo-athletic-laliga-jornada-8-2026',
-  'alaves-atletico-laliga-jornada-8-2026',
-  'barcelona-getafe-laliga-jornada-8-2026',
-  'real-madrid-villarreal-laliga-jornada-8-2026',
-  'elche-celta-laliga-jornada-8-2026',
-  'real-sociedad-deportivo-laliga-jornada-8-2026',
-  'betis-osasuna-laliga-jornada-8-2026',
-  'racing-valencia-laliga-jornada-8-2026',
-  'levante-sevilla-laliga-jornada-8-2026',
-]
 
-function jornada8(slug: string): MatchTicketInfo | null {
+function laliga(slug: string): MatchTicketInfo | null {
   const live = liveMatchForSlug(slug)
   if (!live) return null
   return {
     slug,
     homeTeam: live.homeName,
     awayTeam: live.awayName,
-    competition: 'LaLiga EA Sports, jornada 8',
+    competition: `LaLiga EA Sports, jornada ${slug.match(/jornada-(\d+)/)?.[1] ?? ''}`.trim(),
     venue: live.venue,
     startsAt: live.startDate,
     status: 'scheduled',
@@ -195,7 +244,7 @@ const BY_SLUG = new Map<string, MatchTicketInfo>(OTHER_MATCHES.map((m) => [m.slu
 
 /** Returns null for articles that are not about one specific match. */
 export function matchTicketInfoForSlug(slug: string): MatchTicketInfo | null {
-  return BY_SLUG.get(slug) ?? (LALIGA_JORNADA_8_SLUGS.includes(slug) ? jornada8(slug) : null)
+  return BY_SLUG.get(slug) ?? (LALIGA_MATCH_SLUGS.includes(slug) ? laliga(slug) : null)
 }
 
 export function isSafeOfficialUrl(url: string): boolean {
