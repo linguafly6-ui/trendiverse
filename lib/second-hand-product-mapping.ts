@@ -1,4 +1,19 @@
 import { SECOND_HAND_PRODUCTS } from './second-hand'
+import {
+  MARKETPLACE_ID_ALLOWLIST,
+  hasValidatedMarketplaceId,
+  type SecondHandMarketplaceIdAllowlist,
+  type SecondHandMarketplaceIdContext,
+  type SecondHandMarketplaceIdentifier,
+} from './second-hand-marketplace-id'
+
+export {
+  MARKETPLACE_ID_ALLOWLIST,
+  hasValidatedMarketplaceId,
+  type SecondHandMarketplaceIdAllowlist,
+  type SecondHandMarketplaceIdContext,
+  type SecondHandMarketplaceIdentifier,
+} from './second-hand-marketplace-id'
 
 /**
  * Especificación del modelo que un slug editorial podrá comparar.
@@ -14,8 +29,9 @@ import { SECOND_HAND_PRODUCTS } from './second-hand'
  * Pasar un registro a `verified` exige el expediente de
  * `lib/second-hand-verification-policy.ts`. El único que lo cumple es
  * `nintendo-switch`: Nintendo Switch – Modelo OLED, 64 GB, HEG-001.
- * No lleva `externalProductId`. Un texto en ese campo no es un id validado
- * para comparar: ese contrato todavía no existe.
+ * No lleva `externalProductId` ni un identificador de marketplace.
+ * Un texto en `externalProductId` no está validado. La validación es el
+ * contrato de `lib/second-hand-marketplace-id.ts`, y el catálogo no lo cumple.
  */
 
 export const SECOND_HAND_REVIEW_STATUSES = ['pending', 'verified', 'rejected'] as const
@@ -51,6 +67,11 @@ export interface SecondHandProductMapping {
   attributes: readonly SecondHandModelAttribute[]
   reviewStatus: SecondHandReviewStatus
   externalProductId: string | null
+  /**
+   * Identificador de marketplace y su estado de validación.
+   * null es ausencia. No se rellena con el nombre ni con el código del fabricante.
+   */
+  marketplaceIdentifier: SecondHandMarketplaceIdentifier | null
   /** Responsable o referencia de una verificación. null mientras el estado no sea `verified`. */
   verificationRef: string | null
   /** Expediente de la ficha oficial. null mientras el modelo no esté verificado. */
@@ -146,6 +167,7 @@ function mapping(
     attributes,
     reviewStatus: 'pending',
     externalProductId: null,
+    marketplaceIdentifier: null,
     verificationRef: null,
     recordedVerification: null,
     decisionNote,
@@ -160,7 +182,7 @@ const SWITCH_OLED_DOC_URL = 'https://www.nintendo.com/eu/media/downloads/support
 /**
  * Único mapping verificado. La ficha de Nintendo ES fija el nombre, los 64 GB
  * y la pantalla de 7 pulgadas. La declaración UE de conformidad publica HEG-001
- * para esa consola. No hay externalProductId.
+ * para esa consola. No hay externalProductId ni identificador de marketplace.
  */
 function verifiedSwitchOled(): SecondHandProductMapping {
   const manufacturer = 'Nintendo Co., Ltd.'
@@ -179,6 +201,7 @@ function verifiedSwitchOled(): SecondHandProductMapping {
     ],
     reviewStatus: 'verified',
     externalProductId: null,
+    marketplaceIdentifier: null,
     verificationRef: 'Declaración UE de conformidad de Nintendo Co., Ltd., número de modelo HEG-001, y ficha de hardware de Nintendo ES. Revisión del 2026-10-09.',
     recordedVerification: {
       manufacturer,
@@ -341,40 +364,55 @@ export function mappingIssues(spec: SecondHandProductMapping): SecondHandMapping
   return issues
 }
 
-/**
- * Un valor presente no está validado ni autorizado para comparar.
- * El contrato del identificador de marketplace pertenece al adapter y aún no existe.
- * No consulta eBay ni decide si el texto es un id real.
- */
-export function hasValidatedMarketplaceId(externalProductId: string | null): boolean {
-  void externalProductId
-  return false
+function marketplaceIdContext(spec: SecondHandProductMapping): SecondHandMarketplaceIdContext {
+  const record = spec.recordedVerification
+  const attribute = (key: SecondHandAttributeKey) => {
+    const value = spec.attributes.find((item) => item.key === key)?.value
+    return hasText(value) ? value : null
+  }
+  return {
+    productId: spec.productId,
+    verificationRef: spec.verificationRef,
+    manufacturerIdentifier: record?.manufacturerIdentifier ?? null,
+    manufacturer: record?.manufacturer ?? attribute('brand'),
+    exactModel: record?.exactModel ?? attribute('model'),
+    identifies: spec.identifies,
+  }
 }
 
 /**
- * Listo para comparar precios. Exige identidad cerrada y un id de marketplace
- * validado por el contrato del adapter. Un `externalProductId` arbitrario no basta.
- * No consulta precios ni publica métricas.
+ * Listo para comparar precios. Exige la revisión cerrada, sin problemas de
+ * mapping, y un identificador que cumpla el contrato completo.
+ * Un `externalProductId` presente no basta. La lista por defecto no autoriza
+ * a ningún proveedor. No consulta precios ni publica métricas.
  */
-export function canComparePrices(spec: SecondHandProductMapping): boolean {
+export function canComparePrices(
+  spec: SecondHandProductMapping,
+  allowlist: SecondHandMarketplaceIdAllowlist = MARKETPLACE_ID_ALLOWLIST,
+): boolean {
   return spec.reviewStatus === 'verified'
-    && hasValidatedMarketplaceId(spec.externalProductId)
     && mappingIssues(spec).length === 0
+    && hasValidatedMarketplaceId(spec.marketplaceIdentifier, marketplaceIdContext(spec), allowlist)
 }
 
 /**
- * Proyección hacia el mapping externo del adapter. Si la revisión no está
- * cerrada, el identificador no sale de aquí y `verified` queda en false.
+ * Proyección hacia el mapping externo del adapter.
+ * Solo expone el valor canónico cuando el identificador está validado y el
+ * mapping cumple el resto de requisitos. No copia `externalProductId`.
  */
-export function asExternalMapping(spec: SecondHandProductMapping): {
+export function asExternalMapping(
+  spec: SecondHandProductMapping,
+  allowlist: SecondHandMarketplaceIdAllowlist = MARKETPLACE_ID_ALLOWLIST,
+): {
   productId: string
   externalProductId: string | null
   verified: boolean
 } {
-  const verified = canComparePrices(spec) && hasText(spec.externalProductId)
+  const identifier = spec.marketplaceIdentifier
+  const verified = identifier?.status === 'validated' && canComparePrices(spec, allowlist)
   return {
     productId: spec.productId,
-    externalProductId: verified ? spec.externalProductId : null,
+    externalProductId: verified ? identifier.canonicalValue : null,
     verified,
   }
 }
@@ -424,7 +462,7 @@ export function mappingDecisionIsExplicit(spec: SecondHandProductMapping): boole
   if (spec.reviewStatus === 'verified') {
     return hasText(spec.verificationRef) && missingRequiredAttributes(spec).length === 0
   }
-  if (spec.externalProductId !== null || spec.verificationRef !== null) return false
+  if (spec.externalProductId !== null || spec.marketplaceIdentifier !== null || spec.verificationRef !== null) return false
   if (!isValidReviewPriority(spec.reviewPriority)) return false
   if (spec.scope === 'category') return spec.decisionSourceUrl === null && spec.reviewPriority === null
   return isOfficialMappingDecisionSource(spec.decisionSourceUrl) && typeof spec.reviewPriority === 'number'

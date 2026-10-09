@@ -42,6 +42,7 @@ test('the mapping catalog matches the editorial slugs and verifies only the Swit
   assert.deepEqual(SECOND_HAND_PRODUCTS.map((product) => product.slug), SLUGS)
   for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
     assert.equal(spec.externalProductId, null, spec.productId)
+    assert.equal(spec.marketplaceIdentifier, null, spec.productId)
     assert.equal(mappingDecisionIsExplicit(spec), true, spec.productId)
     assert.equal(canComparePrices(spec), false, spec.productId)
     assert.ok(spec.identifies.trim(), spec.productId)
@@ -91,6 +92,7 @@ test('review priority is an integer from 1 to 9, and null only on a category', (
   assert.equal(mappingDecisionIsExplicit(upper), true)
   assert.equal(mappingDecisionIsExplicit({ ...category, reviewPriority: null }), true)
   assert.equal(mappingDecisionIsExplicit({ ...category, reviewPriority: 1 }), false)
+  assert.equal(mappingDecisionIsExplicit({ ...family, marketplaceIdentifier: { status: 'absent' } }), false)
   for (const reviewPriority of [0, 10, 1.5, -1, Number.NaN, null, '1'] as const) {
     assert.equal(mappingDecisionIsExplicit({ ...family, reviewPriority: reviewPriority as number | null }), false, String(reviewPriority))
   }

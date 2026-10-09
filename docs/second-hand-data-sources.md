@@ -41,13 +41,13 @@ La comparación de fuentes, la arquitectura prevista, la regla de frescura de eB
 
 ## Catálogo verificable
 
-`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 tienen una decisión auditable: nota, página oficial cuando el slug es un producto de fabricante y prioridad de revisión. Esa prioridad no es un ranking de ventas. Solo `nintendo-switch` está en `verified`: la ficha de Nintendo ES describe Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas. La declaración UE de conformidad publica, en el mismo documento, «Product name Nintendo Switch – OLED Model console» y «Model number HEG-001». Esa cita queda guardada en el expediente. `HEG-001` es el código del fabricante, no un identificador de marketplace. `verificationEvidenceIssues()` no descarga esas URLs: solo comprueba la forma de los campos. `externalProductId` sigue en `null` en los 18. Un texto puesto en ese campo no es un identificador validado para comparar; ese contrato todavía no existe. Los otros 17 siguen en `pending`, con atributos vacíos y `verificationRef` en `null`. Las familias pendientes citan la página que deja abierta la capacidad, el lector o la región. Las categorías no tienen una ficha de un solo producto. No hay precios ni consultas a eBay.
+`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 tienen una decisión auditable: nota, página oficial cuando el slug es un producto de fabricante y prioridad de revisión. Esa prioridad no es un ranking de ventas. Solo `nintendo-switch` está en `verified`: la ficha de Nintendo ES describe Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas. La declaración UE de conformidad publica, en el mismo documento, «Product name Nintendo Switch – OLED Model console» y «Model number HEG-001». Esa cita queda guardada en el expediente. `HEG-001` es el código del fabricante, no un identificador de marketplace. `verificationEvidenceIssues()` no descarga esas URLs: solo comprueba la forma de los campos. `externalProductId` y `marketplaceIdentifier` siguen en `null` en los 18. Un texto puesto en `externalProductId` no es un identificador validado para comparar; esa comprobación está en `lib/second-hand-marketplace-id.ts` y el catálogo no la cumple. Los otros 17 siguen en `pending`, con atributos vacíos y `verificationRef` en `null`. Las familias pendientes citan la página que deja abierta la capacidad, el lector o la región. Las categorías no tienen una ficha de un solo producto. No hay precios ni consultas a eBay.
 
 `lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`. Un candidato no es un expediente de verificación.
 
 ## Política de evidencia
 
-`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` comprueba la forma del expediente y los hosts permitidos. No descarga las URLs ni lee el texto de los documentos. El expediente de `nintendo-switch` cumple esa forma con las dos URLs de www.nintendo.com citadas arriba. No lleva identificador de marketplace: la lista de hosts para esa fuente sigue vacía, y un `externalProductId` arbitrario no se trata como validado. El adapter de eBay sigue apagado.
+`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` comprueba la forma del expediente y los hosts permitidos. No descarga las URLs ni lee el texto de los documentos. El expediente de `nintendo-switch` cumple esa forma con las dos URLs de www.nintendo.com citadas arriba. No lleva identificador de marketplace: la lista de hosts para esa fuente sigue vacía. Un `externalProductId` arbitrario tampoco se trata como validado. El adapter de eBay sigue apagado.
 
 Hay cuatro capas distintas.
 
@@ -62,7 +62,7 @@ Hay cuatro capas distintas.
 
 **Ambigüedades pendientes.** Quien revisa tiene que dejar constancia de que miró la lista. Si queda abierta cualquiera de estas, el modelo no se verifica: varias capacidades, lector frente a edición digital, tamaño, conectividad, región o revisiones incompatibles. Los huecos ya anotados en `SECOND_HAND_TECH_CANDIDATE_GAPS` son de ese tipo. No cierran un modelo.
 
-**Identificador de marketplace.** Va aparte de la identidad. Si no aparece, la identidad todavía puede estar completa: este cambio no lo busca ni lo rellena. `externalProductId` sigue en `null`. Si aparece, su fuente tiene que ser una URL https de un host de `MARKETPLACE_IDENTIFIER_SOURCE_HOSTS`, sin parámetros de afiliación. Esa lista está vacía: ningún dominio está autorizado y un https cualquiera no cuenta. No es la lista de fichas del fabricante.
+**Identificador de marketplace.** Va aparte de la identidad y aparte del código de fabricante. Si no aparece, la identidad todavía puede estar completa: este cambio no lo busca ni lo rellena. `externalProductId` y `marketplaceIdentifier` siguen en `null`. Si en el expediente aparece una fuente para ese identificador, tiene que ser una URL https de un host de `MARKETPLACE_IDENTIFIER_SOURCE_HOSTS`, sin parámetros de afiliación. Esa lista está vacía: ningún dominio está autorizado y un https cualquiera no cuenta. No es la lista de fichas del fabricante. Esa comprobación no decide, por sí sola, que el identificador esté validado para comparar.
 
 No basta comparar la URL carácter a carácter con la ficha. Se trata como la misma ficha, y se rechaza, cualquier variante con otra query, otro fragmento, el puerto 443, la barra final o distintas mayúsculas en el host. Otra ruta u otro host no son esa ficha. Una URL http o imposible de parsear es una fuente inválida, con un problema propio. No se resuelven redirecciones ni se pide la página.
 
@@ -70,11 +70,29 @@ Tampoco se infiere el identificador. Se rechaza si el valor, al ignorar mayúscu
 
 La validación rechaza evidencia incompleta, URLs que no son https del fabricante (otro host, http o parámetros de afiliado), identificadores sin fuente y atributos críticos todavía ambiguos. Un fixture sintético solo sirve para probar esa forma. No es un producto del catálogo y no marca ninguno como verificado. Contra los hosts oficiales no es suficiente, porque su URL no es una ficha de fabricante.
 
+## Identificador validado
+
+`lib/second-hand-marketplace-id.ts` define cuándo un identificador externo puede considerarse validado. El estado es uno de estos cuatro: ausencia (`null` o `status: 'absent'`), aportado pero no validado (`unvalidated`), validado según el contrato (`validated`) o rechazado con un motivo cerrado (`rejected`).
+
+Un identificador validado tiene que demostrar, a la vez, todas estas propiedades. No se inventa aquí el formato de ningún proveedor:
+
+- proveedor y ámbito, ambos presentes y incluidos en la lista que recibe la comprobación;
+- valor canónico no vacío, ya sin espacios alrededor;
+- vínculo explícito con el mapping (`productId`) y con el producto verificado (`verifiedProductRef` igual a `verificationRef`);
+- procedencia y método de validación;
+- estado `validated` y una referencia auditable.
+
+`MARKETPLACE_ID_ALLOWLIST` tiene las dos listas vacías. Con esa lista, `hasValidatedMarketplaceId()` devuelve false para cualquier cadena y para cualquier objeto. Una cadena no vacía, el nombre del producto o un código de fabricante como `HEG-001` no se convierten en un id de marketplace.
+
+`canComparePrices()` solo acepta el identificador cuando cumple ese contrato y el mapping sigue verificado, completo y sin otros problemas. `asExternalMapping()` solo publica el valor canónico en ese caso. No copia `externalProductId`. El catálogo no tiene ningún identificador validado: los 18 siguen con los dos campos en `null`, y solo `nintendo-switch` está verificado. Esa verificación es de identidad del producto, no de un id de marketplace. El adapter de eBay sigue apagado y este contrato no lo enciende ni hace peticiones.
+
 ## Qué falta antes de integrar una fuente real
 
+- Elegir el proveedor cuyo identificador se va a usar.
+- Confirmar el acceso autorizado a ese proveedor.
+- Definir cómo se obtiene y se verifica su identificador real, y enlazarlo al contrato sin tratar un texto presente como validado.
 - API oficial o acuerdo de uso (términos de servicio verificados; sin scraping frágil).
 - Credenciales gestionadas fuera del repositorio.
 - Licencia/atribución y límites de uso.
 - Frecuencia de actualización, caché y moneda/mercado cubierto.
-- Mapeo de productos de Trendiverse a identificadores de la fuente.
 - Definición de la fórmula del Second-Hand Score y su fuente de tendencia.
