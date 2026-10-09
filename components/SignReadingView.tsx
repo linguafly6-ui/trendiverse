@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import CategoryNav from '@/components/CategoryNav'
+import AstrologyLibrary from '@/components/AstrologyLibrary'
 import {
   ASTRO_GUIDE_SLUG,
   DISCLAIMER,
@@ -10,6 +11,8 @@ import {
   previousWeek,
   signHeading,
   signTransitNotes,
+  weekFirstDay,
+  weekLastDay,
   type HoroscopeWeek,
   type SignReading,
 } from '@/lib/astrology'
@@ -65,8 +68,8 @@ export default function SignReadingView({ week, sign, isCurrent }: { week: Horos
   const before = previousWeek(week)
   const after = nextWeek(week)
   const notes = signTransitNotes(week, sign)
-  const [firstDay, ...restDays] = week.days.split(', ')
-  const lastDay = restDays.length ? restDays[restDays.length - 1].replace(/^y /, '') : firstDay
+  const firstDay = weekFirstDay(week)
+  const lastDay = weekLastDay(week)
 
   return (
     <article className="mx-auto max-w-3xl">
@@ -152,6 +155,7 @@ export default function SignReadingView({ week, sign, isCurrent }: { week: Horos
         </div>
       </details>
 
+      <AstrologyLibrary compact />
       <nav aria-label="Otros signos" className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4 text-sm dark:border-slate-800">
         <Link className={link} href={signPath(prev, week, isCurrent)}>{prev.symbol} {prev.name}</Link>
         <Link className={link} href={weekPath(week, isCurrent)}>Los 12 signos, {week.shortLabel}</Link>

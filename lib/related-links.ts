@@ -42,8 +42,10 @@ const RELATED: Record<string, string[]> = {
   ],
   [ASTRO_GUIDE_SLUG]: [
     '[Horóscopo de la semana](/astrologia): los doce signos con el cielo de la semana en curso.',
-    '[Horóscopo de Libra](/astrologia/libra): el signo en el que está el Sol hasta el 23 de octubre.',
-    '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada y Mercurio están en este signo.',
+    '[Carta natal paso a paso](/astrologia/guias/carta-natal): cómo distinguir Sol, Luna, ascendente, casas y aspectos.',
+    '[Qué es el ascendente](/astrologia/guias/ascendente): los datos necesarios y los límites cuando falta la hora.',
+    '[Signo lunar](/astrologia/guias/signo-lunar): la posición natal de la Luna no es su fase.',
+    '[Eclipses y astrología](/astrologia/guias/eclipses): fenómeno, observación segura e interpretación por separado.',
   ],
   ...JORNADA_8_RELATED,
   ...JORNADA_9_RELATED,

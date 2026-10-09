@@ -5,6 +5,7 @@ import type { LiveFixtureRef } from './laliga-jornada-8-2026'
 import { truncateWords } from './seo-overrides'
 import type { Article, Tool } from './types'
 import { signHeading, signSeoDescription, type HoroscopeWeek, type SignReading } from './astrology'
+import { ASTROLOGY_GUIDES, astrologyGuideBody, astrologyGuidePath, astrologyGuideSources, plainAstrologyText, type AstrologyGuide } from './astrology-guides'
 
 export const websiteId = `${SITE_URL}/#website`
 export const organizationId = `${SITE_URL}/#organization`
@@ -413,6 +414,16 @@ export function astrologySectionGraph(week: HoroscopeWeek, datedUrl = false) {
   const category = getCategory('astrologia')!
   const url = datedUrl ? weekUrl(week) : sectionUrl(category)
   const articles = week.signs.map((sign) => horoscopeArticle(week, sign, datedUrl))
+  const entries = week.signs.map((sign, index) => ({
+    id: String(articles[index]['@id']),
+    url: signUrl(sign.slug, datedUrl ? week : undefined),
+    name: String(articles[index].headline),
+  }))
+  if (!datedUrl) entries.push(...ASTROLOGY_GUIDES.map((guide) => ({
+    id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
+    url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
+    name: guide.title,
+  })))
   const crumbs = [
     { name: 'Inicio', url: SITE_URL },
     { name: 'Astrología', url: sectionUrl(category) },
@@ -420,13 +431,73 @@ export function astrologySectionGraph(week: HoroscopeWeek, datedUrl = false) {
   if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url })
   return graph([
     topicNode('astrologia'),
-    sectionNode(category, itemList(week.signs.map((sign, index) => ({
-      id: String(articles[index]['@id']),
-      url: signUrl(sign.slug, datedUrl ? week : undefined),
-      name: String(articles[index].headline),
-    })))),
+    sectionNode(category, itemList(entries)),
     ...articles,
     breadcrumb(url, crumbs),
+  ])
+}
+
+export function astrologyGuideGraph(guide: AstrologyGuide) {
+  const url = `${SITE_URL}${astrologyGuidePath(guide.slug)}`
+  return graph([
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: guide.title,
+      description: guide.description,
+      articleBody: astrologyGuideBody(guide),
+      datePublished: guide.updated,
+      dateModified: guide.updated,
+      inLanguage: 'es-ES',
+      genre: 'Guía de astrología',
+      articleSection: 'Astrología',
+      author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
+      publisher: publisher(),
+      mainEntityOfPage: url,
+      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
+      about: { '@type': 'Thing', name: guide.title.split(':')[0] },
+      citation: astrologyGuideSources(guide).map((source) => source.url),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: guide.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: plainAstrologyText(faq.a) },
+      })),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
+      { name: 'Guías', url: `${SITE_URL}/astrologia/guias` },
+      { name: guide.title.split(':')[0], url },
+    ]),
+  ])
+}
+
+export function astrologyLibraryGraph() {
+  const url = `${SITE_URL}/astrologia/guias`
+  return graph([
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: 'Guías de astrología',
+      inLanguage: 'es-ES',
+      about: { '@id': topicId('astrologia') },
+      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
+      mainEntity: itemList(ASTROLOGY_GUIDES.map((guide) => ({
+        id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
+        url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
+        name: guide.title,
+      }))),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
+      { name: 'Guías', url },
+    ]),
   ])
 }
 

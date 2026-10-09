@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
 import { currentWeek, WEEKS } from '@/lib/astrology'
+import { ASTROLOGY_GUIDES, astrologyGuidePath } from '@/lib/astrology-guides'
 import { concertsFor } from '@/lib/concerts'
 import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
@@ -48,6 +49,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     })),
     { url: base + '/astrologia', changeFrequency: 'weekly', priority: 0.9 },
+    { url: base + '/astrologia/guias', changeFrequency: 'monthly', priority: 0.8 },
+    ...ASTROLOGY_GUIDES.map((guide) => ({
+      url: base + astrologyGuidePath(guide.slug),
+      lastModified: new Date(guide.updated),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
     ...currentWeek().signs.map((sign) => ({
       url: base + '/astrologia/' + sign.slug,
       changeFrequency: 'weekly' as const,

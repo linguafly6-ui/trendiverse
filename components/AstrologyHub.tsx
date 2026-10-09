@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { signPath } from '@/components/SignReadingView'
-import { ASTRO_GUIDE_SLUG, currentWeek, DISCLAIMER, METHOD_NOTE, WEEKS, type HoroscopeWeek } from '@/lib/astrology'
+import { ASTRO_GUIDE_SLUG, currentWeek, DISCLAIMER, METHOD_NOTE, weekFirstDay, weekLastDay, WEEKS, type HoroscopeWeek } from '@/lib/astrology'
 
 const link = 'font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 dark:text-indigo-300'
 
-export default function AstrologyHub({ variant = 'full', week: givenWeek }: { variant?: 'full' | 'strip'; week?: HoroscopeWeek }) {
+export default function AstrologyHub({ variant = 'full', week: givenWeek, sectionPage = false }: { variant?: 'full' | 'strip'; week?: HoroscopeWeek; sectionPage?: boolean }) {
   const current = currentWeek()
   const week = givenWeek ?? current
   const isCurrent = week.id === current.id
@@ -40,16 +40,17 @@ export default function AstrologyHub({ variant = 'full', week: givenWeek }: { va
   }
 
   const otherWeeks = WEEKS.filter((candidate) => candidate.id !== week.id)
+  const Heading = sectionPage ? 'h2' : 'h1'
 
   return (
-    <div className="space-y-6">
+    <div id="horoscopo-semanal" className="scroll-mt-32 space-y-6">
       <header>
         <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">
           {isCurrent ? 'Semana en curso' : 'Horóscopo semanal'}
         </p>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Horóscopo semanal del {week.label}</h1>
+        <Heading className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Horóscopo semanal del {week.label}</Heading>
         <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
-          Doce horóscopos, uno por signo, para la semana del {week.days.split(', ')[0]} al {week.days.split(', ').pop()?.replace(/^y /, '')}. Cada uno te cuenta cómo viene la semana en el amor, el trabajo, el dinero y tu bienestar, y termina con un consejo. Sin tecnicismos: si quieres saber cómo están hechos, lo explicamos al final.
+          Doce horóscopos, uno por signo, para la semana del {weekFirstDay(week)} al {weekLastDay(week)}. Cada uno te cuenta cómo viene la semana en el amor, el trabajo, el dinero y tu bienestar, y termina con un consejo. Sin tecnicismos: si quieres saber cómo están hechos, lo explicamos al final.
         </p>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-500">{DISCLAIMER}</p>
       </header>
