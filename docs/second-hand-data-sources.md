@@ -31,7 +31,7 @@ Devuelve una observación real para el `slug` de un producto, o `null` si no hay
 
 Un precio, ahorro o score inventado engaña al usuario y daña la credibilidad y el SEO. Sin fuente verificable, el valor es `null`.
 
-La comparación de fuentes, la arquitectura prevista y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). Ninguna fuente real está conectada.
+La comparación de fuentes, la arquitectura prevista, la regla de frescura de eBay y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). Ninguna fuente real está conectada. El adapter de eBay no se escribe hasta cumplir la sección «Gate antes de implementar eBay» de ese documento.
 
 ## Qué falta antes de integrar una fuente real
 
