@@ -43,7 +43,28 @@ La comparación de fuentes, la arquitectura prevista, la regla de frescura de eB
 
 `lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 están en revisión `pending`, con `externalProductId: null` y sin referencia de verificación. Ninguno se puede comparar todavía: las familias no fijan generación o capacidad, y moda, hogar y deporte son categorías, no un producto único. No hay precios ni identificadores de marketplace.
 
-`lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`.
+`lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`. Un candidato no es un expediente de verificación.
+
+## Política de evidencia
+
+`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` es una función pura: no escribe el catálogo, no busca anuncios y no calcula precios. Ningún slug cumple el expediente. Los 18 siguen en `pending`. `canComparePrices()` no cambia. El adapter de eBay sigue apagado.
+
+Hay cuatro capas distintas.
+
+**Identidad del producto.** La publica el fabricante en su ficha: fabricante, modelo exacto, generación o revisión, y una sola configuración relevante. Una categoría agrupa muchos modelos y no puede verificarse.
+
+**Evidencia.** Cada dato tiene un respaldo propio.
+
+- Fabricante, modelo, generación y configuración: la ficha oficial del fabricante. Hace falta el valor y una URL https de ese host. Los hosts son los mismos que ya admite `isOfficialCandidateSource()`: `support.apple.com`, `www.apple.com`, `www.samsung.com`, `www.playstation.com`, `www.nintendo.com`, `www.xbox.com` y `www.steamdeck.com`.
+- Identificador de modelo o SKU: el fabricante lo publica en esa ficha. El código sin la URL donde aparece se rechaza. El catálogo no trae ninguno, y esta política no lo inventa.
+- Atributos demostrados: los cuatro valores de la identidad, repetidos con la URL de la ficha que los muestra. Un atributo del mapping en `null` no está demostrado.
+- Referencia verificable: la persona o el registro interno que revisó la ficha. No es un identificador de marketplace ni una URL de anuncio.
+
+**Ambigüedades pendientes.** Quien revisa tiene que dejar constancia de que miró la lista. Si queda abierta cualquiera de estas, el modelo no se verifica: varias capacidades, lector frente a edición digital, tamaño, conectividad, región o revisiones incompatibles. Los huecos ya anotados en `SECOND_HAND_TECH_CANDIDATE_GAPS` son de ese tipo. No cierran un modelo.
+
+**Identificador de marketplace.** Va aparte de la identidad. No se infiere porque el nombre coincida, no se copia del modelo y no se toma de la misma URL de la ficha. Si aparece sin fuente propia, el expediente se rechaza. Si no aparece, la identidad todavía puede estar completa: este cambio no lo busca ni lo rellena. `externalProductId` sigue en `null`.
+
+La validación rechaza evidencia incompleta, URLs que no son https del fabricante (otro host, http o parámetros de afiliado), identificadores sin fuente y atributos críticos todavía ambiguos. Un fixture sintético solo sirve para probar esa forma. No es un producto del catálogo. Contra los hosts oficiales no es suficiente, porque su URL no es una ficha de fabricante.
 
 ## Qué falta antes de integrar una fuente real
 
