@@ -31,6 +31,8 @@ Devuelve una observación real para el `slug` de un producto, o `null` si no hay
 
 Un precio, ahorro o score inventado engaña al usuario y daña la credibilidad y el SEO. Sin fuente verificable, el valor es `null`.
 
+La comparación de fuentes, la arquitectura prevista y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). Ninguna fuente real está conectada.
+
 ## Qué falta antes de integrar una fuente real
 
 - API oficial o acuerdo de uso (términos de servicio verificados; sin scraping frágil).
