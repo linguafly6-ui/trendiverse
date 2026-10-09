@@ -31,13 +31,13 @@ Devuelve una observación real para el `slug` de un producto, o `null` si no hay
 
 `lib/ebay-browse-adapter.ts` implementa `SecondHandDataSource` (`id: ebay-browse`). `getProductData` devuelve siempre `null` y no es el proveedor por defecto. No hay cliente HTTP, OAuth, cron, KV, caché ni credenciales.
 
-`ebayOfferToObservation` solo normaliza. Devolver un objeto no autoriza a publicarlo ni activa el proveedor. La publicación sigue bloqueada hasta el gate de la PR #93: acceso de producción, autorización de EPN, `EBAY_ES`, frescura máxima de seis horas sin alargar el plazo si falla el refresco, permiso escrito para el uso de los datos, mapping verificado (`externalProductId` distinto de `null`) y credenciales solo en servidor. Ahorro, mínimo, máximo y score siguen fuera. Una condición no admitida por la categoría, un identificador no verificado, un anuncio de más de seis horas o una URL de ficha o de afiliado de eBay no producen un objeto normalizado.
+`ebayOfferToObservation` solo normaliza. Devolver un objeto no autoriza a publicarlo ni activa el proveedor. La publicación sigue bloqueada hasta el gate de la PR #93 y la decisión de proveedor: acceso de producción, autorización de EPN, `EBAY_ES`, frescura máxima de seis horas sin alargar el plazo si falla el refresco, permiso escrito para el uso de los datos, mapping verificado y un `marketplaceIdentifier` que cumpla el contrato. `externalProductId` no sustituye a ese identificador. Las credenciales, si algún día existen, solo van en el servidor. Ahorro, mínimo, máximo y score siguen fuera. Una condición no admitida por la categoría, un identificador no verificado, un anuncio de más de seis horas o una URL de ficha o de afiliado de eBay no producen un objeto normalizado. La decisión, con estado `blocked-pending-authorization`, está en [second-hand-ebay-provider-decision.md](./second-hand-ebay-provider-decision.md).
 
 ## Por qué no datos manuales o ficticios
 
 Un precio, ahorro o score inventado engaña al usuario y daña la credibilidad y el SEO. Sin fuente verificable, el valor es `null`.
 
-La comparación de fuentes, la arquitectura prevista, la regla de frescura de eBay y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). Ninguna fuente real está conectada. Cumplir la sección «Gate antes de implementar eBay» de ese documento sigue siendo obligatorio: el esqueleto no se activa hasta entonces.
+La comparación de fuentes, la arquitectura prevista, la regla de frescura de eBay y las condiciones para calcular el score están en [second-hand-data-sources-research.md](./second-hand-data-sources-research.md). La decisión de si eBay puede activarse está en [second-hand-ebay-provider-decision.md](./second-hand-ebay-provider-decision.md). Ninguna fuente real está conectada. Cumplir la sección «Gate antes de implementar eBay» de la investigación y el gate de esa decisión sigue siendo obligatorio: el esqueleto no se activa hasta entonces.
 
 ## Catálogo verificable
 
