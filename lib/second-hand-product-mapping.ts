@@ -273,12 +273,12 @@ export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] =
     attr('generation', 'Generación'),
     attr('capacity', 'Capacidad'),
   ], 'Pendiente. La ficha de España lista Galaxy S25 en 128 GB, 256 GB y 512 GB, S25+ en 256 GB y 512 GB, y S25 Ultra en 256 GB, 512 GB y 1 TB. La diagonal no está en esa ficha.', 'https://www.samsung.com/es/smartphones/galaxy-s25/specs/', 7),
-  mapping('playstation-5', 'family', 'PlayStation 5, sin edición ni capacidad.', [
+  mapping('playstation-5', 'family', 'PlayStation 5. La ficha de España separa la consola de 1 TB con Blu-ray y la Edición Digital de 825 GB, sin un número de modelo único.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('edition', 'Con lector, Digital o Slim'),
     attr('capacity', 'Capacidad'),
-  ], 'Pendiente. La página de EE. UU. separa PS5 console - 1TB con Blu-ray y PS5 Digital Edition - 825GB sin lector, y no asigna un código CFI. No se trata el lector como si fuera la digital.', 'https://www.playstation.com/en-us/ps5/', 1),
+  ], 'Pendiente. La ficha de España consultada el 2026-10-09 separa «Consola PS5 - 1 TB», con juegos de PS5 y PS4 en Blu-ray, y «PS5 Edición Digital - 825 GB», sin unidad de disco. La misma página dice que la PS5 slim lleva SSD de 1 TB y no asigna ese texto a una sola de las dos. Las notas del lector extraíble citan los grupos CFI-2000 y CFI-2100 para la edición digital, no un número de modelo de la consola de 1 TB. La asistencia agrupa CFI-2000/2100/7000 y los manuales listan varios CFI sin capacidad. No se verifica ninguno. Un código CFI no es un identificador de marketplace.', 'https://www.playstation.com/es-es/ps5/', 1),
   verifiedSwitchOled(),
   mapping('xbox', 'family', 'Marca Xbox, sin generación ni capacidad. Cubre varias consolas.', [
     attr('brand', 'Fabricante'),
