@@ -62,9 +62,13 @@ Hay cuatro capas distintas.
 
 **Ambigüedades pendientes.** Quien revisa tiene que dejar constancia de que miró la lista. Si queda abierta cualquiera de estas, el modelo no se verifica: varias capacidades, lector frente a edición digital, tamaño, conectividad, región o revisiones incompatibles. Los huecos ya anotados en `SECOND_HAND_TECH_CANDIDATE_GAPS` son de ese tipo. No cierran un modelo.
 
-**Identificador de marketplace.** Va aparte de la identidad. No se infiere porque el nombre coincida, no se copia del modelo y no se toma de la misma URL de la ficha. Si aparece sin fuente propia, el expediente se rechaza. Si no aparece, la identidad todavía puede estar completa: este cambio no lo busca ni lo rellena. `externalProductId` sigue en `null`.
+**Identificador de marketplace.** Va aparte de la identidad. Si no aparece, la identidad todavía puede estar completa: este cambio no lo busca ni lo rellena. `externalProductId` sigue en `null`. Si aparece, su fuente tiene que ser una URL https de un host de `MARKETPLACE_IDENTIFIER_SOURCE_HOSTS`, sin parámetros de afiliación. Esa lista está vacía: ningún dominio está autorizado y un https cualquiera no cuenta. No es la lista de fichas del fabricante.
 
-La validación rechaza evidencia incompleta, URLs que no son https del fabricante (otro host, http o parámetros de afiliado), identificadores sin fuente y atributos críticos todavía ambiguos. Un fixture sintético solo sirve para probar esa forma. No es un producto del catálogo. Contra los hosts oficiales no es suficiente, porque su URL no es una ficha de fabricante.
+No basta comparar la URL carácter a carácter con la ficha. Se trata como la misma ficha, y se rechaza, cualquier variante con otra query, otro fragmento, el puerto 443, la barra final o distintas mayúsculas en el host. Otra ruta u otro host no son esa ficha. Una URL http o imposible de parsear es una fuente inválida, con un problema propio. No se resuelven redirecciones ni se pide la página.
+
+Tampoco se infiere el identificador. Se rechaza si el valor, al ignorar mayúsculas y espacios de más, es el fabricante, el modelo o el nombre completo. Un valor vacío o nulo no se convierte en un id.
+
+La validación rechaza evidencia incompleta, URLs que no son https del fabricante (otro host, http o parámetros de afiliado), identificadores sin fuente y atributos críticos todavía ambiguos. Un fixture sintético solo sirve para probar esa forma. No es un producto del catálogo y no marca ninguno como verificado. Contra los hosts oficiales no es suficiente, porque su URL no es una ficha de fabricante.
 
 ## Qué falta antes de integrar una fuente real
 

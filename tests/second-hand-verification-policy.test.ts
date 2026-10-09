@@ -7,6 +7,7 @@ import {
   verificationEvidenceFromMapping,
   verificationEvidenceIsSufficient,
   verificationEvidenceIssues,
+  MARKETPLACE_IDENTIFIER_SOURCE_HOSTS,
   isAllowedVerificationSource,
   type SecondHandOpenAmbiguity,
   type SecondHandVerificationEvidence,
@@ -19,6 +20,9 @@ import {
  */
 const FIXTURE_HOSTS = ['fixture.example']
 const FIXTURE_URL = 'https://fixture.example/specs/modelo-de-prueba'
+/** Host de prueba para la forma de una fuente de marketplace. No está en la lista real. */
+const MARKET_HOSTS = ['fixture.marketplace']
+const MARKET_URL = 'https://fixture.marketplace/registro'
 
 function syntheticEvidence(): SecondHandVerificationEvidence {
   return {
@@ -134,45 +138,101 @@ test('each open ambiguity blocks verification', () => {
   }
 })
 
-test('a marketplace id is rejected when it is inferred or has no source of its own', () => {
+test('a marketplace id is rejected when it is inferred, empty of source, or not on an allowed host', () => {
   const base = syntheticEvidence()
-  const inferred = verificationEvidenceIssues({
+  const fullName = `${base.identity.manufacturer} ${base.identity.exactModel}`
+  const nameCases = [
+    base.identity.exactModel,
+    base.identity.manufacturer,
+    fullName,
+    'MODELO DE PRUEBA ÚNICO',
+    '  fabricante de prueba   modelo de prueba único  ',
+    'Fabricante   de   prueba',
+  ]
+  for (const value of nameCases) {
+    const issues = verificationEvidenceIssues({
+      ...base,
+      marketplaceId: { value, sourceUrl: MARKET_URL, inferredFromName: false },
+    }, FIXTURE_HOSTS, MARKET_HOSTS)
+    assert.deepEqual(issues, ['marketplace-id-inferred'], value)
+  }
+
+  const flagged = verificationEvidenceIssues({
     ...base,
     marketplaceId: { value: null, sourceUrl: null, inferredFromName: true },
-  }, FIXTURE_HOSTS)
-  assert.deepEqual(inferred, ['marketplace-id-inferred'])
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(flagged, ['marketplace-id-inferred'])
 
-  const copiedName = verificationEvidenceIssues({
-    ...base,
-    marketplaceId: {
-      value: base.identity.exactModel,
-      sourceUrl: 'https://fixture.example/otro-registro',
-      inferredFromName: false,
-    },
-  }, FIXTURE_HOSTS)
-  assert.deepEqual(copiedName, ['marketplace-id-inferred'])
-
-  const copiedManufacturer = verificationEvidenceIssues({
-    ...base,
-    marketplaceId: {
-      value: base.identity.manufacturer,
-      sourceUrl: 'https://fixture.example/otro-registro',
-      inferredFromName: false,
-    },
-  }, FIXTURE_HOSTS)
-  assert.deepEqual(copiedManufacturer, ['marketplace-id-inferred'])
+  for (const value of [null, '', '   '] as const) {
+    const marketplaceId = { value, sourceUrl: null, inferredFromName: false }
+    const evidence: SecondHandVerificationEvidence = { ...base, marketplaceId }
+    assert.deepEqual(verificationEvidenceIssues(evidence, FIXTURE_HOSTS, MARKET_HOSTS), [], String(value))
+    assert.equal(marketplaceId.value, value)
+  }
 
   const withoutSource = verificationEvidenceIssues({
     ...base,
     marketplaceId: { value: 'fixture-external-id', sourceUrl: null, inferredFromName: false },
-  }, FIXTURE_HOSTS)
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
   assert.deepEqual(withoutSource, ['marketplace-id-without-source'])
 
-  const samePage = verificationEvidenceIssues({
+  const notAllowed = verificationEvidenceIssues({
     ...base,
-    marketplaceId: { value: 'fixture-external-id', sourceUrl: FIXTURE_URL, inferredFromName: false },
-  }, FIXTURE_HOSTS)
-  assert.deepEqual(samePage, ['marketplace-id-without-source'])
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: 'https://not-allowed.example/registro', inferredFromName: false },
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(notAllowed, ['marketplace-id-source-not-allowed'])
+
+  const httpSource = verificationEvidenceIssues({
+    ...base,
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: 'http://fixture.marketplace/registro', inferredFromName: false },
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(httpSource, ['marketplace-id-source-invalid'])
+
+  const affiliateSource = verificationEvidenceIssues({
+    ...base,
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: 'https://fixture.marketplace/registro?campid=1', inferredFromName: false },
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(affiliateSource, ['marketplace-id-source-invalid'])
+
+  const invalidSource = verificationEvidenceIssues({
+    ...base,
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: 'no-es-una-url', inferredFromName: false },
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(invalidSource, ['marketplace-id-source-invalid'])
+
+  const sameSheetCases = [
+    FIXTURE_URL,
+    'https://fixture.example/specs/modelo-de-prueba?lang=es',
+    'https://fixture.example/specs/modelo-de-prueba#detalle',
+    'https://FIXTURE.EXAMPLE:443/specs/modelo-de-prueba/?lang=es#detalle',
+  ]
+  for (const sourceUrl of sameSheetCases) {
+    const issues = verificationEvidenceIssues({
+      ...base,
+      marketplaceId: { value: 'fixture-external-id', sourceUrl, inferredFromName: false },
+    }, FIXTURE_HOSTS, MARKET_HOSTS)
+    assert.deepEqual(issues, ['marketplace-id-reuses-manufacturer-source'], sourceUrl)
+  }
+
+  const otherPath = verificationEvidenceIssues({
+    ...base,
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: 'https://fixture.example/otro-registro', inferredFromName: false },
+  }, FIXTURE_HOSTS, MARKET_HOSTS)
+  assert.deepEqual(otherPath, ['marketplace-id-source-not-allowed'])
+
+  const withIndependentSource: SecondHandVerificationEvidence = {
+    ...base,
+    marketplaceId: { value: 'fixture-external-id', sourceUrl: MARKET_URL, inferredFromName: false },
+  }
+  assert.deepEqual(MARKETPLACE_IDENTIFIER_SOURCE_HOSTS, [])
+  assert.deepEqual(verificationEvidenceIssues(withIndependentSource, FIXTURE_HOSTS, MARKET_HOSTS), [])
+  assert.deepEqual(verificationEvidenceIssues(withIndependentSource, FIXTURE_HOSTS), ['marketplace-id-source-not-allowed'])
+  assert.equal(isAllowedVerificationSource(MARKET_URL), false)
+  assert.equal(isAllowedVerificationSource(MARKET_URL, FIXTURE_HOSTS), false)
+  for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
+    assert.equal(spec.reviewStatus, 'pending', spec.productId)
+    assert.equal(spec.externalProductId, null, spec.productId)
+  }
 })
 
 test('the catalog stays pending and its records are not verification evidence', () => {

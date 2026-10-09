@@ -33,6 +33,9 @@ export const SECOND_HAND_VERIFICATION_ISSUE_CODES = [
   'ambiguous-incompatible-revision',
   'marketplace-id-inferred',
   'marketplace-id-without-source',
+  'marketplace-id-source-invalid',
+  'marketplace-id-source-not-allowed',
+  'marketplace-id-reuses-manufacturer-source',
 ] as const
 
 export type SecondHandVerificationIssueCode = (typeof SECOND_HAND_VERIFICATION_ISSUE_CODES)[number]
@@ -68,6 +71,14 @@ const AMBIGUITY_ISSUES: Record<SecondHandOpenAmbiguity, SecondHandVerificationIs
 
 const AFFILIATE_PARAMS = new Set(['campid', 'customid', 'mkcid', 'mkevt', 'mkrid', 'toolid'])
 
+/**
+ * Hosts que pueden publicar un identificador de marketplace.
+ * La lista es explícita y está vacía: ningún dominio está autorizado.
+ * Un HTTPS cualquiera no es una fuente. Esta lista no es la de los fabricantes
+ * y no se consulta. Un test puede pasar otra lista; eso no verifica el catálogo.
+ */
+export const MARKETPLACE_IDENTIFIER_SOURCE_HOSTS: readonly string[] = []
+
 export interface SecondHandProductIdentity {
   /** Nombre del fabricante, tal como figura en su ficha. */
   manufacturer: string
@@ -93,7 +104,11 @@ export interface SecondHandDemonstratedAttribute {
  */
 export interface SecondHandMarketplaceIdentifierClaim {
   value: string | null
-  /** Fuente distinta de la ficha del fabricante. null si el valor no tiene origen. */
+  /**
+   * Fuente propia del identificador. Tiene que ser https, de un host de
+   * `MARKETPLACE_IDENTIFIER_SOURCE_HOSTS`, sin afiliación y distinta de la ficha.
+   * null si el valor no tiene origen.
+   */
   sourceUrl: string | null
   /** true si el valor salió de una coincidencia de nombre. Eso nunca es válido. */
   inferredFromName: boolean
@@ -148,25 +163,77 @@ export function isAllowedVerificationSource(url: string | null, allowedHosts?: r
   return allowedHosts.includes(parsed.hostname)
 }
 
+function normalizeProductName(value: string): string {
+  return value.trim().replace(/\s+/g, ' ').toLowerCase()
+}
+
+/**
+ * Coincidencia con el fabricante, el modelo o el nombre completo.
+ * Ignora mayúsculas y espacios sobrantes. No recorta un nombre para adivinar un id:
+ * un valor vacío o nulo no coincide con nada.
+ */
 function matchesProductName(value: string | null, identity: SecondHandProductIdentity): boolean {
-  if (!hasText(value)) return false
-  const normalized = value.toLowerCase()
-  const manufacturer = identity.manufacturer.trim().toLowerCase()
-  const model = identity.exactModel.trim().toLowerCase()
+  if (typeof value !== 'string') return false
+  const normalized = normalizeProductName(value)
+  if (!normalized) return false
+  const manufacturer = normalizeProductName(identity.manufacturer)
+  const model = normalizeProductName(identity.exactModel)
   const fullName = `${manufacturer} ${model}`.trim()
   return normalized === manufacturer || normalized === model || normalized === fullName
 }
 
-function hasIndependentMarketplaceSource(
-  claim: SecondHandMarketplaceIdentifierClaim,
-  officialUrl: string | null,
-): boolean {
-  if (!hasText(claim.sourceUrl) || claim.sourceUrl === officialUrl) return false
+function hasAffiliateParam(url: URL): boolean {
+  for (const param of url.searchParams.keys()) {
+    if (AFFILIATE_PARAMS.has(param.toLowerCase())) return true
+  }
+  return false
+}
+
+/**
+ * Identidad de la ficha del fabricante, sin query ni fragmento.
+ * No basta comparar la cadena tal cual. Estas variantes son la misma ficha:
+ * mayúsculas del host, puerto 443, barra final, otra query y otro fragmento.
+ * No son la misma ficha: otro host, otra ruta o el paso de https a http.
+ * No se resuelven redirecciones ni se pide la página.
+ */
+function manufacturerSheetKey(url: URL): string | null {
+  if (url.protocol !== 'https:') return null
+  const port = url.port === '' || url.port === '443' ? '' : `:${url.port}`
+  const path = url.pathname.replace(/\/+$/, '') || '/'
+  return `${url.hostname}${port}${path}`
+}
+
+function sameManufacturerSheet(source: URL, officialUrl: string | null): boolean {
+  if (!hasText(officialUrl)) return false
+  let official: URL
   try {
-    return new URL(claim.sourceUrl).protocol === 'https:'
+    official = new URL(officialUrl)
   } catch {
     return false
   }
+  const sourceKey = manufacturerSheetKey(source)
+  const officialKey = manufacturerSheetKey(official)
+  return sourceKey !== null && sourceKey === officialKey
+}
+
+type MarketplaceSourceAssessment = 'absent' | 'invalid' | 'reuses-manufacturer' | 'not-allowed' | 'valid'
+
+function assessMarketplaceSource(
+  sourceUrl: string | null,
+  officialUrl: string | null,
+  allowedMarketplaceHosts: readonly string[],
+): MarketplaceSourceAssessment {
+  if (!hasText(sourceUrl)) return 'absent'
+  let parsed: URL
+  try {
+    parsed = new URL(sourceUrl)
+  } catch {
+    return 'invalid'
+  }
+  if (parsed.protocol !== 'https:' || hasAffiliateParam(parsed)) return 'invalid'
+  if (sameManufacturerSheet(parsed, officialUrl)) return 'reuses-manufacturer'
+  if (!allowedMarketplaceHosts.includes(parsed.hostname)) return 'not-allowed'
+  return 'valid'
 }
 
 /**
@@ -209,6 +276,7 @@ export function verificationEvidenceFromMapping(spec: SecondHandProductMapping):
 export function verificationEvidenceIssues(
   evidence: SecondHandVerificationEvidence,
   allowedHosts?: readonly string[],
+  marketplaceSourceHosts: readonly string[] = MARKETPLACE_IDENTIFIER_SOURCE_HOSTS,
 ): SecondHandVerificationIssueCode[] {
   const found = new Set<SecondHandVerificationIssueCode>()
   const add = (code: SecondHandVerificationIssueCode) => {
@@ -258,8 +326,13 @@ export function verificationEvidenceIssues(
   const market = evidence.marketplaceId
   if (market) {
     if (market.inferredFromName || matchesProductName(market.value, evidence.identity)) add('marketplace-id-inferred')
-    if (hasText(market.value) && !hasIndependentMarketplaceSource(market, evidence.officialUrl)) {
-      add('marketplace-id-without-source')
+    const marketValue = typeof market.value === 'string' ? market.value.trim() : ''
+    if (marketValue) {
+      const source = assessMarketplaceSource(market.sourceUrl, evidence.officialUrl, marketplaceSourceHosts)
+      if (source === 'absent') add('marketplace-id-without-source')
+      else if (source === 'invalid') add('marketplace-id-source-invalid')
+      else if (source === 'not-allowed') add('marketplace-id-source-not-allowed')
+      else if (source === 'reuses-manufacturer') add('marketplace-id-reuses-manufacturer-source')
     }
   }
 
@@ -270,6 +343,7 @@ export function verificationEvidenceIssues(
 export function verificationEvidenceIsSufficient(
   evidence: SecondHandVerificationEvidence,
   allowedHosts?: readonly string[],
+  marketplaceSourceHosts?: readonly string[],
 ): boolean {
-  return verificationEvidenceIssues(evidence, allowedHosts).length === 0
+  return verificationEvidenceIssues(evidence, allowedHosts, marketplaceSourceHosts).length === 0
 }
