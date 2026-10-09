@@ -9,6 +9,8 @@ import {
   canComparePrices,
   hasUnverifiedExternalId,
   isTooAmbiguousToCompare,
+  isOfficialMappingDecisionSource,
+  mappingDecisionIsExplicit,
   mappingIssues,
   missingRequiredAttributes,
   secondHandMappingCoversCatalog,
@@ -40,10 +42,23 @@ test('the mapping catalog matches the editorial slugs and verifies nothing', () 
     assert.equal(spec.reviewStatus, 'pending', spec.productId)
     assert.equal(spec.externalProductId, null, spec.productId)
     assert.equal(spec.verificationRef, null, spec.productId)
+    assert.equal(mappingDecisionIsExplicit(spec), true, spec.productId)
+    assert.equal(canComparePrices(spec), false, spec.productId)
     assert.ok(spec.identifies.trim(), spec.productId)
     assert.ok(spec.attributes.some((attribute) => attribute.requiredForComparison), spec.productId)
     for (const attribute of spec.attributes) assert.equal(attribute.value, null, `${spec.productId}:${attribute.key}`)
   }
+  const families = SECOND_HAND_PRODUCT_MAPPINGS.filter((spec) => spec.scope === 'family')
+  const priorities = families.map((spec) => spec.reviewPriority)
+  assert.deepEqual([...priorities].sort((a, b) => Number(a) - Number(b)), [1, 2, 3, 4, 5, 6, 7, 8, 9])
+  for (const spec of families) assert.equal(isOfficialMappingDecisionSource(spec.decisionSourceUrl), true, spec.productId)
+  const playstation = families.find((spec) => spec.productId === 'playstation-5')
+  const xbox = families.find((spec) => spec.productId === 'xbox')
+  assert.equal(playstation?.reviewPriority, 1)
+  assert.match(playstation?.decisionNote ?? '', /lector/)
+  assert.match(playstation?.decisionNote ?? '', /Digital/)
+  assert.equal(xbox?.reviewPriority, 2)
+  assert.match(xbox?.decisionNote ?? '', /Digital Edition/)
 })
 
 test('incomplete mappings, unverified external ids and ambiguous products cannot be compared', () => {
