@@ -66,16 +66,48 @@ test('kickoff is evaluated in the Madrid time zone', () => {
   assert.match(m.whenLabel ?? '', /martes, 20 de octubre de 2026.*21:00.*hora de Madrid/)
 })
 
-test('registry covers match articles, with no unverified links, and skips other articles', () => {
-  const slugs = ['castellon-ad-ceuta', 'girona-mallorca-laliga-hypermotion', 'portugal-noruega-nations-league', 'barcelona-real-madrid-femenino-7-0', 'malaga-espanyol-laliga-jornada-8-2026', 'levante-sevilla-laliga-jornada-8-2026']
-  for (const slug of slugs) {
+test('registry covers match articles, only with verified official links, and skips other articles', () => {
+  const now = new Date('2026-10-09T07:00:00Z')
+  const expected: Record<string, string> = {
+    'malaga-espanyol-laliga-jornada-8-2026': 'buy',
+    'rayo-athletic-laliga-jornada-8-2026': 'match-info',
+    'alaves-atletico-laliga-jornada-8-2026': 'official-site',
+    'barcelona-getafe-laliga-jornada-8-2026': 'official-site',
+    'real-madrid-villarreal-laliga-jornada-8-2026': 'official-site',
+    'elche-celta-laliga-jornada-8-2026': 'official-site',
+    'real-sociedad-deportivo-laliga-jornada-8-2026': 'official-site',
+    'betis-osasuna-laliga-jornada-8-2026': 'buy',
+    'racing-valencia-laliga-jornada-8-2026': 'official-site',
+    'levante-sevilla-laliga-jornada-8-2026': 'buy',
+  }
+  for (const [slug, kind] of Object.entries(expected)) {
+    const info = matchTicketInfoForSlug(slug)
+    assert.ok(info, slug)
+    assert.ok(info.ticketLink, `${slug} link`)
+    assert.ok(info.ticketLink.url.startsWith('https://'), `${slug} https`)
+    assert.match(info.ticketLink.verifiedOn, /^\d{4}-\d{2}-\d{2}$/, `${slug} verifiedOn`)
+    assert.equal(buildTicketBlock(info, now).state.kind, kind, slug)
+  }
+  // Once a match has kicked off, the verified link is no longer offered.
+  assert.equal(buildTicketBlock(matchTicketInfoForSlug('malaga-espanyol-laliga-jornada-8-2026')!, new Date('2026-10-09T19:30:00Z')).state.kind, 'started')
+  assert.equal(buildTicketBlock(matchTicketInfoForSlug('malaga-espanyol-laliga-jornada-8-2026')!, new Date('2026-10-10T07:00:00Z')).state.kind, 'finished')
+  // Matches already played never offer tickets.
+  for (const slug of ['castellon-ad-ceuta', 'girona-mallorca-laliga-hypermotion', 'portugal-noruega-nations-league', 'barcelona-real-madrid-femenino-7-0']) {
     const info = matchTicketInfoForSlug(slug)
     assert.ok(info, slug)
     assert.equal(info.ticketLink, null)
-    assert.notEqual(buildTicketBlock(info, new Date('2026-10-09T07:00:00Z')).state.kind, 'buy')
+    assert.equal(buildTicketBlock(info, now).state.kind, 'finished', slug)
   }
-  assert.equal(buildTicketBlock(matchTicketInfoForSlug('castellon-ad-ceuta')!).state.kind, 'finished')
-  assert.equal(buildTicketBlock(matchTicketInfoForSlug('malaga-espanyol-laliga-jornada-8-2026')!, new Date('2026-10-09T07:00:00Z')).state.kind, 'unavailable')
   assert.equal(matchTicketInfoForSlug('novedades-peugeot-2026'), null)
   assert.equal(matchTicketInfoForSlug(GUARDIOLA_ARTICLE_2026.slug), null)
+})
+
+test('match-info link renders as an external link with its own label', async () => {
+  const m = buildTicketBlock({ ...base, ticketLink: { url: 'https://club.example/noticias/entradas', scope: 'match-info', source: 'la web oficial del Local', verifiedOn: '2026-10-09' } }, before)
+  assert.equal(m.state.kind, 'match-info')
+  assert.equal(m.state.label, 'Ver información de entradas')
+  const html = await render(m)
+  assert.match(html, /href="https:\/\/club\.example\/noticias\/entradas"/)
+  assert.match(html, /rel="noopener noreferrer"/)
+  assert.doesNotMatch(html, /Comprar entradas/)
 })

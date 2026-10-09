@@ -10,8 +10,12 @@ export type MatchLifecycle = 'scheduled' | 'cancelled' | 'postponed' | 'finished
 /** Only set when an official page was opened and checked by a person. */
 export interface VerifiedTicketLink {
   url: string
-  /** 'match' = page of this specific fixture; 'club' = general tickets page of the home club or organiser. */
-  scope: 'match' | 'club'
+  /**
+   * 'match' = official ticket page of this specific fixture;
+   * 'match-info' = official club page with the ticket information for this fixture (sale at the box office, no online checkout);
+   * 'club' = general tickets page of the home club or organiser.
+   */
+  scope: 'match' | 'match-info' | 'club'
   /** Name of the official source, e.g. the club's website. */
   source: string
   /** ISO date (YYYY-MM-DD) of the verification. */
@@ -35,6 +39,7 @@ export interface MatchTicketInfo {
 
 export type TicketBlockState =
   | { kind: 'buy'; href: string; label: 'Comprar entradas'; note: string }
+  | { kind: 'match-info'; href: string; label: 'Ver información de entradas'; note: string }
   | { kind: 'official-site'; href: string; label: 'Ver entradas en la web oficial'; note: string }
   | { kind: 'unavailable'; label: 'Entradas no disponibles'; note: string }
   | { kind: 'started' | 'finished' | 'cancelled' | 'postponed'; label: string; note: string }
@@ -50,11 +55,74 @@ export interface TicketBlockModel {
 }
 
 /**
- * Official destinations are intentionally empty: none could be verified against
- * an official source from the build environment (no outbound access). Add an entry
- * here, keyed by slug, only after opening the official page.
+ * Official destinations, keyed by article slug. Every URL was opened and checked
+ * on the date in `verifiedOn`. Never add resale sites, prices or availability here.
+ * - scope 'match': page of this exact fixture on the club's official ticketing.
+ * - scope 'match-info': official club note with the ticket information for this fixture.
+ * - scope 'club': the club's general official ticketing page (the fixture is listed there).
  */
-const VERIFIED_LINKS: Record<string, VerifiedTicketLink> = {}
+const VERIFIED_LINKS: Record<string, VerifiedTicketLink> = {
+  'malaga-espanyol-laliga-jornada-8-2026': {
+    url: 'https://www.malagacf.com/partidos/temporada-2026-2027-laliga-ea-sports-8-malaga-cf-vs-rcd-espanyol-de-barcelona-2995',
+    scope: 'match',
+    source: 'la web oficial del Málaga CF',
+    verifiedOn: '2026-10-09',
+  },
+  'rayo-athletic-laliga-jornada-8-2026': {
+    url: 'https://www.rayovallecano.es/noticias/entradas-para-el-rayo-vallecano-athletic-club-2026',
+    scope: 'match-info',
+    source: 'la web oficial del Rayo Vallecano',
+    verifiedOn: '2026-10-09',
+  },
+  'alaves-atletico-laliga-jornada-8-2026': {
+    url: 'https://entradas.deportivoalaves.com/',
+    scope: 'club',
+    source: 'el Deportivo Alavés',
+    verifiedOn: '2026-10-09',
+  },
+  'barcelona-getafe-laliga-jornada-8-2026': {
+    url: 'https://www.fcbarcelona.es/es/entradas/futbol',
+    scope: 'club',
+    source: 'el FC Barcelona',
+    verifiedOn: '2026-10-09',
+  },
+  'real-madrid-villarreal-laliga-jornada-8-2026': {
+    url: 'https://www.realmadrid.com/es-ES/entradas',
+    scope: 'club',
+    source: 'el Real Madrid',
+    verifiedOn: '2026-10-09',
+  },
+  'elche-celta-laliga-jornada-8-2026': {
+    url: 'https://entradas.elchecf.es/',
+    scope: 'club',
+    source: 'el Elche CF',
+    verifiedOn: '2026-10-09',
+  },
+  'real-sociedad-deportivo-laliga-jornada-8-2026': {
+    url: 'https://ticketing.realsociedad.eus/',
+    scope: 'club',
+    source: 'la Real Sociedad',
+    verifiedOn: '2026-10-09',
+  },
+  'betis-osasuna-laliga-jornada-8-2026': {
+    url: 'https://www.realbetisbalompie.es/entradas/partido/24605/2027',
+    scope: 'match',
+    source: 'la web oficial del Real Betis',
+    verifiedOn: '2026-10-09',
+  },
+  'racing-valencia-laliga-jornada-8-2026': {
+    url: 'https://taquilla.realracingclub.es/',
+    scope: 'club',
+    source: 'el Real Racing Club',
+    verifiedOn: '2026-10-09',
+  },
+  'levante-sevilla-laliga-jornada-8-2026': {
+    url: 'https://ticketing.levanteud.com/es/liga-ea-sports/valencia/levante-ud-vs-sevilla-fc-1',
+    scope: 'match',
+    source: 'la web oficial del Levante UD',
+    verifiedOn: '2026-10-09',
+  },
+}
 
 const LALIGA_JORNADA_8_SLUGS = [
   'malaga-espanyol-laliga-jornada-8-2026',
@@ -181,6 +249,12 @@ export function buildTicketBlock(info: MatchTicketInfo, now: Date = new Date()):
   }
   if (link.scope === 'match') {
     return { ...base, state: { kind: 'buy', href: link.url, label: 'Comprar entradas', note: `Enlace oficial de ${link.source} para ${match}.` } }
+  }
+  if (link.scope === 'match-info') {
+    return {
+      ...base,
+      state: { kind: 'match-info', href: link.url, label: 'Ver información de entradas', note: `Información oficial de ${link.source} sobre las entradas de ${match}: dónde, cuándo y cómo se compran.` },
+    }
   }
   return {
     ...base,
