@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
-import { SIGNS } from '@/lib/astrology'
+import { currentWeek, WEEKS } from '@/lib/astrology'
 import { concertsFor } from '@/lib/concerts'
 import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
@@ -48,11 +48,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     })),
     { url: base + '/astrologia', changeFrequency: 'weekly', priority: 0.9 },
-    ...SIGNS.map((sign) => ({
+    ...currentWeek().signs.map((sign) => ({
       url: base + '/astrologia/' + sign.slug,
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     })),
+    ...WEEKS.filter((week) => week.id !== currentWeek().id).flatMap((week) => [
+      { url: base + '/astrologia/semana/' + week.slug, changeFrequency: 'weekly' as const, priority: 0.7 },
+      ...week.signs.map((sign) => ({
+        url: base + '/astrologia/' + sign.slug + '/' + week.slug,
+        changeFrequency: 'weekly' as const,
+        priority: 0.75,
+      })),
+    ]),
     { url: base + '/articles', changeFrequency: 'daily', priority: 0.95 },
     { url: base + '/autor/equipo-editorial', changeFrequency: 'monthly', priority: 0.6 },
     ...CATEGORIES.map((c) => ({

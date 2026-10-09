@@ -41,9 +41,9 @@ const RELATED: Record<string, string[]> = {
     '[Oasis en Barcelona](/conciertos/oasis-barcelona-2027): 10 y 11 de julio de 2027 en el Estadi Olímpic.',
   ],
   [ASTRO_GUIDE_SLUG]: [
-    '[Horóscopo de la semana](/astrologia): los doce signos con el cielo del 8 al 14 de octubre.',
-    '[Horóscopo de Libra](/astrologia/libra): el signo que recibe la luna nueva del sábado.',
-    '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada transita este signo.',
+    '[Horóscopo de la semana](/astrologia): los doce signos con el cielo de la semana en curso.',
+    '[Horóscopo de Libra](/astrologia/libra): el signo en el que está el Sol hasta el 23 de octubre.',
+    '[Horóscopo de Escorpio](/astrologia/escorpio): Venus retrógrada y Mercurio están en este signo.',
   ],
   ...JORNADA_8_RELATED,
   ...JORNADA_9_RELATED,

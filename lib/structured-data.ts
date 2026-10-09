@@ -4,10 +4,7 @@ import { CATEGORIES, getCategory, SITE_NAME, SITE_URL, type CategoryInfo, type T
 import type { LiveFixtureRef } from './laliga-jornada-8-2026'
 import { truncateWords } from './seo-overrides'
 import type { Article, Tool } from './types'
-import { WEEK_LABEL, type SignReading } from './astrology'
-
-const WEEK_START = '2026-10-08'
-const WEEK_END = '2026-10-14'
+import { signHeading, signSeoDescription, type HoroscopeWeek, type SignReading } from './astrology'
 
 export const websiteId = `${SITE_URL}/#website`
 export const organizationId = `${SITE_URL}/#organization`
@@ -106,12 +103,17 @@ export function eventId(concert: Concert): string {
   return `${concertUrl(concert.id)}#event`
 }
 
-export function signUrl(slug: string): string {
-  return `${SITE_URL}/astrologia/${slug}`
+/** URL de la lectura de un signo: la semana en curso vive en /astrologia/{signo}; las demás, con su fecha. */
+export function signUrl(slug: string, week?: HoroscopeWeek): string {
+  return week ? `${SITE_URL}/astrologia/${slug}/${week.slug}` : `${SITE_URL}/astrologia/${slug}`
 }
 
-export function horoscopeId(slug: string): string {
-  return `${signUrl(slug)}#horoscopo`
+export function weekUrl(week?: HoroscopeWeek): string {
+  return week ? `${SITE_URL}/astrologia/semana/${week.slug}` : `${SITE_URL}/astrologia`
+}
+
+export function horoscopeId(slug: string, week?: HoroscopeWeek): string {
+  return `${signUrl(slug, week)}#horoscopo`
 }
 
 function graph(nodes: object[]) {
@@ -373,60 +375,73 @@ export function concertPageGraph(concert: Concert) {
   ])
 }
 
-export function horoscopeArticle(sign: SignReading) {
+/**
+ * Artículo de un signo para una semana. `datedUrl` indica si la página canónica es la fechada
+ * (semanas pasadas o futuras) o la de la semana en curso (/astrologia/{signo}).
+ */
+export function horoscopeArticle(week: HoroscopeWeek, sign: SignReading, datedUrl = false) {
   const category = getCategory('astrologia')!
+  const urlWeek = datedUrl ? week : undefined
   return {
     '@type': 'Article',
-    '@id': horoscopeId(sign.slug),
-    headline: `Horóscopo de ${sign.name}`,
-    description: sign.description,
+    '@id': horoscopeId(sign.slug, urlWeek),
+    headline: signHeading(week, sign),
+    description: signSeoDescription(week, sign),
     articleBody: sign.general,
-    datePublished: WEEK_START,
-    temporalCoverage: `${WEEK_START}/${WEEK_END}`,
+    datePublished: week.start,
+    temporalCoverage: `${week.start}/${week.end}`,
     inLanguage: 'es-ES',
     genre: 'Horóscopo',
-    keywords: `horóscopo, ${sign.name}, astrología, ${sign.element}`,
+    keywords: `horóscopo, ${sign.name}, horóscopo ${sign.name} ${week.shortLabel}, astrología, ${sign.element}`,
     articleSection: category.name,
     author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
     publisher: publisher(),
     isPartOf: { '@id': sectionId(category) },
-    mainEntityOfPage: signUrl(sign.slug),
+    mainEntityOfPage: signUrl(sign.slug, urlWeek),
     about: {
       '@type': 'Thing',
       '@id': `${SITE_URL}/#signo-${sign.slug}`,
       name: sign.name,
       alternateName: `Horóscopo de ${sign.name}`,
-      description: `${sign.name}: ${sign.element}, ${sign.modality}, ${sign.dates}. Semana del ${WEEK_LABEL}.`,
+      description: `${sign.name}: ${sign.element}, ${sign.modality}, ${sign.dates}. Semana del ${week.label}.`,
       sameAs: SIGN_SAME_AS[sign.slug],
     },
   }
 }
 
-export function astrologySectionGraph(signs: SignReading[]) {
+export function astrologySectionGraph(week: HoroscopeWeek, datedUrl = false) {
   const category = getCategory('astrologia')!
-  const url = sectionUrl(category)
-  const articles = signs.map(horoscopeArticle)
+  const url = datedUrl ? weekUrl(week) : sectionUrl(category)
+  const articles = week.signs.map((sign) => horoscopeArticle(week, sign, datedUrl))
+  const crumbs = [
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Astrología', url: sectionUrl(category) },
+  ]
+  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url })
   return graph([
     topicNode('astrologia'),
-    sectionNode(category, itemList(signs.map((sign, index) => ({
+    sectionNode(category, itemList(week.signs.map((sign, index) => ({
       id: String(articles[index]['@id']),
-      url: signUrl(sign.slug),
+      url: signUrl(sign.slug, datedUrl ? week : undefined),
       name: String(articles[index].headline),
     })))),
     ...articles,
-    breadcrumb(url, [
-      { name: 'Inicio', url: SITE_URL },
-      { name: 'Astrología', url },
-    ]),
+    breadcrumb(url, crumbs),
   ])
 }
 
-export function horoscopePageGraph(sign: SignReading, faqs: { q: string; a: string }[]) {
+export function horoscopePageGraph(week: HoroscopeWeek, sign: SignReading, faqs: { q: string; a: string }[], datedUrl = false) {
   const category = getCategory('astrologia')!
-  const url = signUrl(sign.slug)
+  const url = signUrl(sign.slug, datedUrl ? week : undefined)
+  const crumbs = [
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Astrología', url: sectionUrl(category) },
+  ]
+  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url: weekUrl(week) })
+  crumbs.push({ name: sign.name, url })
   return graph([
     topicNode('astrologia'),
-    horoscopeArticle(sign),
+    horoscopeArticle(week, sign, datedUrl),
     {
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
@@ -436,11 +451,7 @@ export function horoscopePageGraph(sign: SignReading, faqs: { q: string; a: stri
         acceptedAnswer: { '@type': 'Answer', text: item.a },
       })),
     },
-    breadcrumb(url, [
-      { name: 'Inicio', url: SITE_URL },
-      { name: 'Astrología', url: sectionUrl(category) },
-      { name: sign.name, url },
-    ]),
+    breadcrumb(url, crumbs),
   ])
 }
 
