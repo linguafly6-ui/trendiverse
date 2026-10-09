@@ -62,6 +62,26 @@ test('specific tech candidates stay descriptive and do not become a closed sku',
   const hac = techCandidatesFor('nintendo-switch').find((item) => item.name.includes('HAC-001(-01)'))
   assert.ok(hac)
   assert.match(hac.configuration, /no cubre una HAC-001 anterior/)
+  const steamDeck = techCandidatesFor('steam-deck')
+  const oled512 = steamDeck.find((item) => item.name.includes('512 GB'))
+  const oled1Tb = steamDeck.find((item) => item.name.includes('1 TB'))
+  assert.ok(oled512)
+  assert.ok(oled1Tb)
+  assert.notEqual(oled512.name, oled1Tb.name)
+  assert.match(oled512.configuration, /no publica un número de modelo/)
+  assert.match(oled512.configuration, /No es un SKU cerrado/)
+  assert.match(oled1Tb.configuration, /edición limitada/)
+  assert.match(oled1Tb.configuration, /antirreflectante/)
+  assert.match(oled1Tb.configuration, /No es un SKU cerrado/)
+  for (const item of steamDeck) {
+    assert.equal(item.reviewStatus, 'pending')
+    assert.equal(item.externalProductId, null)
+    assert.equal(item.sourceUrl, 'https://www.steamdeck.com/es/oled')
+  }
+  const steamGap = SECOND_HAND_TECH_CANDIDATE_GAPS.find((gap) => gap.productId === 'steam-deck')
+  assert.match(steamGap?.missing ?? '', /64 GB/)
+  assert.match(steamGap?.missing ?? '', /512 GB/)
+  assert.match(steamGap?.missing ?? '', /número de modelo del fabricante/)
 })
 
 test('each tech family records what was left out and the list has no commercial data', async () => {

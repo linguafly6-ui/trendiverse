@@ -100,8 +100,8 @@ export const SECOND_HAND_TECH_CANDIDATES: readonly SecondHandTechCandidate[] = [
   candidate('xbox', 'XBOX Series X – 1TB Digital Edition', 'Series X', 'El bloque de almacenamiento nombra esta edición con SSD NVMe de 1 TB. El selector de la misma página muestra 1 TB, All-Digital, Robot White. La sección de lector óptico no le asigna 4K UHD Blu-ray. No hay un código de modelo que una esas dos líneas.', 'https://www.xbox.com/en-US/consoles/xbox-series-x'),
   candidate('xbox', 'XBOX Series S Robot White', 'Series S', 'SSD NVMe personalizado de 512 GB, solo digital. La ficha también lista variantes de 1 TB, también solo digitales.', 'https://www.xbox.com/en-us/consoles/xbox-series-s'),
 
-  candidate('steam-deck', 'Steam Deck 512GB NVMe SSD', 'OLED', 'SSD NVMe de 512 GB, en la sección Steam Deck OLED.', 'https://www.steamdeck.com/en/tech'),
-  candidate('steam-deck', 'Steam Deck 1TB NVMe SSD', 'OLED', 'SSD NVMe de 1 TB, en la sección Steam Deck OLED.', 'https://www.steamdeck.com/en/tech'),
+  candidate('steam-deck', 'Steam Deck OLED 512 GB', 'OLED', 'Ficha de España: «512 GB OLED», SSD NVMe de 512 GB, OLED HDR de 7,4 pulgadas y hasta 90 Hz. La misma ficha lista un «1 TB OLED» con pantalla antirreflectante que esta columna no nombra. La ficha técnica pone las dos capacidades en un solo bloque y no publica un número de modelo. No es un SKU cerrado.', 'https://www.steamdeck.com/es/oled'),
+  candidate('steam-deck', 'Steam Deck OLED 1 TB', 'OLED', 'Ficha de España: «1 TB OLED», SSD NVMe de 1 TB y «Pantalla antirreflectante de primera calidad». El texto habla de los modelos de 1 TB, incluida la edición limitada, sin otra columna ni un número de modelo. No es un SKU cerrado.', 'https://www.steamdeck.com/es/oled'),
 ]
 
 export const SECOND_HAND_TECH_CANDIDATE_GAPS: readonly SecondHandTechCandidateGap[] = [
@@ -113,7 +113,7 @@ export const SECOND_HAND_TECH_CANDIDATE_GAPS: readonly SecondHandTechCandidateGa
   { productId: 'playstation-5', missing: 'Sigue pendiente. La asistencia de España agrupa CFI-2000/2100/7000 en un solo esquema y dice que la ranura de disco no está en la edición digital, sin publicar la capacidad. Los manuales listan varios códigos, entre ellos CFI-2116A/B, CFI-2016A/B y CFI-1216B edición digital, sin capacidad junto al código. No se convierte ningún CFI en el modelo de «Consola PS5 - 1 TB» ni de «PS5 Edición Digital - 825 GB».' },
   { productId: 'nintendo-switch', missing: 'No se confirmó una sucesora. El candidato LCD es únicamente HAC-001(-01), con 32 GB y LCD de 6,2 pulgadas. No representa una consola HAC-001 anterior.' },
   { productId: 'xbox', missing: 'No se incluyen la X25 Limited Edition ni la Galaxy Black de 2 TB. La Digital Edition de 1 TB no tiene un código de modelo: el almacenamiento y el selector Robot White son dos líneas de la misma página, no un SKU unido.' },
-  { productId: 'steam-deck', missing: 'La ficha técnica consultada no publica la capacidad de Steam Deck LCD. Solo entran las OLED de 512 GB y 1 TB.' },
+  { productId: 'steam-deck', missing: 'Sigue pendiente. La ficha técnica no asigna capacidad al LCD. La comparación de España nombra un LCD de 256 GB, pero la tienda oficial sigue citando LCD de 64 GB y de 512 GB en retirada. La OLED de 1 TB no es una sola configuración: el texto incluye la edición limitada y la tienda la describe como otra carcasa. Ninguna ficha publica un número de modelo del fabricante.' },
 ]
 
 export function techCandidatesFor(productId: string): readonly SecondHandTechCandidate[] {
