@@ -10,7 +10,7 @@ export default function AstrologyHub({ variant = 'full' }: { variant?: 'full' | 
             <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">Semana del {WEEK_LABEL}</p>
             <h2 id="astro-strip-title" className="mt-1 text-2xl font-extrabold">Horóscopo de la semana</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-              Luna nueva en Libra el sábado 10 de octubre. Doce lecturas por signo solar, con el método a la vista.
+              El sábado 10 hay luna nueva en Libra. Elige tu signo y lee la semana en claro.
             </p>
           </div>
           <Link href="/astrologia" className="text-sm font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 dark:text-indigo-300">
@@ -37,7 +37,7 @@ export default function AstrologyHub({ variant = 'full' }: { variant?: 'full' | 
         <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300">Semana del {WEEK_LABEL}</p>
         <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">Astrología y horóscopo semanal</h1>
         <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-300">
-          Doce lecturas de astrología tropical, una por signo solar. El cielo está fechado. La interpretación sigue un método público: casas enteras contadas desde tu Sol.
+          Doce lecturas, una por signo solar, para la semana del 8 al 14 de octubre. El cielo está fechado. Cada texto dice en qué parte de tu vida cae la luna nueva, contando las casas desde tu signo.
         </p>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-500">{DISCLAIMER}</p>
       </header>

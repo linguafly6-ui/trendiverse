@@ -14,17 +14,17 @@ export const ASTROLOGIA_GUIA_2026: Article = {
   views: 0,
   trending: 0,
   published_at: '2026-10-08T17:30:00.000Z',
-  content: `El horóscopo semanal de TrendiVerse es una lectura de astrología tropical por signo solar. Describe el cielo del 8 al 14 de octubre de 2026 y lo traduce a las doce casas contadas desde el Sol de cada signo. No es un pronóstico científico, no adivina un suceso y no sustituye un consejo médico, legal o financiero. Sirve para ordenar la semana con un método que se puede explicar.
+  content: `El horóscopo de esta semana está escrito para leerse seguido, como se lo contarías a alguien en la mesa. Usa el zodiaco tropical y tu signo solar. Mira el cielo del 8 al 14 de octubre de 2026 y lo reparte en doce casas, contadas desde el Sol de cada signo. Es una lectura cultural. Ordena la semana. No es un pronóstico científico, no adivina un suceso y no sustituye un consejo médico, legal o financiero.
 
-Esa diferencia importa en un medio de actualidad. Aquí las noticias se fechan y se atribuyen. El horóscopo hace lo mismo con la parte astronómica y marca la parte interpretativa como oficio, no como hecho. La [sección de astrología](/astrologia) publica los doce signos de esta semana. Esta guía explica por qué están escritos así.
+En un medio de actualidad las noticias se fechan y se atribuyen. El horóscopo hace lo mismo con el cielo, y la parte de oficio se presenta como oficio. La [sección de astrología](/astrologia) publica los doce signos. Esta guía cuenta por qué están escritos así, para que al abrir el tuyo sepas qué estás leyendo.
 
 ## Qué problema tiene el horóscopo de prensa
 
-La columna de signo solar, la que dice “Aries esta semana”, es un formato del siglo XX. Se popularizó en la prensa británica a partir de 1930, cuando R. H. Naylor escribió en el Sunday Express sobre la carta de la princesa Margarita y luego ofreció lecturas por signo de nacimiento. No inventó la astrología. Inventó un género breve, igual para millones de personas que solo comparten un tramo de treinta grados del zodiaco.
+La columna de signo solar, la que dice “Aries esta semana”, es un formato del siglo XX. Se popularizó en la prensa británica a partir de 1930, cuando R. H. Naylor escribió en el Sunday Express sobre la carta de la princesa Margarita y, a continuación, ofreció lecturas por signo de nacimiento. La astrología ya existía. Lo que Naylor puso en circulación fue un género breve, el mismo para millones de personas que solo comparten un tramo de treinta grados del zodiaco.
 
-Ese formato tiene un límite que casi nunca se dice. Dos personas del mismo signo solar pueden tener la Luna, el ascendente y el resto de la carta en sitios distintos. Una lectura que solo usa el Sol acierta el mismo texto para gente con vidas muy diferentes. Si además el texto es vago —“habrá cambios”, “alguien te sorprenderá”—, cualquier semana parece encajar. Ese efecto, describir a casi todo el mundo con frases amables y generales, está estudiado en psicología como efecto Barnum o Forer.
+Ese formato tiene un límite que casi nunca se cuenta. Dos personas del mismo signo solar pueden tener la Luna, el ascendente y el resto de la carta en sitios distintos. Una lectura que solo usa el Sol le dice el mismo texto a gente con vidas muy diferentes. Si además el texto es vago —“habrá cambios”, “alguien te sorprenderá”—, cualquier semana parece encajar. En psicología, describir a casi todo el mundo con frases amables y generales se estudia como efecto Barnum o Forer.
 
-Esta sección no promete escapar del límite del signo solar. Sí evita el texto que valdría para cualquiera. Cada signo recibe la misma luna nueva, los mismos planetas y una casa distinta. La casa es lo que cambia el consejo. Si el párrafo no dice en qué casa cae el tránsito y qué se revisa ahí, no entra.
+Esta sección asume ese límite y trabaja dentro de él. Cada signo recibe la misma luna nueva y los mismos planetas, y una casa distinta. La casa es lo que cambia el consejo. Un párrafo entra cuando dice en qué parte de la vida cae el tránsito y qué conviene revisar ahí.
 
 ## Zodiaco tropical: estaciones, no constelaciones
 
@@ -73,15 +73,15 @@ Quien conozca su ascendente puede repetir la cuenta desde ese signo. El horósco
 
 ## Cómo está hecho cada texto
 
-Cada signo de la semana sigue el mismo esqueleto, con casas distintas.
+Los doce textos siguen el mismo camino. Cambian las casas, y con ellas cambia la semana.
 
-Primero va el cielo, no el adjetivo. Si hablamos de la luna nueva, decimos el día, la hora en UTC y la hora peninsular y canaria. Si hablamos de Venus retrógrada, decimos el signo y el tramo del ciclo, y advertimos que el minuto del estacionamiento cambia según la efeméride.
+Primero va el cielo. Si hablamos de la luna nueva, decimos el día, la hora en UTC y la hora en la Península, en Baleares y en Canarias. Si hablamos de Venus retrógrada, decimos el signo y el tramo del ciclo, y avisamos de que el minuto del estacionamiento cambia según la efeméride. El adjetivo llega después, cuando ya sabes de qué día hablamos.
 
-Después va la casa. “La luna nueva cae en tu casa 7” es una frase comprobable con la lista de arriba. El párrafo dice qué se revisa en esa casa esta semana: un acuerdo, un horario, una cifra, una conversación. El consejo es una tarea, no un suceso anunciado. No escribimos “conocerás a alguien el sábado” ni “firmarás el contrato”. Escribimos “releé el acuerdo que ya existe antes de abrir otro”.
+Después va la casa. “La luna nueva cae en tu casa 7” se puede comprobar con la lista de arriba. El párrafo dice qué se revisa ahí esta semana: un acuerdo, un horario, una cifra, una conversación. El consejo es una tarea. Escribimos “relee el acuerdo que ya existe antes de abrir otro”. Dejamos fuera las frases que anuncian un encuentro o una firma.
 
-Luego se separan tres terrenos que la gente busca en un horóscopo: relaciones, trabajo y ritmo. El dinero aparece cuando la casa 2 o la casa 8 están activas, y siempre como revisión de una cifra propia, nunca como recomendación de inversión. El cuerpo aparece como sueño, comida y horario. Si el texto rozara un síntoma, empuja a consultar a quien te atiende. El horóscopo no diagnostica.
+Luego se separan tres terrenos que la gente busca en un horóscopo: relaciones, trabajo y ritmo. El dinero aparece cuando la casa 2 o la casa 8 están activas, y siempre como una cifra que ya es tuya y conviene mirar. El cuerpo aparece como sueño, comida y horario. Si algo duele o el ánimo se queda abajo varios días, el texto te acerca a quien te atiende. El horóscopo ordena la pregunta y deja el cuidado en otras manos.
 
-Cada página cierra con una pregunta. La pregunta es el uso más limpio de este género: no dice lo que va a pasar. Pregunta qué estás aplazando dentro del tema que el cielo, según este método, pone encima de la mesa.
+Cada página cierra con una pregunta. Es el uso más limpio de este género. Pregunta qué estás dejando para luego dentro del tema que, según este método, el cielo pone encima de la mesa.
 
 ## El cielo del 8 al 14 de octubre de 2026
 
@@ -99,49 +99,49 @@ Time and Date anota, para el 12 de octubre, un acercamiento en el cielo de la Lu
 
 Saturno retrógrado en Aries queda a pocos grados de oponerse al Sol en Libra. No llamamos a eso una oposición exacta. Decimos que la semana tiene un tono de ajuste entre lo que se quiere empezar (Aries, Saturno) y lo que se negocia (Libra, Sol). En cada signo, ese ajuste cae en una pareja de casas distinta.
 
-## Qué no va a decir esta sección
+## Qué deja fuera esta sección
 
-No va a decir quién gana un partido, quién gobierna ni qué hará un mercado. Para eso están las secciones de deportes, política y economía, con fuentes. No va a anunciar embarazos, enfermedades, accidentes ni rupturas. No va a pedir que dejes un trabajo, una pareja o un tratamiento. No va a dar números de suerte.
+Los partidos, los gobiernos y los mercados tienen su propia sección, con fuentes. Esta página deja fuera los anuncios de embarazos, enfermedades, accidentes y rupturas. También deja fuera la orden de abandonar un trabajo, una pareja o un tratamiento, y los números de suerte.
 
-Tampoco va a disfrazar de cielo una frase que serviría el mes que viene igual. Cuando cambie la semana, cambiará el texto, porque cambian la Luna y, más despacio, el resto. La guía de método se queda. Los doce horóscopos caducan el 14 de octubre de 2026.
+Una frase que serviría igual el mes que viene se queda fuera. Cuando cambie la semana, cambiará el texto, porque cambian la Luna y, más despacio, el resto de los planetas. La guía de método se queda. Los doce horóscopos caducan el 14 de octubre de 2026.
 
-La astrología no es una ciencia predictiva validada. Decirlo en la cabecera no es un adorno legal. Es la condición para publicarla al lado de noticias que sí se pueden contrastar. Lo que aquí se contrasta es el cielo: fase, día, signo, fuente. Lo que se ofrece encima es una lectura cultural, escrita con reglas públicas, para quien quiera usarla como pregunta de la semana.
+La astrología, publicada así, es una lectura cultural. Decirlo en la cabecera permite ponerla al lado de noticias que sí se pueden contrastar. Lo que aquí se contrasta es el cielo: fase, día, signo, fuente. Encima de eso hay una lectura escrita con reglas públicas, para quien quiera usarla como pregunta de la semana.
 
 ## Cómo leer el tuyo
 
-Entra en la [sección de astrología](/astrologia) y abre tu signo solar. Si naciste el día en que el Sol cambia de signo, lee los dos. Mira primero la casa de la luna nueva y la tarea que la acompaña. Si no te dice nada, no fuerces el encaje: un horóscopo solar falla a menudo, y un fallo también informa. Si conoces ascendente o Luna, repite la cuenta de casas desde el ascendente y trata la Luna como el ritmo del día, no como un segundo Sol.
+Entra en la [sección de astrología](/astrologia) y abre tu signo solar. Si naciste el día en que el Sol cambia de signo, lee los dos. Mira primero la casa de la luna nueva y la tarea que la acompaña. Si el texto no te dice nada, puedes cerrarlo: un horóscopo solar falla a menudo, y un fallo también informa. Si conoces el ascendente, repite la cuenta de casas desde ese signo. La Luna, si la conoces, marca el ritmo del día.
 
-La página de cada signo enlaza con el anterior y el siguiente. Merece la pena leer el vecino una vez, para ver que el mismo sábado no significa lo mismo en la casa 1 que en la casa 12. Esa comparación es la mejor prueba de que el texto no es intercambiable.
+La página de cada signo enlaza con el anterior y el siguiente. Lee el vecino una vez. El mismo sábado significa una cosa en la casa 1 y otra en la casa 12. Esa comparación enseña que el texto cambia de signo por una razón, y que puedes seguirla.
 
 ## Preguntas frecuentes
 
 ### ¿Este horóscopo predice lo que va a pasar?
 
-No. Describe tránsitos fechados y propone una revisión en la casa que les toca desde tu signo solar. Una revisión no es un suceso.
+Describe tránsitos con fecha y propone una revisión en la casa que les toca desde tu signo solar. Una revisión es una pregunta. El suceso, si llega, llega por otro lado.
 
-### ¿Por qué no usáis mi ascendente?
+### ¿Por qué contáis las casas desde el signo solar?
 
-Porque no lo tenemos. Las casas se cuentan desde el signo solar, en signos enteros. Si nos inventáramos un ascendente, la lectura parecería más precisa y sería falsa.
+Porque el ascendente no está en la página. Las casas se cuentan desde el signo solar, de signo en signo. Inventar un ascendente haría la lectura más precisa en apariencia y falsa en el dato.
 
-### ¿Qué pasa si nací en la cúspide?
+### ¿Qué hago si nací en la cúspide?
 
-El Sol cambia de signo a una hora concreta, distinta cada año. Sin hora y lugar, no se puede afirmar el signo. Lee los dos textos de esa frontera como dos preguntas, no como dos destinos.
+El Sol cambia de signo a una hora concreta, distinta cada año. Sin hora y sin lugar, el signo queda sin afirmar. Lee los dos textos de esa frontera como dos preguntas.
 
-### ¿Venus retrógrada obliga a no comprar ni a no quedar?
+### ¿Venus retrógrada obliga a aplazar una compra o una cita?
 
-No. El retroceso es un movimiento aparente. En este horóscopo se traduce a releer un precio, un pacto o un deseo. No es una prohibición.
+El retroceso es un movimiento aparente, visto desde la Tierra. En este horóscopo se traduce a releer un precio, un pacto o un deseo. La compra y la cita siguen en tu mano.
 
 ### ¿La luna nueva del 10 de octubre es en Libra también en astrología sideral?
 
-En el zodiaco tropical, sí: el Sol está en Libra y la lunación cae con él. En el sideral, el origen es otro y el signo puede no coincidir. Esta sección declara el sistema que usa.
+En el zodiaco tropical, sí: el Sol está en Libra y la lunación cae con él. En el sideral, el origen es otro y el signo puede cambiar. Esta sección declara el sistema que usa.
 
-### ¿Sustituye un consejo médico, legal o de inversión?
+### ¿Sustituye un consejo médico, legal o de dinero?
 
-No. El ritmo del que hablamos es sueño, comida y horario. El dinero del que hablamos es una cifra que ya es tuya y conviene mirar. Las decisiones de salud, de contratos y de inversión se toman con quien te atiende y con datos, no con una casa astrológica.
+El ritmo del que hablamos es sueño, comida y horario. El dinero del que hablamos es una cifra que ya es tuya y conviene mirar. La salud, los contratos y el dinero se deciden con quien te atiende y con tus datos.
 
 ## Conclusión
 
-Un horóscopo decente no necesita misterio. Necesita un cielo fechado, un sistema declarado y una frase que cambie de un signo a otro por una razón que el lector pueda repetir. Esta semana la razón es una luna nueva en Libra el sábado 10 de octubre de 2026, Venus retrógrada en Escorpio y el resto de los planetas en los signos que las efemérides coinciden en nombrar. Las doce lecturas aplican esas piezas a doce casas. La sección está en [/astrologia](/astrologia). El método, el que acabas de leer, es el que vamos a poder revisar cuando la semana que viene el cielo ya no sea este.`,
+Un horóscopo que se puede seguir necesita un cielo con fecha, un sistema dicho en voz alta y una frase que cambie de un signo a otro por una razón que puedas repetir. Esta semana la razón es una luna nueva en Libra el sábado 10 de octubre de 2026, Venus retrógrada en Escorpio y el resto de los planetas en los signos en los que coinciden las efemérides. Las doce lecturas aplican esas piezas a doce casas. La sección está en [/astrologia](/astrologia). El método que acabas de leer es el que se podrá revisar cuando la semana que viene el cielo ya sea otro.`,
 }
 
 export const ASTROLOGIA_GUIA_SEO = {
