@@ -1,10 +1,10 @@
 import type { Article } from './types'
 
-const content = `El Barcelona ha goleado 7-0 al Real Madrid en la Liga F este 4 de octubre de 2026, en un clásico femenino que ha tenido un nombre propio indiscutible: Claudia Pina. La delantera firmó cuatro goles y el partido se jugó ante 40.533 espectadores, una asistencia que supone un récord de la Liga F. Entre el resultado, el protagonismo de Pina y la cifra de público, el encuentro ya tiene hueco en la historia reciente del fútbol femenino español. En este artículo repasamos el resultado, los goleadores, el desarrollo cronológico, el contexto táctico y todo lo que se puede afirmar con datos verificados.
+const content = `Hay clásicos que se recuerdan por un gol y clásicos que se recuerdan por una noche entera. Este es de los segundos. El Barcelona goleó 7-0 al Real Madrid en la Liga F el 4 de octubre de 2026, con cuatro goles de Claudia Pina y 40.533 personas en las gradas, la mayor entrada de la historia de la competición. Un resultado así no se explica solo con el marcador, así que te contamos cómo fue el partido, gol a gol, y por qué esta noche va a quedar en la memoria del fútbol femenino español.
 
 ## Resumen del partido: Barcelona 7-0 Real Madrid femenino
 
-Los datos confirmados del encuentro son los siguientes:
+Lo esencial, en un vistazo:
 
 - Competición: Liga F.
 - Fecha: 4 de octubre de 2026.
@@ -139,7 +139,7 @@ No. El Real Madrid no marcó ningún gol en el partido.
 
 El Barcelona 7-0 Real Madrid femenino del 4 de octubre de 2026 queda como un clásico de números históricos: siete goles, cuatro de ellos de Claudia Pina, cinco antes del descanso y una asistencia de 40.533 espectadores que es récord de la Liga F. Con los datos confirmados, la lectura es clara: una goleada contundente, repartida entre cuatro goleadoras, y un hito de público para la competición.
 
-Nota: este artículo se basa únicamente en los datos verificados del parte del encuentro (resultado, goleadoras, minutos y asistencia). No se incluyen estadísticas, alineaciones ni declaraciones que no hayan sido confirmadas.`
+Un apunte de honestidad: este artículo se apoya solo en lo que está confirmado del acta del partido (resultado, goleadoras, minutos y asistencia). No incluimos estadísticas, alineaciones ni declaraciones que no hayamos podido verificar.`
 
 export const BARCELONA_REAL_MADRID_ARTICLES: Article[] = [
   {

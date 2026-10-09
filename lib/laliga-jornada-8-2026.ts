@@ -29,6 +29,9 @@ interface Fixture {
   seoTitle: string
   seoDescription: string
   excerpt: string
+  /** Una o dos frases humanas que presentan el partido. */
+  lead: string
+  /** Narrativa de qué se juegan los dos equipos. */
   essay: string
   neighbors: string
 }
@@ -71,14 +74,15 @@ const FIXTURES: Fixture[] = [
     venue: 'La Rosaleda',
     published_at: '2026-10-09T00:10:00.000Z',
     seoTitle: 'Málaga-Espanyol: previa y marcador',
-    seoDescription: 'El Málaga, sin victorias y con 3 puntos, recibe al Espanyol el viernes 9 a las 21:00 en La Rosaleda. Marcador en vivo el día del partido.',
-    excerpt: 'El Málaga abre la jornada 8 en La Rosaleda contra el Espanyol, viernes 9 a las 21:00. Sigue último y sin victorias. El marcador de esta página se actualiza el día del partido.',
-    neighbors: 'Es el único partido del viernes. El sábado, a las 14:00, el Rayo recibe al Athletic en Vallecas.',
-    essay: `La Rosaleda abre la jornada con el único equipo de Primera que, tras siete partidos, sigue sin ganar. El Málaga ha marcado 3 goles, la cifra más baja del campeonato. El Valencia y el Getafe han marcado 4. La diferencia del Málaga, −9, es la misma que la del Valencia, y el Valencia llega con una victoria y 4 puntos. Por eso el anfitrión del viernes es el 20.º.
+    seoDescription: 'El Málaga busca su primera victoria del curso ante el Espanyol, viernes 9 a las 21:00 en La Rosaleda. Cómo llegan, qué se juegan y marcador en vivo.',
+    excerpt: 'El Málaga, colista y todavía sin ganar, recibe al Espanyol el viernes 9 a las 21:00 en La Rosaleda. Te contamos cómo llegan, qué se juegan y cómo seguir el marcador en directo.',
+    lead: 'El Málaga busca su primera victoria de la temporada y el Espanyol quiere alejarse de la zona baja. Es el partido que abre la jornada, y en La Rosaleda hay ganas de una alegría.',
+    neighbors: 'Es el único partido del viernes, así que toda la atención está en Málaga. El sábado, a las 14:00, sigue la jornada con el Rayo-Athletic en Vallecas.',
+    essay: `Hay noches en las que un estadio entero necesita una alegría, y La Rosaleda llega a este viernes así. El Málaga ha jugado siete partidos y todavía no sabe lo que es ganar: tres empates, cuatro derrotas y solo tres goles a favor, los menos de toda Primera. Es colista, y la afición lo sabe. Pero también sabe que una victoria lo cambiaría todo de golpe: pasaría de 3 a 6 puntos y saldría, al menos por unas horas, del último puesto.
 
-El descenso son los puestos 18, 19 y 20: Elche (5), Valencia (4) y Málaga (3). El Levante es 17.º, también con 5 puntos, y ha jugado seis partidos, no siete. Una victoria del Málaga lo deja en 6, por encima de esos totales de hoy, y el viernes no cierra la cuenta: Elche, Valencia y Levante juegan entre el domingo y el lunes.
+El Espanyol llega con otro ánimo, aunque tampoco sobrado. Es decimoquinto, con 7 puntos, y sus números están en perfecto equilibrio: diez goles marcados y diez encajados. Ganar en Málaga le daría un respiro real, hasta los 10 puntos, lejos de la zona que quema. Perder lo dejaría mirando hacia abajo con cierta inquietud.
 
-El Espanyol llega 15.º, con 7 puntos, los mismos que Celta y Racing, y el balance de goles en cero: 10 a favor y 10 en contra. Una victoria lo lleva a 10, donde hoy están Deportivo y Real Sociedad. Un empate lo deja en 8, con Villarreal, Athletic, Getafe, Rayo y Osasuna. Una derrota lo mantiene en 7. El descenso no se decide esta noche. Lo que sí se ve es si el colista estrena una victoria y si el Espanyol sale de La Rosaleda con un poco más de margen. Es el único partido del viernes, y las dos cuentas se cruzan ahí.`,
+Nadie va a descender ni a salvarse esta noche. Pero el Málaga se juega algo más que tres puntos: romper una racha que empieza a pesar en el vestuario y en la grada. Y el Espanyol, demostrar que sabe ganar fuera de casa cuando toca.`,
   },
   {
     id: 367,
@@ -90,20 +94,19 @@ El Espanyol llega 15.º, con 7 puntos, los mismos que Celta y Racing, y el balan
     date: '20261010',
     dayLabel: 'sábado 10 de octubre de 2026',
     hour: '14:00',
-    tv: 'DAZN en abierto y DAZN',
+    tv: 'DAZN, también en abierto',
     venue: 'Estadio de Vallecas',
     published_at: '2026-10-09T00:20:00.000Z',
     seoTitle: 'Rayo-Athletic: horario y marcador',
-    seoDescription: 'Rayo y Athletic empatan a 8 puntos antes de Vallecas, el sábado 10 a las 14:00. El Athletic lleva un partido menos. Marcador en vivo aquí.',
-    excerpt: 'Rayo y Athletic llegan a Vallecas con 8 puntos, el sábado 10 a las 14:00. El Athletic ha jugado un partido menos. El marcador se actualiza el día del partido.',
-    neighbors: 'Abre el sábado. A las 16:15, en Mendizorroza, el Alavés recibe al Atlético.',
-    essay: `Rayo y Athletic llegan a Vallecas con los mismos 8 puntos y con un partido de diferencia. El Rayo ha jugado siete. El Athletic, seis. La diferencia de goles los separa en la tabla: −5 para el local, 12.º, y +1 para el visitante, 10.º. Ocho puntos en seis jornadas y ocho puntos en siete cuentan una historia distinta.
+    seoDescription: 'Rayo y Athletic, empatados a 8 puntos, se ven en Vallecas el sábado 10 a las 14:00. El único partido de la jornada en abierto. Marcador en vivo.',
+    excerpt: 'Rayo y Athletic llegan empatados a 8 puntos a Vallecas, el sábado 10 a las 14:00. Estilos opuestos y el único partido de la jornada que se puede ver en abierto.',
+    lead: 'Dos equipos empatados a puntos, dos estilos opuestos y el único partido de la jornada que se puede ver en abierto. Buen plan para la hora de comer.',
+    neighbors: 'Abre el sábado. Después, a las 16:15, el Alavés recibe al Atlético en Mendizorrotza.',
+    essay: `Vallecas a mediodía tiene algo especial: el estadio pegado a las casas y el ruido de la grada casi encima del campo. Este sábado recibe al Athletic en un partido que, sobre el papel, está muy igualado: los dos llegan con 8 puntos. La diferencia es que el Rayo los ha conseguido en siete partidos y el Athletic en seis, porque tiene uno pendiente.
 
-Si el Athletic gana, se va a 11, la cifra de hoy del Alavés, que es 6.º. Si empata, se queda en 9 y conserva ese partido de margen. Si pierde, sigue en 8 y el Rayo se va a 11. El lunes la tabla habrá seguido moviéndose: el Alavés juega el mismo sábado a las 16:15, y en 8 puntos viven también Villarreal, Getafe y Osasuna. Getafe y Villarreal juegan el sábado.
+El Rayo es un equipo que no aburre. Marca bastante (11 goles, más que el Betis, que va tercero) pero encaja mucho (16). Sus partidos suelen tener goles para los dos lados. El Athletic es casi lo contrario: solo ha encajado 6 en seis partidos, una de las mejores defensas de la Liga, aunque le cuesta más marcar.
 
-LALIGA abre el sábado con este partido y lo marca como DAZN en abierto, además de DAZN. Es el único de los diez al que la competición señala con emisión abierta. ESPN sitúa el campo en el Estadio de Vallecas.
-
-Los goles cuentan otra cosa. El Rayo ha marcado 11, más que el Betis, que es tercero con 9, y ha encajado 16. Por delante en goles en contra están el Racing (21) y el Elche (17). El Athletic ha encajado 6 en seis partidos, los mismos que el Celta y el Alavés han encajado en siete. Vallecas, a las 14:00, junta a dos equipos de la mitad de la tabla para ver si esa igualdad de puntos aguanta el primer partido del sábado, con el Athletic jugándose además el partido que le queda en el bolsillo.`,
+Si gana el Athletic, se pone con 11 puntos y mira hacia Europa, con un partido todavía guardado en el bolsillo. Si gana el Rayo, es él quien da el salto a 11. Es, además, el único partido de la jornada que LaLiga emite en abierto en DAZN, así que es la ocasión perfecta para ver fútbol sin pagar más. A la hora de comer y con el sol de octubre, un buen plan de sábado.`,
   },
   {
     id: 368,
@@ -119,16 +122,15 @@ Los goles cuentan otra cosa. El Rayo ha marcado 11, más que el Betis, que es te
     venue: 'Mendizorrotza',
     published_at: '2026-10-09T00:40:00.000Z',
     seoTitle: 'Alavés-Atlético: previa y marcador',
-    seoDescription: 'El Alavés, sexto con 11 puntos, recibe al Atlético, segundo con 16, el sábado 10 a las 16:15. Horario, previa y marcador en vivo.',
-    excerpt: 'El Alavés es sexto con 11 puntos y recibe al Atlético, segundo con 16, el sábado 10 a las 16:15 en Mendizorroza. El marcador se actualiza en vivo ese día.',
+    seoDescription: 'El Alavés, sexto y con una de las mejores defensas, recibe al Atlético, segundo, el sábado 10 a las 16:15. Cómo llegan, qué se juegan y marcador en vivo.',
+    excerpt: 'El Alavés, sexto con 11 puntos y una de las mejores defensas de la Liga, recibe al Atlético, segundo con 16, el sábado 10 a las 16:15 en Mendizorrotza. Marcador en directo.',
+    lead: 'El equipo con una de las defensas más sólidas de la Liga recibe al segundo clasificado, que no quiere perder de vista al Barcelona.',
     neighbors: 'Se juega a las 16:15, entre el Rayo-Athletic de las 14:00 y el Barcelona-Getafe de las 18:30.',
-    essay: `A las 16:15, Mendizorrotza junta al 6.º y al 2.º. Cinco puntos les separan, y la portería del Alavés es de las más cerradas de la Liga: 6 goles encajados, uno menos que el Atlético y dos menos que el Madrid.
+    essay: `El Alavés está viviendo un buen arranque de temporada y Mendizorrotza quiere disfrutarlo. Es sexto, con 11 puntos, y la clave está en su portería: solo ha encajado 6 goles en siete partidos, menos que el Atlético y menos que el Real Madrid. Es un equipo difícil de perforar, y eso lo convierte en un rival incómodo para cualquiera.
 
-LALIGA sitúa a Sevilla y Alavés en puestos europeos, detrás de Barcelona, Atlético, Betis y Real Madrid. El Sevilla es 5.º con 13. Una victoria del Alavés lo lleva a 14, por encima de esos 13 y a un punto de los 15 del Madrid. Una victoria del Atlético lo sube a 19, a dos de los 21 del Barcelona, que juega después, a las 18:30 en el Spotify Camp Nou. Un empate deja al Atlético en 17, todavía por encima del Betis, que también tiene 16 y juega el domingo, y al Alavés en 12.
+Enfrente, el Atlético, segundo con 16 puntos y con ganas de recortar distancias con un Barcelona que lleva pleno. Si gana en Vitoria, se pone a 19 y aprieta al líder antes de que juegue por la tarde. Si no gana, el Barcelona puede ampliar la ventaja esa misma noche. El Atlético comparte puntos con el Betis, pero ha marcado casi el doble de goles (16 frente a 9), y eso es lo que lo mantiene por delante.
 
-Atlético y Betis comparten los 16 puntos. Les separa el gol: +9 frente a +2. Los dos han encajado 7. El Atlético ha marcado 16 y el Betis, 9. El sábado en Vitoria es el partido del segundo contra el sexto, y también la tarde en la que el Atlético puede abrir hueco sobre un Betis que todavía no juega.
-
-El Alavés ha marcado 11 y encajado 6. Esta previa no entra en alineaciones. Sí explica por qué un sexto con esa portería es un examen distinto de un sexto goleado. Movistar LALIGA es el operador del cuadro oficial. ESPN sitúa el campo en Mendizorrotza.`,
+Para el Alavés, una victoria sería un golpe en la mesa: 14 puntos, por encima del Sevilla y a uno del Madrid. Para el Atlético, es la típica tarde en la que no se puede fallar si quiere seguir en la pelea por el título. Un sexto con esa defensa no es un rival cualquiera, y eso es lo que hace interesante este partido.`,
   },
   {
     id: 369,
@@ -144,16 +146,15 @@ El Alavés ha marcado 11 y encajado 6. Esta previa no entra en alineaciones. Sí
     venue: 'Spotify Camp Nou',
     published_at: '2026-10-09T01:20:00.000Z',
     seoTitle: 'Barcelona-Getafe: previa y marcador',
-    seoDescription: 'El Barcelona, líder con 21 puntos y pleno de victorias, recibe al Getafe el sábado 10 a las 18:30. Previa y marcador en vivo.',
-    excerpt: 'El Barcelona recibe al Getafe el sábado 10 a las 18:30 en el Spotify Camp Nou. Llega líder, con 21 puntos y siete victorias. El marcador se actualiza ese día.',
+    seoDescription: 'El Barcelona, líder con pleno de victorias, recibe al Getafe el sábado 10 a las 18:30. Cómo llegan, qué se juegan y marcador en vivo del partido.',
+    excerpt: 'El Barcelona, líder con siete victorias en siete partidos, recibe al Getafe el sábado 10 a las 18:30 en el Spotify Camp Nou. El equipo que más marca contra uno de los que menos.',
+    lead: 'El líder, con pleno de victorias, recibe a uno de los equipos que menos goles marca. Dos maneras opuestas de entender el fútbol en el Camp Nou.',
     neighbors: 'Es el tercer partido del sábado, después del Alavés-Atlético de las 16:15 y antes del Real Madrid-Villarreal de las 21:00.',
-    essay: `El Barcelona es el único equipo que ha ganado los siete partidos. Llega con 21 puntos, 31 goles a favor y 7 en contra, diferencia de +24. Nadie más pasa de +10: el Madrid tiene +10 y el Atlético, +9. La ventaja es de 5 puntos sobre Atlético y Betis, que tienen 16, y de 6 sobre el Madrid, que tiene 15. El líder todavía no ha empatado.
+    essay: `El Barcelona está jugando a otra cosa. Siete partidos, siete victorias y 31 goles a favor, más de cuatro por partido. Nadie en la Liga se le acerca: el Madrid y el Atlético tienen poco más de la mitad de goles, y ninguno pasa de +10 de diferencia mientras el Barça va por +24. Es el único equipo que todavía no ha pinchado ni una vez.
 
-El Getafe llega 11.º, con 8 puntos. Ha marcado 4 goles en siete partidos. Solo el Málaga ha marcado menos: 3. El Valencia también ha marcado 4. Con 7 encajados, la diferencia del Getafe es −3. Ataca poco y, en el agregado, la portería aguanta.
+El Getafe llega como lo que es: un equipo serio, ordenado y que marca muy poco. Cuatro goles en siete partidos; solo el Málaga ha marcado menos. Pero su portería aguanta (7 encajados), y eso le permite estar en mitad de la tabla con 8 puntos. Al Camp Nou vendrá a cerrarse, a sufrir y a esperar su ocasión. No es un plan vistoso, pero a veces funciona.
 
-ESPN coloca el partido en el Spotify Camp Nou. LALIGA lo da a las 18:30 y en DAZN. Una victoria azulgrana haría 24 puntos. El Atlético juega antes, a las 16:15 en Mendizorrotza. Si gana allí, llega a 19, y una victoria del Barcelona dejaría el margen en 5 puntos, el mismo de hoy. Si el Atlético no gana, la ventaja crece. El Camp Nou decide si el Barcelona sigue siendo el único con pleno.
-
-Para el Getafe, 8 puntos son los que comparte con Villarreal, Athletic, Rayo y Osasuna. Una victoria lo llevaría a 11, la cifra de hoy del Alavés, 6.º. Un empate lo dejaría en 9. Una derrota lo mantiene en 8, donde ya vive un grupo de cinco equipos. El partido le ofrece, si gana, un salto que sus 4 goles en siete jornadas no anuncian. 31 goles a favor del líder son más de cuatro por jornada. Los 4 del Getafe cuentan otra manera de llegar a las 18:30. Hasta el pitido, las dos conviven en la tabla.`,
+¿Qué está en juego? Para el Barça, seguir con pleno y mantener la distancia con el Atlético, que juega antes. Si el Atlético gana y el Barça también, la diferencia se queda en cinco puntos; si el Atlético pincha, el líder se escapa un poco más. Para el Getafe, cualquier punto en Barcelona sería una fiesta. Lo normal es que gane el Barça, pero el fútbol tiene estas cosas: el equipo que mejor se defiende contra el que más ataca siempre deja una pequeña duda hasta el pitido final.`,
   },
   {
     id: 370,
@@ -169,16 +170,15 @@ Para el Getafe, 8 puntos son los que comparte con Villarreal, Athletic, Rayo y O
     venue: 'Santiago Bernabéu',
     published_at: '2026-10-09T01:40:00.000Z',
     seoTitle: 'Madrid-Villarreal: previa y marcador',
-    seoDescription: 'El Real Madrid, cuarto con 15 puntos, recibe al Villarreal el sábado 10 a las 21:00 en el Bernabéu. Previa de la jornada 8 y marcador en vivo.',
-    excerpt: 'El Real Madrid recibe al Villarreal el sábado 10 a las 21:00 en el Bernabéu. El Madrid es cuarto, con 15 puntos y sin empates. El marcador se actualiza en vivo.',
-    neighbors: 'Cierra el sábado, después del Barcelona-Getafe de las 18:30. El domingo abre el Elche-Celta a las 14:00.',
-    essay: `El Real Madrid cierra el sábado en el Bernabéu. Llega 4.º, con 15 puntos, cinco victorias, cero empates y dos derrotas. Cuando no gana, pierde. El Villarreal es 9.º, con 8 puntos, 13 goles a favor y 12 en contra. Llega generando goles, con diferencia de +1.
+    seoDescription: 'El Real Madrid, cuarto y sin empates en el curso, recibe al Villarreal el sábado 10 a las 21:00 en el Bernabéu. Cómo llegan y marcador en vivo.',
+    excerpt: 'El Real Madrid recibe al Villarreal el sábado 10 a las 21:00 en el Bernabéu. El Madrid, cuarto, aún no ha empatado esta temporada; el Villarreal marca y encaja mucho. Promete goles.',
+    lead: 'El Madrid cierra el sábado en casa ante un Villarreal que marca mucho y encaja mucho. Un partido que promete goles y que el Madrid no puede dejar escapar.',
+    neighbors: 'Cierra el sábado, después del Barcelona-Getafe de las 18:30. El domingo arranca con el Elche-Celta a las 14:00.',
+    essay: `El Real Madrid tiene una estadística curiosa esta temporada: en siete partidos no ha empatado ni una vez. Cinco victorias y dos derrotas. Cuando no gana, pierde. Es cuarto con 15 puntos, a seis del Barcelona y a uno del Atlético y el Betis, y el sábado por la noche cierra la jornada del fin de semana en el Bernabéu.
 
-Quince puntos dejan al Madrid a 6 del Barcelona, que tiene 21 y juega antes, a las 18:30. También lo dejan un punto por debajo de Atlético y Betis, que tienen 16. Una victoria en el Bernabéu sube al Madrid a 18. Eso supera los 16 actuales de Atlético y Betis, y sigue por debajo de los 21 del Barcelona incluso si el líder empatara por la tarde, algo que todavía no ha hecho. Una derrota deja al Madrid en 15 y sube al Villarreal a 11, la cifra de hoy del Alavés. Un empate sería el primero del Madrid en el curso: 16 para el local y 9 para el visitante.
+El Villarreal llega noveno, con 8 puntos, y con un estilo que invita a ver sus partidos: marca mucho (13 goles, más que el Betis o el Sevilla) y también encaja (12). Es un equipo que no especula. Precisamente por eso, el Bernabéu puede ser un partido abierto, de los que no se pueden ver a medias.
 
-El Madrid ha marcado 18 goles, la segunda cifra detrás de los 31 del Barcelona, y ha encajado 8. El Villarreal ha marcado 13, más que Betis, Sevilla, Alavés o Real Sociedad, y ha encajado 12. LALIGA asigna el partido a Orange Fútbol 1, Movistar Plus+ y Movistar LALIGA. ESPN sitúa el campo en el Santiago Bernabéu. Es el último del sábado, en el hueco de las 21:00 que el viernes ocupó el Málaga-Espanyol y que el domingo ocupará el Racing-Valencia.
-
-Seis puntos, con el Barcelona todavía invicto, no se borran en una noche. Lo que sí puede moverse es el grupo de los 16. Si el Atlético ha ganado por la tarde en Mendizorrotza, estará en 19 y una victoria madridista lo dejaría a un punto. Si el Atlético no ha ganado, 18 puntos del Madrid quedarían por encima de los 16 del Betis, que juega el domingo a las 18:30. El marcador de esta página sigue el del Bernabéu, el sábado a las 21:00.`,
+Para el Madrid, ganar significa pasar a 18 puntos y adelantar al Atlético y al Betis, al menos hasta que estos jueguen. Perder sería la tercera derrota en ocho jornadas, demasiado pronto para un equipo que aspira a todo. Y un empate sería noticia por sí mismo: el primero del curso. Seis puntos con el Barcelona no se recuperan en una noche, pero el Madrid sabe que no puede dejarse más puntos si quiere que la Liga siga viva en primavera.`,
   },
   {
     id: 371,
@@ -194,14 +194,15 @@ Seis puntos, con el Barcelona todavía invicto, no se borran en una noche. Lo qu
     venue: 'Estadio Martínez Valero',
     published_at: '2026-10-09T00:30:00.000Z',
     seoTitle: 'Elche-Celta: horario y marcador',
-    seoDescription: 'El Elche, 18º con 5 puntos, recibe al Celta el domingo 11 a las 14:00 en el Martínez Valero. Previa de la jornada 8 y marcador en vivo.',
-    excerpt: 'El Elche, 18º con 5 puntos, recibe al Celta el domingo 11 a las 14:00 en el Martínez Valero. El Celta es 14º, con 7 puntos y 6 goles encajados.',
+    seoDescription: 'El Elche, en descenso con 5 puntos, recibe al Celta, el rey del empate, el domingo 11 a las 14:00 en el Martínez Valero. Cómo llegan y marcador en vivo.',
+    excerpt: 'El Elche, en puesto de descenso con 5 puntos, recibe al Celta el domingo 11 a las 14:00 en el Martínez Valero. El Celta encaja poco y empata mucho. Mucho en juego para los de abajo.',
+    lead: 'Un equipo en descenso que marca pero encaja demasiado, contra el rey del empate. Mucho en juego para los de abajo en el partido que abre el domingo.',
     neighbors: 'Abre el domingo. A las 16:15, la Real Sociedad recibe al Deportivo en el Reale Arena.',
-    essay: `El domingo empieza en el Martínez Valero con un equipo de descenso y otro de la zona media baja. El Elche es 18.º, con 5 puntos, 11 goles a favor y 17 en contra. El Celta es 14.º, con 7 puntos, 8 a favor y 6 en contra. ESPN sitúa el partido en el Estadio Martínez Valero. LALIGA lo programa a las 14:00 y lo da a Movistar LALIGA.
+    essay: `El domingo arranca en Elche con un partido que importa mucho a los de abajo. El Elche es decimoctavo, en puesto de descenso, con 5 puntos. Su problema no es marcar: ha hecho 11 goles, bastantes para su posición. El problema es que encaja demasiado, 17, la segunda portería más castigada de la Liga. Sus partidos son una montaña rusa.
 
-Los puestos 18, 19 y 20 son hoy Elche, Valencia y Málaga. El Levante tiene los mismos 5 puntos que el Elche y es 17.º, con un partido menos. Una victoria del Elche lo lleva a 8, la cifra en la que ahora están Villarreal, Athletic, Getafe, Rayo y Osasuna. Un empate lo deja en 6, por encima de los 4 del Valencia y de los 3 del Málaga, a la espera de lo que hagan esos dos: el Valencia juega el domingo a las 21:00 en Santander y el Málaga ya habrá jugado el viernes. Una derrota lo mantiene en 5, y el Celta se va a 10.
+El Celta es justo lo contrario: el equipo de los empates. Cuatro en siete partidos; solo el Deportivo empata tanto. Encaja muy poco (6 goles, de las mejores defensas) pero también marca poco. Es decimocuarto con 7 puntos, y le falta ganar más para convertir esa solidez en una posición tranquila.
 
-El Celta es el equipo de los empates: cuatro en siete partidos. Solo el Deportivo empata tanto. Su portería es de las más cerradas: 6 goles, los mismos que el Alavés, y uno menos que Getafe, Atlético y Betis. El ataque, 8 goles, va por detrás de esa defensa. El Elche ha encajado 17, la segunda portería más goleada, detrás del Racing (21). A la vez ha marcado 11, más que el Celta. La tabla lo tiene 18.º por lo que entra, con diferencia de −6. El Celta, con +2 y 7 puntos, gana poco y se mantiene en la zona media. A las 14:00 se ven esas dos maneras de sumar.`,
+Para el Elche, ganar supondría salir del descenso, al menos hasta que jueguen el Valencia y el Levante, y ponerse con 8 puntos, en el grupo de la zona media. Un empate le daría un pequeño respiro. Para el Celta, una victoria lo subiría a 10 puntos y le daría la tranquilidad que sus números defensivos merecen. Dos formas de entender el fútbol, frente a frente, a la hora de comer.`,
   },
   {
     id: 372,
@@ -217,18 +218,15 @@ El Celta es el equipo de los empates: cuatro en siete partidos. Solo el Deportiv
     venue: 'Reale Arena',
     published_at: '2026-10-09T00:50:00.000Z',
     seoTitle: 'Real Sociedad-Deportivo: marcador',
-    seoDescription: 'Real Sociedad y Deportivo llegan con 10 puntos al Reale Arena, el domingo 11 a las 16:15. El Depor es séptimo y la Real, octava. Marcador en vivo.',
-    excerpt: 'Real Sociedad y Deportivo se ven el domingo 11 a las 16:15 en el Reale Arena. Los dos tienen 10 puntos. El Depor es séptimo y la Real, octava.',
+    seoDescription: 'Real Sociedad y Deportivo, empatados a 10 puntos, se ven en el Reale Arena el domingo 11 a las 16:15. Quien gane mira a Europa. Marcador en vivo.',
+    excerpt: 'Real Sociedad y Deportivo llegan empatados a 10 puntos al Reale Arena, el domingo 11 a las 16:15. Quien gane se pone a la altura del Sevilla, quinto. Marcador en directo.',
+    lead: 'Empatados a 10 puntos, Real y Depor se juegan dar el salto hacia la zona europea en una tarde de domingo en Anoeta.',
     neighbors: 'Va entre el Elche-Celta de las 14:00 y el Betis-Osasuna de las 18:30.',
-    essay: `Real Sociedad y Deportivo llegan al domingo con los mismos 10 puntos y un puesto de diferencia. El Depor es 7.º, con diferencia de +2. La Real es 8.ª, con −4. A igualdad de puntos, el gol explica el orden.
+    essay: `Real Sociedad y Deportivo llegan empatados a 10 puntos, pero han llegado hasta ahí por caminos muy distintos. El Depor, séptimo, es un equipo al que cuesta mucho ganar: solo ha perdido un partido de siete, aunque ha empatado cuatro. La Real, octava, es más de blanco o negro: tres victorias, tres derrotas y un empate. Cuando sale bien, sale muy bien. Cuando sale mal, también.
 
-El Deportivo empata tanto como el Celta: cuatro veces en siete partidos, y solo ha perdido una. La Real ha ganado tres y ha perdido tres. El visitante es difícil de batir. El local alterna.
+La diferencia entre los dos la marcan los goles. El Depor tiene +2; la Real, −4, porque ha encajado 13, demasiados para un equipo que quiere pelear por Europa. Eso es lo que la tiene por detrás con los mismos puntos.
 
-Diez puntos son también la frontera con el 6.º. El Alavés tiene 11 y juega el sábado en Mendizorrotza. Si no suma, el domingo puede acercarse a esa plaza, que LALIGA describe, junto con la del Sevilla, como puesto europeo. Si el Alavés gana, se va a 14. Esta previa deja el resultado de Vitoria en su sitio: el domingo en el Reale Arena se juega con el sábado ya disputado.
-
-Una victoria de la Real la lleva a 13, los puntos de hoy del Sevilla, 5.º. Una victoria del Depor lo lleva también a 13, y lo dejaría con una sola derrota en ocho jornadas. Un empate los deja en 11, la cifra actual del Alavés. El perdedor se queda en 10.
-
-ESPN sitúa el partido en el Reale Arena, Anoeta. LALIGA lo da a las 16:15 y en DAZN. Trece goles encajados son muchos para un 8.º: Racing, Elche, Rayo y Osasuna han encajado más, o los mismos 13. El Depor, con 8 encajados y una derrota, llega como el 7.º de la tabla. El Deportivo de esta jornada es el de A Coruña. El marcador de esta ficha busca ese partido, no el del Alavés en Mendizorrotza.`,
+El premio es grande: quien gane se pone con 13 puntos, a la altura del Sevilla, que es quinto. Para el Deportivo sería además confirmar que su vuelta a Primera va en serio. Un empate dejaría a los dos con 11, justo donde hoy está el Alavés. Es un partido de tarde de domingo, en Anoeta, entre dos equipos que todavía no saben del todo quiénes van a ser esta temporada. Por eso es tan interesante. Un apunte para no confundirse: el Deportivo de esta jornada es el de A Coruña, y el marcador de esta página sigue ese partido.`,
   },
   {
     id: 373,
@@ -244,16 +242,15 @@ ESPN sitúa el partido en el Reale Arena, Anoeta. LALIGA lo da a las 16:15 y en 
     venue: 'Estadio La Cartuja',
     published_at: '2026-10-09T01:00:00.000Z',
     seoTitle: 'Betis-Osasuna: previa y marcador',
-    seoDescription: 'El Betis, tercero con 16 puntos, recibe a Osasuna el domingo 11 a las 18:30. ESPN sitúa el partido en La Cartuja. Marcador en vivo.',
-    excerpt: 'El Betis, tercero con 16 puntos, juega contra Osasuna el domingo 11 a las 18:30. ESPN sitúa el partido en La Cartuja. El marcador se actualiza ese día.',
-    neighbors: 'Es el tercer partido del domingo, después de la Real-Deportivo de las 16:15 y antes del Racing-Valencia de las 21:00.',
-    essay: `El Betis es 3.º, con los mismos 16 puntos que el Atlético, que es 2.º. Ha marcado 9 y ha encajado 7. Osasuna es 13.º, con 8 puntos, 6 goles a favor y 13 en contra. El domingo a las 18:30, ESPN sitúa el partido en el Estadio La Cartuja. Conviene leerlo así, como el campo del calendario de ESPN para el 11 de octubre, y comprobar el día del partido si el club confirma la sede. LALIGA pone la hora y el operador, Movistar LALIGA.
+    seoDescription: 'El Betis, tercero con 16 puntos, recibe a Osasuna el domingo 11 a las 18:30 en La Cartuja. Cómo llegan, qué se juegan y marcador en vivo.',
+    excerpt: 'El Betis, tercero con 16 puntos, recibe a Osasuna el domingo 11 a las 18:30 en La Cartuja. Un equipo que gana sin hacer ruido contra otro al que le cuesta marcar. Marcador en directo.',
+    lead: 'El tercer clasificado, que gana sin hacer mucho ruido, recibe a un Osasuna al que le cuesta marcar. El Betis quiere demostrar que su puesto no es casualidad.',
+    neighbors: 'Es el tercer partido del domingo, después del Real Sociedad-Deportivo de las 16:15 y antes del Racing-Valencia de las 21:00.',
+    essay: `El Betis está tercero, con los mismos 16 puntos que el Atlético, y lo ha conseguido a su manera: sin marcar mucho (9 goles) pero ganando partidos. Es un equipo que compite, que sabe cerrar resultados y que esta temporada juega en La Cartuja. Conviene confirmar la sede el día del partido, pero el calendario lo sitúa ahí.
 
-Dieciséis puntos con 9 goles a favor distinguen al Betis. El Atlético, con los mismos puntos, ha marcado 16. El Madrid, con uno menos, ha marcado 18. El Barcelona, 31. El Betis ha encajado 7, los mismos que Atlético y Getafe. Está tercero porque gana. Osasuna ha marcado 6, por delante solo de Málaga (3), Valencia (4) y Getafe (4), y ha encajado 13.
+Osasuna llega decimotercero, con 8 puntos, y con la asignatura pendiente del gol: solo ha marcado 6 y ha encajado 13. Es un equipo que sufre, pero que no se rinde, y que en Sevilla intentará aprovechar cualquier despiste.
 
-Una victoria del Betis lo deja en 19. El Atlético juega el sábado. Si ha ganado en Mendizorrotza, también estaría en 19, y el gol seguiría ordenándolos: el Atlético llega a este domingo con +9 y el Betis con +2. Si el Atlético no sumó de tres, 19 del Betis quedarían por encima. El Barcelona, si el sábado ganó al Getafe, estaría en 24. Esta previa deja ese resultado en el sábado.
-
-Osasuna, con 8 puntos, vive con Villarreal, Athletic, Getafe y Rayo. Una victoria lo sube a 11, la cifra de hoy del Alavés. Un empate, a 9. Una derrota lo deja en 8. El domingo juega si sale de una franja en la que cinco equipos caben en el mismo número. El Betis juega si el 16 del sábado por la noche sigue siendo un puesto de arriba el domingo. El marcador de esta página sigue el partido en el campo que confirme el calendario.`,
+Para el Betis, ganar significa llegar a 19 puntos y, según lo que haya hecho el Atlético el sábado, pelear por la segunda plaza o incluso seguir pegado a un Barcelona que parece imparable. Para Osasuna, una victoria le daría 11 puntos y lo sacaría del grupo de cinco equipos que comparten 8. Es el partido de la tarde del domingo, con el calor sevillano todavía presente en octubre y un Betis que quiere demostrar que su tercer puesto no es casualidad.`,
   },
   {
     id: 374,
@@ -269,16 +266,15 @@ Osasuna, con 8 puntos, vive con Villarreal, Athletic, Getafe y Rayo. Una victori
     venue: 'El Sardinero',
     published_at: '2026-10-09T01:10:00.000Z',
     seoTitle: 'Racing-Valencia: previa y marcador',
-    seoDescription: 'El Racing, 16º con 7 puntos y 21 goles encajados, recibe al Valencia el domingo 11 a las 21:00. El Valencia es 19º, con 4 puntos. Marcador en vivo.',
-    excerpt: 'Racing y Valencia cierran el domingo 11 a las 21:00 en Santander. El Racing es 16º, con 21 goles encajados. El Valencia es 19º, con 4 puntos.',
+    seoDescription: 'El Racing, con la peor defensa de la Liga, recibe al Valencia, penúltimo, el domingo 11 a las 21:00 en El Sardinero. Cómo llegan y marcador en vivo.',
+    excerpt: 'Racing y Valencia cierran el domingo 11 a las 21:00 en El Sardinero. El Racing tiene la peor defensa de la Liga; el Valencia, penúltimo, casi no marca. Dos equipos que necesitan ganar.',
+    lead: 'La peor defensa de la Liga contra el ataque que menos marca. Dos equipos que necesitan ganar como el comer, de noche y a orillas del Cantábrico.',
     neighbors: 'Cierra el domingo, después del Betis-Osasuna de las 18:30. El lunes, a las 21:00, el Levante recibe al Sevilla.',
-    essay: `El domingo se apaga en Santander con el 16.º y el 19.º. El Racing tiene 7 puntos, 11 goles a favor y 21 en contra: la portería más goleada de Primera, por delante del Elche, que lleva 17. El Valencia tiene 4 puntos, 4 goles a favor y 13 en contra. ESPN registra el campo como El Sardineros. El nombre del estadio del Racing es El Sardinero, en Santander. Si el rótulo del marcador y el del club no coinciden letra por letra, manda el partido Racing-Valencia de esa noche. LALIGA pone la hora en las 21:00 y el operador en DAZN.
+    essay: `El domingo se cierra en Santander con dos equipos que lo están pasando mal, cada uno a su manera. El Racing ha marcado 11 goles, una cifra decente, pero ha encajado 21, la peor defensa de toda la Liga: tres por partido. Es decimosexto con 7 puntos, y sus partidos son una fiesta para quien le gusten los goles y un sufrimiento para su afición.
 
-El Valencia es penúltimo. Solo el Málaga, con 3 puntos y cero victorias, está por debajo en la columna de puntos. Cuatro goles a favor lo empatan con el Getafe. Cinco derrotas en siete partidos son las más de la Liga.
+El Valencia tiene el problema contrario: no marca. Cuatro goles en siete partidos, cinco derrotas (las que más en Primera) y 4 puntos que lo tienen penúltimo. Solo el Málaga está por debajo. Es una situación que en Mestalla nadie esperaba y que empieza a pesar.
 
-Siete puntos del Racing son los mismos que tienen Celta y Espanyol. El puesto de descenso empieza en el 18: Elche, con 5; Valencia, con 4; Málaga, con 3. Una victoria del Racing lo lleva a 10, la cifra de hoy de Real Sociedad y Deportivo, que juegan el mismo domingo a las 16:15, así que a las 21:00 esa cifra ya habrá podido moverse. Una derrota lo deja en 7 y sube al Valencia a 7. Un empate deja al Racing en 8 y al Valencia en 5. Para el visitante, el empate lo mantiene en la zona de los tres últimos si el Elche, que juega a las 14:00 y tiene 5, conserva el terreno. La victoria es la cuenta que iguala al Valencia con los 7 puntos de Celta, Espanyol y Racing.
-
-Veintiún goles encajados en siete partidos son tres por jornada. El Racing marca 11, y lo que lo tiene 16.º es la portería. El Valencia ha encajado 13 y ha marcado 4. A las 21:00 se ven 7 puntos contra 4, el puesto 16 contra el 19. El marcador de esta página sigue el partido desde el estado previo, cuando el 0-0 todavía no es un resultado, hasta el final.`,
+Lo que está en juego es claro. Si gana el Racing, se va a 10 puntos y se aleja de los problemas. Si gana el Valencia, iguala al Racing con 7 y respira por primera vez en semanas. Un empate deja al Valencia en descenso y al Racing sin avanzar. Es un partido de los que se juegan con el estómago encogido, de noche, en El Sardinero, con el viento del Cantábrico y la sensación de que ninguno de los dos puede permitirse perder.`,
   },
   {
     id: 375,
@@ -294,16 +290,15 @@ Veintiún goles encajados en siete partidos son tres por jornada. El Racing marc
     venue: 'Estadi Ciutat de València',
     published_at: '2026-10-09T00:05:00.000Z',
     seoTitle: 'Levante-Sevilla: previa y marcador',
-    seoDescription: 'El Levante, con 5 puntos y un partido menos, recibe al Sevilla, quinto con 13, el lunes 12 a las 21:00. Cierre de la jornada 8 y marcador en vivo.',
-    excerpt: 'El Levante recibe al Sevilla el lunes 12 a las 21:00 y cierra la jornada 8. El Sevilla es quinto, con 13 puntos. El Levante lleva un partido menos.',
-    neighbors: 'Es el cierre de la jornada, el lunes festivo, después del domingo completo. El sábado por la noche ya se habrá jugado el Madrid-Villarreal.',
-    essay: `La jornada 8 acaba el lunes 12 de octubre, festivo, a las 21:00, con el Levante-Sevilla. LALIGA lo dejó así al fijar los horarios: el viernes abre el Málaga-Espanyol y el lunes cierra este partido, en Movistar LALIGA. ESPN sitúa el campo en el Estadi Ciutat de València.
+    seoDescription: 'El Levante, con un partido menos, recibe al Sevilla, quinto, el lunes 12 a las 21:00. El cierre de la jornada 8, con marcador en vivo.',
+    excerpt: 'El Levante recibe al Sevilla el lunes 12 a las 21:00 y cierra la jornada 8. El Sevilla, quinto, quiere acercarse a los de arriba; el Levante pelea por salir del agobio de abajo.',
+    lead: 'El cierre de la jornada, en lunes festivo, con el Sevilla queriendo acercarse a los de arriba y el Levante peleando por salir del agobio.',
+    neighbors: 'Es el cierre de la jornada, el lunes festivo, cuando ya se han jugado los otros nueve partidos.',
+    essay: `La jornada se cierra el lunes 12, festivo, en Valencia, con un partido que tiene algo de examen final. Cuando el Levante y el Sevilla salten al campo, todos los demás ya habrán jugado y la tabla estará casi hecha. Ellos sabrán exactamente qué necesitan.
 
-El Sevilla es 5.º, con 13 puntos, 10 goles a favor y 9 en contra, diferencia de +1. LALIGA lo cita, junto al Alavés, en puestos europeos, detrás de los cuatro primeros. El Levante es 17.º, con 5 puntos en seis partidos: 8 goles a favor y 12 en contra. Con el Athletic, es el otro equipo que llega con un partido de menos. Cinco puntos en seis jornadas y los 5 del Elche, que ya ha jugado siete, cuentan distinto.
+El Sevilla llega quinto, con 13 puntos, en puesto europeo, y con la oportunidad de meterse de lleno en la pelea de arriba: una victoria lo dejaría con 16, los puntos que hoy tienen Atlético y Betis. El Levante, decimoséptimo con 5 puntos, está justo encima del descenso, pero tiene una ventaja: ha jugado un partido menos que casi todos. Sus 5 puntos en seis partidos no son lo mismo que los 5 del Elche en siete.
 
-Cuando el Sevilla salte al campo, el resto de la jornada ya tendrá marcador. Barcelona, Madrid, Atlético, Betis, Alavés y los tres de abajo habrán jugado. El Levante podrá mirar una tabla casi cerrada. Esta página, escrita el 8 de octubre, dice qué significan los puntos de hoy. Una victoria del Levante lo deja en 8, con siete partidos, la cifra en la que ahora están cinco equipos de la mitad. Una victoria del Sevilla lo deja en 16, los puntos actuales de Atlético y Betis, y lo acerca a la conversación de los cuatro primeros según lo que esos cuatro hayan hecho el fin de semana. Un empate deja al Sevilla en 14, por encima de los 11 de hoy del Alavés, y al Levante en 6.
-
-El Levante, con diferencia de −4 y un partido guardado, está justo encima de los tres puestos de descenso. El lunes es el partido que la competición dejó solo, con toda la jornada ya jugada alrededor. El marcador de esta página se actualiza esa noche, igual que el viernes se actualiza el de La Rosaleda.`,
+Para el Levante, ganar sería salir del agobio, ponerse con 8 puntos y coger aire antes de un tramo complicado. Para el Sevilla, no ganar sería dejar escapar la ocasión de aprovechar lo que hayan hecho los de arriba durante el fin de semana. Un lunes festivo, por la noche, con la jornada entera ya jugada: el escenario perfecto para un partido que puede decir mucho de los dos.`,
   },
 ]
 
@@ -313,17 +308,52 @@ function gd(side: Side): string {
   return String(diff)
 }
 
-function games(side: Side): string {
-  return side.pj === 6 ? 'seis partidos, uno menos que casi toda la Liga' : 'siete partidos'
+function ordinal(pos: number, fem = false): string {
+  const words: Record<number, string> = {
+    1: 'primero', 2: 'segundo', 3: 'tercero', 4: 'cuarto', 5: 'quinto', 6: 'sexto', 7: 'séptimo', 8: 'octavo', 9: 'noveno', 10: 'décimo',
+    11: 'undécimo', 12: 'duodécimo', 13: 'decimotercero', 14: 'decimocuarto', 15: 'decimoquinto', 16: 'decimosexto', 17: 'decimoséptimo',
+    18: 'decimoctavo', 19: 'penúltimo', 20: 'último',
+  }
+  const word = words[pos] ?? `${pos}.º`
+  return fem ? word.replace(/o$/, 'a') : word
+}
+
+function isFem(name: string): boolean {
+  return name === 'Real Sociedad'
+}
+
+/** «el Rayo Vallecano», «la Real Sociedad». */
+function el(name: string): string {
+  return `${isFem(name) ? 'la' : 'el'} ${name}`
+}
+
+function cap(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+/** «en el Estadio de Vallecas», «en La Rosaleda», «en Mendizorrotza». */
+function enVenue(venue: string): string {
+  if (/^(La|El) /.test(venue) || venue === 'Mendizorrotza') return `en ${venue}`
+  return `en el ${venue}`
+}
+
+function plural(n: number, one: string, many: string): string {
+  return `${n} ${n === 1 ? one : many}`
 }
 
 function portrait(side: Side): string {
-  return `${side.name} llega ${side.pos}.º, con ${side.pts} puntos en ${games(side)}: ${side.pg} victorias, ${side.pe} empates y ${side.pp} derrotas, ${side.gf} goles a favor y ${side.gc} en contra (diferencia ${gd(side)})`
+  const games = side.pj === 6 ? 'seis partidos' : 'siete partidos'
+  return `${cap(el(side.name))} va ${ordinal(side.pos, isFem(side.name))}, con ${side.pts} puntos en ${games}: ${plural(side.pg, 'victoria', 'victorias')}, ${plural(side.pe, 'empate', 'empates')} y ${plural(side.pp, 'derrota', 'derrotas')}. Ha marcado ${side.gf} goles y ha encajado ${side.gc} (diferencia ${gd(side)}).`
 }
 
-function formWords(form: string): string {
-  const words: Record<string, string> = { G: 'victoria', E: 'empate', P: 'derrota' }
-  return form.split(/\s+/).map((token) => words[token] ?? token).join(', ')
+function formSummary(side: Side): string {
+  const tokens = side.form.split(/\s+/)
+  const g = tokens.filter((t) => t === 'G').length
+  const e = tokens.filter((t) => t === 'E').length
+  const p = tokens.filter((t) => t === 'P').length
+  if (g === tokens.length) return `Sus últimos ${tokens.length} partidos han sido todos victorias.`
+  if (p === tokens.length) return `Sus últimos ${tokens.length} partidos han sido todos derrotas.`
+  return `En sus últimos ${tokens.length} partidos ha sumado ${plural(g, 'victoria', 'victorias')}, ${plural(e, 'empate', 'empates')} y ${plural(p, 'derrota', 'derrotas')}.`
 }
 
 function articleContent(fx: Fixture): string {
@@ -331,24 +361,27 @@ function articleContent(fx: Fixture): string {
   const a = fx.away
   const hand = [h, a].filter((s) => s.pj === 6).map((s) => s.name)
   const handLine = hand.length
-    ? `${hand.join(' y ')} ${hand.length > 1 ? 'llevan' : 'lleva'} seis partidos en esta foto. En toda la Liga, solo el Athletic y el Levante están así. El resto ya ha jugado siete.`
-    : 'Los dos han jugado siete partidos, como casi toda la clasificación que publican Mundo Deportivo y EL PAÍS. Athletic y Levante son los únicos que llegan con seis.'
-  const uniform = (form: string) => {
-    const tokens = form.split(/\s+/)
-    return tokens.every((token) => token === tokens[0])
-  }
-  const uniformNames = [h, a].filter((side) => uniform(side.form)).map((side) => side.name)
-  const formNote = uniformNames.length
-    ? `${uniformNames.join(' y ')} ${uniformNames.length > 1 ? 'tienen' : 'tiene'} toda la serie igual, y esa sí se lee como una racha uniforme. Donde las letras cambian, EL PAÍS no aclara si la primera es el partido más antiguo o el más reciente, y aquí no la traducimos a «el último partido».`
-    : 'EL PAÍS no aclara si la primera letra es el partido más antiguo o el más reciente. Por eso no traducimos el último símbolo a «el último partido».'
+    ? `Un detalle a tener en cuenta: ${hand.map(el).join(' y ')} ${hand.length > 1 ? 'llegan' : 'llega'} con un partido menos que casi toda la Liga, así que sus números hay que leerlos con esa pequeña diferencia.`
+    : 'Los dos han jugado siete partidos, como casi toda la Liga. Solo el Athletic y el Levante llegan con seis.'
+  const openTv = fx.tv.includes('abierto')
+    ? ' Y una buena noticia: es el único partido de la jornada que se emite en abierto.'
+    : ''
 
-  return `El ${fx.dayLabel}, ${h.name} y ${a.name} se ven a las ${fx.hour}, hora peninsular, en ${fx.venue}. En el cuadro de la jornada 8, LALIGA asigna el partido a ${fx.tv}. ${fx.neighbors} El campo es el que figura en el calendario de ESPN. Si el club cambiara la sede después del 8 de octubre, manda ese aviso.
+  return `${cap(el(h.name))} y ${el(a.name)} se ven las caras el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${fx.lead} Aquí te contamos cómo llegan los dos equipos, qué se juegan y cómo seguir el marcador en directo sin complicaciones.
 
-${portrait(h)}. ${portrait(a)}. ${handLine}
+## Cuándo y dónde se juega
 
-EL PAÍS publica la serie reciente de cada equipo con letras: G de victoria, E de empate, P de derrota. Leída tal como aparece, la de ${h.name} es ${formWords(h.form)}. La de ${a.name}, ${formWords(a.form)}. ${formNote}
+El partido es el ${fx.dayLabel} a las ${fx.hour}, hora peninsular, ${enVenue(fx.venue)}. Se puede ver en ${fx.tv}.${openTv} ${fx.neighbors} Si el club anunciara algún cambio de sede o de horario a última hora, manda ese aviso oficial.
 
-La tabla es la de después de la jornada 7. Mundo Deportivo y EL PAÍS coinciden en puntos, partidos y goles. El Barcelona va 1.º, con 21 puntos y siete victorias (31 goles a favor y 7 en contra). Atlético y Betis tienen 16. El Real Madrid, 15. El Sevilla, 13. El Alavés, 11. Deportivo y Real Sociedad, 10. Villarreal, Athletic, Getafe, Rayo y Osasuna están en 8, con el Athletic en seis partidos. Celta, Espanyol y Racing tienen 7. Levante y Elche tienen 5, y el Levante también lleva seis partidos. El Valencia tiene 4 y el Málaga, 3. LALIGA sitúa a Sevilla y Alavés en puestos europeos, detrás de los cuatro primeros. El descenso son los puestos 18, 19 y 20.
+## Cómo llegan los dos equipos
+
+${portrait(h)} ${formSummary(h)}
+
+${portrait(a)} ${formSummary(a)}
+
+${handLine}
+
+Para situarse en la tabla: el Barcelona manda con 21 puntos y pleno de victorias; Atlético y Betis le siguen con 16, y el Real Madrid tiene 15. Sevilla (13) y Alavés (11) ocupan los puestos europeos. Abajo, Elche (5), Valencia (4) y Málaga (3) están en descenso, con el Levante justo encima, también con 5 puntos pero con un partido menos.
 
 ## Qué se juegan
 
@@ -356,45 +389,43 @@ ${fx.essay}
 
 ## Si gana, empata o pierde
 
-Las cuentas de abajo usan solo los puntos de hoy. Los otros partidos de la jornada también suman, y el lunes la tabla será otra.
+Vamos a lo práctico. Si gana ${el(h.name)}, pasa de ${h.pts} a ${h.pts + 3} puntos y ${el(a.name)} se queda en ${a.pts}. Si empatan, los dos suman uno: ${h.pts + 1} para ${el(h.name)} y ${a.pts + 1} para ${el(a.name)}. Si gana ${el(a.name)}, se va a ${a.pts + 3} y ${el(h.name)} se queda en ${h.pts}.
 
-Si gana ${h.name}, pasa de ${h.pts} a ${h.pts + 3} y ${a.name} sigue en ${a.pts}. Si empatan, ${h.name} queda en ${h.pts + 1} y ${a.name} en ${a.pts + 1}. Si gana ${a.name}, el visitante pasa a ${a.pts + 3} y el local se queda en ${h.pts}.
-
-${h.pj === 6 || a.pj === 6 ? 'Quien llega con seis partidos suma, si gana, en su partido número siete. Quien ya lleva siete suma en el octavo. Las dos cifras se parecen y el camino no es el mismo.' : 'Con este partido, los dos llegan a su octavo encuentro de Liga.'}
+Eso sí: el resto de partidos de la jornada también mueven la tabla, así que el lunes por la noche la foto puede ser distinta.
 
 ## El resto de la jornada
 
-Cada partido tiene su ficha y su marcador. El de esta página busca a ${fx.espnHome} y a ${fx.espnAway}. El calendario completo, en hora peninsular, es este: el viernes, Málaga-Espanyol a las 21:00; el sábado, Rayo-Athletic a las 14:00, Alavés-Atlético a las 16:15, Barcelona-Getafe a las 18:30 y Real Madrid-Villarreal a las 21:00; el domingo, Elche-Celta a las 14:00, Real Sociedad-Deportivo a las 16:15, Betis-Osasuna a las 18:30 y Racing-Valencia a las 21:00; el lunes 12, festivo, Levante-Sevilla a las 21:00.
+Si quieres seguir toda la jornada, este es el calendario, en hora peninsular. Viernes: Málaga-Espanyol (21:00). Sábado: Rayo-Athletic (14:00), Alavés-Atlético (16:15), Barcelona-Getafe (18:30) y Real Madrid-Villarreal (21:00). Domingo: Elche-Celta (14:00), Real Sociedad-Deportivo (16:15), Betis-Osasuna (18:30) y Racing-Valencia (21:00). Y el lunes 12, festivo, Levante-Sevilla (21:00). Cada partido tiene su propia página con marcador.
 
-## El marcador
+## Cómo funciona el marcador en directo
 
-Arriba hay un marcador. Antes del ${fx.dayLabel}, el 0-0 es la casilla vacía del feed: el partido todavía no se ha jugado. Ese día, con el calendario de España en esa fecha, la página pide el dato a ESPN cada quince segundos. Si el encuentro está en juego, aparecen el gol y el minuto que devuelva la fuente. Al terminar, se queda el resultado cerrado. Si una petición falla y ya había un dato, se conserva el último. Si todavía no había, la página lo dice. Alineaciones, cambios y tarjetas se quedan fuera. Otro día, un 0-0 en esta ficha sigue siendo el estado previo, no un partido ya disputado.
+Arriba tienes el marcador del partido. Hasta que empiece, verás un 0-0 que no significa nada: simplemente, el partido todavía no se ha jugado. El ${fx.dayLabel}, el marcador se actualiza solo cada pocos segundos con los goles y el minuto de juego. Cuando termine, se queda el resultado final. Si en algún momento falla la conexión, verás el último dato que llegó. Aquí no encontrarás alineaciones, cambios ni tarjetas: solo el resultado, claro y al momento.
 
 ## Preguntas frecuentes
 
-### ¿A qué hora es el ${h.name}-${a.name}?
+### ¿A qué hora juegan ${el(h.name)} y ${el(a.name)}?
 
-El ${fx.dayLabel}, a las ${fx.hour}, hora peninsular. Así lo fijó LALIGA.
+El ${fx.dayLabel}, a las ${fx.hour}, hora peninsular.
 
-### ¿Dónde se juega y dónde se ve?
+### ¿Dónde se juega y dónde se puede ver?
 
-En ${fx.venue}, el campo que ESPN asocia a este partido. En el cuadro oficial figura ${fx.tv}.${fx.tv.includes('abierto') ? ' LALIGA lo señala, además, como emisión en abierto.' : ' La parrilla del día concreta la plataforma.'}
+${cap(enVenue(fx.venue))}. En televisión, en ${fx.tv}.${fx.tv.includes('abierto') ? ' Es el único partido de la jornada en abierto.' : ''}
 
-### ¿Cómo llegan?
+### ¿Cómo llegan los dos equipos?
 
-${h.name} es ${h.pos}.º con ${h.pts} puntos. ${a.name} es ${a.pos}.º con ${a.pts} puntos. La foto es la de después de la jornada 7. Athletic y Levante todavía llevan seis partidos.
+${cap(el(h.name))} es ${ordinal(h.pos, isFem(h.name))} con ${h.pts} puntos y ${el(a.name)} es ${ordinal(a.pos, isFem(a.name))} con ${a.pts}. Son los datos de la clasificación tras la jornada 7.
 
-### ¿El 0-0 del marcador es un resultado?
+### ¿Qué pasa con los puntos según el resultado?
 
-Antes del día del partido, no. El recuadro localiza el encuentro. El 0-0 cuenta como resultado cuando la fuente marca el partido en juego o ya cerrado.
+Si gana ${el(h.name)}, llega a ${h.pts + 3}. Si empatan, ${el(h.name)} se queda en ${h.pts + 1} y ${el(a.name)} en ${a.pts + 1}. Si gana ${el(a.name)}, llega a ${a.pts + 3}.
 
-### ¿Qué pasa con los puntos?
+### ¿El 0-0 del marcador es el resultado?
 
-Si gana ${h.name}, llega a ${h.pts + 3}. Si empatan, ${h.name} queda en ${h.pts + 1} y ${a.name} en ${a.pts + 1}. Si gana ${a.name}, llega a ${a.pts + 3}. El resto de la tabla depende de los otros nueve partidos.
+Antes del partido, no: solo indica que todavía no ha empezado. El 0-0 cuenta como resultado cuando el partido está en juego o ya ha terminado.
 
-## En una frase
+## En resumen
 
-${h.name} y ${a.name} se ven el ${fx.dayLabel} a las ${fx.hour} en ${fx.venue}. Uno llega ${h.pos}.º, con ${h.pts} puntos. El otro, ${a.pos}.º, con ${a.pts}. El marcador de arriba sigue ese partido el día del encuentro.`
+${cap(el(h.name))} y ${el(a.name)} juegan el ${fx.dayLabel} a las ${fx.hour} ${enVenue(fx.venue)}. ${isFem(h.name) ? 'Una' : 'Uno'} llega ${ordinal(h.pos, isFem(h.name))}, con ${h.pts} puntos; ${isFem(a.name) ? 'la otra' : 'el otro'}, ${ordinal(a.pos, isFem(a.name))}, con ${a.pts}. Si solo puedes seguir el partido de reojo, el marcador de arriba te lo cuenta en directo.`
 }
 
 function excerptOk(text: string): string {

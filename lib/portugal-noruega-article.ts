@@ -1,6 +1,6 @@
 import type { Article } from './types'
 
-const content = `El partido entre Portugal y Noruega de la UEFA Nations League 2026/27 reúne a dos de las selecciones más seguidas del continente en el Estádio do Dragão de Porto. Por un lado, la Portugal de Jorge Jesus, vigente campeona de la competición y líder del Grupo A4 con pleno de puntos. Por otro, una Noruega que llega con la urgencia de sumar tras caer ante Gales y que cuenta con uno de los delanteros más letales del mundo: Erling Haaland. En este artículo repasamos todo lo que necesitas saber antes del encuentro: alineaciones, jugadores clave, estado de forma, historial, clasificación y cómo verlo en directo.
+const content = `Oporto se prepara para una noche grande. En el Estádio do Dragão se ven Portugal y Noruega, dos selecciones que llegan a la Nations League con ánimos muy distintos. Portugal, la de Jorge Jesus, es la campeona vigente y lidera el grupo con pleno de puntos: va sobrada de confianza. Noruega, en cambio, viene de perder con Gales y necesita sumar sí o sí. Pero tiene algo que ninguna otra selección tiene: a Erling Haaland, capaz de decidir un partido él solo. Te contamos, de forma sencilla, cómo llegan las dos selecciones, quién puede decidir el partido y dónde verlo.
 
 ## Cuándo y dónde juegan Portugal vs Noruega
 

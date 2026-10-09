@@ -1,13 +1,13 @@
 import type { Article } from './types'
 import { peugeotContent } from './peugeot-article'
 
-const content = `Castellón vs AD Ceuta dejó un empate 1-1 en un partido que resumió muy bien por qué LaLiga Hypermotion es una de las competiciones más imprevisibles y exigentes del fútbol español. El CD Castellón llegaba con una dinámica excelente, instalado en la zona alta de la tabla, mientras que AD Ceuta necesitaba sumar para no quedarse descolgado en la pelea por salir de la parte baja. El resultado final, aunque corto en goles, dejó muchos matices tácticos, estadísticos y clasificatorios. En este artículo te contamos el resultado, quién marcó, qué dicen los números, cómo queda la tabla y por qué este empate puede ser importante para ambos equipos.
+const content = `Castellón y AD Ceuta empataron 1-1, y el resultado cuenta solo la mitad de la historia. El Castellón, segundo y lanzado, se adelantó a los dos minutos y pareció que iba a ser una tarde tranquila. No lo fue. El Ceuta, colista y con la urgencia de quien necesita puntos ya, aguantó el golpe, creció poco a poco y acabó llevándose un punto que en su vestuario supo a mucho más. Así fue el partido, quién marcó, qué dicen los números y qué significa el empate para cada uno.
 
 ## Resultado de Castellón vs AD Ceuta
 
 El partido se jugó el 4 de octubre de 2026 y terminó con empate 1-1. Castellón se adelantó muy pronto gracias a un gol de Israel Suero en el minuto 2, mientras que AD Ceuta logró empatar en la segunda parte por medio de Jordi Escobar, que marcó en el minuto 53.
 
-El marcador deja dos lecturas opuestas. Por un lado, Castellón mantiene su gran arranque de temporada, aunque deja escapar la opción de sumar otra victoria que consolidara todavía más su posición entre los favoritos. Por otro, Ceuta logra rescatar un punto valioso en un campo difícil, algo que puede ser clave para ganar confianza en las próximas jornadas.
+El mismo marcador se vive de dos maneras muy distintas. En Castellón sabe a poco: el equipo sigue arriba, pero se le escapa una victoria que tenía encarrilada desde el principio. En Ceuta, en cambio, un punto en un campo tan complicado se celebra casi como una victoria, y puede ser el empujón de confianza que el equipo necesitaba.
 
 ## Datos clave del partido
 
@@ -18,7 +18,7 @@ El marcador deja dos lecturas opuestas. Por un lado, Castellón mantiene su gran
 - Posesión: Castellón 67%, AD Ceuta 33%.
 - Disparos totales: Castellón 3, AD Ceuta 10.
 
-Los números son muy interesantes porque muestran una paradoja habitual en el fútbol: el equipo que más domina el balón no siempre es el que más amenaza genera. Castellón controló la pelota durante muchos minutos, pero Ceuta fue más directo y llegó más veces con peligro al área rival.
+Los números cuentan algo que pasa a menudo en el fútbol: tener el balón no es lo mismo que hacer daño. El Castellón lo tuvo casi siempre, pero apenas tiró a puerta. El Ceuta, con mucho menos balón, fue más directo y llegó más veces con peligro.
 
 ## Qué significa este empate para Castellón
 
@@ -109,7 +109,7 @@ Castellón vs AD Ceuta dejó un empate que, aunque parezca corto en goles, tiene
 
 En una categoría tan dura como LaLiga Hypermotion, estos partidos cuentan mucho más de lo que aparentan. Castellón pierde una oportunidad de ampliar su ventaja, y Ceuta suma una base desde la que intentar crecer. Para ambos, el siguiente partido será una nueva prueba de madurez.
 
-Nota: este artículo se ha elaborado con información pública consultada el 4 de octubre de 2026 y puede actualizarse según avance la temporada.`
+Este artículo se escribió con la información disponible el 4 de octubre de 2026. Si la clasificación cambia en las próximas jornadas, lo actualizaremos.`
 
 export const EXTRA_ARTICLES: Article[] = [
   {
@@ -117,7 +117,7 @@ export const EXTRA_ARTICLES: Article[] = [
     title: 'Castellón vs AD Ceuta: resultado, clasificación y análisis del empate en LaLiga Hypermotion',
     slug: 'castellon-ad-ceuta',
     category: 'deportes',
-    excerpt: 'Castellón y AD Ceuta empataron 1-1 en un partido con mucho análisis. Resultado, goleadores, estadísticas y clasificación actualizada.',
+    excerpt: 'El Castellón se adelantó a los dos minutos y el Ceuta, colista, aguantó y empató en la segunda parte. Así fue el 1-1, quién marcó y qué significa para cada equipo.',
     content,
     image_url: '/images/articles/castellon-ceuta.svg',
     thumbnail_url: '/images/articles/castellon-ceuta-thumb.svg',
