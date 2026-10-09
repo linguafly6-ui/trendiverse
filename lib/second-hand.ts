@@ -95,11 +95,52 @@ export const SECOND_HAND_CRITERIA = [
 ]
 
 export const secondHandCategory = (slug: string) => SECOND_HAND_CATEGORIES.find((c) => c.slug === slug)
-export const secondHandProductsByCategory = (slug: string) => SECOND_HAND_PRODUCTS.filter((x) => x.categorySlug === slug)
-export const secondHandWatchlist = () => SECOND_HAND_PRODUCTS.filter((x) => x.watch)
+/** Filtra un listado ya resuelto. Sin el segundo argumento usa el catálogo editorial (métricas vacías). */
+export const secondHandProductsByCategory = (slug: string, products: readonly SecondHandProduct[] = SECOND_HAND_PRODUCTS) =>
+  products.filter((x) => x.categorySlug === slug)
+export const secondHandWatchlist = (products: readonly SecondHandProduct[] = SECOND_HAND_PRODUCTS) =>
+  products.filter((x) => x.watch)
 export const secondHandCategoryPath = (slug: string) => `${SECOND_HAND_PATH}/${slug}`
 export const secondHandUrl = (path = SECOND_HAND_PATH) => `${SITE_URL}${path}`
 
 export function hasMetrics(m: SecondHandMetrics) {
   return m.score !== null || m.trend !== null || m.newPrice !== null || m.usedPrice !== null || m.savings !== null
+}
+
+export const SECOND_HAND_PENDING_COPY = 'Datos de precio y Second-Hand Score pendientes de fuentes reales.'
+
+/** Importe visible. Omite null, no finitos y valores que se redondearían a 0. */
+export function formatSecondHandMoney(amount: number | null, currency: string | null): string | null {
+  if (amount === null || !Number.isFinite(amount) || amount <= 0 || Math.round(amount) === 0) return null
+  if (!currency || !/^[A-Z]{3}$/.test(currency)) return null
+  try {
+    const formatted = new Intl.NumberFormat('es-ES', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount)
+    return /^0(?:[.,]0+)?(?:\s|\u00a0)*[^\d\s]+$/.test(formatted.trim()) ? null : formatted
+  } catch {
+    return null
+  }
+}
+
+export function formatSecondHandUpdatedAt(value: string | null): string | null {
+  if (!value) return null
+  const time = Date.parse(value)
+  if (Number.isNaN(time)) return null
+  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(time))
+}
+
+/** Filas que la UI puede pintar. El ahorro es un importe, no un porcentaje. */
+export function secondHandMetricRows(m: SecondHandMetrics): { label: string; value: string }[] {
+  const rows: { label: string; value: string }[] = []
+  const used = formatSecondHandMoney(m.usedPrice, m.currency)
+  const fresh = formatSecondHandMoney(m.newPrice, m.currency)
+  const saved = formatSecondHandMoney(m.savings, m.currency)
+  if (used) rows.push({ label: 'Precio usado', value: used })
+  if (fresh) rows.push({ label: 'Precio nuevo', value: fresh })
+  if (saved) rows.push({ label: 'Ahorro', value: saved })
+  if (m.currency && /^[A-Z]{3}$/.test(m.currency)) rows.push({ label: 'Moneda', value: m.currency })
+  if (typeof m.source === 'string' && m.source.trim()) rows.push({ label: 'Fuente', value: m.source.trim() })
+  const updated = formatSecondHandUpdatedAt(m.updatedAt)
+  if (updated) rows.push({ label: 'Actualizado', value: updated })
+  if (typeof m.score === 'number' && Number.isFinite(m.score)) rows.push({ label: 'Second-Hand Score', value: String(m.score) })
+  return rows
 }

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 import ProductCard from '@/components/second-hand/ProductCard'
 import { SITE_NAME } from '@/lib/constants'
+import { getSecondHandProducts } from '@/lib/second-hand-data'
 import {
   SECOND_HAND_CATEGORIES,
   SECOND_HAND_CRITERIA,
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary', title, description: SECOND_HAND_SEO.description },
 }
 
-export default function SecondHandPage() {
+export default async function SecondHandPage() {
+  const products = await getSecondHandProducts()
   return (
     <div className="mx-auto max-w-5xl space-y-12">
       <JsonLd data={secondHandGraph()} />
@@ -52,7 +54,7 @@ export default function SecondHandPage() {
             <div key={c.slug} className="rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
               <h3 className="font-bold">{c.icon} {c.name}</h3>
               <ul className="mt-2 flex flex-wrap gap-2 text-sm">
-                {secondHandProductsByCategory(c.slug).map((x) => (
+                {secondHandProductsByCategory(c.slug, products).map((x) => (
                   <li key={x.slug} className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800">{x.name}</li>
                 ))}
               </ul>
@@ -78,7 +80,7 @@ export default function SecondHandPage() {
       <section aria-labelledby="vigilar">
         <h2 id="vigilar" className="text-2xl font-extrabold">Productos que merece la pena vigilar</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {secondHandWatchlist().map((x) => <ProductCard key={x.slug} product={x} />)}
+          {secondHandWatchlist(products).map((x) => <ProductCard key={x.slug} product={x} />)}
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 # Fuentes de datos de Segunda Mano
 
-Capa en `lib/second-hand-data.ts`, separada de la UI (`/segunda-mano/`).
+Capa en `lib/second-hand-data.ts`. `/segunda-mano/` y sus categorías obtienen los productos con `getSecondHandProducts()`, sin conocer la fuente.
 
 ## SecondHandDataSource
 
@@ -11,7 +11,7 @@ interface SecondHandDataSource {
 }
 ```
 
-Devuelve una observación real para el `slug` de un producto, o `null` si no hay dato. Por defecto se usa `emptySecondHandDataSource`, que siempre devuelve `null`: no hay ninguna fuente real conectada.
+Devuelve una observación real para el `slug` de un producto, o `null` si no hay dato. Por defecto se usa `emptySecondHandDataSource`, que siempre devuelve `null`: no hay ninguna fuente real conectada. Las páginas llaman a `getSecondHandProducts()` sin argumentos, así que las métricas siguen en `null`.
 
 ## Campos requeridos
 
@@ -24,8 +24,8 @@ Devuelve una observación real para el `slug` de un producto, o `null` si no hay
 ## Añadir una fuente
 
 1. Implementar `SecondHandDataSource` en un módulo nuevo de `lib/`.
-2. Pasarla a `getSecondHandProducts([miFuente])` / `getSecondHandMetrics`, sin tocar las páginas.
-3. Añadir tests con respuestas de ejemplo.
+2. Sustituir el default de `getSecondHandProducts` / `getSecondHandMetrics` por esa fuente. Las páginas no deben conocer la API, las credenciales ni el formato de la fuente.
+3. Añadir tests con respuestas de ejemplo, nunca con datos reales de un marketplace.
 
 ## Por qué no datos manuales o ficticios
 
