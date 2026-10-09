@@ -5,6 +5,7 @@ import type { LiveFixtureRef } from './laliga-jornada-8-2026'
 import { truncateWords } from './seo-overrides'
 import type { Article, Tool } from './types'
 import { signHeading, signSeoDescription, type HoroscopeWeek, type SignReading } from './astrology'
+import { SECOND_HAND_CATEGORIES, SECOND_HAND_PATH, SECOND_HAND_SEO, secondHandCategoryPath, type SecondHandCategory } from './second-hand'
 import { ASTROLOGY_GUIDES, astrologyGuideBody, astrologyGuidePath, astrologyGuideSources, plainAstrologyText, type AstrologyGuide } from './astrology-guides'
 
 export const websiteId = `${SITE_URL}/#website`
@@ -753,4 +754,32 @@ export function toolGraph(tool: Tool) {
 
 export function currentConcerts(): Concert[] {
   return concertsFor()
+}
+
+export function secondHandGraph(category?: SecondHandCategory) {
+  const url = `${SITE_URL}${category ? secondHandCategoryPath(category.slug) : SECOND_HAND_PATH}`
+  const home = `${SITE_URL}${SECOND_HAND_PATH}`
+  return graph([
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: category ? category.seoTitle : SECOND_HAND_SEO.h1,
+      description: category ? category.intro : SECOND_HAND_SEO.description,
+      inLanguage: 'es-ES',
+      isPartOf: { '@id': sectionId(getCategory('segunda-mano')!) },
+      ...(category ? {} : {
+        mainEntity: itemList(SECOND_HAND_CATEGORIES.map((c) => ({
+          id: `${SITE_URL}${secondHandCategoryPath(c.slug)}#webpage`,
+          url: `${SITE_URL}${secondHandCategoryPath(c.slug)}`,
+          name: c.name,
+        }))),
+      }),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Segunda mano', url: home },
+      ...(category ? [{ name: category.name, url }] : []),
+    ]),
+  ])
 }

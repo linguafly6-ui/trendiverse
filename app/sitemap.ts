@@ -3,6 +3,7 @@ import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
 import { currentWeek, WEEKS } from '@/lib/astrology'
 import { ASTROLOGY_GUIDES, astrologyGuidePath } from '@/lib/astrology-guides'
 import { concertsFor } from '@/lib/concerts'
+import { SECOND_HAND_CATEGORIES, SECOND_HAND_PATH, secondHandCategoryPath } from '@/lib/second-hand'
 import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -71,7 +72,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]),
     { url: base + '/articles', changeFrequency: 'daily', priority: 0.95 },
     { url: base + '/autor/equipo-editorial', changeFrequency: 'monthly', priority: 0.6 },
-    ...CATEGORIES.map((c) => ({
+    { url: base + SECOND_HAND_PATH, changeFrequency: 'weekly', priority: 0.9 },
+    ...SECOND_HAND_CATEGORIES.map((c) => ({
+      url: base + secondHandCategoryPath(c.slug),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
+    ...CATEGORIES.filter((c) => c.slug !== 'segunda-mano').map((c) => ({
       url: base + '/articles/category/' + c.slug,
       changeFrequency: 'daily' as const,
       priority: 0.9,
