@@ -265,7 +265,7 @@ interface SecondHandSourceProductMapping {
 | material-fitness | material fitness | null | eBay sí, si el gate se cumple |
 | material-outdoor | material outdoor | null | eBay sí, si el gate se cumple |
 
-Mientras `externalProductId` sea `null`, el adapter devuelve `null` aunque una búsqueda tuviera resultados. Así no se publica un precio de un modelo no revisado.
+Mientras no haya un `marketplaceIdentifier` validado, no se publica un identificador ni un precio. `getProductData` del adapter devuelve `null` y no consulta la API. Rellenar `externalProductId` no cambia eso y no valida el producto.
 
 ## Caché y fallos
 
@@ -330,12 +330,12 @@ Hasta tener permiso, serie y fórmula escrita, el score publicado es `null`.
 
 ## Gate antes de implementar eBay
 
-No se escribe el adapter hasta que se cumplan estas condiciones.
+No se escribe el adapter hasta que se cumplan estas condiciones. El esqueleto ya existente no cuenta como ese adapter: `getProductData` sigue devolviendo `null`. La decisión de octubre de 2026, en [second-hand-ebay-provider-decision.md](./second-hand-ebay-provider-decision.md), es la lectura auditable de las fuentes. Donde este archivo dice «Confirmado» sobre la licencia, se refiere al PDF del 13 de junio de 2018 que se pudo leer. Ese PDF no está confirmado como el acuerdo que se firma hoy. El punto 6 no trata `externalProductId` como condición suficiente para validar un producto.
 
 1. Acceso de producción. Hay claves de producción de la Browse API, no solo documentación ni sandbox. Requiere contacto/autorización.
-2. Autorización de EPN. Hay un `affiliateCampaignId` de diez dígitos y el marketplace que se vaya a usar está dentro del Partner Network. El header y el campo están Confirmados. La campaña y la inclusión de `EBAY_ES` en el programa son Requiere contacto/autorización.
+2. Autorización de EPN. Hace falta un `affiliateCampaignId` y que el marketplace esté dentro del Partner Network. La guía Browse documenta ese identificador como obligatorio y de diez dígitos, enviado en `X-EBAY-C-ENDUSERCTX`. La especificación OpenAPI no define ese formato. La campaña y la inclusión de `EBAY_ES` en el programa siguen en Requiere contacto/autorización.
 3. `EBAY_ES`. Toda llamada lleva `X-EBAY-C-MARKETPLACE-ID: EBAY_ES`. Sin ese header el default es `EBAY_US`. El enum está Confirmado. Usarlo en producción es parte de este gate.
 4. Política de frescura y caché. Lo que se muestre de un anuncio no supera las seis horas respecto al sitio de eBay, se indica si no está tan al día como la ficha, el resto de eBay Content no supera las veinticuatro horas, y el dato se borra cuando deja de ser público. Un refresco de doce horas o una retención de cuarenta y ocho no cumplen esta condición.
-5. Permiso para el uso que hace Trendiverse de los datos. Antes del adapter queda escrito qué uso está cubierto. El Public Display de un anuncio público, aislado de contenido que no sea de eBay, es el uso que el acuerdo de 2018 ya describe. Mostrar un precio de eBay junto a un precio de referencia ajeno, calcular un ahorro, publicar un mínimo o un máximo, o construir un Second-Hand Score exige permiso escrito previo de eBay. Sin ese permiso, el adapter no rellena esas cifras.
-6. Mapping verificado de producto. Una persona ha comprobado el identificador externo del slug. Mientras `externalProductId` sea `null`, el adapter devuelve `null`.
+5. Permiso para el uso que hace Trendiverse de los datos. Antes del adapter queda escrito qué uso está cubierto por el acuerdo que se firme. El PDF de 2018 describe un Public Display de contenido público, aislado de contenido que no sea de eBay, y no está confirmado como el acuerdo vigente. Una lectura prudente de los apartados 8.1.d y 9.6 es que calcular un ahorro, publicar un mínimo o un máximo, o construir un Second-Hand Score no está expresamente permitido por ese PDF. El PDF no nombra esos campos. Sin la confirmación manual del acuerdo vigente, el adapter no rellena esas cifras.
+6. Mapping verificado e identificador de marketplace. La identidad del producto está en `verified` y `marketplaceIdentifier` cumple el contrato de `lib/second-hand-marketplace-id.ts`, con proveedor y ámbito en la lista autorizada. Un texto en `externalProductId` no basta. Mientras no haya un identificador validado, no se publica un id de marketplace. `getProductData` sigue devolviendo `null`.
 7. Credenciales configuradas exclusivamente en servidor. Client id, client secret y campaign id viven en el entorno del servidor. No entran en el repositorio, en `NEXT_PUBLIC_*` ni en el HTML.
