@@ -7,8 +7,13 @@ import { SECOND_HAND_PRODUCTS } from './second-hand'
  * Cada registro tiene una decisión auditable. En este catálogo todas están
  * en `pending`: la documentación oficial no cierra un único modelo, así que
  * no se rellenan atributos, no se inventa un identificador de marketplace y
- * no se habilita una comparación. El adapter de eBay sigue desconectado y
- * no se importa aquí.
+ * no se habilita una comparación. El esquema es compatible con el mapping del
+ * adapter de eBay (`productId`, `externalProductId`, `verified`), que sigue
+ * desconectado y no se importa aquí.
+ *
+ * Pasar un registro a `verified` exige el expediente de
+ * `lib/second-hand-verification-policy.ts`. Este archivo no lo rellena
+ * y no cambia `canComparePrices()`.
  */
 
 export const SECOND_HAND_REVIEW_STATUSES = ['pending', 'verified', 'rejected'] as const
