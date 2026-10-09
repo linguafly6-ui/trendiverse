@@ -7,8 +7,8 @@ import type {
 
 /**
  * Expediente que haría falta para pasar un mapping de `pending` a `verified`.
- * No es un producto del catálogo, no busca precios y no enciende el adapter.
- * Los 18 mappings no llevan este expediente: siguen en `pending`.
+ * No busca precios y no enciende el adapter.
+ * Solo `nintendo-switch` lleva un expediente real. No incluye un id de marketplace.
  */
 
 export const SECOND_HAND_VERIFICATION_ISSUE_CODES = [
@@ -237,10 +237,37 @@ function assessMarketplaceSource(
 }
 
 /**
- * Lee únicamente los campos que el mapping ya guarda.
- * No inventa una URL, un SKU ni el cierre de una ambigüedad.
+ * Si el mapping guarda un expediente, lo copia. Si no, lee solo atributos
+ * vacíos y no inventa una URL, un SKU ni el cierre de una ambigüedad.
  */
 export function verificationEvidenceFromMapping(spec: SecondHandProductMapping): SecondHandVerificationEvidence {
+  const record = spec.recordedVerification
+  if (record) {
+    return {
+      scope: spec.scope,
+      identity: {
+        manufacturer: record.manufacturer,
+        exactModel: record.exactModel,
+        generation: record.generation,
+        configuration: record.configuration,
+      },
+      officialUrl: record.officialUrl,
+      manufacturerIdentifier: record.manufacturerIdentifier,
+      manufacturerIdentifierSourceUrl: record.manufacturerIdentifierSourceUrl,
+      demonstratedAttributes: [
+        { key: 'manufacturer', value: record.manufacturer, sourceUrl: record.demonstratedSourceUrls.manufacturer },
+        { key: 'exact-model', value: record.exactModel, sourceUrl: record.demonstratedSourceUrls.exactModel },
+        { key: 'generation', value: record.generation, sourceUrl: record.demonstratedSourceUrls.generation },
+        { key: 'configuration', value: record.configuration, sourceUrl: record.demonstratedSourceUrls.configuration },
+      ],
+      verificationRef: spec.verificationRef,
+      ambiguitiesReviewed: record.ambiguitiesReviewed,
+      openAmbiguities: record.openAmbiguities,
+      marketplaceId: hasText(spec.externalProductId)
+        ? { value: spec.externalProductId, sourceUrl: null, inferredFromName: false }
+        : null,
+    }
+  }
   const manufacturer = attributeValue(spec, 'brand')
   const exactModel = attributeValue(spec, 'model')
   const generation = attributeValue(spec, 'generation')
@@ -270,8 +297,9 @@ export function verificationEvidenceFromMapping(spec: SecondHandProductMapping):
 }
 
 /**
- * Juzga si el expediente bastaría para una verificación futura.
- * No modifica el mapping, no consulta la red y no interpreta precios.
+ * Juzga la forma del expediente: campos, hosts permitidos y ambigüedades.
+ * No descarga las URLs ni comprueba que el documento diga lo registrado.
+ * Esa lectura queda en la cita manual del mapping. No consulta la red ni interpreta precios.
  */
 export function verificationEvidenceIssues(
   evidence: SecondHandVerificationEvidence,

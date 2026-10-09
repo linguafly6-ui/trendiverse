@@ -129,7 +129,10 @@ export function isOfficialCandidateSource(url: string): boolean {
   }
 }
 
-/** Los candidatos no reescriben el catálogo ni lo dejan listo para comparar. */
+/**
+ * Los candidatos siguen en `pending` y no habilitan una comparación.
+ * Un mapping puede verificarse en otro módulo; esta lista no escribe ese estado.
+ */
 export function techCandidatesLeaveMappingsPending(
   mappings: readonly SecondHandProductMapping[] = SECOND_HAND_PRODUCT_MAPPINGS,
 ): boolean {
@@ -137,9 +140,7 @@ export function techCandidatesLeaveMappingsPending(
     const spec = mappings.find((item) => item.productId === slug)
     const proposed = techCandidatesFor(slug)
     if (!spec || proposed.length === 0 || proposed.length > 3) return false
-    return spec.reviewStatus === 'pending'
-      && spec.externalProductId === null
-      && spec.verificationRef === null
+    return spec.externalProductId === null
       && canComparePrices(spec) === false
       && proposed.every((item) => item.reviewStatus === 'pending' && item.externalProductId === null)
   })

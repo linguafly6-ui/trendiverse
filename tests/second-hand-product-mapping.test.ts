@@ -7,6 +7,7 @@ import {
   SECOND_HAND_PRODUCT_MAPPINGS,
   asExternalMapping,
   canComparePrices,
+  hasValidatedMarketplaceId,
   hasUnverifiedExternalId,
   isTooAmbiguousToCompare,
   isOfficialMappingDecisionSource,
@@ -35,18 +36,24 @@ function withAttrs(spec: SecondHandProductMapping, value: string): SecondHandPro
   }
 }
 
-test('the mapping catalog matches the editorial slugs and verifies nothing', () => {
+test('the mapping catalog matches the editorial slugs and verifies only the Switch OLED', () => {
   assert.equal(secondHandMappingCoversCatalog(), true)
   assert.deepEqual(SECOND_HAND_PRODUCT_MAPPINGS.map((spec) => spec.productId), SLUGS)
   assert.deepEqual(SECOND_HAND_PRODUCTS.map((product) => product.slug), SLUGS)
   for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
-    assert.equal(spec.reviewStatus, 'pending', spec.productId)
     assert.equal(spec.externalProductId, null, spec.productId)
-    assert.equal(spec.verificationRef, null, spec.productId)
     assert.equal(mappingDecisionIsExplicit(spec), true, spec.productId)
     assert.equal(canComparePrices(spec), false, spec.productId)
     assert.ok(spec.identifies.trim(), spec.productId)
     assert.ok(spec.attributes.some((attribute) => attribute.requiredForComparison), spec.productId)
+    if (spec.productId === 'nintendo-switch') {
+      assert.equal(spec.reviewStatus, 'verified')
+      assert.equal(spec.recordedVerification?.manufacturerIdentifier, 'HEG-001')
+      continue
+    }
+    assert.equal(spec.reviewStatus, 'pending', spec.productId)
+    assert.equal(spec.verificationRef, null, spec.productId)
+    assert.equal(spec.recordedVerification, null, spec.productId)
     for (const attribute of spec.attributes) assert.equal(attribute.value, null, `${spec.productId}:${attribute.key}`)
   }
   const families = SECOND_HAND_PRODUCT_MAPPINGS.filter((spec) => spec.scope === 'family')
@@ -91,13 +98,19 @@ test('review priority is an integer from 1 to 9, and null only on a category', (
 
 test('incomplete mappings, unverified external ids and ambiguous products cannot be compared', () => {
   for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
-    assert.ok(missingRequiredAttributes(spec).length > 0, spec.productId)
     assert.equal(hasUnverifiedExternalId(spec), false, spec.productId)
+    assert.equal(canComparePrices(spec), false, spec.productId)
+    assert.deepEqual(asExternalMapping(spec), { productId: spec.productId, externalProductId: null, verified: false })
+    if (spec.productId === 'nintendo-switch') {
+      assert.equal(missingRequiredAttributes(spec).length, 0)
+      assert.equal(isTooAmbiguousToCompare(spec), false)
+      assert.deepEqual(mappingIssues(spec), [])
+      continue
+    }
+    assert.ok(missingRequiredAttributes(spec).length > 0, spec.productId)
     assert.equal(isTooAmbiguousToCompare(spec), true, spec.productId)
     assert.ok(mappingIssues(spec).includes('incomplete'), spec.productId)
     assert.ok(mappingIssues(spec).includes('ambiguous'), spec.productId)
-    assert.equal(canComparePrices(spec), false, spec.productId)
-    assert.deepEqual(asExternalMapping(spec), { productId: spec.productId, externalProductId: null, verified: false })
   }
 
   const iphone = SECOND_HAND_PRODUCT_MAPPINGS[0]
@@ -118,7 +131,7 @@ test('incomplete mappings, unverified external ids and ambiguous products cannot
 
   const completeFamily = withAttrs({ ...iphone, reviewStatus: 'verified', verificationRef: 'fixture-review' }, 'fixture-value')
   assert.deepEqual(mappingIssues(completeFamily), [])
-  assert.equal(canComparePrices(completeFamily), true)
+  assert.equal(canComparePrices(completeFamily), false)
   assert.equal(asExternalMapping(completeFamily).verified, false)
 
   const verifiedWithoutEvidence = withAttrs({ ...iphone, reviewStatus: 'verified', verificationRef: null }, 'fixture-value')
@@ -128,6 +141,23 @@ test('incomplete mappings, unverified external ids and ambiguous products cannot
   const rejected = { ...completeFamily, reviewStatus: 'rejected' as const }
   assert.ok(mappingIssues(rejected).includes('rejected'))
   assert.equal(canComparePrices(rejected), false)
+})
+
+test('an arbitrary external product id is not a validated comparison id', () => {
+  const verified = SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.productId === 'nintendo-switch')
+  assert.ok(verified)
+  assert.equal(verified.reviewStatus, 'verified')
+  for (const externalProductId of ['fixture-external-id', 'HEG-001', '123']) {
+    assert.equal(hasValidatedMarketplaceId(externalProductId), false, externalProductId)
+    const withArbitraryId: SecondHandProductMapping = { ...verified, externalProductId }
+    assert.equal(canComparePrices(withArbitraryId), false, externalProductId)
+    assert.deepEqual(asExternalMapping(withArbitraryId), {
+      productId: 'nintendo-switch',
+      externalProductId: null,
+      verified: false,
+    })
+  }
+  assert.equal(verified.externalProductId, null)
 })
 
 test('the catalog does not connect a source or publish metrics', async () => {

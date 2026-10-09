@@ -4,16 +4,18 @@ import { SECOND_HAND_PRODUCTS } from './second-hand'
  * Especificación del modelo que un slug editorial podrá comparar.
  * No es un anuncio ni un permiso para buscar precios.
  *
- * Cada registro tiene una decisión auditable. En este catálogo todas están
- * en `pending`: la documentación oficial no cierra un único modelo, así que
- * no se rellenan atributos, no se inventa un identificador de marketplace y
- * no se habilita una comparación. El esquema es compatible con el mapping del
- * adapter de eBay (`productId`, `externalProductId`, `verified`), que sigue
- * desconectado y no se importa aquí.
+ * Cada registro tiene una decisión auditable. En este catálogo solo
+ * `nintendo-switch` está verificado; los otros 17 siguen en `pending`.
+ * No se inventa un identificador de marketplace y no se habilita una
+ * comparación. El esquema es compatible con el mapping del adapter de eBay
+ * (`productId`, `externalProductId`, `verified`), que sigue desconectado
+ * y no se importa aquí.
  *
  * Pasar un registro a `verified` exige el expediente de
- * `lib/second-hand-verification-policy.ts`. Este archivo no lo rellena
- * y no cambia `canComparePrices()`.
+ * `lib/second-hand-verification-policy.ts`. El único que lo cumple es
+ * `nintendo-switch`: Nintendo Switch – Modelo OLED, 64 GB, HEG-001.
+ * No lleva `externalProductId`. Un texto en ese campo no es un id validado
+ * para comparar: ese contrato todavía no existe.
  */
 
 export const SECOND_HAND_REVIEW_STATUSES = ['pending', 'verified', 'rejected'] as const
@@ -51,15 +53,67 @@ export interface SecondHandProductMapping {
   externalProductId: string | null
   /** Responsable o referencia de una verificación. null mientras el estado no sea `verified`. */
   verificationRef: string | null
+  /** Expediente de la ficha oficial. null mientras el modelo no esté verificado. */
+  recordedVerification: SecondHandRecordedVerification | null
   /** Por qué el estado es el que es. Obligatorio en el catálogo. */
   decisionNote: string
-  /** Página oficial que muestra por qué el modelo sigue abierto. null si el slug no es un producto de fabricante. */
+  /** Página oficial que respalda la decisión. null si el slug no es un producto de fabricante. */
   decisionSourceUrl: string | null
   /**
    * Orden para cerrar la identidad antes de buscar un identificador externo.
    * 1 es el primero. null en categorías. No es un ranking de ventas ni de precio.
    */
   reviewPriority: number | null
+}
+
+export const SECOND_HAND_MAPPING_AMBIGUITIES = [
+  'capacity',
+  'disc-vs-digital',
+  'size',
+  'connectivity',
+  'region',
+  'incompatible-revision',
+] as const
+export type SecondHandMappingAmbiguity = (typeof SECOND_HAND_MAPPING_AMBIGUITIES)[number]
+
+/**
+ * Lo que la ficha oficial deja demostrado. No incluye un id de marketplace.
+ * `openAmbiguities` vacío solo cuenta si `ambiguitiesReviewed` es true.
+ */
+export interface SecondHandRecordedVerification {
+  manufacturer: string
+  exactModel: string
+  generation: string
+  configuration: string
+  officialUrl: string
+  manufacturerIdentifier: string
+  manufacturerIdentifierSourceUrl: string
+  demonstratedSourceUrls: {
+    manufacturer: string
+    exactModel: string
+    generation: string
+    configuration: string
+  }
+  ambiguitiesReviewed: boolean
+  openAmbiguities: readonly SecondHandMappingAmbiguity[]
+  ambiguityResolutions: {
+    capacity: string
+    discVsDigital: string
+    size: string
+    connectivity: string
+    region: string
+    incompatibleRevision: string
+  }
+  /**
+   * Pasaje del documento que publica el número de modelo junto al nombre de la consola.
+   * `verificationEvidenceIssues()` no descarga esa URL ni comprueba el texto.
+   */
+  modelCodeCitation: {
+    sourceUrl: string
+    productNameAsPublished: string
+    modelNumberAsPublished: string
+    quotation: string
+  }
 }
 
 export type SecondHandMappingIssue =
@@ -93,9 +147,73 @@ function mapping(
     reviewStatus: 'pending',
     externalProductId: null,
     verificationRef: null,
+    recordedVerification: null,
     decisionNote,
     decisionSourceUrl,
     reviewPriority,
+  }
+}
+
+const SWITCH_OLED_SPEC_URL = 'https://www.nintendo.com/es-es/Hardware/Familia-Nintendo-Switch/Nintendo-Switch-Modelo-OLED/Nintendo-Switch-Modelo-OLED-2000984.html'
+const SWITCH_OLED_DOC_URL = 'https://www.nintendo.com/eu/media/downloads/support_1/nintendoswitch/NSwitchOledModel_DeclarationOfConformity.pdf'
+
+/**
+ * Único mapping verificado. La ficha de Nintendo ES fija el nombre, los 64 GB
+ * y la pantalla de 7 pulgadas. La declaración UE de conformidad publica HEG-001
+ * para esa consola. No hay externalProductId.
+ */
+function verifiedSwitchOled(): SecondHandProductMapping {
+  const manufacturer = 'Nintendo Co., Ltd.'
+  const exactModel = 'Nintendo Switch – Modelo OLED'
+  const generation = 'Modelo OLED'
+  const configuration = '64 GB de almacenamiento interno. Pantalla táctil capacitiva / OLED 7 pulgadas / resolución de 1280x720'
+  return {
+    productId: 'nintendo-switch',
+    scope: 'family',
+    identifies: 'Nintendo Switch – Modelo OLED, 64 GB, número de modelo HEG-001. No incluye la consola HAC-001(-01) ni la Lite HDH-001.',
+    attributes: [
+      { key: 'brand', label: 'Fabricante', value: manufacturer, requiredForComparison: true },
+      { key: 'model', label: 'Consola', value: exactModel, requiredForComparison: true },
+      { key: 'edition', label: 'Modelo original, OLED o Lite', value: generation, requiredForComparison: true },
+      { key: 'capacity', label: 'Capacidad', value: '64 GB', requiredForComparison: true },
+    ],
+    reviewStatus: 'verified',
+    externalProductId: null,
+    verificationRef: 'Declaración UE de conformidad de Nintendo Co., Ltd., número de modelo HEG-001, y ficha de hardware de Nintendo ES. Revisión del 2026-10-09.',
+    recordedVerification: {
+      manufacturer,
+      exactModel,
+      generation,
+      configuration,
+      officialUrl: SWITCH_OLED_SPEC_URL,
+      manufacturerIdentifier: 'HEG-001',
+      manufacturerIdentifierSourceUrl: SWITCH_OLED_DOC_URL,
+      demonstratedSourceUrls: {
+        manufacturer: SWITCH_OLED_DOC_URL,
+        exactModel: SWITCH_OLED_SPEC_URL,
+        generation: SWITCH_OLED_SPEC_URL,
+        configuration: SWITCH_OLED_SPEC_URL,
+      },
+      ambiguitiesReviewed: true,
+      openAmbiguities: [],
+      ambiguityResolutions: {
+        capacity: 'La ficha de Nintendo ES publica una sola memoria interna: 64 GB. La microSD es una ampliación aparte, no otra capacidad del modelo.',
+        discVsDigital: 'Esa ficha describe una sola consola, con ranura solo para tarjetas de juego de Nintendo Switch. No separa una edición digital.',
+        size: 'La ficha publica una pantalla: OLED de 7 pulgadas, 1280x720.',
+        connectivity: 'Wi-Fi, Bluetooth y la LAN del modo TV figuran en la misma ficha, no como consolas distintas.',
+        region: 'La capacidad sale de la ficha de Nintendo ES y el número HEG-001 de la declaración UE de conformidad, las dos en www.nintendo.com. La ficha de EE. UU. no publica ese número y no se usa como fuente del código.',
+        incompatibleRevision: 'HEG-001 es el número de la declaración para la consola OLED. No es HAC-001(-01) ni HDH-001. La ficha no parte el modelo por el color de los Joy-Con.',
+      },
+      modelCodeCitation: {
+        sourceUrl: SWITCH_OLED_DOC_URL,
+        productNameAsPublished: 'Nintendo Switch – OLED Model console',
+        modelNumberAsPublished: 'HEG-001',
+        quotation: '1. Product name Nintendo Switch – OLED Model console. 3. Model number HEG-001.',
+      },
+    },
+    decisionNote: 'Verificado. La ficha de Nintendo ES describe Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas. La declaración UE de conformidad publica, en el mismo documento, «Product name Nintendo Switch – OLED Model console» y «Model number HEG-001». No cubre HAC-001(-01) ni la Lite HDH-001. HEG-001 es el código del fabricante, no un identificador de marketplace.',
+    decisionSourceUrl: SWITCH_OLED_SPEC_URL,
+    reviewPriority: 3,
   }
 }
 
@@ -138,12 +256,7 @@ export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] =
     attr('edition', 'Con lector, Digital o Slim'),
     attr('capacity', 'Capacidad'),
   ], 'Pendiente. La página de EE. UU. separa PS5 console - 1TB con Blu-ray y PS5 Digital Edition - 825GB sin lector, y no asigna un código CFI. No se trata el lector como si fuera la digital.', 'https://www.playstation.com/en-us/ps5/', 1),
-  mapping('nintendo-switch', 'family', 'Nintendo Switch, sin modelo ni capacidad.', [
-    attr('brand', 'Fabricante'),
-    attr('model', 'Consola'),
-    attr('edition', 'Modelo original, OLED o Lite'),
-    attr('capacity', 'Capacidad'),
-  ], 'Pendiente. La ficha nombra el OLED de 64 GB, la consola HAC-001(-01) de 32 GB y la Lite HDH-001 de 32 GB. HAC-001(-01) no cubre las otras.', 'https://www.nintendo.com/us/gaming-systems/switch/tech-specs/', 3),
+  verifiedSwitchOled(),
   mapping('xbox', 'family', 'Marca Xbox, sin generación ni capacidad. Cubre varias consolas.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
@@ -228,9 +341,25 @@ export function mappingIssues(spec: SecondHandProductMapping): SecondHandMapping
   return issues
 }
 
-/** Listo para una comparación futura. No consulta precios ni publica métricas. */
+/**
+ * Un valor presente no está validado ni autorizado para comparar.
+ * El contrato del identificador de marketplace pertenece al adapter y aún no existe.
+ * No consulta eBay ni decide si el texto es un id real.
+ */
+export function hasValidatedMarketplaceId(externalProductId: string | null): boolean {
+  void externalProductId
+  return false
+}
+
+/**
+ * Listo para comparar precios. Exige identidad cerrada y un id de marketplace
+ * validado por el contrato del adapter. Un `externalProductId` arbitrario no basta.
+ * No consulta precios ni publica métricas.
+ */
 export function canComparePrices(spec: SecondHandProductMapping): boolean {
-  return spec.reviewStatus === 'verified' && mappingIssues(spec).length === 0
+  return spec.reviewStatus === 'verified'
+    && hasValidatedMarketplaceId(spec.externalProductId)
+    && mappingIssues(spec).length === 0
 }
 
 /**
