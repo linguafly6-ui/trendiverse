@@ -91,8 +91,8 @@ export default function ConcertsHub({
                 <p className="text-sm font-medium">{concert.title}</p>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{concert.when}</p>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{concert.venue} · {concert.city}</p>
-                <p className="mt-2 text-sm leading-relaxed">{concert.detail}</p>
                 <ConcertTicketLink concert={concert} />
+                <p className="mt-2 text-sm leading-relaxed">{concert.detail}</p>
                 <p className="mt-2 text-sm">
                   <a className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 dark:text-rose-300" href={concert.sourceUrl}>
                     Fuente: {concert.sourceName}
