@@ -24,7 +24,7 @@ export const CATEGORIES: CategoryInfo[] = [
   { slug: 'tecnologia', name: 'Tecnología & Novedades', short: 'Tecnología', icon: '💻', color: '#8B5CF6', seoTitle: 'Tecnología: últimas noticias y tendencias', description: 'Actualidad tecnológica, inteligencia artificial, ciencia aplicada, innovación, dispositivos y avances que están cambiando el mundo.' },
   { slug: 'chollos', name: 'Chollos & Descuentos', short: 'Chollos', icon: '🏷️', color: '#F97316', seoTitle: 'Chollos y ofertas: descuentos y oportunidades', description: 'Ofertas, descuentos y oportunidades de compra seleccionadas, con precios y condiciones para comparar antes de comprar.' },
   { slug: 'conciertos', name: 'Conciertos & Festivales', short: 'Conciertos', icon: '🎤', color: '#BE123C', seoTitle: 'Entradas conciertos España: agenda 2026-27', description: 'Entradas para conciertos y festivales en España: lo que queda de 2026 y las citas ya fechadas para 2027, con el enlace oficial de compra y la fuente de cada anuncio.', href: '/conciertos' },
-  { slug: 'astrologia', name: 'Astrología & Horóscopo', short: 'Astrología', icon: '✨', color: '#312E81', seoTitle: 'Horóscopo semanal y guía de astrología', description: 'Horóscopo semanal por signo solar, con el cielo de la semana y una guía del método: zodiaco tropical, casas y límites de la lectura.', href: '/astrologia' },
+  { slug: 'astrologia', name: 'Astrología & Horóscopo', short: 'Astrología', icon: '✨', color: '#312E81', seoTitle: 'Astrología: horóscopos, ascendente y Luna', description: 'Horóscopos semanales y guías de ascendente, signo lunar, carta natal, eclipses, fases de la Luna y Mercurio retrógrado, con referencias y límites.', href: '/astrologia' },
 ]
 
 export interface TopicInfo {

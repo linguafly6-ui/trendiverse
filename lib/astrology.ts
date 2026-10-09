@@ -34,6 +34,14 @@ export function previousWeek(week: HoroscopeWeek): HoroscopeWeek | undefined {
   return [...WEEKS].reverse().find((candidate) => candidate.start < week.start)
 }
 
+export function weekFirstDay(week: HoroscopeWeek): string {
+  return week.days.split(', ')[0]
+}
+
+export function weekLastDay(week: HoroscopeWeek): string {
+  return week.days.split(' y ').pop()!
+}
+
 export function weekBySlug(slug: string): HoroscopeWeek | undefined {
   return WEEKS.find((week) => week.slug === slug)
 }
