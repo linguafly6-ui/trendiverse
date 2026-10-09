@@ -58,15 +58,18 @@ test('ebay browse source stays disabled and publishes nothing', async () => {
   }
 })
 
-test('the adapter module does not call the network or read secrets', () => {
+test('the adapter module does not call the network, schedule work, cache, or read secrets', () => {
   const source = readFileSync(new URL('../lib/ebay-browse-adapter.ts', import.meta.url), 'utf8')
-  assert.doesNotMatch(source, /\bfetch\s*\(/)
-  assert.doesNotMatch(source, /api\.ebay\.com/)
-  assert.doesNotMatch(source, /EBAY_CLIENT|EBAY_PARTNER|process\.env/)
+  const code = source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
+  assert.doesNotMatch(code, /\bfetch\s*\(|api\.ebay\.com|process\.env|setInterval|setTimeout|caches\.|KVNamespace|\bcron\b/i)
+  assert.doesNotMatch(code, /EBAY_CLIENT|EBAY_PARTNER|CLIENT_SECRET|API_KEY|oauth/i)
   assert.match(source, /export const EBAY_BROWSE_SOURCE_ENABLED = false/)
   const provider = source.slice(source.indexOf('export const ebayBrowseSecondHandSource'))
   assert.match(provider, /async getProductData\(\): Promise<SecondHandPriceObservation \| null> \{\s*return null\s*\}/)
   assert.doesNotMatch(provider, /ebayOfferToObservation|fetch\(|process\.env/)
+  const research = readFileSync(new URL('../docs/second-hand-data-sources-research.md', import.meta.url), 'utf8')
+  assert.match(research, /## Gate antes de implementar eBay/)
+  assert.match(research, /No se escribe el adapter hasta que se cumplan estas condiciones/)
 })
 
 test('normalization is documented and does not enable the provider or an eBay url', async () => {
@@ -152,6 +155,10 @@ test('incompatible conditions cannot produce an observation', () => {
   assert.equal(normalizeEbayCondition(3000, false), null)
   assert.equal(normalizeEbayCondition(9999, true), null)
   assert.equal(normalizeEbayCondition('3000', true), null)
+  assert.equal(normalizeEbayCondition(null, true), null)
+  assert.equal(normalizeEbayCondition(undefined, true), null)
+  assert.equal(ebayOfferToObservation(offer({ conditionId: null }), verifiedMapping, NOW), null)
+  assert.equal(ebayOfferToObservation(offer({ conditionId: undefined, conditionAdmitted: true }), verifiedMapping, NOW), null)
   assert.equal(ebayOfferToObservation(offer({ conditionId: 1000 }), verifiedMapping, NOW), null)
   assert.equal(ebayOfferToObservation(offer({ conditionId: 7000 }), verifiedMapping, NOW), null)
   assert.equal(ebayOfferToObservation(offer({ conditionAdmitted: false }), verifiedMapping, NOW), null)
