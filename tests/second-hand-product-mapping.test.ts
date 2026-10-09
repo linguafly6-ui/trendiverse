@@ -7,6 +7,7 @@ import {
   SECOND_HAND_PRODUCT_MAPPINGS,
   asExternalMapping,
   canComparePrices,
+  hasValidatedMarketplaceId,
   hasUnverifiedExternalId,
   isTooAmbiguousToCompare,
   mappingIssues,
@@ -90,9 +91,6 @@ test('incomplete mappings, unverified external ids and ambiguous products cannot
   assert.deepEqual(mappingIssues(completeFamily), [])
   assert.equal(canComparePrices(completeFamily), false)
   assert.equal(asExternalMapping(completeFamily).verified, false)
-  const withMarketplaceId = { ...completeFamily, externalProductId: 'fixture-external-id' }
-  assert.equal(canComparePrices(withMarketplaceId), true)
-  assert.equal(asExternalMapping(withMarketplaceId).verified, true)
 
   const verifiedWithoutEvidence = withAttrs({ ...iphone, reviewStatus: 'verified', verificationRef: null }, 'fixture-value')
   assert.ok(mappingIssues(verifiedWithoutEvidence).includes('missing-verification-ref'))
@@ -101,6 +99,23 @@ test('incomplete mappings, unverified external ids and ambiguous products cannot
   const rejected = { ...completeFamily, reviewStatus: 'rejected' as const }
   assert.ok(mappingIssues(rejected).includes('rejected'))
   assert.equal(canComparePrices(rejected), false)
+})
+
+test('an arbitrary external product id is not a validated comparison id', () => {
+  const verified = SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.productId === 'nintendo-switch')
+  assert.ok(verified)
+  assert.equal(verified.reviewStatus, 'verified')
+  for (const externalProductId of ['fixture-external-id', 'HEG-001', '123']) {
+    assert.equal(hasValidatedMarketplaceId(externalProductId), false, externalProductId)
+    const withArbitraryId: SecondHandProductMapping = { ...verified, externalProductId }
+    assert.equal(canComparePrices(withArbitraryId), false, externalProductId)
+    assert.deepEqual(asExternalMapping(withArbitraryId), {
+      productId: 'nintendo-switch',
+      externalProductId: null,
+      verified: false,
+    })
+  }
+  assert.equal(verified.externalProductId, null)
 })
 
 test('the catalog does not connect a source or publish metrics', async () => {

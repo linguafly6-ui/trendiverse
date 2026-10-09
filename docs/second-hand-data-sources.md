@@ -41,13 +41,13 @@ La comparación de fuentes, la arquitectura prevista, la regla de frescura de eB
 
 ## Catálogo verificable
 
-`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Solo `nintendo-switch` está en `verified`: la ficha de Nintendo ES identifica Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas, y la declaración UE de conformidad publica el número HEG-001. `externalProductId` sigue en `null` en los 18, también en ese. `canComparePrices()` exige ese identificador, así que nadie se puede comparar. Los otros 17 siguen en `pending`. No hay precios ni identificadores de marketplace.
+`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Solo `nintendo-switch` está en `verified`: la ficha de Nintendo ES describe Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas. La declaración UE de conformidad publica, en el mismo documento, «Product name Nintendo Switch – OLED Model console» y «Model number HEG-001». Esa cita queda guardada en el expediente. `verificationEvidenceIssues()` no descarga esas URLs: solo comprueba la forma de los campos. `externalProductId` sigue en `null` en los 18. Un texto puesto en ese campo no es un identificador validado para comparar; ese contrato pertenece al adapter y todavía no existe. Los otros 17 siguen en `pending`. No hay precios ni consultas a eBay.
 
 `lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`. Un candidato no es un expediente de verificación.
 
 ## Política de evidencia
 
-`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` es una función pura: no busca anuncios y no calcula precios. El expediente de `nintendo-switch` cumple esa regla con las dos URLs de www.nintendo.com citadas arriba. No lleva identificador de marketplace: la lista de hosts para esa fuente sigue vacía. El adapter de eBay sigue apagado.
+`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` comprueba la forma del expediente y los hosts permitidos. No descarga las URLs ni lee el texto de los documentos. El expediente de `nintendo-switch` cumple esa forma con las dos URLs de www.nintendo.com citadas arriba. No lleva identificador de marketplace: la lista de hosts para esa fuente sigue vacía, y un `externalProductId` arbitrario no se trata como validado. El adapter de eBay sigue apagado.
 
 Hay cuatro capas distintas.
 
@@ -56,7 +56,7 @@ Hay cuatro capas distintas.
 **Evidencia.** Cada dato tiene un respaldo propio.
 
 - Fabricante, modelo, generación y configuración: la ficha oficial del fabricante. Hace falta el valor y una URL https de ese host. Los hosts son los mismos que ya admite `isOfficialCandidateSource()`: `support.apple.com`, `www.apple.com`, `www.samsung.com`, `www.playstation.com`, `www.nintendo.com`, `www.xbox.com` y `www.steamdeck.com`.
-- Identificador de modelo o SKU: el fabricante lo publica en esa ficha. El código sin la URL donde aparece se rechaza. El catálogo no trae ninguno, y esta política no lo inventa.
+- Identificador de modelo o SKU: el fabricante lo publica en esa ficha. El código sin la URL donde aparece se rechaza. En el catálogo solo la Switch OLED trae HEG-001, y la cita que lo une al nombre de la consola está en la declaración UE. El validador no descarga ese PDF.
 - Atributos demostrados: los cuatro valores de la identidad, repetidos con la URL de la ficha que los muestra. Un atributo del mapping en `null` no está demostrado.
 - Referencia verificable: la persona o el registro interno que revisó la ficha. No es un identificador de marketplace ni una URL de anuncio.
 

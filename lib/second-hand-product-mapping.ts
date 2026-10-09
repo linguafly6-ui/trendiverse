@@ -4,15 +4,15 @@ import { SECOND_HAND_PRODUCTS } from './second-hand'
  * Especificación del modelo que un slug editorial podrá comparar.
  * No es un anuncio ni un permiso para buscar precios.
  *
- * Ningún registro del catálogo está verificado: no hay evidencia documental
- * ni identificador externo. El esquema es compatible con el mapping del
- * adapter de eBay (`productId`, `externalProductId`, `verified`), que sigue
- * desconectado y no se importa aquí.
+ * El esquema es compatible con el mapping del adapter de eBay
+ * (`productId`, `externalProductId`, `verified`), que sigue desconectado
+ * y no se importa aquí.
  *
  * Pasar un registro a `verified` exige el expediente de
  * `lib/second-hand-verification-policy.ts`. El único que lo cumple es
  * `nintendo-switch`: Nintendo Switch – Modelo OLED, 64 GB, HEG-001.
- * No lleva `externalProductId`. Comparar precios lo exige, y sigue en false.
+ * No lleva `externalProductId`. Un texto en ese campo no es un id validado
+ * para comparar: ese contrato todavía no existe.
  */
 
 export const SECOND_HAND_REVIEW_STATUSES = ['pending', 'verified', 'rejected'] as const
@@ -91,6 +91,16 @@ export interface SecondHandRecordedVerification {
     connectivity: string
     region: string
     incompatibleRevision: string
+  }
+  /**
+   * Pasaje del documento que publica el número de modelo junto al nombre de la consola.
+   * `verificationEvidenceIssues()` no descarga esa URL ni comprueba el texto.
+   */
+  modelCodeCitation: {
+    sourceUrl: string
+    productNameAsPublished: string
+    modelNumberAsPublished: string
+    quotation: string
   }
 }
 
@@ -175,6 +185,12 @@ function verifiedSwitchOled(): SecondHandProductMapping {
         connectivity: 'Wi-Fi, Bluetooth y la LAN del modo TV figuran en la misma ficha, no como consolas distintas.',
         region: 'La capacidad sale de la ficha de Nintendo ES y el número HEG-001 de la declaración UE de conformidad, las dos en www.nintendo.com. La ficha de EE. UU. no publica ese número y no se usa como fuente del código.',
         incompatibleRevision: 'HEG-001 es el número de la declaración para la consola OLED. No es HAC-001(-01) ni HDH-001. La ficha no parte el modelo por el color de los Joy-Con.',
+      },
+      modelCodeCitation: {
+        sourceUrl: SWITCH_OLED_DOC_URL,
+        productNameAsPublished: 'Nintendo Switch – OLED Model console',
+        modelNumberAsPublished: 'HEG-001',
+        quotation: '1. Product name Nintendo Switch – OLED Model console. 3. Model number HEG-001.',
       },
     },
   }
@@ -303,12 +319,23 @@ export function mappingIssues(spec: SecondHandProductMapping): SecondHandMapping
 }
 
 /**
- * Listo para comparar precios. La identidad verificada no basta:
- * hace falta un `externalProductId`. No consulta precios ni publica métricas.
+ * Un valor presente no está validado ni autorizado para comparar.
+ * El contrato del identificador de marketplace pertenece al adapter y aún no existe.
+ * No consulta eBay ni decide si el texto es un id real.
+ */
+export function hasValidatedMarketplaceId(externalProductId: string | null): boolean {
+  void externalProductId
+  return false
+}
+
+/**
+ * Listo para comparar precios. Exige identidad cerrada y un id de marketplace
+ * validado por el contrato del adapter. Un `externalProductId` arbitrario no basta.
+ * No consulta precios ni publica métricas.
  */
 export function canComparePrices(spec: SecondHandProductMapping): boolean {
   return spec.reviewStatus === 'verified'
-    && hasText(spec.externalProductId)
+    && hasValidatedMarketplaceId(spec.externalProductId)
     && mappingIssues(spec).length === 0
 }
 

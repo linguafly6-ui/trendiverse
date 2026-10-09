@@ -297,8 +297,9 @@ export function verificationEvidenceFromMapping(spec: SecondHandProductMapping):
 }
 
 /**
- * Juzga si el expediente bastaría para una verificación futura.
- * No modifica el mapping, no consulta la red y no interpreta precios.
+ * Juzga la forma del expediente: campos, hosts permitidos y ambigüedades.
+ * No descarga las URLs ni comprueba que el documento diga lo registrado.
+ * Esa lectura queda en la cita manual del mapping. No consulta la red ni interpreta precios.
  */
 export function verificationEvidenceIssues(
   evidence: SecondHandVerificationEvidence,

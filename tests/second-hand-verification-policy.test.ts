@@ -268,6 +268,14 @@ test('the Switch OLED dossier is sufficient and the other mappings stay pending'
     assert.equal(evidence.identity.generation, 'Modelo OLED')
     assert.match(evidence.identity.configuration, /64 GB/)
     assert.match(evidence.identity.configuration, /7 pulgadas/)
+    const citation = spec.recordedVerification?.modelCodeCitation
+    assert.ok(citation)
+    assert.equal(citation.modelNumberAsPublished, 'HEG-001')
+    assert.equal(citation.modelNumberAsPublished, evidence.manufacturerIdentifier)
+    assert.equal(citation.productNameAsPublished, 'Nintendo Switch – OLED Model console')
+    assert.equal(citation.quotation, '1. Product name Nintendo Switch – OLED Model console. 3. Model number HEG-001.')
+    assert.equal(citation.sourceUrl, evidence.manufacturerIdentifierSourceUrl)
+    assert.match(citation.quotation, /OLED Model console/)
     assert.equal(evidence.manufacturerIdentifier, 'HEG-001')
     assert.equal(evidence.officialUrl, 'https://www.nintendo.com/es-es/Hardware/Familia-Nintendo-Switch/Nintendo-Switch-Modelo-OLED/Nintendo-Switch-Modelo-OLED-2000984.html')
     assert.equal(evidence.manufacturerIdentifierSourceUrl, 'https://www.nintendo.com/eu/media/downloads/support_1/nintendoswitch/NSwitchOledModel_DeclarationOfConformity.pdf')
@@ -314,6 +322,7 @@ test('tech candidates and the policy module do not verify a product or call a ma
 
   const source = readFileSync(new URL('../lib/second-hand-verification-policy.ts', import.meta.url), 'utf8')
   assert.doesNotMatch(source, /\bfetch\s*\(|process\.env|api\.ebay\.com|ebay-browse-adapter/)
+  assert.match(source, /No descarga las URLs/)
   const mapping = readFileSync(new URL('../lib/second-hand-product-mapping.ts', import.meta.url), 'utf8')
   assert.doesNotMatch(mapping, /\bfetch\s*\(|process\.env|api\.ebay\.com|campid|gtin|epid|asin/i)
 })
