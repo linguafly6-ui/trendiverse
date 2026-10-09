@@ -41,13 +41,13 @@ La comparación de fuentes, la arquitectura prevista, la regla de frescura de eB
 
 ## Catálogo verificable
 
-`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Los 18 están en revisión `pending`, con `externalProductId: null` y sin referencia de verificación. Ninguno se puede comparar todavía: las familias no fijan generación o capacidad, y moda, hogar y deporte son categorías, no un producto único. No hay precios ni identificadores de marketplace.
+`lib/second-hand-product-mapping.ts` dice qué identifica cada slug y qué atributos faltan para comparar un modelo. Solo `nintendo-switch` está en `verified`: la ficha de Nintendo ES identifica Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas, y la declaración UE de conformidad publica el número HEG-001. `externalProductId` sigue en `null` en los 18, también en ese. `canComparePrices()` exige ese identificador, así que nadie se puede comparar. Los otros 17 siguen en `pending`. No hay precios ni identificadores de marketplace.
 
 `lib/second-hand-tech-candidates.ts` propone como máximo tres modelos por cada slug tecnológico, con el nombre, la generación y la capacidad o configuración que figura en una ficha oficial del fabricante. Todos siguen en `pending`, con `externalProductId: null`. No marcan el mapping como verificado ni habilitan una comparación. Si la ficha no cierra región, revisión o identificador, el candidato no se trata como un SKU. Lo que no se pudo cerrar queda en `SECOND_HAND_TECH_CANDIDATE_GAPS`. Un candidato no es un expediente de verificación.
 
 ## Política de evidencia
 
-`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` es una función pura: no escribe el catálogo, no busca anuncios y no calcula precios. Ningún slug cumple el expediente. Los 18 siguen en `pending`. `canComparePrices()` no cambia. El adapter de eBay sigue apagado.
+`lib/second-hand-verification-policy.ts` fija los requisitos para pasar un mapping de `pending` a `verified`. `verificationEvidenceIssues()` es una función pura: no busca anuncios y no calcula precios. El expediente de `nintendo-switch` cumple esa regla con las dos URLs de www.nintendo.com citadas arriba. No lleva identificador de marketplace: la lista de hosts para esa fuente sigue vacía. El adapter de eBay sigue apagado.
 
 Hay cuatro capas distintas.
 

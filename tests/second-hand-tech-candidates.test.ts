@@ -21,10 +21,14 @@ test('tech candidates stay pending and do not verify or enable comparison', () =
     assert.ok(proposed.length >= 1 && proposed.length <= 3, slug)
     const spec = SECOND_HAND_PRODUCT_MAPPINGS.find((item) => item.productId === slug)
     assert.ok(spec, slug)
-    assert.equal(spec.reviewStatus, 'pending', slug)
     assert.equal(spec.externalProductId, null, slug)
     assert.equal(canComparePrices(spec), false, slug)
-    for (const attribute of spec.attributes) assert.equal(attribute.value, null, slug)
+    if (slug === 'nintendo-switch') {
+      assert.equal(spec.reviewStatus, 'verified')
+    } else {
+      assert.equal(spec.reviewStatus, 'pending', slug)
+      for (const attribute of spec.attributes) assert.equal(attribute.value, null, slug)
+    }
     for (const item of proposed) {
       assert.equal(item.reviewStatus, 'pending')
       assert.equal(item.externalProductId, null)
@@ -35,7 +39,7 @@ test('tech candidates stay pending and do not verify or enable comparison', () =
     }
   }
   for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
-    assert.equal(spec.reviewStatus, 'pending', spec.productId)
+    if (spec.productId !== 'nintendo-switch') assert.equal(spec.reviewStatus, 'pending', spec.productId)
     assert.equal(canComparePrices(spec), false, spec.productId)
   }
 })
