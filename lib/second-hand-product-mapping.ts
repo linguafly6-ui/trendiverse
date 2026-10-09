@@ -19,7 +19,10 @@ export {
  * Especificación del modelo que un slug editorial podrá comparar.
  * No es un anuncio ni un permiso para buscar precios.
  *
- * El esquema es compatible con el mapping del adapter de eBay
+ * Cada registro tiene una decisión auditable. En este catálogo solo
+ * `nintendo-switch` está verificado; los otros 17 siguen en `pending`.
+ * No se inventa un identificador de marketplace y no se habilita una
+ * comparación. El esquema es compatible con el mapping del adapter de eBay
  * (`productId`, `externalProductId`, `verified`), que sigue desconectado
  * y no se importa aquí.
  *
@@ -69,10 +72,19 @@ export interface SecondHandProductMapping {
    * null es ausencia. No se rellena con el nombre ni con el código del fabricante.
    */
   marketplaceIdentifier: SecondHandMarketplaceIdentifier | null
-  /** Responsable o referencia documental. null si nadie ha verificado el modelo. */
+  /** Responsable o referencia de una verificación. null mientras el estado no sea `verified`. */
   verificationRef: string | null
   /** Expediente de la ficha oficial. null mientras el modelo no esté verificado. */
   recordedVerification: SecondHandRecordedVerification | null
+  /** Por qué el estado es el que es. Obligatorio en el catálogo. */
+  decisionNote: string
+  /** Página oficial que respalda la decisión. null si el slug no es un producto de fabricante. */
+  decisionSourceUrl: string | null
+  /**
+   * Orden para cerrar la identidad antes de buscar un identificador externo.
+   * 1 es el primero. null en categorías. No es un ranking de ventas ni de precio.
+   */
+  reviewPriority: number | null
 }
 
 export const SECOND_HAND_MAPPING_AMBIGUITIES = [
@@ -144,6 +156,9 @@ function mapping(
   scope: SecondHandMappingScope,
   identifies: string,
   attributes: readonly SecondHandModelAttribute[],
+  decisionNote: string,
+  decisionSourceUrl: string | null,
+  reviewPriority: number | null,
 ): SecondHandProductMapping {
   return {
     productId,
@@ -155,6 +170,9 @@ function mapping(
     marketplaceIdentifier: null,
     verificationRef: null,
     recordedVerification: null,
+    decisionNote,
+    decisionSourceUrl,
+    reviewPriority,
   }
 }
 
@@ -216,8 +234,13 @@ function verifiedSwitchOled(): SecondHandProductMapping {
         quotation: '1. Product name Nintendo Switch – OLED Model console. 3. Model number HEG-001.',
       },
     },
+    decisionNote: 'Verificado. La ficha de Nintendo ES describe Nintendo Switch – Modelo OLED, con 64 GB y pantalla OLED de 7 pulgadas. La declaración UE de conformidad publica, en el mismo documento, «Product name Nintendo Switch – OLED Model console» y «Model number HEG-001». No cubre HAC-001(-01) ni la Lite HDH-001. HEG-001 es el código del fabricante, no un identificador de marketplace.',
+    decisionSourceUrl: SWITCH_OLED_SPEC_URL,
+    reviewPriority: 3,
   }
 }
+
+const CATEGORY_DECISION = 'Pendiente. El slug agrupa muchos modelos y no hay una ficha de fabricante de un único producto.'
 
 export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] = [
   mapping('iphone', 'family', 'Familia iPhone, sin generación ni capacidad.', [
@@ -225,90 +248,90 @@ export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] =
     attr('model', 'Línea'),
     attr('generation', 'Generación'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. La ficha del iPhone 17 lista 256 GB y 512 GB, y hay fichas distintas para iPhone 17 Pro y iPhone 17 Pro Max. El slug no elige generación ni capacidad.', 'https://support.apple.com/en-us/125089', 5),
   mapping('macbook', 'family', 'Familia MacBook, sin chip, tamaño ni configuración.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Línea, Air o Pro'),
     attr('generation', 'Generación o chip'),
     attr('configuration', 'Pantalla, memoria y almacenamiento'),
-  ]),
+  ], 'Pendiente. La ficha de 14 pulgadas cubre M5 Pro y M5 Max, con 24 GB y SSD de 1 TB o 2 TB, y más de un recuento de núcleos. No es un único equipo.', 'https://support.apple.com/en-us/126318', 8),
   mapping('ipad', 'family', 'Familia iPad, sin línea, generación ni capacidad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Línea: iPad, Air, Pro o mini'),
     attr('generation', 'Generación'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. El iPad Pro 11 pulgadas (M5) lista 256 GB, 512 GB, 1 TB y 2 TB, y no elige Wi-Fi o Cellular. El slug también incluye otras líneas.', 'https://support.apple.com/en-us/125406', 6),
   mapping('apple-watch', 'family', 'Familia Apple Watch, sin serie, caja ni conectividad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Línea: SE, Series o Ultra'),
     attr('generation', 'Generación'),
     attr('edition', 'Tamaño de caja y GPS o Cellular'),
-  ]),
+  ], 'Pendiente. En Series 12 los 64 GB figuran en el chip de la serie, no unidos a la altura de 42 mm o 46 mm. No hay identificador de modelo ni elección GPS o Cellular.', 'https://www.apple.com/apple-watch-series-12/specs/', 9),
   mapping('samsung-galaxy', 'family', 'Familia Samsung Galaxy, sin serie, generación ni capacidad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Serie, por ejemplo S, A o Z'),
     attr('generation', 'Generación'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. La ficha de España lista Galaxy S25 en 128 GB, 256 GB y 512 GB, S25+ en 256 GB y 512 GB, y S25 Ultra en 256 GB, 512 GB y 1 TB. La diagonal no está en esa ficha.', 'https://www.samsung.com/es/smartphones/galaxy-s25/specs/', 7),
   mapping('playstation-5', 'family', 'PlayStation 5, sin edición ni capacidad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('edition', 'Con lector, Digital o Slim'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. La página de EE. UU. separa PS5 console - 1TB con Blu-ray y PS5 Digital Edition - 825GB sin lector, y no asigna un código CFI. No se trata el lector como si fuera la digital.', 'https://www.playstation.com/en-us/ps5/', 1),
   verifiedSwitchOled(),
   mapping('xbox', 'family', 'Marca Xbox, sin generación ni capacidad. Cubre varias consolas.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('generation', 'Generación, por ejemplo Series X o Series S'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. La ficha separa Series X Carbon Black de 1 TB con lector y Series X 1TB Digital Edition. Esas dos líneas no comparten un código de modelo. Series S es otra consola.', 'https://www.xbox.com/en-US/consoles/xbox-series-x', 2),
   mapping('steam-deck', 'family', 'Steam Deck, sin revisión ni capacidad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('edition', 'LCD u OLED'),
     attr('capacity', 'Capacidad'),
-  ]),
+  ], 'Pendiente. La ficha técnica lista Steam Deck OLED de 512 GB y de 1 TB. No publica la capacidad LCD.', 'https://www.steamdeck.com/en/tech', 4),
   mapping('zapatillas', 'category', 'Categoría de calzado, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('bolsos', 'category', 'Categoría de bolsos, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('ropa-vintage', 'category', 'Categoría de prendas únicas, no un producto comparable.', [
     attr('brand', 'Fabricante o casa'),
     attr('model', 'Tipo de prenda'),
     attr('generation', 'Época'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('aspiradores', 'category', 'Categoría de aspiradores, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('cafeteras', 'category', 'Categoría de cafeteras, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
     attr('edition', 'Tipo: cápsulas, espresso o superautomática'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('muebles', 'category', 'Categoría de muebles, no una pieza.', [
     attr('model', 'Tipo de mueble'),
     attr('configuration', 'Medidas'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('bicicletas', 'category', 'Categoría de bicicletas, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
     attr('edition', 'Tipo: carretera, montaña, urbana u otro'),
     attr('configuration', 'Talla'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('material-fitness', 'category', 'Categoría de material fitness, no un aparato.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Aparato'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
   mapping('material-outdoor', 'category', 'Categoría de material outdoor, no un equipo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Tipo de equipo'),
-  ]),
+  ], CATEGORY_DECISION, null, null),
 ]
 
 export function missingRequiredAttributes(spec: SecondHandProductMapping): SecondHandModelAttribute[] {
@@ -396,6 +419,53 @@ export function asExternalMapping(
 
 export function secondHandProductMapping(productId: string): SecondHandProductMapping | undefined {
   return SECOND_HAND_PRODUCT_MAPPINGS.find((spec) => spec.productId === productId)
+}
+
+const OFFICIAL_DECISION_HOSTS = new Set([
+  'support.apple.com',
+  'www.apple.com',
+  'www.samsung.com',
+  'www.playstation.com',
+  'www.nintendo.com',
+  'www.xbox.com',
+  'www.steamdeck.com',
+])
+
+/**
+ * Forma válida de `reviewPriority`: `null`, o un entero del 1 al 9.
+ * No interpreta ventas, precios ni identificadores de marketplace.
+ * El alcance del slug decide cuál de las dos formas corresponde.
+ */
+export function isValidReviewPriority(value: unknown): boolean {
+  if (value === null) return true
+  return typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= 9
+}
+
+/** La URL de una decisión pendiente tiene que ser una ficha https del fabricante. */
+export function isOfficialMappingDecisionSource(url: string | null): boolean {
+  if (!hasText(url)) return false
+  try {
+    const parsed = new URL(url)
+    return parsed.protocol === 'https:' && OFFICIAL_DECISION_HOSTS.has(parsed.hostname)
+  } catch {
+    return false
+  }
+}
+
+/**
+ * La decisión se puede auditar. Un pendiente no lleva identificador ni
+ * referencia de verificación. Una familia pendiente cita una ficha oficial.
+ */
+export function mappingDecisionIsExplicit(spec: SecondHandProductMapping): boolean {
+  if (!hasText(spec.decisionNote)) return false
+  if (spec.reviewStatus === 'rejected') return true
+  if (spec.reviewStatus === 'verified') {
+    return hasText(spec.verificationRef) && missingRequiredAttributes(spec).length === 0
+  }
+  if (spec.externalProductId !== null || spec.marketplaceIdentifier !== null || spec.verificationRef !== null) return false
+  if (!isValidReviewPriority(spec.reviewPriority)) return false
+  if (spec.scope === 'category') return spec.decisionSourceUrl === null && spec.reviewPriority === null
+  return isOfficialMappingDecisionSource(spec.decisionSourceUrl) && typeof spec.reviewPriority === 'number'
 }
 
 /** El catálogo editorial y el de mapping nombran los mismos slugs, en el mismo orden. */

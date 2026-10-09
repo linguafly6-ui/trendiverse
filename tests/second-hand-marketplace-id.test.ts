@@ -98,6 +98,9 @@ function detached(
     marketplaceIdentifier: identifier,
     verificationRef: 'fixture-review',
     recordedVerification: recordedVerification(),
+    decisionNote: 'Fixture sintético. No es un producto del catálogo.',
+    decisionSourceUrl: null,
+    reviewPriority: null,
   }
 }
 
