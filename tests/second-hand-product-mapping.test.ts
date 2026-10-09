@@ -39,6 +39,7 @@ test('the mapping catalog matches the editorial slugs and verifies only the Swit
   assert.deepEqual(SECOND_HAND_PRODUCTS.map((product) => product.slug), SLUGS)
   for (const spec of SECOND_HAND_PRODUCT_MAPPINGS) {
     assert.equal(spec.externalProductId, null, spec.productId)
+    assert.equal(spec.marketplaceIdentifier, null, spec.productId)
     assert.equal(canComparePrices(spec), false, spec.productId)
     assert.ok(spec.identifies.trim(), spec.productId)
     assert.ok(spec.attributes.some((attribute) => attribute.requiredForComparison), spec.productId)

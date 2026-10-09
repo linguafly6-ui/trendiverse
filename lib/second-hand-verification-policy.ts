@@ -9,6 +9,7 @@ import type {
  * Expediente que haría falta para pasar un mapping de `pending` a `verified`.
  * No busca precios y no enciende el adapter.
  * Solo `nintendo-switch` lleva un expediente real. No incluye un id de marketplace.
+ * Decidir si ese id está validado corresponde a `lib/second-hand-marketplace-id.ts`.
  */
 
 export const SECOND_HAND_VERIFICATION_ISSUE_CODES = [
