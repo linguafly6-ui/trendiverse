@@ -23,7 +23,7 @@ Sin binding D1, la app usa datos de ejemplo (`lib/sample-data.ts`), por lo que f
 
 Variables opcionales: `NEXT_PUBLIC_GA_ID` (Google Analytics), `NEXT_PUBLIC_SITE_URL`.
 
-El cierre de cuenta de eBay Marketplace usa secretos de Pages, no variables de este archivo. Sin el binding `DB` y la migración `0005`, el POST no admite la notificación. La URL, los nombres y el estado de esa configuración están en [docs/ebay-account-deletion.md](docs/ebay-account-deletion.md).
+El cierre de cuenta de eBay Marketplace usa secretos de Pages, no variables de este archivo. Sin el binding `DB` y la migración `0005`, el POST no admite la notificación. La base de preview se consulta con `npm run migrate:preview:list` y se migra con `npm run migrate:preview:apply`. `npm run migrate:cf` apunta a `trendiverse-db`. La URL, los nombres y el estado de esa configuración están en [docs/ebay-account-deletion.md](docs/ebay-account-deletion.md).
 
 ## Estructura
 
