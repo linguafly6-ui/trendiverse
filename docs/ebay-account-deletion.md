@@ -2,13 +2,15 @@
 
 Este endpoint permite que eBay valide el destino de las notificaciones `MARKETPLACE_ACCOUNT_DELETION` y que Trendiverse acepte solo notificaciones firmadas. No enciende el adapter de Browse, no pide la exención de conservación de datos y no llama a eBay.
 
+No está listo para producción. Faltan el binding D1, la migración del recibo y una clave pública real obtenida con `getPublicKey`. Aceptar una notificación no demuestra que se hayan borrado datos personales.
+
 ## Qué hay guardado hoy
 
-El esquema D1 (`articles`, `deals`, `tools`, `categories`) y el catálogo de Segunda Mano no tienen `username`, `userId` ni `eiasToken`. Los anuncios, precios y estadísticas editoriales no están unidos a una cuenta de eBay. No existe un sistema de usuarios de eBay y esta entrega no lo crea.
+Se revisaron el esquema D1 (`articles`, `deals`, `tools`, `categories`), el catálogo de Segunda Mano y `wrangler.toml`. No hay columnas `username`, `userId` ni `eiasToken`. El binding `DB` está comentado. El binding KV `CACHE` también está comentado. Los anuncios, precios y estadísticas editoriales no están unidos a una cuenta de eBay. No existe un sistema de usuarios de eBay y esta entrega no lo crea.
 
-Una notificación válida se responde con HTTP 204. El recibo interno queda en `no-linked-personal-data`. Eso significa que la notificación se aceptó y que no había filas personales que borrar. No significa que se haya borrado el contenido de un vendedor en eBay ni un anuncio global de Trendiverse.
+Eso no demuestra que no existan datos personales en otros almacenes: logs de Cloudflare, analítica, KV si alguien lo enlaza en el panel, u otro sitio fuera de este repositorio. El recibo de una notificación válida queda en `acknowledged-deletion-not-implemented`. El código marca la limitación como `no-ebay-user-identity-stored`. HTTP 204 significa que la firma se aceptó y que el recibo se cerró. No significa que se haya buscado ni borrado el contenido de un vendedor.
 
-Para poder borrar de verdad haría falta una tabla futura cuya clave sea esa identidad, registrada en el borrado dirigido. Hasta entonces el cumplimiento del borrado de datos personales de eBay no está cerrado. El código marca esa limitación como `no-ebay-user-identity-stored`.
+El almacén de producción no ejecuta `DELETE` sobre anuncios, precios ni estadísticas. Un duplicado con el recibo ya cerrado responde 204 y no vuelve a entrar en el borrado.
 
 ## URL del portal de eBay
 
@@ -16,7 +18,29 @@ Para poder borrar de verdad haría falta una tabla futura cuya clave sea esa ide
 https://trendiverse.org/api/ebay/account-deletion
 ```
 
-Hay que copiarla tal cual en el portal de desarrolladores de eBay. El hash del challenge usa esa misma cadena, no la URL que el worker crea por su cuenta.
+Hay que copiarla tal cual. El hash del challenge usa `EBAY_ACCOUNT_DELETION_ENDPOINT`, no la URL que el worker reconstruye. La guía oficial concatena, en UTF-8 y en este orden, `challengeCode`, el token de verificación y esa URL. La respuesta es JSON `{ "challengeResponse": "<hex>" }` con HTTP 200 y `Content-Type: application/json`.
+
+## Binding D1, sin aplicar
+
+En este repositorio el binding no está activo:
+
+```toml
+# [[d1_databases]]
+# binding = "DB"
+```
+
+En el workflow del PR #106, `CLOUDFLARE_D1_DATABASE_ID` salió vacío. El secreto de la API de Cloudflare no está en este entorno, así que no se ha podido leer el panel de Pages. No se puede afirmar que producción tenga `DB`.
+
+Hasta que exista, el POST de una notificación firmada responde 503 y no reserva un recibo. El GET del challenge puede responder 200 si el token y la URL son válidos. La idempotencia duradera no existe sin D1: la ruta no usa memoria del isolate.
+
+Pasos que faltan, y que no se han ejecutado:
+
+1. Crear la base, si aún no existe: `npx wrangler d1 create trendiverse-db`.
+2. En Cloudflare Pages, proyecto `trendiverse`, Settings, Functions, enlazar esa base con el nombre `DB`. No basta con descomentar `wrangler.toml` en un PR.
+3. Aplicar las migraciones pendientes y, en concreto, `migrations/0005_ebay_account_deletion_receipts.sql`. El comando del repositorio es `npm run migrate:cf`. No lanza un borrado de anuncios: la tabla nueva solo tiene `notification_id`, `outcome` y `processed_at`.
+4. Comprobar en el panel que el deployment de producción muestra el binding `DB`.
+
+La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae después de reservar y antes de cerrar el recibo, la fila queda en `reserved` y los reintentos siguen en 503. No hay un barrido automático de reservas huérfanas.
 
 ## Secretos
 
@@ -25,8 +49,8 @@ Solo en Cloudflare Pages, como secretos del proyecto `trendiverse`. No van en el
 | Variable | Uso |
 | --- | --- |
 | `EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN` | 32 a 80 caracteres: letras, cifras, `_` y `-`. Entra en el hash del challenge. |
-| `EBAY_ACCOUNT_DELETION_ENDPOINT` | La URL de arriba, con `https`, sin consulta ni usuario en la URL. |
-| `EBAY_NOTIFICATION_PUBLIC_KEYS` | JSON `{ "kid": "-----BEGIN PUBLIC KEY-----\\n...\\n-----END PUBLIC KEY-----" }`. La clave pública del `kid` que eBay pone en `X-EBAY-SIGNATURE`. |
+| `EBAY_ACCOUNT_DELETION_ENDPOINT` | La URL de arriba, con `https`, sin consulta ni usuario, y con la ruta `/api/ebay/account-deletion`. |
+| `EBAY_NOTIFICATION_PUBLIC_KEYS` | JSON con el `kid` de `X-EBAY-SIGNATURE` y la respuesta de `getPublicKey`. |
 
 ```bash
 npx wrangler pages secret put EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN --project-name trendiverse
@@ -34,54 +58,62 @@ npx wrangler pages secret put EBAY_ACCOUNT_DELETION_ENDPOINT --project-name tren
 npx wrangler pages secret put EBAY_NOTIFICATION_PUBLIC_KEYS --project-name trendiverse
 ```
 
-Si D1 está enlazado como `DB`, aplica `migrations/0005_ebay_account_deletion_receipts.sql`. Esa tabla solo guarda el id de la notificación, el resultado y la fecha. Sin D1, el recibo vive en la memoria del isolate: un duplicado en otro isolate vuelve a comprobar la firma y el borrado dirigido, que hoy no borra filas. El borrado dirigido tiene que seguir siendo idempotente cuando exista.
+El mecanismo oficial, descrito en la guía de Marketplace Account Deletion y en el SDK `eBay/event-notification-nodejs-sdk`, es: decodificar `X-EBAY-SIGNATURE` de Base64, leer `kid`, y llamar a `GET https://api.ebay.com/commerce/notification/v1/public_key/{kid}` con un token de aplicación. La respuesta es `{ "key", "algorithm", "digest" }`. `key` es un PEM SPKI. En el fixture publicado por ese SDK, `algorithm` es `ECDSA` y `digest` es `SHA1`. Esta aplicación no hace esa llamada ni guarda credenciales de eBay.
 
-La clave pública se obtiene fuera de esta aplicación, con la API de notificaciones de eBay (`getPublicKey` para el `kid` de la cabecera). Este código no hace esa llamada. Si el secreto no está, o el `kid` no coincide, el POST no se acepta y no hay borrado.
+El secreto puede ser un PEM o el cuerpo de `getPublicKey`:
+
+```json
+{
+  "el-kid-de-la-cabecera": {
+    "key": "-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----",
+    "algorithm": "ECDSA",
+    "digest": "SHA1"
+  }
+}
+```
+
+La clave del fixture del SDK no es la clave de producción. Hay que obtener la clave del `kid` que envíe eBay y volver a pegarla si eBay rota el `kid`. Si el secreto falta, el `kid` no está, el algoritmo no es ECDSA o la curva no es P-256, el POST no se acepta y no hay borrado.
 
 ## Challenge
 
 `GET /api/ebay/account-deletion?challenge_code=<código>`
 
-La respuesta 200 es JSON:
+El código del query entra en el hash tal cual. Un token ausente o con formato inválido, o un endpoint que no sea esa URL https, responde 503 y no calcula el hash.
 
-```json
-{ "challengeResponse": "<sha256 en hexadecimal>" }
-```
-
-El SHA-256 es la concatenación exacta, en UTF-8, de `challengeCode`, el token de verificación y la URL del endpoint, en ese orden.
-
-Con el servidor local y los tres valores en el entorno:
+Con el servidor local y los valores en el entorno:
 
 ```bash
 curl -sS "http://localhost:3000/api/ebay/account-deletion?challenge_code=ebay-challenge-code"
 ```
 
-El hex esperado se puede calcular sin imprimir el token en un log de aplicación:
+El hex esperado se puede calcular sin imprimir el token:
 
 ```bash
 node --input-type=module -e "import { createHash } from 'node:crypto'; const h = createHash('sha256'); h.update(process.argv[1]); h.update(process.env.EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN); h.update(process.env.EBAY_ACCOUNT_DELETION_ENDPOINT); console.log(h.digest('hex'))" ebay-challenge-code
 ```
 
-Un token ausente o con formato inválido, o un endpoint que no sea esa URL https, responde 503 y no calcula el hash.
-
 ## POST
 
-eBay envía el cuerpo JSON y la cabecera `X-EBAY-SIGNATURE`. Esa cabecera es un JSON en Base64 con `alg` `ECDSA`, `digest` `SHA1`, `kid` y `signature`. Se verifica la firma ECDSA SHA-1 sobre el cuerpo crudo con la clave pública de ese `kid`. La clave tiene que ser EC P-256 en formato SPKI, que es la que publica eBay para esta notificación. Otra curva no se acepta.
+La cabecera `X-EBAY-SIGNATURE` es un JSON en Base64. En el vector publicado por el SDK de Node, el campo `alg` es `ecdsa` en minúsculas, `digest` es `SHA1`, y `signature` es la firma ECDSA en Base64 DER. También se acepta `ECDSA` en mayúsculas. Cualquier otro algoritmo o digest se rechaza.
+
+Se verifica ECDSA P-256 con SHA-1 sobre el cuerpo crudo. Si esa comprobación falla y el cuerpo es JSON, se repite sobre `JSON.stringify` del mismo objeto, que es lo que comprueba el SDK de Node. El SDK de Java vuelve a serializar con Jackson; esa cadena puede no coincidir. No se ha visto un POST real de eBay. Si la firma de un aviso real no encaja, la respuesta es 412 y no hay borrado.
 
 | Resultado | HTTP |
 | --- | --- |
-| Firma válida, notificación aceptada o ya recibida | 204 |
+| Firma válida, recibo cerrado ahora o ya cerrado antes | 204 |
+| Firma válida, pero la reserva de otro proceso sigue abierta | 503 |
 | Firma ausente, inválida o de otro `kid` | 412 |
 | Cuerpo que no es esta notificación, o sin identidad | 400 |
-| Cuerpo de más de 64 KiB | 413 |
+| `Content-Length` o cuerpo de más de 64 KiB | 413 |
 | Token, endpoint o claves públicas sin configurar | 503 |
+| Sin binding D1, o fallo al reservar el recibo | 503 o 500 |
 
-Un 204 repetido no vuelve a ejecutar el borrado. El 412 no guarda un recibo. Los identificadores de la cuenta no se escriben en el recibo ni en la respuesta.
+Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar responde 500 y no ejecuta el borrado. Si el borrado lanza un error, se suelta la reserva `reserved` para que un reintento pueda continuar; hoy ese borrado no está implementado y no toca el catálogo. Los identificadores de la cuenta no se escriben en el recibo, en la respuesta ni en logs.
 
 ## Prueba automática
 
 ```bash
-npm test -- tests/ebay-account-deletion.test.ts
+node --import tsx --test tests/ebay-account-deletion.test.ts
 ```
 
-Cubre el challenge, el formato del token, firmas inválidas, una notificación firmada, el duplicado, los errores de cuerpo y que un anuncio no asociado sobrevive.
+Cubre el challenge, el formato del token, el vector de firma publicado por el SDK de eBay, firmas inválidas, una notificación firmada, el duplicado, dos reservas simultáneas, un fallo de base de datos, la ausencia de D1 y que un anuncio no asociado sobrevive. La clave de ese vector es un fixture público del SDK, no una clave obtenida de `getPublicKey` para Trendiverse.

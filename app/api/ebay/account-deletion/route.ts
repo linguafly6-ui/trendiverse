@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import {
+  EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH,
   createD1EbayAccountDeletionStore,
-  getIsolateEbayAccountDeletionStore,
   handleEbayAccountDeletion,
   readEbayAccountDeletionConfig,
   type EbayReceiptDatabase,
@@ -45,12 +45,16 @@ export async function GET(req: NextRequest) {
     rawBody: '',
     signatureHeader: null,
     config: readEbayAccountDeletionConfig(envBindings(env)),
-    store: storeFor(env),
+    store: env.DB ? createD1EbayAccountDeletionStore(env.DB) : null,
   })
   return jsonResult(result.status, result.body)
 }
 
 export async function POST(req: NextRequest) {
+  const declaredLength = Number(req.headers.get('content-length'))
+  if (Number.isFinite(declaredLength) && declaredLength > EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH) {
+    return jsonResult(413, null)
+  }
   const env = await readRuntimeEnv()
   const result = await handleEbayAccountDeletion({
     method: 'POST',
@@ -58,7 +62,7 @@ export async function POST(req: NextRequest) {
     rawBody: await req.text(),
     signatureHeader: req.headers.get('x-ebay-signature'),
     config: readEbayAccountDeletionConfig(envBindings(env)),
-    store: storeFor(env),
+    store: env.DB ? createD1EbayAccountDeletionStore(env.DB) : null,
   })
   return jsonResult(result.status, result.body)
 }
@@ -69,8 +73,4 @@ function envBindings(env: AccountDeletionEnv) {
     endpoint: env.EBAY_ACCOUNT_DELETION_ENDPOINT,
     publicKeysJson: env.EBAY_NOTIFICATION_PUBLIC_KEYS,
   }
-}
-
-function storeFor(env: AccountDeletionEnv) {
-  return env.DB ? createD1EbayAccountDeletionStore(env.DB) : getIsolateEbayAccountDeletionStore()
 }

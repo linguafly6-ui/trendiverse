@@ -2,17 +2,18 @@
  * Notificaciones de cierre de cuenta de eBay Marketplace.
  *
  * El endpoint responde al challenge y solo acepta un POST cuya firma ECDSA
- * SHA-1 encaje con una clave pública ya configurada. No llama a eBay.
+ * SHA-1 encaje con una clave pública ya configurada. No llama a eBay: la
+ * clave tiene que pegarse desde getPublicKey. Una clave de prueba no es la
+ * clave de producción.
  *
- * Trendiverse no guarda username, userId ni eiasToken. El borrado no toca
- * anuncios, precios ni estadísticas que no estén unidos a esa identidad.
- * Hoy no hay ninguna tabla unida, así que una notificación válida se acepta
- * y deja constancia de que no había datos personales asociados. Eso no
- * equivale a haber borrado el contenido de un vendedor.
+ * El esquema revisado no tiene username, userId ni eiasToken. El POST no
+ * borra anuncios, precios ni estadísticas. Aceptar la notificación no
+ * demuestra que no existan datos personales en otros almacenes.
  *
- * La firma se comprueba con Web Crypto: ECDSA P-256 y SHA-1, que es la
- * curva de las claves públicas de esta notificación. La firma DER de eBay
- * se convierte al formato raw que exige SubtleCrypto. Otra curva se rechaza.
+ * La firma se comprueba con Web Crypto: ECDSA P-256 y SHA-1. La firma DER
+ * del SDK oficial se convierte al formato raw de SubtleCrypto. Otra curva
+ * se rechaza. El recibo se reserva con un INSERT atómico antes de cualquier
+ * borrado, para que dos POST simultáneos no ejecuten el borrado dos veces.
  */
 
 export const EBAY_ACCOUNT_DELETION_ENDPOINT_PATH = '/api/ebay/account-deletion'
@@ -25,9 +26,12 @@ export const EBAY_VERIFICATION_TOKEN_PATTERN = /^[A-Za-z0-9_-]{32,80}$/
 const MAX_CHALLENGE_CODE_LENGTH = 128
 const MAX_NOTIFICATION_ID_LENGTH = 128
 const MAX_IDENTITY_LENGTH = 512
-const MAX_BODY_LENGTH = 65_536
+export const EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH = 65_536
 
-export type EbayAccountDeletionOutcome = 'no-linked-personal-data' | 'linked-personal-data-removed'
+export type EbayAccountDeletionOutcome =
+  | 'reserved'
+  | 'acknowledged-deletion-not-implemented'
+  | 'linked-personal-data-removed'
 
 export interface EbayAccountIdentity {
   username: string | null
@@ -47,12 +51,23 @@ export interface EbayAccountDeletionReceipt {
 
 export interface EbayDeletionReport {
   deletedRowCount: number
+  /** False en el almacén de producción: no hay un índice de identidades que borrar. */
+  implemented: boolean
   limitation: typeof EBAY_ACCOUNT_DELETION_LIMITATION | null
 }
 
+export type EbayReceiptClaim = 'created' | 'duplicate' | 'in-progress'
+
 export interface EbayAccountDeletionStore {
   findReceipt(notificationId: string): Promise<EbayAccountDeletionReceipt | null>
-  saveReceipt(receipt: EbayAccountDeletionReceipt): Promise<'created' | 'exists'>
+  /**
+   * Reserva el notificationId con una escritura atómica. Solo un llamador
+   * recibe `created`. `duplicate` es un recibo ya cerrado. `in-progress`
+   * es una reserva aún abierta.
+   */
+  claimReceipt(notificationId: string, processedAt: string): Promise<EbayReceiptClaim>
+  finalizeReceipt(notificationId: string, outcome: EbayAccountDeletionOutcome): Promise<void>
+  releaseReceipt(notificationId: string): Promise<void>
   deleteLinkedPersonalData(identity: EbayAccountIdentity): Promise<EbayDeletionReport>
 }
 
@@ -83,13 +98,25 @@ export function isValidEbayAccountDeletionEndpoint(endpoint: string): boolean {
     && url.password === ''
     && url.search === ''
     && url.hash === ''
-    && url.pathname.length > 1
+    && url.pathname === EBAY_ACCOUNT_DELETION_ENDPOINT_PATH
 }
 
 export async function ebayChallengeResponse(challengeCode: string, verificationToken: string, endpoint: string): Promise<string> {
   const bytes = bytesToArrayBuffer(new TextEncoder().encode(`${challengeCode}${verificationToken}${endpoint}`))
   const digest = await crypto.subtle.digest('SHA-256', bytes)
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
+}
+
+function pemFromPublicKeyEntry(value: unknown): string | null {
+  if (typeof value === 'string') {
+    return value.includes('BEGIN PUBLIC KEY') && value.includes('END PUBLIC KEY') ? value : null
+  }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null
+  const record = value as { key?: unknown, algorithm?: unknown, digest?: unknown }
+  if (typeof record.key !== 'string' || !record.key.includes('BEGIN PUBLIC KEY') || !record.key.includes('END PUBLIC KEY')) return null
+  if (typeof record.algorithm === 'string' && record.algorithm.toLowerCase() !== 'ecdsa') return null
+  if (typeof record.digest === 'string' && record.digest.toUpperCase() !== 'SHA1') return null
+  return record.key
 }
 
 export function parseEbayNotificationPublicKeys(raw: string): ReadonlyMap<string, string> | null {
@@ -103,8 +130,9 @@ export function parseEbayNotificationPublicKeys(raw: string): ReadonlyMap<string
   const keys = new Map<string, string>()
   for (const [kid, value] of Object.entries(parsed)) {
     if (!kid.trim() || kid.length > 200 || kid !== kid.trim()) return null
-    if (typeof value !== 'string' || !value.includes('BEGIN PUBLIC KEY') || !value.includes('END PUBLIC KEY')) return null
-    keys.set(kid, value)
+    const pem = pemFromPublicKeyEntry(value)
+    if (!pem) return null
+    keys.set(kid, pem)
   }
   return keys.size > 0 ? keys : null
 }
@@ -141,7 +169,8 @@ export async function verifyEbayAccountDeletionSignature(
     const headerBytes = decodeBase64(signatureHeader)
     if (!headerBytes) return false
     const decoded = JSON.parse(new TextDecoder().decode(headerBytes)) as Partial<EbaySignatureHeader>
-    if (decoded.alg !== 'ECDSA' || decoded.digest !== 'SHA1') return false
+    if (typeof decoded.alg !== 'string' || decoded.alg.toLowerCase() !== 'ecdsa') return false
+    if (typeof decoded.digest !== 'string' || decoded.digest.toUpperCase() !== 'SHA1') return false
     if (typeof decoded.kid !== 'string' || typeof decoded.signature !== 'string' || !decoded.signature) return false
     header = { alg: decoded.alg, kid: decoded.kid, signature: decoded.signature, digest: decoded.digest }
   } catch {
@@ -159,14 +188,30 @@ export async function verifyEbayAccountDeletionSignature(
     )
     const signature = derSignatureToP1363(decodeBase64(header.signature) ?? new Uint8Array())
     if (!signature) return false
-    return crypto.subtle.verify(
-      { name: 'ECDSA', hash: 'SHA-1' },
-      publicKey,
-      bytesToArrayBuffer(signature),
-      bytesToArrayBuffer(new TextEncoder().encode(rawBody)),
-    )
+    const signed = await verifySignatureBytes(publicKey, signature, rawBody)
+    if (signed) return true
+    const compact = compactJson(rawBody)
+    if (compact === null || compact === rawBody) return false
+    return verifySignatureBytes(publicKey, signature, compact)
   } catch {
     return false
+  }
+}
+
+async function verifySignatureBytes(publicKey: CryptoKey, signature: Uint8Array, payload: string): Promise<boolean> {
+  return crypto.subtle.verify(
+    { name: 'ECDSA', hash: 'SHA-1' },
+    publicKey,
+    bytesToArrayBuffer(signature),
+    bytesToArrayBuffer(new TextEncoder().encode(payload)),
+  )
+}
+
+function compactJson(rawBody: string): string | null {
+  try {
+    return JSON.stringify(JSON.parse(rawBody))
+  } catch {
+    return null
   }
 }
 
@@ -264,7 +309,7 @@ function optionalIdentity(value: unknown): string | null {
 }
 
 export function unlinkedPersonalDataDeletion(): EbayDeletionReport {
-  return { deletedRowCount: 0, limitation: EBAY_ACCOUNT_DELETION_LIMITATION }
+  return { deletedRowCount: 0, implemented: false, limitation: EBAY_ACCOUNT_DELETION_LIMITATION }
 }
 
 export interface EbayReceiptDatabase {
@@ -277,7 +322,25 @@ export interface EbayReceiptDatabase {
 }
 
 const SELECT_RECEIPT = 'SELECT notification_id, outcome, processed_at FROM ebay_account_deletion_receipts WHERE notification_id = ?'
-const INSERT_RECEIPT = 'INSERT INTO ebay_account_deletion_receipts (notification_id, outcome, processed_at) VALUES (?, ?, ?) ON CONFLICT(notification_id) DO NOTHING'
+const INSERT_RECEIPT = 'INSERT INTO ebay_account_deletion_receipts (notification_id, outcome, processed_at) VALUES (?, \'reserved\', ?) ON CONFLICT(notification_id) DO NOTHING'
+const FINALIZE_RECEIPT = 'UPDATE ebay_account_deletion_receipts SET outcome = ? WHERE notification_id = ? AND outcome = \'reserved\''
+const RELEASE_RECEIPT = 'DELETE FROM ebay_account_deletion_receipts WHERE notification_id = ? AND outcome = \'reserved\''
+
+const FINAL_OUTCOMES = new Set<EbayAccountDeletionOutcome>([
+  'acknowledged-deletion-not-implemented',
+  'linked-personal-data-removed',
+])
+
+function knownOutcome(value: string): EbayAccountDeletionOutcome | null {
+  if (value === 'reserved' || value === 'acknowledged-deletion-not-implemented' || value === 'linked-personal-data-removed') return value
+  return null
+}
+
+async function confirmedChanges(result: { meta?: { changes?: number } }): Promise<number> {
+  const changes = result.meta?.changes
+  if (typeof changes !== 'number') throw new Error('receipt-write-unconfirmed')
+  return changes
+}
 
 export function createD1EbayAccountDeletionStore(db: EbayReceiptDatabase): EbayAccountDeletionStore {
   return {
@@ -288,12 +351,26 @@ export function createD1EbayAccountDeletionStore(db: EbayReceiptDatabase): EbayA
         processed_at: string
       }>()
       if (!row) return null
-      if (row.outcome !== 'no-linked-personal-data' && row.outcome !== 'linked-personal-data-removed') return null
-      return { notificationId: row.notification_id, outcome: row.outcome, processedAt: row.processed_at }
+      const outcome = knownOutcome(row.outcome)
+      if (!outcome) return null
+      return { notificationId: row.notification_id, outcome, processedAt: row.processed_at }
     },
-    async saveReceipt(receipt) {
-      const result = await db.prepare(INSERT_RECEIPT).bind(receipt.notificationId, receipt.outcome, receipt.processedAt).run()
-      return (result.meta?.changes ?? 0) > 0 ? 'created' : 'exists'
+    async claimReceipt(notificationId, processedAt) {
+      const inserted = await confirmedChanges(
+        await db.prepare(INSERT_RECEIPT).bind(notificationId, processedAt).run(),
+      )
+      if (inserted > 0) return 'created'
+      const existing = await this.findReceipt(notificationId)
+      if (existing && FINAL_OUTCOMES.has(existing.outcome)) return 'duplicate'
+      return 'in-progress'
+    },
+    async finalizeReceipt(notificationId, outcome) {
+      if (!FINAL_OUTCOMES.has(outcome)) throw new Error('invalid-receipt-outcome')
+      const updated = await confirmedChanges(await db.prepare(FINALIZE_RECEIPT).bind(outcome, notificationId).run())
+      if (updated < 1) throw new Error('receipt-not-reserved')
+    },
+    async releaseReceipt(notificationId) {
+      await confirmedChanges(await db.prepare(RELEASE_RECEIPT).bind(notificationId).run())
     },
     async deleteLinkedPersonalData() {
       return unlinkedPersonalDataDeletion()
@@ -308,25 +385,27 @@ export function createMemoryEbayAccountDeletionStore(
     async findReceipt(notificationId) {
       return receipts.get(notificationId) ?? null
     },
-    async saveReceipt(receipt) {
-      if (receipts.has(receipt.notificationId)) return 'exists'
-      receipts.set(receipt.notificationId, receipt)
+    async claimReceipt(notificationId, processedAt) {
+      const existing = receipts.get(notificationId)
+      if (existing && FINAL_OUTCOMES.has(existing.outcome)) return 'duplicate'
+      if (existing) return 'in-progress'
+      receipts.set(notificationId, { notificationId, outcome: 'reserved', processedAt })
       return 'created'
+    },
+    async finalizeReceipt(notificationId, outcome) {
+      if (!FINAL_OUTCOMES.has(outcome)) throw new Error('invalid-receipt-outcome')
+      const existing = receipts.get(notificationId)
+      if (!existing || existing.outcome !== 'reserved') throw new Error('receipt-not-reserved')
+      receipts.set(notificationId, { ...existing, outcome })
+    },
+    async releaseReceipt(notificationId) {
+      const existing = receipts.get(notificationId)
+      if (existing?.outcome === 'reserved') receipts.delete(notificationId)
     },
     async deleteLinkedPersonalData() {
       return unlinkedPersonalDataDeletion()
     },
   }
-}
-
-const isolateReceipts = new Map<string, EbayAccountDeletionReceipt>()
-
-export function getIsolateEbayAccountDeletionStore(): EbayAccountDeletionStore {
-  return createMemoryEbayAccountDeletionStore(isolateReceipts)
-}
-
-export function resetIsolateEbayAccountDeletionStoreForTests(): void {
-  isolateReceipts.clear()
 }
 
 export async function handleEbayAccountDeletion(input: {
@@ -335,7 +414,7 @@ export async function handleEbayAccountDeletion(input: {
   rawBody: string
   signatureHeader: string | null
   config: EbayAccountDeletionConfig
-  store: EbayAccountDeletionStore
+  store: EbayAccountDeletionStore | null
   now?: () => string
 }): Promise<EbayAccountDeletionHttpResult> {
   if (input.method === 'GET') return await handleChallenge(input)
@@ -348,7 +427,7 @@ async function handleChallenge(input: {
   config: EbayAccountDeletionConfig
 }): Promise<EbayAccountDeletionHttpResult> {
   if (!input.config.verificationToken || !input.config.endpoint) return { status: 503, body: null }
-  const challengeCode = input.challengeCode?.trim() ?? ''
+  const challengeCode = input.challengeCode ?? ''
   if (!challengeCode || challengeCode.length > MAX_CHALLENGE_CODE_LENGTH) return { status: 400, body: null }
   return {
     status: 200,
@@ -358,31 +437,50 @@ async function handleChallenge(input: {
   }
 }
 
+function outcomeForReport(report: EbayDeletionReport): EbayAccountDeletionOutcome {
+  if (report.implemented && report.deletedRowCount > 0) return 'linked-personal-data-removed'
+  return 'acknowledged-deletion-not-implemented'
+}
+
 async function handleNotification(input: {
   rawBody: string
   signatureHeader: string | null
   config: EbayAccountDeletionConfig
-  store: EbayAccountDeletionStore
+  store: EbayAccountDeletionStore | null
   now?: () => string
 }): Promise<EbayAccountDeletionHttpResult> {
   if (!input.config.publicKeys) return { status: 503, body: null }
-  if (input.rawBody.length > MAX_BODY_LENGTH) return { status: 413, body: null }
+  if (input.rawBody.length > EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH) return { status: 413, body: null }
   const signatureIsValid = input.signatureHeader
     ? await verifyEbayAccountDeletionSignature(input.rawBody, input.signatureHeader, input.config.publicKeys)
     : false
   if (!signatureIsValid) return { status: 412, body: null }
   const parsed = parseEbayAccountDeletionNotification(input.rawBody)
   if (!parsed.ok) return { status: 400, body: null }
-  const existing = await input.store.findReceipt(parsed.notification.notificationId)
-  if (existing) return { status: 204, body: null }
-  const report = await input.store.deleteLinkedPersonalData(parsed.notification)
-  const outcome: EbayAccountDeletionOutcome = report.deletedRowCount > 0
-    ? 'linked-personal-data-removed'
-    : 'no-linked-personal-data'
-  await input.store.saveReceipt({
-    notificationId: parsed.notification.notificationId,
-    outcome,
-    processedAt: (input.now ?? (() => new Date().toISOString()))(),
-  })
-  return { status: 204, body: null }
+  if (!input.store) return { status: 503, body: null }
+  const processedAt = (input.now ?? (() => new Date().toISOString()))()
+  let claim: EbayReceiptClaim
+  try {
+    claim = await input.store.claimReceipt(parsed.notification.notificationId, processedAt)
+  } catch {
+    return { status: 500, body: null }
+  }
+  if (claim === 'duplicate') return { status: 204, body: null }
+  if (claim === 'in-progress') return { status: 503, body: null }
+  let deleted = false
+  try {
+    const report = await input.store.deleteLinkedPersonalData(parsed.notification)
+    deleted = true
+    await input.store.finalizeReceipt(parsed.notification.notificationId, outcomeForReport(report))
+    return { status: 204, body: null }
+  } catch {
+    if (!deleted) {
+      try {
+        await input.store.releaseReceipt(parsed.notification.notificationId)
+      } catch {
+        return { status: 500, body: null }
+      }
+    }
+    return { status: 500, body: null }
+  }
 }

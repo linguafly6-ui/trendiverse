@@ -12,6 +12,7 @@ import {
   isValidEbayAccountDeletionEndpoint,
   isValidEbayVerificationToken,
   parseEbayAccountDeletionNotification,
+  parseEbayNotificationPublicKeys,
   readEbayAccountDeletionConfig,
   type EbayAccountDeletionConfig,
   type EbayAccountDeletionReceipt,
@@ -67,19 +68,33 @@ interface TrackedRow {
   ebayUserId: string | null
 }
 
-function trackingStore(rows: TrackedRow[]) {
+function trackingStore(rows: TrackedRow[], options: { failDelete?: boolean, failFinalize?: boolean, delayDeleteMs?: number } = {}) {
   const receipts = new Map<string, EbayAccountDeletionReceipt>()
   let deletions = 0
   const store: EbayAccountDeletionStore = {
     async findReceipt(notificationId) {
       return receipts.get(notificationId) ?? null
     },
-    async saveReceipt(receipt) {
-      if (receipts.has(receipt.notificationId)) return 'exists'
-      receipts.set(receipt.notificationId, receipt)
+    async claimReceipt(notificationId, processedAt) {
+      const existing = receipts.get(notificationId)
+      if (existing?.outcome === 'acknowledged-deletion-not-implemented' || existing?.outcome === 'linked-personal-data-removed') return 'duplicate'
+      if (existing) return 'in-progress'
+      receipts.set(notificationId, { notificationId, outcome: 'reserved', processedAt })
       return 'created'
     },
+    async finalizeReceipt(notificationId, outcome) {
+      if (options.failFinalize) throw new Error('finalize-failed')
+      const existing = receipts.get(notificationId)
+      if (!existing || existing.outcome !== 'reserved') throw new Error('receipt-not-reserved')
+      receipts.set(notificationId, { ...existing, outcome })
+    },
+    async releaseReceipt(notificationId) {
+      const existing = receipts.get(notificationId)
+      if (existing?.outcome === 'reserved') receipts.delete(notificationId)
+    },
     async deleteLinkedPersonalData(identity: EbayAccountIdentity) {
+      if (options.delayDeleteMs) await new Promise((resolve) => setTimeout(resolve, options.delayDeleteMs))
+      if (options.failDelete) throw new Error('delete-failed')
       deletions += 1
       const matches = (row: TrackedRow) => row.ebayUserId !== null && (
         row.ebayUserId === identity.userId || row.ebayUserId === identity.username || row.ebayUserId === identity.eiasToken
@@ -88,7 +103,7 @@ function trackingStore(rows: TrackedRow[]) {
       for (let index = rows.length - 1; index >= 0; index -= 1) {
         if (matches(rows[index])) rows.splice(index, 1)
       }
-      return { deletedRowCount: before - rows.length, limitation: null }
+      return { deletedRowCount: before - rows.length, implemented: true, limitation: null }
     },
   }
   return { store, receipts, deletions: () => deletions, rows }
@@ -119,6 +134,13 @@ test('the verification token and endpoint must match the eBay format', () => {
   assert.equal(isValidEbayAccountDeletionEndpoint(ENDPOINT), true)
   assert.equal(isValidEbayAccountDeletionEndpoint('http://trendiverse.org/api/ebay/account-deletion'), false)
   assert.equal(isValidEbayAccountDeletionEndpoint(`${ENDPOINT}?challenge_code=1`), false)
+  assert.equal(isValidEbayAccountDeletionEndpoint(`${ENDPOINT}/`), false)
+  assert.equal(parseEbayNotificationPublicKeys(JSON.stringify({
+    kid: { key: PUBLIC_PEM, algorithm: 'ECDSA', digest: 'SHA1' },
+  }))?.get('kid')?.includes('BEGIN PUBLIC KEY'), true)
+  assert.equal(parseEbayNotificationPublicKeys(JSON.stringify({
+    kid: { key: PUBLIC_PEM, algorithm: 'RSA', digest: 'SHA1' },
+  })), null)
   const invalid = readEbayAccountDeletionConfig({ verificationToken: 'short', endpoint: ENDPOINT, publicKeysJson: null })
   assert.equal(invalid.verificationToken, null)
   assert.equal(invalid.endpoint, ENDPOINT)
@@ -127,7 +149,7 @@ test('the verification token and endpoint must match the eBay format', () => {
 test('a missing or invalid challenge configuration does not return a hash', async () => {
   const store = createMemoryEbayAccountDeletionStore()
   const missingCode = await handleEbayAccountDeletion({
-    method: 'GET', challengeCode: ' ', rawBody: '', signatureHeader: null, config: config(), store,
+    method: 'GET', challengeCode: '', rawBody: '', signatureHeader: null, config: config(), store,
   })
   assert.equal(missingCode.status, 400)
   assert.equal(missingCode.body, null)
@@ -236,7 +258,7 @@ test('the production store accepts a notification without deleting unlinked cata
   })
   assert.equal(result.status, 204)
   const receipt = await store.findReceipt('11111111-1111-1111-1111-111111111111')
-  assert.equal(receipt?.outcome, 'no-linked-personal-data')
+  assert.equal(receipt?.outcome, 'acknowledged-deletion-not-implemented')
   assert.equal(receipt?.processedAt, NOW)
   assert.equal(JSON.stringify(receipt).includes('fixture-user'), false)
 })
@@ -274,9 +296,11 @@ test('malformed notifications and a missing key configuration fail closed', asyn
   if (!parsed.ok) assert.equal(parsed.reason, 'unexpected-topic')
 })
 
-test('the durable receipt store records the notification id and does not issue a catalog delete', async () => {
+function receiptDb(options: { failRun?: boolean, holdInserts?: boolean } = {}) {
   const sql: string[] = []
   const rows = new Map<string, { notification_id: string, outcome: string, processed_at: string }>()
+  let insertWaiters: Array<() => void> = []
+  let heldPair = false
   const db: EbayReceiptDatabase = {
     prepare(statement) {
       sql.push(statement)
@@ -287,30 +311,181 @@ test('the durable receipt store records the notification id and does not issue a
               return (rows.get(String(values[0])) ?? null) as T | null
             },
             async run() {
-              const id = String(values[0])
-              if (rows.has(id)) return { meta: { changes: 0 } }
-              rows.set(id, { notification_id: id, outcome: String(values[1]), processed_at: String(values[2]) })
-              return { meta: { changes: 1 } }
+              if (options.failRun) throw new Error('d1-unavailable')
+              const apply = () => {
+                if (statement.startsWith('INSERT')) {
+                  const id = String(values[0])
+                  if (rows.has(id)) return { meta: { changes: 0 } }
+                  rows.set(id, { notification_id: id, outcome: 'reserved', processed_at: String(values[1]) })
+                  return { meta: { changes: 1 } }
+                }
+                if (statement.startsWith('UPDATE')) {
+                  const row = rows.get(String(values[1]))
+                  if (!row || row.outcome !== 'reserved') return { meta: { changes: 0 } }
+                  row.outcome = String(values[0])
+                  return { meta: { changes: 1 } }
+                }
+                if (statement.startsWith('DELETE')) {
+                  const row = rows.get(String(values[0]))
+                  if (!row || row.outcome !== 'reserved') return { meta: { changes: 0 } }
+                  rows.delete(String(values[0]))
+                  return { meta: { changes: 1 } }
+                }
+                throw new Error('unexpected-sql')
+              }
+              if (options.holdInserts && !heldPair && statement.startsWith('INSERT')) {
+                return new Promise((resolve) => {
+                  insertWaiters.push(() => resolve(apply()))
+                  if (insertWaiters.length === 2) {
+                    heldPair = true
+                    const pending = insertWaiters.splice(0, 2)
+                    pending[0]()
+                    pending[1]()
+                  }
+                })
+              }
+              return apply()
             },
           }
         },
       }
     },
   }
+  return { db, sql, rows }
+}
+
+test('the durable receipt store records the notification id and does not issue a catalog delete', async () => {
+  const { db, sql, rows } = receiptDb()
   const store = createD1EbayAccountDeletionStore(db)
   const body = notificationBody()
   const result = await handleEbayAccountDeletion({
     method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
   })
   assert.equal(result.status, 204)
-  assert.equal(rows.get('11111111-1111-1111-1111-111111111111')?.outcome, 'no-linked-personal-data')
-  assert.match(sql.join('\n'), /ebay_account_deletion_receipts/)
-  assert.doesNotMatch(sql.join('\n'), /delete|articles|deals/i)
+  assert.equal(rows.get('11111111-1111-1111-1111-111111111111')?.outcome, 'acknowledged-deletion-not-implemented')
+  assert.match(sql.join('\n'), /INSERT INTO ebay_account_deletion_receipts/)
+  assert.match(sql.join('\n'), /ON CONFLICT\(notification_id\) DO NOTHING/)
+  assert.doesNotMatch(sql.join('\n'), /articles|deals|tools|categories/)
   const again = await handleEbayAccountDeletion({
     method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
   })
   assert.equal(again.status, 204)
   assert.equal(rows.size, 1)
+})
+
+const SDK_FIXTURE_KID = '9936261a-7d7b-4621-a0f1-96ccb428af49'
+const SDK_FIXTURE_PEM = '-----BEGIN PUBLIC KEY-----MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZhhxXKtR+TOvtDbgTPCkSof02qgBB7IsYOyf76ilExJ/upAa/vKIKheOoCyOpcLmi4t0b4uepb7LLjmMr90FUg==-----END PUBLIC KEY-----'
+const SDK_FIXTURE_SIGNATURE = 'eyJhbGciOiJlY2RzYSIsImtpZCI6Ijk5MzYyNjFhLTdkN2ItNDYyMS1hMGYxLTk2Y2NiNDI4YWY0OSIsInNpZ25hdHVyZSI6Ik1FWUNJUUNmeGZJV3V4bVdjSUJRSjljNS9YN2lHREpxczJSQ0dzQkVhQWppbnlycmZBSWhBSVY2d0djVGlCdVY1S0pVaWYyaG9reXJMK1E5c3NIa2FkK214Mm5FRTI1dyIsImRpZ2VzdCI6IlNIQTEifQ=='
+const SDK_FIXTURE_BODY = '{"metadata":{"topic":"MARKETPLACE_ACCOUNT_DELETION","schemaVersion":"1.0","deprecated":false},"notification":{"notificationId":"49feeaeb-4982-42d9-a377-9645b8479411_33f7e043-fed8-442b-9d44-791923bd9a6d","eventDate":"2021-03-19T20:43:59.462Z","publishDate":"2021-03-19T20:43:59.679Z","publishAttemptCount":1,"data":{"username":"test_user","userId":"ma8vp1jySJC","eiasToken":"nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wJnY+gAZGEpwmdj6x9nY+seQ=="}}}'
+
+test('a signature in the eBay SDK fixture format is accepted and a mismatched signature is not', async () => {
+  const keys = new Map([[SDK_FIXTURE_KID, SDK_FIXTURE_PEM]])
+  const store = createMemoryEbayAccountDeletionStore()
+  const accepted = await handleEbayAccountDeletion({
+    method: 'POST',
+    challengeCode: null,
+    rawBody: SDK_FIXTURE_BODY,
+    signatureHeader: SDK_FIXTURE_SIGNATURE,
+    config: config(keys),
+    store,
+    now: () => NOW,
+  })
+  assert.equal(accepted.status, 204)
+  assert.equal(
+    (await store.findReceipt('49feeaeb-4982-42d9-a377-9645b8479411_33f7e043-fed8-442b-9d44-791923bd9a6d'))?.outcome,
+    'acknowledged-deletion-not-implemented',
+  )
+  const spaced = SDK_FIXTURE_BODY.replace('{', '{ ')
+  const spacedResult = await handleEbayAccountDeletion({
+    method: 'POST',
+    challengeCode: null,
+    rawBody: spaced,
+    signatureHeader: SDK_FIXTURE_SIGNATURE,
+    config: config(keys),
+    store: createMemoryEbayAccountDeletionStore(),
+    now: () => NOW,
+  })
+  assert.equal(spacedResult.status, 204)
+  const tampered = SDK_FIXTURE_BODY.replace('test_user', 'other_user')
+  const rejected = await handleEbayAccountDeletion({
+    method: 'POST',
+    challengeCode: null,
+    rawBody: tampered,
+    signatureHeader: SDK_FIXTURE_SIGNATURE,
+    config: config(keys),
+    store: createMemoryEbayAccountDeletionStore(),
+    now: () => NOW,
+  })
+  assert.equal(rejected.status, 412)
+})
+
+test('concurrent notifications reserve the id once and do not delete twice', async () => {
+  const { db, rows } = receiptDb({ holdInserts: true })
+  const inner = createD1EbayAccountDeletionStore(db)
+  let deletions = 0
+  const store: EbayAccountDeletionStore = {
+    findReceipt: (id) => inner.findReceipt(id),
+    claimReceipt: (id, at) => inner.claimReceipt(id, at),
+    finalizeReceipt: (id, outcome) => inner.finalizeReceipt(id, outcome),
+    releaseReceipt: (id) => inner.releaseReceipt(id),
+    async deleteLinkedPersonalData() {
+      deletions += 1
+      await new Promise((resolve) => setTimeout(resolve, 20))
+      return { deletedRowCount: 0, implemented: false, limitation: EBAY_ACCOUNT_DELETION_LIMITATION }
+    },
+  }
+  const body = notificationBody()
+  const call = () => handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
+  })
+  const [first, second] = await Promise.all([call(), call()])
+  assert.deepEqual([first.status, second.status].sort(), [204, 503])
+  assert.equal(deletions, 1)
+  assert.equal(rows.size, 1)
+  const replay = await call()
+  assert.equal(replay.status, 204)
+  assert.equal(deletions, 1)
+})
+
+test('a database failure does not acknowledge the notification or delete twice', async () => {
+  const failing = createD1EbayAccountDeletionStore(receiptDb({ failRun: true }).db)
+  const body = notificationBody()
+  const failed = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: failing, now: () => NOW,
+  })
+  assert.equal(failed.status, 500)
+  const tracked = trackingStore([
+    { id: 'linked', ebayUserId: 'fixture-user-id' },
+    { id: 'global', ebayUserId: null },
+  ], { failDelete: true })
+  const deleteFailed = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: tracked.store, now: () => NOW,
+  })
+  assert.equal(deleteFailed.status, 500)
+  assert.equal(tracked.deletions(), 0)
+  assert.equal(tracked.rows.length, 2)
+  assert.equal(tracked.receipts.size, 0)
+  const retry = trackingStore(tracked.rows)
+  const recovered = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: retry.store, now: () => NOW,
+  })
+  assert.equal(recovered.status, 204)
+  assert.equal(retry.deletions(), 1)
+  assert.deepEqual(retry.rows.map((row) => row.id), ['global'])
+})
+
+test('without a D1 binding a valid notification is not acknowledged', async () => {
+  const body = notificationBody()
+  const result = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: null, now: () => NOW,
+  })
+  assert.equal(result.status, 503)
+  assert.equal(result.body, null)
+  const challenge = await handleEbayAccountDeletion({
+    method: 'GET', challengeCode: CHALLENGE, rawBody: '', signatureHeader: null, config: config(), store: null,
+  })
+  assert.equal(challenge.status, 200)
+  assert.equal(challenge.body?.challengeResponse, CHALLENGE_HASH)
 })
 
 test('the endpoint module does not call eBay, log secrets, or enable the browse adapter', () => {
@@ -323,8 +498,10 @@ test('the endpoint module does not call eBay, log secrets, or enable the browse 
   assert.match(route, /EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN/)
   assert.match(route, /runtime = 'edge'/)
   assert.match(doc, /https:\/\/trendiverse\.org\/api\/ebay\/account-deletion/)
-  assert.match(doc, /no-linked-personal-data/)
+  assert.match(doc, /acknowledged-deletion-not-implemented/)
   assert.match(doc, new RegExp(EBAY_ACCOUNT_DELETION_LIMITATION))
-  assert.match(doc, /No significa que se haya borrado/)
+  assert.match(doc, /no demuestra que no existan datos personales/)
+  assert.doesNotMatch(`${lib}\n${route}\n${doc}`, /no-linked-personal-data/)
   assert.doesNotMatch(`${lib}\n${route}\n${doc}`, new RegExp(TOKEN))
+  assert.doesNotMatch(`${lib}\n${route}`, /api\.ebay\.com/)
 })
