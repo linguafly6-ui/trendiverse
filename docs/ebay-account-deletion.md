@@ -112,7 +112,9 @@ Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar respond
 
 ## Workers Builds
 
-El check `Workers Builds: trendiverse` apunta al script de Worker `trendiverse` (`/workers/services/view/trendiverse`). Es distinto del proyecto Pages `trendiverse` y del Worker `trendiverse-ai` de `workers/ai`. En `bdacbfe` empezó y terminó en el mismo segundo, sin anotaciones en GitHub. La API de logs del build `a87c3d65-bbb7-4c9d-8d94-00a2eb3f4806` respondió `9106` por falta de autorización. El texto del fallo no se ha leído, así que no hay una causa atribuida. Cloudflare Pages de ese commit sí publicó la vista previa.
+El comentario del bot con «Build: Failed» y los enlaces «View logs» corresponde al script de Worker `trendiverse` (`/workers/services/view/trendiverse`). La columna de URL de deployment está vacía. Es distinto del comentario de Cloudflare Pages, que en `e68e4cd` publicó `https://a00fad02.trendiverse.pages.dev`, y del Worker `trendiverse-ai` de `workers/ai`.
+
+Esos enlaces abren el panel de Cloudflare. La API de logs respondió `9106` por falta de autorización, así que el texto remoto del build no se ha leído. En local, `npx wrangler deploy --dry-run` contra el `wrangler.toml` de la raíz termina al instante con: «It looks like you've run a Workers-specific command in a Pages project. For Pages, please run `wrangler pages deploy` instead.» Wrangler lanza ese error cuando el toml tiene `pages_build_output_dir`. El nombre del script del check, `trendiverse`, es el `name` de ese toml. No se ha cambiado la configuración del panel ni el toml: quitar `pages_build_output_dir` dejaría de marcar el proyecto como Pages.
 
 ## Prueba automática
 
