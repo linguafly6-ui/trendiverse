@@ -29,7 +29,7 @@ En este repositorio el binding no está activo:
 # binding = "DB"
 ```
 
-En el workflow del PR #106, `CLOUDFLARE_D1_DATABASE_ID` salió vacío. El secreto de la API de Cloudflare no está en este entorno, así que no se ha podido leer el panel de Pages. No se puede afirmar que producción tenga `DB`.
+`.github/workflows/deploy.yml` inyecta `CLOUDFLARE_D1_DATABASE_ID` en el entorno del job, pero el comando `wrangler pages deploy` no recibe ese id ni crea el binding. En los logs de `08e93a7` y `bdacbfe` el valor salió vacío, sin enmascarar. `npm run migrate:cf` aplicaría `wrangler d1 migrations apply trendiverse-db --remote`; no se ha ejecutado. El secreto de la API de Cloudflare no está en este entorno, así que no se ha podido leer el panel de Pages. No se puede afirmar que producción tenga `DB`.
 
 Hasta que exista, el POST de una notificación firmada responde 503 y no reserva un recibo. El GET del challenge puede responder 200 si el token y la URL son válidos. La idempotencia duradera no existe sin D1: la ruta no usa memoria del isolate.
 
@@ -40,7 +40,7 @@ Pasos que faltan, y que no se han ejecutado:
 3. Aplicar las migraciones pendientes y, en concreto, `migrations/0005_ebay_account_deletion_receipts.sql`. El comando del repositorio es `npm run migrate:cf`. No lanza un borrado de anuncios: la tabla nueva solo tiene `notification_id`, `outcome` y `processed_at`.
 4. Comprobar en el panel que el deployment de producción muestra el binding `DB`.
 
-La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae después de reservar y antes de cerrar el recibo, la fila queda en `reserved` y los reintentos siguen en 503. No hay un barrido automático de reservas huérfanas.
+La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae con la fila en `reserved`, un reintento posterior a 120 segundos la retoma con un `UPDATE` condicionado por la fecha y vuelve a ejecutar ese paso una sola vez. Una reserva más reciente sigue en 503. Retomar la reserva no significa que se hayan borrado datos personales: el paso de producción sigue sin borrar filas del catálogo.
 
 ## Secretos
 
@@ -72,7 +72,7 @@ El secreto puede ser un PEM o el cuerpo de `getPublicKey`:
 }
 ```
 
-La clave del fixture del SDK no es la clave de producción. Hay que obtener la clave del `kid` que envíe eBay y volver a pegarla si eBay rota el `kid`. Si el secreto falta, el `kid` no está, el algoritmo no es ECDSA o la curva no es P-256, el POST no se acepta y no hay borrado.
+La clave del fixture del SDK no es la clave de producción. El secreto puede contener varios `kid` a la vez. Para una rotación, se añade la clave nueva sin quitar la anterior hasta que eBay deje de firmar con la vieja. Un `kid` ausente responde 412 y no guarda un recibo. Esta aplicación no llama a `getPublicKey` para descubrir la clave nueva. Si el secreto falta, el algoritmo no es ECDSA o la curva no es P-256, el POST no se acepta y no hay borrado.
 
 ## Challenge
 
@@ -109,6 +109,10 @@ Se verifica ECDSA P-256 con SHA-1 sobre el cuerpo crudo. Si esa comprobación fa
 | Sin binding D1, o fallo al reservar el recibo | 503 o 500 |
 
 Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar responde 500 y no ejecuta el borrado. Si el borrado lanza un error, se suelta la reserva `reserved` para que un reintento pueda continuar; hoy ese borrado no está implementado y no toca el catálogo. Los identificadores de la cuenta no se escriben en el recibo, en la respuesta ni en logs.
+
+## Workers Builds
+
+El check `Workers Builds: trendiverse` apunta al script de Worker `trendiverse` (`/workers/services/view/trendiverse`). Es distinto del proyecto Pages `trendiverse` y del Worker `trendiverse-ai` de `workers/ai`. En `bdacbfe` empezó y terminó en el mismo segundo, sin anotaciones en GitHub. La API de logs del build `a87c3d65-bbb7-4c9d-8d94-00a2eb3f4806` respondió `9106` por falta de autorización. El texto del fallo no se ha leído, así que no hay una causa atribuida. Cloudflare Pages de ese commit sí publicó la vista previa.
 
 ## Prueba automática
 

@@ -27,6 +27,8 @@ const MAX_CHALLENGE_CODE_LENGTH = 128
 const MAX_NOTIFICATION_ID_LENGTH = 128
 const MAX_IDENTITY_LENGTH = 512
 export const EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH = 65_536
+/** Una reserva más antigua que esto se puede retomar. Una reserva reciente sigue en curso. */
+export const EBAY_RECEIPT_RESERVATION_LEASE_MS = 120_000
 
 export type EbayAccountDeletionOutcome =
   | 'reserved'
@@ -323,8 +325,22 @@ export interface EbayReceiptDatabase {
 
 const SELECT_RECEIPT = 'SELECT notification_id, outcome, processed_at FROM ebay_account_deletion_receipts WHERE notification_id = ?'
 const INSERT_RECEIPT = 'INSERT INTO ebay_account_deletion_receipts (notification_id, outcome, processed_at) VALUES (?, \'reserved\', ?) ON CONFLICT(notification_id) DO NOTHING'
+const RECLAIM_RECEIPT = 'UPDATE ebay_account_deletion_receipts SET processed_at = ? WHERE notification_id = ? AND outcome = \'reserved\' AND processed_at <= ?'
 const FINALIZE_RECEIPT = 'UPDATE ebay_account_deletion_receipts SET outcome = ? WHERE notification_id = ? AND outcome = \'reserved\''
 const RELEASE_RECEIPT = 'DELETE FROM ebay_account_deletion_receipts WHERE notification_id = ? AND outcome = \'reserved\''
+
+export function ebayReservationIsStale(processedAt: string, nowIso: string): boolean {
+  const nowMs = Date.parse(nowIso)
+  const existingMs = Date.parse(processedAt)
+  if (Number.isNaN(nowMs) || Number.isNaN(existingMs)) return false
+  return nowMs - existingMs >= EBAY_RECEIPT_RESERVATION_LEASE_MS
+}
+
+function staleBefore(nowIso: string): string | null {
+  const nowMs = Date.parse(nowIso)
+  if (Number.isNaN(nowMs)) return null
+  return new Date(nowMs - EBAY_RECEIPT_RESERVATION_LEASE_MS).toISOString()
+}
 
 const FINAL_OUTCOMES = new Set<EbayAccountDeletionOutcome>([
   'acknowledged-deletion-not-implemented',
@@ -362,7 +378,14 @@ export function createD1EbayAccountDeletionStore(db: EbayReceiptDatabase): EbayA
       if (inserted > 0) return 'created'
       const existing = await this.findReceipt(notificationId)
       if (existing && FINAL_OUTCOMES.has(existing.outcome)) return 'duplicate'
-      return 'in-progress'
+      const cutoff = staleBefore(processedAt)
+      if (!existing || existing.outcome !== 'reserved' || !cutoff || !ebayReservationIsStale(existing.processedAt, processedAt)) {
+        return 'in-progress'
+      }
+      const reclaimed = await confirmedChanges(
+        await db.prepare(RECLAIM_RECEIPT).bind(processedAt, notificationId, cutoff).run(),
+      )
+      return reclaimed > 0 ? 'created' : 'in-progress'
     },
     async finalizeReceipt(notificationId, outcome) {
       if (!FINAL_OUTCOMES.has(outcome)) throw new Error('invalid-receipt-outcome')
@@ -388,6 +411,10 @@ export function createMemoryEbayAccountDeletionStore(
     async claimReceipt(notificationId, processedAt) {
       const existing = receipts.get(notificationId)
       if (existing && FINAL_OUTCOMES.has(existing.outcome)) return 'duplicate'
+      if (existing?.outcome === 'reserved' && ebayReservationIsStale(existing.processedAt, processedAt)) {
+        receipts.set(notificationId, { ...existing, processedAt })
+        return 'created'
+      }
       if (existing) return 'in-progress'
       receipts.set(notificationId, { notificationId, outcome: 'reserved', processedAt })
       return 'created'

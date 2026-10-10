@@ -8,6 +8,7 @@ import {
   createD1EbayAccountDeletionStore,
   createMemoryEbayAccountDeletionStore,
   ebayChallengeResponse,
+  ebayReservationIsStale,
   handleEbayAccountDeletion,
   isValidEbayAccountDeletionEndpoint,
   isValidEbayVerificationToken,
@@ -319,6 +320,13 @@ function receiptDb(options: { failRun?: boolean, holdInserts?: boolean } = {}) {
                   rows.set(id, { notification_id: id, outcome: 'reserved', processed_at: String(values[1]) })
                   return { meta: { changes: 1 } }
                 }
+                if (statement.startsWith('UPDATE') && statement.includes('processed_at <=')) {
+                  const row = rows.get(String(values[1]))
+                  const cutoff = String(values[2])
+                  if (!row || row.outcome !== 'reserved' || row.processed_at > cutoff) return { meta: { changes: 0 } }
+                  row.processed_at = String(values[0])
+                  return { meta: { changes: 1 } }
+                }
                 if (statement.startsWith('UPDATE')) {
                   const row = rows.get(String(values[1]))
                   if (!row || row.outcome !== 'reserved') return { meta: { changes: 0 } }
@@ -474,6 +482,100 @@ test('a database failure does not acknowledge the notification or delete twice',
   assert.deepEqual(retry.rows.map((row) => row.id), ['global'])
 })
 
+test('the durable store reclaims a stale reservation without touching catalog tables', async () => {
+  const { db, sql, rows } = receiptDb()
+  const store = createD1EbayAccountDeletionStore(db)
+  assert.equal(await store.claimReceipt('11111111-1111-1111-1111-111111111111', '2020-01-01T00:00:00.000Z'), 'created')
+  const body = notificationBody()
+  const result = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
+  })
+  assert.equal(result.status, 204)
+  assert.match(sql.join('\n'), /processed_at <=/)
+  assert.equal(rows.get('11111111-1111-1111-1111-111111111111')?.outcome, 'acknowledged-deletion-not-implemented')
+  assert.doesNotMatch(sql.join('\n'), /articles|deals|tools|categories/)
+})
+
+test('a stale reservation is retried once and a fresh reservation is left in progress', async () => {
+  assert.equal(ebayReservationIsStale('2020-01-01T00:00:00.000Z', NOW), true)
+  assert.equal(ebayReservationIsStale(NOW, NOW), false)
+  const stale = createMemoryEbayAccountDeletionStore()
+  await stale.claimReceipt('11111111-1111-1111-1111-111111111111', '2020-01-01T00:00:00.000Z')
+  let deletions = 0
+  const staleStore: EbayAccountDeletionStore = {
+    findReceipt: (id) => stale.findReceipt(id),
+    claimReceipt: (id, at) => stale.claimReceipt(id, at),
+    finalizeReceipt: (id, outcome) => stale.finalizeReceipt(id, outcome),
+    releaseReceipt: (id) => stale.releaseReceipt(id),
+    async deleteLinkedPersonalData(identity) {
+      deletions += 1
+      return stale.deleteLinkedPersonalData(identity)
+    },
+  }
+  const body = notificationBody()
+  const retried = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: staleStore, now: () => NOW,
+  })
+  assert.equal(retried.status, 204)
+  assert.equal(deletions, 1)
+  assert.equal((await stale.findReceipt('11111111-1111-1111-1111-111111111111'))?.outcome, 'acknowledged-deletion-not-implemented')
+  const again = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: staleStore, now: () => NOW,
+  })
+  assert.equal(again.status, 204)
+  assert.equal(deletions, 1)
+
+  const fresh = createMemoryEbayAccountDeletionStore()
+  await fresh.claimReceipt('11111111-1111-1111-1111-111111111111', NOW)
+  let freshDeletions = 0
+  const freshStore: EbayAccountDeletionStore = {
+    findReceipt: (id) => fresh.findReceipt(id),
+    claimReceipt: (id, at) => fresh.claimReceipt(id, at),
+    finalizeReceipt: (id, outcome) => fresh.finalizeReceipt(id, outcome),
+    releaseReceipt: (id) => fresh.releaseReceipt(id),
+    async deleteLinkedPersonalData(identity) {
+      freshDeletions += 1
+      return fresh.deleteLinkedPersonalData(identity)
+    },
+  }
+  const busy = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: freshStore, now: () => NOW,
+  })
+  assert.equal(busy.status, 503)
+  assert.equal(freshDeletions, 0)
+  assert.equal((await fresh.findReceipt('11111111-1111-1111-1111-111111111111'))?.outcome, 'reserved')
+})
+
+test('a configured replacement kid verifies and an unknown kid does not', async () => {
+  const rotated = generateKeyPairSync('ec', { namedCurve: 'prime256v1' })
+  const rotatedPem = rotated.publicKey.export({ type: 'spki', format: 'pem' }).toString()
+  const keys = new Map([['current-kid', PUBLIC_PEM], ['next-kid', rotatedPem]])
+  const body = notificationBody()
+  const signWith = (key: typeof privateKey, kid: string) => {
+    const signer = createSign('SHA1')
+    signer.update(body, 'utf8')
+    signer.end()
+    return Buffer.from(JSON.stringify({
+      alg: 'ecdsa',
+      kid,
+      signature: signer.sign(key).toString('base64'),
+      digest: 'SHA1',
+    })).toString('base64')
+  }
+  const current = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: signWith(privateKey, 'current-kid'), config: config(keys), store: createMemoryEbayAccountDeletionStore(), now: () => NOW,
+  })
+  const next = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: signWith(rotated.privateKey, 'next-kid'), config: config(keys), store: createMemoryEbayAccountDeletionStore(), now: () => NOW,
+  })
+  const unknown = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: signWith(rotated.privateKey, 'missing-kid'), config: config(keys), store: createMemoryEbayAccountDeletionStore(), now: () => NOW,
+  })
+  assert.equal(current.status, 204)
+  assert.equal(next.status, 204)
+  assert.equal(unknown.status, 412)
+})
+
 test('without a D1 binding a valid notification is not acknowledged', async () => {
   const body = notificationBody()
   const result = await handleEbayAccountDeletion({
@@ -501,6 +603,9 @@ test('the endpoint module does not call eBay, log secrets, or enable the browse 
   assert.match(doc, /acknowledged-deletion-not-implemented/)
   assert.match(doc, new RegExp(EBAY_ACCOUNT_DELETION_LIMITATION))
   assert.match(doc, /no demuestra que no existan datos personales/)
+  assert.match(doc, /120 segundos/)
+  assert.match(doc, /varios `kid`/)
+  assert.match(doc, /9106/)
   assert.doesNotMatch(`${lib}\n${route}\n${doc}`, /no-linked-personal-data/)
   assert.doesNotMatch(`${lib}\n${route}\n${doc}`, new RegExp(TOKEN))
   assert.doesNotMatch(`${lib}\n${route}`, /api\.ebay\.com/)
