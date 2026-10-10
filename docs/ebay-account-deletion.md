@@ -6,7 +6,7 @@ No está listo para producción. Faltan el binding D1, la migración del recibo 
 
 ## Qué hay guardado hoy
 
-Se revisaron el esquema D1 (`articles`, `deals`, `tools`, `categories`), el catálogo de Segunda Mano y `wrangler.toml`. No hay columnas `username`, `userId` ni `eiasToken`. El binding `DB` está comentado. El binding KV `CACHE` también está comentado. Los anuncios, precios y estadísticas editoriales no están unidos a una cuenta de eBay. No existe un sistema de usuarios de eBay y esta entrega no lo crea.
+Se revisaron el esquema D1 (`articles`, `deals`, `tools`, `categories`), el catálogo de Segunda Mano y `wrangler.toml`. No hay columnas `username`, `userId` ni `eiasToken`. El binding `DB` de producción sigue comentado. Preview declara `DB` solo contra `trendiverse-preview`. El binding KV `CACHE` también está comentado. Los anuncios, precios y estadísticas editoriales no están unidos a una cuenta de eBay. No existe un sistema de usuarios de eBay y esta entrega no lo crea.
 
 Eso no demuestra que no existan datos personales en otros almacenes: logs de Cloudflare, analítica, KV si alguien lo enlaza en el panel, u otro sitio fuera de este repositorio. El recibo de una notificación válida queda en `acknowledged-deletion-not-implemented`. El código marca la limitación como `no-ebay-user-identity-stored`. HTTP 204 significa que la firma se aceptó y que el recibo se cerró. No significa que se haya buscado ni borrado el contenido de un vendedor.
 
@@ -20,25 +20,28 @@ https://trendiverse.org/api/ebay/account-deletion
 
 Hay que copiarla tal cual. El hash del challenge usa `EBAY_ACCOUNT_DELETION_ENDPOINT`, no la URL que el worker reconstruye. La guía oficial concatena, en UTF-8 y en este orden, `challengeCode`, el token de verificación y esa URL. La respuesta es JSON `{ "challengeResponse": "<hex>" }` con HTTP 200 y `Content-Type: application/json`.
 
-## Binding D1, sin aplicar
+## Binding D1
 
-En este repositorio el binding no está activo:
+Producción no tiene binding D1 en `wrangler.toml`. El bloque superior sigue comentado y no contiene el id de `trendiverse`. Preview es el único entorno con `DB`:
 
 ```toml
-# [[d1_databases]]
-# binding = "DB"
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "trendiverse-preview"
+database_id = "2bb04eb3-9f3f-40b3-a6ed-b1f58dc9107f"
 ```
 
-`.github/workflows/deploy.yml` inyecta `CLOUDFLARE_D1_DATABASE_ID` en el entorno del job, pero el comando `wrangler pages deploy` no recibe ese id ni crea el binding. En los logs de `08e93a7` y `bdacbfe` el valor salió vacío, sin enmascarar. `npm run migrate:cf` aplicaría `wrangler d1 migrations apply trendiverse-db --remote`; no se ha ejecutado. El secreto de la API de Cloudflare no está en este entorno, así que no se ha podido leer el panel de Pages. No se puede afirmar que producción tenga `DB`.
+`wrangler pages deploy` elige el entorno comparando la rama con `production_branch`. En `main` el checkout es la rama `main` y el despliegue no imprime alias de rama: ese es producción y usa la configuración superior, sin `DB`. En un pull request el checkout queda en `HEAD` y el alias es `head.trendiverse.pages.dev`: ese es preview y usa `env.preview`. `[env.preview.vars]` repite `ENVIRONMENT = "production"` porque Pages no hereda `vars`.
 
-Hasta que exista, el POST de una notificación firmada responde 503 y no reserva un recibo. El GET del challenge puede responder 200 si el token y la URL son válidos. La idempotencia duradera no existe sin D1: la ruta no usa memoria del isolate.
+`.github/workflows/deploy.yml` inyecta `CLOUDFLARE_D1_DATABASE_ID` en el job, pero el comando no recibe ese id. En los logs de `08e93a7` y `bdacbfe` el valor salió vacío. `npm run migrate:cf` aplicaría `wrangler d1 migrations apply trendiverse-db --remote` y no se ha ejecutado. Tampoco se ha migrado `trendiverse-preview`.
+
+Sin `DB`, el POST firmado responde 503 y no reserva un recibo. En preview, cuando el despliegue ya lleva este binding, el POST intenta usar D1. Sin la tabla `ebay_account_deletion_receipts` esa reserva falla. El GET del challenge puede responder 200 si el token y la URL son válidos. La ruta no usa memoria del isolate.
 
 Pasos que faltan, y que no se han ejecutado:
 
-1. Crear la base, si aún no existe: `npx wrangler d1 create trendiverse-db`.
-2. En Cloudflare Pages, proyecto `trendiverse`, Settings, Functions, enlazar esa base con el nombre `DB`. No basta con descomentar `wrangler.toml` en un PR.
-3. Aplicar las migraciones pendientes y, en concreto, `migrations/0005_ebay_account_deletion_receipts.sql`. El comando del repositorio es `npm run migrate:cf`. No lanza un borrado de anuncios: la tabla nueva solo tiene `notification_id`, `outcome` y `processed_at`.
-4. Comprobar en el panel que el deployment de producción muestra el binding `DB`.
+1. Aplicar las migraciones pendientes, en concreto `migrations/0005_ebay_account_deletion_receipts.sql`, sobre `trendiverse-preview`. `npm run migrate:cf` apunta a `trendiverse-db`, no a la base de preview. No lanza un borrado de anuncios: la tabla nueva solo tiene `notification_id`, `outcome` y `processed_at`.
+2. No descomentar el bloque superior ni escribir ahí el id de `trendiverse-preview`. Esa sección también alimenta el despliegue de `main`.
+3. El id de la base de producción `trendiverse` no está en este repositorio. No se ha añadido un binding de producción.
 
 La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae con la fila en `reserved`, un reintento posterior a 120 segundos la retoma con un `UPDATE` condicionado por la fecha y vuelve a ejecutar ese paso una sola vez. Una reserva más reciente sigue en 503. Retomar la reserva no significa que se hayan borrado datos personales: el paso de producción sigue sin borrar filas del catálogo.
 
