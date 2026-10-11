@@ -1,12 +1,15 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import {
   PREVIEW_DATABASE_ID,
   PREVIEW_DATABASE_NAME,
   PRODUCTION_DATABASE_NAME,
   PreviewD1GuardError,
   assertPreviewD1Isolation,
+  isPreviewScriptEntry,
   previewMigrationArgv,
   type PreviewD1Config,
   type PreviewD1Reader,
@@ -66,6 +69,13 @@ test('the preview guard rejects the production database name and a production bi
     PreviewD1GuardError,
   )
   assert.throws(() => previewMigrationArgv('status', reader()), PreviewD1GuardError)
+})
+
+test('the preview script starts from a Windows path and stays idle when imported', () => {
+  const scriptUrl = pathToFileURL(resolve('scripts/d1-preview.ts')).href
+  assert.equal(isPreviewScriptEntry('C:\\Users\\example\\trendiverse\\scripts\\d1-preview.ts', scriptUrl), true)
+  assert.equal(isPreviewScriptEntry('scripts/d1-preview.ts', scriptUrl), true)
+  assert.equal(isPreviewScriptEntry('tests/d1-preview.test.ts', scriptUrl), false)
 })
 
 test('package scripts and wrangler.toml keep preview distinct from production', () => {

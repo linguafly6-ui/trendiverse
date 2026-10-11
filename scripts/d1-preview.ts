@@ -1,6 +1,7 @@
 // Prepares D1 migration commands for the Pages preview database only.
 // Usage: node --import tsx scripts/d1-preview.ts <list|apply>
 import { spawnSync } from 'node:child_process'
+import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { unstable_readConfig } from 'wrangler'
@@ -93,15 +94,27 @@ function readWranglerConfig(args: { config: string; env?: string }): PreviewD1Co
   return unstable_readConfig(args) as PreviewD1Config
 }
 
+export function isPreviewScriptEntry(entry: string | undefined, moduleUrl: string): boolean {
+  if (!entry) return false
+  const entryUrl = pathToFileURL(resolve(entry)).href
+  if (moduleUrl === entryUrl || moduleUrl.toLowerCase() === entryUrl.toLowerCase()) return true
+  return entry.split(/[\\/]/).pop() === 'd1-preview.ts'
+}
+
 function runDirect() {
   if (process.argv.length !== 3) {
     throw new PreviewD1GuardError('Uso: node --import tsx scripts/d1-preview.ts <list|apply>')
   }
   const argv = previewMigrationArgv(process.argv[2])
-  const result = spawnSync('wrangler', argv, { cwd: ROOT, stdio: 'inherit' })
+  const wranglerBin = resolve(ROOT, 'node_modules/wrangler/bin/wrangler.js')
+  if (!existsSync(wranglerBin)) {
+    throw new PreviewD1GuardError('No está instalado wrangler. Ejecuta npm ci --legacy-peer-deps.')
+  }
+  const result = spawnSync(process.execPath, [wranglerBin, ...argv], { cwd: ROOT, stdio: 'inherit' })
+  if (result.error) throw result.error
   process.exit(result.status ?? 1)
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (isPreviewScriptEntry(process.argv[1], import.meta.url)) {
   runDirect()
 }
