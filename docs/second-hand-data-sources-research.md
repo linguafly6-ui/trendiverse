@@ -231,7 +231,7 @@ No se implementa la agregación de la primera página de resultados. Elegir el m
 
 ## Mapeo de productos
 
-No hay ePID, GTIN ni ASIN en este repositorio. Inventarlos publicaría un precio del modelo equivocado. La estructura prevista:
+No hay ePID, GTIN ni ASIN en los mappings. Un ePID leído en una ficha de catálogo queda en el expediente pendiente y no se copia a `externalProductId`. Inventarlos publicaría un precio del modelo equivocado. La estructura prevista:
 
 ```ts
 interface SecondHandSourceProductMapping {
