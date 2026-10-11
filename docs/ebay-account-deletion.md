@@ -6,11 +6,24 @@ No está listo para producción. Preview ya tiene la tabla del recibo. Producci�
 
 ## Qué hay guardado hoy
 
-Se revisaron el esquema D1 (`articles`, `deals`, `tools`, `categories`), el catálogo de Segunda Mano y `wrangler.toml`. No hay columnas `username`, `userId` ni `eiasToken`. El binding `DB` de producción sigue comentado. Preview declara `DB` solo contra `trendiverse-preview`. El binding KV `CACHE` también está comentado. Los anuncios, precios y estadísticas editoriales no están unidos a una cuenta de eBay. No existe un sistema de usuarios de eBay y esta entrega no lo crea.
+La búsqueda de un vínculo con `username`, `userId` o `eiasToken` se hizo en el código y en las migraciones. No se consultó la base de producción ni Cloudflare.
 
-Eso no demuestra que no existan datos personales en otros almacenes: logs de Cloudflare, analítica, KV si alguien lo enlaza en el panel, u otro sitio fuera de este repositorio. El recibo de una notificación válida queda en `acknowledged-deletion-not-implemented`. El código marca la limitación como `no-ebay-user-identity-stored`. HTTP 204 significa que la firma se aceptó y que el recibo se cerró. No significa que se haya buscado ni borrado el contenido de un vendedor.
+En D1, `migrations/0001_init.sql` crea:
 
-El almacén de producción no ejecuta `DELETE` sobre anuncios, precios ni estadísticas. Un duplicado con el recibo ya cerrado responde 204 y no vuelve a entrar en el borrado.
+- `categories`: `id`, `name`, `slug`, `color`, `icon`, `description`
+- `articles`: `id`, `title`, `slug`, `category`, `content`, `excerpt`, `image_url`, `thumbnail_url`, `read_time_minutes`, `views`, `trending`, `published_at`, `created_at`, `updated_at`
+- `tools`: `id`, `title`, `slug`, `description`, `type`, `config`, `created_at`
+- `deals`: `id`, `product_name`, `original_price`, `discount_price`, `discount_percent`, `image_url`, `affiliate_url`, `expires_at`, `category_id`, `created_at`
+
+`migrations/0005_ebay_account_deletion_receipts.sql` crea `ebay_account_deletion_receipts` con `notification_id`, `outcome` y `processed_at`. No hay más `CREATE TABLE` ni `ALTER TABLE`. Ninguna de esas columnas es `username`, `user_id` ni `eias_token`. `views` es un contador editorial, no una cuenta de eBay. `tools.config` es JSON de la herramienta; las migraciones no escriben ahí una cuenta de eBay y el borrado no busca el nombre dentro del texto.
+
+`lib/types.ts` repite ese esquema para artículos, ofertas y herramientas. `lib/db.ts` lee esas tablas y, si existe el binding `CACHE`, guarda el resultado de esas consultas con claves `articles:`, `top:` y `deals:`. En `wrangler.toml` ese KV está comentado. El catálogo de Segunda Mano está en el código, con precios `null` y sin identificador de cuenta. `localStorage` solo guarda el tema. El marcador en vivo guarda marcadores en memoria del isolate. `workers/ai` no tiene base de usuarios.
+
+No hay una columna donde comparar la identidad recibida. El POST no inventa ese vínculo y no borra artículos, ofertas, precios ni estadísticas. Con D1 enlazado, después de la firma lee `sqlite_master` y `pragma_table_info` de tablas y vistas, salvo `sqlite_%` y `d1_migrations`. Si falta una de las cinco tablas, si la lectura falla o si aparece una columna `username`, `user_id` o `eias_token` (también en otro uso de mayúsculas o guiones bajos), no cierra el recibo. Si la lectura termina y no hay esa columna, cierra el recibo con `acknowledged-deletion-not-implemented`, limitación `no-ebay-user-identity-stored` y `deletedRowCount` 0. La identidad no va en la consulta ni en el recibo.
+
+Eso no demuestra que no existan datos personales en otros almacenes: logs de Cloudflare, analítica, un KV enlazado solo en el panel, o la base de producción `trendiverse`, que no está enlazada y no se ha leído. HTTP 204 significa que la firma era válida y que esa lectura del D1 enlazado terminó sin encontrar la columna. No significa que se hayan borrado datos de un vendedor.
+
+Un duplicado con el recibo ya cerrado responde 204 y no vuelve a leer el esquema. El binding `DB` de producción sigue comentado. Preview declara `DB` solo contra `trendiverse-preview`.
 
 ## URL del portal de eBay
 
@@ -61,7 +74,7 @@ Pasos que faltan, y que no se han ejecutado:
 2. No descomentar el bloque superior ni escribir ahí el id de `trendiverse-preview`. Esa sección también alimenta el despliegue de `main`.
 3. No se ha añadido un binding de producción. `npm run migrate:cf` no sirve para la base de preview.
 
-La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae con la fila en `reserved`, un reintento posterior a 120 segundos la retoma con un `UPDATE` condicionado por la fecha y vuelve a ejecutar ese paso una sola vez. Una reserva más reciente sigue en 503. Retomar la reserva no significa que se hayan borrado datos personales: el paso de producción sigue sin borrar filas del catálogo.
+La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de leer el esquema. Si dos POST llegan a la vez, solo uno recibe la reserva y hace esa lectura. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae con la fila en `reserved`, un reintento posterior a 120 segundos la retoma con un `UPDATE` condicionado por la fecha y vuelve a leer el esquema una sola vez. Una reserva más reciente sigue en 503. Esa lectura no borra filas del catálogo.
 
 ## Secretos
 
@@ -137,8 +150,9 @@ Se verifica ECDSA P-256 con SHA-1 sobre el cuerpo crudo. Si esa comprobación fa
 | Token de verificación, endpoint o claves sin configurar | 503 |
 | `getPublicKey` o el token de aplicación no responden, o la respuesta no es una clave P-256 | 503 |
 | Sin binding D1, o fallo al reservar el recibo | 503 o 500 |
+| La lectura del esquema falla, falta una tabla auditada o hay una columna de identidad sin vínculo | 500 |
 
-Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar responde 500 y no ejecuta el borrado. Si el borrado lanza un error, se suelta la reserva `reserved` para que un reintento pueda continuar; hoy ese borrado no está implementado y no toca el catálogo. Los identificadores de la cuenta no se escriben en el recibo, en la respuesta ni en logs.
+Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar responde 500 y no lee el esquema. Si esa lectura falla o encuentra una columna de identidad sin un vínculo implementado, se suelta la reserva `reserved` y no se marca el recibo como cerrado. Los identificadores de la cuenta no se escriben en el recibo, en la respuesta ni en logs.
 
 ## Workers Builds
 

@@ -5,7 +5,10 @@ import { readFileSync } from 'node:fs'
 import { EBAY_BROWSE_SOURCE_ENABLED } from '../lib/ebay-browse-adapter'
 import {
   EBAY_ACCOUNT_DELETION_LIMITATION,
+  EBAY_AUDITED_SCHEMA,
+  EBAY_SCHEMA_AUDIT_SQL,
   createD1EbayAccountDeletionStore,
+  isEbayIdentityColumn,
   createMemoryEbayAccountDeletionStore,
   ebayChallengeResponse,
   ebayReservationIsStale,
@@ -297,7 +300,16 @@ test('malformed notifications and a missing key configuration fail closed', asyn
   if (!parsed.ok) assert.equal(parsed.reason, 'unexpected-topic')
 })
 
-function receiptDb(options: { failRun?: boolean, holdInserts?: boolean } = {}) {
+function auditedSchemaRows(identityColumn?: string) {
+  const rows: Array<{ table_name: string, column_name: string, object_type: string }> = []
+  for (const [table, columns] of Object.entries(EBAY_AUDITED_SCHEMA)) {
+    for (const column of columns) rows.push({ table_name: table, column_name: column, object_type: 'table' })
+  }
+  if (identityColumn) rows.push({ table_name: 'articles', column_name: identityColumn, object_type: 'table' })
+  return rows
+}
+
+function receiptDb(options: { failRun?: boolean, holdInserts?: boolean, failAudit?: boolean, identityColumn?: string } = {}) {
   const sql: string[] = []
   const rows = new Map<string, { notification_id: string, outcome: string, processed_at: string }>()
   let insertWaiters: Array<() => void> = []
@@ -310,6 +322,11 @@ function receiptDb(options: { failRun?: boolean, holdInserts?: boolean } = {}) {
           return {
             async first<T>() {
               return (rows.get(String(values[0])) ?? null) as T | null
+            },
+            async all<T>() {
+              if (options.failAudit) throw new Error('schema-unread')
+              if (statement !== EBAY_SCHEMA_AUDIT_SQL) throw new Error('unexpected-sql')
+              return { results: auditedSchemaRows(options.identityColumn) as T[] }
             },
             async run() {
               if (options.failRun) throw new Error('d1-unavailable')
@@ -588,6 +605,80 @@ test('without a D1 binding a valid notification is not acknowledged', async () =
   })
   assert.equal(challenge.status, 200)
   assert.equal(challenge.body?.challengeResponse, CHALLENGE_HASH)
+})
+
+test('the bound schema is audited before a receipt is closed and catalog rows stay', async () => {
+  const catalog = [
+    { table: 'articles', id: 1 },
+    { table: 'deals', id: 2 },
+    { table: 'tools', id: 3 },
+  ]
+  const { db, sql, rows } = receiptDb()
+  const store = createD1EbayAccountDeletionStore(db)
+  const body = notificationBody()
+  const result = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
+  })
+  assert.equal(result.status, 204)
+  assert.equal(rows.get('11111111-1111-1111-1111-111111111111')?.outcome, 'acknowledged-deletion-not-implemented')
+  assert.equal(JSON.stringify([...rows.values()]).includes('fixture-user'), false)
+  assert.match(sql.join('\n'), /pragma_table_info/)
+  assert.doesNotMatch(sql.join('\n'), /DELETE|UPDATE articles|UPDATE deals|UPDATE tools|UPDATE categories/)
+  assert.deepEqual(catalog.map((row) => row.id), [1, 2, 3])
+  const again = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store, now: () => NOW,
+  })
+  assert.equal(again.status, 204)
+  assert.equal(sql.filter((statement) => statement === EBAY_SCHEMA_AUDIT_SQL).length, 1)
+})
+
+test('a schema read failure or an unmapped identity column does not close the receipt', async () => {
+  const body = notificationBody()
+  const failed = receiptDb({ failAudit: true })
+  const failedStore = createD1EbayAccountDeletionStore(failed.db)
+  const unread = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: failedStore, now: () => NOW,
+  })
+  assert.equal(unread.status, 500)
+  assert.equal(failed.rows.size, 0)
+  assert.doesNotMatch(failed.sql.join('\n'), /UPDATE articles|DELETE FROM articles|DELETE FROM deals/)
+
+  const unmapped = receiptDb({ identityColumn: 'user_id' })
+  const unmappedStore = createD1EbayAccountDeletionStore(unmapped.db)
+  const blocked = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: unmappedStore, now: () => NOW,
+  })
+  assert.equal(blocked.status, 500)
+  assert.equal(unmapped.rows.size, 0)
+  assert.equal(unmapped.sql.some((statement) => statement.startsWith('DELETE FROM articles')), false)
+  assert.equal(JSON.stringify(unmapped.sql).includes('fixture-user'), false)
+
+  const recoveredDb = receiptDb()
+  const recovered = await handleEbayAccountDeletion({
+    method: 'POST', challengeCode: null, rawBody: body, signatureHeader: sign(body), config: config(), store: createD1EbayAccountDeletionStore(recoveredDb.db), now: () => NOW,
+  })
+  assert.equal(recovered.status, 204)
+  assert.equal(recoveredDb.rows.get('11111111-1111-1111-1111-111111111111')?.outcome, 'acknowledged-deletion-not-implemented')
+})
+
+test('migration columns are the audited schema and have no eBay identity', () => {
+  const sql = ['0001_init.sql', '0005_ebay_account_deletion_receipts.sql']
+    .map((name) => readFileSync(new URL(`../migrations/${name}`, import.meta.url), 'utf8'))
+    .join('\n')
+  const found = new Map<string, string[]>()
+  for (const match of sql.matchAll(/CREATE TABLE IF NOT EXISTS ([A-Za-z_][A-Za-z0-9_]*) \(([^;]+)\)/g)) {
+    const columns = match[2].split(',').flatMap((part) => {
+      const trimmed = part.trim()
+      if (!trimmed || /^(PRIMARY|FOREIGN|UNIQUE|CONSTRAINT)\b/i.test(trimmed)) return []
+      const name = trimmed.split(/\s+/)[0]
+      return /^[A-Za-z_][A-Za-z0-9_]*$/.test(name) ? [name] : []
+    })
+    found.set(match[1], columns)
+  }
+  assert.deepEqual(Object.fromEntries(found), EBAY_AUDITED_SCHEMA)
+  for (const columns of Object.values(EBAY_AUDITED_SCHEMA)) {
+    for (const column of columns) assert.equal(isEbayIdentityColumn(column), false)
+  }
 })
 
 test('the endpoint does not log secrets, enable browse, or call eBay outside getPublicKey', () => {

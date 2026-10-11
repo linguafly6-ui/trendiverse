@@ -7,9 +7,11 @@
  * credenciales, solo vale el JSON ya configurado. Una clave de prueba no es
  * la clave de producción.
  *
- * El esquema revisado no tiene username, userId ni eiasToken. El POST no
- * borra anuncios, precios ni estadísticas. Aceptar la notificación no
- * demuestra que no existan datos personales en otros almacenes.
+ * El POST no borra anuncios, precios ni estadísticas por aproximación.
+ * En D1 lee las columnas reales y solo cierra el recibo si ninguna se llama
+ * username, userId o eiasToken. La identidad no entra en esa consulta.
+ * Aceptar la notificación no demuestra que no existan datos personales
+ * fuera de este esquema.
  *
  * La firma se comprueba con Web Crypto: ECDSA P-256 y SHA-1. La firma DER
  * del SDK oficial se convierte al formato raw de SubtleCrypto. Otra curva
@@ -329,10 +331,51 @@ export function unlinkedPersonalDataDeletion(): EbayDeletionReport {
   return { deletedRowCount: 0, implemented: false, limitation: EBAY_ACCOUNT_DELETION_LIMITATION }
 }
 
+/** Columnas creadas por las migraciones. No es un índice de cuentas de eBay. */
+export const EBAY_AUDITED_SCHEMA = {
+  categories: ['id', 'name', 'slug', 'color', 'icon', 'description'],
+  articles: ['id', 'title', 'slug', 'category', 'content', 'excerpt', 'image_url', 'thumbnail_url', 'read_time_minutes', 'views', 'trending', 'published_at', 'created_at', 'updated_at'],
+  tools: ['id', 'title', 'slug', 'description', 'type', 'config', 'created_at'],
+  deals: ['id', 'product_name', 'original_price', 'discount_price', 'discount_percent', 'image_url', 'affiliate_url', 'expires_at', 'category_id', 'created_at'],
+  ebay_account_deletion_receipts: ['notification_id', 'outcome', 'processed_at'],
+} as const
+
+export const EBAY_SCHEMA_AUDIT_SQL = `SELECT s.name AS table_name, p.name AS column_name, s.type AS object_type
+FROM sqlite_master AS s
+JOIN pragma_table_info(s.name) AS p
+WHERE s.type IN ('table', 'view')
+AND s.name NOT LIKE 'sqlite_%'
+AND s.name != 'd1_migrations'`
+
+export function isEbayIdentityColumn(column: string): boolean {
+  const normalized = column.toLowerCase().replace(/_/g, '')
+  return normalized === 'username' || normalized === 'userid' || normalized === 'eiastoken'
+}
+
+export function ebaySchemaDeletionVerdict(columns: Iterable<{ tableName: unknown, columnName: unknown, objectType: unknown }>): 'clear' | 'unmapped' | 'incomplete' {
+  const tables = new Set<string>()
+  for (const column of columns) {
+    if (typeof column.tableName !== 'string' || typeof column.columnName !== 'string' || typeof column.objectType !== 'string') {
+      return 'incomplete'
+    }
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(column.tableName) || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(column.columnName)) {
+      return 'incomplete'
+    }
+    if (column.objectType !== 'table' && column.objectType !== 'view') return 'incomplete'
+    if (isEbayIdentityColumn(column.columnName)) return 'unmapped'
+    if (column.objectType === 'table') tables.add(column.tableName)
+  }
+  for (const table of Object.keys(EBAY_AUDITED_SCHEMA)) {
+    if (!tables.has(table)) return 'incomplete'
+  }
+  return 'clear'
+}
+
 export interface EbayReceiptDatabase {
   prepare(sql: string): {
     bind(...values: unknown[]): {
       first<T>(): Promise<T | null>
+      all<T>(): Promise<{ results?: T[] }>
       run(): Promise<{ meta?: { changes?: number } }>
     }
   }
@@ -411,6 +454,19 @@ export function createD1EbayAccountDeletionStore(db: EbayReceiptDatabase): EbayA
       await confirmedChanges(await db.prepare(RELEASE_RECEIPT).bind(notificationId).run())
     },
     async deleteLinkedPersonalData() {
+      const listed = await db.prepare(EBAY_SCHEMA_AUDIT_SQL).bind().all<{
+        table_name: string
+        column_name: string
+        object_type: string
+      }>()
+      if (!Array.isArray(listed.results)) throw new Error('schema-audit-unconfirmed')
+      const verdict = ebaySchemaDeletionVerdict(listed.results.map((row) => ({
+        tableName: row?.table_name,
+        columnName: row?.column_name,
+        objectType: row?.object_type,
+      })))
+      if (verdict === 'unmapped') throw new Error('unmapped-identity-column')
+      if (verdict !== 'clear') throw new Error('schema-audit-incomplete')
       return unlinkedPersonalDataDeletion()
     },
   }
@@ -445,6 +501,7 @@ export function createMemoryEbayAccountDeletionStore(
       if (existing?.outcome === 'reserved') receipts.delete(notificationId)
     },
     async deleteLinkedPersonalData() {
+      // Este almacén no tiene D1. La ruta usa createD1EbayAccountDeletionStore.
       return unlinkedPersonalDataDeletion()
     },
   }
