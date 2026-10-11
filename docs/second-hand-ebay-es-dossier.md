@@ -55,22 +55,58 @@ En las tres fichas, el anuncio embebido muestra la palabra «Nuevo». No muestra
 
 `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacía. Un ID documentado en EE. UU. no se admite por estar en la tabla. Aunque más adelante se admitiera, el normalizador sigue dejando fuera los que traduce a `new` y el `7000`.
 
+## Variantes del catálogo
+
+`SECOND_HAND_MAPPING_SCOPES` solo tiene `family` y `category`. Un producto es un slug editorial. No hay un registro de variante por color, edición comercial o MPN. En `nintendo-switch` el atributo `edition` vale «Modelo OLED»: separa OLED, original y Lite, no el color. La verificación guardada dice que la ficha no parte el modelo por el color de los Joy-Con.
+
+Por eso el slug `nintendo-switch` se queda. Crear un slug por color cambiaría las URLs editoriales y el catálogo de 18 productos. No hay compatibilidad que lo justifique. Un ePID de un solo color no puede colgarse de este slug. Para asociarlo haría falta un producto nuevo, con su propio slug, su propia `verificationRef` y un solo ePID etiquetado que coincida con ese color y ese MPN. Este cambio no lo crea.
+
+## Evidencia de cada ePID
+
+| ePID | Presente | Ausente para asociarlo |
+| --- | --- | --- |
+| `21048307585` | Etiqueta «eBay Product ID (ePID)», HEG-001, 64 GB, color Blanco, MPN `10007454`, EAN `0045496453435`, ficha https://www.ebay.es/p/21048307585 | Un producto cuyo alcance sea solo ese color. `categoryId` y `listingMarketplaceId` leídos del cuerpo de `getItem`. La política de condiciones de esa categoría. |
+| `23048312547` | La misma etiqueta, HEG-001, 64 GB, color Negro/Neon Rojo/Neon Azul, MPN `10007455`, EAN `0045496453442`, ficha https://www.ebay.es/p/23048312547 | Lo mismo, para ese color y ese MPN. |
+| Path `5056057863` | La ficha https://www.ebay.es/p/5056057863 publica HEG-001, 64 GB y Edición Splatoon 3. No muestra la etiqueta de ePID. | El número del path no es un ePID. No se asocia. |
+
+Ninguno entra en el mapping. `canAssociate` queda en false.
+
+## Cómo leer `categoryId` y `listingMarketplaceId`
+
+No hay un cuerpo real de `getItem` en el repositorio. El procedimiento, sobre un JSON que ya se tenga, es:
+
+1. El objeto tiene que ser la respuesta de `GET /buy/browse/v1/item/{item_id}`, un `Item`. Un `ItemSummary` de la búsqueda no obliga esos campos. La decisión de proveedor ya cita que el OpenAPI exige `categoryId` y `listingMarketplaceId` en `Item`, y no en `ItemSummary`.
+2. Pasar el objeto a `readGetItemCategoryEvidence`. `categoryId` sale solo de la propiedad `categoryId` si es un texto no vacío y sin espacios alrededor. Un número JSON no vale. `categoryPath`, `categoryIdPath`, la miga «Consolas de videojuegos» y el path de `itemWebUrl` no se leen.
+3. `listingMarketplaceId` sale solo de esa propiedad, con la misma regla. El header `X-EBAY-C-MARKETPLACE-ID: EBAY_ES` de la petición no sustituye al campo del anuncio.
+4. `getItem` del cliente ya copia esos dos campos al resultado estrecho cuando vienen en el cuerpo, y responde `invalid-response` si `itemId` no coincide con el id pedido. Sin un cuerpo guardado, el expediente sigue con los dos en null.
+5. El `categoryId` de las pruebas del puente es un fixture. No es la categoría de esta consola y no se copia aquí.
+
+## Contrato de condiciones
+
+En este repositorio no está el OpenAPI de Sell Metadata ni un cliente generado. La única mención es la cita externa de `get_item_condition_policies` que ya está arriba. Esa cita no es una respuesta de `EBAY_ES` y sus `categoryId` de ejemplo no son los de esta consola. `SELL_METADATA_CONDITION_CONTRACT_IN_REPO` es false. `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacía.
+
 ## `sourceUrl`
 
 `normalizeEbaySourceUrl` sigue aceptando solo `http` o `https`, rechazando cualquier host que contenga `ebay` y rechazando `campid`, `customid`, `mkcid`, `mkevt`, `mkrid` y `toolid`. `assessListingSourceUrl` usa esa misma regla. Una ficha `/p/` y una ficha de anuncio de `www.ebay.es` quedan rechazadas.
 
-Propuesta, sin aplicarla:
+`validateObservation` acepta cualquier URL `http` o `https`. No mira el host ni la afiliación. El rechazo de eBay tiene que seguir en el adapter. `evaluateProposedEbayEsItemUrl` describe una regla más estrecha y devuelve `applied: false`. `appliedListingSourceUrl` sigue siendo `normalizeEbaySourceUrl`, así que `www.ebay.es` no se convierte en `sourceUrl`. El puente no importa esa propuesta.
 
-- La procedencia de un precio es el `itemWebUrl` devuelto por Browse para ese mismo anuncio.
-- Solo podría aceptarse si es `https`, el host es `www.ebay.es`, `listingMarketplaceId` es `EBAY_ES` y la query no trae ningún parámetro de afiliado. Si aparece uno, se rechaza la URL entera.
-- `itemAffiliateWebUrl` queda fuera hasta que el alta de EPN esté confirmada.
-- Una URL `/p/` demuestra la identidad del producto. No es el `sourceUrl` de un precio.
-- Quitar el rechazo del host de eBay ahora no crearía una observación válida: faltan el ePID canónico, la categoría y la condición. Por eso la política no se relaja en este cambio.
+La propuesta admitiría un `itemWebUrl` solo si, a la vez:
+
+- es `https` y el host es exactamente `www.ebay.es`;
+- el path es `/itm/` más el `legacyItemId` del mismo cuerpo;
+- no hay query ni fragmento. Un parámetro de afiliado (`campid`, `customid`, `mkcid`, `mkevt`, `mkrid`, `toolid`) o cualquier otro parámetro rechaza la URL entera. No se recorta;
+- `listingMarketplaceId` del mismo cuerpo es `EBAY_ES`;
+- no se usa `itemAffiliateWebUrl`. Una ficha `/p/` tampoco sirve como `sourceUrl` de un precio.
+
+Esa regla no se aplica. Faltan el ePID canónico, la categoría y la condición, y aplicarla no produciría una observación válida.
 
 ## Instrucciones para cerrar el expediente
 
-1. Decidir el alcance. Si `nintendo-switch` sigue cubriendo todos los colores de HEG-001 con 64 GB, hace falta una ficha de `www.ebay.es` cuyo bloque de identificadores etiquete un solo ePID para ese conjunto, sin color ni edición especial. Si eBay no publica esa ficha, hay que partir el producto de Trendiverse por color o edición y darle a cada parte su propia `verificationRef` antes de copiar el ePID etiquetado. No usar `21048307585` ni `23048312547` como canónico del slug actual. No copiar el número de un path `/p/` si la página no muestra la etiqueta «eBay Product ID (ePID)». No usar `itemId`, `legacyItemId`, `HEG-001`, el MPN ni el EAN como identificador de marketplace.
-2. Anotar el `categoryId` numérico que muestre esa ficha. Si no lo muestra, resolver la hoja «Consolas de videojuegos» con la Taxonomy API de `EBAY_ES` y guardar el `categoryId` de la respuesta. Fuera de CI, pedir `GET https://api.ebay.com/sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies` con el filtro de esa categoría y un token de aplicación que no se escriba en el repositorio. Guardar solo los pares `conditionId` y descripción de esa categoría. Admitir un ID solo si viene en esa respuesta y el normalizador lo traduce a un usado. No copiar los ID de ejemplo del cliente generado.
-3. Cuando el ePID canónico exista, leer un anuncio que ya traiga ese `epid` con `getItem`, fuera de CI. Conservar `listingMarketplaceId` y `categoryId` si el primero es `EBAY_ES` y el segundo coincide con el del paso anterior. No copiar el precio de esa respuesta al expediente.
-4. Solo después, en otro cambio, valorar la propuesta de `sourceUrl`. Hasta entonces el host de eBay sigue rechazado.
-5. La allowlist de proveedores y ámbitos sigue vacía. Añadir `ebay` y `EBAY_ES` va junto con un `marketplaceIdentifier` validado cuya `verifiedProductRef` sea la `verificationRef` ya existente. No forma parte de este expediente.
+Una persona tiene que traer, fuera de este repositorio y sin pegar el resultado en CI:
+
+1. La decisión de alcance. O una ficha de `www.ebay.es` cuyo bloque de identificadores etiquete un solo ePID para todo HEG-001 de 64 GB, sin color ni edición, o un producto nuevo por color con su slug y su `verificationRef`. No usar `21048307585` ni `23048312547` como canónico de `nintendo-switch`. No copiar el número de un path `/p/` si la página no muestra la etiqueta «eBay Product ID (ePID)». No usar `itemId`, `legacyItemId`, `HEG-001`, el MPN ni el EAN como identificador de marketplace.
+2. Un JSON de `getItem` de un anuncio que ya traiga ese ePID. De ese JSON se leen `categoryId` y `listingMarketplaceId` con `readGetItemCategoryEvidence`. No hace falta otra llamada para interpretar un cuerpo que ya se tenga. El precio de ese JSON no se copia al expediente.
+3. El JSON de `GET https://api.ebay.com/sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies` filtrado por ese `categoryId`, pedido con un token que no se escriba en el repositorio. Admitir un `conditionId` solo si está en esa respuesta y el normalizador lo traduce a un usado. Hoy el repositorio no contiene ese contrato.
+4. Después de esos tres documentos, otro cambio puede conectar `evaluateProposedEbayEsItemUrl`. Hasta entonces el host de eBay sigue rechazado.
+5. La allowlist de proveedores y ámbitos sigue vacía. Añadir `ebay` y `EBAY_ES` va junto con un `marketplaceIdentifier` validado cuya `verifiedProductRef` sea la `verificationRef` del producto que corresponda. No forma parte de este expediente.
