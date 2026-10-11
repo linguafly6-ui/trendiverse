@@ -68,7 +68,7 @@ El identificador candidato, si más adelante se demuestra, es el ePID. En Browse
 
 No es un identificador que este PR pueda rellenar:
 
-- No se ha consultado el catálogo. No hay ningún ePID en los mappings.
+- Las fichas públicas de catálogo de `www.ebay.es` se leyeron el 2026-10-11. Hay dos ePID etiquetados para HEG-001 y 64 GB, uno por color, y ninguno es canónico. No hay ningún ePID en los mappings. El expediente pendiente está en `docs/second-hand-ebay-es-dossier.md`.
 - `UNCONFIRMED — REQUIRES MANUAL PROVIDER CONFIRMATION`: que una aplicación de compra pueda resolver un ePID sin token de usuario vendedor, y que un ePID aísle una sola configuración (capacidad, edición, revisión) y no una familia.
 - `itemId` y `legacyItemId` nombran un anuncio. Una URL no es el identificador.
 - `gtin` no es el identificador de marketplace. `HEG-001` es el número de modelo del fabricante de la Switch OLED ya verificada. Tampoco es un identificador de marketplace. Ninguno de los dos entra en `marketplaceIdentifier`.
