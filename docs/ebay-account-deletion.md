@@ -1,8 +1,8 @@
 # Cierre de cuenta de eBay Marketplace
 
-Este endpoint permite que eBay valide el destino de las notificaciones `MARKETPLACE_ACCOUNT_DELETION` y que Trendiverse acepte solo notificaciones firmadas. No enciende el adapter de Browse, no pide la exención de conservación de datos y no llama a eBay.
+Este endpoint permite que eBay valide el destino de las notificaciones `MARKETPLACE_ACCOUNT_DELETION` y que Trendiverse acepte solo notificaciones firmadas. No enciende el adapter de Browse y no pide la exención de conservación de datos. Con credenciales de aplicación, pide la clave pública a `getPublicKey` y el token de cliente a `api.ebay.com`. No llama a Browse.
 
-No está listo para producción. Preview ya tiene la tabla del recibo. Producción no tiene binding D1 ni esa migración. Falta una clave pública real obtenida con `getPublicKey`. Aceptar una notificación no demuestra que se hayan borrado datos personales.
+No está listo para producción. Preview ya tiene la tabla del recibo. Producción no tiene binding D1 ni esa migración. Las credenciales de aplicación no están en el repositorio y esta entrega no las configura. Aceptar una notificación no demuestra que se hayan borrado datos personales.
 
 ## Qué hay guardado hoy
 
@@ -71,17 +71,25 @@ Solo en Cloudflare Pages, como secretos del proyecto `trendiverse`. No van en el
 | --- | --- |
 | `EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN` | 32 a 80 caracteres: letras, cifras, `_` y `-`. Entra en el hash del challenge. |
 | `EBAY_ACCOUNT_DELETION_ENDPOINT` | La URL de arriba, con `https`, sin consulta ni usuario, y con la ruta `/api/ebay/account-deletion`. |
-| `EBAY_NOTIFICATION_PUBLIC_KEYS` | JSON con el `kid` de `X-EBAY-SIGNATURE` y la respuesta de `getPublicKey`. |
+| `EBAY_NOTIFICATION_CLIENT_ID` | App ID de la aplicación. Hace falta, junto con el Cert ID, para el token de `getPublicKey`. |
+| `EBAY_NOTIFICATION_CLIENT_SECRET` | Cert ID. Solo entra en el `Authorization: Basic` del token. |
+| `EBAY_NOTIFICATION_PUBLIC_KEYS` | Respaldo si no hay credenciales: JSON con el `kid` y la respuesta de `getPublicKey`. Si las credenciales están configuradas, este JSON no verifica la firma. |
 
 ```bash
 npx wrangler pages secret put EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN --project-name trendiverse
 npx wrangler pages secret put EBAY_ACCOUNT_DELETION_ENDPOINT --project-name trendiverse
+npx wrangler pages secret put EBAY_NOTIFICATION_CLIENT_ID --project-name trendiverse
+npx wrangler pages secret put EBAY_NOTIFICATION_CLIENT_SECRET --project-name trendiverse
 npx wrangler pages secret put EBAY_NOTIFICATION_PUBLIC_KEYS --project-name trendiverse
 ```
 
-El mecanismo oficial, descrito en la guía de Marketplace Account Deletion y en el SDK `eBay/event-notification-nodejs-sdk`, es: decodificar `X-EBAY-SIGNATURE` de Base64, leer `kid`, y llamar a `GET https://api.ebay.com/commerce/notification/v1/public_key/{kid}` con un token de aplicación. La respuesta es `{ "key", "algorithm", "digest" }`. `key` es un PEM SPKI. En el fixture publicado por ese SDK, `algorithm` es `ECDSA` y `digest` es `SHA1`. Esta aplicación no hace esa llamada ni guarda credenciales de eBay.
+Esos comandos no se han ejecutado en esta entrega.
 
-El secreto puede ser un PEM o el cuerpo de `getPublicKey`:
+El mecanismo oficial, descrito en la guía de Marketplace Account Deletion, en Notification API `getPublicKey` y en el SDK `eBay/event-notification-nodejs-sdk`, es: decodificar `X-EBAY-SIGNATURE` de Base64, leer `kid`, y llamar a `GET https://api.ebay.com/commerce/notification/v1/public_key/{kid}`. Esa operación exige un token de aplicación con el ámbito `https://api.ebay.com/oauth/api_scope`. El token se pide con `POST https://api.ebay.com/identity/v1/oauth2/token`, `grant_type=client_credentials` y `Authorization: Basic` del App ID y el Cert ID. La respuesta de la clave es `{ "key", "algorithm", "digest" }`. `key` es un PEM SPKI. Solo se acepta `ECDSA` y `SHA1`, y la curva P-256. El host está fijo en `api.ebay.com`; no sale de una variable.
+
+La clave obtenida se guarda en la memoria del isolate como máximo una hora. No se vuelve a pedir mientras siga vigente. Un `kid` nuevo no está en esa copia y se pide entonces. Si la copia vigente no valida la firma, se pide otra vez por si eBay rotó la clave de ese mismo `kid`. Si la respuesta nueva es la misma, o tampoco valida, el POST no sigue. Un 404, o un 400 con el error `195001`, es un `kid` desconocido: responde 412 y no guarda la ausencia. Un fallo de red, un 401 que se repite, un JSON ilegible o una clave que no es P-256 responde 503 y no guarda esa respuesta. La copia no se comparte entre isolates y desaparece al reciclar el worker. Puede haber varios `kid` a la vez, hasta ocho. Una clave de prueba no sustituye a la que devuelve `getPublicKey`.
+
+Sin credenciales, el JSON `EBAY_NOTIFICATION_PUBLIC_KEYS` sigue siendo el único origen. Puede ser un PEM o el cuerpo de `getPublicKey`:
 
 ```json
 {
@@ -93,7 +101,7 @@ El secreto puede ser un PEM o el cuerpo de `getPublicKey`:
 }
 ```
 
-La clave del fixture del SDK no es la clave de producción. El secreto puede contener varios `kid` a la vez. Para una rotación, se añade la clave nueva sin quitar la anterior hasta que eBay deje de firmar con la vieja. Un `kid` ausente responde 412 y no guarda un recibo. Esta aplicación no llama a `getPublicKey` para descubrir la clave nueva. Si el secreto falta, el algoritmo no es ECDSA o la curva no es P-256, el POST no se acepta y no hay borrado.
+La clave del fixture del SDK no es la clave de producción. En el respaldo sin credenciales, el secreto puede contener varios `kid` a la vez. Un `kid` ausente responde 412 y no guarda un recibo. Si el secreto falta, las credenciales no permiten pedir la clave, el algoritmo no es ECDSA o la curva no es P-256, el POST no se acepta y no hay borrado.
 
 ## Challenge
 
@@ -123,10 +131,11 @@ Se verifica ECDSA P-256 con SHA-1 sobre el cuerpo crudo. Si esa comprobación fa
 | --- | --- |
 | Firma válida, recibo cerrado ahora o ya cerrado antes | 204 |
 | Firma válida, pero la reserva de otro proceso sigue abierta | 503 |
-| Firma ausente, inválida o de otro `kid` | 412 |
+| Firma ausente, inválida, de otro `kid` o de un `kid` que `getPublicKey` no conoce | 412 |
 | Cuerpo que no es esta notificación, o sin identidad | 400 |
 | `Content-Length` o cuerpo de más de 64 KiB | 413 |
-| Token, endpoint o claves públicas sin configurar | 503 |
+| Token de verificación, endpoint o claves sin configurar | 503 |
+| `getPublicKey` o el token de aplicación no responden, o la respuesta no es una clave P-256 | 503 |
 | Sin binding D1, o fallo al reservar el recibo | 503 o 500 |
 
 Un 412, un 400 y un 413 no guardan un recibo. Un fallo de D1 al reservar responde 500 y no ejecuta el borrado. Si el borrado lanza un error, se suelta la reserva `reserved` para que un reintento pueda continuar; hoy ese borrado no está implementado y no toca el catálogo. Los identificadores de la cuenta no se escriben en el recibo, en la respuesta ni en logs.
@@ -144,3 +153,5 @@ node --import tsx --test tests/ebay-account-deletion.test.ts
 ```
 
 Cubre el challenge, el formato del token, el vector de firma publicado por el SDK de eBay, firmas inválidas, una notificación firmada, el duplicado, dos reservas simultáneas, un fallo de base de datos, la ausencia de D1 y que un anuncio no asociado sobrevive. La clave de ese vector es un fixture público del SDK, no una clave obtenida de `getPublicKey` para Trendiverse.
+
+`tests/ebay-notification-public-key.test.ts` cubre la caché de una hora, su caducidad, un `kid` desconocido, un fallo de la API, una firma inválida y la rotación. Esas pruebas usan `fetch` falso y claves generadas en el test. No llaman a eBay.

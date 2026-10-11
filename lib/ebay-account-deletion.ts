@@ -2,9 +2,10 @@
  * Notificaciones de cierre de cuenta de eBay Marketplace.
  *
  * El endpoint responde al challenge y solo acepta un POST cuya firma ECDSA
- * SHA-1 encaje con una clave pública ya configurada. No llama a eBay: la
- * clave tiene que pegarse desde getPublicKey. Una clave de prueba no es la
- * clave de producción.
+ * SHA-1 encaje con la clave pública de ese `kid`. Con credenciales de
+ * aplicación, la clave se pide a getPublicKey y se guarda una hora. Sin
+ * credenciales, solo vale el JSON ya configurado. Una clave de prueba no es
+ * la clave de producción.
  *
  * El esquema revisado no tiene username, userId ni eiasToken. El POST no
  * borra anuncios, precios ni estadísticas. Aceptar la notificación no
@@ -15,6 +16,11 @@
  * se rechaza. El recibo se reserva con un INSERT atómico antes de cualquier
  * borrado, para que dos POST simultáneos no ejecuten el borrado dos veces.
  */
+
+import {
+  isValidEbayPublicKeyId,
+  type EbayPublicKeyLookup,
+} from '@/lib/ebay-notification-public-key'
 
 export const EBAY_ACCOUNT_DELETION_ENDPOINT_PATH = '/api/ebay/account-deletion'
 
@@ -161,25 +167,34 @@ interface EbaySignatureHeader {
   digest: string
 }
 
+export function parseEbaySignatureHeader(signatureHeader: string): EbaySignatureHeader | null {
+  try {
+    const headerBytes = decodeBase64(signatureHeader)
+    if (!headerBytes) return null
+    const decoded = JSON.parse(new TextDecoder().decode(headerBytes)) as Partial<EbaySignatureHeader>
+    if (typeof decoded.alg !== 'string' || decoded.alg.toLowerCase() !== 'ecdsa') return null
+    if (typeof decoded.digest !== 'string' || decoded.digest.toUpperCase() !== 'SHA1') return null
+    if (typeof decoded.kid !== 'string' || !isValidEbayPublicKeyId(decoded.kid)) return null
+    if (typeof decoded.signature !== 'string' || !decoded.signature || decoded.signature.length > 4096) return null
+    return { alg: decoded.alg, kid: decoded.kid, signature: decoded.signature, digest: decoded.digest }
+  } catch {
+    return null
+  }
+}
+
 export async function verifyEbayAccountDeletionSignature(
   rawBody: string,
   signatureHeader: string,
   publicKeys: ReadonlyMap<string, string>,
 ): Promise<boolean> {
-  let header: EbaySignatureHeader
-  try {
-    const headerBytes = decodeBase64(signatureHeader)
-    if (!headerBytes) return false
-    const decoded = JSON.parse(new TextDecoder().decode(headerBytes)) as Partial<EbaySignatureHeader>
-    if (typeof decoded.alg !== 'string' || decoded.alg.toLowerCase() !== 'ecdsa') return false
-    if (typeof decoded.digest !== 'string' || decoded.digest.toUpperCase() !== 'SHA1') return false
-    if (typeof decoded.kid !== 'string' || typeof decoded.signature !== 'string' || !decoded.signature) return false
-    header = { alg: decoded.alg, kid: decoded.kid, signature: decoded.signature, digest: decoded.digest }
-  } catch {
-    return false
-  }
+  const header = parseEbaySignatureHeader(signatureHeader)
+  if (!header) return false
   const publicKeyPem = publicKeys.get(header.kid)
   if (!publicKeyPem) return false
+  return signatureMatches(rawBody, header, publicKeyPem)
+}
+
+async function signatureMatches(rawBody: string, header: EbaySignatureHeader, publicKeyPem: string): Promise<boolean> {
   try {
     const publicKey = await crypto.subtle.importKey(
       'spki',
@@ -443,6 +458,7 @@ export async function handleEbayAccountDeletion(input: {
   config: EbayAccountDeletionConfig
   store: EbayAccountDeletionStore | null
   now?: () => string
+  publicKeyLookup?: EbayPublicKeyLookup | null
 }): Promise<EbayAccountDeletionHttpResult> {
   if (input.method === 'GET') return await handleChallenge(input)
   if (input.method === 'POST') return handleNotification(input)
@@ -469,19 +485,47 @@ function outcomeForReport(report: EbayDeletionReport): EbayAccountDeletionOutcom
   return 'acknowledged-deletion-not-implemented'
 }
 
+async function signatureVerdict(input: {
+  rawBody: string
+  signatureHeader: string | null
+  config: EbayAccountDeletionConfig
+  publicKeyLookup?: EbayPublicKeyLookup | null
+}): Promise<'valid' | 'invalid' | 'unavailable'> {
+  if (!input.signatureHeader) return 'invalid'
+  if (!input.publicKeyLookup) {
+    if (!input.config.publicKeys) return 'unavailable'
+    const signed = await verifyEbayAccountDeletionSignature(input.rawBody, input.signatureHeader, input.config.publicKeys)
+    return signed ? 'valid' : 'invalid'
+  }
+  const header = parseEbaySignatureHeader(input.signatureHeader)
+  if (!header) return 'invalid'
+  try {
+    const resolved = await input.publicKeyLookup.resolve(header.kid)
+    if (resolved.status === 'unavailable') return 'unavailable'
+    if (resolved.status !== 'ok') return 'invalid'
+    if (await signatureMatches(input.rawBody, header, resolved.pem)) return 'valid'
+    if (!resolved.fromCache) return 'invalid'
+    const refreshed = await input.publicKeyLookup.resolve(header.kid, { refresh: true })
+    if (refreshed.status === 'unavailable') return 'unavailable'
+    if (refreshed.status !== 'ok' || refreshed.pem === resolved.pem) return 'invalid'
+    return await signatureMatches(input.rawBody, header, refreshed.pem) ? 'valid' : 'invalid'
+  } catch {
+    return 'unavailable'
+  }
+}
+
 async function handleNotification(input: {
   rawBody: string
   signatureHeader: string | null
   config: EbayAccountDeletionConfig
   store: EbayAccountDeletionStore | null
   now?: () => string
+  publicKeyLookup?: EbayPublicKeyLookup | null
 }): Promise<EbayAccountDeletionHttpResult> {
-  if (!input.config.publicKeys) return { status: 503, body: null }
   if (input.rawBody.length > EBAY_ACCOUNT_DELETION_MAX_BODY_LENGTH) return { status: 413, body: null }
-  const signatureIsValid = input.signatureHeader
-    ? await verifyEbayAccountDeletionSignature(input.rawBody, input.signatureHeader, input.config.publicKeys)
-    : false
-  if (!signatureIsValid) return { status: 412, body: null }
+  const verdict = await signatureVerdict(input)
+  if (verdict === 'unavailable') return { status: 503, body: null }
+  if (verdict !== 'valid') return { status: 412, body: null }
   const parsed = parseEbayAccountDeletionNotification(input.rawBody)
   if (!parsed.ok) return { status: 400, body: null }
   if (!input.store) return { status: 503, body: null }

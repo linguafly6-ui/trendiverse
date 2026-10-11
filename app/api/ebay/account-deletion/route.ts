@@ -6,6 +6,10 @@ import {
   readEbayAccountDeletionConfig,
   type EbayReceiptDatabase,
 } from '@/lib/ebay-account-deletion'
+import {
+  createEbayPublicKeyMemory,
+  ebayNotificationPublicKeyLookupFromEnv,
+} from '@/lib/ebay-notification-public-key'
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
@@ -15,7 +19,11 @@ interface AccountDeletionEnv {
   EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN?: string
   EBAY_ACCOUNT_DELETION_ENDPOINT?: string
   EBAY_NOTIFICATION_PUBLIC_KEYS?: string
+  EBAY_NOTIFICATION_CLIENT_ID?: string
+  EBAY_NOTIFICATION_CLIENT_SECRET?: string
 }
+
+const ebayPublicKeyMemory = createEbayPublicKeyMemory()
 
 const NO_STORE = { 'Cache-Control': 'no-store' }
 
@@ -28,6 +36,8 @@ async function readRuntimeEnv(): Promise<AccountDeletionEnv> {
       EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN: process.env.EBAY_ACCOUNT_DELETION_VERIFICATION_TOKEN,
       EBAY_ACCOUNT_DELETION_ENDPOINT: process.env.EBAY_ACCOUNT_DELETION_ENDPOINT,
       EBAY_NOTIFICATION_PUBLIC_KEYS: process.env.EBAY_NOTIFICATION_PUBLIC_KEYS,
+      EBAY_NOTIFICATION_CLIENT_ID: process.env.EBAY_NOTIFICATION_CLIENT_ID,
+      EBAY_NOTIFICATION_CLIENT_SECRET: process.env.EBAY_NOTIFICATION_CLIENT_SECRET,
     }
   }
 }
@@ -63,6 +73,7 @@ export async function POST(req: NextRequest) {
     signatureHeader: req.headers.get('x-ebay-signature'),
     config: readEbayAccountDeletionConfig(envBindings(env)),
     store: env.DB ? createD1EbayAccountDeletionStore(env.DB) : null,
+    publicKeyLookup: ebayNotificationPublicKeyLookupFromEnv(env, { memory: ebayPublicKeyMemory }),
   })
   return jsonResult(result.status, result.body)
 }
