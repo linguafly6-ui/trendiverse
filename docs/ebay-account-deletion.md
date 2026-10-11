@@ -2,7 +2,7 @@
 
 Este endpoint permite que eBay valide el destino de las notificaciones `MARKETPLACE_ACCOUNT_DELETION` y que Trendiverse acepte solo notificaciones firmadas. No enciende el adapter de Browse, no pide la exención de conservación de datos y no llama a eBay.
 
-No está listo para producción. Faltan el binding D1, la migración del recibo y una clave pública real obtenida con `getPublicKey`. Aceptar una notificación no demuestra que se hayan borrado datos personales.
+No está listo para producción. Preview ya tiene la tabla del recibo. Producción no tiene binding D1 ni esa migración. Falta una clave pública real obtenida con `getPublicKey`. Aceptar una notificación no demuestra que se hayan borrado datos personales.
 
 ## Qué hay guardado hoy
 
@@ -33,11 +33,13 @@ database_id = "2bb04eb3-9f3f-40b3-a6ed-b1f58dc9107f"
 
 `wrangler pages deploy` elige el entorno comparando la rama con `production_branch`. En `main` el checkout es la rama `main` y el despliegue no imprime alias de rama: ese es producción y usa la configuración superior, sin `DB`. En un pull request el checkout queda en `HEAD` y el alias es `head.trendiverse.pages.dev`: ese es preview y usa `env.preview`. Pages no hereda `vars`. `[vars]` sigue en `ENVIRONMENT = "production"`. `[env.preview.vars]` vale `ENVIRONMENT = "preview"`. Ningún módulo de la app lee esa variable: el endpoint usa `DB` y los secretos de eBay.
 
-`.github/workflows/deploy.yml` inyecta `CLOUDFLARE_D1_DATABASE_ID` en el job, pero el comando no recibe ese id. En los logs de `08e93a7` y `bdacbfe` el valor salió vacío. `npm run migrate:cf` aplicaría `wrangler d1 migrations apply trendiverse-db --remote`. Ese nombre no es `trendiverse-preview` ni la base de producción `trendiverse`. No se ha ejecutado. `trendiverse-preview` tampoco se ha migrado.
+`.github/workflows/deploy.yml` inyecta `CLOUDFLARE_D1_DATABASE_ID` en el job, pero el comando no recibe ese id. En los logs de `08e93a7` y `bdacbfe` el valor salió vacío. `npm run migrate:cf` aplicaría `wrangler d1 migrations apply trendiverse-db --remote`. Ese nombre no es `trendiverse-preview` ni la base de producción `trendiverse`. No se ha ejecutado.
 
-Sin `DB`, el POST firmado responde 503 y no reserva un recibo. En preview, cuando el despliegue ya lleva este binding, el POST intenta usar D1. Sin la tabla `ebay_account_deletion_receipts` esa reserva falla. El GET del challenge puede responder 200 si el token y la URL son válidos. La ruta no usa memoria del isolate.
+`trendiverse-preview` sí está migrada. `npm run migrate:preview:apply` aplicó `0001` a `0005` sobre `2bb04eb3-9f3f-40b3-a6ed-b1f58dc9107f`. `0004` falló una vez por un id de texto y, tras corregirlo, quedó aplicada junto con `0005`. La tabla `ebay_account_deletion_receipts` existe en esa base. La base `trendiverse` (`2324f41b-1407-4495-8fa1-f811bfe0cc9e`) no se ha migrado y no tiene binding.
 
-La consulta y la aplicación de preview pasan por `scripts/d1-preview.ts`. El script lee `wrangler.toml` con Wrangler y solo continúa si preview tiene un único `DB` llamado `trendiverse-preview` con el id de arriba, y si la configuración superior y `production` no tienen ninguna base D1. Si el nombre resuelto es `trendiverse`, se detiene antes de lanzar Wrangler. `migrations list` y `migrations apply` con `--remote` crean, si falta, la tabla de seguimiento `d1_migrations`. Ninguno de los dos comandos se ha ejecutado.
+Sin `DB`, el POST firmado responde 503 y no reserva un recibo. En un despliegue de preview que ya lleve este binding, el POST puede reservar el recibo en `trendiverse-preview`. El GET del challenge puede responder 200 si el token y la URL son válidos. La ruta no usa memoria del isolate.
+
+La consulta y la aplicación de preview pasan por `scripts/d1-preview.ts`. El script lee `wrangler.toml` con Wrangler y solo continúa si preview tiene un único `DB` llamado `trendiverse-preview` con el id de arriba, y si la configuración superior y `production` no tienen ninguna base D1. Si el nombre resuelto es `trendiverse`, se detiene antes de lanzar Wrangler. `migrations list` y `migrations apply` con `--remote` crean, si falta, la tabla de seguimiento `d1_migrations`. Esos dos comandos ya se ejecutaron contra `trendiverse-preview`.
 
 ```text
 npm run migrate:preview:list
@@ -55,9 +57,9 @@ wrangler d1 migrations apply trendiverse-preview --env preview --remote
 
 Pasos que faltan, y que no se han ejecutado:
 
-1. Consultar y, si procede, aplicar las migraciones de preview con los dos comandos de arriba. `npm run migrate:cf` no sirve para esta base.
+1. Configurar en Pages los secretos del endpoint. Sin la clave pública real, un POST firmado por eBay sigue en 412.
 2. No descomentar el bloque superior ni escribir ahí el id de `trendiverse-preview`. Esa sección también alimenta el despliegue de `main`.
-3. El id de la base de producción `trendiverse` no está en este repositorio. No se ha añadido un binding de producción.
+3. No se ha añadido un binding de producción. `npm run migrate:cf` no sirve para la base de preview.
 
 La reserva es un `INSERT ... ON CONFLICT(notification_id) DO NOTHING` antes de cualquier borrado. Si dos POST llegan a la vez, solo uno recibe la reserva y ejecuta el paso de borrado, que hoy no borra filas. El otro ve la reserva abierta y responde 503, o el recibo cerrado y responde 204. Si el proceso cae con la fila en `reserved`, un reintento posterior a 120 segundos la retoma con un `UPDATE` condicionado por la fecha y vuelve a ejecutar ese paso una sola vez. Una reserva más reciente sigue en 503. Retomar la reserva no significa que se hayan borrado datos personales: el paso de producción sigue sin borrar filas del catálogo.
 
