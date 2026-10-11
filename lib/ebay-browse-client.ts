@@ -1,7 +1,7 @@
 /**
  * Búsqueda inicial de eBay Browse API.
  *
- * Solo llama a item_summary/search en EBAY_ES, con un token de aplicación.
+ * Llama a item_summary/search y a getItem en EBAY_ES, con un token de aplicación.
  * No convierte anuncios en observaciones, no guarda fichas y no enciende
  * `ebayBrowseSecondHandSource`. El proveedor por defecto sigue vacío.
  */
@@ -16,9 +16,11 @@ import {
   type EbayFetch,
   createEbayApplicationAuth,
 } from './ebay-application-auth'
+import { readEbayBrowseItemFields, type EbayBrowseItemFields } from './ebay-browse-offer'
 
 export const EBAY_BROWSE_MARKETPLACE_ID = 'EBAY_ES' as const
 export const EBAY_BROWSE_SEARCH_URL = 'https://api.ebay.com/buy/browse/v1/item_summary/search'
+export const EBAY_BROWSE_ITEM_URL_PREFIX = 'https://api.ebay.com/buy/browse/v1/item/'
 export const EBAY_BROWSE_SEARCH_LIMIT_DEFAULT = 1
 export const EBAY_BROWSE_SEARCH_LIMIT_MAX = 10
 export const EBAY_BROWSE_SEARCH_QUERY_MAX_LENGTH = 100
@@ -64,8 +66,17 @@ export interface EbayBrowseSearchQuery {
   limit?: number
 }
 
+export type EbayBrowseItemResult =
+  | { status: 'invalid-item-id' }
+  | { status: 'ok', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, item: EbayBrowseItemFields }
+  | { status: 'invalid-response', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'unauthorized', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'forbidden', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'unavailable', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+
 export interface EbayBrowseClient {
   search(query: EbayBrowseSearchQuery): Promise<EbayBrowseSearchResult>
+  getItem(itemId: string): Promise<EbayBrowseItemResult>
 }
 
 type SearchCall =
@@ -153,6 +164,14 @@ export function createEbayBrowseClient(options: {
     }
   }
 
+  const refresh = async (previousToken: string, url: string): Promise<SearchCall> => {
+    const second = await auth.getAccessToken({ force: true })
+    if (second.status !== 'ok' || second.token === previousToken) {
+      return { kind: 'http', status: second.status === 'unavailable' ? 503 : 401 }
+    }
+    return callSearch(url, second.token)
+  }
+
   return {
     async search(query) {
       const q = normalizeQuery(query.q)
@@ -176,6 +195,27 @@ export function createEbayBrowseClient(options: {
         return finish(await callSearch(url, second.token), limit)
       }
       return finish(firstCall, limit)
+    },
+    async getItem(itemId) {
+      const url = browseItemUrl(itemId)
+      if (!url) return { status: 'invalid-item-id' }
+      const first = await auth.getAccessToken()
+      if (first.status === 'unauthorized') return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      if (first.status !== 'ok') return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      const firstCall = await callSearch(url, first.token)
+      const chosen = firstCall.kind === 'http' && firstCall.status === 401
+        ? await refresh(first.token, url)
+        : firstCall
+      if (chosen.kind === 'network') return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      if (chosen.kind === 'invalid') return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      if (chosen.kind === 'http') {
+        if (chosen.status === 401) return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+        if (chosen.status === 403) return { status: 'forbidden', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+        return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      }
+      const item = readEbayBrowseItemFields(chosen.body)
+      if (!item || item.itemId !== itemId) return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      return { status: 'ok', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, item }
     },
   }
 }
@@ -208,6 +248,15 @@ function browseSearchUrl(q: string, limit: number): string | null {
   if (url.pathname !== '/buy/browse/v1/item_summary/search') return null
   const keys = [...url.searchParams.keys()]
   if (keys.length !== 2 || !keys.includes('q') || !keys.includes('limit')) return null
+  return url.toString()
+}
+
+function browseItemUrl(itemId: string): string | null {
+  if (!ITEM_ID_PATTERN.test(itemId)) return null
+  const url = new URL(`${EBAY_BROWSE_ITEM_URL_PREFIX}${encodeURIComponent(itemId)}`)
+  if (url.origin !== 'https://api.ebay.com') return null
+  if (decodeURIComponent(url.pathname) !== `/buy/browse/v1/item/${itemId}`) return null
+  if (url.search) return null
   return url.toString()
 }
 
