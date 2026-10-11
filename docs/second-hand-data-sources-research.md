@@ -55,7 +55,7 @@ eBay sigue primero. Amazon España ya está confirmado en Creators API, y eso no
 
 ## eBay Browse API
 
-Primera fuente a investigar. Nada de esta sección está implementado.
+Primera fuente a investigar. El cliente y el puente puro existen y no publican: el adapter sigue apagado y esta sección no autoriza a mostrar un anuncio.
 
 | Campo | Estado | Marca |
 | --- | --- | --- |
