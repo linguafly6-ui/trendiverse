@@ -1,7 +1,8 @@
 /**
  * Búsqueda inicial de eBay Browse API.
  *
- * Llama a item_summary/search y a getItem en EBAY_ES, con un token de aplicación.
+ * Llama a item_summary/search, getItem y getItemByLegacyId en EBAY_ES,
+ * con un token de aplicación.
  * No convierte anuncios en observaciones, no guarda fichas y no enciende
  * `ebayBrowseSecondHandSource`. El proveedor por defecto sigue vacío.
  */
@@ -21,6 +22,7 @@ import { readEbayBrowseItemFields, type EbayBrowseItemFields } from './ebay-brow
 export const EBAY_BROWSE_MARKETPLACE_ID = 'EBAY_ES' as const
 export const EBAY_BROWSE_SEARCH_URL = 'https://api.ebay.com/buy/browse/v1/item_summary/search'
 export const EBAY_BROWSE_ITEM_URL_PREFIX = 'https://api.ebay.com/buy/browse/v1/item/'
+export const EBAY_BROWSE_LEGACY_ITEM_URL = 'https://api.ebay.com/buy/browse/v1/item/get_item_by_legacy_id'
 export const EBAY_BROWSE_SEARCH_LIMIT_DEFAULT = 1
 export const EBAY_BROWSE_SEARCH_LIMIT_MAX = 10
 export const EBAY_BROWSE_SEARCH_QUERY_MAX_LENGTH = 100
@@ -28,6 +30,8 @@ export const EBAY_BROWSE_RESPONSE_MAX_BYTES = 131_072
 export const EBAY_BROWSE_MAX_ITEM_SCAN = 200
 
 const ITEM_ID_PATTERN = /^[A-Za-z0-9|._~-]{1,128}$/
+/** Id decimal sin ceros a la izquierda. El OpenAPI no publica un patrón; no se reescribe la entrada. */
+const LEGACY_ITEM_ID_PATTERN = /^[1-9][0-9]{0,19}$/
 const PRICE_PATTERN = /^(?:[1-9]\d{0,11}|0)(?:\.\d{1,2})?$/
 const CONDITION_ID_PATTERN = /^[0-9]{3,5}$/
 const CURRENCY_PATTERN = /^[A-Z]{3}$/
@@ -74,9 +78,19 @@ export type EbayBrowseItemResult =
   | { status: 'forbidden', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
   | { status: 'unavailable', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
 
+export type EbayBrowseLegacyItemResult =
+  | { status: 'invalid-legacy-item-id' }
+  | { status: 'identifier-mismatch', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'ok', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, item: EbayBrowseItemFields }
+  | { status: 'invalid-response', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'unauthorized', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'forbidden', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'unavailable', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+
 export interface EbayBrowseClient {
   search(query: EbayBrowseSearchQuery): Promise<EbayBrowseSearchResult>
   getItem(itemId: string): Promise<EbayBrowseItemResult>
+  getItemByLegacyId(legacyItemId: string): Promise<EbayBrowseLegacyItemResult>
 }
 
 type SearchCall =
@@ -172,6 +186,27 @@ export function createEbayBrowseClient(options: {
     return callSearch(url, second.token)
   }
 
+  const loadItem = async (url: string): Promise<
+    | { status: 'unauthorized' | 'forbidden' | 'unavailable' | 'invalid-response' }
+    | { status: 'ok', body: unknown }
+  > => {
+    const first = await auth.getAccessToken()
+    if (first.status === 'unauthorized') return { status: 'unauthorized' }
+    if (first.status !== 'ok') return { status: 'unavailable' }
+    const firstCall = await callSearch(url, first.token)
+    const chosen = firstCall.kind === 'http' && firstCall.status === 401
+      ? await refresh(first.token, url)
+      : firstCall
+    if (chosen.kind === 'network') return { status: 'unavailable' }
+    if (chosen.kind === 'invalid') return { status: 'invalid-response' }
+    if (chosen.kind === 'http') {
+      if (chosen.status === 401) return { status: 'unauthorized' }
+      if (chosen.status === 403) return { status: 'forbidden' }
+      return { status: 'unavailable' }
+    }
+    return { status: 'ok', body: chosen.body }
+  }
+
   return {
     async search(query) {
       const q = normalizeQuery(query.q)
@@ -199,22 +234,23 @@ export function createEbayBrowseClient(options: {
     async getItem(itemId) {
       const url = browseItemUrl(itemId)
       if (!url) return { status: 'invalid-item-id' }
-      const first = await auth.getAccessToken()
-      if (first.status === 'unauthorized') return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-      if (first.status !== 'ok') return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-      const firstCall = await callSearch(url, first.token)
-      const chosen = firstCall.kind === 'http' && firstCall.status === 401
-        ? await refresh(first.token, url)
-        : firstCall
-      if (chosen.kind === 'network') return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-      if (chosen.kind === 'invalid') return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-      if (chosen.kind === 'http') {
-        if (chosen.status === 401) return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-        if (chosen.status === 403) return { status: 'forbidden', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-        return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
-      }
-      const item = readEbayBrowseItemFields(chosen.body)
+      const loaded = await loadItem(url)
+      if (loaded.status !== 'ok') return { status: loaded.status, marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      const item = readEbayBrowseItemFields(loaded.body)
       if (!item || item.itemId !== itemId) return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      return { status: 'ok', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, item }
+    },
+    async getItemByLegacyId(legacyItemId) {
+      const url = browseLegacyItemUrl(legacyItemId)
+      if (!url) return { status: 'invalid-legacy-item-id' }
+      const loaded = await loadItem(url)
+      if (loaded.status !== 'ok') return { status: loaded.status, marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      const item = readEbayBrowseItemFields(loaded.body)
+      if (!item) return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      if (item.legacyItemId !== legacyItemId) {
+        return { status: 'identifier-mismatch', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+      }
+      if (item.itemId === null) return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
       return { status: 'ok', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, item }
     },
   }
@@ -248,6 +284,18 @@ function browseSearchUrl(q: string, limit: number): string | null {
   if (url.pathname !== '/buy/browse/v1/item_summary/search') return null
   const keys = [...url.searchParams.keys()]
   if (keys.length !== 2 || !keys.includes('q') || !keys.includes('limit')) return null
+  return url.toString()
+}
+
+function browseLegacyItemUrl(legacyItemId: string): string | null {
+  if (typeof legacyItemId !== 'string' || !LEGACY_ITEM_ID_PATTERN.test(legacyItemId)) return null
+  const url = new URL(EBAY_BROWSE_LEGACY_ITEM_URL)
+  url.searchParams.set('legacy_item_id', legacyItemId)
+  if (url.origin !== 'https://api.ebay.com') return null
+  if (url.pathname !== '/buy/browse/v1/item/get_item_by_legacy_id') return null
+  const keys = [...url.searchParams.keys()]
+  if (keys.length !== 1 || keys[0] !== 'legacy_item_id') return null
+  if (url.searchParams.get('legacy_item_id') !== legacyItemId) return null
   return url.toString()
 }
 

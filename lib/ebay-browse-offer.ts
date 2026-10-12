@@ -66,6 +66,8 @@ export interface EbayBrowseItemFields {
   epid: string | null
   priceValue: string | null
   currency: string | null
+  /** Nombre de condición del cuerpo. No admite la oferta ni entra en la lista de ids. */
+  condition: string | null
   conditionId: string | null
   itemWebUrl: string | null
   listingMarketplaceId: string | null
@@ -90,6 +92,7 @@ export function readEbayBrowseItemFields(value: unknown): EbayBrowseItemFields |
     epid: readEpid(record.epid, record.itemId, record.legacyItemId),
     priceValue: price.priceValue ?? readToken(record.priceValue, PRICE_PATTERN),
     currency: price.currency ?? (typeof record.currency === 'string' ? record.currency : null),
+    condition: readExactText(record.condition),
     conditionId: readToken(record.conditionId, CONDITION_ID_PATTERN),
     itemWebUrl: typeof record.itemWebUrl === 'string' ? record.itemWebUrl : null,
     listingMarketplaceId: typeof record.listingMarketplaceId === 'string' ? record.listingMarketplaceId : null,
@@ -269,6 +272,11 @@ function readAmount(value: unknown): { priceValue: string | null, currency: stri
     priceValue: typeof record.value === 'string' ? record.value : null,
     currency: typeof record.currency === 'string' ? record.currency : null,
   }
+}
+
+function readExactText(value: unknown): string | null {
+  if (typeof value !== 'string' || value.length < 1 || value.trim() !== value) return null
+  return value
 }
 
 function readToken(value: unknown, pattern: RegExp): string | null {
