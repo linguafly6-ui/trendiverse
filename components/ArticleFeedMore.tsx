@@ -1,9 +1,10 @@
 'use client'
+
 import dynamic from 'next/dynamic'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Article } from '@/lib/types'
 
-const ArticleCard = dynamic(() => import('./ArticleCard'), { loading: () => null })
+const ArticleCard = dynamic(() => import('./ArticleCard'))
 const PAGE = 10
 
 export default function ArticleFeedMore({ initialCount, category = '' }: { initialCount: number; category?: string }) {
@@ -36,10 +37,18 @@ export default function ArticleFeedMore({ initialCount, category = '' }: { initi
     return () => io.disconnect()
   }, [done, load])
 
+  if (done && items.length === 0) return null
+
   return (
     <>
-      {items.map((a) => <ArticleCard key={a.id} article={a} />)}
-      {!done && <div ref={sentinel} className="h-10 text-center text-sm text-slate-500">{loading ? 'Cargando…' : ''}</div>}
+      <div className="space-y-3">
+        {items.map((article) => <ArticleCard key={article.id} article={article} />)}
+      </div>
+      {!done && (
+        <div ref={sentinel} className="h-10 text-center text-sm text-slate-500">
+          {loading ? 'Cargando…' : ''}
+        </div>
+      )}
     </>
   )
 }
