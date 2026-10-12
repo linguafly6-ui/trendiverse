@@ -83,7 +83,7 @@ No hay un cuerpo real de `getItem` en el repositorio. El procedimiento, sobre un
 
 ## Contrato de condiciones
 
-En este repositorio no está el OpenAPI de Sell Metadata ni un cliente generado. La única mención es la cita externa de `get_item_condition_policies` que ya está arriba. Esa cita no es una respuesta de `EBAY_ES` y sus `categoryId` de ejemplo no son los de esta consola. `SELL_METADATA_CONDITION_CONTRACT_IN_REPO` es false. `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacía.
+En este repositorio no está el archivo OpenAPI de Sell Metadata ni un cliente generado. `SELL_METADATA_CONDITION_CONTRACT_IN_REPO` es false. `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacía. El procedimiento de lectura, apagado por defecto, está en `docs/ebay-es-category-condition-diagnostic.md`. No admite condiciones. Los `categoryId` de ejemplo de clientes ajenos no son los de esta consola.
 
 ## `sourceUrl`
 
@@ -107,6 +107,6 @@ Una persona tiene que traer, fuera de este repositorio y sin pegar el resultado 
 
 1. La decisión de alcance. O una ficha de `www.ebay.es` cuyo bloque de identificadores etiquete un solo ePID para todo HEG-001 de 64 GB, sin color ni edición, o un producto nuevo por color con su slug y su `verificationRef`. No usar `21048307585` ni `23048312547` como canónico de `nintendo-switch`. No copiar el número de un path `/p/` si la página no muestra la etiqueta «eBay Product ID (ePID)». No usar `itemId`, `legacyItemId`, `HEG-001`, el MPN ni el EAN como identificador de marketplace.
 2. Un JSON de `getItem` de un anuncio que ya traiga ese ePID. De ese JSON se leen `categoryId` y `listingMarketplaceId` con `readGetItemCategoryEvidence`. No hace falta otra llamada para interpretar un cuerpo que ya se tenga. El precio de ese JSON no se copia al expediente.
-3. El JSON de `GET https://api.ebay.com/sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies` filtrado por ese `categoryId`, pedido con un token que no se escriba en el repositorio. Admitir un `conditionId` solo si está en esa respuesta y el normalizador lo traduce a un usado. Hoy el repositorio no contiene ese contrato.
+3. El informe limitado de `GET https://api.ebay.com/sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies` filtrado por ese `categoryId`, pedido con un token que no se escriba en el repositorio. El procedimiento está en `docs/ebay-es-category-condition-diagnostic.md`. Admitir un `conditionId` solo si está en esa respuesta y el normalizador lo traduce a un usado. El archivo OpenAPI sigue fuera del repositorio y la lista admitida sigue vacía.
 4. Después de esos tres documentos, otro cambio puede conectar `evaluateProposedEbayEsItemUrl`. Hasta entonces el host de eBay sigue rechazado.
 5. La allowlist de proveedores y ámbitos sigue vacía. Añadir `ebay` y `EBAY_ES` va junto con un `marketplaceIdentifier` validado cuya `verifiedProductRef` sea la `verificationRef` del producto que corresponda. No forma parte de este expediente.
