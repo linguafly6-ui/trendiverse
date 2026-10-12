@@ -32,6 +32,11 @@ export const EBAY_BROWSE_MAX_ITEM_SCAN = 200
 const ITEM_ID_PATTERN = /^[A-Za-z0-9|._~-]{1,128}$/
 /** Id decimal sin ceros a la izquierda. El OpenAPI no publica un patrón; no se reescribe la entrada. */
 const LEGACY_ITEM_ID_PATTERN = /^[1-9][0-9]{0,19}$/
+
+export function isEbayBrowseLegacyItemId(value: string): boolean {
+  return typeof value === 'string' && LEGACY_ITEM_ID_PATTERN.test(value)
+}
+
 const PRICE_PATTERN = /^(?:[1-9]\d{0,11}|0)(?:\.\d{1,2})?$/
 const CONDITION_ID_PATTERN = /^[0-9]{3,5}$/
 const CURRENCY_PATTERN = /^[A-Z]{3}$/
@@ -288,7 +293,7 @@ function browseSearchUrl(q: string, limit: number): string | null {
 }
 
 function browseLegacyItemUrl(legacyItemId: string): string | null {
-  if (typeof legacyItemId !== 'string' || !LEGACY_ITEM_ID_PATTERN.test(legacyItemId)) return null
+  if (!isEbayBrowseLegacyItemId(legacyItemId)) return null
   const url = new URL(EBAY_BROWSE_LEGACY_ITEM_URL)
   url.searchParams.set('legacy_item_id', legacyItemId)
   if (url.origin !== 'https://api.ebay.com') return null
