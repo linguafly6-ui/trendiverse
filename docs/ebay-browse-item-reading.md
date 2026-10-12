@@ -74,18 +74,13 @@ Cada campo dice `fromBody: 'absent'`, `'present'` o `'unusable'`. `missing` list
 
 - Un ePID canónico para `nintendo-switch`, o un producto nuevo por color con su propia `verificationRef`. Esta lectura no elige.
 - `listingMarketplaceId` y `categoryId` solo cuentan si vienen en un cuerpo real. Un fixture no los valida.
-- La política de condiciones de esa categoría. Sigue el apartado de abajo. Esta lectura no la pide.
+- La política de condiciones de esa categoría. El procedimiento, apagado por defecto, está en `docs/ebay-es-category-condition-diagnostic.md`. Esta lectura de anuncio no la pide.
 - La propuesta de URL de `www.ebay.es`, que sigue sin aplicarse.
 
 ## `get_item_condition_policies`
 
-Método citado, no llamado: `GET /sell/metadata/v1/marketplace/{marketplace_id}/get_item_condition_policies`.
+Método: `GET /sell/metadata/v1/marketplace/{marketplace_id}/get_item_condition_policies`.
 
-La página oficial de desarrollador respondió 403 en esta revisión, así que el OpenAPI no se volvió a leer. El cliente generado ya citado en el expediente de la Switch, `docs/Api/MarketplaceApi.md` de `zVPS/ebay-sell-metadata-php-client`, dice para este método:
+El OpenAPI de Metadata API v1.12.1 sí se leyó para el diagnóstico de `docs/ebay-es-category-condition-diagnostic.md`. El archivo no está en el repositorio y `SELL_METADATA_CONDITION_CONTRACT_IN_REPO` sigue en false. `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacía.
 
-- La autorización listada es Authorization Code y Client Credentials, las dos.
-- El token de client credentials con el ámbito `https://api.ebay.com/oauth/api_scope` no devuelve la condición `2000`. Esa condición pide authorization code y el ámbito `https://api.ebay.com/oauth/api_scope/sell.inventory`.
-- Ese ámbito de inventario no es el de Browse. El token de aplicación de `lib/ebay-application-auth.ts` no se trata como suficiente para la lista completa.
-- El filtro `categoryIds` es opcional en ese cliente. Sin un `categoryId` salido de un `getItem` real no hay categoría que consultar. Los números de ejemplo de ese cliente no son la categoría de la Switch.
-
-No se implementa el cliente de Metadata y no se piden credenciales para ese flujo.
+Ese contrato dice que el token de client credentials con `https://api.ebay.com/oauth/api_scope` no devuelve las condiciones restringidas o refurbished. Esas piden authorization code y `https://api.ebay.com/oauth/api_scope/sell.inventory`. El token de aplicación de `lib/ebay-application-auth.ts` no se trata como suficiente para la lista completa. El filtro documentado es `filter=categoryIds:{…}`, codificado en la query. El procedimiento para ejecutarlo a mano, y el bloqueo del intercambio de authorization code, están en el documento nuevo. Esta lectura de anuncio no llama a Metadata.
