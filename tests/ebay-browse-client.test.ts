@@ -1,15 +1,20 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { EBAY_BROWSE_SOURCE_ENABLED, ebayBrowseSecondHandSource } from '../lib/ebay-browse-adapter'
+import { EBAY_BROWSE_SOURCE_ENABLED, ebayBrowseSecondHandSource, normalizeEbaySourceUrl } from '../lib/ebay-browse-adapter'
+import { EBAY_ES_ADMITTED_CONDITION_IDS } from '../lib/ebay-browse-offer'
 import { emptySecondHandDataSource, getSecondHandProducts } from '../lib/second-hand-data'
+import { SECOND_HAND_PRODUCT_MAPPINGS, secondHandProductMapping } from '../lib/second-hand-product-mapping'
 import { EBAY_OAUTH_TOKEN_URL, type EbayFetch } from '../lib/ebay-application-auth'
 import {
+  EBAY_BROWSE_EPID_NOT_ACCEPTED_ERROR_ID,
+  EBAY_BROWSE_EPID_SEARCH_LIMIT,
   EBAY_BROWSE_MARKETPLACE_ID,
   EBAY_BROWSE_MAX_ITEM_SCAN,
   EBAY_BROWSE_RESPONSE_MAX_BYTES,
   EBAY_BROWSE_SEARCH_LIMIT_MAX,
   EBAY_BROWSE_SEARCH_URL,
+  browseEpidSearchUrl,
   createEbayBrowseClient,
 } from '../lib/ebay-browse-client'
 
@@ -339,4 +344,322 @@ test('the browse client stays disconnected from the default second-hand provider
   assert.doesNotMatch(browseSource, /second-hand-data|ebay-browse-adapter|process\.env|EBAY_BROWSE_SOURCE_ENABLED\s*=\s*true|console\./)
   assert.doesNotMatch(adapterSource, /ebay-browse-client|ebay-application-auth/)
   assert.match(adapterSource, /export const EBAY_BROWSE_SOURCE_ENABLED = false/)
+})
+
+const FIXTURE_EPID = '9000000001'
+const EPID_SEARCH_URL = `${EBAY_BROWSE_SEARCH_URL}?epid=${FIXTURE_EPID}&limit=10`
+
+test('epid search requests only epid and limit=10', async () => {
+  assert.equal(EBAY_BROWSE_EPID_SEARCH_LIMIT, 10)
+  assert.equal(browseEpidSearchUrl(FIXTURE_EPID), EPID_SEARCH_URL)
+  const built = new URL(EPID_SEARCH_URL)
+  assert.deepEqual([...built.searchParams.keys()], ['epid', 'limit'])
+  assert.equal(built.searchParams.get('epid'), FIXTURE_EPID)
+  assert.equal(built.searchParams.get('limit'), '10')
+  for (const key of ['q', 'offset', 'filter', 'category_ids', 'fieldgroups', 'sort', 'gtin']) {
+    assert.equal(built.searchParams.has(key), false, key)
+  }
+
+  const recorded = recordedFetch({
+    search: () => jsonResponse({
+      total: 2,
+      itemSummaries: [
+        summary({ itemId: 'v1|9000001|0', title: 'No copiar titulo', price: { value: '10.00', currency: 'EUR' } }),
+        { itemId: 'v1|9000003|0', title: 'Sin precio' },
+      ],
+    }),
+  })
+  const result = await client(recorded.fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.deepEqual(result, {
+    status: 'candidates',
+    marketplaceId: 'EBAY_ES',
+    limit: 10,
+    total: 2,
+    verifiedProduct: false,
+    items: [{ itemId: 'v1|9000001|0' }, { itemId: 'v1|9000003|0' }],
+  })
+  const encoded = JSON.stringify(result)
+  assert.equal(encoded.includes('10.00'), false)
+  assert.equal(encoded.includes('No copiar'), false)
+  assert.equal(encoded.includes('Sin precio'), false)
+  assert.equal(encoded.includes('ebay.es'), false)
+  assert.equal(encoded.includes(TOKEN), false)
+
+  assert.equal(recorded.calls[0]?.url, EBAY_OAUTH_TOKEN_URL)
+  const search = recorded.calls[1]
+  assert.ok(search)
+  assert.equal(search.url, EPID_SEARCH_URL)
+  assert.equal(search.method, 'GET')
+  assert.equal(search.authorization, `Bearer ${TOKEN}`)
+  assert.equal(search.marketplace, 'EBAY_ES')
+  assert.equal(search.endUser, null)
+  assert.equal(search.redirect, 'manual')
+  assert.equal(search.cache, 'no-store')
+  assert.equal(search.hasSignal, true)
+  assert.equal(search.body, '')
+  assert.equal(recorded.calls.some((call) => call.url.includes('/buy/browse/v1/item/')), false)
+  assert.equal(recorded.searchUses(), 1)
+})
+
+test('invalid epid values and extra parameters do not call eBay', async () => {
+  assert.equal(client(async () => {
+    throw new Error('unused')
+  }).searchByEpid.length, 1)
+  const rejected = [
+    '',
+    '   ',
+    '\n9000000001',
+    '9000000001 ',
+    'https://www.ebay.es/p/9000000001',
+    'http://api.ebay.com/buy/browse/v1/item_summary/search?epid=9000000001',
+    `${EBAY_BROWSE_SEARCH_URL}?epid=${FIXTURE_EPID}&limit=10`,
+    '9000000001&q=switch',
+    '9000000001&filter=buyingOptions:{FIXED_PRICE}',
+    '9000000001?category_ids=139971',
+    '?epid=9000000001&offset=10&sort=price',
+    '9000000001&fieldgroups=FULL',
+    { epid: FIXTURE_EPID, q: 'switch', limit: 50, filter: 'x', offset: 0 },
+    [FIXTURE_EPID],
+    9000000001,
+    `${'9'.repeat(65)}`,
+  ]
+  for (const value of rejected) {
+    const recorded = recordedFetch()
+    const result = await client(recorded.fetchImpl).searchByEpid(value as string)
+    assert.equal(result.status, 'invalid-epid', JSON.stringify(value))
+    assert.equal(recorded.calls.length, 0, JSON.stringify(value))
+    assert.equal(recorded.searchUses(), 0)
+    assert.equal(recorded.tokenUses(), 0)
+    assert.equal(browseEpidSearchUrl(value as string), null)
+  }
+})
+
+test('keyword search still sends only q and limit', async () => {
+  const recorded = recordedFetch()
+  const result = await client(recorded.fetchImpl).search({
+    q: 'nintendo switch',
+    limit: 2,
+    epid: FIXTURE_EPID,
+    filter: 'buyingOptions:{FIXED_PRICE}',
+  } as { q: string, limit: number })
+  assert.equal(result.status, 'ok')
+  if (result.status === 'ok') {
+    assert.equal(result.limit, 2)
+    assert.equal(result.items[0]?.priceValue, '10.00')
+  }
+  const url = new URL(recorded.calls[1]?.url ?? '')
+  assert.equal(url.origin + url.pathname, EBAY_BROWSE_SEARCH_URL)
+  assert.equal(url.searchParams.get('q'), 'nintendo switch')
+  assert.equal(url.searchParams.get('limit'), '2')
+  assert.deepEqual([...url.searchParams.keys()].sort(), ['limit', 'q'])
+  assert.equal(recorded.calls.some((call) => call.url.includes('epid=')), false)
+  assert.equal(recorded.calls.some((call) => call.url.includes('/buy/browse/v1/item/')), false)
+})
+
+test('an epid search with no summaries stays empty and unverified', async () => {
+  const omitted = await client(recordedFetch({
+    search: () => jsonResponse({ total: 0 }),
+  }).fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.deepEqual(omitted, {
+    status: 'empty',
+    marketplaceId: 'EBAY_ES',
+    limit: 10,
+    total: 0,
+    verifiedProduct: false,
+  })
+
+  const listed = await client(recordedFetch({
+    search: () => jsonResponse({ total: 0, itemSummaries: [] }),
+  }).fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.deepEqual(listed, {
+    status: 'empty',
+    marketplaceId: 'EBAY_ES',
+    limit: 10,
+    total: 0,
+    verifiedProduct: false,
+  })
+  assert.equal('items' in listed, false)
+})
+
+test('epid search refreshes a 401 once and does not retry 403, 409, 500, or redirects', async () => {
+  let tokenName = 'expired-fixture-token'
+  const refreshed = recordedFetch({
+    token: () => {
+      const response = jsonResponse({ access_token: tokenName, expires_in: 7200 })
+      tokenName = 'fresh-fixture-token'
+      return response
+    },
+    search: (_url, init) => {
+      const authorization = new Headers(init.headers).get('authorization')
+      if (authorization === 'Bearer expired-fixture-token') return new Response(null, { status: 401 })
+      return jsonResponse({ total: 1, itemSummaries: [{ itemId: 'v1|9000004|0' }] })
+    },
+  })
+  const ok = await client(refreshed.fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.equal(ok.status, 'candidates')
+  if (ok.status === 'candidates') assert.deepEqual(ok.items, [{ itemId: 'v1|9000004|0' }])
+  assert.equal(refreshed.tokenUses(), 2)
+  assert.equal(refreshed.searchUses(), 2)
+  assert.equal(refreshed.calls.filter((call) => call.url !== EBAY_OAUTH_TOKEN_URL).every((call) => call.url === EPID_SEARCH_URL), true)
+
+  let deniedTokens = 0
+  const denied = recordedFetch({
+    token: () => {
+      deniedTokens += 1
+      return jsonResponse({ access_token: `denied-fixture-token-${deniedTokens}`, expires_in: 7200 })
+    },
+    search: () => new Response(null, { status: 401 }),
+  })
+  assert.deepEqual(await client(denied.fetchImpl).searchByEpid(FIXTURE_EPID), {
+    status: 'unauthorized',
+    marketplaceId: 'EBAY_ES',
+    httpStatus: 401,
+  })
+  assert.equal(denied.tokenUses(), 2)
+  assert.equal(denied.searchUses(), 2)
+
+  const same = recordedFetch({
+    token: () => jsonResponse({ access_token: 'same-fixture-token', expires_in: 7200 }),
+    search: () => new Response(null, { status: 401 }),
+  })
+  assert.equal((await client(same.fetchImpl).searchByEpid(FIXTURE_EPID)).status, 'unauthorized')
+  assert.equal(same.tokenUses(), 2)
+  assert.equal(same.searchUses(), 1)
+
+  const cases: Array<{ status: number, expected: 'forbidden' | 'unavailable' }> = [
+    { status: 403, expected: 'forbidden' },
+    { status: 409, expected: 'unavailable' },
+    { status: 500, expected: 'unavailable' },
+    { status: 302, expected: 'unavailable' },
+    { status: 307, expected: 'unavailable' },
+  ]
+  for (const entry of cases) {
+    const recorded = recordedFetch({
+      search: () => new Response(null, {
+        status: entry.status,
+        headers: entry.status === 302 || entry.status === 307 ? { location: 'https://example.invalid/browse' } : {},
+      }),
+    })
+    const result = await client(recorded.fetchImpl).searchByEpid(FIXTURE_EPID)
+    assert.equal(result.status, entry.expected)
+    if (result.status === 'forbidden') assert.equal(result.httpStatus, 403)
+    if (result.status === 'unavailable') assert.equal(result.httpStatus, entry.status)
+    assert.equal(recorded.tokenUses(), 1)
+    assert.equal(recorded.searchUses(), 1)
+    assert.equal(recorded.calls.some((call) => call.url.includes('example.invalid')), false)
+    assert.equal(JSON.stringify(result).includes('example.invalid'), false)
+  }
+})
+
+test('HTTP 200 with errorId 12021 is not a usable candidate list', async () => {
+  const warning = 'do-not-copy-warning'
+  const bodies = [
+    {
+      total: 1,
+      warnings: [{ errorId: EBAY_BROWSE_EPID_NOT_ACCEPTED_ERROR_ID, message: warning }],
+      itemSummaries: [summary({ itemId: 'v1|9000005|0' })],
+    },
+    {
+      total: 1,
+      errors: [{ errorId: 12021, message: warning, longMessage: 'https://www.ebay.es/itm/9000005' }],
+      itemSummaries: [{ itemId: 'v1|9000006|0', title: 'No candidato', price: { value: '10.00', currency: 'EUR' } }],
+    },
+  ]
+  for (const body of bodies) {
+    const recorded = recordedFetch({ search: () => jsonResponse(body) })
+    const result = await client(recorded.fetchImpl).searchByEpid(FIXTURE_EPID)
+    assert.deepEqual(result, {
+      status: 'epid-not-accepted',
+      marketplaceId: 'EBAY_ES',
+      httpStatus: 200,
+    })
+    assert.equal('items' in result, false)
+    const encoded = JSON.stringify(result)
+    assert.equal(encoded.includes('v1|9000005|0'), false)
+    assert.equal(encoded.includes('v1|9000006|0'), false)
+    assert.equal(encoded.includes(warning), false)
+    assert.equal(encoded.includes('10.00'), false)
+    assert.equal(encoded.includes('ebay.es'), false)
+    assert.equal(recorded.searchUses(), 1)
+    assert.equal(recorded.calls.some((call) => call.url.includes('/buy/browse/v1/item/')), false)
+  }
+})
+
+test('malformed or oversized epid responses are not candidates', async () => {
+  const oversized = new Uint8Array(EBAY_BROWSE_RESPONSE_MAX_BYTES + 1)
+  const cases: Array<() => Response> = [
+    () => new Response('{', { status: 200, headers: { 'content-type': 'application/json' } }),
+    () => new Response('ok', { status: 200, headers: { 'content-type': 'text/plain' } }),
+    () => jsonResponse([]),
+    () => jsonResponse({ errors: [{ errorId: 12000, message: 'do-not-copy-error' }] }),
+    () => jsonResponse({ total: -1, itemSummaries: [] }),
+    () => jsonResponse({ total: 1, itemSummaries: [{ title: 'Missing id', price: { value: '10.00', currency: 'EUR' } }] }),
+    () => jsonResponse({ total: 0, itemSummaries: [{ itemId: 'v1|9000007|0' }] }),
+    () => jsonResponse({}, 200, { 'content-length': String(EBAY_BROWSE_RESPONSE_MAX_BYTES + 1) }),
+    () => new Response(new ReadableStream({
+      start(controller) {
+        controller.enqueue(oversized)
+        controller.close()
+      },
+    }), { status: 200, headers: { 'content-type': 'application/json' } }),
+    () => jsonResponse({ itemSummaries: Array.from({ length: EBAY_BROWSE_MAX_ITEM_SCAN + 1 }, () => ({ itemId: 'v1|9000008|0' })) }),
+  ]
+  for (const respond of cases) {
+    const recorded = recordedFetch({ search: respond })
+    const result = await client(recorded.fetchImpl).searchByEpid(FIXTURE_EPID)
+    assert.equal(result.status, 'invalid-response')
+    assert.equal('items' in result, false)
+    const encoded = JSON.stringify(result)
+    assert.equal(encoded.includes('10.00'), false)
+    assert.equal(encoded.includes('do-not-copy-error'), false)
+    assert.equal(encoded.includes('v1|9000007|0'), false)
+    assert.equal(recorded.searchUses(), 1)
+    assert.equal(recorded.calls.some((call) => call.url.includes('/buy/browse/v1/item/')), false)
+  }
+
+  const capped = await client(recordedFetch({
+    search: () => jsonResponse({
+      total: 12,
+      itemSummaries: Array.from({ length: 12 }, (_item, index) => ({ itemId: `v1|91${index}|0` })),
+    }),
+  }).fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.equal(capped.status, 'candidates')
+  if (capped.status === 'candidates') assert.equal(capped.items.length, 10)
+})
+
+test('epid search does not call getItem or change catalog configuration', async () => {
+  const browseSource = readFileSync(new URL('../lib/ebay-browse-client.ts', import.meta.url), 'utf8')
+  const method = browseSource.slice(browseSource.indexOf('async searchByEpid'), browseSource.indexOf('async getItem'))
+  assert.match(method, /browseEpidSearchUrl/)
+  assert.doesNotMatch(method, /getItem\(|getItemByLegacyId\(|browseItemUrl\(|browseLegacyItemUrl\(/)
+  assert.equal(browseSource.includes('21048307585'), false)
+  assert.equal(browseSource.includes('23048312547'), false)
+
+  const recorded = recordedFetch({
+    search: (url) => {
+      assert.equal(url, EPID_SEARCH_URL)
+      return jsonResponse({ total: 1, itemSummaries: [{ itemId: 'v1|9000009|0', itemWebUrl: 'https://www.ebay.es/itm/9000009' }] })
+    },
+  })
+  const result = await client(recorded.fetchImpl).searchByEpid(FIXTURE_EPID)
+  assert.equal(result.status, 'candidates')
+  assert.equal(JSON.stringify(result).includes('ebay.es'), false)
+  assert.equal(recorded.calls.every((call) => call.url === EBAY_OAUTH_TOKEN_URL || call.url === EPID_SEARCH_URL), true)
+
+  assert.equal(EBAY_BROWSE_SOURCE_ENABLED, false)
+  assert.equal(emptySecondHandDataSource.id, 'empty')
+  assert.equal(EBAY_ES_ADMITTED_CONDITION_IDS.length, 0)
+  assert.equal(normalizeEbaySourceUrl('https://www.ebay.es/itm/9000009'), null)
+  const mapping = secondHandProductMapping('nintendo-switch')
+  assert.equal(mapping?.externalProductId, null)
+  assert.equal(mapping?.marketplaceIdentifier, null)
+  assert.match(mapping?.verificationRef ?? '', /HEG-001/)
+  assert.equal(SECOND_HAND_PRODUCT_MAPPINGS.every((spec) => spec.externalProductId === null), true)
+  assert.equal(SECOND_HAND_PRODUCT_MAPPINGS.every((spec) => spec.marketplaceIdentifier === null), true)
+
+  const metadata = readFileSync(new URL('../lib/ebay-metadata-condition-policy-reading.ts', import.meta.url), 'utf8')
+  assert.equal(metadata.includes('completePolicy: true'), false)
+  assert.match(metadata, /completePolicy: false/)
+  const offer = readFileSync(new URL('../lib/ebay-browse-offer.ts', import.meta.url), 'utf8')
+  assert.match(offer, /export const EBAY_ES_ADMITTED_CONDITION_IDS: readonly number\[\] = \[\]/)
 })

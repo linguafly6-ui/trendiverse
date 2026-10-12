@@ -2,7 +2,9 @@
  * Búsqueda inicial de eBay Browse API.
  *
  * Llama a item_summary/search, getItem y getItemByLegacyId en EBAY_ES,
- * con un token de aplicación.
+ * con un token de aplicación. `searchByEpid` es otra llamada al mismo
+ * recurso, con un solo ePID y `limit=10`, sin `q`. Sus filas son
+ * candidatos de anuncio, no productos verificados, y no dispara `getItem`.
  * No convierte anuncios en observaciones, no guarda fichas y no enciende
  * `ebayBrowseSecondHandSource`. El proveedor por defecto sigue vacío.
  */
@@ -26,10 +28,25 @@ export const EBAY_BROWSE_LEGACY_ITEM_URL = 'https://api.ebay.com/buy/browse/v1/i
 export const EBAY_BROWSE_SEARCH_LIMIT_DEFAULT = 1
 export const EBAY_BROWSE_SEARCH_LIMIT_MAX = 10
 export const EBAY_BROWSE_SEARCH_QUERY_MAX_LENGTH = 100
+/** Límite fijo de la búsqueda por ePID. Quien llama no lo elige. */
+export const EBAY_BROWSE_EPID_SEARCH_LIMIT = 10
+/**
+ * Aviso documentado de Browse en un HTTP 200 cuando el ePID no se acepta.
+ * Esa respuesta no aporta candidatos.
+ */
+export const EBAY_BROWSE_EPID_NOT_ACCEPTED_ERROR_ID = 12021
 export const EBAY_BROWSE_RESPONSE_MAX_BYTES = 131_072
 export const EBAY_BROWSE_MAX_ITEM_SCAN = 200
 
 const ITEM_ID_PATTERN = /^[A-Za-z0-9|._~-]{1,128}$/
+/**
+ * Preflight local, anterior a cualquier petición.
+ * En Browse API OAS Baseline v1.20.4 el query `epid` es un string sin
+ * patrón, `minLength` ni `maxLength`. Esta expresión no es una restricción
+ * oficial de eBay: descarta vacío, URLs y texto que no puede viajar como
+ * un único identificador.
+ */
+const LOCAL_EPID_PREFLIGHT = /^[0-9A-Za-z][0-9A-Za-z._-]{0,63}$/
 /** Id decimal sin ceros a la izquierda. El OpenAPI no publica un patrón; no se reescribe la entrada. */
 const LEGACY_ITEM_ID_PATTERN = /^[1-9][0-9]{0,19}$/
 const PRICE_PATTERN = /^(?:[1-9]\d{0,11}|0)(?:\.\d{1,2})?$/
@@ -70,6 +87,38 @@ export interface EbayBrowseSearchQuery {
   limit?: number
 }
 
+/** Id de anuncio devuelto por la búsqueda por ePID. No es un producto verificado. */
+export interface EbayBrowseEpidCandidate {
+  itemId: string
+}
+
+export type EbayBrowseEpidSearchResult =
+  | { status: 'invalid-epid' }
+  | {
+    status: 'candidates'
+    marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID
+    limit: typeof EBAY_BROWSE_EPID_SEARCH_LIMIT
+    total: number | null
+    verifiedProduct: false
+    items: EbayBrowseEpidCandidate[]
+  }
+  | {
+    status: 'empty'
+    marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID
+    limit: typeof EBAY_BROWSE_EPID_SEARCH_LIMIT
+    total: number | null
+    verifiedProduct: false
+  }
+  | {
+    status: 'epid-not-accepted'
+    marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID
+    httpStatus: 200
+  }
+  | { status: 'invalid-response', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
+  | { status: 'unauthorized', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 401 }
+  | { status: 'forbidden', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 403 }
+  | { status: 'unavailable', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, httpStatus: number | null }
+
 export type EbayBrowseItemResult =
   | { status: 'invalid-item-id' }
   | { status: 'ok', marketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID, item: EbayBrowseItemFields }
@@ -89,6 +138,7 @@ export type EbayBrowseLegacyItemResult =
 
 export interface EbayBrowseClient {
   search(query: EbayBrowseSearchQuery): Promise<EbayBrowseSearchResult>
+  searchByEpid(epid: string): Promise<EbayBrowseEpidSearchResult>
   getItem(itemId: string): Promise<EbayBrowseItemResult>
   getItemByLegacyId(legacyItemId: string): Promise<EbayBrowseLegacyItemResult>
 }
@@ -231,6 +281,30 @@ export function createEbayBrowseClient(options: {
       }
       return finish(firstCall, limit)
     },
+    async searchByEpid(epid) {
+      const url = browseEpidSearchUrl(epid)
+      if (!url) return { status: 'invalid-epid' }
+
+      const first = await auth.getAccessToken()
+      if (first.status === 'unauthorized') {
+        return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 401 }
+      }
+      if (first.status !== 'ok') {
+        return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: null }
+      }
+
+      const firstCall = await callSearch(url, first.token)
+      if (firstCall.kind === 'http' && firstCall.status === 401) {
+        const second = await auth.getAccessToken({ force: true })
+        if (second.status !== 'ok' || second.token === first.token) {
+          return second.status === 'unavailable'
+            ? { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: null }
+            : { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 401 }
+        }
+        return finishEpid(await callSearch(url, second.token))
+      }
+      return finishEpid(firstCall)
+    },
     async getItem(itemId) {
       const url = browseItemUrl(itemId)
       if (!url) return { status: 'invalid-item-id' }
@@ -273,6 +347,33 @@ function normalizeLimit(value: number | undefined): number | null {
   if (value === undefined) return EBAY_BROWSE_SEARCH_LIMIT_DEFAULT
   if (typeof value !== 'number' || !Number.isInteger(value)) return null
   if (value < 1 || value > EBAY_BROWSE_SEARCH_LIMIT_MAX) return null
+  return value
+}
+
+export function browseEpidSearchUrl(epid: string): string | null {
+  const accepted = acceptLocalEpid(epid)
+  if (!accepted) return null
+  const url = new URL(EBAY_BROWSE_SEARCH_URL)
+  url.searchParams.set('epid', accepted)
+  url.searchParams.set('limit', String(EBAY_BROWSE_EPID_SEARCH_LIMIT))
+  if (url.origin !== 'https://api.ebay.com') return null
+  if (url.pathname !== '/buy/browse/v1/item_summary/search') return null
+  const keys = [...url.searchParams.keys()]
+  if (keys.length !== 2 || keys[0] !== 'epid' || keys[1] !== 'limit') return null
+  if (url.searchParams.get('epid') !== accepted) return null
+  if (url.searchParams.get('limit') !== String(EBAY_BROWSE_EPID_SEARCH_LIMIT)) return null
+  if (url.searchParams.has('q') || url.searchParams.has('offset') || url.searchParams.has('filter')) return null
+  if (url.searchParams.has('category_ids') || url.searchParams.has('fieldgroups') || url.searchParams.has('sort')) return null
+  return url.toString()
+}
+
+function acceptLocalEpid(value: unknown): string | null {
+  if (typeof value !== 'string') return null
+  if (value.length < 1 || value.length > 64) return null
+  if (value.includes('://') || value.includes('/') || value.includes('?') || value.includes('&') || value.includes('=')) return null
+  if (/[\u0000-\u001F\u007F]/.test(value)) return null
+  if (value !== value.trim()) return null
+  if (!LOCAL_EPID_PREFLIGHT.test(value)) return null
   return value
 }
 
@@ -376,6 +477,98 @@ function readPrice(value: unknown): { priceValue: string, currency: string } | n
   if (!Number.isFinite(amount) || amount <= 0) return null
   if (typeof record.currency !== 'string' || !CURRENCY_PATTERN.test(record.currency)) return null
   return { priceValue: record.value, currency: record.currency }
+}
+
+function finishEpid(call: SearchCall): EbayBrowseEpidSearchResult {
+  if (call.kind === 'network') {
+    return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: null }
+  }
+  if (call.kind === 'invalid') {
+    return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+  }
+  if (call.kind === 'http') {
+    if (call.status === 401) {
+      return { status: 'unauthorized', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 401 }
+    }
+    if (call.status === 403) {
+      return { status: 'forbidden', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 403 }
+    }
+    return { status: 'unavailable', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: call.status }
+  }
+  const parsed = epidCandidatesFromPayload(call.body)
+  if (parsed.status === 'epid-not-accepted') {
+    return { status: 'epid-not-accepted', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, httpStatus: 200 }
+  }
+  if (parsed.status === 'invalid-response') {
+    return { status: 'invalid-response', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+  }
+  if (parsed.status === 'empty') {
+    return {
+      status: 'empty',
+      marketplaceId: EBAY_BROWSE_MARKETPLACE_ID,
+      limit: EBAY_BROWSE_EPID_SEARCH_LIMIT,
+      total: parsed.total,
+      verifiedProduct: false,
+    }
+  }
+  return {
+    status: 'candidates',
+    marketplaceId: EBAY_BROWSE_MARKETPLACE_ID,
+    limit: EBAY_BROWSE_EPID_SEARCH_LIMIT,
+    total: parsed.total,
+    verifiedProduct: false,
+    items: parsed.items,
+  }
+}
+
+function epidCandidatesFromPayload(
+  value: unknown,
+): { status: 'candidates', total: number | null, items: EbayBrowseEpidCandidate[] }
+  | { status: 'empty', total: number | null }
+  | { status: 'epid-not-accepted' }
+  | { status: 'invalid-response' } {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return { status: 'invalid-response' }
+  if (payloadHasErrorId(value, EBAY_BROWSE_EPID_NOT_ACCEPTED_ERROR_ID)) return { status: 'epid-not-accepted' }
+  const record = value as { total?: unknown, itemSummaries?: unknown, errors?: unknown }
+  if (record.errors != null) return { status: 'invalid-response' }
+  const total = readTotal(record.total)
+  if (total === 'invalid') return { status: 'invalid-response' }
+  if (record.itemSummaries == null) return { status: 'empty', total }
+  if (!Array.isArray(record.itemSummaries)) return { status: 'invalid-response' }
+  if (record.itemSummaries.length > EBAY_BROWSE_MAX_ITEM_SCAN) return { status: 'invalid-response' }
+  if (record.itemSummaries.length === 0) return { status: 'empty', total }
+  const items: EbayBrowseEpidCandidate[] = []
+  for (const entry of record.itemSummaries) {
+    const itemId = readCandidateItemId(entry)
+    if (!itemId) continue
+    items.push({ itemId })
+    if (items.length >= EBAY_BROWSE_EPID_SEARCH_LIMIT) break
+  }
+  if (items.length === 0) return { status: 'invalid-response' }
+  if (total === 0 || (total !== null && items.length > total)) return { status: 'invalid-response' }
+  return { status: 'candidates', total, items }
+}
+
+function readCandidateItemId(value: unknown): string | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null
+  const itemId = (value as { itemId?: unknown }).itemId
+  if (typeof itemId !== 'string' || !ITEM_ID_PATTERN.test(itemId)) return null
+  return itemId
+}
+
+function payloadHasErrorId(value: unknown, errorId: number): boolean {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false
+  const record = value as { warnings?: unknown, errors?: unknown }
+  return listHasErrorId(record.warnings, errorId) || listHasErrorId(record.errors, errorId)
+}
+
+function listHasErrorId(value: unknown, errorId: number): boolean {
+  if (!Array.isArray(value)) return false
+  return value.some((entry) => {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false
+    const id = (entry as { errorId?: unknown }).errorId
+    return typeof id === 'number' && Number.isInteger(id) && id === errorId
+  })
 }
 
 function isRedirect(status: number): boolean {
