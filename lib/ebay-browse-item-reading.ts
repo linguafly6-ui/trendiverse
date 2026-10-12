@@ -2,9 +2,9 @@
  * Lectura manual de un anuncio de Browse.
  *
  * No arranca sola, no lee credenciales del entorno y no convierte el anuncio
- * en una observación. Un `legacyItemId` numérico no se envía: el cliente
- * existente solo tiene `getItem` por el `itemId` REST y exige que el cuerpo
- * traiga ese mismo `itemId`.
+ * en una observación. Un id solo de dígitos no se envía como `itemId` REST.
+ * El `legacyItemId` numérico solo sale por `getItemByLegacyId` cuando la
+ * persona lo pasa en ese argumento y confirma la ejecución.
  */
 
 import {
@@ -17,7 +17,9 @@ import {
   EBAY_BROWSE_ITEM_URL_PREFIX,
   EBAY_BROWSE_MARKETPLACE_ID,
   EBAY_BROWSE_RESPONSE_MAX_BYTES,
+  createEbayBrowseClient,
 } from './ebay-browse-client'
+import type { EbayBrowseItemFields } from './ebay-browse-offer'
 
 const REST_ITEM_ID_PATTERN = /^[A-Za-z0-9|._~-]{1,128}$/
 const LEGACY_ITEM_ID_PATTERN = /^[0-9]{1,20}$/
@@ -38,6 +40,8 @@ export interface EbayBrowseItemReading {
   /** La petición lleva EBAY_ES. No afirma que el anuncio sea de ese mercado. */
   requestedMarketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID
   itemIdRequested: string
+  /** El id numérico pedido. Null cuando la lectura usa el `itemId` REST. */
+  legacyItemIdRequested: string | null
   fields: {
     itemId: BrowseBodyField<string>
     legacyItemId: BrowseBodyField<string>
@@ -60,6 +64,8 @@ export interface EbayBrowseItemReading {
 export type EbayBrowseItemReadingResult =
   | { status: 'not-run' }
   | { status: 'legacy-item-id-not-supported' }
+  | { status: 'invalid-legacy-item-id' }
+  | { status: 'identifier-mismatch', requestedMarketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
   | { status: 'invalid-item-id' }
   | { status: 'unauthorized', requestedMarketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
   | { status: 'forbidden', requestedMarketplaceId: typeof EBAY_BROWSE_MARKETPLACE_ID }
@@ -92,6 +98,7 @@ export function readEbayBrowseItemReading(value: unknown, itemIdRequested: strin
     kind: EBAY_BROWSE_ITEM_READING_KIND,
     requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID,
     itemIdRequested,
+    legacyItemIdRequested: null,
     fields,
     missing: Object.entries(fields).filter(([, field]) => field.fromBody === 'absent').map(([name]) => name),
     discarded: ['seller', 'description', 'title', 'itemAffiliateWebUrl'],
@@ -106,6 +113,7 @@ export function readEbayBrowseItemReading(value: unknown, itemIdRequested: strin
 export async function collectBrowseItemReading(input?: {
   confirm?: 'run-outside-ci'
   itemId?: string
+  legacyItemId?: string
   clientId?: string
   clientSecret?: string
   fetchImpl?: EbayFetch
@@ -113,12 +121,20 @@ export async function collectBrowseItemReading(input?: {
   if (
     input?.confirm !== 'run-outside-ci'
     || !input.fetchImpl
-    || !input.itemId
     || !input.clientId
     || !input.clientSecret
   ) {
     return { status: 'not-run' }
   }
+  if (input.legacyItemId !== undefined && input.itemId !== undefined) return { status: 'invalid-item-id' }
+  if (input.legacyItemId !== undefined) {
+    return collectLegacyItemReading(input.legacyItemId, {
+      clientId: input.clientId,
+      clientSecret: input.clientSecret,
+      fetchImpl: input.fetchImpl,
+    })
+  }
+  if (!input.itemId) return { status: 'not-run' }
   if (LEGACY_ITEM_ID_PATTERN.test(input.itemId)) return { status: 'legacy-item-id-not-supported' }
   const url = browseItemUrl(input.itemId)
   if (!url) return { status: 'invalid-item-id' }
@@ -150,6 +166,63 @@ export async function collectBrowseItemReading(input?: {
     return { status: 'invalid-response', requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
   }
   return { status: 'ok', reading }
+}
+
+async function collectLegacyItemReading(
+  legacyItemId: string,
+  input: { clientId: string, clientSecret: string, fetchImpl: EbayFetch },
+): Promise<EbayBrowseItemReadingResult> {
+  const client = createEbayBrowseClient({
+    clientId: input.clientId,
+    clientSecret: input.clientSecret,
+    fetchImpl: input.fetchImpl,
+  })
+  const result = await client.getItemByLegacyId(legacyItemId)
+  if (result.status === 'invalid-legacy-item-id') return { status: 'invalid-legacy-item-id' }
+  if (result.status === 'identifier-mismatch') {
+    return { status: 'identifier-mismatch', requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+  }
+  if (result.status !== 'ok') return { status: result.status, requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+  const reading = readingFromLegacyItem(result.item, legacyItemId)
+  if (!reading) return { status: 'invalid-response', requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID }
+  return { status: 'ok', reading }
+}
+
+function readingFromLegacyItem(item: EbayBrowseItemFields, legacyItemId: string): EbayBrowseItemReading | null {
+  if (item.itemId === null || item.legacyItemId !== legacyItemId) return null
+  const fields = {
+    itemId: kept(item.itemId, (value) => LISTING_ID_PATTERN.test(value)),
+    legacyItemId: kept(item.legacyItemId, (value) => value === legacyItemId && LISTING_ID_PATTERN.test(value)),
+    epid: kept(item.epid, (value) => EPID_PATTERN.test(value) && !value.includes('://')),
+    categoryId: kept(item.categoryId, exactText),
+    listingMarketplaceId: kept(item.listingMarketplaceId, exactText),
+    condition: kept(item.condition, exactText),
+    conditionId: kept(item.conditionId, (value) => CONDITION_ID_PATTERN.test(value)),
+    itemWebUrl: kept(item.itemWebUrl, exactText),
+    currency: kept(item.currency, (value) => /^[A-Za-z]{3}$/.test(value)),
+    priceValue: kept(item.priceValue, (value) => PRICE_PATTERN.test(value)),
+  }
+  if (fields.itemId.fromBody !== 'present' || fields.legacyItemId.fromBody !== 'present') return null
+  return {
+    kind: EBAY_BROWSE_ITEM_READING_KIND,
+    requestedMarketplaceId: EBAY_BROWSE_MARKETPLACE_ID,
+    itemIdRequested: item.itemId,
+    legacyItemIdRequested: legacyItemId,
+    fields,
+    missing: Object.entries(fields).filter(([, field]) => field.fromBody === 'absent').map(([name]) => name),
+    discarded: ['seller', 'description', 'title', 'itemAffiliateWebUrl'],
+    itemWebUrlIsSourceUrl: false,
+  }
+}
+
+function kept(value: string | null, accept: (value: string) => boolean): BrowseBodyField<string> {
+  if (value === null) return { fromBody: 'absent' }
+  if (!accept(value)) return { fromBody: 'unusable', value: null }
+  return { fromBody: 'present', value }
+}
+
+function exactText(value: string): boolean {
+  return value.length > 0 && value.trim() === value
 }
 
 type ItemCall =

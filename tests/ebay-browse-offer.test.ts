@@ -16,7 +16,7 @@ import {
   associateBrowseItem,
   readEbayBrowseItemFields,
 } from '../lib/ebay-browse-offer'
-import { EBAY_BROWSE_ITEM_URL_PREFIX, createEbayBrowseClient } from '../lib/ebay-browse-client'
+import { EBAY_BROWSE_ITEM_URL_PREFIX, EBAY_BROWSE_LEGACY_ITEM_URL, createEbayBrowseClient } from '../lib/ebay-browse-client'
 import { EBAY_OAUTH_TOKEN_URL, type EbayFetch } from '../lib/ebay-application-auth'
 
 const NOW = Date.parse('2026-10-11T12:00:00.000Z')
@@ -254,6 +254,72 @@ test('getItem reads one encoded listing and does not call the network for a bad 
   })
   assert.equal((await idle.getItem('../admin')).status, 'invalid-item-id')
   assert.equal(fetches, 0)
+
+  const legacyCalls: string[] = []
+  let legacyTokens = 0
+  let legacyItems = 0
+  const legacyClient = createEbayBrowseClient({
+    clientId: 'fixture-browse-app',
+    clientSecret: 'fixture-browse-cert',
+    fetchImpl: async (input, init) => {
+      legacyCalls.push(String(input))
+      if (input === EBAY_OAUTH_TOKEN_URL) {
+        legacyTokens += 1
+        const accessToken = legacyTokens === 1 ? 'fixture-browse-token' : 'fixture-browse-token-2'
+        return Response.json({ access_token: accessToken, expires_in: 7200 })
+      }
+      legacyItems += 1
+      const headers = new Headers(init?.headers)
+      assert.equal(headers.get('x-ebay-c-marketplace-id'), 'EBAY_ES')
+      assert.equal(headers.get('x-ebay-c-enduserctx'), null)
+      if (legacyItems === 1) {
+        assert.equal(headers.get('authorization'), 'Bearer fixture-browse-token')
+        return Response.json({ errors: [{ errorId: 1001 }] }, { status: 401 })
+      }
+      assert.equal(headers.get('authorization'), 'Bearer fixture-browse-token-2')
+      return Response.json(item({ condition: 'Used' }))
+    },
+  })
+  const legacy = await legacyClient.getItemByLegacyId('100')
+  assert.equal(legacy.status, 'ok')
+  if (legacy.status !== 'ok') return
+  assert.equal(legacy.item.legacyItemId, '100')
+  assert.equal(legacy.item.itemId, 'v1|100|0')
+  assert.equal(legacy.item.condition, 'Used')
+  assert.equal(JSON.stringify(legacy).includes('fixture-seller'), false)
+  assert.equal(JSON.stringify(legacy).includes('fixture-browse-token'), false)
+  const legacyUrl = new URL(legacyCalls.find((call) => call.startsWith(EBAY_BROWSE_LEGACY_ITEM_URL)) ?? '')
+  assert.equal(legacyUrl.pathname, '/buy/browse/v1/item/get_item_by_legacy_id')
+  assert.equal(legacyUrl.searchParams.get('legacy_item_id'), '100')
+  assert.equal(legacyItems, 2)
+  const stillBlocked = associateBrowseItem(legacy.item, { observedAt: OBSERVED_AT, now: NOW, requestMarketplaceId: 'EBAY_ES' })
+  assert.equal(stillBlocked.observation, null)
+  assert.ok(stillBlocked.blockers.includes('no-verified-mapping'))
+  assert.equal(EBAY_ES_ADMITTED_CONDITION_IDS.length, 0)
+
+  let rejectedFetches = 0
+  const rejectClient = createEbayBrowseClient({
+    clientId: 'fixture-browse-app',
+    clientSecret: 'fixture-browse-cert',
+    fetchImpl: async () => {
+      rejectedFetches += 1
+      throw new Error('should not fetch')
+    },
+  })
+  assert.equal((await rejectClient.getItemByLegacyId('0100')).status, 'invalid-legacy-item-id')
+  assert.equal(rejectedFetches, 0)
+  const mismatch = await createEbayBrowseClient({
+    clientId: 'fixture-browse-app',
+    clientSecret: 'fixture-browse-cert',
+    fetchImpl: async (input) => {
+      if (input === EBAY_OAUTH_TOKEN_URL) {
+        return Response.json({ access_token: 'fixture-browse-token', expires_in: 7200 })
+      }
+      return Response.json(item({ legacyItemId: '999' }))
+    },
+  }).getItemByLegacyId('100')
+  assert.equal(mismatch.status, 'identifier-mismatch')
+  assert.equal(JSON.stringify(mismatch).includes('fixture-seller'), false)
 
   const offerSource = readFileSync(new URL('../lib/ebay-browse-offer.ts', import.meta.url), 'utf8')
   const offerCode = offerSource.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
