@@ -14,31 +14,38 @@ Un id solo de dígitos pasado como `itemId` sigue sin enviarse: ese argumento es
 
 ## Cómo ejecutarla fuera de CI
 
-La función no lee credenciales del entorno. Sin `confirm: 'run-outside-ci'` y sin un `fetchImpl` explícito devuelve `not-run`.
+`collectBrowseItemReading` no lee credenciales del entorno. Sin `confirm: 'run-outside-ci'` y sin un `fetchImpl` explícito devuelve `not-run`. El id numérico entra solo por `legacyItemId`.
 
-En un archivo local que no se suba al repositorio:
+El client id y el secreto solo caben como argumentos en memoria. Ponerlos en la línea de órdenes, en un archivo del repositorio o en el ejemplo de una llamada los dejaría en el historial, en `ps` o en git. Esa forma no es el procedimiento. La sesión local los pide con el eco del terminal desactivado, los usa en la llamada y no los escribe.
 
-```ts
-import { collectBrowseItemReading } from './lib/ebay-browse-item-reading'
+En la máquina de la persona, fuera de CI:
 
-const byRestId = await collectBrowseItemReading({
-  confirm: 'run-outside-ci',
-  itemId: 'v1|…|…',
-  clientId: '…',
-  clientSecret: '…',
-  fetchImpl: globalThis.fetch,
-})
-
-const byLegacyId = await collectBrowseItemReading({
-  confirm: 'run-outside-ci',
-  legacyItemId: '123456789012',
-  clientId: '…',
-  clientSecret: '…',
-  fetchImpl: globalThis.fetch,
-})
+```sh
+npx tsx scripts/read-ebay-es-legacy-item.ts
 ```
 
-El identificador lo escribe la persona. No se imprime el token ni el secreto. No se guarda el cuerpo completo. El JSON de `reading` es lo único que hace falta revisar. Pasar `itemId` y `legacyItemId` a la vez no hace petición.
+El comando no lleva argumentos. Ejecútalo en un terminal y escribe ahí las respuestas. Una tubería o un `printf` dejarían el secreto en el historial del shell. El script no está en `npm test`, en el build ni en el workflow de despliegue. Esta revisión no lo ha ejecutado contra eBay.
+
+1. Escribe el `legacyItemId` numérico de un anuncio concreto de `EBAY_ES`. Es el número de la ruta `/itm/` de esa ficha, no la URL y no el `itemId` REST. Un decimal de 1 a 20 dígitos, sin ceros a la izquierda y sin espacios. Si no cumple, la sesión termina y no pide credenciales.
+2. Escribe `run-outside-ci` tal cual. Otra respuesta termina la sesión sin petición y sin pedir el secreto.
+3. Escribe el Client ID y el Cert ID. No se muestran mientras se escriben. No los leas de `process.env`, de `.dev.vars` ni de un archivo.
+4. La sesión hace una sola lectura: token de aplicación y `GET /buy/browse/v1/item/get_item_by_legacy_id?legacy_item_id=…` con `X-EBAY-C-MARKETPLACE-ID: EBAY_ES`.
+5. Lee el informe en la terminal. No redirijas la salida a un archivo del repositorio: el informe incluye el precio de esa respuesta y no debe quedar guardado. El script no lo escribe en disco.
+
+El informe lista `itemId`, `legacyItemId`, `epid`, `categoryId`, `listingMarketplaceId`, `condition`, `conditionId`, `itemWebUrl`, precio y moneda. Cada uno queda como presente, ausente o inutilizable. `itemWebUrlIsSourceUrl` sale en false. No aparecen el token, el secreto, el vendedor, la descripción, el título ni la URL de afiliado.
+
+Pasar `itemId` y `legacyItemId` a la vez a `collectBrowseItemReading` sigue sin hacer petición. La sesión solo envía `legacyItemId`.
+
+## Qué contrastar en el informe
+
+El informe describe la respuesta de esa ejecución. No hay una evidencia real guardada en este repositorio, y un fixture de las pruebas no la sustituye. Después de ejecutar la sesión, la persona comprueba en pantalla:
+
+- `legacyItemId` del cuerpo coincide con el número que escribió, y `itemId` es el identificador REST de ese mismo anuncio.
+- Si `epid`, `categoryId` y `listingMarketplaceId` están presentes, ausentes o inutilizables. Un `epid` presente no se copia al mapping de `nintendo-switch`.
+- `condition` y `conditionId` son los valores que devolvió la API. No se deducen de la etiqueta visible «Nuevo» o «Usado», y `conditionId` no entra en `EBAY_ES_ADMITTED_CONDITION_IDS`.
+- Si `itemWebUrl` está presente. `itemWebUrlIsSourceUrl` sigue en false y esa URL no pasa a ser `sourceUrl`.
+
+La última línea útil del informe es que se trata de un diagnóstico y no de una observación publicable. El precio se mira y no se archiva.
 
 ## Contrato verificado de `get_item_by_legacy_id`
 
