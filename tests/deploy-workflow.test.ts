@@ -39,6 +39,35 @@ test('un push a main selecciona el despliegue después de lint, tests y build', 
   assert.equal(selected.some((item) => item.workflowPath === 'ci.yml' && item.job.id === 'ci'), true)
 })
 
+test('el job deploy declara environment production y no pasa CLOUDFLARE_D1_DATABASE_ID', () => {
+  const deploy = workflows.find((workflow) => workflow.path === 'deploy.yml')
+  assert.ok(deploy)
+  assert.equal(deploy.triggers.pullRequest, false)
+  assert.equal(deploy.triggers.pullRequestTarget, false)
+  assert.deepEqual(deploy.triggers.pushBranches, ['main'])
+  const job = deploy.jobs.find((item) => item.id === 'deploy')
+  assert.ok(job)
+  assert.equal(job.environment, 'production')
+  const deployStep = job.steps.find((step) => /wrangler pages deploy\b/.test(step.run ?? ''))
+  assert.ok(deployStep)
+  assert.equal(Object.hasOwn(deployStep.env, 'CLOUDFLARE_D1_DATABASE_ID'), false)
+  assert.equal(deploy.source.includes('CLOUDFLARE_D1_DATABASE_ID'), false)
+  assert.match(deployStep.env.CLOUDFLARE_API_TOKEN ?? '', /secrets\.CLOUDFLARE_API_TOKEN/)
+  assert.match(deployStep.env.CLOUDFLARE_ACCOUNT_ID ?? '', /secrets\.CLOUDFLARE_ACCOUNT_ID/)
+  assert.equal(deployStep.run, 'npx wrangler pages deploy .vercel/output/static --project-name=trendiverse')
+})
+
+test('ci no referencia secretos de Cloudflare ni publica', () => {
+  const ci = workflows.find((workflow) => workflow.path === 'ci.yml')
+  assert.ok(ci)
+  assert.equal(ci.triggers.pullRequest, true)
+  assert.deepEqual(ci.triggers.pushBranches, ['main'])
+  assert.equal(ci.source.includes('secrets.'), false)
+  assert.equal(/wrangler pages deploy\b/.test(ci.source), false)
+  assert.equal(ci.source.includes('CLOUDFLARE_'), false)
+  assert.equal(ci.jobs.every((job) => job.environment === null), true)
+})
+
 test('un push a otra rama no selecciona ningún job', () => {
   assert.deepEqual(selectJobs(workflows, pushOther), [])
 })
