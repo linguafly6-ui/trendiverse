@@ -10,6 +10,11 @@ import {
 export {
   MARKETPLACE_ID_ALLOWLIST,
   hasValidatedMarketplaceId,
+  validateMarketplaceIdentifier,
+  type MarketplaceIdentifierCandidate,
+  type MarketplaceIdentifierEvidence,
+  type MarketplaceIdentifierProcedureContext,
+  type MarketplaceIdentifierValidation,
   type SecondHandMarketplaceIdAllowlist,
   type SecondHandMarketplaceIdContext,
   type SecondHandMarketplaceIdentifier,

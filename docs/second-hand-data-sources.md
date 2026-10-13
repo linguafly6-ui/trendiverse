@@ -86,6 +86,32 @@ Un identificador validado tiene que demostrar, a la vez, todas estas propiedades
 
 `canComparePrices()` solo acepta el identificador cuando cumple ese contrato y el mapping sigue verificado, completo y sin otros problemas. `asExternalMapping()` solo publica el valor canónico en ese caso. No copia `externalProductId`. El catálogo no tiene ningún identificador validado: los 18 siguen con los dos campos en `null`, y solo `nintendo-switch` está verificado. Esa verificación es de identidad del producto, no de un id de marketplace. El adapter de eBay sigue apagado y este contrato no lo enciende ni hace peticiones.
 
+## Procedimiento del identificador
+
+La identidad del fabricante no es la identidad de marketplace.
+
+```text
+verificationRef
+        ↓
+evidencia de marketplace
+        ↓
+marketplaceIdentifier validado
+```
+
+`validateMarketplaceIdentifier()` es el procedimiento puro que recorre ese paso. Recibe el candidato, el contexto del mapping, la evidencia y la lista de proveedor y ámbito. Devuelve `absent`, `unvalidated`, `validated` o `rejected`, con los problemas y la evidencia usada. No elige proveedor, no llama a una red y no vuelve a demostrar que el producto es el correcto: exige que la identidad ya esté verificada. Si el mapping no está verificado, el identificador no pasa a `validated`.
+
+La evidencia tiene que decir de dónde sale el identificador y qué demuestra: proveedor, ámbito, valor canónico, `productId`, la misma `verificationRef`, procedencia, método y referencia de auditoría. Solo cuenta lo que demuestra un identificador de producto del marketplace. No bastan «lo encontré en Google», «aparece en la URL», «coincide con el nombre» ni «parece el SKU».
+
+Queda rechazado un candidato que es el SKU o el número de modelo del fabricante, el nombre del producto, un GTIN/EAN/UPC/ISBN, una URL, un identificador de anuncio, una variante distinta, un proveedor o un ámbito que no están en la lista, otro `productId`, otra `verificationRef`, o una evidencia a la que le falta procedencia, método o auditoría.
+
+- Un marketplace ID no sustituye la verificación del producto.
+- Verificar un producto no valida automáticamente su marketplace ID.
+- Un identificador de anuncio no equivale necesariamente a un identificador de producto de catálogo.
+- El SKU del fabricante no se convierte automáticamente en marketplace ID.
+- Una URL no se convierte automáticamente en marketplace ID.
+
+`absent` significa que no hay candidato: no es un error. `unvalidated` significa que hay candidato y todavía no hay evidencia suficiente: no abre `canComparePrices()`. `rejected` significa que el candidato se descartó: no se publica. `validated` exige la evidencia completa y la lista recibida. `MARKETPLACE_ID_ALLOWLIST` sigue vacía, así que ningún proveedor real queda autorizado. Una lista sintética solo existe dentro de un test. Este procedimiento no cambia la decisión de eBay, que sigue en `blocked-pending-authorization`.
+
 ## Qué falta antes de integrar una fuente real
 
 - Elegir el proveedor cuyo identificador se va a usar.
