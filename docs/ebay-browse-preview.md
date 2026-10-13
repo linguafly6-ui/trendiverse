@@ -46,7 +46,16 @@ La lectura interna distingue fuente apagada, credenciales ausentes, condiciones 
 
 ## Lectura local de la OLED blanca
 
-`scripts/read-ebay-white-oled-detail.ts` busca el ePID `21048307585` y llama a `getItem` para cada candidato. No enciende el proveedor ni escribe el catálogo. Si faltan las variables, termina sin llamar a eBay.
+`scripts/read-ebay-white-oled-detail.ts` hace dos lecturas y ninguna escritura.
+
+1. `GET https://api.ebay.com/buy/browse/v1/item_summary/search` con `epid=21048307585` y `limit=10`.
+2. Para cada `itemId` devuelto, `GET https://api.ebay.com/buy/browse/v1/item/{itemId}`.
+
+Las dos llevan `X-EBAY-C-MARKETPLACE-ID: EBAY_ES`. El `itemId` sale de la búsqueda; el ePID no sirve como argumento de `getItem`. Si faltan `EBAY_CLIENT_ID` o `EBAY_CERT_ID`, el script termina sin llamar a eBay.
+
+La salida añade `conditionId` como valor observado. Ese número no entra en `EBAY_ES_ADMITTED_CONDITION_IDS`. `identidadDeVariante: si` solo significa que ese cuerpo trae el ePID, el GTIN, el MPN, HEG-001, 64 GB, el color y `EBAY_ES`. `veredicto` permanece `unconfirmed` mientras falten la allowlist, el identificador validado o la política de condiciones. `varianteValidada` permanece en `false`. Un cuerpo con otro `listingMarketplaceId` no valida la variante.
+
+`categoryId` se copia solo si viene en ese mismo `getItem`. No es la categoría editorial `gaming`. La lista de condiciones admitidas es global y está vacía: un `conditionId` visto en un anuncio no la rellena. La guía de IDs de eBay describe definiciones de EE. UU.; el subconjunto de cada categoría de `EBAY_ES` no está leído en este repositorio. No hay cliente de Metadata API.
 
 Con `EBAY_CLIENT_ID` y `EBAY_CERT_ID` ya definidas en el entorno:
 
