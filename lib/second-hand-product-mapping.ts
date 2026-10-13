@@ -286,12 +286,12 @@ export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] =
     attr('generation', 'Generación, por ejemplo Series X o Series S'),
     attr('capacity', 'Capacidad'),
   ], 'Pendiente. La ficha separa Series X Carbon Black de 1 TB con lector y Series X 1TB Digital Edition. Esas dos líneas no comparten un código de modelo. Series S es otra consola.', 'https://www.xbox.com/en-US/consoles/xbox-series-x', 2),
-  mapping('steam-deck', 'family', 'Steam Deck, sin revisión ni capacidad.', [
+  mapping('steam-deck', 'family', 'Steam Deck. La ficha de España separa la OLED de 512 GB, la OLED de 1 TB y un LCD de 256 GB, sin un número de modelo del fabricante.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('edition', 'LCD u OLED'),
     attr('capacity', 'Capacidad'),
-  ], 'Pendiente. La ficha técnica lista Steam Deck OLED de 512 GB y de 1 TB. No publica la capacidad LCD.', 'https://www.steamdeck.com/en/tech', 4),
+  ], 'Pendiente. La comparación de España consultada el 2026-10-09 separa «512 GB OLED» y «1 TB OLED»: las dos con SSD NVMe, OLED HDR de 7,4 pulgadas, hasta 90 Hz, APU de 6 nm y Wi-Fi 6E. Solo la de 1 TB añade «Pantalla antirreflectante de primera calidad», estuche con funda extraíble, vídeo de inicio exclusivo y tema de teclado. El mismo texto dice «los modelos de 1 TB, incluida la edición limitada» y no abre otra columna ni un número de modelo. La ficha técnica de España, https://www.steamdeck.com/es/tech, pone «Steam Deck con SSD NVMe de 512 GB» y «Steam Deck con SSD NVMe de 1 TB» en un solo bloque, sin antirreflectante ni número de modelo, y avisa de que las especificaciones pueden cambiar. Esa ficha da un cable de 2,5 m; la comparación en español da 1,5 m a las dos OLED y la comparación en inglés da 2,5 m. La tienda oficial https://store.steampowered.com/steamdeck separa la reserva de 512 GB OLED de la de 1 TB con cristal grabado, describe la Limited Edition de 1 TB como otra carcasa translúcida en EE. UU. y Canadá, y sigue nombrando LCD de 64 GB y de 512 GB en retirada, además del LCD de 256 GB. Los identificadores de reserva o de paquete de esa tienda no son un número de modelo del fabricante y no se copian. No se verifica ninguno.', 'https://www.steamdeck.com/es/oled', 4),
   mapping('zapatillas', 'category', 'Categoría de calzado, no un modelo.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Modelo'),
