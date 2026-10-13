@@ -17,3 +17,15 @@ Aunque las tres estén presentes, `/segunda-mano` y `/segunda-mano/gaming` no mu
 - La Nintendo Switch OLED blanca, la neón y Splatoon 3 siguen sin una lectura que confirme a la vez ePID, GTIN, MPN, HEG-001, 64 GB y color.
 
 `EBAY_BROWSE_SOURCE_ENABLED` en código permanece `false` para el adapter de métricas. Un fallo de eBay devuelve una lista vacía y la página sigue renderizando el catálogo editorial.
+
+## Lectura local de la OLED blanca
+
+`scripts/read-ebay-white-oled-detail.ts` busca el ePID `21048307585` y llama a `getItem` para cada candidato. No enciende el proveedor ni escribe el catálogo. Si faltan las variables, termina sin llamar a eBay.
+
+Con `EBAY_CLIENT_ID` y `EBAY_CERT_ID` ya definidas en el entorno:
+
+```
+npx tsx scripts/read-ebay-white-oled-detail.ts
+```
+
+La salida marca cada campo como valor, `ausente` o `no comprobado`. No imprime las credenciales. `varianteValidada` permanece en `false`.
