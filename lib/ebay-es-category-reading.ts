@@ -6,9 +6,12 @@
  *   GET /commerce/taxonomy/v1/get_default_category_tree_id
  *   GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_subtree
  *   GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_suggestions?q=
- *   Ámbito: https://api.ebay.com/oauth/api_scope (client credentials).
+ *   GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_item_aspects_for_category?category_id=
+ *   Ámbito de árbol, subárbol y sugerencias: https://api.ebay.com/oauth/api_scope.
+ *   getItemAspectsForCategory exige además https://api.ebay.com/oauth/api_scope/metadata.insights
+ *   y un category_id de hoja. El error 62009 significa que el id no es hoja.
  *   getCategorySuggestions es la búsqueda por texto. No descarga el árbol entero.
- *   Una sugerencia no valida una variante.
+ *   Ni una sugerencia ni una lista de aspectos validan una variante o una categoría.
  *
  * Metadata, OpenAPI 3.0.0 v1.12.1:
  *   GET /sell/metadata/v1/marketplace/{marketplace_id}/get_item_condition_policies
@@ -52,15 +55,77 @@ export const EBAY_ES_REPORTED_CATEGORY_139971 = {
   categoryName: 'Consolas',
   leafCategoryTreeNode: true,
   specificToNintendoSwitch: false,
+  aspectsRead: false,
+  validatesCategory: false,
 } as const
+/**
+ * Tres getCategorySuggestions locales, HTTP 200, árbol 186 versión 96.
+ * La respuesta no trae leafCategoryTreeNode: la hoja queda ausente.
+ * El padre solo se guarda cuando esa misma respuesta lo trajo.
+ * No valida 139971 ni ninguna otra categoría.
+ */
+export const EBAY_ES_REPORTED_CATEGORY_SUGGESTIONS = [
+  {
+    source: 'reported-local-read',
+    operation: 'getCategorySuggestions',
+    httpStatus: 200,
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    categoryTreeId: EBAY_ES_REPORTED_CATEGORY_TREE_ID,
+    categoryTreeVersion: EBAY_ES_REPORTED_CATEGORY_TREE_VERSION,
+    query: 'Nintendo Switch',
+    validatesAnyCategory: false,
+    suggestions: [
+      suggestionReport('139971', 'Consolas', '1249', 'Consolas y videojuegos'),
+      suggestionReport('139973', 'Videojuegos', '1249', 'Consolas y videojuegos'),
+      suggestionReport('117042', 'Mandos', '54968', 'Accesorios'),
+    ],
+  },
+  {
+    source: 'reported-local-read',
+    operation: 'getCategorySuggestions',
+    httpStatus: 200,
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    categoryTreeId: EBAY_ES_REPORTED_CATEGORY_TREE_ID,
+    categoryTreeVersion: EBAY_ES_REPORTED_CATEGORY_TREE_VERSION,
+    query: 'Nintendo Switch OLED',
+    validatesAnyCategory: false,
+    suggestions: [
+      suggestionReport('139971', 'Consolas', '1249', 'Consolas y videojuegos'),
+      suggestionReport('171833', 'Recambios y herramientas', null, null),
+      suggestionReport('69528', 'Dibujos animados', null, null),
+      suggestionReport('117042', 'Mandos', null, null),
+      suggestionReport('182179', 'Estantes y soportes', null, null),
+    ],
+  },
+  {
+    source: 'reported-local-read',
+    operation: 'getCategorySuggestions',
+    httpStatus: 200,
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    categoryTreeId: EBAY_ES_REPORTED_CATEGORY_TREE_ID,
+    categoryTreeVersion: EBAY_ES_REPORTED_CATEGORY_TREE_VERSION,
+    query: 'consolas portátiles',
+    validatesAnyCategory: false,
+    unlistedSuggestions: 'not-recorded',
+    suggestions: [
+      suggestionReport('139971', 'Consolas', '1249', 'Consolas y videojuegos'),
+      suggestionReport('139973', 'Videojuegos', '1249', 'Consolas y videojuegos'),
+    ],
+  },
+] as const
 /** Hay que repetir esta frase en cada consulta. Una frase no autoriza la siguiente. */
 export const EBAY_TAXONOMY_SUGGESTION_CONFIRMATION = 'confirmo-una-sugerencia'
+export const EBAY_TAXONOMY_SUBTREE_CONFIRMATION = 'confirmo-subarbol-de-una-categoria'
+export const EBAY_TAXONOMY_ASPECTS_CONFIRMATION = 'confirmo-aspectos-de-una-hoja'
 export const EBAY_TAXONOMY_SUGGESTION_QUERIES = [
   'Nintendo Switch',
   'Nintendo Switch OLED',
   'consolas portátiles',
 ] as const
 export const EBAY_TAXONOMY_SCOPE = EBAY_APPLICATION_OAUTH_SCOPE
+export const EBAY_TAXONOMY_ASPECTS_INSIGHTS_SCOPE = 'https://api.ebay.com/oauth/api_scope/metadata.insights'
+/** Los dos ámbitos del requisito de getItemAspectsForCategory. No sustituye al ámbito de Browse. */
+export const EBAY_TAXONOMY_ASPECTS_SCOPE = `${EBAY_APPLICATION_OAUTH_SCOPE} ${EBAY_TAXONOMY_ASPECTS_INSIGHTS_SCOPE}`
 export const EBAY_METADATA_USER_SCOPE = 'https://api.ebay.com/oauth/api_scope/sell.inventory'
 export const EBAY_ES_CATEGORY_RESPONSE_MAX_BYTES = 131_072
 
@@ -68,7 +133,10 @@ const TREE_ID_PATTERN = /^[A-Za-z0-9_-]{1,32}$/
 const CATEGORY_ID_PATTERN = /^[0-9]{1,20}$/
 
 export const TAXONOMY_MARKETPLACE_NOT_FOUND = 62003
+export const TAXONOMY_CATEGORY_TREE_NOT_FOUND = 62004
 export const TAXONOMY_CATEGORY_NOT_IN_TREE = 62005
+export const TAXONOMY_CATEGORY_IS_ROOT = 62008
+export const TAXONOMY_CATEGORY_NOT_A_LEAF = 62009
 export const METADATA_CATEGORY_NOT_IN_MARKETPLACE = 46003
 
 export type EbayCategoryLeaf = true | false | 'absent' | 'conflict'
@@ -151,6 +219,20 @@ export function categorySubtreeUrl(categoryTreeId: string): string | null {
   if (!TREE_ID_PATTERN.test(categoryTreeId)) return null
   const url = new URL(`${EBAY_TAXONOMY_BASE_URL}/category_tree/${encodeURIComponent(categoryTreeId)}/get_category_subtree`)
   url.searchParams.set('category_id', EBAY_ES_CATEGORY_UNDER_REVIEW)
+  return url.toString()
+}
+
+export function categorySubtreeUrlFor(categoryTreeId: string, categoryId: string): string | null {
+  if (!TREE_ID_PATTERN.test(categoryTreeId) || !CATEGORY_ID_PATTERN.test(categoryId)) return null
+  const url = new URL(`${EBAY_TAXONOMY_BASE_URL}/category_tree/${encodeURIComponent(categoryTreeId)}/get_category_subtree`)
+  url.searchParams.set('category_id', categoryId)
+  return url.toString()
+}
+
+export function itemAspectsForCategoryUrl(categoryTreeId: string, categoryId: string): string | null {
+  if (!TREE_ID_PATTERN.test(categoryTreeId) || !CATEGORY_ID_PATTERN.test(categoryId)) return null
+  const url = new URL(`${EBAY_TAXONOMY_BASE_URL}/category_tree/${encodeURIComponent(categoryTreeId)}/get_item_aspects_for_category`)
+  url.searchParams.set('category_id', categoryId)
   return url.toString()
 }
 
@@ -311,6 +393,173 @@ export async function readCategorySuggestions(options: {
   }
   if (call.kind !== 'ok') return emptySuggestions('unavailable', call.httpStatus, call.errorIds, query)
   return suggestionsFromBody(call.body, call.httpStatus, call.errorIds, query, options.categoryTreeId)
+}
+
+export interface EbayConfirmedSubtreeRead {
+  marketplaceId: typeof EBAY_ES_CATEGORY_MARKETPLACE_ID
+  operation: 'getCategorySubtree'
+  queriedCategoryId: string | null
+  status:
+    | 'not-run'
+    | 'invalid-category'
+    | 'invalid-tree-id'
+    | 'unauthorized'
+    | 'forbidden'
+    | 'unavailable'
+    | 'invalid-response'
+    | 'category-not-in-tree'
+    | 'category-mismatch'
+    | 'tree-not-found'
+    | 'root-category'
+    | 'ok'
+  httpStatus: number | null
+  errorIds: readonly number[]
+  categoryTreeId: string | null
+  categoryTreeVersion: string | null
+  categoryId: string | null
+  categoryName: string | null
+  /** true, false, absent o conflict. La ausencia del campo no es false. */
+  leaf: EbayCategoryLeaf
+  parentCategoryId: string | null
+  children: readonly EbayCategoryChild[] | 'absent'
+  validatesCategory: false
+}
+
+/**
+ * Un subárbol, con confirmación propia. No sigue el href del padre
+ * y no descarga getCategoryTree. No marca la categoría como válida.
+ */
+export async function readConfirmedCategorySubtree(options: {
+  auth: EbayApplicationAuth
+  fetchImpl: EbayFetch
+  categoryTreeId: string
+  categoryId: string
+  confirmation: string
+  timeoutMs?: number
+}): Promise<EbayConfirmedSubtreeRead> {
+  if (options.confirmation !== EBAY_TAXONOMY_SUBTREE_CONFIRMATION) {
+    return emptyConfirmedSubtree('not-run', null, [])
+  }
+  if (!CATEGORY_ID_PATTERN.test(options.categoryId)) return emptyConfirmedSubtree('invalid-category', null, [])
+  const url = categorySubtreeUrlFor(options.categoryTreeId, options.categoryId)
+  if (!url) return emptyConfirmedSubtree('invalid-tree-id', null, [], options.categoryId)
+  const call = await authorizedGet(options.auth, options.fetchImpl, url, options.timeoutMs)
+  if (call.kind === 'unauthorized') return emptyConfirmedSubtree('unauthorized', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'forbidden') return emptyConfirmedSubtree('forbidden', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'empty' || call.kind === 'invalid') {
+    return emptyConfirmedSubtree('invalid-response', call.httpStatus, call.errorIds, options.categoryId)
+  }
+  if (call.kind === 'http') {
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_TREE_NOT_FOUND)) {
+      return emptyConfirmedSubtree('tree-not-found', call.httpStatus, call.errorIds, options.categoryId)
+    }
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_NOT_IN_TREE)) {
+      return emptyConfirmedSubtree('category-not-in-tree', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_IS_ROOT)) {
+      return emptyConfirmedSubtree('root-category', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    return emptyConfirmedSubtree('unavailable', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+  }
+  if (call.kind !== 'ok') {
+    return emptyConfirmedSubtree('unavailable', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+  }
+  return confirmedSubtreeFromBody(call.body, call.httpStatus, call.errorIds, options.categoryTreeId, options.categoryId)
+}
+
+export interface EbayCategoryAspect {
+  localizedAspectName: string
+  aspectRequired: boolean | 'absent'
+  aspectUsage: string | 'absent'
+  /** Inferencia por el nombre. eBay no declara que el aspecto identifique Nintendo Switch. */
+  inferredProductCharacteristic: boolean
+}
+
+export interface EbayCategoryAspectRead {
+  marketplaceId: typeof EBAY_ES_CATEGORY_MARKETPLACE_ID
+  operation: 'getItemAspectsForCategory'
+  queriedCategoryId: string | null
+  status:
+    | 'not-run'
+    | 'leaf-not-confirmed'
+    | 'invalid-category'
+    | 'invalid-tree-id'
+    | 'unauthorized'
+    | 'forbidden'
+    | 'unavailable'
+    | 'invalid-response'
+    | 'empty'
+    | 'category-not-in-tree'
+    | 'tree-not-found'
+    | 'root-category'
+    | 'not-a-leaf'
+    | 'ok'
+  httpStatus: number | null
+  errorIds: readonly number[]
+  categoryTreeId: string | null
+  /** El esquema AspectMetadata no trae categoryId. No se inventa. */
+  categoryIdInBody: 'absent'
+  aspects: readonly EbayCategoryAspect[]
+  validatesCategory: false
+  validatesVariant: false
+}
+
+/**
+ * Aspectos de una hoja ya confirmada. Si leaf no es true, no hay petición:
+ * 62009 sería el error de una categoría que no es hoja, y no se convierte
+ * en una categoría válida. La lista de aspectos tampoco valida la categoría.
+ */
+export async function readCategoryAspects(options: {
+  auth: EbayApplicationAuth
+  fetchImpl: EbayFetch
+  categoryTreeId: string
+  categoryId: string
+  confirmation: string
+  leaf: EbayCategoryLeaf
+  timeoutMs?: number
+}): Promise<EbayCategoryAspectRead> {
+  if (options.confirmation !== EBAY_TAXONOMY_ASPECTS_CONFIRMATION) {
+    return emptyAspects('not-run', null, [])
+  }
+  if (options.leaf !== true) return emptyAspects('leaf-not-confirmed', null, [], options.categoryId)
+  if (!CATEGORY_ID_PATTERN.test(options.categoryId)) return emptyAspects('invalid-category', null, [])
+  const url = itemAspectsForCategoryUrl(options.categoryTreeId, options.categoryId)
+  if (!url) return emptyAspects('invalid-tree-id', null, [], options.categoryId)
+  const call = await authorizedGet(options.auth, options.fetchImpl, url, options.timeoutMs)
+  if (call.kind === 'unauthorized') return emptyAspects('unauthorized', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'forbidden') return emptyAspects('forbidden', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'empty') return emptyAspects('empty', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'invalid') return emptyAspects('invalid-response', call.httpStatus, call.errorIds, options.categoryId)
+  if (call.kind === 'http') {
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_NOT_A_LEAF)) {
+      return emptyAspects('not-a-leaf', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_TREE_NOT_FOUND)) {
+      return emptyAspects('tree-not-found', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_NOT_IN_TREE)) {
+      return emptyAspects('category-not-in-tree', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    if (call.errorIds.includes(TAXONOMY_CATEGORY_IS_ROOT)) {
+      return emptyAspects('root-category', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+    }
+    return emptyAspects('unavailable', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+  }
+  if (call.kind !== 'ok') {
+    return emptyAspects('unavailable', call.httpStatus, call.errorIds, options.categoryId, options.categoryTreeId)
+  }
+  return aspectsFromBody(call.body, call.httpStatus, call.errorIds, options.categoryTreeId, options.categoryId)
+}
+
+/** Solo 139971 tiene una hoja true ya leída. Cualquier otro id sigue sin confirmar. */
+export function reportedLeafForAspects(categoryId: string): true | null {
+  if (
+    categoryId === EBAY_ES_REPORTED_CATEGORY_139971.categoryId
+    && EBAY_ES_REPORTED_CATEGORY_139971.leafCategoryTreeNode === true
+  ) {
+    return true
+  }
+  return null
 }
 
 /** Candidatos de segunda mano. No escribe EBAY_ES_ADMITTED_CONDITION_IDS. */
@@ -707,10 +956,188 @@ async function cancelBody(response: Response): Promise<void> {
   }
 }
 
+function suggestionReport(
+  categoryId: string,
+  categoryName: string,
+  parentCategoryId: string | null,
+  parentCategoryName: string | null,
+) {
+  return {
+    categoryId,
+    categoryName,
+    leaf: 'absent' as const,
+    parent: parentCategoryId && parentCategoryName
+      ? { categoryId: parentCategoryId, categoryName: parentCategoryName }
+      : null,
+    validatesCategory: false as const,
+  }
+}
+
+function confirmedSubtreeFromBody(
+  body: unknown,
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  categoryTreeId: string,
+  queriedCategoryId: string,
+): EbayConfirmedSubtreeRead {
+  const record = asRecord(body)
+  const node = asRecord(record?.categorySubtreeNode)
+  const category = asRecord(node?.category)
+  const categoryId = typeof category?.categoryId === 'string' ? category.categoryId : null
+  if (!node || !category || !categoryId || !CATEGORY_ID_PATTERN.test(categoryId)) {
+    return emptyConfirmedSubtree('invalid-response', httpStatus, errorIds, queriedCategoryId, categoryTreeId)
+  }
+  if (categoryId !== queriedCategoryId) {
+    return {
+      ...emptyConfirmedSubtree('category-mismatch', httpStatus, errorIds, queriedCategoryId, categoryTreeId),
+      categoryId,
+    }
+  }
+  const children = readChildren(node.childCategoryTreeNodes)
+  const returnedTreeId = typeof record?.categoryTreeId === 'string' ? record.categoryTreeId : categoryTreeId
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getCategorySubtree',
+    queriedCategoryId,
+    status: 'ok',
+    httpStatus,
+    errorIds,
+    categoryTreeId: TREE_ID_PATTERN.test(returnedTreeId) ? returnedTreeId : categoryTreeId,
+    categoryTreeVersion: textOrNull(record?.categoryTreeVersion),
+    categoryId,
+    categoryName: textOrNull(category.categoryName),
+    leaf: readLeaf(node.leafCategoryTreeNode, childList(children)),
+    parentCategoryId: parentIdFromHref(node.parentCategoryTreeNodeHref, categoryId),
+    children,
+    validatesCategory: false,
+  }
+}
+
+function aspectsFromBody(
+  body: unknown,
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  categoryTreeId: string,
+  queriedCategoryId: string,
+): EbayCategoryAspectRead {
+  const record = asRecord(body)
+  const rows = Array.isArray(record?.aspects) ? record.aspects : null
+  if (!rows) return emptyAspects('invalid-response', httpStatus, errorIds, queriedCategoryId, categoryTreeId)
+  const aspects: EbayCategoryAspect[] = []
+  for (const item of rows) {
+    const aspect = asRecord(item)
+    const name = textOrNull(aspect?.localizedAspectName)
+    if (!aspect || !name) continue
+    const constraint = asRecord(aspect.aspectConstraint)
+    const required = constraint?.aspectRequired
+    const usage = constraint?.aspectUsage
+    aspects.push({
+      localizedAspectName: name,
+      aspectRequired: required === true || required === false ? required : 'absent',
+      aspectUsage: typeof usage === 'string' && usage.trim() !== '' ? usage.trim() : 'absent',
+      inferredProductCharacteristic: aspectNameIsInferredProductCharacteristic(name),
+    })
+  }
+  if (aspects.length === 0) {
+    return emptyAspects(rows.length === 0 ? 'empty' : 'invalid-response', httpStatus, errorIds, queriedCategoryId, categoryTreeId)
+  }
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getItemAspectsForCategory',
+    queriedCategoryId,
+    status: 'ok',
+    httpStatus,
+    errorIds,
+    categoryTreeId,
+    categoryIdInBody: 'absent',
+    aspects,
+    validatesCategory: false,
+    validatesVariant: false,
+  }
+}
+
+const PRODUCT_CHARACTERISTIC_TOKENS = new Set([
+  'marca',
+  'brand',
+  'modelo',
+  'model',
+  'plataforma',
+  'platform',
+  'tipo',
+  'type',
+  'consola',
+  'console',
+  'color',
+  'colour',
+  'capacidad',
+  'capacity',
+])
+
+function aspectNameIsInferredProductCharacteristic(name: string): boolean {
+  const folded = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+  return folded.split(/[^a-z0-9]+/).some((token) => PRODUCT_CHARACTERISTIC_TOKENS.has(token))
+}
+
+function emptyConfirmedSubtree(
+  status: EbayConfirmedSubtreeRead['status'],
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  queriedCategoryId: string | null = null,
+  categoryTreeId: string | null = null,
+): EbayConfirmedSubtreeRead {
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getCategorySubtree',
+    queriedCategoryId,
+    status,
+    httpStatus,
+    errorIds,
+    categoryTreeId,
+    categoryTreeVersion: null,
+    categoryId: null,
+    categoryName: null,
+    leaf: 'absent',
+    parentCategoryId: null,
+    children: 'absent',
+    validatesCategory: false,
+  }
+}
+
+function emptyAspects(
+  status: EbayCategoryAspectRead['status'],
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  queriedCategoryId: string | null = null,
+  categoryTreeId: string | null = null,
+): EbayCategoryAspectRead {
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getItemAspectsForCategory',
+    queriedCategoryId,
+    status,
+    httpStatus,
+    errorIds,
+    categoryTreeId,
+    categoryIdInBody: 'absent',
+    aspects: [],
+    validatesCategory: false,
+    validatesVariant: false,
+  }
+}
+
 export function createCategoryReadingAuth(options: {
   clientId: string
   clientSecret: string
   fetchImpl: EbayFetch
 }): EbayApplicationAuth {
   return createEbayApplicationAuth(options)
+}
+
+/** Ámbito doble solo para aspectos. Browse sigue con el ámbito de aplicación. */
+export function createCategoryAspectsAuth(options: {
+  clientId: string
+  clientSecret: string
+  fetchImpl: EbayFetch
+}): EbayApplicationAuth {
+  return createEbayApplicationAuth({ ...options, scope: EBAY_TAXONOMY_ASPECTS_SCOPE })
 }

@@ -194,3 +194,40 @@ test('the request signal aborts when the timeout elapses', async () => {
   assert.equal(signal.aborted, true)
   assert.equal(ebayRequestSignal(0), undefined)
 })
+
+test('an unknown scope does not reuse a cached token or call the token endpoint', async () => {
+  let calls = 0
+  const memory = createEbayApplicationTokenMemory()
+  memory.current = { token: TOKEN, expiresAtMs: Date.now() + 60_000 }
+  const auth = createEbayApplicationAuth({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    memory,
+    scope: 'https://api.ebay.com/oauth/api_scope/sell.inventory',
+    fetchImpl: async () => {
+      calls += 1
+      return tokenResponse()
+    },
+  })
+  assert.equal((await auth.getAccessToken()).status, 'unavailable')
+  assert.equal(calls, 0)
+  assert.equal(memory.current?.token, TOKEN)
+})
+
+test('the aspects scope is requested only when that scope is passed', async () => {
+  let body = ''
+  const auth = createEbayApplicationAuth({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    scope: `${EBAY_APPLICATION_OAUTH_SCOPE} https://api.ebay.com/oauth/api_scope/metadata.insights`,
+    fetchImpl: async (_url, init) => {
+      body = String(init?.body ?? '')
+      return tokenResponse()
+    },
+  })
+  assert.equal((await auth.getAccessToken()).status, 'ok')
+  assert.equal(
+    new URLSearchParams(body).get('scope'),
+    `${EBAY_APPLICATION_OAUTH_SCOPE} https://api.ebay.com/oauth/api_scope/metadata.insights`,
+  )
+})

@@ -95,7 +95,8 @@ La especificación leída es Taxonomy API v1.1.1 (`commerce_taxonomy_v1_oas3.jso
 | --- | --- | --- |
 | `getDefaultCategoryTreeId` | `GET /commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_ES` | Client credentials, ámbito `https://api.ebay.com/oauth/api_scope`. El mismo token de aplicación que Browse. |
 | `getCategorySubtree` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_subtree?category_id=139971` | El mismo ámbito. El `category_tree_id` sale de la operación anterior. No se envía `X-EBAY-C-MARKETPLACE-ID`. |
-| `getCategorySuggestions` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_suggestions?q=` | El mismo ámbito. Es la búsqueda por texto. Devuelve hojas y la lista de antecesores, del padre inmediato a la raíz. No trae `leafCategoryTreeNode`. No es el árbol completo: `getCategoryTree` no se llama. |
+| `getCategorySuggestions` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_suggestions?q=` | El mismo ámbito. Es la búsqueda por texto. El método dice que devuelve hojas y la lista de antecesores, del padre inmediato a la raíz. El esquema `CategorySuggestion` no trae `leafCategoryTreeNode`, así que la ausencia de ese campo no se lee como hoja ni como no-hoja. No es el árbol completo: `getCategoryTree` no se llama. |
+| `getItemAspectsForCategory` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_item_aspects_for_category?category_id=` | El requisito lista a la vez `api_scope` y `https://api.ebay.com/oauth/api_scope/metadata.insights`. `category_id` tiene que ser una hoja. Si no lo es, el error es 62009. El cuerpo es `AspectMetadata.aspects`: nombre localizado, `aspectRequired` y `aspectUsage`. No trae el `categoryId`. Los valores permitidos no se guardan. |
 | `getItemConditionPolicies` | `GET /sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies?filter=categoryIds:{139971}` | El OpenAPI lista `api_scope` y `sell.inventory` en el mismo requisito. El texto del método dice que el token de client credentials no devuelve las condiciones restringidas 2000, 2010, 2020 y 2030. Esas piden authorization code y `https://api.ebay.com/oauth/api_scope/sell.inventory`. España no está en la lista de mercados refurbished de ese texto. La guía HTML del authorization code respondió 403, así que no se implementa el intercambio. |
 
 `leafCategoryTreeNode` solo viene cuando es `true`. Si falta, no se convierte en `false`. El padre no trae nombre: solo un href de `getCategorySubtree`. `get_item_condition_policies` puede devolver otras categorías hoja; solo cuenta el `categoryId` pedido. `1000` sigue fuera de la lista de segunda mano. `EBAY_ES_ADMITTED_CONDITION_IDS` no cambia.
@@ -118,8 +119,34 @@ npx tsx scripts/read-ebay-es-category-suggestions.ts confirmo-una-sugerencia "co
 
 Una sugerencia, aunque el nombre diga Nintendo Switch, no se guarda en la variante. Metadata sigue sin llamarse.
 
+Esas tres consultas sí se ejecutaron en una lectura local, con HTTP 200, árbol `186` y versión `96`. No se ejecutaron en este entorno. El orden es el de la respuesta:
+
+| Consulta | categoryId | Nombre | Padre en esa respuesta | Hoja |
+| --- | --- | --- | --- | --- |
+| Nintendo Switch | 139971 | Consolas | 1249 Consolas y videojuegos | ausente en la sugerencia |
+| Nintendo Switch | 139973 | Videojuegos | 1249 Consolas y videojuegos | ausente en la sugerencia |
+| Nintendo Switch | 117042 | Mandos | 54968 Accesorios | ausente en la sugerencia |
+| Nintendo Switch OLED | 139971 | Consolas | 1249 Consolas y videojuegos | ausente en la sugerencia |
+| Nintendo Switch OLED | 171833 | Recambios y herramientas | no vino en esa respuesta | ausente en la sugerencia |
+| Nintendo Switch OLED | 69528 | Dibujos animados | no vino en esa respuesta | ausente en la sugerencia |
+| Nintendo Switch OLED | 117042 | Mandos | no vino en esa respuesta | ausente en la sugerencia |
+| Nintendo Switch OLED | 182179 | Estantes y soportes | no vino en esa respuesta | ausente en la sugerencia |
+| consolas portátiles | 139971 | Consolas | 1249 Consolas y videojuegos | ausente en la sugerencia |
+| consolas portátiles | 139973 | Videojuegos | 1249 Consolas y videojuegos | ausente en la sugerencia |
+
+La consulta «consolas portátiles» trajo más categorías. Sus ids no se anotaron. El subárbol de `139971` sigue siendo la lectura aparte: nombre Consolas, `leafCategoryTreeNode` true, árbol 186, versión 96. Esa hoja no está validada para Nintendo Switch OLED. `139973` no tiene lectura de subárbol, así que no se sabe si es hoja y no se le piden aspectos.
+
+Para leer aspectos hace falta la frase de una sola categoría. `139971` puede pedirse porque el subárbol ya dijo que es hoja. `139973` no: primero hay que leer su subárbol. Ninguna de las dos llamadas se ha hecho aquí. Sin la frase no hay petición. El ámbito de aspectos no cambia el ámbito de Browse.
+
+```
+npx tsx scripts/read-ebay-es-category-aspects.ts confirmo-subarbol-de-una-categoria 139973
+npx tsx scripts/read-ebay-es-category-aspects.ts confirmo-aspectos-de-una-hoja 139971
+```
+
+Los aspectos, si llegan, describen lo que un vendedor rellena en esa hoja. No convierten `139971` en la categoría de la variante.
+
 La siguiente lectura que podría desbloquear la consulta, sin desplegar y sin escribir en eBay, es esta:
 
 1. Un getItem de EBAY_ES cuyo aspecto Modelo sea exactamente `HEG-001` y que, en ese mismo cuerpo, repita el ePID, el GTIN, el MPN, 64 GB y el color blanco.
-2. `get_default_category_tree_id` y `get_category_subtree` de Taxonomy para el `categoryId` de ese cuerpo, con marketplace EBAY_ES, hasta tener el nombre y si el nodo es hoja.
-3. `get_item_condition_policies` de Metadata para esa categoría en EBAY_ES. Solo entonces se puede escribir un subconjunto de condiciones de segunda mano. 1000 no forma parte de ese subconjunto.
+2. Los aspectos de la hoja `139971` y, antes, el subárbol de `139973` para saber si es hoja. El árbol por defecto y el subárbol de `139971` ya se leyeron en local. Esos aspectos no validan la categoría por sí solos.
+3. `get_item_condition_policies` de Metadata para la categoría que quede en EBAY_ES. Solo entonces se puede escribir un subconjunto de condiciones de segunda mano. 1000 no forma parte de ese subconjunto. Metadata no se consulta en este paso.
