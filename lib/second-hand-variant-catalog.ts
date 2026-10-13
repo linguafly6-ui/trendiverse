@@ -314,9 +314,11 @@ const hasText = (value: string | null | undefined): value is string =>
 export function variantCatalogIssues(variant: SecondHandVariantMapping): string[] {
   const issues: string[] = []
   const editorialSlugs = new Set(SECOND_HAND_PRODUCTS.map((product) => product.slug))
-  if (variant.parentProductId !== SWITCH_OLED_PARENT_PRODUCT_ID) issues.push('unexpected-parent')
-  if (!editorialSlugs.has(variant.parentProductId)) issues.push('missing-parent')
-  if (variant.productId === variant.parentProductId || editorialSlugs.has(variant.productId)) issues.push('reuses-editorial-slug')
+  const productId: string = variant.productId
+  const parentProductId: string = variant.parentProductId
+  if (parentProductId !== SWITCH_OLED_PARENT_PRODUCT_ID) issues.push('unexpected-parent')
+  if (!editorialSlugs.has(parentProductId)) issues.push('missing-parent')
+  if (productId === parentProductId || editorialSlugs.has(productId)) issues.push('reuses-editorial-slug')
   if (!hasText(variant.verificationRef) || !hasText(variant.decisionNote) || !hasText(variant.identifies)) issues.push('missing-decision')
   if (variant.identity.manufacturerIdentifier !== 'HEG-001') issues.push('unexpected-model')
   if (variant.identity.capacity !== '64 GB') issues.push('unexpected-capacity')
@@ -332,7 +334,8 @@ export function variantCatalogIssues(variant: SecondHandVariantMapping): string[
   if (identifier) {
     const status: SecondHandMarketplaceIdentifier['status'] = identifier.status
     if (status !== 'unvalidated') issues.push('validated-too-soon')
-    if (identifier.productId !== variant.productId || identifier.productId === SWITCH_OLED_PARENT_PRODUCT_ID) issues.push('identifier-product-mismatch')
+    const identifierProductId: string = identifier.productId
+    if (identifierProductId !== productId || identifierProductId === parentProductId) issues.push('identifier-product-mismatch')
     if (identifier.canonicalValue !== variant.identity.candidateEpid) issues.push('canonical-epid-mismatch')
     if (identifier.provider !== 'ebay' || identifier.scope !== 'epid') issues.push('unexpected-provider-scope')
     if (NON_ES_EPIDS.has(identifier.canonicalValue)) issues.push('excluded-epid')
