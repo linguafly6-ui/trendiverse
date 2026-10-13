@@ -15,7 +15,7 @@ Aunque las tres estén presentes, no hay llamada a Browse mientras ocurra cualqu
 - `EBAY_ES_ADMITTED_CONDITION_IDS` sigue vacío. Una lista vacía no significa «cualquier condición». No hay una política de `EBAY_ES` aprobada para la categoría del anuncio.
 - Ninguna variante tiene `marketplaceIdentifier` en `validated` dentro de la allowlist.
 - El `categoryId` de cada variante sigue en `null`. Tiene que salir del cuerpo de un `getItem` con `listingMarketplaceId` `EBAY_ES`, no de una búsqueda ni de la ficha de catálogo.
-- La Nintendo Switch OLED blanca, la neón y Splatoon 3 siguen sin una lectura que confirme a la vez ePID, GTIN, MPN, HEG-001, 64 GB y color.
+- La Nintendo Switch OLED blanca tiene un getItem de EBAY_ES, pero el aspecto Modelo no es HEG-001. La neón y Splatoon 3 siguen sin esa lectura. El `categoryId` observado no está guardado en la variante.
 
 El flag de código `EBAY_BROWSE_SOURCE_ENABLED` del adapter de métricas permanece `false`. La página usa el flag de entorno, la misma lista de condiciones y la misma compuerta. No vuelve a filtrar con otra política.
 
@@ -64,3 +64,27 @@ npx tsx scripts/read-ebay-white-oled-detail.ts
 ```
 
 La salida marca cada campo como valor, `ausente` o `no comprobado`. No imprime las credenciales. `varianteValidada` permanece en `false`.
+
+## Lectura real del anuncio 206264425581
+
+Una ejecución local de ese script leyó el getItem `v1|206264425581|0` en EBAY_ES. La ficha es https://www.ebay.es/itm/206264425581. `camposCompletos` salió en sí y `varianteValidada` en false. La variante `nintendo-switch-oled-blanca` sigue en `unvalidated`.
+
+| Dato | Origen | Valor |
+| --- | --- | --- |
+| Marketplace, ePID 21048307585, GTIN 0045496453435, MPN 10007454, capacidad 64 GB, color Blanco, categoryId 139971, conditionId 1000 | Ese getItem | Presentes en el mismo cuerpo |
+| Aspecto Modelo | Ese getItem | `Nintendo Switch (modelo OLED)`. No es `HEG-001` |
+| HEG-001 | Catálogo local | Número de fabricante. No venía en el aspecto Modelo |
+| Precio visto en el anuncio | Ese getItem | No se archiva |
+| Anuncio 158070574781 | Informe de la misma ejecución | Sin ePID. No se fusiona con el anterior |
+| Nombre de la categoría 139971 y si es hoja en EBAY_ES | Pendiente | No está en el repositorio |
+| Condiciones admitidas de esa categoría en EBAY_ES | Pendiente | No está en el repositorio |
+
+`conditionId` 1000 es el id de un artículo nuevo en la guía https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html. Esa guía describe el mercado de EE. UU. y dice que el subconjunto depende de la categoría. La ayuda de España, http://pages.ebay.es/help/sell/item-condition.html, es una página de venta y no está leída. No hay cliente de Metadata API en esta rama. 1000 no entra en `EBAY_ES_ADMITTED_CONDITION_IDS`.
+
+La allowlist sigue vacía. Copiar 139971 a la variante o rellenar la allowlist no cumple el contrato: falta el aspecto HEG-001, el significado de la categoría y la política de condiciones de EBAY_ES.
+
+La siguiente lectura que podría desbloquear la consulta, sin desplegar y sin escribir en eBay, es esta:
+
+1. Un getItem de EBAY_ES cuyo aspecto Modelo sea exactamente `HEG-001` y que, en ese mismo cuerpo, repita el ePID, el GTIN, el MPN, 64 GB y el color blanco.
+2. `get_default_category_tree_id` y `get_category_subtree` de Taxonomy para el `categoryId` de ese cuerpo, con marketplace EBAY_ES, hasta tener el nombre y si el nodo es hoja.
+3. `get_item_condition_policies` de Metadata para esa categoría en EBAY_ES. Solo entonces se puede escribir un subconjunto de condiciones de segunda mano. 1000 no forma parte de ese subconjunto.

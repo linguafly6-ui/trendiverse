@@ -6,10 +6,10 @@
  * en `SECOND_HAND_PRODUCTS` ni en `SECOND_HAND_PRODUCT_MAPPINGS`.
  *
  * Un ePID de ficha de catálogo queda en `unvalidated`. No es una asociación
- * verificada: eso exigiría una lectura detallada del mismo ePID con
- * marketplace `EBAY_ES`, y después el contrato de
+ * verificada: haría falta un getItem de ese ePID con marketplace `EBAY_ES`
+ * que cumpla `itemMatchesVariantIdentity`, y después el contrato de
  * `lib/second-hand-marketplace-id.ts`. Este módulo no escribe `validated`,
- * no inventa `categoryId` y no llama a eBay.
+ * no copia un `categoryId` observado y no llama a eBay.
  */
 
 import { SECOND_HAND_PRODUCTS } from './second-hand'
@@ -90,7 +90,10 @@ export interface SecondHandVariantIdentityEvidence {
   ean: string | null
   /** ePID de la ficha española examinada. null si esa ficha no lo etiqueta. */
   candidateEpid: string | null
-  /** Siempre null: no se ha leído el categoryId de un anuncio de EBAY_ES. */
+  /**
+   * Siempre null. Un categoryId visto en un anuncio no se copia aquí:
+   * el catálogo no tiene su nombre ni su hoja en el árbol de EBAY_ES.
+   */
   categoryId: null
 }
 
@@ -150,7 +153,7 @@ export const SECOND_HAND_VARIANT_MAPPINGS: readonly SecondHandVariantMapping[] =
       attribute('capacity', 'Capacidad', SHARED_IDENTITY.capacity),
       attribute('configuration', 'Número de modelo', SHARED_IDENTITY.manufacturerIdentifier),
     ],
-    verificationRef: 'Ficha de catálogo examinada en eBay España para la Nintendo Switch OLED HEG-001 con Joy-Con blancos: ePID 21048307585, MPN 10007454, EAN 0045496453435. No es una lectura detallada de un anuncio y no confirma el marketplace EBAY_ES en el cuerpo de un ítem. Revisión del 2026-10-13.',
+    verificationRef: 'Ficha de catálogo de eBay España: ePID 21048307585, MPN 10007454, EAN 0045496453435. El getItem EBAY_ES v1|206264425581|0 (https://www.ebay.es/itm/206264425581) repite esos tres identificadores, 64 GB y color Blanco, con categoryId 139971 y conditionId 1000. El aspecto Modelo de ese cuerpo es «Nintendo Switch (modelo OLED)», no HEG-001, así que no cierra la identidad. Ese categoryId no se copia a la variante. El anuncio 158070574781 no se mezcla: no trae ePID. Revisión del 2026-10-13.',
     identity: {
       ...SHARED_IDENTITY,
       joyConColor: 'Blanco',
@@ -160,7 +163,7 @@ export const SECOND_HAND_VARIANT_MAPPINGS: readonly SecondHandVariantMapping[] =
       candidateEpid: WHITE_EPID,
     },
     marketplaceIdentifier: unvalidatedEpid('nintendo-switch-oled-blanca', WHITE_EPID),
-    decisionNote: 'Candidata. La ficha española separa esta consola de la neón. El ePID no pasa a asociación verificada hasta una lectura detallada del mismo valor con marketplace EBAY_ES. El slug editorial nintendo-switch no recibe este identificador.',
+    decisionNote: 'Candidata. Un getItem de EBAY_ES repite el ePID, el GTIN y el MPN de la ficha, pero el aspecto de modelo no es HEG-001. Sigue sin identificador validado, sin categoría almacenada y sin condiciones admitidas. El slug editorial nintendo-switch no recibe este identificador.',
   },
   {
     productId: 'nintendo-switch-oled-neon',
