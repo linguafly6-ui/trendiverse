@@ -20,6 +20,7 @@ import {
   createEbayApplicationAuth,
 } from './ebay-application-auth'
 import { readEbayBrowseItemFields, type EbayBrowseItemFields } from './ebay-browse-offer'
+import { readEbayEpnCampaignId } from './ebay-listing'
 
 export const EBAY_BROWSE_MARKETPLACE_ID = 'EBAY_ES' as const
 export const EBAY_BROWSE_SEARCH_URL = 'https://api.ebay.com/buy/browse/v1/item_summary/search'
@@ -168,9 +169,12 @@ export function createEbayBrowseClient(options: {
   fetchImpl?: EbayFetch
   now?: () => number
   timeoutMs?: number
+  /** Solo un `affiliateCampaignId` de diez dígitos. No se inventa ni se añade a la URL. */
+  affiliateCampaignId?: string | null
 }): EbayBrowseClient {
   const fetchImpl = options.fetchImpl ?? ((input, init) => fetch(input, init))
   const timeoutMs = boundedTimeout(options.timeoutMs)
+  const endUser = ebayEndUserContext(options.affiliateCampaignId)
   const auth = options.auth ?? createEbayApplicationAuth({
     clientId: options.clientId ?? '',
     clientSecret: options.clientSecret ?? '',
@@ -191,6 +195,7 @@ export function createEbayBrowseClient(options: {
           Accept: 'application/json',
           Authorization: `Bearer ${token}`,
           'X-EBAY-C-MARKETPLACE-ID': EBAY_BROWSE_MARKETPLACE_ID,
+          ...(endUser ? { 'X-EBAY-C-ENDUSERCTX': endUser } : {}),
         },
         redirect: 'manual',
         cache: 'no-store',
@@ -348,6 +353,12 @@ export function createEbayBrowseClient(options: {
       return { status: 'ok', marketplaceId: EBAY_BROWSE_MARKETPLACE_ID, item }
     },
   }
+}
+
+function ebayEndUserContext(campaignId: string | null | undefined): string | null {
+  const read = readEbayEpnCampaignId(campaignId)
+  if (read.status !== 'ok') return null
+  return `affiliateCampaignId=${read.campaignId}`
 }
 
 function boundedTimeout(value: number | undefined): number {

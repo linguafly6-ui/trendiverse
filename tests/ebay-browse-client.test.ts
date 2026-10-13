@@ -662,3 +662,29 @@ test('epid search does not call getItem or change catalog configuration', async 
   const offer = readFileSync(new URL('../lib/ebay-browse-offer.ts', import.meta.url), 'utf8')
   assert.match(offer, /export const EBAY_ES_ADMITTED_CONDITION_IDS: readonly number\[\] = \[\]/)
 })
+
+test('the affiliate header is sent only for a ten digit campaign and is not added to the url', async () => {
+  const without = recordedFetch()
+  const silent = createEbayBrowseClient({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    fetchImpl: without.fetchImpl,
+    affiliateCampaignId: 'not-a-campaign',
+  })
+  assert.equal((await silent.search({ q: 'fixture' })).status, 'ok')
+  assert.equal(without.calls[1]?.endUser, null)
+  assert.equal(without.calls[1]?.url.includes('campid'), false)
+
+  const withCampaign = recordedFetch()
+  const active = createEbayBrowseClient({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    fetchImpl: withCampaign.fetchImpl,
+    affiliateCampaignId: '1234567890',
+  })
+  assert.equal((await active.search({ q: 'fixture' })).status, 'ok')
+  assert.equal(withCampaign.calls[1]?.endUser, 'affiliateCampaignId=1234567890')
+  assert.equal(withCampaign.calls[1]?.url.includes('1234567890'), false)
+  assert.equal(withCampaign.calls[1]?.url.includes('campid'), false)
+  assert.equal(withCampaign.calls[0]?.body.includes('1234567890'), false)
+})

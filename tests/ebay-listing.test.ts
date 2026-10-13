@@ -9,8 +9,10 @@ import {
   confirmedListingAssociations,
   createEbayListingCache,
   detailReadingForCandidate,
+  applyBrowseAffiliateUrl,
   ebayListingPublishable,
   listingFromEpidCandidate,
+  readEbayEpnCampaignId,
   partitionEbayListings,
   readEbayListing,
 } from '../lib/ebay-listing'
@@ -329,4 +331,22 @@ test('listings stay out of segunda mano while the provider, conditions and EPN a
   const verified = readDetail(detailBody())
   assert.equal(ebayListingPublishable(verified, NOW), false)
   assert.equal(confirmedListingAssociations([verified], 'nintendo-switch').length, 0)
+})
+
+test('a campaign id is ten digits and never a boolean default', () => {
+  assert.equal(readEbayEpnCampaignId(undefined).status, 'absent')
+  assert.equal(readEbayEpnCampaignId(null).status, 'absent')
+  assert.equal(readEbayEpnCampaignId('').status, 'absent')
+  assert.equal(readEbayEpnCampaignId(false).status, 'invalid')
+  assert.equal(readEbayEpnCampaignId(true).status, 'invalid')
+  assert.equal(readEbayEpnCampaignId('true').status, 'invalid')
+  assert.equal(readEbayEpnCampaignId('123456789').status, 'invalid')
+  assert.equal(readEbayEpnCampaignId('12345678901').status, 'invalid')
+  assert.equal(readEbayEpnCampaignId('1234567890 ').status, 'invalid')
+  assert.deepEqual(readEbayEpnCampaignId('1234567890'), { status: 'ok', campaignId: '1234567890' })
+  const plain = readDetail(detailBody())
+  const untouched = applyBrowseAffiliateUrl(plain, 'https://www.ebay.es/itm/100000000001?campid=1234567890', '')
+  assert.equal(untouched.monetized, false)
+  assert.equal(untouched.itemWebUrl, 'https://www.ebay.es/itm/100000000001')
+  assert.equal(JSON.stringify(untouched).includes('campid'), false)
 })

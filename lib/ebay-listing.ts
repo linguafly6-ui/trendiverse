@@ -4,8 +4,9 @@
  * No llama a eBay, no lee credenciales y no enciende el proveedor.
  * Una búsqueda por ePID solo crea candidatos. La asociación verificada
  * exige el cuerpo de una lectura detallada y un identificador que ya cumpla
- * el contrato de marketplace. La lista de condiciones de EBAY_ES sigue vacía
- * y EPN no está configurado, así que ningún anuncio es publicable.
+ * el contrato de marketplace. La lista de condiciones de EBAY_ES sigue vacía,
+ * así que ningún anuncio es publicable. Una campaña de EPN, si existe,
+ * solo monetiza el enlace.
  */
 
 import {
@@ -28,10 +29,33 @@ import {
 /** Ningún conditionId de EBAY_ES está admitido: la política de la categoría no está aprobada. */
 export const EBAY_ES_ADMITTED_CONDITION_IDS: readonly number[] = []
 
-/** No hay alta de EPN ni campaign id. Este módulo no fabrica enlaces de afiliado. */
+/**
+ * El repositorio no contiene una campaña. No es el interruptor de la consulta:
+ * la monetización lee `EBAY_EPN_CAMPAIGN_ID` en el entorno y, si falta, se apaga.
+ */
 export const EBAY_EPN_CONFIGURED: boolean = false
 
+/** Diez dígitos, el formato que la guía Browse asigna a `affiliateCampaignId`. Sin valor por defecto. */
+export const EBAY_EPN_CAMPAIGN_ID_PATTERN = /^[0-9]{10}$/
+
+export type EbayEpnCampaignRead =
+  | { status: 'absent' }
+  | { status: 'invalid' }
+  | { status: 'ok', campaignId: string }
+
+/**
+ * El identificador de campaña no es un booleano. Vacío es ausencia.
+ * Cualquier otro valor que no sean diez dígitos queda inválido y no se usa.
+ */
+export function readEbayEpnCampaignId(value: unknown): EbayEpnCampaignRead {
+  if (value == null || value === '') return { status: 'absent' }
+  if (typeof value !== 'string' || !EBAY_EPN_CAMPAIGN_ID_PATTERN.test(value)) return { status: 'invalid' }
+  return { status: 'ok', campaignId: value }
+}
+
 export const EBAY_LISTING_DISCLOSURE = 'El enlace abre un anuncio de eBay. Trendiverse no vende ese artículo y no cobra comisión por él.'
+
+export const EBAY_AFFILIATE_LISTING_DISCLOSURE = 'El enlace abre un anuncio de eBay. Trendiverse no vende ese artículo. Este enlace lleva seguimiento de afiliado: una compra puede generar una comisión.'
 
 const LISTING_ID_PATTERN = /^[A-Za-z0-9|._~-]{1,128}$/
 const LEGACY_ITEM_ID_PATTERN = /^[1-9][0-9]{0,19}$/
@@ -101,7 +125,7 @@ export interface EbayListing {
   itemCreationDate: string | null
   productIdentifiers: EbayListingProductIdentifiers
   association: EbayListingAssociation
-  monetized: false
+  monetized: boolean
 }
 
 export type EbayListingSource = 'detail' | 'search-summary' | 'epid-candidate'
@@ -227,20 +251,52 @@ export function confirmedListingAssociations(listings: readonly EbayListing[], p
 }
 
 /**
- * Un anuncio verificado sigue sin poder publicarse mientras el proveedor esté
- * apagado, la lista de condiciones siga vacía o EPN no esté configurado.
+ * Un anuncio verificado sigue sin poder publicarse mientras el proveedor de
+ * métricas esté apagado o la lista de condiciones siga vacía. La campaña de
+ * EPN no entra en esta decisión: sin ella el enlace es la ficha ordinaria.
  */
 export function ebayListingPublishable(listing: EbayListing, now: number): boolean {
   const providerEnabled: boolean = EBAY_BROWSE_SOURCE_ENABLED
-  const epnConfigured: boolean = EBAY_EPN_CONFIGURED
-  if (!providerEnabled || !epnConfigured) return false
+  if (!providerEnabled) return false
   if (EBAY_ES_ADMITTED_CONDITION_IDS.length === 0) return false
   if (listing.association.status !== 'verified' || listing.association.productId === null) return false
-  if (listing.price === null || listing.itemWebUrl === null || listing.conditionId === null || listing.readAt === null) return false
+  if (listing.price === null || listing.conditionId === null || listing.readAt === null) return false
+  if (!ebayListingLinkIsDisplayable(listing)) return false
   if (!isEbayListingWithinDisplayWindow(listing.readAt, now)) return false
   const conditionId = Number(listing.conditionId)
   if (!Number.isInteger(conditionId) || !EBAY_ES_ADMITTED_CONDITION_IDS.includes(conditionId)) return false
   return true
+}
+
+/**
+ * Usa `itemAffiliateWebUrl` solo si Browse la devolvió y su `campid` es la
+ * campaña validada. No añade parámetros a `itemWebUrl`.
+ */
+export function applyBrowseAffiliateUrl(
+  listing: EbayListing,
+  itemAffiliateWebUrl: unknown,
+  campaignId: string,
+): EbayListing {
+  const campaign = readEbayEpnCampaignId(campaignId)
+  if (campaign.status !== 'ok') return listing
+  if (typeof itemAffiliateWebUrl !== 'string' || itemAffiliateWebUrl.length === 0 || itemAffiliateWebUrl !== itemAffiliateWebUrl.trim()) {
+    return listing
+  }
+  const accepted = acceptAffiliateItemUrl(itemAffiliateWebUrl, campaign.campaignId)
+  if (!accepted || listing.legacyItemId === null || accepted.itemId !== listing.legacyItemId) return listing
+  return {
+    ...listing,
+    itemWebUrl: itemAffiliateWebUrl,
+    urlDiscarded: null,
+    monetized: true,
+  }
+}
+
+/** La ficha visible es una URL de ebay.es ya aceptada. Un enlace monetizado tiene que ser el de afiliado. */
+export function ebayListingLinkIsDisplayable(listing: Pick<EbayListing, 'itemWebUrl' | 'urlDiscarded' | 'monetized'>): boolean {
+  if (listing.urlDiscarded !== null || listing.itemWebUrl === null) return false
+  if (listing.monetized) return affiliateUrlIsWellFormed(listing.itemWebUrl)
+  return !urlHasAffiliateKey(listing.itemWebUrl)
 }
 
 export function createEbayListingCache() {
@@ -378,6 +434,56 @@ function readListingUrl(itemWebUrl: unknown, itemAffiliateWebUrl: unknown): { it
     return { itemWebUrl: null, discarded: 'affiliate' }
   }
   return parsed
+}
+
+function acceptAffiliateItemUrl(value: string, campaignId: string): { itemId: string } | null {
+  const url = readEbayItemUrl(value)
+  if (!url) return null
+  const campids = url.searchParams.getAll('campid')
+  if (campids.length !== 1 || campids[0] !== campaignId) return null
+  for (const key of url.searchParams.keys()) {
+    if (!AFFILIATE_KEYS.has(key.toLowerCase())) return null
+  }
+  const itemId = url.pathname.match(/^\/itm\/([A-Za-z0-9|._~-]{1,128})\/?$/)?.[1]
+  return itemId ? { itemId } : null
+}
+
+function affiliateUrlIsWellFormed(value: string): boolean {
+  const url = readEbayItemUrl(value)
+  if (!url) return false
+  const campids = url.searchParams.getAll('campid')
+  if (campids.length !== 1 || !EBAY_EPN_CAMPAIGN_ID_PATTERN.test(campids[0])) return false
+  for (const key of url.searchParams.keys()) {
+    if (!AFFILIATE_KEYS.has(key.toLowerCase())) return false
+  }
+  return /^\/itm\/[A-Za-z0-9|._~-]{1,128}\/?$/.test(url.pathname)
+}
+
+function urlHasAffiliateKey(value: string): boolean {
+  let url: URL
+  try {
+    url = new URL(value)
+  } catch {
+    return true
+  }
+  for (const key of url.searchParams.keys()) {
+    if (AFFILIATE_KEYS.has(key.toLowerCase())) return true
+  }
+  return false
+}
+
+function readEbayItemUrl(value: string): URL | null {
+  let url: URL
+  try {
+    url = new URL(value)
+  } catch {
+    return null
+  }
+  if (url.protocol !== 'https:' || url.username || url.password || url.port || url.hash) return null
+  const host = url.hostname.toLowerCase()
+  if (host !== 'www.ebay.es' && host !== 'ebay.es') return null
+  if (!/^\/itm\/[A-Za-z0-9|._~-]{1,128}\/?$/.test(url.pathname)) return null
+  return url
 }
 
 function parseListingUrl(itemWebUrl: unknown): { itemWebUrl: string | null, discarded: EbayListingUrlDiscarded } {
