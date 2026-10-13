@@ -25,7 +25,7 @@ Leídos en `browse_api.json`, baseline v1.20.4, el 2026-10-09. No se llamó a `a
 - `MarketplaceIdEnum` describe `EBAY_ES` como el sitio de España (`ebay.es`).
 - El header `X-EBAY-C-MARKETPLACE-ID` es obligatorio fuera de EE. UU. Si falta o es inválido, el valor usado es `EBAY_US`.
 - La especificación publica el servidor de producción `https://api.ebay.com/buy/browse/v1` y el de sandbox `https://api.sandbox.ebay.com/buy/browse/v1`. Publicar la URL no es tener acceso.
-- Todos los métodos de Browse exigen un token de aplicación por client credentials. `item_summary/search` y `getItem` declaran el ámbito `https://api.ebay.com/oauth/api_scope` («View public data from eBay»). El `tokenUrl` publicado es `https://api.ebay.com/identity/v1/oauth2/token`. Implementar ese flujo queda fuera de este cambio.
+- Todos los métodos de Browse exigen un token de aplicación por client credentials. `item_summary/search` y `getItem` declaran el ámbito `https://api.ebay.com/oauth/api_scope` («View public data from eBay»). El `tokenUrl` publicado es `https://api.ebay.com/identity/v1/oauth2/token`. Ese flujo está en `lib/ebay-application-auth.ts` y la búsqueda en `lib/ebay-browse-client.ts`. Ninguno enciende el adapter.
 - `itemId` es el identificador REST del artículo. `legacyItemId` es el identificador del anuncio, el que suele verse en la URL de la ficha. Los dos nombran un anuncio.
 - `epid` es el identificador de producto del catálogo de eBay e indica el producto al que pertenece el artículo. El parámetro de búsqueda `epid` limita los resultados a ese ePID y remite a `product_summary/search` de Catalog API para localizarlo. El número que aparece en el ejemplo de esa descripción no se copia a este repositorio.
 - `gtin` es un GTIN (UPC, EAN o ISBN) definido fuera de eBay. No es un identificador asignado por el marketplace.
@@ -40,7 +40,7 @@ Hace falta, y no está en el repositorio:
 
 - Una cuenta del eBay Developers Program y unas Application Keys. El PDF de 2018, apartado 3.2, las define como claves confidenciales, propiedad de eBay, que no se comparten ni se transfieren sin consentimiento escrito, y revocables. No hay claves en este cambio. Que el texto que se firme hoy repita ese apartado sigue sin confirmar.
 - Distinguir el servidor de producción del sandbox. Tener la URL no es tener acceso.
-- El token de aplicación descrito arriba. Implementarlo queda fuera de este cambio.
+- El token de aplicación descrito arriba. `lib/ebay-application-auth.ts` lo pide y lo conserva solo en memoria; no está conectado al adapter y las claves siguen fuera del repositorio.
 - Un alta distinta en eBay Partner Network. La portada `https://partnernetwork.ebay.es/` (copyright 1995-2026) ofrece registro y describe un modelo de afiliación: el partner integra su plataforma y cobra por una venta cualificada. También habla de acceso a feeds y APIs para partners técnicos. No dice que una clave de Browse conceda el alta de EPN.
 - El `affiliateCampaignId` de la guía Browse, si más adelante se quiere la URL de afiliado. Conocer el formato de 10 dígitos no es tener una campaña.
 
@@ -93,7 +93,7 @@ Hasta esa evidencia, el estado correcto es ausencia: `marketplaceIdentifier: nul
 | Trazabilidad de la evidencia | El contrato ya exige procedencia, método y referencia de auditoría. No hay expediente de un ePID. | No |
 | Datos suficientemente actuales | El PDF de 2018 fija seis horas para el anuncio mostrado y obliga a declarar el retraso. El clickwrap vigente no está confirmado. Ese mecanismo no está implementado y este cambio no lo implementa. | No |
 | Sin agregados en el código | Ahorro, mínimo, máximo, score y trend no se calculan desde eBay. La autorización para calcularlos sigue sin confirmar: es una lectura prudente del PDF de 2018, no una cláusula que nombre esos campos ni un permiso ya obtenido. | El código no los calcula. La autorización sigue pendiente |
-| Adapter apagado | `getProductData` sigue devolviendo `null`. No hay cliente HTTP ni credenciales. | Sí |
+| Adapter apagado | `getProductData` sigue devolviendo `null`. El cliente de búsqueda no está conectado: no publica observaciones ni guarda credenciales. | Sí |
 
 El diseño puede alojar eBay más adelante solo si el ePID se valida por el contrato existente y si el uso que se muestre queda cubierto por el acuerdo que se firme. Hoy no se dan el acceso, el alta ni el identificador.
 
