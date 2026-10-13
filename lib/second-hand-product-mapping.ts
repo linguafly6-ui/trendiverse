@@ -280,12 +280,12 @@ export const SECOND_HAND_PRODUCT_MAPPINGS: readonly SecondHandProductMapping[] =
     attr('capacity', 'Capacidad'),
   ], 'Pendiente. La ficha de España consultada el 2026-10-09 separa «Consola PS5 - 1 TB», con juegos de PS5 y PS4 en Blu-ray, y «PS5 Edición Digital - 825 GB», sin unidad de disco. La misma página dice que la PS5 slim lleva SSD de 1 TB y no asigna ese texto a una sola de las dos. Las notas del lector extraíble citan los grupos CFI-2000 y CFI-2100 para la edición digital, no un número de modelo de la consola de 1 TB. La asistencia agrupa CFI-2000/2100/7000 y los manuales listan varios CFI sin capacidad. No se verifica ninguno. Un código CFI no es un identificador de marketplace.', 'https://www.playstation.com/es-es/ps5/', 1),
   verifiedSwitchOled(),
-  mapping('xbox', 'family', 'Marca Xbox, sin generación ni capacidad. Cubre varias consolas.', [
+  mapping('xbox', 'family', 'Xbox. La ficha de España separa Series X de 1 TB con lector, la edición digital de 1 TB y Series S, sin un número de modelo único.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
     attr('generation', 'Generación, por ejemplo Series X o Series S'),
     attr('capacity', 'Capacidad'),
-  ], 'Pendiente. La ficha separa Series X Carbon Black de 1 TB con lector y Series X 1TB Digital Edition. Esas dos líneas no comparten un código de modelo. Series S es otra consola.', 'https://www.xbox.com/en-US/consoles/xbox-series-x', 2),
+  ], 'Pendiente. La ficha de España de Series X consultada el 2026-10-09 lista «1 TB | Unidad de disco | Negro carbón», con «SSD NVME personalizado de 1 TB» y «4K UHD Blu-Ray»; «1 TB | Solo digital | Robot White»; y «2 TB | Unidad de disco | Galaxy Black», también con «4K UHD Blu-Ray». El almacenamiento llama a la segunda «edición digital de 1 TB» y no pone el color. La caja de contenido dice «edición digital de 1 TB (blanco)» y, en otra línea, un mando «blanco robot». No hay un código de modelo que una el almacenamiento, el selector y el color. La ficha de Series S del mismo día, https://www.xbox.com/es-ES/consoles/xbox-series-s, lista «512 GB | Solo digital | Robot White», «1 TB | Solo digital | Negro carbón» y «1 TB | Solo digital | Robot White». El almacenamiento une «blanco robot» con 512 GB; la caja nombra la consola solo como «512 GB» y el color en el mando. Tampoco publica un código de modelo. La pregunta de diferencias dice que Series X puede llevar Blu-ray UHD y SSD de 1 TB o de 2 TB, y que Series S es sin disco, de 512 GB o 1 TB. La comparación https://www.xbox.com/es-es/consoles/compare repite esas seis opciones y no publica un número de modelo. No se verifica ninguno. Un código de modelo no sería un identificador de marketplace.', 'https://www.xbox.com/es-ES/consoles/xbox-series-x', 2),
   mapping('steam-deck', 'family', 'Steam Deck, sin revisión ni capacidad.', [
     attr('brand', 'Fabricante'),
     attr('model', 'Consola'),
