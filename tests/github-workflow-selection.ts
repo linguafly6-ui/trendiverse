@@ -8,6 +8,7 @@ export interface WorkflowStep {
 
 export interface WorkflowJob {
   id: string
+  environment: string | null
   ifExpression: string | null
   steps: WorkflowStep[]
 }
@@ -160,14 +161,24 @@ function branchList(lines: string[]): string[] {
 
 function parseJobs(lines: string[]): WorkflowJob[] {
   return childBlocks(lines).map((job) => {
-    const ifBlock = childBlocks(job.lines).find((child) => child.key === 'if')
-    const steps = childBlocks(job.lines).find((child) => child.key === 'steps')
+    const children = childBlocks(job.lines)
+    const ifBlock = children.find((child) => child.key === 'if')
+    const steps = children.find((child) => child.key === 'steps')
+    const environment = children.find((child) => child.key === 'environment')
     return {
       id: job.key,
+      environment: environmentName(environment),
       ifExpression: ifBlock ? (ifBlock.inline || joinFolded(ifBlock.lines)) : null,
       steps: steps ? parseSteps(steps.lines) : [],
     }
   })
+}
+
+function environmentName(environment: ChildBlock | undefined): string | null {
+  if (!environment) return null
+  if (environment.inline) return unquote(environment.inline)
+  const name = childBlocks(environment.lines).find((child) => child.key === 'name')
+  return name?.inline ? unquote(name.inline) : null
 }
 
 function parseSteps(lines: string[]): WorkflowStep[] {
