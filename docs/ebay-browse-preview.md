@@ -79,9 +79,31 @@ Una ejecución local de ese script leyó el getItem `v1|206264425581|0` en EBAY_
 | Nombre de la categoría 139971 y si es hoja en EBAY_ES | Pendiente | No está en el repositorio |
 | Condiciones admitidas de esa categoría en EBAY_ES | Pendiente | No está en el repositorio |
 
-`conditionId` 1000 es el id de un artículo nuevo en la guía https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html. Esa guía describe el mercado de EE. UU. y dice que el subconjunto depende de la categoría. La ayuda de España, http://pages.ebay.es/help/sell/item-condition.html, es una página de venta y no está leída. No hay cliente de Metadata API en esta rama. 1000 no entra en `EBAY_ES_ADMITTED_CONDITION_IDS`.
+`conditionId` 1000 es el id de un artículo nuevo en la guía https://developer.ebay.com/api-docs/sell/static/metadata/condition-id-values.html. Esa guía describe el mercado de EE. UU. y dice que el subconjunto depende de la categoría. La ayuda de España, http://pages.ebay.es/help/sell/item-condition.html, es una página de venta y no está leída. El lector de Metadata no se ha ejecutado. 1000 no entra en `EBAY_ES_ADMITTED_CONDITION_IDS`.
 
 La allowlist sigue vacía. Copiar 139971 a la variante o rellenar la allowlist no cumple el contrato: falta el aspecto HEG-001, el significado de la categoría y la política de condiciones de EBAY_ES.
+
+## Taxonomy y Metadata
+
+Estas llamadas no se han ejecutado en el entorno de la revisión. `EBAY_CLIENT_ID` y `EBAY_CERT_ID` no estaban presentes, y no se ha usado otro token.
+
+La especificación leída es Taxonomy API v1.1.1 (`commerce_taxonomy_v1_oas3.json`) y Metadata API v1.12.1 (`sell_metadata_v1_oas3.json`).
+
+| Operación | Método y ruta | Autenticación |
+| --- | --- | --- |
+| `getDefaultCategoryTreeId` | `GET /commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_ES` | Client credentials, ámbito `https://api.ebay.com/oauth/api_scope`. El mismo token de aplicación que Browse. |
+| `getCategorySubtree` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_subtree?category_id=139971` | El mismo ámbito. El `category_tree_id` sale de la operación anterior. No se envía `X-EBAY-C-MARKETPLACE-ID`. |
+| `getItemConditionPolicies` | `GET /sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies?filter=categoryIds:{139971}` | El OpenAPI lista `api_scope` y `sell.inventory` en el mismo requisito. El texto del método dice que el token de client credentials no devuelve las condiciones restringidas 2000, 2010, 2020 y 2030. Esas piden authorization code y `https://api.ebay.com/oauth/api_scope/sell.inventory`. España no está en la lista de mercados refurbished de ese texto. La guía HTML del authorization code respondió 403, así que no se implementa el intercambio. |
+
+`leafCategoryTreeNode` solo viene cuando es `true`. Si falta, no se convierte en `false`. El padre no trae nombre: solo un href de `getCategorySubtree`. `get_item_condition_policies` puede devolver otras categorías hoja; solo cuenta el `categoryId` pedido. `1000` sigue fuera de la lista de segunda mano. `EBAY_ES_ADMITTED_CONDITION_IDS` no cambia.
+
+Con las dos variables de Browse ya definidas, y sin imprimirlas:
+
+```
+npx tsx scripts/read-ebay-es-category.ts
+```
+
+Ese script llama a Taxonomy y deja Metadata en `not-run`. No valida la variante.
 
 La siguiente lectura que podría desbloquear la consulta, sin desplegar y sin escribir en eBay, es esta:
 
