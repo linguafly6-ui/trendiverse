@@ -30,6 +30,9 @@ export {
  * `lib/second-hand-verification-policy.ts`. El único que lo cumple es
  * `nintendo-switch`: Nintendo Switch – Modelo OLED, 64 GB, HEG-001.
  * No lleva `externalProductId` ni un identificador de marketplace.
+ * El color de los Joy-Con y las ediciones especiales no se cierran aquí:
+ * `lib/second-hand-variant-catalog.ts` reserva slugs propios y no altera
+ * esta URL ni este registro.
  * Un texto en `externalProductId` no está validado. La validación es el
  * contrato de `lib/second-hand-marketplace-id.ts`, y el catálogo no lo cumple.
  */
@@ -192,7 +195,7 @@ function verifiedSwitchOled(): SecondHandProductMapping {
   return {
     productId: 'nintendo-switch',
     scope: 'family',
-    identifies: 'Nintendo Switch – Modelo OLED, 64 GB, número de modelo HEG-001. No incluye la consola HAC-001(-01) ni la Lite HDH-001.',
+    identifies: 'Nintendo Switch – Modelo OLED, 64 GB, número de modelo HEG-001. No incluye la consola HAC-001(-01) ni la Lite HDH-001. No elige el color de los Joy-Con ni una edición especial.',
     attributes: [
       { key: 'brand', label: 'Fabricante', value: manufacturer, requiredForComparison: true },
       { key: 'model', label: 'Consola', value: exactModel, requiredForComparison: true },
