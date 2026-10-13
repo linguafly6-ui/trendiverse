@@ -1,5 +1,4 @@
 INSERT INTO articles (
-  id,
   slug,
   title,
   excerpt,
@@ -8,7 +7,6 @@ INSERT INTO articles (
   image_url,
   created_at
 ) VALUES (
-  'chollos-otono-pre-black-friday-2026',
   'guia-chollos-otono-campanas-pre-black-friday-2026',
   'Guía Definitiva de Chollos de Otoño y Campañas Pre-Black Friday 2026: Cómo Ahorrar al Máximo en Tecnología',
   'Descubre las mejores estrategias para cazar chollos en los Días de Ofertas de Otoño y el Pre-Black Friday 2026. Analizamos ofertas en tecnología, gaming y pequeños electrodomésticos.',

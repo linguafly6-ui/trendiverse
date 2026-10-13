@@ -4,6 +4,8 @@ compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 # D1 is optional for local/demo mode. The app falls back to sample data when no DB binding is present.
+# Top-level bindings apply to local development and to the production branch.
+# The production database id is unknown in this file, so the production binding stays commented out.
 
 # [[d1_databases]]
 # binding = "DB"
@@ -17,3 +19,14 @@ pages_build_output_dir = ".vercel/output/static"
 
 [vars]
 ENVIRONMENT = "production"
+
+# Pages does not inherit vars into env.preview. Preview keeps its own value.
+# This block is the only D1 binding, and it is the preview database.
+[env.preview.vars]
+ENVIRONMENT = "preview"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "trendiverse-preview"
+database_id = "2bb04eb3-9f3f-40b3-a6ed-b1f58dc9107f"
+migrations_dir = "migrations"
