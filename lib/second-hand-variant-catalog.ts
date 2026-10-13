@@ -352,3 +352,40 @@ export function editorialParentHasNoMarketplaceId(): boolean {
   const parent = secondHandProductMapping(SWITCH_OLED_PARENT_PRODUCT_ID)
   return parent?.externalProductId === null && parent?.marketplaceIdentifier === null
 }
+
+function aspectValue(item: Record<string, unknown>, names: readonly string[]): string | null {
+  if (!Array.isArray(item.localizedAspects)) return null
+  for (const aspect of item.localizedAspects) {
+    if (!aspect || typeof aspect !== 'object' || Array.isArray(aspect)) continue
+    const record = aspect as Record<string, unknown>
+    if (typeof record.name !== 'string' || typeof record.value !== 'string') continue
+    const name = record.name.trim().toLowerCase().replace(/\s+/g, ' ')
+    if (names.includes(name) && record.value.trim() !== '') return record.value.trim()
+  }
+  return null
+}
+
+/**
+ * El cuerpo de un getItem coincide con esa variante.
+ * Cada dato tiene que venir en el cuerpo. Un campo ausente no se copia del catálogo.
+ * La ficha genérica y Splatoon 3 no coinciden.
+ */
+export function itemMatchesVariantIdentity(variant: SecondHandVariantMapping, item: unknown): boolean {
+  if (!item || typeof item !== 'object' || Array.isArray(item)) return false
+  if (variant.identity.edition === 'splatoon-3') return false
+  if (!variant.identity.candidateEpid || !variant.identity.ean || !variant.identity.mpn || !variant.identity.joyConColor) return false
+  const record = item as Record<string, unknown>
+  if (record.epid !== variant.identity.candidateEpid) return false
+  if (record.listingMarketplaceId !== 'EBAY_ES') return false
+  if (record.gtin !== variant.identity.ean) return false
+  if (typeof record.epid === 'string' && NON_ES_EPIDS.has(record.epid)) return false
+  if (aspectValue(record, ['mpn']) !== variant.identity.mpn) return false
+  if (aspectValue(record, ['model', 'modelo']) !== 'HEG-001') return false
+  const capacity = aspectValue(record, ['capacidad', 'almacenamiento', 'storage', 'capacity', 'capacidad de almacenamiento'])
+  if (capacity === null || !capacity.includes('64')) return false
+  const color = aspectValue(record, ['color', 'colour'])
+  if (color === null) return false
+  if (variant.identity.joyConColor === 'Blanco') return /blanc/i.test(color) && !/ne[oó]n|splatoon/i.test(color)
+  if (variant.identity.joyConColor === 'Azul neón y rojo neón') return /ne[oó]n/i.test(color) && !/blanc|splatoon/i.test(color)
+  return false
+}
