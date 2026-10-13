@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd'
 import ProductCard from '@/components/second-hand/ProductCard'
 import { SITE_NAME } from '@/lib/constants'
 import { getSecondHandProducts } from '@/lib/second-hand-data'
+import { listingsForSecondHandRoute } from '@/lib/second-hand-page-listings'
 import {
   SECOND_HAND_PATH,
   secondHandCategory,
@@ -35,6 +36,10 @@ export default async function SecondHandCategoryPage({ params }: Props) {
   const category = secondHandCategory((await params).categoria)
   if (!category) notFound()
   const products = secondHandProductsByCategory(category.slug, await getSecondHandProducts())
+  const listings = new Map(await Promise.all(products.map(async (product) => [
+    product.slug,
+    await listingsForSecondHandRoute(product.slug),
+  ] as const)))
   return (
     <div className="mx-auto max-w-5xl space-y-8">
       <JsonLd data={secondHandGraph(category)} />
@@ -49,7 +54,9 @@ export default async function SecondHandCategoryPage({ params }: Props) {
       <section aria-labelledby="productos">
         <h2 id="productos" className="text-2xl font-extrabold">Qué mirar en {category.name.toLowerCase()}</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((x) => <ProductCard key={x.slug} product={x} />)}
+          {products.map((x) => (
+            <ProductCard key={x.slug} product={x} listings={listings.get(x.slug) ?? []} />
+          ))}
         </div>
       </section>
       <Link href={SECOND_HAND_PATH} className="inline-flex min-h-11 items-center font-semibold text-brand-violet underline underline-offset-4">Volver a segunda mano</Link>
