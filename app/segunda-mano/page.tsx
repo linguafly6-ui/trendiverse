@@ -4,6 +4,7 @@ import JsonLd from '@/components/JsonLd'
 import ProductCard from '@/components/second-hand/ProductCard'
 import { SITE_NAME } from '@/lib/constants'
 import { getSecondHandProducts } from '@/lib/second-hand-data'
+import { listingsForSecondHandProduct } from '@/lib/second-hand-page-listings'
 import {
   SECOND_HAND_CATEGORIES,
   SECOND_HAND_CRITERIA,
@@ -80,7 +81,9 @@ export default async function SecondHandPage() {
       <section aria-labelledby="vigilar">
         <h2 id="vigilar" className="text-2xl font-extrabold">Productos que merece la pena vigilar</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {secondHandWatchlist(products).map((x) => <ProductCard key={x.slug} product={x} />)}
+          {secondHandWatchlist(products).map((x) => (
+            <ProductCard key={x.slug} product={x} listings={listingsForSecondHandProduct(x.slug)} />
+          ))}
         </div>
       </section>
 

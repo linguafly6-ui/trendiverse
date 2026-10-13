@@ -70,7 +70,7 @@ export const SECOND_HAND_PRODUCTS: SecondHandProduct[] = [
   p('apple-watch', 'Apple Watch', 'tecnologia', 'Reloj inteligente donde pesan la batería y el bloqueo de cuenta.'),
   p('samsung-galaxy', 'Samsung Galaxy', 'tecnologia', 'Gama amplia de móviles Android; comprueba años de actualizaciones restantes.'),
   p('playstation-5', 'PlayStation 5', 'gaming', 'Consola de actual generación con oferta de usados y reacondicionados. Comprueba versión, mandos y garantía.', true),
-  p('nintendo-switch', 'Nintendo Switch', 'gaming', 'Consola con amplio mercado de segunda mano. Revisa el estado de los Joy-Con y de la pantalla.', true),
+  p('nintendo-switch', 'Nintendo Switch', 'gaming', 'Modelo OLED de 64 GB, número HEG-001. Revisa los Joy-Con y la pantalla. Un anuncio de un color o de una edición no se muestra hasta que esa variante esté confirmada.', true),
   p('xbox', 'Xbox', 'gaming', 'Consolas de varias generaciones; verifica el modelo y el almacenamiento incluido.'),
   p('steam-deck', 'Steam Deck', 'gaming', 'Portátil de juego donde importan el estado de los sticks, la batería y el almacenamiento.'),
   p('zapatillas', 'Zapatillas', 'moda', 'Categoría con riesgo de falsificación en modelos muy buscados. Verifica autenticidad y desgaste de suela.', true),

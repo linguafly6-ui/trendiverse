@@ -10,6 +10,7 @@ import {
 import {
   emptySecondHandDataSource, getSecondHandProducts, validateObservation, type SecondHandDataSource,
 } from '../lib/second-hand-data'
+import { listingsForSecondHandProduct } from '../lib/second-hand-page-listings'
 import { secondHandGraph } from '../lib/structured-data'
 
 const METRIC_KEYS = ['score', 'trend', 'newPrice', 'usedPrice', 'savings', 'currency', 'source', 'updatedAt'] as const
@@ -58,6 +59,17 @@ test('segunda-mano pages load products through getSecondHandProducts()', () => {
   assert.match(hub, /secondHandWatchlist\(products\)/)
   const category = pageSource('[categoria]/page.tsx')
   assert.match(category, /secondHandProductsByCategory\(category\.slug, await getSecondHandProducts\(\)\)/)
+  assert.match(hub, /listingsForSecondHandProduct\(x\.slug\)/)
+  assert.match(category, /listingsForSecondHandProduct\(x\.slug\)/)
+  const gaming = SECOND_HAND_PRODUCTS.find((product) => product.slug === 'nintendo-switch')
+  assert.match(gaming?.summary ?? '', /OLED/)
+  assert.match(gaming?.summary ?? '', /HEG-001/)
+  assert.doesNotMatch(gaming?.summary ?? '', /21048307585|23048312547/)
+})
+
+test('published pages receive no listing while the gate is closed', () => {
+  assert.deepEqual(listingsForSecondHandProduct('nintendo-switch'), [])
+  assert.deepEqual(listingsForSecondHandProduct('playstation-5'), [])
 })
 
 test('categories keep the same products when resolved from the data layer', async () => {
