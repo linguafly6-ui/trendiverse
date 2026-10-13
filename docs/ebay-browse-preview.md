@@ -85,7 +85,9 @@ La allowlist sigue vacía. Copiar 139971 a la variante o rellenar la allowlist n
 
 ## Taxonomy y Metadata
 
-Estas llamadas no se han ejecutado en el entorno de la revisión. `EBAY_CLIENT_ID` y `EBAY_CERT_ID` no estaban presentes, y no se ha usado otro token.
+En este entorno no se ha llamado a Taxonomy ni a Metadata: `EBAY_CLIENT_ID` y `EBAY_CERT_ID` no estaban presentes.
+
+Una lectura local aparte, no hecha aquí, devolvió HTTP 200 para el árbol por defecto de `EBAY_ES`: `categoryTreeId` `186`, `categoryTreeVersion` `96`. El subárbol de `139971` se llamó «Consolas» y `leafCategoryTreeNode` vino `true`. Ese nombre no identifica Nintendo Switch ni Nintendo Switch OLED. La variante no guarda ese `categoryId`. El OpenAPI de compatibilidad de vehículos también escribe «eBay Spain: 186»; esa lista no es `getDefaultCategoryTreeId`. El `186` que se usa abajo es el de la lectura local del árbol por defecto.
 
 La especificación leída es Taxonomy API v1.1.1 (`commerce_taxonomy_v1_oas3.json`) y Metadata API v1.12.1 (`sell_metadata_v1_oas3.json`).
 
@@ -93,6 +95,7 @@ La especificación leída es Taxonomy API v1.1.1 (`commerce_taxonomy_v1_oas3.jso
 | --- | --- | --- |
 | `getDefaultCategoryTreeId` | `GET /commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_ES` | Client credentials, ámbito `https://api.ebay.com/oauth/api_scope`. El mismo token de aplicación que Browse. |
 | `getCategorySubtree` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_subtree?category_id=139971` | El mismo ámbito. El `category_tree_id` sale de la operación anterior. No se envía `X-EBAY-C-MARKETPLACE-ID`. |
+| `getCategorySuggestions` | `GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_suggestions?q=` | El mismo ámbito. Es la búsqueda por texto. Devuelve hojas y la lista de antecesores, del padre inmediato a la raíz. No trae `leafCategoryTreeNode`. No es el árbol completo: `getCategoryTree` no se llama. |
 | `getItemConditionPolicies` | `GET /sell/metadata/v1/marketplace/EBAY_ES/get_item_condition_policies?filter=categoryIds:{139971}` | El OpenAPI lista `api_scope` y `sell.inventory` en el mismo requisito. El texto del método dice que el token de client credentials no devuelve las condiciones restringidas 2000, 2010, 2020 y 2030. Esas piden authorization code y `https://api.ebay.com/oauth/api_scope/sell.inventory`. España no está en la lista de mercados refurbished de ese texto. La guía HTML del authorization code respondió 403, así que no se implementa el intercambio. |
 
 `leafCategoryTreeNode` solo viene cuando es `true`. Si falta, no se convierte en `false`. El padre no trae nombre: solo un href de `getCategorySubtree`. `get_item_condition_policies` puede devolver otras categorías hoja; solo cuenta el `categoryId` pedido. `1000` sigue fuera de la lista de segunda mano. `EBAY_ES_ADMITTED_CONDITION_IDS` no cambia.
@@ -104,6 +107,16 @@ npx tsx scripts/read-ebay-es-category.ts
 ```
 
 Ese script llama a Taxonomy y deja Metadata en `not-run`. No valida la variante.
+
+Para buscar por nombre, sin descargar el árbol, cada consulta va aparte y lleva la frase `confirmo-una-sugerencia`. Sin esa frase no hay petición. Estas tres no se han ejecutado aquí:
+
+```
+npx tsx scripts/read-ebay-es-category-suggestions.ts confirmo-una-sugerencia "Nintendo Switch"
+npx tsx scripts/read-ebay-es-category-suggestions.ts confirmo-una-sugerencia "Nintendo Switch OLED"
+npx tsx scripts/read-ebay-es-category-suggestions.ts confirmo-una-sugerencia "consolas portátiles"
+```
+
+Una sugerencia, aunque el nombre diga Nintendo Switch, no se guarda en la variante. Metadata sigue sin llamarse.
 
 La siguiente lectura que podría desbloquear la consulta, sin desplegar y sin escribir en eBay, es esta:
 

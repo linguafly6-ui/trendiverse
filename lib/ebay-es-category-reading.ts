@@ -5,7 +5,10 @@
  * Taxonomy, OpenAPI 3.0.0 v1.1.1:
  *   GET /commerce/taxonomy/v1/get_default_category_tree_id
  *   GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_subtree
+ *   GET /commerce/taxonomy/v1/category_tree/{category_tree_id}/get_category_suggestions?q=
  *   Ámbito: https://api.ebay.com/oauth/api_scope (client credentials).
+ *   getCategorySuggestions es la búsqueda por texto. No descarga el árbol entero.
+ *   Una sugerencia no valida una variante.
  *
  * Metadata, OpenAPI 3.0.0 v1.12.1:
  *   GET /sell/metadata/v1/marketplace/{marketplace_id}/get_item_condition_policies
@@ -31,6 +34,32 @@ export const EBAY_TAXONOMY_BASE_URL = 'https://api.ebay.com/commerce/taxonomy/v1
 export const EBAY_METADATA_BASE_URL = 'https://api.ebay.com/sell/metadata/v1'
 export const EBAY_ES_CATEGORY_MARKETPLACE_ID = 'EBAY_ES' as const
 export const EBAY_ES_CATEGORY_UNDER_REVIEW = '139971'
+/** Árbol devuelto por una lectura local de getDefaultCategoryTreeId. No sale de este entorno. */
+export const EBAY_ES_REPORTED_CATEGORY_TREE_ID = '186'
+export const EBAY_ES_REPORTED_CATEGORY_TREE_VERSION = '96'
+/**
+ * Nodo leído en local para 139971. El nombre es «Consolas» y la hoja es true.
+ * Eso no lo convierte en la categoría de Nintendo Switch.
+ */
+export const EBAY_ES_REPORTED_CATEGORY_139971 = {
+  source: 'reported-local-read',
+  operation: 'getCategorySubtree',
+  httpStatus: 200,
+  marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+  categoryTreeId: EBAY_ES_REPORTED_CATEGORY_TREE_ID,
+  categoryTreeVersion: EBAY_ES_REPORTED_CATEGORY_TREE_VERSION,
+  categoryId: EBAY_ES_CATEGORY_UNDER_REVIEW,
+  categoryName: 'Consolas',
+  leafCategoryTreeNode: true,
+  specificToNintendoSwitch: false,
+} as const
+/** Hay que repetir esta frase en cada consulta. Una frase no autoriza la siguiente. */
+export const EBAY_TAXONOMY_SUGGESTION_CONFIRMATION = 'confirmo-una-sugerencia'
+export const EBAY_TAXONOMY_SUGGESTION_QUERIES = [
+  'Nintendo Switch',
+  'Nintendo Switch OLED',
+  'consolas portátiles',
+] as const
 export const EBAY_TAXONOMY_SCOPE = EBAY_APPLICATION_OAUTH_SCOPE
 export const EBAY_METADATA_USER_SCOPE = 'https://api.ebay.com/oauth/api_scope/sell.inventory'
 export const EBAY_ES_CATEGORY_RESPONSE_MAX_BYTES = 131_072
@@ -125,6 +154,14 @@ export function categorySubtreeUrl(categoryTreeId: string): string | null {
   return url.toString()
 }
 
+export function categorySuggestionsUrl(categoryTreeId: string, query: string): string | null {
+  const q = normalizeSuggestionQuery(query)
+  if (!TREE_ID_PATTERN.test(categoryTreeId) || q === null) return null
+  const url = new URL(`${EBAY_TAXONOMY_BASE_URL}/category_tree/${encodeURIComponent(categoryTreeId)}/get_category_suggestions`)
+  url.searchParams.set('q', q)
+  return url.toString()
+}
+
 export function itemConditionPoliciesUrl(): string {
   const url = new URL(`${EBAY_METADATA_BASE_URL}/marketplace/${EBAY_ES_CATEGORY_MARKETPLACE_ID}/get_item_condition_policies`)
   url.searchParams.set('filter', `categoryIds:{${EBAY_ES_CATEGORY_UNDER_REVIEW}}`)
@@ -203,6 +240,77 @@ export async function readItemConditionPolicy(options: {
   }
   if (call.kind !== 'ok') return emptyPolicy('unavailable', options.grant, call.httpStatus, call.errorIds)
   return policyFromBody(call.body, options.grant, call.httpStatus, call.errorIds)
+}
+
+export interface EbayCategoryAncestor {
+  categoryId: string
+  categoryName: string | null
+  level: number | null
+}
+
+export interface EbayCategorySuggestion {
+  categoryId: string
+  categoryName: string | null
+  level: number | null
+  /** El esquema de CategorySuggestion no trae leafCategoryTreeNode. */
+  leaf: 'absent'
+  ancestors: readonly EbayCategoryAncestor[]
+  validatesVariant: false
+}
+
+export interface EbayCategorySuggestionRead {
+  marketplaceId: typeof EBAY_ES_CATEGORY_MARKETPLACE_ID
+  operation: 'getCategorySuggestions'
+  status:
+    | 'not-run'
+    | 'invalid-query'
+    | 'invalid-tree-id'
+    | 'unauthorized'
+    | 'forbidden'
+    | 'unavailable'
+    | 'invalid-response'
+    | 'empty'
+    | 'tree-not-found'
+    | 'ok'
+  httpStatus: number | null
+  errorIds: readonly number[]
+  categoryTreeId: string | null
+  categoryTreeVersion: string | null
+  query: string | null
+  suggestions: readonly EbayCategorySuggestion[]
+  validatesAnyCategory: false
+}
+
+/**
+ * Una sola búsqueda por texto. Sin la frase de confirmación no hay petición.
+ * El nombre devuelto no valida la variante ni sustituye a 139971.
+ */
+export async function readCategorySuggestions(options: {
+  auth: EbayApplicationAuth
+  fetchImpl: EbayFetch
+  categoryTreeId: string
+  query: string
+  confirmation: string
+  timeoutMs?: number
+}): Promise<EbayCategorySuggestionRead> {
+  if (options.confirmation !== EBAY_TAXONOMY_SUGGESTION_CONFIRMATION) {
+    return emptySuggestions('not-run', null, [])
+  }
+  const query = normalizeSuggestionQuery(options.query)
+  if (query === null) return emptySuggestions('invalid-query', null, [])
+  const url = categorySuggestionsUrl(options.categoryTreeId, query)
+  if (!url) return emptySuggestions('invalid-tree-id', null, [])
+  const call = await authorizedGet(options.auth, options.fetchImpl, url, options.timeoutMs)
+  if (call.kind === 'unauthorized') return emptySuggestions('unauthorized', call.httpStatus, call.errorIds, query)
+  if (call.kind === 'forbidden') return emptySuggestions('forbidden', call.httpStatus, call.errorIds, query)
+  if (call.kind === 'empty') return emptySuggestions('empty', call.httpStatus, call.errorIds, query)
+  if (call.kind === 'invalid') return emptySuggestions('invalid-response', call.httpStatus, call.errorIds, query)
+  if (call.kind === 'http') {
+    if (call.errorIds.includes(62004)) return emptySuggestions('tree-not-found', call.httpStatus, call.errorIds, query)
+    return emptySuggestions('unavailable', call.httpStatus, call.errorIds, query)
+  }
+  if (call.kind !== 'ok') return emptySuggestions('unavailable', call.httpStatus, call.errorIds, query)
+  return suggestionsFromBody(call.body, call.httpStatus, call.errorIds, query, options.categoryTreeId)
 }
 
 /** Candidatos de segunda mano. No escribe EBAY_ES_ADMITTED_CONDITION_IDS. */
@@ -426,6 +534,95 @@ function errorIdsFrom(value: unknown): number[] {
     if (typeof errorId === 'number' && Number.isInteger(errorId) && errorId > 0) ids.push(errorId)
   }
   return ids
+}
+
+function suggestionsFromBody(
+  body: unknown,
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  query: string,
+  requestedTreeId: string,
+): EbayCategorySuggestionRead {
+  const record = asRecord(body)
+  const rows = Array.isArray(record?.categorySuggestions) ? record.categorySuggestions : null
+  if (!rows) return emptySuggestions('invalid-response', httpStatus, errorIds, query)
+  const suggestions: EbayCategorySuggestion[] = []
+  for (const item of rows) {
+    const suggestion = asRecord(item)
+    const category = asRecord(suggestion?.category)
+    const categoryId = typeof category?.categoryId === 'string' ? category.categoryId : null
+    if (!suggestion || !category || !categoryId || !CATEGORY_ID_PATTERN.test(categoryId)) continue
+    suggestions.push({
+      categoryId,
+      categoryName: textOrNull(category.categoryName),
+      level: integerOrNull(suggestion.categoryTreeNodeLevel),
+      leaf: 'absent',
+      ancestors: readAncestors(suggestion.categoryTreeNodeAncestors),
+      validatesVariant: false,
+    })
+  }
+  if (suggestions.length === 0) return emptySuggestions('empty', httpStatus, errorIds, query)
+  const returnedTreeId = typeof record?.categoryTreeId === 'string' ? record.categoryTreeId : requestedTreeId
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getCategorySuggestions',
+    status: 'ok',
+    httpStatus,
+    errorIds,
+    categoryTreeId: TREE_ID_PATTERN.test(returnedTreeId) ? returnedTreeId : requestedTreeId,
+    categoryTreeVersion: textOrNull(record?.categoryTreeVersion),
+    query,
+    suggestions,
+    validatesAnyCategory: false,
+  }
+}
+
+function readAncestors(value: unknown): EbayCategoryAncestor[] {
+  if (!Array.isArray(value)) return []
+  const ancestors: EbayCategoryAncestor[] = []
+  for (const item of value) {
+    const ancestor = asRecord(item)
+    const categoryId = typeof ancestor?.categoryId === 'string' ? ancestor.categoryId : null
+    if (!ancestor || !categoryId || !CATEGORY_ID_PATTERN.test(categoryId)) continue
+    ancestors.push({
+      categoryId,
+      categoryName: textOrNull(ancestor.categoryName),
+      level: integerOrNull(ancestor.categoryTreeNodeLevel),
+    })
+  }
+  return ancestors
+}
+
+function normalizeSuggestionQuery(value: string): string | null {
+  if (typeof value !== 'string') return null
+  const query = value.trim()
+  if (query.length < 2 || query.length > 80) return null
+  if (/[\u0000-\u001F\u007F]/.test(query)) return null
+  return query
+}
+
+function emptySuggestions(
+  status: EbayCategorySuggestionRead['status'],
+  httpStatus: number | null,
+  errorIds: readonly number[],
+  query: string | null = null,
+): EbayCategorySuggestionRead {
+  return {
+    marketplaceId: EBAY_ES_CATEGORY_MARKETPLACE_ID,
+    operation: 'getCategorySuggestions',
+    status,
+    httpStatus,
+    errorIds,
+    categoryTreeId: null,
+    categoryTreeVersion: null,
+    query,
+    suggestions: [],
+    validatesAnyCategory: false,
+  }
+}
+
+function integerOrNull(value: unknown): number | null {
+  return typeof value === 'number' && Number.isInteger(value) ? value : null
 }
 
 function emptyTree(httpStatus: number | null, errorIds: readonly number[]): EbayCategoryTreeRead {
