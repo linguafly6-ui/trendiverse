@@ -1,20 +1,22 @@
 import Link from 'next/link'
 import ProductFacts from '@/components/second-hand/ProductFacts'
-import { EBAY_LISTING_DISCLOSURE, type EbayListing } from '@/lib/ebay-listing'
-import { visibleEbayListings } from '@/lib/ebay-second-hand-gate'
+import { EBAY_AFFILIATE_LISTING_DISCLOSURE, EBAY_LISTING_DISCLOSURE, type EbayListing } from '@/lib/ebay-listing'
+import { EBAY_PRODUCTION_PUBLICATION_POLICY, visibleEbayListings, type EbayListingPublicationPolicy } from '@/lib/ebay-second-hand-gate'
 import { secondHandCategory, secondHandCategoryPath, type SecondHandProduct } from '@/lib/second-hand'
 
 export default function ProductCard({
   product,
   listings = [],
   now = Date.now(),
+  policy = EBAY_PRODUCTION_PUBLICATION_POLICY,
 }: {
   product: SecondHandProduct
   listings?: readonly EbayListing[]
   now?: number
+  policy?: EbayListingPublicationPolicy
 }) {
   const category = secondHandCategory(product.categorySlug)
-  const visible = visibleEbayListings(product.slug, listings, now)
+  const visible = visibleEbayListings(product.slug, listings, now, policy)
   return (
     <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
       <h3 className="text-lg font-bold">{product.name}</h3>
@@ -42,7 +44,7 @@ export function EbayListingLinks({ listings }: { listings: readonly EbayListing[
               {listing.price ? `${listing.price.value} ${listing.price.currency}` : listing.itemWebUrl}
             </a>
           )}
-          <p className="text-xs text-slate-500 dark:text-slate-400">{EBAY_LISTING_DISCLOSURE}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">{listing.monetized ? EBAY_AFFILIATE_LISTING_DISCLOSURE : EBAY_LISTING_DISCLOSURE}</p>
         </li>
       ))}
     </ul>

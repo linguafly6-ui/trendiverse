@@ -19,14 +19,23 @@ import {
   uncheckedWhiteOledDetail,
   whiteOledDetailFromBody,
   whiteOledDetailIsComplete,
+  type EbayDetailField,
   type EbayWhiteOledDetailFields,
 } from '../lib/ebay-white-oled-reading'
+import {
+  itemMatchesVariantIdentity,
+  secondHandVariantMapping,
+  variantReadingVerdict,
+} from '../lib/second-hand-variant-catalog'
+
+const WHITE_PRODUCT_ID = 'nintendo-switch-oled-blanca'
 
 interface DetailLine {
   itemId: string
   getItemStatus: string
   fields: EbayWhiteOledDetailFields
   bodyRead: boolean
+  body: unknown
 }
 
 export async function runWhiteOledDetailRead(input: {
@@ -90,6 +99,7 @@ export async function runWhiteOledDetailRead(input: {
           getItemStatus: detail.status,
           fields: uncheckedWhiteOledDetail(candidate.itemId),
           bodyRead: false,
+          body: null,
         })
         continue
       }
@@ -100,6 +110,7 @@ export async function runWhiteOledDetailRead(input: {
           getItemStatus: 'cuerpo-no-objeto',
           fields: uncheckedWhiteOledDetail(candidate.itemId),
           bodyRead: false,
+          body: null,
         })
         continue
       }
@@ -108,12 +119,21 @@ export async function runWhiteOledDetailRead(input: {
         getItemStatus: 'ok',
         fields,
         bodyRead: true,
+        body: detail.body,
       })
     }
 
     const bodiesRead = details.filter((detail) => detail.bodyRead).length
+    const variant = secondHandVariantMapping(WHITE_PRODUCT_ID)
     lines.push(`cuerposLeidos: ${bodiesRead}`)
     for (const detail of details) {
+      const identity = Boolean(variant && detail.bodyRead && itemMatchesVariantIdentity(variant, detail.body))
+      const verdict = variantReadingVerdict(WHITE_PRODUCT_ID, {
+        epid: presentValue(detail.fields.epid),
+        marketplaceId: presentValue(detail.fields.listingMarketplaceId),
+        categoryId: presentValue(detail.fields.categoryId),
+        source: detail.bodyRead ? 'detail' : 'search-summary',
+      })
       lines.push(`itemId: ${detail.itemId}`)
       lines.push(`getItem: ${detail.getItemStatus}`)
       lines.push(`listingMarketplaceId: ${formatDetailField(detail.fields.listingMarketplaceId)}`)
@@ -124,7 +144,11 @@ export async function runWhiteOledDetailRead(input: {
       lines.push(`capacidad: ${formatDetailField(detail.fields.capacity)}`)
       lines.push(`color: ${formatDetailField(detail.fields.color)}`)
       lines.push(`categoryId: ${formatDetailField(detail.fields.categoryId)}`)
+      lines.push(`conditionId: ${formatDetailField(detail.fields.conditionId)}`)
       lines.push(`camposCompletos: ${detail.bodyRead && whiteOledDetailIsComplete(detail.fields) ? 'si' : 'no'}`)
+      lines.push(`identidadDeVariante: ${identity ? 'si' : 'no'}`)
+      lines.push(`veredicto: ${verdict.verdict}`)
+      if (verdict.verdict === 'unconfirmed') lines.push(`huecos: ${verdict.missing.join(',')}`)
     }
     if (bodiesRead === 0) {
       lines.push('Ningún getItem devolvió un cuerpo utilizable.')
@@ -141,6 +165,10 @@ export async function runWhiteOledDetailRead(input: {
     clientId = ''
     clientSecret = ''
   }
+}
+
+function presentValue(field: EbayDetailField): string | null {
+  return field.status === 'present' ? field.value : null
 }
 
 async function main(): Promise<void> {

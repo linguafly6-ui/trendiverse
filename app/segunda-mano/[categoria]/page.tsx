@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd'
 import ProductCard from '@/components/second-hand/ProductCard'
 import { SITE_NAME } from '@/lib/constants'
 import { getSecondHandProducts } from '@/lib/second-hand-data'
+import { productionEbayPageConfig, publicationPolicyFromConfig } from '@/lib/ebay-browse-page-source'
 import { listingsForSecondHandRoute } from '@/lib/second-hand-page-listings'
 import {
   SECOND_HAND_PATH,
@@ -36,9 +37,12 @@ export default async function SecondHandCategoryPage({ params }: Props) {
   const category = secondHandCategory((await params).categoria)
   if (!category) notFound()
   const products = secondHandProductsByCategory(category.slug, await getSecondHandProducts())
+  const now = Date.now()
+  const ebayConfig = await productionEbayPageConfig()
+  const listingPolicy = publicationPolicyFromConfig(ebayConfig)
   const listings = new Map(await Promise.all(products.map(async (product) => [
     product.slug,
-    await listingsForSecondHandRoute(product.slug),
+    await listingsForSecondHandRoute(product.slug, now, ebayConfig),
   ] as const)))
   return (
     <div className="mx-auto max-w-5xl space-y-8">
@@ -55,7 +59,7 @@ export default async function SecondHandCategoryPage({ params }: Props) {
         <h2 id="productos" className="text-2xl font-extrabold">Qué mirar en {category.name.toLowerCase()}</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((x) => (
-            <ProductCard key={x.slug} product={x} listings={listings.get(x.slug) ?? []} />
+            <ProductCard key={x.slug} product={x} listings={listings.get(x.slug) ?? []} now={now} policy={listingPolicy} />
           ))}
         </div>
       </section>

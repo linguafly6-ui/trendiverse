@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import * as React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { EBAY_BROWSE_SOURCE_ENABLED, EBAY_LISTING_MAX_AGE_MS } from '../lib/ebay-browse-adapter'
-import { EBAY_EPN_CONFIGURED, EBAY_ES_ADMITTED_CONDITION_IDS, EBAY_LISTING_DISCLOSURE, readEbayListing, listingFromEpidCandidate } from '../lib/ebay-listing'
+import { EBAY_AFFILIATE_LISTING_DISCLOSURE, EBAY_EPN_CONFIGURED, EBAY_ES_ADMITTED_CONDITION_IDS, EBAY_LISTING_DISCLOSURE, applyBrowseAffiliateUrl, readEbayListing, listingFromEpidCandidate } from '../lib/ebay-listing'
 import {
   catalogProductsWithValidatedMarketplaceId,
   ebayPublicationBlockers,
@@ -25,7 +25,6 @@ const NOW = Date.parse(READ_AT)
 const OPEN_POLICY: EbayListingPublicationPolicy = {
   providerEnabled: true,
   admittedConditionIds: [3000],
-  epnConfigured: true,
 }
 const FIXTURE_ALLOWLIST: SecondHandMarketplaceIdAllowlist = {
   providers: ['fixture-marketplace'],
@@ -131,7 +130,6 @@ test('nintendo-switch is the only identity-verified product and still has no mar
   assert.deepEqual(ebayPublicationBlockers('nintendo-switch'), [
     'provider-disabled',
     'ebay-es-condition-policy-unapproved',
-    'epn-not-configured',
     'marketplace-id-not-validated',
   ])
   const mappingSource = readFileSync(new URL('../lib/second-hand-product-mapping.ts', import.meta.url), 'utf8')
@@ -200,4 +198,89 @@ test('segunda mano stays priceless when a verified fixture is offered to the car
   const gate = readFileSync(new URL('../lib/ebay-second-hand-gate.ts', import.meta.url), 'utf8')
   const code = gate.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
   assert.doesNotMatch(code, /\bfetch\s*\(|process\.env|searchByEpid|getItem\(/)
+})
+
+test('an open policy shows a valid listing on the card without a campaign', async () => {
+  ;(globalThis as { React?: typeof React }).React = React
+  const { default: ProductCard } = await import('../components/second-hand/ProductCard')
+  const product = SECOND_HAND_PRODUCTS.find((item) => item.slug === 'nintendo-switch')
+  assert.ok(product)
+  const listing = verifiedListing()
+  assert.equal(listing.monetized, false)
+  const markup = renderToStaticMarkup(React.createElement(ProductCard, {
+    product: { ...product, slug: 'fixture-product' },
+    listings: [listing],
+    now: NOW,
+    policy: OPEN_POLICY,
+  }))
+  assert.match(markup, /https:\/\/www\.ebay\.es\/itm\/100000000001/)
+  assert.match(markup, /1\.25 EUR/)
+  assert.match(markup, new RegExp(EBAY_LISTING_DISCLOSURE))
+  assert.match(markup, /rel="nofollow noopener noreferrer"/)
+  assert.doesNotMatch(markup, /campid|seguimiento de afiliado/)
+  assert.match(markup, new RegExp(SECOND_HAND_PENDING_COPY))
+})
+
+test('invalid listings stay off the card when the policy is open', async () => {
+  ;(globalThis as { React?: typeof React }).React = React
+  const { default: ProductCard } = await import('../components/second-hand/ProductCard')
+  const product = SECOND_HAND_PRODUCTS.find((item) => item.slug === 'nintendo-switch')
+  assert.ok(product)
+  const card = { ...product, slug: 'fixture-product' }
+  const stale = verifiedListing()
+  const monetizedPlain = { ...verifiedListing(), monetized: true }
+  const cases = [
+    verifiedListing({ conditionId: '1000' }),
+    listingFromEpidCandidate({ itemId: 'v1|fixture|0' }),
+    monetizedPlain,
+    { ...stale, readAt: stale.readAt },
+  ]
+  for (const listing of cases.slice(0, 3)) {
+    const markup = renderToStaticMarkup(React.createElement(ProductCard, {
+      product: card,
+      listings: [listing],
+      now: NOW,
+      policy: OPEN_POLICY,
+    }))
+    assert.doesNotMatch(markup, /ebay\.es|1\.25|campid/)
+  }
+  const expired = renderToStaticMarkup(React.createElement(ProductCard, {
+    product: card,
+    listings: [stale],
+    now: NOW + EBAY_LISTING_MAX_AGE_MS + 1,
+    policy: OPEN_POLICY,
+  }))
+  assert.doesNotMatch(expired, /ebay\.es|1\.25/)
+})
+
+test('affiliate links are created only from a valid campaign and the returned url', async () => {
+  ;(globalThis as { React?: typeof React }).React = React
+  const { default: ProductCard } = await import('../components/second-hand/ProductCard')
+  const product = SECOND_HAND_PRODUCTS.find((item) => item.slug === 'nintendo-switch')
+  assert.ok(product)
+  const plain = verifiedListing()
+  const affiliateUrl = 'https://www.ebay.es/itm/100000000001?campid=1234567890'
+  const withoutCampaign = applyBrowseAffiliateUrl(plain, affiliateUrl, '')
+  assert.equal(withoutCampaign.monetized, false)
+  assert.equal(withoutCampaign.itemWebUrl, plain.itemWebUrl)
+  assert.equal(JSON.stringify(withoutCampaign).includes('campid'), false)
+  const mismatched = applyBrowseAffiliateUrl(plain, 'https://www.ebay.es/itm/100000000001?campid=0000000000', '1234567890')
+  assert.equal(mismatched.itemWebUrl, plain.itemWebUrl)
+  assert.equal(mismatched.monetized, false)
+  const notRewritten = applyBrowseAffiliateUrl(plain, plain.itemWebUrl, '1234567890')
+  assert.equal(notRewritten.itemWebUrl, plain.itemWebUrl)
+  assert.equal(notRewritten.monetized, false)
+
+  const monetized = applyBrowseAffiliateUrl(plain, affiliateUrl, '1234567890')
+  assert.equal(monetized.monetized, true)
+  assert.equal(monetized.itemWebUrl, affiliateUrl)
+  const markup = renderToStaticMarkup(React.createElement(ProductCard, {
+    product: { ...product, slug: 'fixture-product' },
+    listings: [monetized],
+    now: NOW,
+    policy: OPEN_POLICY,
+  }))
+  assert.match(markup, /https:\/\/www\.ebay\.es\/itm\/100000000001\?campid=1234567890/)
+  assert.match(markup, new RegExp(EBAY_AFFILIATE_LISTING_DISCLOSURE))
+  assert.doesNotMatch(markup, /no cobra comisión/)
 })

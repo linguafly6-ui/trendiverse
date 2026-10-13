@@ -3,8 +3,9 @@
  *
  * No llama a eBay, no lee credenciales y no cambia el flag ni la lista de
  * condiciones. Con la política de producción la compuerta no deja pasar
- * ningún anuncio: falta un marketplace id validado, la política de
- * condiciones de EBAY_ES y el alta de EPN.
+ * ningún anuncio: el proveedor de métricas sigue apagado, la política de
+ * condiciones de EBAY_ES está vacía y no hay un marketplace id validado.
+ * La campaña de EPN no cierra esta compuerta.
  */
 
 import {
@@ -12,8 +13,8 @@ import {
   isEbayListingWithinDisplayWindow,
 } from './ebay-browse-adapter'
 import {
-  EBAY_EPN_CONFIGURED,
   EBAY_ES_ADMITTED_CONDITION_IDS,
+  ebayListingLinkIsDisplayable,
   type EbayListing,
 } from './ebay-listing'
 import {
@@ -29,7 +30,6 @@ import {
 export const EBAY_PUBLICATION_BLOCKERS = [
   'provider-disabled',
   'ebay-es-condition-policy-unapproved',
-  'epn-not-configured',
   'marketplace-id-not-validated',
 ] as const
 
@@ -38,13 +38,11 @@ export type EbayPublicationBlocker = (typeof EBAY_PUBLICATION_BLOCKERS)[number]
 export interface EbayListingPublicationPolicy {
   providerEnabled: boolean
   admittedConditionIds: readonly number[]
-  epnConfigured: boolean
 }
 
 export const EBAY_PRODUCTION_PUBLICATION_POLICY: EbayListingPublicationPolicy = {
   providerEnabled: EBAY_BROWSE_SOURCE_ENABLED,
   admittedConditionIds: EBAY_ES_ADMITTED_CONDITION_IDS,
-  epnConfigured: EBAY_EPN_CONFIGURED,
 }
 
 export function ebayPublicationBlockers(
@@ -54,7 +52,6 @@ export function ebayPublicationBlockers(
   const blockers: EbayPublicationBlocker[] = []
   if (!EBAY_PRODUCTION_PUBLICATION_POLICY.providerEnabled) blockers.push('provider-disabled')
   if (EBAY_PRODUCTION_PUBLICATION_POLICY.admittedConditionIds.length === 0) blockers.push('ebay-es-condition-policy-unapproved')
-  if (!EBAY_PRODUCTION_PUBLICATION_POLICY.epnConfigured) blockers.push('epn-not-configured')
   const mapping = secondHandProductMapping(productId)
   if (!mapping || !asExternalMapping(mapping, allowlist).verified) blockers.push('marketplace-id-not-validated')
   return blockers
@@ -72,7 +69,7 @@ export function visibleEbayListings(
   now: number,
   policy: EbayListingPublicationPolicy = EBAY_PRODUCTION_PUBLICATION_POLICY,
 ): EbayListing[] {
-  if (!policy.providerEnabled || !policy.epnConfigured || policy.admittedConditionIds.length === 0) return []
+  if (!policy.providerEnabled || policy.admittedConditionIds.length === 0) return []
   return listings.filter((listing) => listingIsVisible(productId, listing, now, policy.admittedConditionIds))
 }
 
@@ -83,8 +80,8 @@ export function listingIsVisible(
   admittedConditionIds: readonly number[],
 ): boolean {
   if (listing.association.status !== 'verified' || listing.association.productId !== productId) return false
-  if (listing.monetized !== false || listing.urlDiscarded !== null) return false
-  if (listing.price === null || listing.itemWebUrl === null || listing.conditionId === null || listing.readAt === null) return false
+  if (!ebayListingLinkIsDisplayable(listing)) return false
+  if (listing.price === null || listing.conditionId === null || listing.readAt === null) return false
   if (!isEbayListingWithinDisplayWindow(listing.readAt, now)) return false
   const conditionId = Number(listing.conditionId)
   if (!Number.isInteger(conditionId) || !admittedConditionIds.includes(conditionId)) return false

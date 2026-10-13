@@ -79,6 +79,7 @@ test('getItem fields stay absent when the body omits them, even if the title nam
   assert.equal(fields.capacity.status, 'absent')
   assert.equal(fields.color.status, 'absent')
   assert.equal(fields.categoryId.status, 'absent')
+  assert.equal(fields.conditionId.status, 'absent')
   assert.equal(whiteOledDetailIsComplete(fields), false)
   assert.equal(JSON.stringify(fields).includes('0045496453435'), false)
 })
@@ -91,6 +92,7 @@ test('a mocked detail can be complete without validating the catalog variant', a
     listingMarketplaceId: 'EBAY_ES',
     gtin: '0045496453435',
     categoryId: '139971',
+    conditionId: '3000',
     localizedAspects: [
       { name: 'MPN', value: '10007454' },
       { name: 'Modelo', value: 'HEG-001' },
@@ -123,7 +125,11 @@ test('a mocked detail can be complete without validating the catalog variant', a
   assert.match(report, /capacidad: 64 GB/)
   assert.match(report, /color: Blanco/)
   assert.match(report, /categoryId: 139971/)
+  assert.match(report, /conditionId: 3000/)
   assert.match(report, /camposCompletos: si/)
+  assert.match(report, /identidadDeVariante: si/)
+  assert.match(report, /veredicto: unconfirmed/)
+  assert.match(report, /huecos: validated-marketplace-identifier,marketplace-allowlist,admitted-condition-ids/)
   assert.match(report, /varianteValidada: false/)
   assert.equal(report.includes('inventado'), false)
   assert.equal(report.includes('otro título'), false)
@@ -156,8 +162,52 @@ test('a failed getItem leaves the candidate fields unchecked', async () => {
   assert.match(report, /getItem: unavailable/)
   assert.match(report, /listingMarketplaceId: no comprobado/)
   assert.match(report, /categoryId: no comprobado/)
+  assert.match(report, /conditionId: no comprobado/)
+  assert.match(report, /identidadDeVariante: no/)
   assert.match(report, /cuerposLeidos: 0/)
   assert.match(report, /varianteValidada: false/)
+  assert.equal(report.includes('Bearer'), false)
+})
+
+test('a detail from another marketplace does not validate the EBAY_ES variant', async () => {
+  const body = {
+    itemId: 'v1|267728620693|0',
+    epid: EPID,
+    listingMarketplaceId: 'EBAY_US',
+    gtin: '0045496453435',
+    categoryId: '139971',
+    conditionId: '3000',
+    localizedAspects: [
+      { name: 'MPN', value: '10007454' },
+      { name: 'Modelo', value: 'HEG-001' },
+      { name: 'Capacidad', value: '64 GB' },
+      { name: 'Color', value: 'Blanco' },
+    ],
+  }
+  const fetchImpl = async (url: string) => {
+    if (url.includes('/identity/')) return tokenResponse()
+    if (url.includes('item_summary/search')) {
+      return jsonResponse({ total: 1, itemSummaries: [{ itemId: 'v1|267728620693|0' }] })
+    }
+    return jsonResponse(body)
+  }
+  const lines: string[] = []
+  const code = await runWhiteOledDetailRead({
+    clientId: 'fixture-client',
+    clientSecret: 'fixture-cert',
+    fetchImpl,
+    write: (text) => lines.push(text),
+  })
+  const report = lines.join('')
+  assert.equal(code, 0)
+  assert.match(report, /listingMarketplaceId: EBAY_US/)
+  assert.match(report, /identidadDeVariante: no/)
+  assert.match(report, /veredicto: unconfirmed/)
+  assert.match(report, /ebay-es-item-detail/)
+  assert.match(report, /varianteValidada: false/)
+  assert.equal(secondHandVariantMapping('nintendo-switch-oled-blanca')?.identity.categoryId, null)
+  assert.equal(EBAY_ES_ADMITTED_CONDITION_IDS.length, 0)
+  assert.equal(report.includes('fixture-cert'), false)
 })
 
 test('the local script exits when the environment has no credentials', () => {

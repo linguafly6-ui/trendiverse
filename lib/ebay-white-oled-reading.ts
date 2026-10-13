@@ -22,6 +22,8 @@ export interface EbayWhiteOledDetailFields {
   capacity: EbayDetailField
   color: EbayDetailField
   categoryId: EbayDetailField
+  /** Observado en el cuerpo. No entra en la lista de condiciones admitidas. */
+  conditionId: EbayDetailField
 }
 
 const ASPECT_NAMES = {
@@ -44,6 +46,7 @@ export function uncheckedWhiteOledDetail(itemId: string): EbayWhiteOledDetailFie
     capacity: unchecked,
     color: unchecked,
     categoryId: unchecked,
+    conditionId: unchecked,
   }
 }
 
@@ -61,6 +64,7 @@ export function whiteOledDetailFromBody(itemId: string, body: unknown): EbayWhit
     capacity: aspectField(record, ASPECT_NAMES.capacity),
     color: aspectField(record, ASPECT_NAMES.color),
     categoryId: textField(record, 'categoryId'),
+    conditionId: textField(record, 'conditionId'),
   }
 }
 
@@ -74,6 +78,7 @@ export function whiteOledDetailIsComplete(fields: EbayWhiteOledDetailFields): bo
     fields.capacity,
     fields.color,
     fields.categoryId,
+    fields.conditionId,
   ].every((field) => field.status === 'present')
 }
 

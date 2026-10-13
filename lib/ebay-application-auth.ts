@@ -89,6 +89,8 @@ export interface EbayApplicationAuth {
   getAccessToken(options?: { force?: boolean }): Promise<EbayAccessTokenResult>
 }
 
+const APPLICATION_SCOPE_PATTERN = /^https:\/\/api\.ebay\.com\/oauth\/api_scope( https:\/\/api\.ebay\.com\/oauth\/api_scope\/metadata\.insights)?$/
+
 export function createEbayApplicationAuth(options: {
   clientId: string
   clientSecret: string
@@ -96,6 +98,8 @@ export function createEbayApplicationAuth(options: {
   fetchImpl?: EbayFetch
   now?: () => number
   timeoutMs?: number
+  /** Por defecto, el ámbito de Browse. Otro valor no cambia ese defecto. */
+  scope?: string
 }): EbayApplicationAuth {
   const memory = options.memory ?? createEbayApplicationTokenMemory()
   const fetchImpl = options.fetchImpl ?? ((input, init) => fetch(input, init))
@@ -105,12 +109,14 @@ export function createEbayApplicationAuth(options: {
     clientId: options.clientId,
     clientSecret: options.clientSecret,
   })
+  const scope = options.scope ?? EBAY_APPLICATION_OAUTH_SCOPE
+  const scopeIsKnown = APPLICATION_SCOPE_PATTERN.test(scope)
 
   let generation = 0
   let flight: { generation: number, pending: Promise<EbayAccessTokenResult> } | null = null
 
   const fetchToken = async (generationAtStart: number): Promise<EbayAccessTokenResult> => {
-    if (credentials.status !== 'ok') return { status: 'unavailable' }
+    if (credentials.status !== 'ok' || !scopeIsKnown) return { status: 'unavailable' }
     let response: Response
     try {
       response = await fetchImpl(EBAY_OAUTH_TOKEN_URL, {
@@ -122,7 +128,7 @@ export function createEbayApplicationAuth(options: {
         },
         body: new URLSearchParams({
           grant_type: 'client_credentials',
-          scope: EBAY_APPLICATION_OAUTH_SCOPE,
+          scope,
         }),
         redirect: 'manual',
         cache: 'no-store',
@@ -151,7 +157,7 @@ export function createEbayApplicationAuth(options: {
   }
 
   const load = (force: boolean): Promise<EbayAccessTokenResult> => {
-    if (credentials.status !== 'ok') return Promise.resolve({ status: 'unavailable' })
+    if (credentials.status !== 'ok' || !scopeIsKnown) return Promise.resolve({ status: 'unavailable' })
     if (force) {
       memory.current = null
       generation += 1
