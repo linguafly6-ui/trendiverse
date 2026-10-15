@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="64" y="56" width="1072" height="518" rx="36" fill="#14532d"/>
+  <text x="600" y="210" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#ffffff">RAYO VALLECANO</text>
+  <text x="600" y="290" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#fde68a">ELCHE</text>
+  <text x="600" y="380" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#e2e8f0">LaLiga jornada 10 &#183; Sábado 24 14:00</text>
+</svg>
