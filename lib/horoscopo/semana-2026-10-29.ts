@@ -142,7 +142,7 @@ const readings: WeekReading[] = [
   }
 ]
 
-export const SEMANA_2026_10_22: HoroscopeWeek = {
+export const SEMANA_2026_10_29: HoroscopeWeek = {
   id: '2026-10-29',
   slug: 'semana-29-octubre-4-noviembre-2026',
   start: '2026-10-29',
