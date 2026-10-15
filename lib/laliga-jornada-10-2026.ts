@@ -102,7 +102,7 @@ El Villarreal intentará encontrar ventajas con circulación y movimientos entre
     tv: 'Orange Fútbol 1, Movistar Plus+ y Movistar LALIGA',
     venue: 'Riyadh Air Metropolitano',
     published_at: '2026-10-15T08:20:00.000Z',
-    excerpt: 'El Atlético de Madrid recibe al Deportivo el sábado por la noche en el Metropolitano, un choque entre un aspirante a la zona alta y un Dépor competitivo en su regreso.',
+    excerpt: 'El Atlético recibe al Deportivo en el Metropolitano el sábado a las 21:00.',
     lead: 'El Atlético tendrá que llevar la iniciativa ante un Deportivo que ha demostrado que sabe resistir y competir. La paciencia local chocará con la ambición visitante.',
     neighbors: 'El Atlético-Deportivo, a las 21:00 del sábado, es el último partido del día.',
     essay: `El Atlético parte con la responsabilidad de dominar en casa y transformar su presión en ocasiones. Frente a un adversario que puede sentirse cómodo defendiendo junto, mover el balón con velocidad y evitar ataques previsibles será clave para encontrar huecos.
