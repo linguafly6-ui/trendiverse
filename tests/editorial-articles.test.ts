@@ -93,6 +93,16 @@ const EXPECTED_SLUGS = [
   'malaga-real-sociedad-laliga-jornada-9-2026',
   'real-madrid-sevilla-laliga-jornada-9-2026',
   'getafe-rayo-laliga-jornada-9-2026',
+  'alaves-malaga-laliga-jornada-10-2026',
+  'rayo-elche-laliga-jornada-10-2026',
+  'racing-espanyol-laliga-jornada-10-2026',
+  'valencia-villarreal-laliga-jornada-10-2026',
+  'atletico-deportivo-laliga-jornada-10-2026',
+  'athletic-getafe-laliga-jornada-10-2026',
+  'celta-betis-laliga-jornada-10-2026',
+  'real-sociedad-levante-laliga-jornada-10-2026',
+  'barcelona-real-madrid-laliga-jornada-10-2026',
+  'sevilla-osasuna-laliga-jornada-10-2026',
   'conciertos-espana-agenda-2026-2027',
   'como-leemos-el-horoscopo-astrologia-tropical',
 
@@ -190,7 +200,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'real-madrid-sevilla-laliga-jornada-9-2026')
+  assert.equal(slugs[0], 'sevilla-osasuna-laliga-jornada-10-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
