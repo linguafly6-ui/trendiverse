@@ -145,6 +145,53 @@ function formSummary(side: Side): string {
   return `En sus últimos ${tokens.length} partidos ha sumado ${plural(g, 'victoria', 'victorias')}, ${plural(e, 'empate', 'empates')} y ${plural(p, 'derrota', 'derrotas')}.`
 }
 
+function longFormPreview(fx: Fixture, cfg: MatchdayConfig): string {
+  const h = fx.home
+  const a = fx.away
+  const pair = h.name + '-' + a.name
+  const home = h.name
+  const away = a.name
+  return [
+    '## Análisis táctico del ' + pair,
+    'La primera clave del ' + pair + ' será la gestión de los espacios. El equipo que consiga defender hacia delante sin dejar desprotegida la espalda podrá recuperar más arriba y reducir el tiempo que necesita para llegar al área rival. Sin embargo, presionar no consiste solo en correr: hace falta coordinación entre la primera línea, los centrocampistas y la defensa. Si una de esas piezas salta tarde, el adversario puede superar la presión con un pase y atacar con ventaja.',
+    home + ' tratará de aprovechar su condición de local y encontrar un ritmo que le permita instalarse en campo contrario. Para ello necesita que los jugadores cercanos al balón ofrezcan líneas de pase y que las llegadas al área estén acompañadas. La posesión será útil si sirve para progresar, mover al rival y encontrar a un compañero en una posición ventajosa; acumular pases sin profundidad puede facilitar la tarea defensiva del contrario.',
+    away + ' tendrá que decidir cuándo presionar y cuándo protegerse en un bloque más compacto. Si retrocede demasiado, puede conceder segundas jugadas y permitir que el anfitrión ataque una y otra vez. Si adelanta las líneas sin ayudas, aparecerán espacios a la espalda. La lectura de esos momentos puede resultar tan importante como el dibujo inicial de los entrenadores.',
+    '## El centro del campo y la salida de balón',
+    'La batalla por el centro del campo no se reduce a quién acumula más posesión. También importa quién recibe de cara, quién puede girarse bajo presión y quién acompaña la primera recuperación. Un equipo que gana el balón pero no encuentra apoyos cercanos suele devolverlo rápidamente; uno que combina con apoyos cortos puede superar líneas y avanzar con más control. En el ' + pair + ', el primer pase después de recuperar será una señal útil para entender qué plan está funcionando.',
+    'La salida en corto puede atraer la presión y liberar espacios más adelante, mientras que el juego directo permite saltarse la primera línea y disputar la segunda jugada. No existe una solución universal: cada decisión depende de la altura del rival, la precisión de los receptores y la capacidad de los centrocampistas para recoger los rechaces. La variedad en la salida evita que el adversario anticipe con facilidad el siguiente movimiento.',
+    '## Las bandas, los espacios interiores y la llegada al área',
+    'Abrir el campo obliga a la defensa a cubrir más metros. Un extremo que fija a su marcador, un lateral que aparece por fuera y un centrocampista que ocupa el medio espacio pueden generar dudas en las ayudas defensivas. Si varios jugadores atacan la misma zona, el rival tendrá más fácil cerrar el camino; si se distribuyen bien las alturas, el poseedor dispondrá de más de una opción para progresar. La amplitud debe servir para encontrar mejores posiciones, no solo para acumular centros.',
+    'La ocupación del área es otro factor decisivo. Los centros tienen más posibilidades de convertirse en ocasiones cuando hay presencia en el primer palo, en la zona central y en el segundo palo, además de jugadores atentos al rechace. La calidad del último pase y la coordinación de los desmarques pueden marcar la diferencia entre una llegada prometedora y un remate cómodo para la defensa. También habrá que observar si los dos equipos consiguen finalizar sus ataques o si pierden el balón antes de poner a prueba al portero.',
+    '## Transiciones: el partido después de cada pérdida',
+    'Los segundos posteriores a una pérdida suelen ser especialmente delicados. Si el equipo que pierde el balón reacciona de forma coordinada, puede recuperar cerca del área rival y volver a atacar. Si cada jugador decide por su cuenta, el adversario encontrará espacios para correr. Por eso, el equilibrio entre atacar con muchos efectivos y conservar una estructura defensiva será una de las decisiones que pueden inclinar el encuentro.',
+    'Cuando recupere, cada equipo deberá valorar si existe una oportunidad clara para avanzar rápido o si conviene conservar la pelota y reorganizarse. La transición vertical puede castigar a una defensa descolocada, pero forzar un pase arriesgado también puede devolver la iniciativa al rival. Saber elegir entre acelerar y pausar el juego es una señal de madurez competitiva, sobre todo en los minutos en los que el marcador aumenta la presión.',
+    '## El balón parado puede cambiar el guion',
+    'Los córners, las faltas laterales y los saques de banda próximos al área ofrecen oportunidades para atacar sin necesidad de construir una jugada larga. La organización en estas acciones exige movimientos coordinados, bloqueos legales, buenos tiempos de salto y atención a los rechaces. En defensa, es fundamental no perder las referencias y reaccionar al segundo balón. En un partido equilibrado, una acción detenida puede tener más influencia que varias posesiones largas.',
+    'También será importante evitar faltas innecesarias cerca del área. La concentración en los últimos minutos, cuando el cansancio puede reducir la precisión, resulta especialmente valiosa. Un equipo que defiende con orden y no concede acciones evitables puede proteger una ventaja; otro que mantiene la calma en ataque puede encontrar una ocasión cuando el rival ya está pendiente del marcador.',
+    '## Qué puede cambiar durante el partido',
+    'El primer gol suele modificar las prioridades. Si marca ' + home + ', puede elegir entre controlar el balón y seguir buscando el segundo tanto; si se adelanta ' + away + ', el anfitrión tendrá que decidir cómo aumentar su presencia ofensiva sin regalar espacios para las contras. El marcador no decide por sí solo el resultado, pero altera las distancias, los riesgos asumidos y el tipo de sustituciones que cada entrenador puede necesitar.',
+    'El banquillo será relevante si el desgaste abre espacios en la última media hora. Un atacante fresco puede fijar a los centrales, un centrocampista capaz de conservar el balón puede ayudar a proteger una ventaja y un jugador de banda puede ofrecer profundidad ante una defensa cansada. La utilidad de los cambios dependerá del desarrollo real del encuentro; por eso, no conviene anticipar decisiones técnicas que todavía no se han producido.',
+    '## Qué se juega cada equipo en la jornada 10',
+    'Para ' + home + ', el encuentro en casa representa una oportunidad de sumar ante su afición y confirmar el trabajo de la semana. La victoria añadiría tres puntos y reforzaría la confianza; un empate puede ser útil si el partido se complica, aunque su valor depende del contexto de la clasificación y de los resultados de los rivales directos. Una derrota obligaría a revisar el rendimiento, pero no debería interpretarse de forma aislada ni como una conclusión definitiva sobre toda la temporada.',
+    'Para ' + away + ', puntuar a domicilio puede ayudar a dar continuidad a los resultados y demostrar que el equipo sabe competir fuera de su estadio. Ganar tendría un valor evidente, pero también puede ser importante gestionar bien un empate si el desarrollo del partido no permite asumir riesgos con seguridad. La ambición debe convivir con el pragmatismo: no todos los minutos exigen la misma respuesta ni todos los escenarios se resuelven atacando con más jugadores.',
+    'Los puntos exactos y la posición que ocupe cada equipo después del encuentro dependerán de la clasificación vigente y del resto de resultados. En esta página, las estadísticas de referencia proceden del corte que se indica en el aviso editorial. Deben actualizarse antes de publicar una valoración definitiva de la tabla, la forma reciente o las consecuencias matemáticas de cada marcador.',
+    '## Cinco claves para entender el ' + pair,
+    'La primera clave será quién consigue imponer el ritmo. Un encuentro abierto, con transiciones constantes, puede beneficiar al equipo que encuentre espacios para correr; uno más pausado puede favorecer a quien gestione mejor la posesión y la colocación. La segunda será la calidad de las pérdidas: regalar el balón en zonas centrales suele ser más peligroso que perderlo lejos de la propia portería.',
+    'La tercera clave será la eficacia en las áreas. El dominio territorial no garantiza una victoria si no se transforma en ocasiones claras, mientras que un equipo que genera menos puede mantenerse en el partido si defiende bien y aprovecha una oportunidad. La cuarta estará en las acciones a balón parado y en los rechaces. La quinta, en la capacidad de los entrenadores para ajustar el plan sin perder el equilibrio colectivo.',
+    '## Contexto del calendario y seguimiento del partido',
+    'El ' + pair + ' forma parte de la jornada 10 de LaLiga EA Sports 2026/27, programada entre el viernes 23 y el lunes 26 de octubre. La distribución de horarios hace que algunos equipos conozcan los resultados de sus rivales antes de saltar al campo, mientras que otros jugarán con una clasificación provisional ya modificada. Esa circunstancia añade contexto, pero cada equipo necesita concentrarse en su propio rendimiento y no depender de combinaciones ajenas.',
+    cfg.calendarText,
+    'La fecha, la hora, el estadio y la retransmisión son los datos prácticos que conviene revisar antes de desplazarse o planificar cómo ver el partido. La programación puede cambiar, por lo que los canales oficiales de LALIGA, los clubes y los operadores deben considerarse la referencia final ante cualquier modificación. Las alineaciones y las posibles bajas solo deben incorporarse cuando exista información confirmada, no a partir de rumores o de previsiones sin respaldo.',
+    'Durante el encuentro, el marcador de esta página permite consultar el resultado y el minuto de juego. Antes del pitido inicial, el 0-0 solo indica que el partido no ha comenzado; no es un pronóstico ni un resultado final. Cuando el encuentro arranque, la información se actualizará con los datos que reciba el sistema, aunque una incidencia de conexión puede provocar algún retraso puntual.',
+    'Después del pitido final, el resultado deberá leerse junto con el resto de partidos de la jornada. Una victoria no siempre supone subir puestos, del mismo modo que un empate puede tener un valor distinto para cada equipo. Para sacar conclusiones conviene considerar la clasificación actualizada, los encuentros pendientes y el rendimiento mostrado durante los noventa minutos, además del marcador.',
+    '## Preguntas que deja la previa',
+    '¿Qué debe hacer ' + home + ' para tener opciones? Aprovechar el factor campo, defender con equilibrio y transformar sus llegadas en ocasiones de calidad. ¿Qué necesita ' + away + '? Mantener el orden, elegir bien los momentos para presionar y aprovechar los espacios cuando recupere. ¿Puede decidirse en una acción a balón parado? Sí: en partidos igualados, un córner o una falta lateral puede alterar el guion, aunque no es posible anticipar que vaya a suceder.',
+    '¿Es posible asegurar un resultado antes de jugar? No. La previa identifica tendencias y factores tácticos, pero el fútbol mantiene una incertidumbre que depende de las decisiones, la ejecución y los acontecimientos del encuentro. Una predicción responsable explica escenarios posibles sin presentar como hechos una alineación no confirmada, una lesión no verificada o un marcador futuro.',
+    '## Conclusión: un partido que se decidirá en los detalles',
+    'El ' + pair + ' ofrece varios duelos que conviene seguir: la salida de balón frente a la presión, la batalla en el centro del campo, la ocupación de las bandas, la defensa de las transiciones y la eficacia en el área. Si ' + home + ' consigue convertir su iniciativa en ocasiones claras, tendrá argumentos para buscar la victoria; si ' + away + ' mantiene el orden y aprovecha los espacios, podrá discutir el control del partido. La clave será que cada equipo ejecute su plan y se adapte a lo que ocurra.',
+    'La previa debe entenderse como una guía para llegar al encuentro con los datos esenciales y las claves de juego, no como una garantía de resultado. La clasificación y las rachas se deben revisar antes del inicio, especialmente mientras el módulo conserve el corte provisional señalado en el aviso editorial. Para seguir la evolución del marcador, consulta esta página durante el partido y contrasta cualquier cambio de horario en los canales oficiales.'
+  ].join('\n\n')
+}
 function articleContent(cfg: MatchdayConfig, fx: Fixture): string {
   const h = fx.home
   const a = fx.away
@@ -180,6 +227,7 @@ ${cfg.standingsSummary}
 ## Qué se juegan
 
 ${fx.essay}
+${cfg.jornada === 10 ? longFormPreview(fx, cfg) : ''}
 
 ## Si gana, empata o pierde
 
@@ -298,7 +346,7 @@ export function buildMatchday(cfg: MatchdayConfig): Matchday {
     excerpt: excerptWithTickets(fx),
     image_url: `/images/articles/${fx.slug}.svg`,
     thumbnail_url: `/images/articles/${fx.slug}-thumb.svg`,
-    read_time_minutes: 11,
+    read_time_minutes: cfg.jornada === 10 ? 18 : 11,
     views: 0,
     trending: 1,
     published_at: fx.published_at,
