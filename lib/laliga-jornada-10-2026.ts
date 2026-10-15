@@ -162,7 +162,7 @@ El Betis buscará tener la pelota y encontrar ventajas con asociaciones cortas y
     tv: 'Movistar LALIGA',
     venue: 'Reale Arena',
     published_at: '2026-10-15T08:35:00.000Z',
-    excerpt: 'La Real Sociedad recibe al Levante el domingo a las 18:30 en el Reale Arena, con la intención de controlar el partido ante un rival que buscará puntos fuera.',
+    excerpt: 'La Real Sociedad recibe al Levante el domingo a las 18:30 en el Reale Arena.',
     lead: 'La Real tratará de asumir el mando en San Sebastián. El Levante necesita un partido ordenado y aprovechar las ocasiones que aparezcan para salir con algo positivo.',
     neighbors: 'Real Sociedad-Levante se disputa el domingo a las 18:30, antes del Clásico entre Barcelona y Real Madrid.',
     essay: `La Real Sociedad buscará instalarse en campo contrario mediante la posesión y la movilidad de sus centrocampistas. Para evitar que el partido se atasque, necesitará ritmo en la circulación y profundidad por los costados, sin perder el equilibrio cuando el Levante recupere.
