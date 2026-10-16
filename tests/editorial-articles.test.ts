@@ -174,8 +174,8 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = new Set(EDITORIAL_ARTICLES.map((a) => a.slug))
-  for (const slug of EXPECTED_SLUGS) assert.ok(editorialSlugs.has(slug), `${slug} editorial record`)
+  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES].map((a) => a.slug)
+  assert.deepEqual(editorialSlugs.sort(), [...EXPECTED_SLUGS].sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EDITORIAL_ARTICLES) {
