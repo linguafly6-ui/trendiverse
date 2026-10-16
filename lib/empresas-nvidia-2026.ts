@@ -6,8 +6,8 @@ export const NVIDIA_INNOVACION_ARTICLE: Article = {
   slug: 'nvidia-innovacion-tecnologica-chips-inteligencia-artificial',
   category: 'empresas-que-transforman',
   excerpt: 'Cómo NVIDIA pasó de las GPU para gráficos a impulsar la IA moderna con Blackwell, computación acelerada y plataformas para centros de datos.',
-  image_url: '/images/articles/empresas-nvidia.svg',
-  thumbnail_url: '/images/articles/empresas-nvidia-thumb.svg',
+  image_url: '/images/articles/empresas-que-transforman.svg',
+  thumbnail_url: '/images/articles/empresas-que-transforman.svg',
   read_time_minutes: 10, views: 0, trending: 0, published_at: '2026-10-08T09:00:00.000Z',
   content: `# NVIDIA: la innovación tecnológica que impulsa la inteligencia artificial
 
