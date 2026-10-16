@@ -130,6 +130,7 @@ const EXPECTED_SLUGS = [
   'worlds-2026-league-of-legends-fechas-espana',
   'juegos-creados-usuarios-roblox-fortnite-mods-2026',
   'mejores-ofertas-hogar-tecnologia-octubre-2026',
+  'black-friday-moda-2026-ofertas-tiendas',
 
 ]
 
