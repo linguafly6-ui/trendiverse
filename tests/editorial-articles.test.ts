@@ -5,6 +5,7 @@ import { join } from 'node:path'
 import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
+import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
@@ -106,6 +107,11 @@ const EXPECTED_SLUGS = [
   'sevilla-osasuna-laliga-jornada-10-2026',
   'conciertos-espana-agenda-2026-2027',
   'como-leemos-el-horoscopo-astrologia-tropical',
+  'nvidia-innovacion-tecnologica-chips-inteligencia-artificial',
+  'microsoft-innovacion-tecnologica-ia-computacion-cuantica',
+  'tesla-innovacion-tecnologica-conduccion-robotica-optimus',
+  'byd-innovacion-tecnologica-baterias-coches-electricos',
+  'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',
 
 ]
 
@@ -168,7 +174,8 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  assert.deepEqual(EDITORIAL_ARTICLES.map((a) => a.slug).sort(), [...EXPECTED_SLUGS].sort())
+  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES].map((a) => a.slug)
+  assert.deepEqual(editorialSlugs.sort(), [...EXPECTED_SLUGS].sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EDITORIAL_ARTICLES) {
@@ -271,4 +278,32 @@ test('empty D1 still serves editorial content', async () => {
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(slugs.length, EXPECTED_SLUGS.length)
+})
+
+
+test('Empresas que transforman articles are valid and discoverable', async () => {
+  const expected = [
+    'nvidia-innovacion-tecnologica-chips-inteligencia-artificial',
+    'microsoft-innovacion-tecnologica-ia-computacion-cuantica',
+    'tesla-innovacion-tecnologica-conduccion-robotica-optimus',
+    'byd-innovacion-tecnologica-baterias-coches-electricos',
+    'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',
+  ]
+  assert.deepEqual(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.slug).sort(), expected.sort())
+  assert.equal(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.length, 5)
+  assert.equal(new Set(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.id)).size, 5)
+  const categories = new Set(CATEGORIES.map((c) => c.slug))
+  for (const a of EMPRESAS_QUE_TRANSFORMAN_ARTICLES) {
+    assert.ok(categories.has(a.category), a.slug + ' category')
+    assert.ok(a.excerpt && a.excerpt.length <= 200, a.slug + ' excerpt')
+    assert.match(a.content ?? '', /## Preguntas frecuentes/, a.slug + ' FAQ')
+    assert.ok((a.content ?? '').length > 5000, a.slug + ' substantive content')
+    for (const img of [a.image_url, a.thumbnail_url]) {
+      assert.ok(img && existsSync(join(process.cwd(), 'public', img)), a.slug + ' image ' + img)
+    }
+  }
+  setEnvResolverForTests(() => ({}))
+  const categoryArticles = await getArticles({ category: 'empresas-que-transforman', limit: 10 })
+  assert.equal(categoryArticles.length, 5)
+  assert.ok(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })

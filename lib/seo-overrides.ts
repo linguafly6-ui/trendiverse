@@ -60,6 +60,11 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
     title: 'Dónde comprar barato online en 2026',
     description: 'Amazon, PcComponentes, AliExpress Plaza, MediaMarkt y El Corte Inglés: dónde ahorrar según la categoría y cómo saber si un descuento es real.',
   },
+  'nvidia-innovacion-tecnologica-chips-inteligencia-artificial': { title: 'NVIDIA: innovación en chips e inteligencia artificial', description: 'Cómo NVIDIA impulsa la IA con GPU, CUDA y Blackwell, y qué límites de coste, energía y competencia marcarán su futuro.' },
+  'microsoft-innovacion-tecnologica-ia-computacion-cuantica': { title: 'Microsoft: IA y computación cuántica', description: 'Azure, Copilot y Majorana 1: qué innovaciones de Microsoft ya se usan y cuáles siguen en fase de investigación.' },
+  'tesla-innovacion-tecnologica-conduccion-robotica-optimus': { title: 'Tesla: innovación en conducción y robótica', description: 'Vehículos eléctricos, redes neuronales y Optimus: avances de Tesla, límites de la autonomía y retos de la robótica.' },
+  'byd-innovacion-tecnologica-baterias-coches-electricos': { title: 'BYD: baterías e innovación eléctrica', description: 'Batería Blade, coches eléctricos y conducción asistida: cómo innova BYD y qué conviene comparar antes de comprar.' },
+  'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink': { title: 'SpaceX: cohetes reutilizables y Starlink', description: 'Falcon 9, Starship y Starlink: las innovaciones espaciales de SpaceX, su potencial, sus límites y sus retos.' },
   'prediccion-tecnologica-proximos-5-anos-2026-2031': {
     title: 'Predicción tecnológica: tendencias hasta 2031',
     description: 'Las 10 tendencias tecnológicas de 2026 a 2031: IA, robots, ciberseguridad, energía, salud digital y qué cambios son realmente probables.',
