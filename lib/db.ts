@@ -175,6 +175,7 @@ export async function getAllArticleSlugs(): Promise<{ slug: string; published_at
   const rows = (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
   return dedupeBySlug([
     ...EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
+    ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
     ...rows,
   ])
 }
