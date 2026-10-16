@@ -8,7 +8,7 @@ export const MODERNA_INNOVACION_ARTICLE: Article = {
   excerpt: "Qué permite la plataforma de ARN mensajero de Moderna, cómo se investiga su uso en vacunas y terapias y cuáles son sus límites clínicos y regulatorios.",
   image_url: '/images/articles/empresas-que-transforman.svg',
   thumbnail_url: '/images/articles/empresas-que-transforman.svg',
-  read_time_minutes: 9, views: 0, trending: 0, published_at: '2020-01-01T09:00:00.000Z',
+  read_time_minutes: 9, views: 0, trending: 0, published_at: '2026-10-14T09:00:00.000Z',
   content: `# Moderna: cómo el ARN mensajero está cambiando la biotecnología
 
 ## Respuesta rápida
