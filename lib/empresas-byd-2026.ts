@@ -122,8 +122,7 @@ Autonomía real, curva de carga, garantía, consumo, precio total, equipamiento,
 - Contrasta autonomía, consumo y seguridad con la ficha de la versión concreta, pruebas independientes y garantía local.
 
 ### Lecturas complementarias
-BYD España, anuncio sobre God Eye y XUANJI A3, junio de 2026: https://www.byd.com/es-es/news-list/byd-desvela-conduccion-asistida-god-eye . Contrasta los datos con la ficha de cada modelo y pruebas independientes.`
-}
+BYD España, anuncio sobre God Eye y XUANJI A3, junio de 2026: https://www.byd.com/es-es/news-list/byd-desvela-conduccion-asistida-god-eye . Contrasta los datos con la ficha de cada modelo y pruebas independientes.
 
 ## Sigue explorando: empresas que transforman
 
@@ -132,4 +131,5 @@ Continúa con otros análisis de innovación tecnológica relacionados:
 - [NVIDIA: innovación en inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial)
 - [Microsoft: IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica)
 - [Tesla: conducción asistida y robótica](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus)
-- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)
+- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)`
+}
