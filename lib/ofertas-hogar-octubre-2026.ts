@@ -5,7 +5,7 @@ export const OFERTAS_HOGAR_OCTUBRE_2026: Article = {
   title: 'Las mejores ofertas de hogar y tecnología de octubre de 2026: IKEA, MediaMarkt y El Corte Inglés',
   slug: 'mejores-ofertas-hogar-tecnologia-octubre-2026',
   category: 'hogar',
-  excerpt: 'Guía de ofertas de hogar de octubre de 2026: muebles y textiles de IKEA, tecnología reacondicionada de MediaMarkt y campañas de electrónica de El Corte Inglés. Consulta precios, fechas y condiciones antes de comprar.',
+  excerpt: 'Ofertas de hogar en octubre de 2026: descuentos en muebles, textiles y tecnología de IKEA, MediaMarkt y El Corte Inglés. Compara precios y condiciones.',
   image_url: '/images/articles/ofertas-hogar-octubre-2026.svg',
   thumbnail_url: '/images/articles/ofertas-hogar-octubre-2026-thumb.svg',
   read_time_minutes: 12,
