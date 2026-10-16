@@ -2,7 +2,7 @@ import type { Article } from './types'
 export const TESLA_INNOVACION_ARTICLE: Article = {
  id:42,title:'Tesla: innovación tecnológica en conducción asistida y robots humanoides',slug:'tesla-innovacion-tecnologica-conduccion-robotica-optimus',category:'empresas-que-transforman',
  excerpt:'Cómo Tesla combina coches eléctricos, redes neuronales, chips de IA y el robot Optimus, y cuáles son los límites actuales de su tecnología.',
- image_url:'/images/articles/empresas-tesla.svg',thumbnail_url:'/images/articles/empresas-tesla-thumb.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:10:00.000Z',
+ image_url:'/images/articles/empresas-que-transforman.svg',thumbnail_url:'/images/articles/empresas-que-transforman.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:10:00.000Z',
  content:`# Tesla: innovación tecnológica en conducción asistida y robots humanoides
 
 Tesla es conocida por sus coches eléctricos, pero su estrategia abarca baterías, electrónica de potencia, software, redes neuronales, infraestructura de carga y robótica. Su modelo integra hardware y software para mejorar el producto mediante actualizaciones. Esa integración puede acelerar el desarrollo, pero también concentra responsabilidad: un error de software puede afectar a muchos vehículos y exige validación rigurosa.
