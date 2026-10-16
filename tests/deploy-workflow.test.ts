@@ -61,7 +61,7 @@ test('ci no referencia secretos de Cloudflare ni publica', () => {
   const ci = workflows.find((workflow) => workflow.path === 'ci.yml')
   assert.ok(ci)
   assert.equal(ci.triggers.pullRequest, true)
-  assert.deepEqual(ci.triggers.pushBranches, [])
+  assert.equal(ci.triggers.pushBranches, null)
   assert.equal(ci.source.includes('secrets.'), false)
   assert.equal(/wrangler pages deploy\b/.test(ci.source), false)
   assert.equal(ci.source.includes('CLOUDFLARE_'), false)
