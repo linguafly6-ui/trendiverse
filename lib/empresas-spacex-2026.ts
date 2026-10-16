@@ -53,6 +53,28 @@ SpaceX muestra que la innovación puede surgir de rediseñar un sistema completo
 
 El futuro de Starship dependerá de demostrar vuelos repetibles, recuperación, reutilización, seguridad y costes sostenibles. Starlink dependerá de cobertura, capacidad, calidad, regulación y gestión orbital. En ambos casos, las metas anunciadas deben distinguirse de las capacidades que ya se ofrecen de forma fiable.
 
+## La economía de lanzar más veces
+
+La reutilización puede cambiar la economía espacial porque permite repartir el coste de fabricar una etapa entre varios vuelos. Pero la cifra relevante no es solo cuántas veces se utiliza una pieza: importa cuánto cuesta inspeccionarla, repararla y prepararla para el siguiente lanzamiento. Una etapa que vuelve a volar rápido y con poco mantenimiento puede tener una ventaja importante; si requiere trabajos extensos, parte del ahorro se reduce.
+
+La cadencia también influye en la fiabilidad y en la planificación de clientes. Operar más lanzamientos exige coordinar plataformas, equipos, ventanas orbitales, licencias, seguimiento y logística. El calendario de un cliente depende de la órbita requerida y de la integración de la carga, no solo de la disponibilidad del cohete. La capacidad de lanzamiento es una cadena de operaciones que debe funcionar de manera predecible.
+
+La competencia no desaparece por la reutilización. Otros proveedores pueden ofrecer vehículos distintos, tecnologías de propulsión alternativas o servicios adaptados a cargas específicas. Para un cliente, la decisión considera precio, calendario, riesgo, órbita, requisitos de integración y trayectoria de vuelo. Una tecnología revolucionaria debe demostrar que ofrece una ventaja consistente en esas condiciones.
+
+## Qué necesita una constelación de satélites
+
+Una red como Starlink no se reduce a lanzar satélites. Necesita estaciones terrestres, terminales de usuario, coordinación del espectro, software de red y una estrategia de sustitución de satélites al final de su vida útil. La calidad percibida por el usuario depende de la capacidad compartida, la congestión, el clima, la ubicación y el estado de la infraestructura terrestre.
+
+En áreas remotas, la conectividad puede abrir oportunidades para empresas, escuelas, barcos y servicios de emergencia. Sin embargo, el coste del equipo y de la suscripción puede ser una barrera para algunos hogares. La disponibilidad tampoco significa que la tecnología sea la mejor opción en todos los lugares: la fibra puede ofrecer más capacidad y menor coste por usuario donde ya existe infraestructura.
+
+La conectividad directa con móviles también requiere realismo. Un teléfono convencional tiene limitaciones de antena y potencia, y la comunicación debe coordinarse con redes terrestres y reguladores. Servicios de mensajería o alertas pueden ser un primer uso más viable que prometer banda ancha completa en cualquier lugar. Las funciones disponibles dependen del operador, el dispositivo y el país.
+
+## Seguridad orbital y responsabilidad
+
+Cuantos más satélites se despliegan, más importante es evitar colisiones y gestionar el final de las misiones. Las empresas necesitan controlar órbitas, compartir información cuando corresponde y diseñar procedimientos de retirada. Una colisión puede generar fragmentos que amenacen a otros satélites, por lo que la seguridad orbital no es un asunto aislado de cada operador.
+
+La astronomía también puede verse afectada por satélites brillantes y por la radiofrecuencia. Mitigar el impacto requiere diálogo entre operadores y comunidad científica, mejoras de diseño y coordinación internacional. A la vez, la regulación debe equilibrar conectividad, innovación comercial y sostenibilidad del entorno espacial. La responsabilidad no termina cuando se lanza un satélite: continúa durante toda su vida y su retirada.
+
 ## Preguntas frecuentes
 
 ### ¿Qué innovación hizo famosa a SpaceX?
