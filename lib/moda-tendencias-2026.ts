@@ -1,4 +1,5 @@
 import type { Article } from './types'
+import { CYBER_MONDAY_MODA_2026 } from './cyber-monday-moda-2026'
 
 export const MODA_TENDENCIAS_ARTICLES: Article[] = [
   {
@@ -312,4 +313,5 @@ El que combine con más prendas de tu armario. Un cinturón neutro o unas bailar
 
 **En resumen:** un accesorio bien elegido puede actualizar un conjunto entero. Empieza por la comodidad y la versatilidad, y deja que la tendencia sea una inspiración.`
   },
+  CYBER_MONDAY_MODA_2026,
 ]
