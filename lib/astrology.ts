@@ -9,11 +9,10 @@ import type { HoroscopeWeek, SignReading } from './horoscopo/core'
 import { HOUSES, solarHouse } from './horoscopo/core'
 import { SEMANA_2026_10_08 } from './horoscopo/semana-2026-10-08'
 import { SEMANA_2026_10_15 } from './horoscopo/semana-2026-10-15'
-import { SEMANA_2026_10_22 } from './horoscopo/semana-2026-10-22'
-import { SEMANA_2026_10_29 } from './horoscopo/semana-2026-10-29'
+// Las semanas futuras se incorporarán cuando sus doce lecturas estén completas.
 
 /** Todas las semanas publicadas, de la más antigua a la más reciente. */
-export const WEEKS: HoroscopeWeek[] = [SEMANA_2026_10_08, SEMANA_2026_10_15, SEMANA_2026_10_22, SEMANA_2026_10_29].sort((a, b) => a.start.localeCompare(b.start))
+export const WEEKS: HoroscopeWeek[] = [SEMANA_2026_10_08, SEMANA_2026_10_15].sort((a, b) => a.start.localeCompare(b.start))
 
 /** Fecha de hoy en Madrid, en formato YYYY-MM-DD. */
 export function todayInMadrid(now: Date = new Date()): string {
