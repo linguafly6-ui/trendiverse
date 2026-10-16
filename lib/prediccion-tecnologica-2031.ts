@@ -183,8 +183,8 @@ De aquí a 2031, las tecnologías más influyentes serán aquellas que resuelvan
 - [IEEE Computer Society: predicciones tecnológicas para 2026](https://www.computer.org/press-room/2026-tech-predictions)
 - [Comisión Europea: marco regulatorio de inteligencia artificial](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 `,
-    image_url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
-    thumbnail_url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop',
+    image_url: '/images/articles/prediccion-tecnologica-2031.svg',
+    thumbnail_url: '/images/articles/prediccion-tecnologica-2031-thumb.svg',
     read_time_minutes: 11,
     views: 0,
     trending: 1,
