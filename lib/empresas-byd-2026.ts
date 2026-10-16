@@ -51,6 +51,26 @@ La competencia puede ampliar la oferta de eléctricos y presionar los precios. L
 
 Persisten desafíos: suministro de minerales, reciclaje, competencia, estándares de carga y cambios en ayudas públicas. Una batería más barata ayuda a reducir el precio, pero no resuelve por sí sola la disponibilidad de cargadores ni la confianza del comprador. La transición requiere infraestructura y soporte durante años.
 
+## Cómo comparar la batería más allá del nombre comercial
+
+La química es solo una de las variables que determinan la experiencia. La capacidad útil, el peso del vehículo, la eficiencia del motor, la gestión térmica y el software influyen en la autonomía y en la degradación. Dos coches con una batería de capacidad parecida pueden recorrer distancias distintas si uno consume menos energía por kilómetro. Por eso conviene consultar pruebas de consumo real y no deducir la autonomía únicamente a partir de los kilovatios-hora.
+
+La garantía merece una lectura cuidadosa. Hay que comprobar los años y kilometraje cubiertos, el umbral de capacidad que se considera aceptable, las exclusiones y los requisitos de mantenimiento. También conviene preguntar por el procedimiento en caso de avería, la disponibilidad de módulos o paquetes de sustitución y el tiempo de reparación. Estos factores afectan al coste total y a la confianza en la tecnología durante toda la vida del vehículo.
+
+El reciclaje será cada vez más importante a medida que aumente el parque eléctrico. Recuperar materiales puede reducir la necesidad de extraer nuevos recursos, pero el resultado depende de la química, la logística de recogida, el diseño de la batería y la capacidad de las plantas de reciclaje. Un sistema circular requiere trazabilidad, normas claras y procesos industriales rentables; no basta con que una batería sea técnicamente reciclable.
+
+## Qué papel juega el software del vehículo
+
+La tecnología de un coche moderno incluye actualizaciones, gestión energética, navegación y funciones de asistencia. El software puede mejorar la experiencia, pero también puede cambiar el comportamiento de ciertas funciones después de la compra. El fabricante debe explicar las actualizaciones relevantes, mantener la compatibilidad y comunicar los cambios que afecten a la seguridad. El usuario debería conocer qué funciones están activas y cuáles dependen de suscripción o conectividad.
+
+En los sistemas de conducción asistida, el número de sensores o la potencia de un chip no garantizan un resultado seguro. Importan los datos de entrenamiento, la validación, el comportamiento ante situaciones inusuales y el cumplimiento de las normas locales. Las pruebas deben cubrir lluvia, obras, peatones, cruces y cambios inesperados en la carretera. Una función útil en autopista puede no ser apropiada para todas las calles urbanas.
+
+## El mercado eléctrico en los próximos años
+
+La competencia entre fabricantes puede acelerar mejoras y ampliar las opciones de precio. BYD debe competir no solo con otros vehículos eléctricos, sino también con híbridos, modelos de combustión eficientes y alternativas de transporte. La adopción dependerá de la infraestructura de carga, el precio de la electricidad, la financiación, la disponibilidad de talleres y la confianza en el valor de reventa.
+
+Para el comprador español, conviene comparar el precio final con ayudas vigentes, financiación y costes de uso, sin asumir que un incentivo estará disponible durante toda la vida del vehículo. También es importante confirmar la garantía ofrecida en el mercado local, el calendario de mantenimiento y la red de servicio. Una innovación tecnológica se convierte en una ventaja cotidiana cuando se combina con un producto fiable y un soporte accesible.
+
 ## Preguntas frecuentes
 
 ### ¿Qué es la Blade Battery?
