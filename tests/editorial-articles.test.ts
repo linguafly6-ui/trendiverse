@@ -44,6 +44,7 @@ const EXPECTED_SLUGS = [
   'barcelona-polaris-resonancia-cuantica-q-aid-2026',
   'espana-102-millones-equipamiento-cientifico-investigacion-2026',
   'espana-138-millones-ia-tecnologias-limpias-biotecnologia-2026',
+  'prediccion-tecnologica-proximos-5-anos-2026-2031',
   'ossie-taxi-espacial-espanol-uarx-2026',
   'kapsula-kuantikoa-ciencia-cuantica-147-localidades-euskadi',
   'nodo-nacional-datos-cancer-espana-investigacion-2026',
