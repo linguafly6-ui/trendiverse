@@ -4,7 +4,8 @@ INSERT OR IGNORE INTO categories (name, slug, color, icon, description) VALUES
  ('Micro-Herramientas', 'herramientas', '#3B82F6', '🛠️', 'Calculadoras, convertidores y tools útiles'),
  ('Coches & Novedades', 'coches', '#0EA5E9', '🚗', 'Novedades, pruebas y guías del mundo del motor'),
  ('Tecnología & Novedades', 'tecnologia', '#8B5CF6', '💻', 'Últimas novedades y análisis de tecnología'),
- ('Chollos & Descuentos', 'chollos', '#F97316', '🏷️', 'Ofertas y descuentos en línea');
+ ('Chollos & Descuentos', 'chollos', '#F97316', '🏷️', 'Ofertas y descuentos en línea'),
+ ('Hogar', 'hogar', '#0F766E', '🏠', 'Ofertas y guías para muebles, decoración, iluminación, textiles y tecnología del hogar');
 
 INSERT OR IGNORE INTO tools (title, slug, description, type, config) VALUES
  ('Calculadora de porcentajes', 'porcentajes', 'Calcula porcentajes rápidamente', 'percentage', '{}'),
