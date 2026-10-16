@@ -7,13 +7,13 @@ test('article image endpoint returns cached, article-specific SVG with safe acce
   const response = await GET(request)
   const svg = await response.text()
   assert.equal(response.status, 200)
-  assert.match(response.headers.get('content-type') ?? '', /image\/svg\+xml/)
-  assert.match(response.headers.get('cache-control') ?? '', /s-maxage=604800/)
-  assert.match(svg, /<title id="title">Colores para pintar la casa<\/title>/)
-  assert.match(svg, /Ilustración editorial original de TrendiVerse/)
-  assert.match(svg, /HOGAR/)
-  assert.match(svg, /<svg[^>]+width="1200"[^>]+height="630"/)
-  assert.doesNotMatch(svg, /<script|javascript:/i)
+  assert.ok((response.headers.get('content-type') ?? '').includes('image/svg+xml'))
+  assert.ok((response.headers.get('cache-control') ?? '').includes('s-maxage=604800'))
+  assert.ok(svg.includes('<title id="title">Colores para pintar la casa</title>'))
+  assert.ok(svg.includes('Ilustración editorial original de TrendiVerse'))
+  assert.ok(svg.includes('HOGAR'))
+  assert.ok(svg.includes('width="1200"') && svg.includes('height="630"'))
+  assert.ok(!svg.toLowerCase().includes('<script') && !svg.toLowerCase().includes('javascript:'))
 })
 
 test('article image endpoint escapes untrusted title and uses fallback palette for unknown categories', async () => {
@@ -21,11 +21,10 @@ test('article image endpoint escapes untrusted title and uses fallback palette f
   const response = await GET(request)
   const svg = await response.text()
   assert.equal(response.status, 200)
-  assert.match(svg, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/)
-  assert.doesNotMatch(svg, /<script>/i)
-  assert.match(svg, /TRENDIVERSE · UNKNOWN/)
+  assert.ok(svg.includes('&lt;script&gt;alert(1)&lt;/script&gt;'))
+  assert.ok(!svg.includes('<script>'))
+  assert.ok(svg.includes('TRENDIVERSE · UNKNOWN'))
 })
-
 
 test('article image helper prefers a stored HTTPS article image over the generic fallback', async () => {
   const { articleImageUrl } = await import('../lib/article-images')
@@ -39,14 +38,38 @@ test('article image helper prefers a stored HTTPS article image over the generic
   assert.equal(url, 'https://cdn.example.org/product.jpg')
 })
 
-test('article image helper falls back for non-HTTPS and missing assets', async () => {
+test('article image helper prefers a local public image asset', async () => {
+  const { articleImageUrl } = await import('../lib/article-images')
+  const url = articleImageUrl({
+    slug: 'bateria-philips',
+    title: 'Batería Philips',
+    category: 'chollos',
+    image_url: '/images/articles/bateria-externa-philips-action.svg',
+    thumbnail_url: '/images/articles/bateria-externa-philips-action-thumb.svg',
+  })
+  assert.equal(url, '/images/articles/bateria-externa-philips-action.svg')
+})
+
+test('article image helper uses a local thumbnail if the main image is unavailable', async () => {
+  const { articleImageUrl } = await import('../lib/article-images')
+  const url = articleImageUrl({
+    slug: 'bateria-philips',
+    title: 'Batería Philips',
+    category: 'chollos',
+    image_url: null,
+    thumbnail_url: '/images/articles/bateria-externa-philips-action-thumb.svg',
+  })
+  assert.equal(url, '/images/articles/bateria-externa-philips-action-thumb.svg')
+})
+
+test('article image helper rejects non-HTTPS external URLs and unsafe local paths', async () => {
   const { articleImageUrl } = await import('../lib/article-images')
   const url = articleImageUrl({
     slug: 'decoracion-casa',
     title: 'Decoración de casa',
     category: 'hogar',
     image_url: 'http://example.org/image.jpg',
-    thumbnail_url: null,
+    thumbnail_url: '/../private/image.svg',
   })
-  assert.match(url, /^\/api\/article-image\?/)
+  assert.ok(url.startsWith('/api/article-image?'))
 })
