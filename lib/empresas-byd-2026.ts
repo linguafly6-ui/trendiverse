@@ -5,6 +5,17 @@ export const BYD_INNOVACION_ARTICLE: Article = {
  image_url:'/images/articles/empresas-que-transforman.svg',thumbnail_url:'/images/articles/empresas-que-transforman.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:15:00.000Z',
  content:`# BYD: innovación tecnológica en baterías y coches eléctricos
 
+## Respuesta rápida: ¿qué aporta BYD a la innovación eléctrica?
+
+BYD integra baterías, componentes electrónicos y fabricación de vehículos eléctricos e híbridos enchufables. Su batería Blade utiliza química de litio-ferrofosfato (LFP), valorada por su estabilidad térmica y potencial de coste competitivo, aunque suele tener menor densidad energética que algunas químicas ricas en níquel. La ventaja real depende del vehículo completo, la eficiencia, la carga, la garantía y el servicio posventa.
+
+**Datos clave**
+- **Blade Battery:** diseño de celdas alargadas y química LFP; la seguridad debe evaluarse con pruebas y contexto.
+- **Integración industrial:** coordinar baterías y vehículos puede ayudar a controlar costes y diseño.
+- **Gama:** eléctricos puros e híbridos enchufables para patrones de uso distintos.
+- **Conducción asistida:** las funciones dependen del modelo, software y regulación local.
+- **Qué comparar:** autonomía real, curva de carga, garantía, consumo y coste total.
+
 BYD ha pasado de ser conocida por las baterías a convertirse en un actor importante del vehículo electrificado. Su estrategia combina acumuladores, motores eléctricos, electrónica de potencia, componentes y vehículos completos. Esa integración industrial ayuda a explicar cómo puede competir en distintos segmentos, aunque el resultado para cada comprador depende del modelo, la garantía y el servicio posventa.
 
 ## Blade Battery y química LFP
@@ -71,7 +82,28 @@ La competencia entre fabricantes puede acelerar mejoras y ampliar las opciones d
 
 Para el comprador español, conviene comparar el precio final con ayudas vigentes, financiación y costes de uso, sin asumir que un incentivo estará disponible durante toda la vida del vehículo. También es importante confirmar la garantía ofrecida en el mercado local, el calendario de mantenimiento y la red de servicio. Una innovación tecnológica se convierte en una ventaja cotidiana cuando se combina con un producto fiable y un soporte accesible.
 
+## Cómo comparar una batería para uso diario
+
+La química es solo una variable. La capacidad útil, el peso, la eficiencia del motor, la gestión térmica y el software influyen en la autonomía y la degradación. Dos vehículos con baterías de capacidad similar pueden recorrer distancias distintas si consumen diferente energía por kilómetro. Conviene consultar pruebas independientes y no deducir la autonomía únicamente a partir de los kilovatios-hora anunciados.
+
+La garantía merece una lectura cuidadosa: años y kilometraje cubiertos, umbral de capacidad, exclusiones y requisitos de mantenimiento. También importa la disponibilidad de piezas y el tiempo estimado de reparación. La recarga debe analizarse según el uso: si se depende de cargadores públicos, ubicación, disponibilidad y curva de carga cobran más importancia que la potencia máxima anunciada.
+
+## Software, reciclaje y coste total
+
+Los vehículos modernos dependen de software para gestión energética, navegación, conectividad y asistencia. El comprador debe confirmar qué prestaciones están disponibles en su versión y país, y si dependen de conectividad o suscripción. Más sensores o potencia de cálculo no garantizan seguridad: importan la validación y el comportamiento ante lluvia, obras, cruces y peatones.
+
+El impacto de un vehículo eléctrico debe analizarse durante todo su ciclo de vida: fabricación, electricidad, mantenimiento, duración y reciclaje. Para comparar modelos, suma precio final, financiación, seguro, energía, neumáticos, mantenimiento, depreciación y garantía. Confirma también la red de talleres y disponibilidad de recambios en el mercado local.
+
 ## Preguntas frecuentes
+
+### ¿Qué es la Blade Battery de BYD?
+Es una batería basada en química LFP y un diseño de celdas alargadas, desarrollado para combinar aprovechamiento del espacio, seguridad y coste competitivo.
+
+### ¿Las baterías LFP son mejores que todas las demás?
+No. Pueden tener ventajas de coste y estabilidad, pero menor densidad energética que algunas químicas ricas en níquel. Depende del diseño y del uso.
+
+### ¿Qué conviene revisar antes de comprar un BYD eléctrico?
+Autonomía real, curva de carga, garantía, consumo, servicio posventa y coste total de propiedad.
 
 ### ¿Qué es la Blade Battery?
 Una batería de BYD basada en química LFP y en un diseño de celdas alargadas. Busca combinar seguridad, aprovechamiento del espacio y coste competitivo; el resultado depende del paquete y del vehículo.
@@ -85,6 +117,10 @@ No debe asumirse. Las funciones dependen del modelo, software y normativa. Hay q
 ### ¿Qué comparar antes de comprar un BYD eléctrico?
 Autonomía real, curva de carga, garantía, consumo, precio total, equipamiento, servicio posventa y recarga disponible en tus rutas.
 
-### Fuentes
+### Fuentes primarias y verificación
+- BYD, información oficial sobre vehículos y tecnología: https://www.byd.com/
+- Contrasta autonomía, consumo y seguridad con la ficha de la versión concreta, pruebas independientes y garantía local.
+
+### Lecturas complementarias
 BYD España, anuncio sobre God Eye y XUANJI A3, junio de 2026: https://www.byd.com/es-es/news-list/byd-desvela-conduccion-asistida-god-eye . Contrasta los datos con la ficha de cada modelo y pruebas independientes.`
 }
