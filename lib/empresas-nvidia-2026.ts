@@ -135,9 +135,7 @@ No. Algunas tareas funcionan con modelos pequeños o procesamiento local. La mej
 - Para comparar rendimiento, consulta pruebas independientes que publiquen modelo, precisión, configuración, consumo y metodología. Las cifras de producto citadas por el fabricante deben identificarse como tales.
 
 ### Lecturas y recursos complementarios
-NVIDIA, anuncio oficial de Blackwell (18 de marzo de 2024): https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Blackwell-Platform-Arrives-to-Power-a-New-Era-of-Computing/. Contrasta las cifras del fabricante con pruebas independientes que expliquen su metodología.`
-}
-
+NVIDIA, anuncio oficial de Blackwell (18 de marzo de 2024): https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Blackwell-Platform-Arrives-to-Power-a-New-Era-of-Computing/. Contrasta las cifras del fabricante con pruebas independientes que expliquen su metodología.
 
 ## Sigue explorando: empresas que transforman
 
@@ -146,4 +144,5 @@ Continúa con otros análisis de innovación tecnológica relacionados:
 - [Microsoft: IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica)
 - [Tesla: conducción asistida y robótica](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus)
 - [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos)
-- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)
+- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)`
+}
