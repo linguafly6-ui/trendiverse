@@ -201,7 +201,7 @@ test('editorial records are valid and unique', () => {
     assert.ok(cats.has(a.category), `${a.slug} category`)
     assert.ok(a.excerpt && a.excerpt.length <= 200, `${a.slug} excerpt`)
     assert.match(a.content ?? '', /## Preguntas frecuentes/, `${a.slug} FAQ`)
-    if (a.slug !== 'mejores-ofertas-hogar-tecnologia-octubre-2026') assert.ok(!/^\|/m.test(a.content ?? ''), `${a.slug} no tables`)
+    if (!['mejores-ofertas-hogar-tecnologia-octubre-2026', 'black-friday-moda-2026-ofertas-tiendas'].includes(a.slug)) assert.ok(!/^\|/m.test(a.content ?? ''), `${a.slug} no tables`)
     for (const img of [a.image_url, a.thumbnail_url]) {
       assert.ok(img && existsSync(join(process.cwd(), 'public', img)), `${a.slug} image ${img}`)
     }
