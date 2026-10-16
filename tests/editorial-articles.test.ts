@@ -7,6 +7,7 @@ import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
 import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
+import { HOGAR_TENDENCIAS_ARTICLES } from '../lib/hogar-articulo-801'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
@@ -343,4 +344,30 @@ test('fashion category has five substantive, discoverable articles', async () =>
   const categoryArticles = await getArticles({ category: 'moda', limit: 10 })
   assert.equal(categoryArticles.length, 5)
   assert.ok(MODA_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
+})
+
+
+test('Hogar & Decoración category has five substantive, discoverable articles', async () => {
+  assert.equal(HOGAR_TENDENCIAS_ARTICLES.length, 5)
+  assert.equal(new Set(HOGAR_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 5)
+  assert.equal(new Set(HOGAR_TENDENCIAS_ARTICLES.map((a) => a.slug)).size, 5)
+  assert.ok(new Set(CATEGORIES.map((c) => c.slug)).has('hogar'))
+  for (const article of HOGAR_TENDENCIAS_ARTICLES) {
+    assert.equal(article.category, 'hogar')
+    assert.ok(article.excerpt && article.excerpt.length <= 200, article.slug + ' excerpt')
+    assert.match(article.content ?? '', /## Preguntas frecuentes/, article.slug + ' FAQ')
+    assert.ok((article.content ?? '').length > 2500, article.slug + ' substantive content')
+    for (const img of [article.image_url, article.thumbnail_url]) {
+      assert.ok(img && existsSync(join(process.cwd(), 'public', img)), article.slug + ' image ' + img)
+    }
+  }
+  setEnvResolverForTests(() => ({}))
+  const categoryArticles = await getArticles({ category: 'hogar', limit: 10 })
+  assert.equal(categoryArticles.length, 5)
+  assert.ok(HOGAR_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
+  for (const article of HOGAR_TENDENCIAS_ARTICLES) {
+    assert.equal((await getArticleBySlug(article.slug))?.slug, article.slug)
+  }
+  const sitemapSlugs = (await getAllArticleSlugs()).map((a) => a.slug)
+  assert.ok(HOGAR_TENDENCIAS_ARTICLES.every((a) => sitemapSlugs.includes(a.slug)))
 })
