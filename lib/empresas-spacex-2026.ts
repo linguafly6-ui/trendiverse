@@ -2,7 +2,7 @@ import type { Article } from './types'
 export const SPACEX_INNOVACION_ARTICLE: Article = {
  id:44,title:'SpaceX: innovación tecnológica con cohetes reutilizables y Starlink',slug:'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',category:'empresas-que-transforman',
  excerpt:'Cómo SpaceX combina cohetes reutilizables, Starship y Starlink para cambiar el acceso al espacio y ampliar la conectividad, con retos aún abiertos.',
- image_url:'/images/articles/empresas-spacex.svg',thumbnail_url:'/images/articles/empresas-spacex-thumb.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:20:00.000Z',
+ image_url:'/images/articles/empresas-que-transforman.svg',thumbnail_url:'/images/articles/empresas-que-transforman.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:20:00.000Z',
  content:`# SpaceX: innovación tecnológica con cohetes reutilizables y Starlink
 
 SpaceX ha cambiado la conversación sobre el acceso al espacio al convertir la reutilización de cohetes en una parte central de su estrategia. La empresa combina lanzadores, motores, operaciones de lanzamiento y una red de satélites de comunicaciones. Su objetivo es reducir costes y aumentar la frecuencia de vuelo. Esa estrategia puede transformar servicios comerciales y programas científicos, aunque no elimina desafíos técnicos, económicos ni medioambientales.
