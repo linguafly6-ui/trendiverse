@@ -11,7 +11,7 @@ export const CYBER_MONDAY_MODA_2026: Article = {
   read_time_minutes: 15,
   views: 0,
   trending: 0,
-  published_at: '2026-10-16T16:25:00.000Z',
+  published_at: '2026-10-16T19:00:00.000Z',
   content: `# Cyber Monday 2026 en moda: ofertas de ropa, tiendas y descuentos online
 
 **Actualizado el 16 de octubre de 2026.** El Cyber Monday 2026 se celebra el lunes **30 de noviembre**, después del Black Friday del viernes 27. Para quienes buscan ofertas de Cyber Monday en moda, la fecha sirve para comparar ropa, calzado, bolsos y accesorios desde las tiendas online sin asumir que todos los comercios aplicarán los mismos descuentos. A día de hoy, Desigual ya tiene una página oficial dedicada al Cyber Monday 2026 que indica la fecha y explica que su campaña está planteada para un solo día. Otras marcas mantienen páginas de campañas anteriores o secciones de precios especiales, pero eso no equivale a confirmar sus condiciones para 2026.
