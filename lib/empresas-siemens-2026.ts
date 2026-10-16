@@ -8,7 +8,7 @@ export const SIEMENS_INNOVACION_ARTICLE: Article = {
   excerpt: "Cómo Siemens conecta automatización, software industrial, gemelos digitales e IA para diseñar fábricas más eficientes sin ignorar los retos de integración y ciberseguridad.",
   image_url: '/images/articles/empresas-que-transforman.svg',
   thumbnail_url: '/images/articles/empresas-que-transforman.svg',
-  read_time_minutes: 9, views: 0, trending: 0, published_at: '2020-01-01T09:00:00.000Z',
+  read_time_minutes: 9, views: 0, trending: 0, published_at: '2026-10-14T09:00:00.000Z',
   content: `# Siemens: inteligencia artificial y gemelos digitales para transformar la industria
 
 ## Respuesta rápida
