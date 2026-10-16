@@ -107,6 +107,11 @@ const EXPECTED_SLUGS = [
   'sevilla-osasuna-laliga-jornada-10-2026',
   'conciertos-espana-agenda-2026-2027',
   'como-leemos-el-horoscopo-astrologia-tropical',
+  'nvidia-innovacion-tecnologica-chips-inteligencia-artificial',
+  'microsoft-innovacion-tecnologica-ia-computacion-cuantica',
+  'tesla-innovacion-tecnologica-conduccion-robotica-optimus',
+  'byd-innovacion-tecnologica-baterias-coches-electricos',
+  'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',
 
 ]
 
