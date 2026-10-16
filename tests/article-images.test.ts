@@ -25,3 +25,28 @@ test('article image endpoint escapes untrusted title and uses fallback palette f
   assert.doesNotMatch(svg, /<script>/i)
   assert.match(svg, /TRENDIVERSE · UNKNOWN/)
 })
+
+
+test('article image helper prefers a stored HTTPS article image over the generic fallback', async () => {
+  const { articleImageUrl } = await import('../lib/article-images')
+  const url = articleImageUrl({
+    slug: 'official-product-guide',
+    title: 'Guía de producto',
+    category: 'tecnologia',
+    image_url: 'https://cdn.example.org/product.jpg',
+    thumbnail_url: null,
+  })
+  assert.equal(url, 'https://cdn.example.org/product.jpg')
+})
+
+test('article image helper falls back for non-HTTPS and missing assets', async () => {
+  const { articleImageUrl } = await import('../lib/article-images')
+  const url = articleImageUrl({
+    slug: 'decoracion-casa',
+    title: 'Decoración de casa',
+    category: 'hogar',
+    image_url: 'http://example.org/image.jpg',
+    thumbnail_url: null,
+  })
+  assert.match(url, /^\/api\/article-image\?/)
+})
