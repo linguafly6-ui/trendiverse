@@ -15,6 +15,7 @@ import { AUTOMOTIVE_GUIDES_2026 } from './automotive-guides-2026'
 import { CONCIERTOS_AGENDA_2026 } from './conciertos-agenda-2026'
 import { PREDICCION_TECNOLOGICA_2031_ARTICLES } from './prediccion-tecnologica-2031'
 import { OFERTAS_HOGAR_OCTUBRE_2026 } from './ofertas-hogar-octubre-2026'
+import { BLACK_FRIDAY_MODA_2026 } from './black-friday-moda-2026'
 
 // Canonical editorial articles bundled with the app. lib/db.ts merges these with D1 rows by slug,
 // so they are served in production regardless of D1 contents (no remote DB writes needed).
@@ -581,4 +582,5 @@ export const EDITORIAL_ARTICLES: Article[] = [
   CONCIERTOS_AGENDA_2026,
   ...PREDICCION_TECNOLOGICA_2031_ARTICLES,
   OFERTAS_HOGAR_OCTUBRE_2026,
+  BLACK_FRIDAY_MODA_2026,
 ]
