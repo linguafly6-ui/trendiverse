@@ -7,6 +7,7 @@ import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
 import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
+import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
@@ -123,6 +124,11 @@ const EXPECTED_SLUGS = [
   'tejido-jacquard-texturas-tendencia-moda-otono-2026',
   'sastreria-hombros-marcados-tendencia-moda-2026',
   'accesorios-tendencia-cinturones-bailarinas-otono-2026',
+  'tendencias-gaming-2026-videojuegos-espana',
+  'inteligencia-artificial-videojuegos-npc-2026',
+  'cloud-gaming-espana-requisitos-ventajas-2026',
+  'worlds-2026-league-of-legends-fechas-espana',
+  'juegos-creados-usuarios-roblox-fortnite-mods-2026',
 
 ]
 
@@ -185,7 +191,7 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES].map((a) => a.slug)
+  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), [...EXPECTED_SLUGS].sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
@@ -219,7 +225,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'sevilla-osasuna-laliga-jornada-10-2026')
+  assert.equal(slugs[0], 'juegos-creados-usuarios-roblox-fortnite-mods-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -343,4 +349,26 @@ test('fashion category has five substantive, discoverable articles', async () =>
   const categoryArticles = await getArticles({ category: 'moda', limit: 10 })
   assert.equal(categoryArticles.length, 5)
   assert.ok(MODA_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
+})
+
+
+test('gaming trends category has five substantive, SEO/GEO-ready articles', async () => {
+  assert.equal(GAMING_TENDENCIAS_ARTICLES.length, 5)
+  assert.equal(new Set(GAMING_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 5)
+  const categories = new Set(CATEGORIES.map((c) => c.slug))
+  assert.ok(categories.has('gaming'))
+  for (const article of GAMING_TENDENCIAS_ARTICLES) {
+    assert.equal(article.category, 'gaming')
+    assert.ok(article.excerpt && article.excerpt.length <= 200, article.slug + ' excerpt')
+    assert.match(article.content ?? '', /## Preguntas frecuentes/, article.slug + ' FAQ')
+    assert.ok((article.content ?? '').length > 2500, article.slug + ' substantive content')
+    assert.match(article.content ?? '', /## Fuentes/, article.slug + ' sources')
+    for (const img of [article.image_url, article.thumbnail_url]) {
+      assert.ok(img && existsSync(join(process.cwd(), 'public', img)), article.slug + ' image ' + img)
+    }
+  }
+  setEnvResolverForTests(() => ({}))
+  const categoryArticles = await getArticles({ category: 'gaming', limit: 10 })
+  assert.equal(categoryArticles.length, 5)
+  assert.ok(GAMING_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })
