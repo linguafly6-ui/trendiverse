@@ -50,6 +50,22 @@ La estrategia de Microsoft enseña que la innovación requiere combinar investig
 
 Una pequeña empresa normalmente no necesita construir su propio modelo ni comprar infraestructura especializada. Puede empezar con una herramienta comercial, seleccionar un caso de uso, medir resultados y comparar costes, calidad y dependencia del proveedor. En el corto plazo, la innovación más tangible de Microsoft está en la nube, el software y la IA empresarial; la computación cuántica es una apuesta de investigación con potencial, pero todavía con retos sustanciales.
 
+## Cómo desplegar IA empresarial sin perder el control
+
+Una implantación responsable empieza con un inventario de datos y permisos. Antes de conectar un asistente a documentos internos, la empresa debe saber qué información es pública, confidencial o regulada, quién puede consultarla y qué sistemas la contienen. Los permisos del asistente deberían respetar los permisos existentes, y los registros deben permitir revisar qué información se utilizó cuando una respuesta resulta problemática.
+
+Después conviene elegir un caso de uso acotado y reversible. La generación de un primer borrador, la clasificación de solicitudes o el resumen de documentos puede ser más fácil de evaluar que una decisión automática sobre una persona. El piloto debe contar con un conjunto de ejemplos representativos, una métrica de calidad y una forma clara de escalar los errores. Si no es posible determinar si una respuesta es correcta, la tarea quizá no esté preparada para automatizarse.
+
+También importa el coste de operar el sistema. Las llamadas a modelos, el almacenamiento, la integración, la supervisión y la revisión humana tienen un coste. Una prueba que funciona con diez usuarios puede comportarse de forma distinta cuando la utilizan miles. La organización debería vigilar latencia, disponibilidad, gasto, errores y cambios en el comportamiento del modelo. Un producto de IA necesita mantenimiento continuo, igual que cualquier sistema crítico.
+
+## Qué tendría que demostrar la computación cuántica
+
+Para que una arquitectura cuántica pase de promesa científica a herramienta práctica, debe demostrar más que un chip novedoso. Importan el número de qubits útiles, la fidelidad de las operaciones, la estabilidad, la capacidad de corrección de errores y el rendimiento en un problema concreto. Una máquina con muchos qubits ruidosos no es necesariamente más útil que otra más pequeña y controlable.
+
+La comparación correcta debe enfrentar el sistema cuántico con los mejores métodos clásicos disponibles, utilizando el mismo problema, los mismos criterios de éxito y una estimación honesta del coste total. También hay que distinguir una ventaja teórica de una ventaja que pueda medirse en un entorno de producción. En algunos casos, los sistemas híbridos podrían combinar recursos clásicos y cuánticos, pero su utilidad dependerá de que el componente cuántico aporte una mejora concreta.
+
+Mientras madura esta tecnología, las organizaciones pueden prepararse sin comprar hardware experimental: identificar sistemas criptográficos sensibles, conocer la vida útil de los datos protegidos y seguir los estándares de criptografía poscuántica. Es una forma pragmática de anticipar cambios sin tratar una fecha incierta como una amenaza inmediata ni asumir que todas las aplicaciones necesitarán un ordenador cuántico.
+
 ## Preguntas frecuentes
 
 ### ¿Cuál es la principal innovación reciente de Microsoft?
