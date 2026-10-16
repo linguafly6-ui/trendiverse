@@ -334,9 +334,9 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
 })
 
 
-test('fashion category has five substantive, discoverable articles', async () => {
-  assert.equal(MODA_TENDENCIAS_ARTICLES.length, 7)
-  assert.equal(new Set(MODA_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 7)
+test('fashion category has six substantive, discoverable articles', async () => {
+  assert.equal(MODA_TENDENCIAS_ARTICLES.length, 6)
+  assert.equal(new Set(MODA_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 6)
   const categories = new Set(CATEGORIES.map((c) => c.slug))
   assert.ok(categories.has('moda'))
   for (const article of MODA_TENDENCIAS_ARTICLES) {
