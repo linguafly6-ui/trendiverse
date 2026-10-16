@@ -114,6 +114,36 @@ export default function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
               </ul>
             )
           }
+          if (b.type === 'table') {
+            return (
+              <div key={i} className="my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[640px] border-collapse text-left text-sm leading-relaxed">
+                    <thead className="bg-violet-50 text-slate-900 dark:bg-violet-950/50 dark:text-slate-100">
+                      <tr>
+                        {b.headers.map((header, j) => (
+                          <th key={j} scope="col" className="border-b border-slate-200 px-4 py-3 font-bold dark:border-slate-700">
+                            {renderInline(header)}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {b.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50/80 dark:bg-slate-800/60'}>
+                          {b.headers.map((_, colIndex) => (
+                            <td key={colIndex} className="border-b border-slate-100 px-4 py-3 align-top text-slate-700 last:border-r-0 dark:border-slate-800 dark:text-slate-300">
+                              {renderInline(row[colIndex] ?? '')}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )
+          }
           if (b.type === 'quote') {
             return (
               <blockquote
