@@ -2,13 +2,10 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 # Serialize CI and deployment so only one build runs at a time.
 concurrency:
-  group: trendiverse-build-${{ github.ref }}
+  group: trendiverse-ci-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
