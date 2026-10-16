@@ -3,7 +3,7 @@ import type { Article } from './types'
 export const MICROSOFT_INNOVACION_ARTICLE: Article = {
  id:41,title:'Microsoft: la innovación tecnológica entre la IA y la computación cuántica',slug:'microsoft-innovacion-tecnologica-ia-computacion-cuantica',category:'empresas-que-transforman',
  excerpt:'De Azure y los centros de datos de IA a Majorana 1: qué avances de Microsoft pueden transformar la informática y qué queda por demostrar.',
- image_url:'/images/articles/empresas-microsoft.svg',thumbnail_url:'/images/articles/empresas-microsoft-thumb.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:05:00.000Z',
+ image_url:'/images/articles/empresas-que-transforman.svg',thumbnail_url:'/images/articles/empresas-que-transforman.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:05:00.000Z',
  content:`# Microsoft: la innovación tecnológica entre la inteligencia artificial y la computación cuántica
 
 Microsoft ha pasado del software para ordenadores personales a combinar herramientas de productividad, servicios en la nube, ciberseguridad e investigación avanzada. Su estrategia permite observar cómo una gran empresa convierte capacidad informática y descubrimientos científicos en productos usados por millones de personas. Dos líneas representan esa evolución: la infraestructura para la inteligencia artificial y la investigación en computación cuántica. Son campos diferentes y con grados de madurez distintos.
