@@ -301,7 +301,7 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
   ]
   assert.deepEqual(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.slug).sort(), expected.sort())
   assert.equal(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.length, 10)
-  assert.equal(new Set(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.id)).size, 5)
+  assert.equal(new Set(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.id)).size, 10)
   const categories = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EMPRESAS_QUE_TRANSFORMAN_ARTICLES) {
     assert.ok(categories.has(a.category), a.slug + ' category')
