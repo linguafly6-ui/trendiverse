@@ -8,7 +8,7 @@ export const ASML_INNOVACION_ARTICLE: Article = {
   excerpt: "Cómo ASML utiliza litografía ultravioleta extrema para fabricar semiconductores avanzados y por qué la física, los costes y la cadena de suministro marcan sus límites.",
   image_url: '/images/articles/empresas-que-transforman.svg',
   thumbnail_url: '/images/articles/empresas-que-transforman.svg',
-  read_time_minutes: 9, views: 0, trending: 0, published_at: '2020-01-01T09:00:00.000Z',
+  read_time_minutes: 9, views: 0, trending: 0, published_at: '2026-10-14T09:00:00.000Z',
   content: `# ASML: la litografía que hace posibles los chips más avanzados
 
 ## Respuesta rápida
