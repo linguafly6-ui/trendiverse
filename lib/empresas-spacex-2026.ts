@@ -127,8 +127,7 @@ No. Puede reducir materiales por misión, pero fabricación, lanzamientos y acti
 - Distingue objetivos anunciados, pruebas realizadas y capacidades comerciales repetibles.
 
 ### Lecturas complementarias
-Información oficial y novedades técnicas: https://www.spacex.com/ . Para valorar conectividad, compara cobertura local, condiciones del servicio, permisos regulatorios y alternativas terrestres.`
-}
+Información oficial y novedades técnicas: https://www.spacex.com/ . Para valorar conectividad, compara cobertura local, condiciones del servicio, permisos regulatorios y alternativas terrestres.
 
 ## Sigue explorando: empresas que transforman
 
@@ -137,4 +136,5 @@ Continúa con otros análisis de innovación tecnológica relacionados:
 - [NVIDIA: innovación en inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial)
 - [Microsoft: IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica)
 - [Tesla: conducción asistida y robótica](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus)
-- [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos)
+- [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos)`
+}
