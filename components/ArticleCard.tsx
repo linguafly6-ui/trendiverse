@@ -24,6 +24,7 @@ export default function ArticleCard({ article }: { article: Article }) {
           width={160}
           height={90}
           sizes="160px"
+          unoptimized
           loading="lazy"
           className="h-[90px] w-[160px] rounded-lg bg-slate-200 object-cover dark:bg-slate-800"
         />
