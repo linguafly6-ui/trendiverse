@@ -51,6 +51,22 @@ El futuro de Tesla dependerá de convertir sus objetivos de autonomía y robóti
 
 La lección de Tesla es la integración de hardware, software y datos. Puede acelerar mejoras, pero requiere actualizaciones cuidadosamente validadas, protección de comunicaciones y claridad sobre capacidades reales. La innovación útil no es prometer que una máquina puede hacerlo todo, sino demostrar que resuelve tareas concretas mejor, con seguridad y a un coste sostenible.
 
+## Cómo valorar la tecnología antes de comprar un vehículo
+
+La ficha técnica es un punto de partida, no una predicción exacta de la experiencia diaria. Un comprador debería probar el coche en los trayectos que realiza con frecuencia y revisar el consumo a velocidades habituales. Si depende de viajes largos, la curva de carga y la distribución de estaciones rápidas pueden ser más importantes que la autonomía homologada. Si aparca en la calle, conviene calcular cuánto dependerá de la carga pública y cuánto tiempo dedicará a buscar un punto disponible.
+
+Las funciones de asistencia también deben evaluarse por utilidad y claridad. El comprador debe saber qué detecta el sistema, en qué condiciones se desactiva y qué responsabilidad conserva la persona al volante. No conviene pagar por una promesa futura como si fuera una capacidad garantizada hoy. La disponibilidad de funciones puede variar según la versión del software, la región y los requisitos legales.
+
+La experiencia después de la compra forma parte de la innovación. Las actualizaciones pueden corregir problemas o mejorar funciones, pero también exigen una política de comunicación clara, pruebas de regresión y un mecanismo para resolver incidencias. Los propietarios deberían saber qué cambia, qué datos se recopilan y cómo reportar un fallo. La conectividad crea oportunidades, pero también hace que la ciberseguridad sea una cuestión de seguridad física.
+
+## La prueba decisiva para los robots humanoides
+
+Para que Optimus tenga valor industrial, debe completar tareas con consistencia durante turnos prolongados, no solo ejecutar una demostración controlada. Una empresa usuaria querrá saber cuántos ciclos realiza sin intervención, cuánto tarda en recuperarse de un error, qué objetos puede manipular y qué ocurre cuando cambian las condiciones. También deberá comprobar si el robot puede detenerse de forma segura cuando entra una persona en su espacio de trabajo.
+
+El coste total incluye más que el precio de compra. Hay que considerar integración con sistemas existentes, estaciones de carga, mantenimiento, repuestos, formación, supervisión y el coste de detener una línea si el robot falla. Un robot especializado puede superar a uno humanoide si una tarea se repite de manera muy uniforme; un sistema flexible puede resultar más interesante cuando el entorno cambia a menudo. La comparación debe basarse en resultados por hora, calidad y seguridad.
+
+La adopción también tendrá consecuencias laborales. La automatización puede reducir exposición a cargas físicas o tareas peligrosas, pero puede transformar puestos y requisitos de formación. Los proyectos más sostenibles incluyen a los trabajadores en el diseño, explican los cambios y ofrecen formación para nuevas funciones. La innovación no debería evaluarse solo por la cantidad de movimientos que automatiza, sino por el resultado del proceso y sus efectos en las personas.
+
 ## Preguntas frecuentes
 
 ### ¿Qué innovación distingue a Tesla?
