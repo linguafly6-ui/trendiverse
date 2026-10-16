@@ -98,7 +98,24 @@ Está demostrado que las GPU se utilizan ampliamente en IA y computación cient�
 
 Siguen abiertos el coste energético de ampliar centros de datos, la velocidad con la que los modelos reducen sus necesidades de cómputo, la competencia de chips personalizados y la rentabilidad de las aplicaciones que consumen esa infraestructura. La evaluación más útil combina pruebas independientes, documentación técnica y datos operativos publicados, en vez de basarse únicamente en demostraciones comerciales.
 
+## Cómo medir el impacto real de NVIDIA
+
+La pregunta práctica no es solo cuántas operaciones realiza un acelerador, sino cuánto cuesta completar correctamente una tarea. En IA generativa pueden medirse el coste por respuesta útil, la latencia, los errores y el tiempo de revisión humana. En visión industrial importan los defectos detectados y las falsas alarmas; en investigación, el tiempo y el coste de completar una simulación.
+
+Para comparar equipos deben mantenerse condiciones equivalentes: modelo, conjunto de datos, precisión numérica, longitud de entrada, tamaño de lote y criterio de calidad. El coste total incluye hardware o alquiler, electricidad, refrigeración, redes, almacenamiento, personal y renovación. Una infraestructura propia puede tener sentido con utilización estable; la nube puede ser más flexible si la demanda cambia. Hay que comprobarlo con un piloto.
+
+CUDA y su ecosistema pueden acelerar el desarrollo, aunque también generan dependencia tecnológica. Antes de invertir, conviene documentar bibliotecas críticas, costes de migración y alternativas compatibles. Siguen abiertos el impacto energético de ampliar centros de datos, la evolución de los modelos hacia menor consumo y la rentabilidad de muchas aplicaciones comerciales.
+
 ## Preguntas frecuentes
+
+### ¿Qué hace NVIDIA para la inteligencia artificial?
+Diseña GPU y plataformas de computación acelerada que se usan para entrenar y ejecutar modelos, junto con software como CUDA.
+
+### ¿Blackwell es un modelo de IA?
+No. Es una arquitectura de computación de NVIDIA diseñada para acelerar cargas de trabajo, incluidas las de IA.
+
+### ¿Las GPU de NVIDIA son siempre la opción más rápida o barata?
+No necesariamente. El resultado depende del modelo, software, memoria, consumo, disponibilidad y coste total.
 
 ### ¿Qué innovación tecnológica impulsó a NVIDIA?
 La combinación de GPU de alto rendimiento, CUDA, redes rápidas y sistemas integrados facilitó el entrenamiento y la ejecución de IA a gran escala.
