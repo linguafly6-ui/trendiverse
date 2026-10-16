@@ -1,3 +1,5 @@
+export const runtime = 'edge'
+
 const PALETTES: Record<string, { bg: string; ink: string; accent: string; accent2: string }> = {
   politica: { bg: '#eef2ff', ink: '#312e81', accent: '#6366f1', accent2: '#c7d2fe' },
   economia: { bg: '#ecfdf5', ink: '#064e3b', accent: '#059669', accent2: '#a7f3d0' },
