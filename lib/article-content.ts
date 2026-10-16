@@ -21,11 +21,11 @@ export function parseArticleContent(content: string | null | undefined): Article
     .flatMap((p): ArticleBlock[] => {
       if (p === '[[charging-map]]') return [{ type: 'charging-map' }]
       // GitHub-flavoured Markdown tables: render as semantic, responsive HTML tables.
-      const tableLines = p.split('\\n').map((line) => line.trim()).filter(Boolean)
+      const tableLines = p.split('\n').map((line) => line.trim()).filter(Boolean)
       const isTableRow = (line: string) => line.startsWith('|') && line.endsWith('|')
-      const isTableSeparator = (line: string) => /^\\|?\\s*:?-{3,}:?\\s*(\\|\\s*:?-{3,}:?\\s*)+\\|?$/.test(line)
+      const isTableSeparator = (line: string) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(line)
       if (tableLines.length >= 2 && isTableRow(tableLines[0]) && isTableSeparator(tableLines[1])) {
-        const cells = (line: string) => line.replace(/^\\|/, '').replace(/\\|$/, '').split('|').map((cell) => cell.trim())
+        const cells = (line: string) => line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim())
         const headers = cells(tableLines[0])
         const rows = tableLines.slice(2).filter(isTableRow).map(cells).map((row) =>
           headers.map((_, index) => row[index] ?? '')
