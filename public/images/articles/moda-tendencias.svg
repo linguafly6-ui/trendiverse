@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Moda y tendencias</title>
+  <desc id="desc">Ilustración editorial abstracta de prendas, color y siluetas de moda</desc>
+  <rect width="1200" height="630" fill="#fce7f3"/>
+  <circle cx="970" cy="120" r="220" fill="#f9a8d4" opacity=".65"/>
+  <circle cx="220" cy="540" r="260" fill="#fbcfe8"/>
+  <path d="M420 150 L520 115 L600 165 L680 115 L780 150 L730 285 L680 260 L700 530 L500 530 L520 260 L470 285 Z" fill="#831843"/>
+  <path d="M520 115 Q560 190 600 165 Q640 190 680 115" fill="none" stroke="#fce7f3" stroke-width="12"/>
+  <path d="M800 235 L880 195 L960 235 L925 315 L905 300 L935 500 L825 500 L855 300 L835 315 Z" fill="#db2777"/>
+  <path d="M250 255 L320 215 L390 255 L370 335 L350 325 L380 505 L260 505 L290 325 L270 335 Z" fill="#f59e0b"/>
+  <text x="70" y="90" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="8" fill="#831843">TRENDIVERSE · ESTILO</text>
+  <text x="70" y="590" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#831843">MODA &amp; TENDENCIAS</text>
+</svg>

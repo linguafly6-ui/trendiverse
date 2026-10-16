@@ -17,6 +17,7 @@ import { FONDOS_BUITRE_2026_ARTICLES } from './fondos-buitre-2026'
 import { ALQUILER_DECRETO_2026_ARTICLES } from './decreto-alquiler-2026'
 import { SEGURIDAD_ELECTRICA_BANO_ARTICLES } from './seguridad-electrica-bano'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from './empresas-que-transforman-2026'
+import { MODA_TENDENCIAS_ARTICLES } from './moda-tendencias-2026'
 
 // Keeps the first record per slug (earlier entries take precedence).
 function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
@@ -24,7 +25,7 @@ function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
   return list.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)))
 }
 
-export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...PREDICCION_TECNOLOGICA_2031_ARTICLES, ...TECNOLOGIA_2026_ARTICLES, ...SEGURIDAD_ELECTRICA_BANO_ARTICLES, ...SEMANA_MUNDIAL_ESPACIO_2026_ARTICLES, ...NOMINA_2027_MEI_ARTICLES, ...FONDOS_BUITRE_2026_ARTICLES, ...ALQUILER_DECRETO_2026_ARTICLES, ...INUNDACIONES_CATALUNA_2026_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
+export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...PREDICCION_TECNOLOGICA_2031_ARTICLES, ...TECNOLOGIA_2026_ARTICLES, ...SEGURIDAD_ELECTRICA_BANO_ARTICLES, ...SEMANA_MUNDIAL_ESPACIO_2026_ARTICLES, ...NOMINA_2027_MEI_ARTICLES, ...FONDOS_BUITRE_2026_ARTICLES, ...ALQUILER_DECRETO_2026_ARTICLES, ...INUNDACIONES_CATALUNA_2026_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
 
 interface Env {
   DB?: D1Database
@@ -85,7 +86,7 @@ function byRecency(x: Article, y: Article): number {
 
 // Bundled editorial records take precedence over D1 rows with the same slug.
 function mergeWithEditorial(rows: Article[]): Article[] {
-  return dedupeBySlug([...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...rows])
+  return dedupeBySlug([...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...rows])
 }
 
 export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
@@ -133,7 +134,7 @@ export async function getTopArticles(limit = 5): Promise<Article[]> {
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const bundled = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES].find((a) => a.slug === slug)
+  const bundled = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES].find((a) => a.slug === slug)
   if (bundled) return bundled
   const { DB } = await getEnv()
   if (!DB) return SAMPLE_ARTICLES.find((a) => a.slug === slug) ?? null
@@ -176,6 +177,7 @@ export async function getAllArticleSlugs(): Promise<{ slug: string; published_at
   return dedupeBySlug([
     ...EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
     ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
+    ...MODA_TENDENCIAS_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
     ...rows,
   ])
 }
