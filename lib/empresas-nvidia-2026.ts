@@ -55,6 +55,22 @@ Antes de comprar infraestructura, una empresa debería definir la tarea, la cali
 
 La lección de NVIDIA es que la innovación puede depender tanto del ecosistema como del producto. Su futuro se medirá por el coste por tarea, la eficiencia energética, la competencia y la capacidad de transformar potencia de cálculo en servicios que resuelvan problemas concretos.
 
+## Cómo evaluar si una inversión en IA merece la pena
+
+Para decidir si una infraestructura basada en GPU aporta valor, una empresa debería empezar por el problema, no por la marca del acelerador. Hay que definir qué resultado se quiere mejorar: reducir el tiempo de revisión de documentos, detectar defectos, acelerar una simulación o atender más consultas. Después se necesita una referencia de partida para comparar el coste y la calidad del proceso actual con el sistema propuesto.
+
+Un piloto útil mide al menos cinco variables: precisión, latencia, coste por resultado, consumo energético y porcentaje de tareas que requieren intervención humana. En una aplicación que genera contenido, por ejemplo, el tiempo de respuesta no basta si el equipo debe corregir cada salida. En visión industrial, una tasa de detección alta puede no servir si los falsos positivos detienen una línea de producción. La métrica debe reflejar el valor real para el negocio.
+
+También conviene estimar la utilización. Un acelerador caro que trabaja pocas horas puede tener un coste por tarea superior al de un servicio en la nube. Por el contrario, una carga estable y predecible puede justificar infraestructura propia si la empresa dispone de personal para operarla. El cálculo debe incluir redes, almacenamiento, refrigeración, soporte, espacio físico y renovación del hardware. Comparar solo el precio de compra con una tarifa por hora ofrece una imagen incompleta.
+
+## El ecosistema como ventaja y como dependencia
+
+La fortaleza de una plataforma de cómputo también puede convertirse en una dependencia. Cuando los equipos utilizan bibliotecas, formatos, herramientas y procesos diseñados para un proveedor, cambiar de arquitectura requiere pruebas y trabajo de ingeniería. Eso no hace que la plataforma sea una mala elección, pero significa que el coste de salida debe formar parte de la decisión.
+
+Las organizaciones pueden reducir el riesgo con diseños portables cuando resulte razonable, separación entre la lógica del producto y el hardware, pruebas con más de un proveedor y documentación de los procesos críticos. La portabilidad total no siempre es realista: las arquitecturas difieren y optimizar para una plataforma puede ofrecer ventajas de rendimiento. Lo importante es decidir conscientemente dónde compensa esa optimización y qué dependencia se acepta.
+
+El mercado de aceleradores también puede cambiar. Los proveedores de nube diseñan chips propios para determinadas cargas, otros fabricantes mejoran sus GPU y los modelos se optimizan para necesitar menos recursos. Por eso una estrategia robusta evita asumir que el rendimiento actual o la escasez de hoy se mantendrán durante toda la vida de una inversión. Las revisiones periódicas permiten adaptar el sistema a las mejoras de software y hardware.
+
 ## Preguntas frecuentes
 
 ### ¿Qué innovación tecnológica impulsó a NVIDIA?
