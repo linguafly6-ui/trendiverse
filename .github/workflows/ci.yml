@@ -6,6 +6,11 @@ on:
     branches:
       - main
 
+# Serialize CI and deployment so only one build runs at a time.
+concurrency:
+  group: trendiverse-build-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
