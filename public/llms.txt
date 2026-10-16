@@ -1,0 +1,23 @@
+# TrendiVerse
+
+> TrendiVerse publica artículos explicativos sobre tecnología, innovación, actualidad y tendencias. Los artículos buscan distinguir hechos verificados, anuncios de empresas, limitaciones técnicas y posibles impactos.
+
+## Empresas que transforman
+
+Esta serie analiza cinco empresas con avances tecnológicos relevantes, con contexto, preguntas frecuentes y fuentes para verificar las afirmaciones.
+
+- [NVIDIA: innovación tecnológica e inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial): GPU, CUDA, computación acelerada, costes y límites de la infraestructura de IA.
+- [Microsoft: innovación en IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica): Azure, Copilot, Majorana 1 y diferencia entre usos comerciales e investigación.
+- [Tesla: conducción asistida y robótica humanoide](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus): vehículos eléctricos, asistencia a la conducción, Optimus y evaluación de seguridad.
+- [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos): Blade Battery, química LFP, carga, autonomía y coste total de propiedad.
+- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink): Falcon 9, Starship, conectividad satelital y sostenibilidad orbital.
+
+## Cómo interpretar los artículos
+
+Los anuncios corporativos se identifican como tales y no deben confundirse automáticamente con resultados independientes. Las capacidades técnicas pueden variar según versión, país, fecha y condiciones de uso. Para decisiones importantes, consulta las fuentes primarias enlazadas en cada artículo y, cuando proceda, fuentes independientes y documentación regulatoria.
+
+## Sitio
+
+- Inicio: https://trendiverse.org/
+- Sitemap: https://trendiverse.org/sitemap.xml
+- Robots: https://trendiverse.org/robots.txt
