@@ -123,8 +123,7 @@ Debe evaluarse el ciclo de vida, la electricidad, la batería, el kilometraje y 
 - Para seguridad vial, consulta el manual del vehículo y la normativa vigente. No interpretes una función de asistencia como autonomía total.
 
 ### Lecturas complementarias
-Tesla España, descripción oficial de IA, redes neuronales y Optimus: https://www.tesla.com/es_es/AI . Consulta el manual del vehículo y la normativa local antes de valorar funciones de asistencia.`
-}
+Tesla España, descripción oficial de IA, redes neuronales y Optimus: https://www.tesla.com/es_es/AI . Consulta el manual del vehículo y la normativa local antes de valorar funciones de asistencia.
 
 ## Sigue explorando: empresas que transforman
 
@@ -133,4 +132,5 @@ Continúa con otros análisis de innovación tecnológica relacionados:
 - [NVIDIA: innovación en inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial)
 - [Microsoft: IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica)
 - [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos)
-- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)
+- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)`
+}
