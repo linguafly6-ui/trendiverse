@@ -7,7 +7,7 @@ on:
 
 # Serialize CI and deployment so only one build runs at a time.
 concurrency:
-  group: trendiverse-build-${{ github.ref }}
+  group: trendiverse-deploy-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
