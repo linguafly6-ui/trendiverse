@@ -112,6 +112,11 @@ const EXPECTED_SLUGS = [
   'tesla-innovacion-tecnologica-conduccion-robotica-optimus',
   'byd-innovacion-tecnologica-baterias-coches-electricos',
   'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',
+  'asml-litografia-ultravioleta-extrema-chips-avanzados',
+  'tsmc-fabricacion-chips-avanzados-ia-semiconductores',
+  'catl-baterias-almacenamiento-energia-sodio-ion',
+  'siemens-ia-industrial-gemelos-digitales-automatizacion',
+  'moderna-arn-mensajero-biotecnologia-vacunas-personalizadas',
 
 ]
 
@@ -288,9 +293,14 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
     'tesla-innovacion-tecnologica-conduccion-robotica-optimus',
     'byd-innovacion-tecnologica-baterias-coches-electricos',
     'spacex-innovacion-tecnologica-cohetes-reutilizables-starlink',
+    'asml-litografia-ultravioleta-extrema-chips-avanzados',
+    'tsmc-fabricacion-chips-avanzados-ia-semiconductores',
+    'catl-baterias-almacenamiento-energia-sodio-ion',
+    'siemens-ia-industrial-gemelos-digitales-automatizacion',
+    'moderna-arn-mensajero-biotecnologia-vacunas-personalizadas',
   ]
   assert.deepEqual(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.slug).sort(), expected.sort())
-  assert.equal(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.length, 5)
+  assert.equal(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.length, 10)
   assert.equal(new Set(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => a.id)).size, 5)
   const categories = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EMPRESAS_QUE_TRANSFORMAN_ARTICLES) {
@@ -304,6 +314,6 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
   }
   setEnvResolverForTests(() => ({}))
   const categoryArticles = await getArticles({ category: 'empresas-que-transforman', limit: 10 })
-  assert.equal(categoryArticles.length, 5)
+  assert.equal(categoryArticles.length, 10)
   assert.ok(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })
