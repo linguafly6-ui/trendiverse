@@ -60,6 +60,10 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
     title: 'Dónde comprar barato online en 2026',
     description: 'Amazon, PcComponentes, AliExpress Plaza, MediaMarkt y El Corte Inglés: dónde ahorrar según la categoría y cómo saber si un descuento es real.',
   },
+  'prediccion-tecnologica-proximos-5-anos-2026-2031': {
+    title: 'Predicción tecnológica: tendencias hasta 2031',
+    description: 'Las 10 tendencias tecnológicas de 2026 a 2031: IA, robots, ciberseguridad, energía, salud digital y qué cambios son realmente probables.',
+  },
   'novedades-tecnologia-2026-tv-moviles-ordenadores': {
     title: 'Novedades tecnológicas 2026 frente a 2025',
     description: 'Televisores, móviles y ordenadores de 2026 comparados con los de 2025, explicado sin tecnicismos: qué mejora de verdad y qué no.',
