@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Hogar y decoración 2026</title>
+  <desc id="desc">Ilustración editorial de una sala acogedora con sofá, lámpara, planta y tonos tierra</desc>
+  <rect width="1200" height="630" fill="#f5efe5"/>
+  <circle cx="1000" cy="120" r="220" fill="#e7d4b5" opacity=".8"/>
+  <rect x="120" y="100" width="960" height="430" rx="18" fill="#fffaf1"/>
+  <rect x="170" y="145" width="250" height="190" rx="8" fill="#d6e2d4"/>
+  <rect x="190" y="165" width="210" height="150" rx="4" fill="#f5efe5"/>
+  <path d="M295 165V315M190 240H400" stroke="#c4d3c0" stroke-width="8"/>
+  <rect x="520" y="270" width="390" height="150" rx="30" fill="#b77952"/>
+  <rect x="495" y="320" width="440" height="130" rx="24" fill="#9b5f40"/>
+  <rect x="540" y="290" width="130" height="95" rx="16" fill="#ead4b8"/>
+  <rect x="690" y="290" width="180" height="95" rx="16" fill="#d6e2d4"/>
+  <rect x="620" y="450" width="190" height="18" rx="9" fill="#7c563e"/>
+  <path d="M710 468V510M680 510H740" stroke="#7c563e" stroke-width="12" stroke-linecap="round"/>
+  <path d="M950 410V250M910 280Q950 205 990 280M915 325Q950 255 985 325" fill="none" stroke="#45634c" stroke-width="16" stroke-linecap="round"/>
+  <path d="M900 410H1000L985 470H915Z" fill="#c17b56"/>
+  <path d="M250 390V275M210 310Q250 235 290 310M215 350Q250 275 285 350" fill="none" stroke="#527456" stroke-width="14" stroke-linecap="round"/>
+  <path d="M205 390H295L285 440H215Z" fill="#c17b56"/>
+  <text x="70" y="65" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="6" fill="#6b4934">TRENDIVERSE · HOGAR</text>
+  <text x="70" y="585" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#6b4934">HOGAR &amp; DECORACIÓN</text>
+</svg>
