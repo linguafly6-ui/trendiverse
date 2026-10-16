@@ -2,7 +2,7 @@ import type { Article } from './types'
 export const BYD_INNOVACION_ARTICLE: Article = {
  id:43,title:'BYD: innovación tecnológica en baterías y coches eléctricos',slug:'byd-innovacion-tecnologica-baterias-coches-electricos',category:'empresas-que-transforman',
  excerpt:'Baterías Blade, integración industrial y conducción inteligente: las tecnologías con las que BYD compite en el mercado del coche eléctrico.',
- image_url:'/images/articles/empresas-byd.svg',thumbnail_url:'/images/articles/empresas-byd-thumb.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:15:00.000Z',
+ image_url:'/images/articles/empresas-que-transforman.svg',thumbnail_url:'/images/articles/empresas-que-transforman.svg',read_time_minutes:10,views:0,trending:0,published_at:'2026-10-08T09:15:00.000Z',
  content:`# BYD: innovación tecnológica en baterías y coches eléctricos
 
 BYD ha pasado de ser conocida por las baterías a convertirse en un actor importante del vehículo electrificado. Su estrategia combina acumuladores, motores eléctricos, electrónica de potencia, componentes y vehículos completos. Esa integración industrial ayuda a explicar cómo puede competir en distintos segmentos, aunque el resultado para cada comprador depende del modelo, la garantía y el servicio posventa.
