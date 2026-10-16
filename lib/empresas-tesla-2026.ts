@@ -90,6 +90,10 @@ Optimus tendrá valor industrial si completa tareas durante periodos prolongados
 
 La automatización también transforma el trabajo. Un proyecto sólido define qué tareas se automatizan, cómo se gestionan los riesgos y qué formación necesita el personal. La innovación debe mejorar calidad, seguridad y productividad, no solo impresionar en una demostración.
 
+## Qué datos conviene seguir a partir de ahora
+
+Para distinguir avances sostenidos de anuncios puntuales, conviene observar resultados publicados a lo largo del tiempo: fiabilidad del software, incidentes, disponibilidad de servicio, autonomía medida en pruebas comparables y tareas robóticas completadas sin ayuda. Los cambios de estrategia, las fechas objetivo y los prototipos son información relevante, pero no sustituyen métricas operativas verificables. También es importante separar los datos divulgados por la propia compañía de las evaluaciones de reguladores, investigadores y medios técnicos independientes.
+
 ## Preguntas frecuentes
 
 ### ¿Tesla tiene conducción totalmente autónoma en cualquier lugar?
