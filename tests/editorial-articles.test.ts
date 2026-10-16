@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
+import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
@@ -117,6 +118,11 @@ const EXPECTED_SLUGS = [
   'catl-baterias-almacenamiento-energia-sodio-ion',
   'siemens-ia-industrial-gemelos-digitales-automatizacion',
   'moderna-arn-mensajero-biotecnologia-vacunas-personalizadas',
+  'moda-colores-tendencia-otono-invierno-2026-2027',
+  'chaqueta-bomber-tendencia-otono-invierno-2026',
+  'tejido-jacquard-texturas-tendencia-moda-otono-2026',
+  'sastreria-hombros-marcados-tendencia-moda-2026',
+  'accesorios-tendencia-cinturones-bailarinas-otono-2026',
 
 ]
 
@@ -179,7 +185,7 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES].map((a) => a.slug)
+  const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), [...EXPECTED_SLUGS].sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
@@ -316,4 +322,25 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
   const categoryArticles = await getArticles({ category: 'empresas-que-transforman', limit: 10 })
   assert.equal(categoryArticles.length, 10)
   assert.ok(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
+})
+
+
+test('fashion category has five substantive, discoverable articles', async () => {
+  assert.equal(MODA_TENDENCIAS_ARTICLES.length, 5)
+  assert.equal(new Set(MODA_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 5)
+  const categories = new Set(CATEGORIES.map((c) => c.slug))
+  assert.ok(categories.has('moda'))
+  for (const article of MODA_TENDENCIAS_ARTICLES) {
+    assert.equal(article.category, 'moda')
+    assert.ok(article.excerpt && article.excerpt.length <= 200, article.slug + ' excerpt')
+    assert.match(article.content ?? '', /## Preguntas frecuentes/, article.slug + ' FAQ')
+    assert.ok((article.content ?? '').length > 2500, article.slug + ' substantive content')
+    for (const img of [article.image_url, article.thumbnail_url]) {
+      assert.ok(img && existsSync(join(process.cwd(), 'public', img)), article.slug + ' image ' + img)
+    }
+  }
+  setEnvResolverForTests(() => ({}))
+  const categoryArticles = await getArticles({ category: 'moda', limit: 10 })
+  assert.equal(categoryArticles.length, 5)
+  assert.ok(MODA_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })
