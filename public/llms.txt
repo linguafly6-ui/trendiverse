@@ -4,13 +4,19 @@
 
 ## Empresas que transforman
 
-Esta serie analiza cinco empresas con avances tecnológicos relevantes, con contexto, preguntas frecuentes y fuentes para verificar las afirmaciones.
+Esta serie analiza diez empresas con avances tecnológicos relevantes, con contexto, preguntas frecuentes y fuentes para verificar las afirmaciones.
 
 - [NVIDIA: innovación tecnológica e inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial): GPU, CUDA, computación acelerada, costes y límites de la infraestructura de IA.
 - [Microsoft: innovación en IA y computación cuántica](https://trendiverse.org/articles/microsoft-innovacion-tecnologica-ia-computacion-cuantica): Azure, Copilot, Majorana 1 y diferencia entre usos comerciales e investigación.
 - [Tesla: conducción asistida y robótica humanoide](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus): vehículos eléctricos, asistencia a la conducción, Optimus y evaluación de seguridad.
 - [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos): Blade Battery, química LFP, carga, autonomía y coste total de propiedad.
 - [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink): Falcon 9, Starship, conectividad satelital y sostenibilidad orbital.
+
+- [ASML: litografía avanzada y semiconductores](https://trendiverse.org/articles/asml-litografia-ultravioleta-extrema-chips-avanzados): litografía EUV, fabricación de chips, costes y límites físicos.
+- [TSMC: fabricación de chips avanzados](https://trendiverse.org/articles/tsmc-fabricacion-chips-avanzados-ia-semiconductores): fundición, nodos de proceso, empaquetado avanzado y resiliencia de suministro.
+- [CATL: baterías y almacenamiento energético](https://trendiverse.org/articles/catl-baterias-almacenamiento-energia-sodio-ion): LFP, sodio-ion, carga, degradación y almacenamiento para la red.
+- [Siemens: IA industrial y gemelos digitales](https://trendiverse.org/articles/siemens-ia-industrial-gemelos-digitales-automatizacion): automatización, simulación, mantenimiento predictivo y ciberseguridad industrial.
+- [Moderna: ARN mensajero y biotecnología](https://trendiverse.org/articles/moderna-arn-mensajero-biotecnologia-vacunas-personalizadas): plataformas de ARNm, investigación clínica, seguridad y evaluación regulatoria.
 
 ## Cómo interpretar los artículos
 
