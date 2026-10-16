@@ -36,7 +36,7 @@ test('un push a main selecciona el despliegue después de lint, tests y build', 
   assert.equal(deploy.job.id, 'deploy')
   assert.equal(deployStepFollowsChecks(deploy.job), true)
   assert.equal(jobUsesProductionSecrets(deploy.job), true)
-  assert.equal(selected.some((item) => item.workflowPath === 'ci.yml' && item.job.id === 'ci'), true)
+  assert.equal(selected.some((item) => item.workflowPath === 'ci.yml' && item.job.id === 'ci'), false)
 })
 
 test('el job deploy declara environment production y no pasa CLOUDFLARE_D1_DATABASE_ID', () => {
@@ -61,7 +61,7 @@ test('ci no referencia secretos de Cloudflare ni publica', () => {
   const ci = workflows.find((workflow) => workflow.path === 'ci.yml')
   assert.ok(ci)
   assert.equal(ci.triggers.pullRequest, true)
-  assert.deepEqual(ci.triggers.pushBranches, ['main'])
+  assert.deepEqual(ci.triggers.pushBranches, [])
   assert.equal(ci.source.includes('secrets.'), false)
   assert.equal(/wrangler pages deploy\b/.test(ci.source), false)
   assert.equal(ci.source.includes('CLOUDFLARE_'), false)
