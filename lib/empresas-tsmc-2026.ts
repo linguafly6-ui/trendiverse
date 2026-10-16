@@ -8,7 +8,7 @@ export const TSMC_INNOVACION_ARTICLE: Article = {
   excerpt: "Qué aporta TSMC a la fabricación de chips avanzados, cómo funcionan los nodos y el empaquetado y qué riesgos plantea la concentración de capacidad productiva.",
   image_url: '/images/articles/empresas-que-transforman.svg',
   thumbnail_url: '/images/articles/empresas-que-transforman.svg',
-  read_time_minutes: 9, views: 0, trending: 0, published_at: '2026-10-16T09:05:00.000Z',
+  read_time_minutes: 9, views: 0, trending: 0, published_at: '2026-10-15T09:05:00.000Z',
   content: `# TSMC: la fábrica detrás de una parte de la revolución de la IA
 
 ## Respuesta rápida
