@@ -227,7 +227,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'juegos-creados-usuarios-roblox-fortnite-mods-2026')
+  assert.equal(slugs[0], 'black-friday-moda-2026-ofertas-tiendas')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -334,8 +334,8 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
 
 
 test('fashion category has five substantive, discoverable articles', async () => {
-  assert.equal(MODA_TENDENCIAS_ARTICLES.length, 5)
-  assert.equal(new Set(MODA_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 5)
+  assert.equal(MODA_TENDENCIAS_ARTICLES.length, 6)
+  assert.equal(new Set(MODA_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 6)
   const categories = new Set(CATEGORIES.map((c) => c.slug))
   assert.ok(categories.has('moda'))
   for (const article of MODA_TENDENCIAS_ARTICLES) {
