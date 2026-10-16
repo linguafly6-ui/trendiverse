@@ -10,7 +10,7 @@ export const PREDICCION_TECNOLOGICA_2031_ARTICLES: Article[] = [
     title: 'Predicción tecnológica 2026-2031: las 10 tendencias que cambiarán el futuro',
     slug: 'prediccion-tecnologica-proximos-5-anos-2026-2031',
     category: 'tecnologia',
-    excerpt: '¿Cómo será la tecnología en 2031? Analizamos las 10 tendencias tecnológicas de los próximos cinco años: inteligencia artificial, agentes autónomos, robótica, computación, ciberseguridad, energía, salud digital y realidad extendida, con previsiones realistas y consejos para prepararse.',
+    excerpt: '¿Cómo será la tecnología en 2031? Las 10 tendencias clave: IA, robótica, ciberseguridad, energía, salud digital y realidad extendida, con previsiones realistas y consejos prácticos.',
     content: `# Predicción tecnológica para los próximos 5 años: qué cambiará entre 2026 y 2031
 
 ¿Qué tecnologías marcarán el futuro de aquí a 2031? La predicción tecnológica para los próximos cinco años apunta a una transformación profunda, pero menos uniforme de lo que sugieren los titulares. La inteligencia artificial (IA) pasará de generar textos e imágenes a participar en procesos de trabajo completos; los robots ganarán presencia en entornos controlados; la ciberseguridad tendrá que responder a ataques más automatizados; y la demanda de electricidad convertirá la eficiencia energética en una prioridad tecnológica.
@@ -188,6 +188,6 @@ De aquí a 2031, las tecnologías más influyentes serán aquellas que resuelvan
     read_time_minutes: 11,
     views: 0,
     trending: 1,
-    published_at: '2026-10-16T09:00:00.000Z',
+    published_at: '2026-10-08T09:00:00.000Z',
   },
 ]
