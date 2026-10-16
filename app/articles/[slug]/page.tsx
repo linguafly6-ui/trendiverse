@@ -21,6 +21,7 @@ import { formatDate } from '@/lib/utils'
 import JsonLd from '@/components/JsonLd'
 import { getCategory, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { articleGraph, sectionUrl } from '@/lib/structured-data'
+import { articleImageUrl } from '@/lib/article-images'
 
 export const runtime = 'edge'
 
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seo = SEO_OVERRIDES[article.slug]
   const title = seo?.title ?? article.title
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
-  const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
+  const imageUrl = new URL(articleImageUrl(article), SITE_URL).toString()
   const description = seo?.description ?? (article.excerpt ? truncateWords(article.excerpt, 155) : undefined)
   return {
     title,
@@ -65,7 +66,7 @@ export default async function ArticlePage({ params }: Props) {
   const category = getCategory(article.category)
   const url = `${SITE_URL}/articles/${encodeURIComponent(article.slug)}`
   const authorUrl = `${SITE_URL}/autor/equipo-editorial`
-  const imageUrl = article.image_url ? new URL(article.image_url, SITE_URL).toString() : undefined
+  const imageUrl = new URL(articleImageUrl(article), SITE_URL).toString()
   const faqItems = blocks.reduce<{ question: string; answer: string }[]>((items, block, index) => {
     if (block.type !== 'heading' || block.level !== 3) return items
     const question = block.text.trim()
@@ -88,7 +89,7 @@ export default async function ArticlePage({ params }: Props) {
             <span className="text-slate-300 dark:text-slate-700">·</span><span>{article.read_time_minutes ?? 1} min de lectura</span>
           </div>
         </header>
-        {article.image_url && <Image src={article.image_url} alt={article.title} width={1200} height={630} priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />}
+        {<Image src={articleImageUrl(article)} alt={article.title} width={1200} height={630} unoptimized priority fetchPriority="high" sizes="(max-width: 1024px) 100vw, 70vw" className="my-8 aspect-[1200/630] w-full rounded-2xl bg-slate-200 object-cover shadow-lg dark:bg-slate-800" />}
         <TableOfContents headings={getHeadings(blocks)} />
         {article.slug === 'portugal-noruega-nations-league' && <LiveScore league="uefa.nations" homeTeam="Portugal" awayTeam="Norway" />}
         {article.slug === 'girona-mallorca-laliga-hypermotion' && <LiveScore league="esp.2" homeTeam="Girona" awayTeam="Mallorca" />}
