@@ -7,8 +7,8 @@ export const MODA_TENDENCIAS_ARTICLES: Article[] = [
     slug: 'moda-colores-tendencia-otono-invierno-2026-2027',
     category: 'moda',
     excerpt: 'Del amarillo mantequilla al berenjena, azul y rosa chicle: cómo llevar los colores destacados de la temporada sin renovar todo el armario.',
-    image_url: '/images/articles/moda-tendencias.svg',
-    thumbnail_url: '/images/articles/moda-tendencias.svg',
+    image_url: '/images/articles/moda-colores-otono-2026.svg',
+    thumbnail_url: '/images/articles/moda-colores-otono-2026.svg',
     read_time_minutes: 6, views: 0, trending: 0, published_at: '2026-10-10T09:00:00.000Z',
     content: `# Moda otoño-invierno 2026/2027: los colores que dominarán la temporada
 
@@ -71,8 +71,8 @@ No. Son propuestas vistas en colecciones y medios especializados; adapta las que
     slug: 'chaqueta-bomber-tendencia-otono-invierno-2026',
     category: 'moda',
     excerpt: 'Satinada, de cuero, lana o con bordados: claves para llevar la bomber que vuelve a las calles en otoño-invierno 2026.',
-    image_url: '/images/articles/moda-tendencias.svg',
-    thumbnail_url: '/images/articles/moda-tendencias.svg',
+    image_url: '/images/articles/moda-bomber-otono-2026.svg',
+    thumbnail_url: '/images/articles/moda-bomber-otono-2026.svg',
     read_time_minutes: 6, views: 0, trending: 0, published_at: '2026-10-10T09:05:00.000Z',
     content: `# La bomber se reinventa: de chaqueta funcional a pieza estrella del otoño
 
@@ -134,8 +134,8 @@ Negro, azul marino, marrón y verde oliva suelen combinar con facilidad. Si ya t
     slug: 'tejido-jacquard-texturas-tendencia-moda-otono-2026',
     category: 'moda',
     excerpt: 'El jacquard y los brocados pasan de la noche al día: ideas para combinar tejidos ornamentales con prendas básicas.',
-    image_url: '/images/articles/moda-tendencias.svg',
-    thumbnail_url: '/images/articles/moda-tendencias.svg',
+    image_url: '/images/articles/moda-jacquard-texturas-2026.svg',
+    thumbnail_url: '/images/articles/moda-jacquard-texturas-2026.svg',
     read_time_minutes: 6, views: 0, trending: 0, published_at: '2026-10-10T09:10:00.000Z',
     content: `# Jacquard y tejidos ricos: cómo llevar textura en los looks de invierno
 
@@ -198,8 +198,8 @@ No por sí mismo. La sostenibilidad depende de las fibras, los procesos, la dura
     slug: 'sastreria-hombros-marcados-tendencia-moda-2026',
     category: 'moda',
     excerpt: 'Blazers estructuradas, hombros definidos y pantalones de vestir: cómo adaptar la sastrería de inspiración ochentera al día a día.',
-    image_url: '/images/articles/moda-tendencias.svg',
-    thumbnail_url: '/images/articles/moda-tendencias.svg',
+    image_url: '/images/articles/moda-sastreria-hombros-2026.svg',
+    thumbnail_url: '/images/articles/moda-sastreria-hombros-2026.svg',
     read_time_minutes: 6, views: 0, trending: 0, published_at: '2026-10-10T09:15:00.000Z',
     content: `# Sastrería con hombros marcados: el regreso de la silueta ochentera
 
@@ -258,8 +258,8 @@ No. La sastrería estructurada aparece en distintas propuestas y puede adaptarse
     slug: 'accesorios-tendencia-cinturones-bailarinas-otono-2026',
     category: 'moda',
     excerpt: 'Cinturones anchos, bailarinas de nuevas formas y accesorios con carácter: guía práctica para incorporar los detalles de temporada.',
-    image_url: '/images/articles/moda-tendencias.svg',
-    thumbnail_url: '/images/articles/moda-tendencias.svg',
+    image_url: '/images/articles/moda-accesorios-cinturon-bailarinas-2026.svg',
+    thumbnail_url: '/images/articles/moda-accesorios-cinturon-bailarinas-2026.svg',
     read_time_minutes: 6, views: 0, trending: 0, published_at: '2026-10-10T09:20:00.000Z',
     content: `# Cinturones protagonistas y bailarinas: los accesorios que actualizan el look
 
