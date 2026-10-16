@@ -48,5 +48,5 @@ test('article image helper falls back for non-HTTPS and missing assets', async (
     image_url: 'http://example.org/image.jpg',
     thumbnail_url: null,
   })
-  assert.match(url, /^\\/api\\/article-image\\?/)
+  assert.match(url, /^\/api\/article-image\?/)
 })
