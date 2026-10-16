@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24111f"/><stop offset="1" stop-color="#8f174e"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1010" cy="125" r="190" fill="#f3c5d7" opacity=".12"/><circle cx="1050" cy="510" r="240" fill="#f3c5d7" opacity=".1"/>
+<rect x="770" y="105" width="280" height="385" rx="14" fill="#f5e8e7"/>
+<path d="M845 160 L900 132 L955 160 L990 225 L953 246 L940 214 L940 400 L860 400 L860 214 L847 246 L810 225 Z" fill="#b12661"/>
+<path d="M865 400 L860 470 L890 470 L900 410 L910 470 L940 470 L935 400" fill="#7d234b"/>
+<path d="M835 155 L865 132 L900 164 L935 132 L965 155 L955 188 L845 188 Z" fill="#e7b9c9"/>
+<rect x="1000" y="340" width="110" height="130" rx="8" fill="#dfc2a8"/>
+<path d="M1020 340 Q1020 305 1055 305 Q1090 305 1090 340" fill="none" stroke="#7c4a3c" stroke-width="12"/>
+<text x="72" y="125" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#f7cfe0" letter-spacing="4">TRENDIVERSE · MODA</text>
+<text x="72" y="235" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="800" fill="#ffffff">BLACK FRIDAY</text>
+<text x="72" y="315" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="800" fill="#ffffff">MODA 2026</text>
+<text x="75" y="385" font-family="Arial,Helvetica,sans-serif" font-size="26" fill="#f9e8ef">Qué han anunciado las tiendas</text>
+<rect x="74" y="430" width="300" height="5" rx="2.5" fill="#f3c5d7"/>
+<text x="75" y="485" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#f7cfe0">Desigual · El Corte Inglés · Mango · H&amp;M · Zara</text>
+<text x="75" y="540" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#eac8d7">Guía actualizada · 16 octubre 2026</text>
+</svg>
