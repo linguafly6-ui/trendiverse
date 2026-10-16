@@ -116,3 +116,12 @@ No. Si alcanza utilidad práctica, complementará los sistemas clásicos para pr
 ### Lecturas complementarias
 Microsoft, avances científicos de 2025: https://news.microsoft.com/source/emea/features/10-avances-cientificos-desarrollados-por-investigadores-de-microsoft/ . Microsoft Azure, clúster GB300, 9 de octubre de 2025: https://azure.microsoft.com/en-us/blog/microsoft-azure-delivers-the-first-large-scale-cluster-with-nvidia-gb300-nvl72-for-openai-workloads/.`
 }
+
+## Sigue explorando: empresas que transforman
+
+Continúa con otros análisis de innovación tecnológica relacionados:
+
+- [NVIDIA: innovación en inteligencia artificial](https://trendiverse.org/articles/nvidia-innovacion-tecnologica-chips-inteligencia-artificial)
+- [Tesla: conducción asistida y robótica](https://trendiverse.org/articles/tesla-innovacion-tecnologica-conduccion-robotica-optimus)
+- [BYD: baterías y coches eléctricos](https://trendiverse.org/articles/byd-innovacion-tecnologica-baterias-coches-electricos)
+- [SpaceX: cohetes reutilizables y Starlink](https://trendiverse.org/articles/spacex-innovacion-tecnologica-cohetes-reutilizables-starlink)
