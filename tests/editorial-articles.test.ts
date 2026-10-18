@@ -132,6 +132,8 @@ const EXPECTED_SLUGS = [
   'mejores-ofertas-hogar-tecnologia-octubre-2026',
   'black-friday-moda-2026-ofertas-tiendas',
   'cyber-monday-moda-2026-ofertas-ropa',
+  'mejores-freidoras-aire-amazon-espana-2026',
+  'mejores-mancuernas-entrenar-casa-2026',
 
 ]
 
