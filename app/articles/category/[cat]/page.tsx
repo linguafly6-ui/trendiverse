@@ -64,6 +64,12 @@ export default async function CategoryPage({ params }: Props) {
           </section>
         )}
         {cat === 'gaming' && <GamingCodes />}
+        {cat === 'toptrends' && (
+          <section className="rounded-xl border border-slate-200 p-4 dark:border-slate-800" aria-label="Guías destacadas de compra">
+            <h2 className="font-extrabold">Guías destacadas de compra</h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">Comparativas prácticas: criterios de elección, límites de cada formato y qué verificar antes de comprar.</p>
+          </section>
+        )}
         {cat === 'politica' && <PoliticsHub />}
         {cat === 'conciertos' && <ConcertsHub variant="strip" />}
         {cat === 'astrologia' && <AstrologyHub variant="strip" />}
