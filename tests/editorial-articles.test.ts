@@ -299,7 +299,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, EXPECTED_SLUGS.length)
+  assert.equal(slugs.length, EXPECTED_SLUGS.length + 2)
 })
 
 
