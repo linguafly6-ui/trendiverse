@@ -303,8 +303,8 @@ Esta guía reúne diez tipos y familias de mancuernas conocidas que conviene com
 
 ## Las 10 mejores mancuernas para casa: comparación rápida
 
-| Modelo o familia | Tipo | Mejor uso potencial | Lo que debes revisar |
-|---|---|---|---|
+| Modelo o familia | Tipo | Mejor uso potencial | Lo que debes revisar | Amazon |
+|---|---|---|---|---|
 | Bowflex SelectTech 552i | Ajustable por dial | Progresar sin muchos pares | Rango de peso y espacio de base | [Ver en Amazon](https://www.amazon.es/s?k=Bowflex+SelectTech+552i) |
 | BRAINGAIN ajustables | Ajustables por selector | Progresión gradual | Rango por unidad y si se vende el par | [Ver en Amazon](https://www.amazon.es/s?k=BRAINGAIN+mancuernas+ajustables+24+kg) |
 | PowerBlock Sport / EXP | Ajustables por pasador | Entrenamientos compactos | Compatibilidad de expansiones | [Ver en Amazon](https://www.amazon.es/s?k=PowerBlock+Sport+EXP+mancuernas) |
