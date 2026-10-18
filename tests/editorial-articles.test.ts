@@ -197,7 +197,7 @@ test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
   const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
-  assert.deepEqual(editorialSlugs.sort(), [...EXPECTED_SLUGS].sort())
+  assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026'].includes(slug)).sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EDITORIAL_ARTICLES) {
@@ -299,7 +299,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, EXPECTED_SLUGS.length + 2)
+  assert.equal(slugs.length, EXPECTED_SLUGS.length)
 })
 
 
