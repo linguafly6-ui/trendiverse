@@ -16,6 +16,14 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
+  'mejores-freidoras-aire-amazon-espana-2026': {
+    title: '10 mejores freidoras de aire Amazon 2026',
+    description: 'Comparamos 10 freidoras de aire para cada cocina: capacidad, doble cesta, limpieza y funciones. Guía para elegir en Amazon España.',
+  },
+  'mejores-mancuernas-entrenar-casa-2026': {
+    title: '10 mejores mancuernas para casa en 2026',
+    description: 'Guía de mancuernas ajustables y fijas para casa: peso, seguridad, espacio, tipos de ajuste y qué revisar antes de comprar en Amazon.',
+  },
   [CONCERTS_GUIDE_SLUG]: CONCIERTOS_AGENDA_SEO,
   [ASTRO_GUIDE_SLUG]: ASTROLOGIA_GUIA_SEO,
   ...JORNADA_8_SEO,
