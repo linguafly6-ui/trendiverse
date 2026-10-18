@@ -113,7 +113,7 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   }
   // Fetch enough D1 rows from the top so that, after bundled records are merged in and
   // duplicates removed, the requested page is still exact.
-  const fetchLimit = offset + limit + EDITORIAL_ARTICLES.length
+  const fetchLimit = offset + limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length
   const sql = `SELECT * FROM articles ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
     ORDER BY published_at DESC LIMIT ?`
   params.push(fetchLimit)
@@ -129,8 +129,8 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
   if (!DB) return [...SAMPLE_ARTICLES].sort((a, b) => b.views - a.views).slice(0, limit)
-  const rows = await cached(`top:${limit + EDITORIAL_ARTICLES.length}`, 300, async () =>
-    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + EDITORIAL_ARTICLES.length).all<Article>()).results
+  const rows = await cached(`top:${limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length}`, 300, async () =>
+    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length).all<Article>()).results
   )
   return mergeWithEditorial(rows).sort((a, b) => b.views - a.views || byRecency(a, b)).slice(0, limit)
 }
