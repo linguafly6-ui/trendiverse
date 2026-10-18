@@ -38,7 +38,7 @@ La **Cosori TurboBlaze 6 L** es una candidata a valorar si buscas una freidora d
 
 **Para quién:** personas que cocinan con frecuencia, quieren una capacidad media y valoran una interfaz con programas. Comprueba también las dimensiones exteriores y el espacio libre recomendado por el fabricante.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_1]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_1]
 
 ## 2. Cosori Dual Blaze TwinFry de 10 litros: para cocinar más cantidad
 
@@ -52,7 +52,7 @@ Antes de comprar, confirma cómo funciona el divisor en la versión concreta, si
 
 **Para quién:** familias, personas que cocinan por lotes o quienes quieren preparar un plato principal y una guarnición con menos interrupciones.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_2]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_2]
 
 ## 3. Ninja Foodi Dual Zone: dos cestas para dos recetas
 
@@ -66,7 +66,7 @@ Conviene distinguir las funciones de sincronización de finalización de las de 
 
 **Para quién:** familias que quieren coordinar platos distintos y personas que cocinan guarniciones y plato principal al mismo tiempo.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_3]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_3]
 
 ## 4. Ninja Double Stack XL: capacidad vertical para ahorrar anchura
 
@@ -78,7 +78,7 @@ El diseño **Double Stack XL** coloca dos cajones uno encima de otro, una soluci
 
 **Para quién:** hogares que necesitan dos zonas pero no quieren ocupar tanta anchura de encimera.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_4]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_4]
 
 ## 5. Ninja FlexDrawer / Foodi Flex: una zona amplia cuando hace falta
 
@@ -92,7 +92,7 @@ Antes de comprar, verifica si el producto anunciado incluye realmente el divisor
 
 **Para quién:** quienes alternan entre una comida grande y dos preparaciones más pequeñas.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_5]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_5]
 
 ## 6. Philips Airfryer Serie 3000 o 5000: revisa bien la generación
 
@@ -106,7 +106,7 @@ La gama **Philips Airfryer** abarca diferentes tamaños y configuraciones. Algun
 
 **Para quién:** usuarios que comparan varias generaciones y quieren elegir en función de su espacio, presupuesto y frecuencia de uso.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_6]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_6]
 
 ## 7. Cecotec Cecofry Advance 9000: formato de gran capacidad
 
@@ -118,7 +118,7 @@ La **Cecofry Advance 9000** es una alternativa a considerar si priorizas el volu
 
 **Para quién:** familias o personas que preparan varias raciones para consumir después.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_7]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_7]
 
 ## 8. Cecotec Cecofry Fantastik 5500/6000: gama intermedia a comparar
 
@@ -132,7 +132,7 @@ La familia **Cecofry Fantastik** incluye diferentes versiones y capacidades. Los
 
 **Para quién:** usuarios que quieren una cesta individual para el día a día y no necesitan dos zonas simultáneas.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_8]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_8]
 
 ## 9. Moulinex Easy Fry Max de 5 litros: opción doméstica compacta
 
@@ -144,7 +144,7 @@ Una freidora de alrededor de cinco litros como la **Moulinex Easy Fry Max** pued
 
 **Para quién:** cocinas con espacio limitado, hogares pequeños y personas que se inician en la cocción con aire caliente.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_9]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_9]
 
 ## 10. Xiaomi Smart Air Fryer de 6,5 litros: funciones conectadas
 
@@ -158,7 +158,7 @@ No pagues un sobreprecio por funciones inteligentes que no vayas a usar. Para mu
 
 **Para quién:** usuarios que ya emplean dispositivos inteligentes y valoran el control mediante aplicación.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_10]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — AIRFRYER_AFFILIATE_10]
 
 ## Cómo elegir la mejor freidora de aire para tu casa
 
@@ -328,7 +328,7 @@ Las **Bowflex SelectTech 552i** son un ejemplo conocido de mancuerna ajustable m
 
 **Para quién:** personas que entrenan varias veces por semana, disponen de poco espacio y valoran cambiar cargas rápidamente.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_1]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_1]
 
 ## 2. BRAINGAIN ajustables: una opción para progresión gradual
 
@@ -342,7 +342,7 @@ Una progresión con saltos pequeños puede resultar cómoda cuando trabajas ejer
 
 **Para quién:** usuarios que quieren una pareja ajustable y prevén aumentar su fuerza poco a poco.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_2]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_2]
 
 ## 3. PowerBlock Sport / EXP: formato compacto con pasador
 
@@ -354,7 +354,7 @@ Las **PowerBlock Sport** y algunas versiones EXP utilizan un sistema de selecci�
 
 **Para quién:** quienes desean una solución compacta y valoran aumentar el rango de carga sin añadir muchos pares individuales.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_3]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_3]
 
 ## 4. ATIVAFIT ajustables: versatilidad para rutinas generales
 
@@ -366,7 +366,7 @@ Las **ATIVAFIT ajustables** pueden aparecer en distintos rangos y diseños. Ante
 
 **Para quién:** personas que empiezan con fuerza en casa y prefieren un sistema regulable sin adquirir un conjunto completo de pesas fijas.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_4]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_4]
 
 ## 5. JUPPLIES ajustables de 2 a 24 kg: rango amplio para casa
 
@@ -378,7 +378,7 @@ Las mancuernas ajustables **JUPPLIES** se pueden encontrar en rangos de carga or
 
 **Para quién:** usuarios intermedios que quieren alternar ejercicios y no desean comprar muchos pares por separado.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_5]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_5]
 
 ## 6. Yaheetech: kit clásico de discos y cierres
 
@@ -390,7 +390,7 @@ Un kit **Yaheetech de discos ajustables** suele basarse en un mango, discos y ci
 
 **Para quién:** principiantes, presupuestos limitados y rutinas donde no cambias de peso en cada serie.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_6]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_6]
 
 ## 7. SONGMICS 2 × 18 kg: discos ajustables para entrenar en casa
 
@@ -402,7 +402,7 @@ Los juegos **SONGMICS de mancuernas ajustables** pueden ser una alternativa para
 
 **Para quién:** usuarios que buscan empezar con un juego configurable y prefieren una solución mecánica tradicional.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_7]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_7]
 
 ## 8. Corength kit de 20 kg: una entrada accesible al entrenamiento de fuerza
 
@@ -414,7 +414,7 @@ Los kits **Corength** de discos y mancuernas son una opción a comparar para qui
 
 **Para quién:** principiantes y personas que entrenan un par de veces por semana con una progresión básica.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_8]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_8]
 
 ## 9. Mancuernas hexagonales recubiertas: el clásico de peso fijo
 
@@ -426,7 +426,7 @@ Las **mancuernas hexagonales** tienen un peso definido y extremos que ayudan a e
 
 **Para quién:** usuarios que desean rapidez, durabilidad y una carga fija, o quienes quieren añadir solo uno o dos pares a un equipo existente.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_9]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_9]
 
 ## 10. Mancuernas ligeras de neopreno: movilidad y cargas pequeñas
 
@@ -438,7 +438,7 @@ Las mancuernas ligeras recubiertas de **neopreno** pueden ser útiles para movim
 
 **Para quién:** principiantes, personas que complementan otras actividades o quienes necesitan cargas pequeñas para ejercicios específicos.
 
-**Enlace de afiliado:** [VER PRECIO EN AMAZON — AFFILIATE_URL_10]
+**Enlace de afiliado:** [VER PRECIO EN AMAZON — DUMBBELL_AFFILIATE_10]
 
 ## Cómo elegir mancuernas para entrenar en casa
 
