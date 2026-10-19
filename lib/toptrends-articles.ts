@@ -581,6 +581,419 @@ La mejor compra combina el rango de peso correcto, un sistema seguro, agarre có
 
 **Transparencia comercial:** este artículo puede contener enlaces de afiliado. Si compras desde ellos, el sitio podría recibir una comisión sin coste adicional para ti. Las opiniones editoriales deben mantenerse independientes y las condiciones comerciales deben explicarse con claridad.`;
 
+const bicicletasContent = `# Las 10 mejores bicicletas de 2026: comparativa y guía para elegir la tuya
+
+Elegir entre las **mejores bicicletas de 2026** depende de dónde vas a pedalear, cuánto quieres gastar y qué tipo de comodidad buscas. No existe una bicicleta perfecta para todo: una MTB soporta caminos irregulares, una bicicleta de carretera rueda con eficiencia sobre asfalto y una híbrida resulta práctica para desplazamientos diarios. También importan la talla, el mantenimiento, los frenos, la transmisión y la facilidad para encontrar recambios.
+
+Esta selección reúne diez modelos y familias reconocidas para cubrir usos distintos: montaña, carretera, ciudad, fitness y gravel. No es un ranking oficial de ventas ni una prueba de laboratorio; es una guía de compra orientativa basada en el tipo de uso, la configuración habitual de cada gama y los aspectos que conviene comprobar antes de comprar. Los montajes pueden cambiar según el año, el país y la versión, por lo que debes revisar siempre la ficha exacta de la bicicleta disponible.
+
+## Comparativa rápida: qué bicicleta encaja contigo
+
+| Bicicleta | Tipo | Para quién puede encajar | Principal aspecto que revisar |
+|---|---|---|---|
+| Rockrider Explore 500 | MTB recreativa | Pistas, caminos y primeras rutas | Suspensión, frenos y talla |
+| Trek Marlin 5 | MTB polivalente | Iniciación y uso mixto | Versión exacta y transmisión |
+| Orbea Onna | MTB rígida | Rutas de montaña y pistas | Montaje, horquilla y ruedas |
+| Specialized Rockhopper | MTB rígida | Ciclistas que buscan una plataforma conocida | Componentes de cada acabado |
+| Giant Talon | MTB rígida | Entrenamiento y caminos | Geometría y desarrollo |
+| Cube Aim | MTB recreativa | Presupuesto contenido y salidas ocasionales | Frenos y componentes instalados |
+| Triban RC 500 | Carretera endurance | Asfalto y rutas largas | Talla, neumáticos y transmisión |
+| Van Rysel EDR AF | Carretera | Entrenamiento deportivo | Desarrollo y postura |
+| Trek FX 2 | Híbrida / fitness | Ciudad, carril bici y ejercicio | Accesorios y tipo de freno |
+| Orbea Carpe | Urbana | Desplazamientos cotidianos | Equipamiento y posición |
+
+## 1. Rockrider Explore 500: una MTB para empezar con buen pie
+
+La familia **Rockrider Explore** está orientada a quienes quieren una bicicleta de montaña recreativa para pistas forestales, caminos de tierra y rutas de fin de semana. Su planteamiento prioriza la versatilidad: una posición relativamente cómoda, neumáticos con dibujo para superficies sueltas y una configuración pensada para disfrutar sin necesitar una bicicleta de competición.
+
+Puede ser una opción lógica para quien está empezando y no tiene claro si hará rutas cortas, caminos rurales o salidas más largas. Antes de decidirte, comprueba la versión exacta, porque el montaje puede cambiar: horquilla, frenos, transmisión, ruedas y peso influyen en la experiencia. No conviene dar por hecho que todas las bicicletas con un nombre parecido llevan los mismos componentes.
+
+**Puntos fuertes:** orientación recreativa, uso polivalente y una gama que suele estar pensada para facilitar el acceso al ciclismo de montaña.
+
+**A tener en cuenta:** una MTB con suspensión delantera no es automáticamente la mejor opción para ciudad o asfalto. Los neumáticos con mucho taco y una postura más erguida pueden hacer que ruede con menos eficiencia que una híbrida.
+
+**Ideal para:** primeras rutas por pistas, caminos de parque y salidas ocasionales en terreno no demasiado técnico.
+
+## 2. Trek Marlin 5: versatilidad para montaña y desplazamientos
+
+La **Trek Marlin 5** es una bicicleta rígida de montaña que suele atraer a principiantes y ciclistas que buscan una sola bici para distintos planes. Su cuadro y geometría se orientan a una conducción accesible, mientras que la horquilla delantera ayuda a filtrar irregularidades en caminos y pistas. Algunas configuraciones pueden incluir puntos de montaje útiles para accesorios, pero conviene verificarlo en la versión concreta.
+
+Su principal ventaja es la versatilidad. Puede servir para iniciarse en rutas de montaña sencillas y también para circular por caminos urbanos deteriorados, aunque no sustituye a una bicicleta de trekking equipada cuando el uso principal es ir al trabajo con equipaje. Si vas a pedalear casi siempre por asfalto, compara también híbridas: normalmente permiten una postura cómoda con menos resistencia a la rodadura.
+
+**Puntos fuertes:** plataforma conocida, uso recreativo variado y una gama con diferentes tallas.
+
+**A tener en cuenta:** la denominación Marlin 5 puede corresponder a generaciones distintas. Compara el año, la transmisión, los frenos y el tipo de horquilla, no solo el nombre del modelo.
+
+**Ideal para:** quien quiere comenzar en MTB sin una geometría demasiado especializada.
+
+## 3. Orbea Onna: una rígida para explorar caminos
+
+La **Orbea Onna** se sitúa en el segmento de bicicletas rígidas de montaña para iniciación y uso recreativo. El formato de rueda grande, en las versiones que lo incorporan, ayuda a mantener la inercia y a superar pequeños obstáculos con soltura. La elección de componentes cambia según el acabado, por lo que merece la pena revisar la ficha de la versión exacta y comprobar si el equipamiento responde al terreno que frecuentas.
+
+Para pistas y senderos sencillos, una rígida puede ser una compra sensata: tiene menos elementos de suspensión que mantener que una doble y suele ofrecer una relación práctica entre coste, sencillez y capacidad. Si tu objetivo es bajar por senderos técnicos con frecuencia, una rígida básica puede quedarse corta en comodidad, control y resistencia de componentes.
+
+**Puntos fuertes:** enfoque claro de MTB, sencillez mecánica relativa y posibilidad de elegir entre diferentes montajes dentro de la gama.
+
+**A tener en cuenta:** no todas las versiones tienen la misma horquilla, frenos o transmisión. Revisa el recorrido de suspensión, el rango de marchas y la disponibilidad de talla.
+
+**Ideal para:** caminos, pistas y primeras experiencias en montaña.
+
+## 4. Specialized Rockhopper: una opción de MTB para uso frecuente
+
+La **Specialized Rockhopper** es una familia de bicicletas rígidas de montaña que cubre diferentes presupuestos y niveles de equipamiento. Su interés está en ofrecer una plataforma destinada a rutas recreativas y entrenamiento, con variantes que pueden diferenciarse bastante por horquilla, frenos, ruedas y transmisión.
+
+Si vas a usarla varias veces por semana, mira más allá del color o del precio promocional. Los frenos deben ser adecuados a tu peso y a las pendientes habituales; la transmisión tiene que ofrecer desarrollos útiles para las subidas; y la horquilla debe corresponder al terreno real. También es importante que el distribuidor pueda ajustar la bicicleta y gestionar el mantenimiento.
+
+**Puntos fuertes:** gama reconocible, variedad de montajes y una orientación clara a la montaña recreativa.
+
+**A tener en cuenta:** el nombre Rockhopper no define por sí solo el nivel de componentes. Compara la ficha de la versión concreta y el coste de futuras mejoras.
+
+**Ideal para:** quien quiere una MTB rígida para salidas regulares y busca una gama con diferentes configuraciones.
+
+## 5. Giant Talon: una bicicleta rígida para rutas y entrenamiento
+
+La **Giant Talon** es otra familia de MTB rígidas que puede encajar con quien quiere alternar pistas, caminos y entrenamiento recreativo. En una bicicleta de este tipo conviene buscar una posición que permita controlar el manillar sin cargar demasiado las muñecas, una transmisión con marchas suficientemente cortas para subir y frenos que se adapten a las condiciones habituales.
+
+No hay que comprar más bicicleta de la necesaria. Si vas a circular por pistas sencillas, una rígida bien ajustada puede ser más práctica que una doble suspensión costosa. Si, por el contrario, vas a recorrer senderos técnicos, pregunta por la resistencia de ruedas, el recorrido de la horquilla y la compatibilidad con neumáticos adecuados.
+
+**Puntos fuertes:** diseño orientado a MTB, distintas tallas y una gama que suele ofrecer varias configuraciones.
+
+**A tener en cuenta:** confirma el montaje del año que compras; los componentes pueden cambiar entre mercados y temporadas.
+
+**Ideal para:** rutas de montaña no extremas, pistas y ciclistas que desean entrenar de forma regular.
+
+## 6. Cube Aim: una MTB recreativa para presupuestos ajustados
+
+La **Cube Aim** se encuentra en el segmento de bicicletas rígidas orientadas a la iniciación. Puede ser adecuada para paseos por caminos, pistas fáciles y uso ocasional. En esta categoría, la diferencia entre versiones se nota especialmente en frenos, transmisión, horquilla, ruedas y peso. Por eso, dos bicicletas con un precio parecido pueden ofrecer una experiencia distinta.
+
+Al comparar una Cube Aim con alternativas, comprueba si la talla está disponible y si el distribuidor ofrece ajuste inicial. Una bicicleta económica que queda grande o pequeña puede resultar incómoda y menos controlable. Pregunta también por el mantenimiento de la horquilla y por el coste de cambiar componentes que se desgasten.
+
+**Puntos fuertes:** planteamiento sencillo, uso recreativo y posibilidad de encontrar acabados de entrada.
+
+**A tener en cuenta:** si haces muchas subidas o rutas largas, una transmisión de rango amplio y unos frenos bien dimensionados serán más importantes que los accesorios estéticos.
+
+**Ideal para:** principiantes y ciclistas ocasionales que buscan una MTB sin entrar en gamas técnicas.
+
+## 7. Triban RC 500: carretera para rutas de larga distancia
+
+La **Triban RC 500** se asocia a la bicicleta de carretera de enfoque endurance, pensada para quienes quieren recorrer distancias por asfalto con una posición razonablemente cómoda. Frente a una bicicleta de competición pura, una geometría endurance suele buscar un equilibrio entre eficiencia y comodidad durante varias horas. La anchura de neumático compatible y la posibilidad de montar accesorios dependen de la versión exacta.
+
+Antes de comprar una bicicleta de carretera, presta especial atención a la talla, la altura del manillar, el alcance hasta las manetas y el desarrollo. Una bicicleta ligera no compensará una postura que te provoque molestias. Si tus rutas incluyen firme irregular, unos neumáticos algo más anchos y la presión adecuada pueden mejorar el control y reducir vibraciones.
+
+**Puntos fuertes:** enfoque para rutas largas, una posición menos extrema que la de muchas bicicletas de competición y utilidad para entrenar en carretera.
+
+**A tener en cuenta:** verifica el grupo, los frenos y el montaje del año disponible. No supongas que todas las RC 500 comparten las mismas especificaciones.
+
+**Ideal para:** ciclistas que quieren iniciarse en carretera y realizar salidas de media o larga distancia.
+
+## 8. Van Rysel EDR AF: entrenamiento de carretera
+
+La familia **Van Rysel EDR AF** está orientada al ciclismo de carretera y al entrenamiento. El cuadro de aluminio de las versiones AF busca un equilibrio entre rigidez, coste y resistencia para un uso deportivo. La geometría, el desarrollo y los componentes concretos cambian según el montaje, así que conviene revisar con cuidado la ficha del modelo que encuentres.
+
+Puede ser una alternativa para quien ya sabe que va a circular principalmente por asfalto y valora una bicicleta de carretera antes que una híbrida. No obstante, una postura deportiva puede resultar exigente para principiantes con poca flexibilidad. Si es tu primera bici de carretera, pide asesoramiento sobre talla y ajuste, y reserva presupuesto para casco, luces, ropa visible y herramientas básicas.
+
+**Puntos fuertes:** orientación deportiva, cuadro de aluminio en las versiones AF y enfoque para entrenamiento.
+
+**A tener en cuenta:** revisa la transmisión, las ruedas y los frenos de la versión concreta, así como el margen de ajuste de la posición.
+
+**Ideal para:** rutas de carretera, entrenamientos y ciclistas que quieren una bicicleta de corte deportivo.
+
+## 9. Trek FX 2: híbrida para ciudad y ejercicio
+
+La **Trek FX 2** representa el enfoque fitness o híbrido: manillar plano, postura práctica y una configuración que busca funcionar tanto para desplazamientos urbanos como para hacer ejercicio. Para muchos usuarios es más lógica que una MTB si el 80 o 90 % de los trayectos discurren por asfalto, carriles bici y caminos compactos.
+
+Una híbrida permite mantener una postura menos agresiva que una bicicleta de carretera y suele ser más eficiente sobre firme liso que una MTB con neumáticos de tacos. Comprueba si la versión concreta incluye los accesorios que necesitas: guardabarros, portabultos, pata de cabra y luces pueden tener que comprarse aparte.
+
+**Puntos fuertes:** versatilidad diaria, posición práctica y eficiencia sobre asfalto.
+
+**A tener en cuenta:** no está diseñada para senderos técnicos. La elección de neumáticos y frenos depende del uso y del clima.
+
+**Ideal para:** ir al trabajo, hacer recados, pedalear por carriles bici y mantener una rutina de ejercicio.
+
+## 10. Orbea Carpe: movilidad urbana y trayectos cotidianos
+
+La **Orbea Carpe** se orienta al uso urbano, donde importan la agilidad, una postura cómoda y la facilidad de uso en desplazamientos frecuentes. Para ciudad, la mejor bicicleta no es necesariamente la más ligera o deportiva: también cuentan la posibilidad de instalar guardabarros, un portabultos, luces y un buen sistema antirrobo.
+
+Si vas a dejarla aparcada en la calle, valora una solución de seguridad antes de comprar accesorios secundarios. También debes comprobar si la versión elegida incluye equipamiento urbano o si tendrás que añadirlo. Una bicicleta para trayectos diarios debe adaptarse a tu ropa habitual, al espacio donde la guardas y a las condiciones meteorológicas.
+
+**Puntos fuertes:** orientación urbana, manejo práctico y potencial para equiparla para los desplazamientos diarios.
+
+**A tener en cuenta:** no todas las versiones tienen el mismo equipamiento. Comprueba los puntos de montaje, los neumáticos y la talla antes de decidir.
+
+**Ideal para:** desplazamientos cortos y medios, recados y uso urbano habitual.
+
+## Cómo elegir la mejor bicicleta según tu uso
+
+### MTB, carretera, híbrida o gravel: diferencias importantes
+
+La **bicicleta de montaña (MTB)** es adecuada para caminos, pistas y senderos. Los neumáticos con dibujo y el manillar ancho aportan control fuera del asfalto, pero pueden generar más resistencia al rodar en ciudad. Una rígida suele ser suficiente para terreno fácil; una doble suspensión tiene sentido cuando el recorrido es más técnico y la suspensión trasera aporta control y comodidad.
+
+La **bicicleta de carretera** está pensada para rodar sobre asfalto con eficiencia. Su postura y neumáticos favorecen la velocidad, pero requieren acostumbrarse al manillar y a la posición. Para rutas largas, busca una geometría endurance y una talla adecuada antes que perseguir únicamente el peso más bajo.
+
+La **híbrida o fitness** combina una postura accesible con ruedas que ruedan bien en asfalto. Es una candidata fuerte para ir al trabajo, entrenar y recorrer carriles bici. La **gravel** añade capacidad para pistas de grava y caminos compactos, con manillar curvo y neumáticos más anchos que los de muchas bicicletas de carretera. Si quieres alternar asfalto y pistas sin hacer MTB técnica, merece la pena comparar esta categoría.
+
+### La talla es más importante que una pequeña diferencia de componentes
+
+Consulta la tabla de tallas del fabricante usando tu altura y, cuando se solicite, la longitud de la entrepierna. La talla no se determina solo por la altura: la longitud del torso, los brazos y la flexibilidad también influyen. Si estás entre dos tallas, prueba ambas cuando sea posible y solicita un ajuste profesional. La altura del sillín, el alcance al manillar y la posición de las manetas pueden cambiar mucho la comodidad.
+
+No compres una bicicleta grande pensando que crecerás dentro de ella ni una pequeña para sentir más control sin comprobar la geometría. Una talla inadecuada puede generar molestias, dificultar el control y hacer que uses menos la bicicleta.
+
+### Frenos, transmisión, ruedas y mantenimiento
+
+Los frenos de disco pueden ofrecer un rendimiento consistente en condiciones húmedas, pero el resultado depende del diseño, las pastillas y el mantenimiento. Los frenos hidráulicos suelen exigir menos fuerza en la maneta que muchos sistemas mecánicos, aunque reparar o purgar el sistema requiere herramientas y conocimientos específicos. Para un uso tranquilo, importa tanto el estado y ajuste de los frenos como el nombre comercial del componente.
+
+La transmisión debe ofrecer marchas útiles para las pendientes de tu zona. Más velocidades no significa automáticamente mejor bicicleta: el rango total, los saltos entre marchas y la calidad del ajuste importan más que contar piñones. Revisa también la disponibilidad de cadena, cassette, pastillas y neumáticos de recambio. Una bicicleta fácil de mantener puede ser una mejor compra a largo plazo que una con componentes llamativos y poco soporte local.
+
+### Cuánto gastar: presupuesto total, no solo precio de la bici
+
+Reserva parte del presupuesto para casco homologado, luces delantera y trasera, timbre, un buen candado y un kit básico de reparación. Si vas a circular por carretera, añade elementos de visibilidad y ropa adecuada. Puede que necesites pedales, guardabarros o portabultos, dependiendo de la bicicleta. Pide al vendedor un presupuesto final con montaje y ajustes incluidos.
+
+En una bicicleta de uso frecuente, el coste de mantenimiento también cuenta. Neumáticos, cadena, pastillas, cables y revisiones son consumibles normales. La limpieza de la transmisión y la presión correcta de los neumáticos ayudan a mantener la bicicleta funcionando bien.
+
+## Errores habituales al comprar una bicicleta
+
+- Elegir solo por el precio o el color sin revisar la talla.
+- Comprar una MTB para circular casi siempre por asfalto, cuando una híbrida podría ser más cómoda y eficiente.
+- Suponer que todas las versiones de una gama llevan los mismos frenos, ruedas o transmisión.
+- Olvidar el coste del casco, el candado, las luces y el mantenimiento.
+- No comprobar la política de garantía, el servicio técnico y la disponibilidad de recambios.
+- Comprar una bicicleta de competición para paseos tranquilos o una bicicleta recreativa para rutas técnicas exigentes sin valorar sus límites.
+
+## Preguntas frecuentes
+
+### ¿Cuál es la mejor bicicleta para empezar?
+
+Para caminos y pistas, una MTB rígida de iniciación suele ser una opción versátil. Para ciudad y asfalto, una híbrida como la Trek FX 2 puede encajar mejor. Si quieres hacer rutas largas sobre carretera, compara bicicletas endurance y prioriza la talla y la comodidad.
+
+### ¿Qué es mejor: una MTB rígida o una doble suspensión?
+
+Una rígida suele ser más sencilla y económica, y funciona bien en pistas y senderos fáciles. La doble suspensión aporta control y comodidad en terreno técnico, pero añade peso, coste y mantenimiento. Elige según el terreno que realmente vas a recorrer.
+
+### ¿Cuántas marchas necesito?
+
+No hay una cifra universal. Busca un rango de desarrollos que te permita subir las pendientes habituales y mantener una cadencia cómoda en llano. La configuración concreta importa más que el número de piñones.
+
+### ¿Conviene comprar online o en una tienda?
+
+Comprar online permite comparar precios y disponibilidad, pero una tienda puede ayudarte a elegir talla, ajustar la bicicleta y resolver problemas de montaje. Si compras online, confirma qué montaje final requiere y quién se encarga de la garantía y el mantenimiento.
+
+### ¿Qué revisar antes de pagar?
+
+Comprueba la talla, la versión exacta, el estado de ruedas y frenos, el funcionamiento de la transmisión, la garantía, la política de devolución y la disponibilidad de recambios. En bicicletas de temporadas anteriores, verifica que las especificaciones de la ficha correspondan a la unidad ofertada.
+
+## Conclusión: la mejor bicicleta es la que encaja con tus rutas
+
+No hay un modelo ganador para todo el mundo. La Rockrider Explore 500, Trek Marlin 5, Orbea Onna, Specialized Rockhopper, Giant Talon y Cube Aim son opciones a comparar para montaña recreativa. La Triban RC 500 y la Van Rysel EDR AF se orientan a carretera, mientras que la Trek FX 2 y la Orbea Carpe encajan mejor con ciudad y ejercicio. Antes de comprar, confirma la versión disponible, prueba la talla y calcula el presupuesto completo. La comodidad, la seguridad y el mantenimiento importan tanto como el precio inicial.`
+
+const bicicletasElectricasContent = `# Las 10 mejores bicicletas eléctricas de 2026: comparativa y guía de compra
+
+Las **mejores bicicletas eléctricas** no son necesariamente las que anuncian más autonomía o más potencia. La elección depende del tipo de trayecto, el desnivel, el peso que puedes manejar, la facilidad para cargar la batería y el servicio técnico disponible. Una bicicleta eléctrica urbana necesita comodidad y accesorios prácticos; una e-MTB requiere motor, batería, frenos y suspensiones adecuados al terreno; una plegable prioriza el tamaño y la facilidad de transporte.
+
+Esta guía compara diez modelos y familias para distintos perfiles: desplazamientos diarios, rutas de trekking, montaña, gravel y movilidad compacta. Es una selección editorial orientativa, no un ranking de ventas verificadas ni una prueba independiente. Las especificaciones cambian según el año y el montaje, así que confirma la ficha del producto concreto antes de comprar. Las cifras de autonomía anunciadas por los fabricantes son condiciones de referencia y no garantizan la distancia que recorrerás en la práctica.
+
+## Comparativa rápida de bicicletas eléctricas
+
+| Modelo | Tipo | Uso potencial | Qué revisar antes de comprar |
+|---|---|---|---|
+| Orbea Kemen | Urbana / trekking | Desplazamientos y rutas mixtas | Batería, motor y equipamiento |
+| Specialized Turbo Vado | Urbana | Ir al trabajo y trayectos diarios | Capacidad de batería y versión |
+| Trek Powerfly | MTB eléctrica | Pistas y rutas de montaña | Suspensión, batería y motor |
+| Orbea Rise | MTB eléctrica ligera | Senderos y rutas de montaña | Configuración y asistencia |
+| Canyon Grizl:ON | Gravel eléctrica | Asfalto y pistas | Peso, autonomía y talla |
+| Cube Kathmandu Hybrid | Trekking eléctrica | Viajes y recorridos largos | Portaequipajes y batería |
+| ENGWE P275 SE | Urbana | Trayectos cotidianos | Homologación, talla y servicio |
+| ENGWE Engine Pro 2.0 | Plegable de ruedas anchas | Ocio y trayectos mixtos | Peso, dimensiones y legalidad |
+| Rockrider E-EXPL 100 | MTB eléctrica de entrada | Caminos y primeras rutas | Batería, frenos y asistencia |
+| Moma E-Bike 28 Pro | Urbana / trekking | Ciudad y desplazamientos | Montaje exacto y soporte técnico |
+
+## 1. Orbea Kemen: una eléctrica versátil para moverse y explorar
+
+La **Orbea Kemen** está pensada para combinar desplazamientos urbanos con rutas de trekking y caminos fáciles. En una eléctrica de este tipo interesa que la asistencia sea progresiva, que la posición permita pedalear con comodidad y que el equipamiento se adapte al día a día. Según la versión, pueden variar el motor, la batería, la horquilla, los frenos y los accesorios, por lo que conviene comparar la ficha exacta antes de decidir.
+
+Su atractivo está en la versatilidad: puede ser una alternativa a una bicicleta urbana sencilla para quien también quiere hacer rutas de fin de semana. Para el uso diario, revisa si incluye luces, guardabarros, pata de cabra y portabultos, o si debes comprarlos aparte. Si vas a subir pendientes con frecuencia, compara el par motor, la gestión de la asistencia y el desarrollo de la transmisión.
+
+**Ventajas potenciales:** formato polivalente, enfoque de uso cotidiano y capacidad para alternar desplazamientos con rutas tranquilas.
+
+**Limitaciones:** el precio y el equipamiento cambian según la versión; una bicicleta equipada para ciudad puede ser más pesada que una deportiva.
+
+**Ideal para:** quien quiere una sola eléctrica para ir al trabajo, hacer recados y salir por pistas sencillas.
+
+## 2. Specialized Turbo Vado: una urbana para trayectos frecuentes
+
+La **Specialized Turbo Vado** se orienta a la movilidad urbana y a los desplazamientos frecuentes. En esta categoría, una buena experiencia depende de una entrega de asistencia natural, una posición cómoda, frenos fiables y accesorios que permitan usar la bici a diario. Las diferentes versiones pueden ofrecer capacidades de batería y niveles de equipamiento distintos, por lo que hay que revisar el modelo y el año concretos.
+
+Antes de comprar, calcula la distancia habitual de ida y vuelta, el desnivel y si podrás recargar en casa o en el trabajo. No necesitas la batería más grande si haces trayectos cortos, pero sí conviene dejar margen para el frío, el envejecimiento de la batería y los desvíos. Si debes subir la bicicleta por escaleras, el peso puede ser tan importante como la autonomía.
+
+**Ventajas potenciales:** enfoque urbano, comodidad para desplazamientos y una gama destinada al uso habitual.
+
+**Limitaciones:** coste inicial, peso y diferencias importantes entre versiones.
+
+**Ideal para:** desplazamientos diarios, recados y trayectos en los que quieres llegar con menos esfuerzo.
+
+## 3. Trek Powerfly: asistencia para rutas de montaña
+
+La **Trek Powerfly** es una familia de bicicletas eléctricas de montaña diseñada para ampliar las posibilidades en pistas y rutas con desnivel. El motor ayuda en las subidas, pero no sustituye la técnica de conducción ni la necesidad de escoger una bicicleta adecuada al terreno. La batería, el recorrido de suspensión, los frenos y la geometría deben corresponder al tipo de ruta que haces.
+
+Para pistas y senderos moderados, una configuración de suspensión delantera puede ser suficiente. Si planeas descensos técnicos, compara las versiones con más recorrido y componentes apropiados, sin olvidar que una e-MTB suele pesar bastante más que una bicicleta convencional. Ese peso influye al transportarla, maniobrar a baja velocidad y levantarla para guardarla.
+
+**Ventajas potenciales:** orientación clara a montaña, ayuda en las subidas y posibilidad de cubrir rutas con más desnivel.
+
+**Limitaciones:** peso, coste y mantenimiento de los sistemas eléctricos y de suspensión.
+
+**Ideal para:** ciclistas que recorren caminos de montaña y quieren gestionar mejor las subidas.
+
+## 4. Orbea Rise: una e-MTB de enfoque deportivo
+
+La **Orbea Rise** está dirigida a ciclistas que buscan una bicicleta eléctrica de montaña con una sensación de conducción deportiva. La gama ha tenido distintas configuraciones de motor, batería y suspensión según la generación, por lo que es especialmente importante verificar el modelo exacto. No se debe asumir que todas las Rise ofrecen la misma capacidad de batería, potencia de asistencia o recorrido.
+
+Una e-MTB de enfoque ligero puede resultar interesante para quien quiere ayuda en las subidas sin renunciar a una conducción ágil, aunque la ligereza depende del montaje y puede implicar compromisos en capacidad de batería o equipamiento. Para elegir bien, valora la duración de tus rutas, el desnivel acumulado y si prefieres una asistencia suave o una ayuda más intensa.
+
+**Ventajas potenciales:** enfoque deportivo, manejo pensado para rutas de montaña y distintas configuraciones dentro de la familia.
+
+**Limitaciones:** inversión elevada en muchas versiones y necesidad de comparar con cuidado los montajes.
+
+**Ideal para:** usuarios que practican MTB con frecuencia y quieren asistencia eléctrica para ampliar sus rutas.
+
+## 5. Canyon Grizl:ON: gravel eléctrica para asfalto y pistas
+
+La **Canyon Grizl:ON** se sitúa en el segmento gravel eléctrico, que combina características de carretera con capacidad para circular por pistas compactas. Es una categoría interesante para quienes hacen rutas largas, mezclan asfalto y tierra y prefieren un manillar curvo. La geometría y el espacio para neumáticos influyen en el control y la comodidad, mientras que el sistema eléctrico ayuda a gestionar el desnivel.
+
+Antes de comprar una gravel eléctrica, revisa el peso total, el tipo de motor, la capacidad de batería y la facilidad para cargarla. También importa la talla: una postura demasiado larga o baja puede resultar incómoda en recorridos de varias horas. La disponibilidad de puntos de servicio y la compatibilidad de piezas específicas merecen atención en una bicicleta con sistema eléctrico integrado.
+
+**Ventajas potenciales:** versatilidad para rutas mixtas y una orientación a recorridos largos.
+
+**Limitaciones:** precio, peso y menor comodidad para quien prefiere una postura muy erguida o necesita transportar equipaje urbano voluminoso.
+
+**Ideal para:** ciclistas que alternan carreteras secundarias, pistas de grava y rutas de larga distancia.
+
+## 6. Cube Kathmandu Hybrid: trekking eléctrica para viajes y uso diario
+
+La **Cube Kathmandu Hybrid** está enfocada al trekking y a la movilidad de largo recorrido. En esta categoría, el equipamiento puede ser decisivo: portabultos, guardabarros, luces, pata de cabra y una postura cómoda ayudan a usar la bicicleta todos los días y a preparar rutas con equipaje. La configuración del motor y la batería depende de la versión, así que verifica la ficha y el año del modelo.
+
+Es una opción a considerar para quien necesita transportar alforjas o combinar ciudad con rutas de varios kilómetros. Comprueba la carga máxima autorizada, la compatibilidad del portabultos con tus bolsas y si la batería se puede extraer fácilmente para cargarla en casa. El peso con equipamiento puede ser considerable, algo que se nota al maniobrar o subir escalones.
+
+**Ventajas potenciales:** orientación viajera, equipamiento práctico y una posición diseñada para recorrer distancias.
+
+**Limitaciones:** tamaño y peso, además del coste de las versiones con mayor batería.
+
+**Ideal para:** desplazamientos diarios, cicloturismo y rutas mixtas en las que el equipaje importa.
+
+## 7. ENGWE P275 SE: eléctrica urbana para desplazamientos cotidianos
+
+La **ENGWE P275 SE** se presenta como una alternativa urbana para trayectos cotidianos. Al comparar modelos de esta categoría, no te fijes solo en la autonomía anunciada: revisa el tipo de sensor de asistencia, la capacidad de batería en Wh, los frenos, la posición de conducción, el peso y el soporte posventa. Un sensor que responde de forma progresiva puede hacer que la asistencia se sienta más natural al arrancar y al cambiar de ritmo.
+
+Para circular a diario, valora también los accesorios y la facilidad de mantenimiento. Si la bicicleta se vende directamente por internet, confirma quién gestiona la garantía, dónde conseguir piezas y qué hacer si surge un problema con el sistema eléctrico. Revisa la ficha de la unidad concreta y no extrapoles especificaciones de una versión a otra.
+
+**Ventajas potenciales:** enfoque urbano y una configuración dirigida a desplazamientos diarios.
+
+**Limitaciones:** disponibilidad de servicio técnico, diferencias de versión y necesidad de verificar homologación y componentes.
+
+**Ideal para:** trayectos urbanos y recorridos relativamente regulares.
+
+## 8. ENGWE Engine Pro 2.0: formato plegable de ruedas anchas
+
+La **ENGWE Engine Pro 2.0** combina un formato plegable con neumáticos anchos, una configuración que puede resultar atractiva para ocio y recorridos mixtos. El tamaño de rueda y el volumen de los neumáticos aportan estabilidad en ciertos firmes, pero el conjunto puede ser pesado y ocupar más espacio de lo que su etiqueta de plegable sugiere. Antes de comprar, comprueba las dimensiones plegada, el peso real y si podrás transportarla sin ayuda.
+
+Es fundamental revisar la legalidad de la versión comercializada en España. Para que una bicicleta pueda tratarse como ciclo de pedaleo asistido ordinario, debe cumplir los requisitos aplicables, incluida la asistencia vinculada al pedaleo, potencia nominal continua máxima de 250 W y corte de asistencia a 25 km/h, además de los demás requisitos técnicos. Una versión que no cumpla puede tener una clasificación legal distinta y no debe darse por válida para circular por vías públicas como una bicicleta convencional.
+
+**Ventajas potenciales:** formato compacto en comparación con una bicicleta no plegable y neumáticos anchos para ciertos usos recreativos.
+
+**Limitaciones:** peso, dimensiones, transporte y necesidad de verificar la normativa exacta de la versión.
+
+**Ideal para:** ocio y usuarios que valoran el plegado, siempre que las dimensiones y la homologación encajen con su uso.
+
+## 9. Rockrider E-EXPL 100: iniciación a la montaña eléctrica
+
+La **Rockrider E-EXPL 100** es una familia de entrada a la MTB eléctrica que puede servir para quienes quieren probar rutas con asistencia sin comprar de inicio una bicicleta de gama alta. La configuración exacta de motor, batería, frenos y horquilla debe revisarse en la ficha del año disponible. En montaña, estos componentes tienen más importancia que una cifra aislada de autonomía.
+
+Para caminos y pistas moderadas, una eléctrica de iniciación puede facilitar las subidas y permitir mantener el ritmo del grupo. No obstante, si planeas rutas técnicas, descensos largos o uso muy frecuente, conviene comparar el sistema de frenos, la capacidad de batería, el peso y la robustez de las ruedas con opciones de gama superior.
+
+**Ventajas potenciales:** puerta de entrada a la montaña eléctrica y orientación recreativa.
+
+**Limitaciones:** componentes y autonomía más modestos que los de modelos avanzados; no es una bicicleta para cualquier sendero técnico.
+
+**Ideal para:** usuarios principiantes y rutas de montaña sencillas.
+
+## 10. Moma E-Bike 28 Pro: alternativa urbana y de trekking
+
+La **Moma E-Bike 28 Pro** pertenece a la categoría de bicicletas eléctricas de ruedas grandes para desplazamientos y rutas tranquilas. Las especificaciones pueden cambiar por versión y año, de modo que debes comprobar capacidad de batería, tipo de motor, frenos, transmisión y equipamiento incluidos. En una bicicleta urbana, los accesorios de serie pueden suponer un ahorro real frente a comprar luces, guardabarros y portabultos por separado.
+
+Antes de decidirte, investiga las condiciones de garantía y el servicio técnico disponible en tu zona. Una bicicleta eléctrica tiene componentes específicos —batería, controlador, motor, pantalla y cableado— que conviene poder revisar con seguridad. También verifica el peso y si la batería se extrae para cargarla dentro de casa.
+
+**Ventajas potenciales:** enfoque práctico para ciudad y recorridos cotidianos.
+
+**Limitaciones:** la configuración concreta y el soporte posventa deben confirmarse antes de pagar.
+
+**Ideal para:** usuarios que buscan una eléctrica para desplazamientos urbanos y rutas tranquilas.
+
+## Cómo elegir una bicicleta eléctrica sin equivocarte
+
+### Autonomía real: mira los vatios-hora y tu recorrido
+
+La autonomía depende de muchos factores: capacidad de la batería en Wh, nivel de asistencia, peso total de ciclista y equipaje, desnivel, presión de neumáticos, temperatura, viento, estado de la batería y frecuencia de las paradas. Por eso, una cifra publicitaria de autonomía máxima no debe interpretarse como una promesa. Para comparar baterías, los Wh ofrecen una referencia más útil que limitarse a leer los kilómetros anunciados, aunque tampoco determinan por sí solos la distancia final.
+
+Calcula tu recorrido habitual y deja un margen para los días fríos, los desvíos y el envejecimiento de la batería. Si haces trayectos cortos en ciudad, puede que priorices peso y facilidad de carga. Para rutas de montaña con mucho desnivel, la capacidad de batería y la disponibilidad de puntos de recarga pueden ser decisivas.
+
+### Motor central o motor en rueda
+
+Un motor central suele aprovechar la transmisión de la bicicleta y puede ofrecer una sensación natural, especialmente en subidas, pero el resultado depende del sistema y de cómo esté ajustado. Un motor en rueda puede ser suficiente para trayectos urbanos y tiene ventajas de sencillez en algunas configuraciones. No es correcto juzgar una bicicleta solo por la posición del motor: el sensor de asistencia, el desarrollo, la batería, el peso y el servicio técnico también importan.
+
+El par, expresado en Nm, es una referencia útil para entender la capacidad de ayuda a baja velocidad, pero no describe por sí solo el comportamiento de todo el sistema. Si es posible, prueba la bicicleta en una pendiente parecida a las que vas a recorrer.
+
+### Peso, batería extraíble y espacio de almacenamiento
+
+Las eléctricas suelen pesar más que las bicicletas convencionales. Si tienes que subir escaleras, guardarla en un piso pequeño o colocarla en un portabicicletas de coche, el peso puede convertirse en un factor decisivo. Una plegable no siempre es ligera; comprueba las dimensiones plegada y si realmente cabe en el lugar donde quieres guardarla.
+
+Una batería extraíble facilita la carga en casa o en la oficina, aunque debes seguir las instrucciones del fabricante para cargarla y almacenarla. Evita golpes, humedad no prevista y temperaturas extremas. No uses cargadores incompatibles y deja de utilizar una batería que presente daños, hinchazón, olor extraño o calentamiento anormal.
+
+### Normativa básica en España
+
+En España, una bicicleta de pedaleo asistido que encaje en la categoría ordinaria de ciclo debe cumplir las condiciones técnicas y legales aplicables. Como referencia general, la asistencia debe estar vinculada al pedaleo, la potencia nominal continua máxima del motor no debe superar 250 W y la asistencia debe reducirse progresivamente y cortarse antes de superar 25 km/h, con los requisitos adicionales que correspondan. Las funciones de acelerador, la potencia declarada, la velocidad de asistencia y la homologación concreta pueden cambiar la clasificación.
+
+No des por hecho que cualquier bicicleta anunciada como eléctrica o e-bike es legal como bicicleta convencional. Antes de comprar, pide documentación de conformidad y confirma la versión exacta. Si el vehículo no cumple la categoría de ciclo de pedaleo asistido, pueden aplicarse otras obligaciones y restricciones. Para circular con seguridad, respeta las normas de tráfico, usa luces cuando corresponda y lleva casco según las obligaciones aplicables a tu caso y vía.
+
+### Garantía, servicio técnico y coste de propiedad
+
+Antes de comprar, averigua quién se encarga de la garantía del motor y la batería, cuánto cuesta una batería de sustitución y dónde se pueden conseguir recambios. Comprueba también el plazo de entrega, la política de devolución, el montaje final y si existe un taller autorizado cerca. Un precio inicial bajo puede dejar de ser atractivo si una avería requiere enviar la bicicleta completa lejos o esperar mucho tiempo por una pieza.
+
+Ten en cuenta el coste de neumáticos, pastillas, cadena, cassette y revisiones. En una eléctrica, la transmisión puede sufrir más desgaste si se cambia de marcha bajo mucha carga o se pedalea con un desarrollo inadecuado. Mantén la cadena limpia y lubricada, utiliza marchas apropiadas y evita sumergir los componentes eléctricos.
+
+## Errores comunes al comprar una e-bike
+
+- Confiar en la autonomía máxima anunciada sin considerar peso, desnivel, clima y nivel de asistencia.
+- Elegir una batería grande sin valorar el peso añadido o la facilidad para cargarla.
+- Comprar una bicicleta de montaña eléctrica para trayectos urbanos en los que una urbana sería más cómoda y ligera.
+- No comprobar la legalidad de la versión, especialmente en modelos con ruedas anchas, acelerador o cifras de potencia llamativas.
+- Olvidar el servicio técnico, la garantía de la batería y el precio de recambios.
+- No probar la talla ni comprobar que puedes manejar el peso de la bicicleta.
+- Confundir potencia máxima comercial con potencia nominal continua o asumir que ambas significan lo mismo legalmente.
+
+## Preguntas frecuentes
+
+### ¿Cuántos kilómetros puede hacer una bicicleta eléctrica?
+
+No existe una cifra única. Depende de la batería, el terreno, el peso total, la temperatura, el viento, los neumáticos y el modo de asistencia. Compara la capacidad en Wh y calcula un margen realista para tu ruta, en lugar de basarte solo en la autonomía máxima anunciada.
+
+### ¿Es mejor un motor central?
+
+Puede ofrecer una asistencia natural y resultar eficaz en subidas, pero no es automáticamente la mejor opción para todos. Un motor en rueda puede ser suficiente para recorridos urbanos sencillos. Valora el conjunto: sistema de asistencia, batería, frenos, peso, garantía y servicio técnico.
+
+### ¿Puedo circular con cualquier bicicleta eléctrica por la vía pública?
+
+No necesariamente. La clasificación depende de las características técnicas y de que cumpla los requisitos legales correspondientes. Antes de comprar, comprueba la documentación de conformidad de la versión concreta, especialmente si anuncia velocidades o potencias elevadas.
+
+### ¿Cuánto tarda en cargarse la batería?
+
+Depende de la capacidad de la batería, el cargador y el nivel de carga inicial. Consulta el manual del modelo; no es recomendable asumir que todas las baterías se cargan en el mismo tiempo. Utiliza el cargador aprobado por el fabricante.
+
+### ¿Qué mantenimiento necesita una e-bike?
+
+Además del mantenimiento habitual de frenos, neumáticos, cadena y transmisión, hay que cuidar la batería y el sistema eléctrico. Sigue las instrucciones del fabricante, mantén los conectores limpios y secos, y acude a un taller cualificado para intervenciones en motor, batería o controlador.
+
+## Conclusión: elige por uso, autonomía útil y soporte
+
+Para ciudad, compara Orbea Kemen, Specialized Turbo Vado, ENGWE P275 SE y Moma E-Bike 28 Pro. Para montaña, revisa Trek Powerfly, Orbea Rise y Rockrider E-EXPL 100; para rutas mixtas y equipaje, Cube Kathmandu Hybrid puede encajar, mientras que Canyon Grizl:ON está orientada al gravel eléctrico. ENGWE Engine Pro 2.0 exige especial atención al peso, el plegado y la conformidad legal de la versión. Antes de comprar, confirma las especificaciones actuales, prueba la talla y averigua cómo gestionar garantía y reparaciones. Una buena e-bike es la que cubre tu recorrido real con seguridad y soporte a largo plazo.`
+
 export const TOPTRENDS_ARTICLES: Article[] = [
   {
     id: 91001,
@@ -609,5 +1022,34 @@ export const TOPTRENDS_ARTICLES: Article[] = [
     views: 0,
     trending: 0,
     published_at: '2026-10-18T18:05:00.000Z',
+  },,
+  {
+    id: 91003,
+    title: 'Las 10 mejores bicicletas de 2026: comparativa y guía de compra',
+    slug: 'mejores-bicicletas-2026',
+    category: 'toptrends',
+    excerpt: 'Comparamos diez bicicletas de montaña, carretera, ciudad y fitness para ayudarte a elegir según tu terreno, talla, presupuesto y necesidades de mantenimiento.',
+    content: bicicletasContent,
+    image_url: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=1200&auto=format&fit=crop',
+    thumbnail_url: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=400&auto=format&fit=crop',
+    read_time_minutes: 16,
+    views: 0,
+    trending: 0,
+    published_at: '2026-10-19T06:00:00.000Z',
   },
+  {
+    id: 91004,
+    title: 'Las 10 mejores bicicletas eléctricas de 2026: comparativa y guía de compra',
+    slug: 'mejores-bicicletas-electricas-2026',
+    category: 'toptrends',
+    excerpt: 'Guía de compra de bicicletas eléctricas urbanas, MTB, trekking y gravel: autonomía real, motor, batería, peso, normativa española y servicio técnico.',
+    content: bicicletasElectricasContent,
+    image_url: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=1200&auto=format&fit=crop',
+    thumbnail_url: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=400&auto=format&fit=crop',
+    read_time_minutes: 17,
+    views: 0,
+    trending: 0,
+    published_at: '2026-10-19T06:05:00.000Z',
+  }
+]
 ]
