@@ -33,7 +33,7 @@ Karseell Maca Care System es una mascarilla capilar con colágeno y aceites que 
 
 **Puntos a favor:** formato grande y enfoque nutritivo. **A tener en cuenta:** verifica la composición de la versión que compres, el tamaño real y las instrucciones del envase; una fórmula rica puede resultar pesada en cabello muy fino.
 
-[Ver Karseell en Amazon España](https://www.amazon.es/s?k=Karseell+Maca+Care+System+mascarilla)
+[Ver Karseell en Amazon España](https://link.amazon/B044hntxx)
 
 ## 2. Olaplex Nº. 8 Bond Intense Moisture Mask: para cabello tratado
 
@@ -41,7 +41,7 @@ Olaplex Nº. 8 es un tratamiento capilar pensado para aportar hidratación y mej
 
 **Puntos a favor:** formato de tratamiento y aplicación en casa. **A tener en cuenta:** no sustituye los cuidados profesionales ni evita por sí sola futuros daños por calor; sigue las instrucciones y compara el coste por aplicación.
 
-[Ver Olaplex Nº. 8 en Amazon España](https://www.amazon.es/s?k=Olaplex+No+8+Bond+Intense+Moisture+Mask)
+[Ver Olaplex Nº. 8 en Amazon España](https://link.amazon/B02CB669H)
 
 ## 3. Wella Professionals Fusion Mask: para pelo frágil o quebradizo
 
@@ -49,7 +49,7 @@ La mascarilla Wella Professionals Fusion está dirigida al cuidado del cabello d
 
 **Puntos a favor:** tratamiento de uso en casa y formato profesional. **A tener en cuenta:** la sensación de suavidad no significa que el cabello esté permanentemente reparado; revisa la variante y el tamaño del envase.
 
-[Ver Wella Fusion en Amazon España](https://www.amazon.es/s?k=Wella+Professionals+Fusion+Mask)
+[Ver Wella Fusion en Amazon España](https://link.amazon/B09hjkyMn)
 
 ## 4. Garnier Fructis Hair Food Aloe: para una rutina ligera
 
@@ -57,7 +57,7 @@ La gama Hair Food incluye distintas mascarillas y fórmulas multiuso. La variant
 
 **Puntos a favor:** opción de supermercado y formato versátil según la etiqueta. **A tener en cuenta:** confirma que sea la variante Aloe y sigue las instrucciones del envase, ya que los usos pueden diferir entre versiones.
 
-[Ver Garnier Hair Food Aloe en Amazon España](https://www.amazon.es/s?k=Garnier+Fructis+Hair+Food+Aloe+mascarilla)
+[Ver Garnier Hair Food Aloe en Amazon España](https://link.amazon/B014GzmH5)
 
 ## 5. Garnier Fructis Hair Food Banana: para pelo seco
 
@@ -65,7 +65,7 @@ La variante Banana de Hair Food se suele elegir para rutinas orientadas a cabell
 
 **Puntos a favor:** fácil de incorporar a la rutina y formato práctico. **A tener en cuenta:** las fórmulas nutritivas pueden apelmazar el pelo fino si se usan en exceso; empieza por medios y puntas.
 
-[Ver Garnier Hair Food Banana en Amazon España](https://www.amazon.es/s?k=Garnier+Fructis+Hair+Food+Banana+mascarilla)
+[Ver Garnier Hair Food Banana en Amazon España](https://link.amazon/B0enuqPAR)
 
 ## 6. SheaMoisture Manuka Honey & Mafura Oil Masque: para rizos secos
 
@@ -73,7 +73,7 @@ Esta mascarilla de SheaMoisture está orientada a cabello que necesita una rutin
 
 **Puntos a favor:** perfil nutritivo para cabellos que toleran productos ricos. **A tener en cuenta:** comprueba la disponibilidad de la variante exacta y evita aplicar demasiado producto si notas acumulación o pérdida de volumen.
 
-[Ver SheaMoisture Manuka Honey en Amazon España](https://www.amazon.es/s?k=SheaMoisture+Manuka+Honey+Mafura+Oil+Masque)
+[Ver SheaMoisture Manuka Honey en Amazon España](https://link.amazon/B0iA68fN0)
 
 ## 7. L'Oréal Professionnel Absolut Repair Mask: para cabello sensibilizado
 
@@ -81,7 +81,7 @@ La gama Absolut Repair se dirige al cuidado del cabello sensibilizado o dañado.
 
 **Puntos a favor:** gama profesional y distintas presentaciones. **A tener en cuenta:** el nombre de la línea incluye varias versiones; confirma el producto, el tamaño y la fórmula antes de comparar precios.
 
-[Ver L'Oréal Professionnel Absolut Repair en Amazon España](https://www.amazon.es/s?k=L%27Oreal+Professionnel+Absolut+Repair+Mask)
+[Ver L'Oréal Absolut Repair en Amazon España](https://link.amazon/B0hlVt373)
 
 ## 8. Moroccanoil Intense Hydrating Mask: para cabello seco
 
@@ -89,7 +89,7 @@ La mascarilla hidratante intensa de Moroccanoil es una alternativa de gama media
 
 **Puntos a favor:** tratamiento de aclarado y enfoque hidratante. **A tener en cuenta:** comprueba la versión, los ingredientes y el coste por uso; los productos con aceites o texturas ricas pueden no encajar en cabello muy fino.
 
-[Ver Moroccanoil Intense Hydrating Mask en Amazon España](https://www.amazon.es/s?k=Moroccanoil+Intense+Hydrating+Mask)
+[Ver Moroccanoil Intense Hydrating Mask en Amazon España](https://link.amazon/B0gZQe7Bm)
 
 ## 9. Cantu Shea Butter Deep Treatment Masque: para cabello rizado o afro
 
@@ -97,7 +97,7 @@ Cantu ofrece tratamientos formulados para cabello texturizado y rutinas que prio
 
 **Puntos a favor:** formato orientado a rutinas de cabello rizado. **A tener en cuenta:** revisa la fórmula actual y la cantidad que necesitas; si notas residuos, reduce la cantidad o aclara según las instrucciones.
 
-[Ver Cantu Deep Treatment Masque en Amazon España](https://www.amazon.es/s?k=Cantu+Shea+Butter+Deep+Treatment+Masque)
+[Ver Cantu Deep Treatment Masque en Amazon España](https://link.amazon/B09hzYPhp)
 
 ## 10. Kérastase Nutritive Masquintense: para nutrición premium
 
@@ -105,7 +105,7 @@ Kérastase Nutritive Masquintense es una mascarilla de gama premium orientada al
 
 **Puntos a favor:** opción premium para una rutina nutritiva. **A tener en cuenta:** la gama puede ofrecer versiones para diferentes grosores de cabello; comprueba cuál corresponde a tu melena y compara el coste por mililitro.
 
-[Ver Kérastase Masquintense en Amazon España](https://www.amazon.es/s?k=Kerastase+Nutritive+Masquintense)
+[Ver Kérastase Masquintense en Amazon España](https://link.amazon/B0i7PFPCj)
 
 ## Cómo elegir la mejor mascarilla según tu pelo
 
