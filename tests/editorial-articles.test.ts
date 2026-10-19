@@ -138,6 +138,7 @@ const EXPECTED_SLUGS = [
   'mejores-bicicletas-electricas-2026',
   'mejores-ordenadores-amazon-espana-2026',
   'mejores-teclados-ordenador-amazon-espana-2026',
+  'mejores-gafas-inteligencia-artificial-amazon-espana-2026',
 ]
 
 const mk = (id: number, slug: string, published_at: string, category = 'virales', trending = 0): Article => ({ id, slug, title: `D1 ${slug}`, category, content: 'x', excerpt: 'd1 row', image_url: null, thumbnail_url: null,
@@ -200,7 +201,7 @@ test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
   const editorialSlugs = [...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
-  assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026'].includes(slug)).sort())
+  assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026', 'mejores-gafas-inteligencia-artificial-amazon-espana-2026'].includes(slug)).sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
   for (const a of EDITORIAL_ARTICLES) {
@@ -233,7 +234,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'mejores-teclados-ordenador-amazon-espana-2026')
+  assert.equal(slugs[0], 'mejores-gafas-inteligencia-artificial-amazon-espana-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
