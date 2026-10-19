@@ -1029,7 +1029,7 @@ La pantalla es otro punto importante. Revisa resolución, brillo, acabado antirr
 
 **Lo mejor:** variedad de configuraciones y enfoque generalista. **A tener en cuenta:** las versiones económicas pueden recortar RAM, pantalla o sistema operativo. Antes de comprar, verifica si incluye Windows, si viene preinstalado y qué garantía ofrece el vendedor.
 
-**Ver opciones en Amazon:** [Lenovo IdeaPad Slim 3](https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3+16GB+512GB+SSD)
+**Ver opciones en Amazon:** [Lenovo IdeaPad Slim 3](https://link.amazon/B07XXpQzc)
 
 ## 2. HP 15: una opción práctica para casa y oficina
 
@@ -1041,7 +1041,7 @@ Mira el teclado, la distribución española, la webcam, los puertos USB, la sali
 
 **Lo mejor:** formato conocido y amplio abanico de precios. **A tener en cuenta:** algunos anuncios mezclan referencias parecidas o especifican mal la memoria. Confirma que la descripción, las fotos y el modelo exacto coinciden, y revisa la política de devolución.
 
-**Ver opciones en Amazon:** [HP 15 con 16 GB y SSD](https://www.amazon.es/s?k=portatil+HP+15+16GB+512GB+SSD)
+**Ver opciones en Amazon:** [HP 15 con 16 GB y SSD](https://link.amazon/B0cvGyr5k)
 
 ## 3. ASUS Vivobook 15: versátil para estudiar y trabajar
 
@@ -1053,7 +1053,7 @@ La conectividad puede marcar la diferencia en el día a día. Comprueba cuántos
 
 **Lo mejor:** equilibrio entre productividad, pantalla y variedad de configuraciones. **A tener en cuenta:** no todas las versiones tienen el mismo panel, batería o posibilidades de ampliación. Antes de comprar, confirma si el sistema operativo está incluido y compara el coste final con equipos equivalentes.
 
-**Ver opciones en Amazon:** [ASUS Vivobook 15](https://www.amazon.es/s?k=ASUS+Vivobook+15+16GB+512GB)
+**Ver opciones en Amazon:** [ASUS Vivobook 15](https://link.amazon/B0c6VpT70)
 
 ## 4. Acer Aspire Go 15: para quien prioriza el presupuesto
 
@@ -1065,7 +1065,7 @@ Revisa además si el equipo se vende con Windows, con otro sistema o sin sistema
 
 **Lo mejor:** enfoque sencillo para tareas básicas y presupuesto controlado. **A tener en cuenta:** puede no ser adecuado para edición profesional, juegos exigentes o grandes proyectos creativos. Define tus necesidades antes de pagar por más potencia o, al contrario, ahorrar demasiado en memoria.
 
-**Ver opciones en Amazon:** [Acer Aspire Go 15](https://www.amazon.es/s?k=Acer+Aspire+Go+15+16GB+512GB)
+**Ver opciones en Amazon:** [Acer Aspire Go 15](https://link.amazon/B081lHNSg)
 
 ## 5. ASUS Vivobook Go 15 OLED: pantalla atractiva para multimedia
 
@@ -1077,7 +1077,7 @@ Como en otros portátiles finos, consulta la posibilidad de ampliar la RAM. Algu
 
 **Lo mejor:** experiencia visual atractiva en las versiones con panel OLED. **A tener en cuenta:** las especificaciones varían y el OLED no es imprescindible para ofimática. Elige esta opción si realmente valoras la pantalla y el resto de la configuración también encaja.
 
-**Ver opciones en Amazon:** [ASUS Vivobook Go 15 OLED](https://www.amazon.es/s?k=ASUS+Vivobook+Go+15+OLED)
+**Ver opciones en Amazon:** [ASUS Vivobook Go 15 OLED](https://link.amazon/B08FjpdKq)
 
 ## 6. Apple MacBook Air: movilidad y ecosistema macOS
 
@@ -1089,7 +1089,7 @@ También debes verificar la compatibilidad del software. Algunas aplicaciones pr
 
 **Lo mejor:** formato ligero, funcionamiento silencioso en muchas tareas y autonomía competitiva según el uso. **A tener en cuenta:** precio, puertos limitados en ciertas versiones y ampliación interna restringida. Compara generaciones y evita asumir que todos los anuncios corresponden al mismo chip o capacidad.
 
-**Ver opciones en Amazon:** [Apple MacBook Air](https://www.amazon.es/s?k=Apple+MacBook+Air)
+**Ver opciones en Amazon:** [Apple MacBook Air](https://link.amazon/B00VLhwBq)
 
 ## 7. Lenovo ThinkPad E14: pensado para trabajar
 
@@ -1101,7 +1101,7 @@ Las opciones de garantía y servicio técnico merecen especial atención, sobre 
 
 **Lo mejor:** orientación a productividad y una gama de configuraciones profesionales. **A tener en cuenta:** puede costar más que un portátil doméstico con potencia parecida; la diferencia solo compensa si valoras las características profesionales y el soporte.
 
-**Ver opciones en Amazon:** [Lenovo ThinkPad E14](https://www.amazon.es/s?k=Lenovo+ThinkPad+E14+16GB+SSD)
+**Ver opciones en Amazon:** [Lenovo ThinkPad E14](https://link.amazon/B0eMoLY1t)
 
 ## 8. Lenovo LOQ: portátil para jugar y crear contenido
 
@@ -1113,7 +1113,7 @@ El formato gaming tiene contrapartidas: más peso, ventiladores audibles bajo ca
 
 **Lo mejor:** gráfica dedicada y versatilidad para juegos y creación. **A tener en cuenta:** el rendimiento, la temperatura y el ruido dependen de la configuración. No compres solo por la palabra “gaming”; compara pruebas y comprueba que la pantalla sea adecuada para tu uso.
 
-**Ver opciones en Amazon:** [Lenovo LOQ gaming](https://www.amazon.es/s?k=Lenovo+LOQ+RTX+gaming+laptop)
+**Ver opciones en Amazon:** [Lenovo LOQ gaming](https://link.amazon/B0e0mLUfZ)
 
 ## 9. Beelink SER8: mini PC potente y compacto
 
@@ -1125,7 +1125,7 @@ También conviene comprobar el acceso a los componentes internos y la posibilida
 
 **Lo mejor:** tamaño reducido y posibilidad de reutilizar periféricos existentes. **A tener en cuenta:** no suele incluir pantalla ni accesorios, y el soporte posventa puede variar según el vendedor. Confirma la garantía y la política de devolución antes de elegir una marca menos conocida.
 
-**Ver opciones en Amazon:** [Beelink SER8 mini PC](https://www.amazon.es/s?k=Beelink+SER8+mini+PC)
+**Ver opciones en Amazon:** [Beelink SER8 mini PC](https://link.amazon/B02ICSLhl)
 
 ## 10. GMKtec NucBox u otro mini PC equivalente: escritorio sin torre grande
 
@@ -1137,7 +1137,7 @@ Evalúa la garantía, el idioma del sistema, las actualizaciones y la documentac
 
 **Lo mejor:** tamaño compacto y variedad de configuraciones. **A tener en cuenta:** soporte, ruido y calidad de firmware pueden variar. Compra a un vendedor con condiciones claras y conserva la documentación y el embalaje hasta comprobar que todo funciona correctamente.
 
-**Ver opciones en Amazon:** [GMKtec NucBox mini PC](https://www.amazon.es/s?k=GMKtec+NucBox+mini+PC)
+**Ver opciones en Amazon:** [GMKtec NucBox mini PC](https://link.amazon/B04oIJpjl)
 
 ## Cómo elegir un ordenador en Amazon sin equivocarte
 
