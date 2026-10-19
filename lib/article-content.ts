@@ -32,8 +32,15 @@ export function parseArticleContent(content: string | null | undefined): Article
         )
         return [{ type: 'table', headers, rows }]
       }
-      // Headings: ## or ### (only the first line is the heading)
+      // A leading Markdown H1 repeats the article title already shown in the page header.
+      // Hide that marker/title instead of displaying a literal "#" in the article body.
       const [firstLine, ...restLines] = p.split('\n')
+      const topLevelHeading = /^#\s+(.+)$/.exec(firstLine)
+      if (topLevelHeading) {
+        const rest = restLines.join('\n').trim()
+        return rest ? [{ type: 'paragraph', text: rest }] : []
+      }
+      // Headings: ## or ### (only the first line is the heading)
       const h = /^(#{2,3})\s+(.+)$/.exec(firstLine)
       if (h) {
         const level = h[1].length === 2 ? 2 : 3
