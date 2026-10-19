@@ -33,7 +33,7 @@ Una opción para comparar si prefieres polvo neutro y envases grandes. El polvo 
 
 **A favor:** formato versátil. **Revisa:** origen, gramos por toma, lista de ingredientes y dosis indicada.
 
-[Buscar HSN en Amazon España](https://www.amazon.es/s?k=HSN+colageno+hidrolizado)
+[Ver HSN en Amazon España](https://link.amazon/B061BMTiw)
 
 ## 2. Vital Proteins Collagen Peptides
 
@@ -41,7 +41,7 @@ Péptidos de colágeno en polvo de una marca conocida. Las versiones pueden dife
 
 **A favor:** formato sencillo para añadir a una bebida. **Revisa:** dosis por ración, ingredientes añadidos y coste por 10 g.
 
-[Buscar Vital Proteins en Amazon España](https://www.amazon.es/s?k=Vital+Proteins+Collagen+Peptides)
+[Ver Vital Proteins en Amazon España](https://link.amazon/B00qnP8aA)
 
 ## 3. Drasanvi Collmar
 
@@ -49,7 +49,7 @@ La gama Collmar incluye referencias de colágeno marino con presentaciones y com
 
 **A favor:** varias presentaciones. **Revisa:** dosis, ingredientes añadidos y alérgenos de pescado.
 
-[Buscar Drasanvi Collmar en Amazon España](https://www.amazon.es/s?k=Drasanvi+Collmar)
+[Ver Drasanvi Collmar en Amazon España](https://link.amazon/B0hLucWOm)
 
 ## 4. COLNATUR Complex
 
@@ -57,7 +57,7 @@ Colágeno soluble con variantes que pueden incorporar ingredientes como magnesio
 
 **A favor:** formato soluble. **Revisa:** cantidad de colágeno, dosis diaria y coste por toma.
 
-[Buscar COLNATUR Complex en Amazon España](https://www.amazon.es/s?k=COLNATUR+Complex)
+[Ver COLNATUR Complex en Amazon España](https://link.amazon/B08pVT0Z1)
 
 ## 5. Weider Collagen
 
@@ -65,7 +65,7 @@ Weider comercializa colágeno en polvo y algunas fórmulas combinadas.
 
 **A favor:** formato fácil de incorporar a una rutina. **Revisa:** gramos de colágeno por ración, azúcares o edulcorantes, sabor y número de tomas por envase.
 
-[Buscar Weider Collagen en Amazon España](https://www.amazon.es/s?k=Weider+Collagen)
+[Ver Weider Collagen en Amazon España](https://link.amazon/B05bdHI2v)
 
 ## 6. N2 Natural Nutrition Colágeno Marino
 
@@ -73,7 +73,7 @@ Una alternativa en cápsulas, con ingredientes que varían según la versión. L
 
 **A favor:** facilidad de transporte. **Revisa:** cantidad por dosis diaria completa, origen y número de cápsulas al día.
 
-[Buscar N2 Natural Nutrition en Amazon España](https://www.amazon.es/s?k=N2+Natural+Nutrition+colageno+marino)
+[Ver N2 Natural Nutrition en Amazon España](https://link.amazon/B032oQl3V)
 
 ## 7. Ana María Lajusticia Colágeno con Magnesio
 
@@ -81,7 +81,7 @@ La marca ofrece productos con colágeno y magnesio en diferentes presentaciones.
 
 **A favor:** combinación en un mismo producto. **Revisa:** número de comprimidos por toma, cantidad diaria de ambos nutrientes y posibles duplicidades con otros suplementos.
 
-[Buscar Ana María Lajusticia en Amazon España](https://www.amazon.es/s?k=Ana+Maria+Lajusticia+colageno+magnesio)
+[Ver Ana María Lajusticia en Amazon España](https://link.amazon/B07cN8k95)
 
 ## 8. EPAPLUS Arthicare
 
@@ -89,7 +89,7 @@ La línea incluye fórmulas diferentes, por lo que es importante comprobar el no
 
 **A favor:** variedad de presentaciones. **Revisa:** cantidades declaradas, alérgenos y compatibilidad con medicamentos o complementos que ya tomes.
 
-[Buscar EPAPLUS Arthicare en Amazon España](https://www.amazon.es/s?k=EPAPLUS+Arthicare+colageno)
+[Ver EPAPLUS Arthicare en Amazon España](https://link.amazon/B04oiS3X7)
 
 ## 9. WeightWorld Colágeno
 
@@ -97,7 +97,7 @@ La marca ofrece distintas presentaciones de colágeno. Compara las fórmulas sim
 
 **A favor:** alternativas de formato. **Revisa:** origen, ingredientes, dosis, precio por gramo y datos del responsable del producto.
 
-[Buscar WeightWorld en Amazon España](https://www.amazon.es/s?k=WeightWorld+colageno)
+[Ver WeightWorld en Amazon España](https://link.amazon/B04YclsyR)
 
 ## 10. Prozis Collagen Hydrolysed
 
@@ -105,7 +105,7 @@ Otra opción en polvo para comparar por dosis y tamaño de envase. El sabor y lo
 
 **A favor:** formato para mezclar con bebidas. **Revisa:** cantidad real de colágeno por toma, origen, aditivos y coste por dosis.
 
-[Buscar Prozis Collagen en Amazon España](https://www.amazon.es/s?k=Prozis+Collagen+Hydrolysed)
+[Ver Prozis Collagen en Amazon España](https://link.amazon/B0esirpe0)
 
 ## Cómo elegir: seis comprobaciones
 
