@@ -305,16 +305,16 @@ Esta guía reúne diez tipos y familias de mancuernas conocidas que conviene com
 
 | Modelo o familia | Tipo | Mejor uso potencial | Lo que debes revisar | Amazon |
 |---|---|---|---|---|
-| Bowflex SelectTech 552i | Ajustable por dial | Progresar sin muchos pares | Rango de peso y espacio de base | [Ver en Amazon](https://www.amazon.es/s?k=Bowflex+SelectTech+552i) |
-| BRAINGAIN ajustables | Ajustables por selector | Progresión gradual | Rango por unidad y si se vende el par | [Ver en Amazon](https://www.amazon.es/s?k=BRAINGAIN+mancuernas+ajustables+24+kg) |
-| PowerBlock Sport / EXP | Ajustables por pasador | Entrenamientos compactos | Compatibilidad de expansiones | [Ver en Amazon](https://www.amazon.es/s?k=PowerBlock+Sport+EXP+mancuernas) |
-| ATIVAFIT ajustables | Ajustables | Rutinas generales en casa | Rango por unidad y mecanismo | [Ver en Amazon](https://www.amazon.es/s?k=ATIVAFIT+mancuernas+ajustables) |
-| JUPPLIES ajustables | Ajuste rápido | Usuarios que cambian peso a menudo | Garantía, base y saltos de carga | [Ver en Amazon](https://www.amazon.es/s?k=JUPPLIES+mancuernas+ajustables+24+kg) |
-| Yaheetech kit ajustable | Discos y rosca | Presupuesto ajustado | Cierres, discos incluidos y peso total | [Ver en Amazon](https://www.amazon.es/s?k=Yaheetech+kit+mancuernas+ajustables) |
-| SONGMICS ajustables | Discos ajustables | Rutinas progresivas | Longitud, material y peso por mango | [Ver en Amazon](https://www.amazon.es/s?k=SONGMICS+juego+mancuernas+ajustables+20+kg) |
-| Corength kit | Discos ajustables | Principiantes y espacios pequeños | Límite de carga y futuras ampliaciones | [Ver en Amazon](https://www.amazon.es/s?k=Corength+kit+mancuernas+20+kg) |
-| Mancuernas hexagonales recubiertas | Peso fijo | Entrenos sencillos y rápidos | Venta por unidad o por pareja | [Ver en Amazon](https://www.amazon.es/s?k=mancuernas+hexagonales+recubiertas) |
-| Mancuernas ligeras de neopreno | Peso fijo ligero | Movilidad y ejercicios de baja carga | Necesidad real de peso y diámetro del agarre | [Ver en Amazon](https://www.amazon.es/s?k=mancuernas+neopreno+1+2+3+kg) |
+| Bowflex SelectTech 552i | Ajustable por dial | Progresar sin muchos pares | Rango de peso y espacio de base | [Ver en Amazon](https://link.amazon/B0cdScxpR) |
+| BRAINGAIN ajustables | Ajustables por selector | Progresión gradual | Rango por unidad y si se vende el par | [Ver en Amazon](https://link.amazon/B00J5RIEK) |
+| PowerBlock Sport / EXP | Ajustables por pasador | Entrenamientos compactos | Compatibilidad de expansiones | [Ver en Amazon](https://link.amazon/B09V2MgOy) |
+| ATIVAFIT ajustables | Ajustables | Rutinas generales en casa | Rango por unidad y mecanismo | [Ver en Amazon](https://link.amazon/B0g0ZoW3x) |
+| JUPPLIES ajustables | Ajuste rápido | Usuarios que cambian peso a menudo | Garantía, base y saltos de carga | [Ver en Amazon](https://link.amazon/B0hCeIHIx) |
+| Yaheetech kit ajustable | Discos y rosca | Presupuesto ajustado | Cierres, discos incluidos y peso total | [Ver en Amazon](https://link.amazon/A0ahxXhlk) |
+| SONGMICS ajustables | Discos ajustables | Rutinas progresivas | Longitud, material y peso por mango | [Ver en Amazon](https://link.amazon/B0hW9AfdH) |
+| Corength kit | Discos ajustables | Principiantes y espacios pequeños | Límite de carga y futuras ampliaciones | [Ver en Amazon](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro) |
+| Mancuernas hexagonales recubiertas | Peso fijo | Entrenos sencillos y rápidos | Venta por unidad o por pareja | [Ver en Amazon](https://link.amazon/B0d2SuMLd) |
+| Mancuernas ligeras de neopreno | Peso fijo ligero | Movilidad y ejercicios de baja carga | Necesidad real de peso y diámetro del agarre | [Ver en Amazon](https://link.amazon/B09GgAJVi) |
 
 Los nombres de familia no sustituyen a una referencia exacta. En especial, algunas tiendas venden mancuernas ajustables por unidad y otras por pareja; confirma la cantidad incluida para evitar comparar precios que no corresponden al mismo equipo.
 
@@ -328,8 +328,8 @@ Las **Bowflex SelectTech 552i** son un ejemplo conocido de mancuerna ajustable m
 
 **Para quién:** personas que entrenan varias veces por semana, disponen de poco espacio y valoran cambiar cargas rápidamente.
 
-**Buscar en Amazon:** [Bowflex SelectTech 552i](https://www.amazon.es/s?k=Bowflex+SelectTech+552i)  
-**Enlace de afiliado:** [https://link.amazon/B0cdScxpR]
+**Buscar en Amazon:** [Bowflex SelectTech 552i](https://link.amazon/B0cdScxpR)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B0cdScxpR)
 
 ## 2. BRAINGAIN ajustables: una opción para progresión gradual
 
@@ -343,8 +343,8 @@ Una progresión con saltos pequeños puede resultar cómoda cuando trabajas ejer
 
 **Para quién:** usuarios que quieren una pareja ajustable y prevén aumentar su fuerza poco a poco.
 
-**Buscar en Amazon:** [BRAINGAIN ajustables](https://www.amazon.es/s?k=BRAINGAIN+mancuernas+ajustables+24+kg)  
-**Enlace de afiliado:** [https://link.amazon/B00J5RIEK]
+**Buscar en Amazon:** [BRAINGAIN ajustables](https://link.amazon/B00J5RIEK)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B00J5RIEK)
 
 ## 3. PowerBlock Sport / EXP: formato compacto con pasador
 
@@ -356,8 +356,8 @@ Las **PowerBlock Sport** y algunas versiones EXP utilizan un sistema de selecci�
 
 **Para quién:** quienes desean una solución compacta y valoran aumentar el rango de carga sin añadir muchos pares individuales.
 
-**Buscar en Amazon:** [PowerBlock Sport / EXP](https://www.amazon.es/s?k=PowerBlock+Sport+EXP+mancuernas)  
-**Enlace de afiliado:** [https://link.amazon/B09V2MgOy]
+**Buscar en Amazon:** [PowerBlock Sport / EXP](https://link.amazon/B09V2MgOy)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B09V2MgOy)
 
 ## 4. ATIVAFIT ajustables: versatilidad para rutinas generales
 
@@ -369,8 +369,8 @@ Las **ATIVAFIT ajustables** pueden aparecer en distintos rangos y diseños. Ante
 
 **Para quién:** personas que empiezan con fuerza en casa y prefieren un sistema regulable sin adquirir un conjunto completo de pesas fijas.
 
-**Buscar en Amazon:** [ATIVAFIT ajustables](https://www.amazon.es/s?k=ATIVAFIT+mancuernas+ajustables)  
-**Enlace de afiliado:** [https://link.amazon/B0g0ZoW3x]
+**Buscar en Amazon:** [ATIVAFIT ajustables](https://link.amazon/B0g0ZoW3x)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B0g0ZoW3x)
 
 ## 5. JUPPLIES ajustables de 2 a 24 kg: rango amplio para casa
 
@@ -382,8 +382,8 @@ Las mancuernas ajustables **JUPPLIES** se pueden encontrar en rangos de carga or
 
 **Para quién:** usuarios intermedios que quieren alternar ejercicios y no desean comprar muchos pares por separado.
 
-**Buscar en Amazon:** [JUPPLIES ajustables](https://www.amazon.es/s?k=JUPPLIES+mancuernas+ajustables+24+kg)  
-**Enlace de afiliado:** [https://link.amazon/B0hCeIHIx]
+**Buscar en Amazon:** [JUPPLIES ajustables](https://link.amazon/B0hCeIHIx)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B0hCeIHIx)
 
 ## 6. Yaheetech: kit clásico de discos y cierres
 
@@ -395,8 +395,8 @@ Un kit **Yaheetech de discos ajustables** suele basarse en un mango, discos y ci
 
 **Para quién:** principiantes, presupuestos limitados y rutinas donde no cambias de peso en cada serie.
 
-**Buscar en Amazon:** [Yaheetech kit ajustable](https://www.amazon.es/s?k=Yaheetech+kit+mancuernas+ajustables)  
-**Enlace de afiliado:** [https://link.amazon/A0ahxXhlk]
+**Buscar en Amazon:** [Yaheetech kit ajustable](https://link.amazon/A0ahxXhlk)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/A0ahxXhlk)
 
 ## 7. SONGMICS 2 × 18 kg: discos ajustables para entrenar en casa
 
@@ -408,8 +408,8 @@ Los juegos **SONGMICS de mancuernas ajustables** pueden ser una alternativa para
 
 **Para quién:** usuarios que buscan empezar con un juego configurable y prefieren una solución mecánica tradicional.
 
-**Buscar en Amazon:** [SONGMICS ajustables](https://www.amazon.es/s?k=SONGMICS+juego+mancuernas+ajustables+20+kg)  
-**Enlace de afiliado:** [https://link.amazon/B0hW9AfdH]
+**Buscar en Amazon:** [SONGMICS ajustables](https://link.amazon/B0hW9AfdH)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B0hW9AfdH)
 
 ## 8. Corength kit de 20 kg: una entrada accesible al entrenamiento de fuerza
 
@@ -421,8 +421,8 @@ Los kits **Corength** de discos y mancuernas son una opción a comparar para qui
 
 **Para quién:** principiantes y personas que entrenan un par de veces por semana con una progresión básica.
 
-**Buscar en Amazon:** [Corength kit](https://www.amazon.es/s?k=Corength+kit+mancuernas+20+kg)  
-**Enlace de afiliado:** [No disponible en Amazon]
+**Buscar en Amazon:** [Corength kit](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro)  
+**Enlace de afiliado:** [Ver kit CORENGTH en Decathlon](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro)
 
 ## 9. Mancuernas hexagonales recubiertas: el clásico de peso fijo
 
@@ -434,8 +434,8 @@ Las **mancuernas hexagonales** tienen un peso definido y extremos que ayudan a e
 
 **Para quién:** usuarios que desean rapidez, durabilidad y una carga fija, o quienes quieren añadir solo uno o dos pares a un equipo existente.
 
-**Buscar en Amazon:** [Mancuernas hexagonales](https://www.amazon.es/s?k=mancuernas+hexagonales+recubiertas)  
-**Enlace de afiliado:** [https://link.amazon/B0d2SuMLd]
+**Buscar en Amazon:** [Mancuernas hexagonales](https://link.amazon/B0d2SuMLd)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B0d2SuMLd)
 
 ## 10. Mancuernas ligeras de neopreno: movilidad y cargas pequeñas
 
@@ -447,8 +447,8 @@ Las mancuernas ligeras recubiertas de **neopreno** pueden ser útiles para movim
 
 **Para quién:** principiantes, personas que complementan otras actividades o quienes necesitan cargas pequeñas para ejercicios específicos.
 
-**Buscar en Amazon:** [Mancuernas de neopreno](https://www.amazon.es/s?k=mancuernas+neopreno+1+2+3+kg)  
-**Enlace de afiliado:** [https://link.amazon/B09GgAJVi]
+**Buscar en Amazon:** [Mancuernas de neopreno](https://link.amazon/B09GgAJVi)  
+**Enlace de afiliado:** [Ver precio en Amazon](https://link.amazon/B09GgAJVi)
 
 ## Cómo elegir mancuernas para entrenar en casa
 
