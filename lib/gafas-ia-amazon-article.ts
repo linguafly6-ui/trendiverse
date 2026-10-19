@@ -37,7 +37,7 @@ Es la opción que conviene mirar primero si quieres unas gafas de una marca cons
 
 **Lo mejor:** ecosistema conocido, cámara integrada, audio abierto y asistente de voz. **A tener en cuenta:** precio superior a las alternativas genéricas, autonomía condicionada por la grabación y necesidad de revisar las funciones activas en España.
 
-**Ficha de producto en Amazon España:** [Ray-Ban Meta Gen 2 Wayfarer](https://www.amazon.es/dp/B0FLYDJHB4)
+**Ficha de producto en Amazon España:** [Ray-Ban Meta Gen 2 Wayfarer](https://link.amazon/B0as0ca0H)
 
 ## 2. Ray-Ban Meta Gen 2 Skyler: diseño estilizado y lentes especiales
 
@@ -47,7 +47,7 @@ Si te interesan las lentes fotocromáticas, comprueba que la ficha concreta indi
 
 **Lo mejor:** diseño alternativo dentro del ecosistema Meta y funciones conectadas. **A tener en cuenta:** las lentes y la talla cambian según la referencia, y el asistente puede no ofrecer exactamente las mismas funciones en todos los idiomas.
 
-**Ficha de producto en Amazon España:** [Ray-Ban Meta Gen 2 Skyler](https://www.amazon.es/dp/B0FLYHQJ36)
+**Ficha de producto en Amazon España:** [Ray-Ban Meta Gen 2 Skyler](https://link.amazon/B01XBZrxD)
 
 ## 3. Owlotech Lens AI: opción económica con cámara
 
@@ -57,7 +57,7 @@ No des por hecho que el nombre «AI» significa que incorpora un asistente conve
 
 **Lo mejor:** precio de entrada y enfoque en la captura de contenido. **A tener en cuenta:** verifica las especificaciones de la cámara, la app compatible, la garantía y la disponibilidad de repuestos.
 
-**Ficha de producto en Amazon España:** [Owlotech Lens AI](https://www.amazon.es/dp/B0GXWT9VRG)
+**Ficha de producto en Amazon España:** [Owlotech Lens AI](https://link.amazon/B0gVLDSVy)
 
 ## 4. Gafas inteligentes con traductor de IA: para viajar
 
@@ -67,7 +67,7 @@ Antes de comprar, comprueba qué idiomas admite, si la traducción es por voz o 
 
 **Lo mejor:** propuesta centrada en idiomas y viajes. **A tener en cuenta:** confirma el funcionamiento de la traducción, la latencia, los idiomas español-inglés que necesitas y los requisitos de la app.
 
-**Ficha de producto en Amazon España:** [Gafas inteligentes con traductor de IA](https://www.amazon.es/dp/B0GCGWF8FL)
+**Ficha de producto en Amazon España:** [Gafas inteligentes con traductor de IA](https://link.amazon/B02tXEj4J)
 
 ## 5. Boannice con altavoz: audio y llamadas sin auriculares
 
@@ -77,7 +77,7 @@ Conviene comprobar si el modelo incluye micrófono, cómo se enlaza por Bluetoot
 
 **Lo mejor:** escuchar audio y atender llamadas con las manos libres. **A tener en cuenta:** no asumas que incorpora cámara ni un asistente de IA propio; comprueba si solo invoca al asistente del teléfono.
 
-**Ficha de producto en Amazon España:** [Boannice gafas inteligentes con altavoz](https://www.amazon.es/dp/B0F47W72MT)
+**Ficha de producto en Amazon España:** [Boannice gafas inteligentes con altavoz](https://link.amazon/B005juUdo)
 
 ## 6. SMARTIA con cámara y aplicación: para probar la captura manos libres
 
@@ -87,7 +87,7 @@ Comprueba el límite de duración por vídeo, la capacidad de almacenamiento, la
 
 **Lo mejor:** una forma económica de probar la captura desde las gafas. **A tener en cuenta:** calidad de cámara y software pueden quedar por debajo de modelos premium; verifica la política de devolución si la app no funciona como esperas.
 
-**Ficha de producto en Amazon España:** [SMARTIA gafas inteligentes con cámara y app](https://www.amazon.es/dp/B0FXHKJBGM)
+**Ficha de producto en Amazon España:** [SMARTIA gafas inteligentes con cámara y app](https://link.amazon/B0iky5KnP)
 
 ## 7. Mingtawn gafas inteligentes: alternativa de entrada
 
@@ -97,7 +97,7 @@ Si las quieres para el asistente de voz, confirma si se conectan a Siri, Google 
 
 **Lo mejor:** alternativa económica para comparar funciones básicas. **A tener en cuenta:** no atribuyas funciones de IA avanzada sin comprobar que la variante concreta las incluye y que funcionan en España.
 
-**Ficha de producto en Amazon España:** [Mingtawn gafas inteligentes](https://www.amazon.es/dp/B0H6M4CLW1)
+**Ficha de producto en Amazon España:** [Mingtawn gafas inteligentes](https://link.amazon/B01A2tsF4)
 
 ## 8. Gafas con cámara y aplicación en español: para un uso sencillo
 
@@ -107,7 +107,7 @@ También revisa cómo se cargan, si el almacenamiento es interno o depende del t
 
 **Lo mejor:** enfoque sencillo para iniciarse en las gafas con cámara. **A tener en cuenta:** verifica el idioma real de la aplicación y las condiciones de uso antes de pagar.
 
-**Ficha de producto en Amazon España:** [Gafas inteligentes con cámara y app en español](https://www.amazon.es/dp/B0FPX14PSD)
+**Ficha de producto en Amazon España:** [Gafas inteligentes con cámara y app en español](https://link.amazon/B0foJYuzf)
 
 ## 9. QDOJC con cámara anunciada de 32 MP: revisa la resolución real
 
@@ -117,7 +117,7 @@ Puede ser una opción para quien busca experimentar con una cámara integrada a 
 
 **Lo mejor:** propuesta de cámara con especificación llamativa. **A tener en cuenta:** contrasta los 32 MP con las opiniones y las muestras de imagen; comprueba también memoria, autonomía y duración máxima de grabación.
 
-**Ficha de producto en Amazon España:** [QDOJC gafas inteligentes con cámara](https://www.amazon.es/dp/B0GSV9M5VD)
+**Ficha de producto en Amazon España:** [QDOJC gafas inteligentes con cámara](https://link.amazon/B01uxqDji)
 
 ## 10. SMARTIA modelo 20: una opción más para comparar
 
@@ -127,7 +127,7 @@ En productos de marcas menos conocidas, la experiencia puede depender mucho del 
 
 **Lo mejor:** otra alternativa para comparar precio y funciones básicas. **A tener en cuenta:** confirma qué aporta frente a los modelos SMARTIA con cámara y app, y no pagues más por una diferencia de nombre sin una mejora verificable.
 
-**Ficha de producto en Amazon España:** [SMARTIA gafas inteligentes modelo 20](https://www.amazon.es/dp/B0G8N3BZH5)
+**Ficha de producto en Amazon España:** [SMARTIA gafas inteligentes modelo 20](https://link.amazon/B0gAlxrvV)
 
 ## Cómo elegir unas gafas con IA
 
