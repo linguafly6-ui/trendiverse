@@ -312,7 +312,7 @@ Esta guía reúne diez tipos y familias de mancuernas conocidas que conviene com
 | JUPPLIES ajustables | Ajuste rápido | Usuarios que cambian peso a menudo | Garantía, base y saltos de carga | [Ver en Amazon](https://link.amazon/B0hCeIHIx) |
 | Yaheetech kit ajustable | Discos y rosca | Presupuesto ajustado | Cierres, discos incluidos y peso total | [Ver en Amazon](https://link.amazon/A0ahxXhlk) |
 | SONGMICS ajustables | Discos ajustables | Rutinas progresivas | Longitud, material y peso por mango | [Ver en Amazon](https://link.amazon/B0hW9AfdH) |
-| Corength kit | Discos ajustables | Principiantes y espacios pequeños | Límite de carga y futuras ampliaciones | [Ver en Amazon](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro) |
+| Corength kit | Discos ajustables | Principiantes y espacios pequeños | Límite de carga y futuras ampliaciones | Sin enlace de afiliado |
 | Mancuernas hexagonales recubiertas | Peso fijo | Entrenos sencillos y rápidos | Venta por unidad o por pareja | [Ver en Amazon](https://link.amazon/B0d2SuMLd) |
 | Mancuernas ligeras de neopreno | Peso fijo ligero | Movilidad y ejercicios de baja carga | Necesidad real de peso y diámetro del agarre | [Ver en Amazon](https://link.amazon/B09GgAJVi) |
 
@@ -421,8 +421,8 @@ Los kits **Corength** de discos y mancuernas son una opción a comparar para qui
 
 **Para quién:** principiantes y personas que entrenan un par de veces por semana con una progresión básica.
 
-**Buscar en Amazon:** [Corength kit](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro)  
-**Enlace de afiliado:** [Ver kit CORENGTH en Decathlon](https://www.decathlon.es/es/p/kit-mancuernas-20-kg-musculacion-corength/_/R-p-7449?c=negro)
+**Producto:** kit CORENGTH de 20 kg  
+**Enlace de afiliado:** no disponible
 
 ## 9. Mancuernas hexagonales recubiertas: el clásico de peso fijo
 
