@@ -1022,7 +1022,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
     views: 0,
     trending: 0,
     published_at: '2026-10-18T18:05:00.000Z',
-  },,
+  },
   {
     id: 91003,
     title: 'Las 10 mejores bicicletas de 2026: comparativa y guía de compra',
@@ -1051,5 +1051,4 @@ export const TOPTRENDS_ARTICLES: Article[] = [
     trending: 0,
     published_at: '2026-10-19T06:05:00.000Z',
   }
-]
 ]
