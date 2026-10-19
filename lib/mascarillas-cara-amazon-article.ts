@@ -33,7 +33,7 @@ La BIODANCE Bio-Collagen Real Deep Mask es una mascarilla de hidrogel muy conoci
 
 **A favor:** formato de hidrogel y aplicación puntual. **A tener en cuenta:** el efecto inmediato de piel más jugosa no equivale a un tratamiento médico ni garantiza cambios permanentes en arrugas o poros. Comprueba el tiempo de uso recomendado en el envase.
 
-[Ver BIODANCE Bio-Collagen en Amazon España](https://www.amazon.es/s?k=BIODANCE+Bio-Collagen+Real+Deep+Mask)
+[Ver BIODANCE Bio-Collagen en Amazon España](https://link.amazon/B0fURLWlV)
 
 ## 2. Medicube Zero Pore Blackhead Mud Mask: para piel grasa
 
@@ -41,7 +41,7 @@ La mascarilla de barro Zero Pore de Medicube está orientada a la limpieza de po
 
 **A favor:** alternativa para quien prefiere una mascarilla de aclarado. **A tener en cuenta:** si la piel es sensible o ya utilizas exfoliantes, introduce el producto con cautela y suspende su uso si provoca irritación.
 
-[Ver Medicube Zero Pore Mud Mask en Amazon España](https://www.amazon.es/s?k=Medicube+Zero+Pore+Blackhead+Mud+Mask)
+[Ver Medicube Zero Pore Mud Mask en Amazon España](https://link.amazon/B06QJDCZE)
 
 ## 3. Medicube Collagen Night Wrapping Mask: cuidado nocturno
 
@@ -49,7 +49,7 @@ Esta mascarilla nocturna de Medicube está diseñada para incorporarse al final 
 
 **A favor:** formato nocturno y uso fácil de encajar en una rutina. **A tener en cuenta:** confirma cómo se aplica y retira la versión exacta; evita combinarla automáticamente con demasiados activos nuevos en la misma noche.
 
-[Ver Medicube Collagen Night Wrapping Mask en Amazon España](https://www.amazon.es/s?k=Medicube+Collagen+Night+Wrapping+Mask)
+[Ver Medicube Collagen Night Wrapping Mask en Amazon España](https://link.amazon/B05YLyn3h)
 
 ## 4. Garnier SkinActive Hydra Bomb Tissue Mask: hidratación rápida
 
@@ -57,7 +57,7 @@ Las mascarillas de tejido Hydra Bomb de Garnier existen en distintas variantes. 
 
 **A favor:** aplicación sencilla y distintas versiones. **A tener en cuenta:** revisa la variante y sus ingredientes, porque no todas ofrecen la misma composición. Sigue el tiempo de aplicación indicado y no reutilices una mascarilla desechable.
 
-[Ver Garnier Hydra Bomb en Amazon España](https://www.amazon.es/s?k=Garnier+SkinActive+Hydra+Bomb+Tissue+Mask)
+[Ver Garnier Hydra Bomb en Amazon España](https://link.amazon/B0i5wiaGA)
 
 ## 5. The Ordinary Salicylic Acid 2% Masque: para piel grasa con textura irregular
 
@@ -65,7 +65,7 @@ Esta mascarilla de The Ordinary contiene ácido salicílico y está pensada para
 
 **A favor:** ingrediente activo claramente identificado. **A tener en cuenta:** respeta la frecuencia y el tiempo del fabricante, no la apliques sobre piel dañada y utiliza protección solar durante el día. Si tu piel es sensible, valora consultar con un profesional antes de incorporar ácidos.
 
-[Ver The Ordinary Salicylic Acid 2% Masque en Amazon España](https://www.amazon.es/s?k=The+Ordinary+Salicylic+Acid+2%25+Masque)
+[Ver The Ordinary Salicylic Acid 2% Masque en Amazon España](https://link.amazon/B0aCK8pih)
 
 ## 6. Beauty of Joseon Ground Rice and Honey Glow Mask: luminosidad y suavidad
 
@@ -73,7 +73,7 @@ La mascarilla de arroz y miel de Beauty of Joseon combina ingredientes de cuidad
 
 **A favor:** formato de aclarado y combinación de ingredientes conocida. **A tener en cuenta:** la miel y otros componentes pueden no ser adecuados para todas las personas; revisa la lista de ingredientes y prueba primero en una zona pequeña si tienes piel reactiva.
 
-[Ver Beauty of Joseon Rice and Honey Mask en Amazon España](https://www.amazon.es/s?k=Beauty+of+Joseon+Ground+Rice+and+Honey+Glow+Mask)
+[Ver Beauty of Joseon Rice and Honey Mask en Amazon España](https://link.amazon/B0fuFEgFw)
 
 ## 7. Clay Plantifique Facial Mask: para una limpieza de aclarado
 
@@ -81,7 +81,7 @@ Plantifique comercializa mascarillas faciales de arcilla con ingredientes que va
 
 **A favor:** formato de aclarado. **A tener en cuenta:** la arcilla puede dejar sensación de sequedad en algunas pieles. No la dejes actuar más tiempo del indicado y aplica después una hidratante adecuada.
 
-[Ver Plantifique Facial Mask en Amazon España](https://www.amazon.es/s?k=Plantifique+Clay+Facial+Mask)
+[Ver Plantifique Facial Mask en Amazon España](https://link.amazon/B0c2hxnbl)
 
 ## 8. Grace & Stella Dead Sea Mud Mask: para piel mixta
 
@@ -89,7 +89,7 @@ Las mascarillas de barro del Mar Muerto se utilizan como cuidado cosmético de a
 
 **A favor:** alternativa para quien prefiere una mascarilla de barro. **A tener en cuenta:** evita aplicarla sobre piel irritada, no frotes con fuerza al retirarla y reduce la frecuencia si notas tirantez.
 
-[Ver Grace & Stella Dead Sea Mud Mask en Amazon España](https://www.amazon.es/s?k=Grace+Stella+Dead+Sea+Mud+Mask)
+[Ver Grace & Stella Dead Sea Mud Mask en Amazon España](https://link.amazon/B05XUYvov)
 
 ## 9. COSRX Ultimate Nourishing Rice Overnight Spa Mask: para la rutina nocturna
 
@@ -97,7 +97,7 @@ COSRX ofrece una mascarilla nocturna con arroz como ingrediente destacado. Es un
 
 **A favor:** formato nocturno y uso sin necesidad de una mascarilla de tejido. **A tener en cuenta:** confirma el nombre exacto de la variante y si la textura resulta cómoda para tu tipo de piel.
 
-[Ver COSRX Rice Overnight Spa Mask en Amazon España](https://www.amazon.es/s?k=COSRX+Ultimate+Nourishing+Rice+Overnight+Spa+Mask)
+[Ver COSRX Rice Overnight Spa Mask en Amazon España](https://link.amazon/B07fcvQpD)
 
 ## 10. Avène Soothing Radiance Mask: para una rutina de confort
 
@@ -105,7 +105,7 @@ Avène cuenta con productos de cuidado facial dirigidos a pieles que buscan conf
 
 **A favor:** alternativa de dermocosmética para comparar si priorizas el confort. **A tener en cuenta:** comprueba la fórmula actual, los ingredientes y las indicaciones para piel sensible.
 
-[Buscar mascarilla facial Avène en Amazon España](https://www.amazon.es/s?k=Avene+Soothing+Radiance+Mask)
+[Buscar mascarilla facial Avène en Amazon España](https://link.amazon/B04xa08gc)
 
 ## Cómo elegir una mascarilla facial según tu piel
 
