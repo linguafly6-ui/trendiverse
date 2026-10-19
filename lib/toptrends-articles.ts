@@ -1,6 +1,7 @@
 import type { Article } from './types'
 import { TECLADOS_AMAZON_ARTICLE } from './teclados-amazon-article'
 import { GAFAS_IA_AMAZON_ARTICLE } from './gafas-ia-amazon-article'
+import { COLAGENOS_AMAZON_ARTICLE } from './colagenos-amazon-article'
 
 /**
  * Guías editoriales informativas. Los marcadores AFFILIATE_URL_n deben reemplazarse
@@ -1212,6 +1213,7 @@ La selección se basa en categorías y familias de producto disponibles en el me
 **Aviso:** los precios, existencias, vendedores y configuraciones pueden cambiar. Los enlaces dirigen a búsquedas de Amazon España, no a una oferta garantizada. Comprueba siempre las especificaciones exactas, las opiniones correspondientes a la variante seleccionada y las condiciones de compra antes de finalizar el pedido.`
 
 export const TOPTRENDS_ARTICLES: Article[] = [
+  COLAGENOS_AMAZON_ARTICLE,
   GAFAS_IA_AMAZON_ARTICLE,
   TECLADOS_AMAZON_ARTICLE,
   {
