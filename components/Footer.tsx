@@ -19,6 +19,7 @@ export default function Footer() {
           <Link href="/articles" className="mr-3">Noticias y guías</Link>
           <Link href="/privacidad" className="mr-3">Privacidad</Link>
           <Link href="/terminos">Términos</Link>
+          <p className="mt-3 text-slate-500">Contacto: <a href="mailto:info@trendiverse.org" className="font-medium text-brand-violet hover:underline">info@trendiverse.org</a></p>
         </div>
       </div>
     </footer>
