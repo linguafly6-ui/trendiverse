@@ -1,9 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { CATEGORIES, SITE_URL, TOPICS } from '@/lib/constants'
-import { currentWeek, WEEKS } from '@/lib/astrology'
-import { ASTROLOGY_GUIDES, astrologyGuidePath } from '@/lib/astrology-guides'
 import { concertsFor } from '@/lib/concerts'
-import { SECOND_HAND_CATEGORIES, SECOND_HAND_PATH, secondHandCategoryPath } from '@/lib/second-hand'
 import { getAllArticleSlugs, getArticles, getTools } from '@/lib/db'
 
 export const runtime = 'edge'
@@ -49,36 +46,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
-    { url: base + '/astrologia', changeFrequency: 'weekly', priority: 0.9 },
-    { url: base + '/astrologia/guias', changeFrequency: 'monthly', priority: 0.8 },
-    ...ASTROLOGY_GUIDES.map((guide) => ({
-      url: base + astrologyGuidePath(guide.slug),
-      lastModified: new Date(guide.updated),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
-    ...currentWeek().signs.map((sign) => ({
-      url: base + '/astrologia/' + sign.slug,
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    })),
-    ...WEEKS.filter((week) => week.id !== currentWeek().id).flatMap((week) => [
-      { url: base + '/astrologia/semana/' + week.slug, changeFrequency: 'weekly' as const, priority: 0.7 },
-      ...week.signs.map((sign) => ({
-        url: base + '/astrologia/' + sign.slug + '/' + week.slug,
-        changeFrequency: 'weekly' as const,
-        priority: 0.75,
-      })),
-    ]),
     { url: base + '/articles', changeFrequency: 'daily', priority: 0.95 },
     { url: base + '/autor/equipo-editorial', changeFrequency: 'monthly', priority: 0.6 },
-    { url: base + SECOND_HAND_PATH, changeFrequency: 'weekly', priority: 0.9 },
-    ...SECOND_HAND_CATEGORIES.map((c) => ({
-      url: base + secondHandCategoryPath(c.slug),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    })),
-    ...CATEGORIES.filter((c) => c.slug !== 'segunda-mano').map((c) => ({
+    ...CATEGORIES.map((c) => ({
       url: base + '/articles/category/' + c.slug,
       changeFrequency: 'daily' as const,
       priority: 0.9,
