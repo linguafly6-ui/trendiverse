@@ -92,6 +92,16 @@ Isabel Díaz Ayuso preside la Comunidad de Madrid y Javier Milei la República A
 Después de una reunión, las consecuencias verificables no se miden solo por el tono de las declaraciones. Hay que comprobar si se anuncian compromisos con responsables, calendario, presupuesto o instrumentos jurídicos. Un comunicado puede expresar voluntad de cooperación sin crear obligaciones nuevas. Si se anuncian iniciativas empresariales o culturales, conviene identificar qué organismo las ejecutará y qué seguimiento público habrá.
 
 La relación entre una comunidad autónoma y un Estado extranjero tiene límites competenciales. Madrid puede impulsar promoción económica, cultural o turística dentro de sus atribuciones, pero no sustituye al Gobierno de España en materias reservadas a la política exterior estatal. Las reacciones de aliados y adversarios deben atribuirse a sus autores: una valoración de que el encuentro es «histórico» o «inútil» es una opinión salvo que se apoye en resultados medibles.
+
+## Cómo leer la repercusión económica sin atribuir resultados inexistentes
+
+Los encuentros políticos pueden acompañarse de declaraciones sobre comercio, inversión o cooperación, pero una promesa pública no equivale a una inversión ejecutada. Para evaluar un anuncio económico hay que saber qué empresa u organismo participa, cuál es el importe, qué calendario se plantea, qué condiciones se han acordado y cómo se medirá el cumplimiento. Sin esos datos, es más preciso hablar de una intención o de una señal política que de un resultado material.
+
+La reunión también puede tener un efecto simbólico en la relación entre dirigentes que comparten parte de su agenda ideológica. Ese significado es relevante para analizar la estrategia política, pero no debe confundirse con una decisión administrativa. Los titulares pueden resaltar la afinidad entre Ayuso y Milei; el lector necesita además saber si hubo medidas concretas y qué competencias tiene cada institución para ejecutarlas.
+
+## Cómo distinguir una declaración de un acuerdo
+
+Una declaración conjunta resume posiciones; un memorando puede expresar una intención de colaboración; un convenio formal suele identificar obligaciones, participantes y mecanismos de seguimiento. El nombre exacto del instrumento importa. Si el encuentro no generó documentos o medidas específicas, el artículo debe decirlo y no completar la noticia con resultados hipotéticos. Las reacciones de partidos distintos pueden mostrar el debate, pero deben atribuirse y contrastarse con los anuncios originales.
 `
   },
   {
@@ -189,6 +199,16 @@ El impacto se apreciará con el tiempo: frecuencia de comparecencias, asuntos qu
 La experiencia institucional previa de Rebeca Torró puede explicar qué áreas conoce, siempre con fechas y cargos contrastados. No permite asegurar qué prioridades seguirá ni qué decisiones adoptará. La trayectoria ofrece contexto; las actuaciones posteriores permiten evaluar su papel. También es importante no confundir un cambio de portavoz con un cambio de programa: las posiciones oficiales se reflejan en documentos, votaciones y decisiones de los órganos competentes.
 
 Para seguir la noticia, compara el comunicado del partido con las primeras declaraciones de Torró y con la información institucional. Los análisis de periodistas y politólogos pueden aportar contexto si se identifican como análisis. Las predicciones sobre el efecto electoral del nombramiento son hipótesis hasta que existan datos que permitan evaluarlas.
+
+## Qué preguntas ayudan a evaluar su trabajo en el nuevo cargo
+
+Para valorar una portavocía, conviene observar si la persona transmite con claridad las decisiones aprobadas, responde a preguntas difíciles, distingue los anuncios de las propuestas y mantiene coherencia entre declaraciones y documentos del partido. El cargo puede dar más visibilidad a una dirigente, pero la visibilidad no equivale automáticamente a poder de decisión. La estructura interna y las competencias asignadas determinan hasta dónde llega su autoridad.
+
+Las primeras comparecencias pueden marcar el tono, aunque no bastan para concluir que la comunicación del partido ha cambiado de forma duradera. Para evaluar una estrategia hacen falta varias intervenciones y decisiones comparables en el tiempo. Las críticas de la oposición y los elogios de los aliados forman parte del debate, pero no sustituyen ese seguimiento.
+
+## Por qué importa precisar el tipo de portavocía
+
+En política se utilizan títulos similares para funciones distintas: portavoz de un grupo parlamentario, portavoz de una ejecutiva, responsable de comunicación o portavoz de campaña. Confundirlos puede atribuir al cargo competencias que no tiene. La noticia debe identificar el órgano que realiza el nombramiento y enlazar, si está disponible, la comunicación oficial correspondiente. Si hay un cambio formal posterior, se incorpora con fecha y explicación.
 `
   },
   {
@@ -291,6 +311,16 @@ Los recuerdos de un actor o actriz son una fuente valiosa para conocer el ambien
 Una entrevista puede ayudar a reconstruir el trabajo entre intérpretes, las decisiones creativas y las exigencias del rodaje. Sin embargo, los recuerdos personales no siempre representan la experiencia de todo el reparto ni equivalen a una versión oficial de la producción. Para saber si una información es nueva, comprueba cuándo se hizo la entrevista y si la actriz habla de una experiencia pasada o de un proyecto actual.
 
 Cuando las búsquedas se relacionan con embarazo, maternidad o vida privada, la cobertura debe evitar presentar rumores como información confirmada. Los datos personales deben incorporarse cuando la persona los ha compartido públicamente o una fuente fiable los ha comunicado con claridad. Una anécdota sobre el rodaje no debe convertirse en noticia de producción si no existe confirmación de un nuevo proyecto.
+
+## Cómo separar nostalgia televisiva de una noticia nueva
+
+Una entrevista retrospectiva puede generar una tendencia aunque no anuncie un proyecto futuro. Para saber si hay una novedad de producción, hay que buscar confirmación de la cadena, productora o plataforma implicada. Un recuerdo del rodaje, una anécdota entre compañeras o una reflexión sobre el personaje no significa que exista una nueva temporada, una película o una reunión del reparto.
+
+La nostalgia es parte importante del consumo cultural: las escenas vuelven a circular, el público comenta sus personajes favoritos y las entrevistas recuperan historias que no estaban en primer plano. Ese fenómeno explica el interés sin necesidad de exagerar el contenido de la entrevista. Si la fuente habla de una experiencia pasada, el titular y el cuerpo deben conservar esa temporalidad.
+
+## El valor de una cita completa y atribuida
+
+Cuando una declaración se convierte en viral, es fácil que el fragmento pierda la pregunta que lo originó o el tono con el que se dijo. Conviene revisar la entrevista completa y no convertir una broma o una anécdota en un conflicto. Si la información se refiere a embarazo, maternidad u otro aspecto personal, solo debe tratarse como hecho cuando la propia persona lo ha compartido o una fuente fiable lo confirma. No se deben rellenar vacíos con especulaciones.
 `
   }
 ]
