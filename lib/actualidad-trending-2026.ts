@@ -105,6 +105,10 @@ Si has facilitado credenciales por error, actúa desde un dispositivo seguro, ca
 Si el pago falla en una tienda, hotel o transporte, pide confirmación antes de volver a intentarlo. Un terminal puede mostrar un error aunque la solicitud haya llegado a la entidad, y repetir el pago sin comprobarlo puede provocar una retención o un cargo duplicado. Conserva el recibo, consulta el movimiento cuando el servicio esté disponible y contacta con el comercio y con la entidad por vías oficiales si el importe aparece más de una vez. En un viaje, guarda también la referencia de la reserva y comprueba las condiciones del proveedor antes de cancelar o comprar de nuevo.
 
 No compartas con el comercio ni con personas que te contacten de forma inesperada los códigos de seguridad de tu cuenta. La gestión de un pago fallido no requiere revelar contraseñas ni instalar aplicaciones. Si un establecimiento no puede verificar la operación, utiliza un medio alternativo seguro si lo tienes disponible y resuelve después la transacción inicial con la documentación conservada.
+
+## Una comprobación final antes de dar por resuelta la incidencia
+
+Aunque el acceso se restablezca, comprueba que las funciones que necesitabas vuelvan a operar: consulta el saldo, revisa las transferencias pendientes y verifica los pagos que fallaron durante la interrupción. Si una operación sigue sin aclararse, conserva los justificantes y abre una consulta por el canal oficial. No compartas códigos de autenticación ni datos completos de tarjeta con nadie que te contacte alegando que puede acelerar la recuperación.
 `
   },
   {
