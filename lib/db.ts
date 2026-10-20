@@ -21,6 +21,7 @@ import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from './empresas-que-transforman-20
 import { MODA_TENDENCIAS_ARTICLES } from './moda-tendencias-2026'
 import { GAMING_TENDENCIAS_ARTICLES } from './gaming-tendencias-2026'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from './actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_3 } from './actualidad-trending-2026-batch-3'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_2 } from './actualidad-trending-2026-batch-2'
 
 // Keeps the first record per slug (earlier entries take precedence).
