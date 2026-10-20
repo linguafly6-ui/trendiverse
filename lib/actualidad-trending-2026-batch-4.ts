@@ -87,7 +87,19 @@ Algunos medios lo sitúan en un contexto de otros robos en la zona, pero eso no 
 ### ¿Por qué es tendencia Sergio Rico?
 Por la difusión de la noticia sobre el asalto y la preocupación generada al conocerse que ocurrió mientras la familia estaba dentro de la vivienda.
 
-**Actualización editorial:** artículo basado en la información publicada el 20 de octubre de 2026. Los detalles de una investigación abierta pueden cambiar; las afirmaciones no confirmadas oficialmente se atribuyen a las fuentes periodísticas citadas.`
+**Actualización editorial:** artículo basado en la información publicada el 20 de octubre de 2026. Los detalles de una investigación abierta pueden cambiar; las afirmaciones no confirmadas oficialmente se atribuyen a las fuentes periodísticas citadas.
+## Qué se sabe y qué debe esperar a la investigación
+
+En una noticia sobre un presunto asalto a una vivienda hay que diferenciar los datos comunicados por las personas afectadas, la información policial confirmada y las hipótesis sobre la autoría o el móvil. La existencia de una denuncia o de una investigación no equivale a que una persona concreta haya sido declarada culpable. Hasta que las autoridades o los tribunales confirmen los hechos, conviene usar fórmulas como «presunto asalto» y atribuir los detalles a la fuente que los publica.
+
+La información sobre seguridad de una vivienda también puede afectar a familiares que no han elegido tener exposición pública. No es necesario difundir direcciones, rutinas, sistemas de alarma ni detalles que puedan facilitar nuevos riesgos. El interés periodístico está en lo ocurrido, en la evolución de la investigación y en las declaraciones verificables, no en convertir la intimidad del domicilio en un mapa público.
+
+## Cómo tratar las versiones que circulan en redes
+
+Las noticias sobre robos y agresiones suelen generar publicaciones que identifican supuestos sospechosos, reproducen imágenes sin contexto o atribuyen motivos sin pruebas. Compartirlas puede perjudicar a personas inocentes y entorpecer la investigación. Antes de dar por cierta una versión, comprueba si procede de un medio identificable, si cita fuentes oficiales y si otros medios solventes han confirmado el dato.
+
+Si aparecen novedades judiciales, hay que distinguir entre detención, investigación, acusación y condena: son fases diferentes y no significan lo mismo. La presunción de inocencia debe mantenerse en la redacción. Una actualización responsable explicará qué ha comunicado la autoridad y qué aspectos continúan pendientes, sin presentar una hipótesis como resolución definitiva.
+`
   },
   {
     id: 811,
@@ -176,7 +188,23 @@ No necesariamente. Las visualizaciones y comentarios miden circulación e intera
 ### ¿Cuándo son las próximas elecciones generales?
 La convocatoria recogida en las noticias de contexto sitúa las elecciones el 29 de noviembre de 2026.
 
-**Actualización editorial:** artículo basado en cobertura publicada entre el 17 y el 20 de octubre de 2026. Se distinguen los hechos observables de las interpretaciones sobre la intención de los partidos y el posible efecto electoral.`
+**Actualización editorial:** artículo basado en cobertura publicada entre el 17 y el 20 de octubre de 2026. Se distinguen los hechos observables de las interpretaciones sobre la intención de los partidos y el posible efecto electoral.
+## Por qué una imagen viral no cuenta necesariamente toda la historia
+
+Una fotografía puede convertirse en tendencia por el contexto político de las personas que aparecen en ella, pero una imagen fija no explica por sí sola qué sucedió antes o después ni demuestra una intención política. Para interpretarla conviene comprobar quién la publicó primero, cuándo se tomó, si existe una secuencia completa y si el pie de foto describe correctamente el momento. Una captura aislada puede circular años después como si fuera actual.
+
+La relevancia pública de Pedro Sánchez y Begoña Gómez hace que una imagen personal reciba atención política. Aun así, deben separarse el hecho visual —lo que realmente muestra la fotografía— y las interpretaciones que distintos usuarios proyectan sobre ella. Una lectura partidista no es un dato comprobado y una reacción en redes no representa necesariamente la opinión general.
+
+## Cómo verificar la procedencia y la fecha
+
+La comprobación básica consiste en localizar la publicación original, comparar la imagen con versiones de mayor calidad y revisar si medios fiables han identificado el evento y la fecha. Si no se conoce el origen, la redacción debe decirlo. No conviene atribuir una imagen a un acto concreto solo porque coincida con la agenda pública de una persona.
+
+También hay que distinguir una imagen auténtica de un contexto correcto. Una fotografía puede ser real y estar acompañada por una descripción falsa o engañosa. Las herramientas de búsqueda inversa ayudan a localizar copias anteriores, pero la conclusión requiere contraste editorial y no solo una coincidencia visual.
+
+## Qué aporta una cobertura útil
+
+La noticia debe explicar por qué se ha difundido la imagen, cuál es el contexto verificable y qué afirmaciones no se pueden demostrar. No es necesario repetir comentarios ofensivos ni especular sobre una relación personal. Si los protagonistas no han hecho declaraciones, ese silencio no confirma ninguna interpretación. La mejor actualización será la que aporte una fuente original o una aclaración verificable.
+`
   },
   {
     id: 812,
