@@ -325,5 +325,29 @@ Esta distinción evita dos errores frecuentes: afirmar que una medida está disp
 - [Seguridad Social: trámites y prestaciones de incapacidad temporal](https://prestaciones.seg-social.es/prestaciones-enfermedades-accidentes/incapacidad-temporal.html)
 
 **Nota de actualización:** el artículo resume el anuncio ministerial del 20 de octubre de 2026. Antes de decidir si se presenta una solicitud, debe comprobarse la publicación y vigencia del texto legal y las instrucciones administrativas actualizadas.
+## Qué diferencia una incidencia técnica de un problema con una cuenta concreta
+
+Una caída general puede explicar que una aplicación no cargue o que varias funciones fallen, pero no todas las incidencias individuales tienen el mismo origen. Si el resto del servicio se ha recuperado y una persona sigue sin acceder, conviene revisar los avisos de la compañía y utilizar sus canales oficiales para comprobar si hay un bloqueo específico. No se debe concluir que existe un fraude solo porque la aplicación no responda, ni descartar un cargo desconocido únicamente porque hubo una caída general.
+
+Cuando la plataforma vuelva a funcionar, revisa el historial de transacciones, los pagos pendientes y las notificaciones. Anota el importe, la fecha, el destinatario y la referencia de cualquier operación dudosa. Si hay un cargo no reconocido, utiliza el procedimiento oficial de disputa o bloqueo de tarjeta. No publiques en redes capturas que muestren números de cuenta, saldos, identificadores de operación o datos personales.
+
+## Por qué importa la comunicación durante una interrupción
+
+Una comunicación útil debe aclarar qué servicios están afectados, si existe una incidencia confirmada, qué acciones se están realizando y cuándo se publicará la próxima actualización. En servicios financieros, la incertidumbre puede llevar a los usuarios a repetir operaciones o a confiar en mensajes fraudulentos. Las empresas y los proveedores de infraestructura comparten responsabilidades técnicas, pero el cliente necesita una explicación comprensible del servicio que utiliza.
+
+La recuperación puede producirse por fases. Que el inicio de sesión vuelva a funcionar no garantiza que todas las transferencias o pagos se procesen con normalidad al mismo tiempo. Por eso, los avisos deben revisarse con fecha y hora, y el usuario debe confirmar cada operación en el historial antes de repetirla. La estabilidad completa se evalúa por el conjunto de funciones, no solo por la pantalla principal.
+
+## Qué dice un empate sobre el partido y qué no dice sobre la temporada
+
+Un 1-1 reparte un punto a cada equipo, pero el marcador no resume por sí solo el desarrollo del encuentro. Para valorar el resultado hay que mirar cómo llegaron los goles, las ocasiones, la capacidad de cada equipo para sostener la ventaja y los cambios realizados durante el partido. Las estadísticas pueden ayudar, aunque también deben interpretarse con contexto: tener más posesión no significa necesariamente crear más ocasiones claras, y un mayor número de disparos no indica siempre mejor calidad de remate.
+
+En una crónica rigurosa, los hechos verificables —marcador, autores de los goles, tarjetas, cambios y minuto de las acciones— deben distinguirse de la valoración táctica. Si no hay datos oficiales suficientes para una métrica, no se debe inventar. Las declaraciones posteriores de los entrenadores pueden explicar decisiones, pero también reflejan su perspectiva y deben atribuirse como opiniones.
+
+## Cómo interpretar la clasificación después de la jornada
+
+Un solo punto puede tener un valor diferente según la posición de partida, los resultados de los rivales y el calendario que viene. Para determinar el efecto en la tabla hay que consultar la clasificación actualizada y no inferirlo únicamente del resultado. La diferencia de goles, los partidos pendientes y los criterios de desempate también pueden ser relevantes a medida que avanza la competición.
+
+El empate tampoco permite predecir con seguridad el siguiente encuentro. Una evaluación más útil identifica qué aspectos puede mantener cada equipo y qué problemas deberá corregir, sin convertir una actuación en una tendencia de toda la temporada. Las conclusiones deportivas deben apoyarse en varios partidos y no solo en el último marcador.
+
   }
 ]
