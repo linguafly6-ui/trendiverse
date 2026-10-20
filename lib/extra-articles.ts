@@ -116,7 +116,7 @@ export const EXTRA_ARTICLES: Article[] = [
     id: 10,
     title: 'Castellón vs AD Ceuta: resultado, clasificación y análisis del empate en LaLiga Hypermotion',
     slug: 'castellon-ad-ceuta',
-    category: 'deportes',
+    category: 'toptrends',
     excerpt: 'El Castellón se adelantó a los dos minutos y el Ceuta, colista, aguantó y empató en la segunda parte. Así fue el 1-1, quién marcó y qué significa para cada equipo.',
     content,
     image_url: '/images/articles/castellon-ceuta.svg',
