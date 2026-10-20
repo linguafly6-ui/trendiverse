@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_2 } from '../lib/actualidad-trending-2026-batch-2'
 import { TOPTRENDS_ARTICLES } from '../lib/toptrends-articles'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
 import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
@@ -13,6 +14,9 @@ import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'cafeina-cuanto-es-demasiado-efectos-sueno-recomendaciones-2026',
+  'muere-gustavo-oliva-referente-padel-catalan-trayectoria-legado',
+  'mayoria-absoluta-espana-176-escanos-encuestas-elecciones-2026',
   'revolut-no-funciona-caida-20-octubre-2026',
   'getafe-rayo-vallecano-1-1-cronica-jornada-9-2026',
   'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026',
@@ -208,7 +212,7 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
+  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026', 'mejores-gafas-inteligencia-artificial-amazon-espana-2026', 'mejores-colagenos-amazon-espana-2026', 'mejores-mascarillas-pelo-amazon-espana-2026', 'mejores-mascarillas-faciales-amazon-espana-2026'].includes(slug)).sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
@@ -312,7 +316,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
+  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
 })
 
 
