@@ -98,6 +98,16 @@ La visibilidad digital puede acercar a una diseñadora a un público internacion
 Cuando se difunde un fallecimiento, los buscadores suelen mostrar fotografías, entrevistas y episodios de años anteriores. La relación de Ray con Justin Bieber en 2016 reaparece porque ya formaba parte de la cobertura internacional, pero un titular antiguo no es necesariamente una novedad. Antes de compartir contenido conviene comprobar la fecha original y si se presenta como reciente algo que ocurrió hace años.
 
 Una actualización sustancial debería basarse en un comunicado de la familia o sus representantes, una declaración atribuible o información de un medio solvente que identifique sus fuentes. Cualquier dato nuevo sobre la causa de la muerte debe describirse con atribución clara y sin ir más allá de lo confirmado. La privacidad de los familiares merece consideración: la curiosidad pública no hace necesario difundir imágenes invasivas ni especulaciones.
+
+## Cómo evitar que una noticia de duelo se convierta en desinformación
+
+Durante las primeras horas de una noticia de fallecimiento, las redes pueden mezclar datos correctos, fotografías antiguas y afirmaciones sin fuente. Antes de publicar una actualización hay que comprobar la fecha del material, la identidad de quien lo difunde y si la afirmación aparece en una fuente periodística fiable o en un comunicado directo. Si la información no se ha confirmado, debe decirse de forma explícita y no utilizar un titular que sugiera certeza.
+
+El contexto médico exige una cautela adicional. Un diagnóstico previo no explica automáticamente un fallecimiento posterior y no debe usarse para inferir una causa. Solo una confirmación fiable permite establecer ese vínculo. Esta regla protege tanto la precisión informativa como la privacidad de la persona y de su familia. El artículo puede explicar la trayectoria pública sin entrar en detalles que no estén documentados.
+
+## Qué puede aportar una actualización responsable
+
+Una nueva versión debe indicar qué dato cambió, quién lo confirmó y en qué fecha. Si una familia decide no comunicar más información, el artículo puede mantenerse limitado a lo conocido. No es necesario responder a cada rumor ni reproducir teorías de redes para demostrar que se está siguiendo la noticia. La ausencia de una explicación pública también es un dato que debe respetarse.
 `
   },
   {
@@ -204,6 +214,16 @@ Esta diferencia importa porque la ficción histórica genera búsquedas que mezc
 La disponibilidad cambia según ciudad, cine y fecha. Una ficha de producción o un anuncio de estreno no garantiza que una sala concreta tenga sesiones o entradas disponibles. Antes de desplazarse, consulta la cartelera y comprueba la versión, el idioma, los subtítulos y las condiciones de compra. La llegada a una plataforma de streaming es una ventana distinta de la exhibición en salas; la participación de una plataforma en la producción no implica disponibilidad inmediata en su catálogo.
 
 Las opiniones críticas y la taquilla son medidas diferentes. Una película puede convocar a mucho público y generar lecturas críticas diversas; la recaudación no resuelve por sí sola si la obra funciona artística o emocionalmente. Para formarse una opinión, conviene leer reseñas de medios distintos y distinguir análisis argumentado de comentarios virales o fragmentos descontextualizados.
+
+## Qué mirar en las próximas semanas para medir su recorrido
+
+La evolución de una película en taquilla se entiende mejor con series de datos que con una cifra aislada. Importan la recaudación del fin de semana, el descenso o mantenimiento respecto al anterior, el número de salas y la competencia de nuevos estrenos. Una cifra acumulada alta muestra el resultado alcanzado hasta una fecha, pero no predice por sí sola cuánto tiempo seguirá en cartelera.
+
+Las comparaciones históricas requieren el mismo criterio: películas estrenadas en periodos distintos pueden tener diferente número de salas, precios de entradas y condiciones de distribución. Si se afirma que una película ocupa una posición histórica, hay que indicar la clasificación y la fecha de corte que utiliza la fuente. Esto evita que una cifra provisional se presente como un récord definitivo.
+
+## Cómo separar el debate cultural de la conversación comercial
+
+La relación con Lorca, la representación de identidades y la recepción del público son dimensiones distintas de la taquilla. Un gran resultado comercial puede ampliar el debate, pero no reemplaza la crítica ni prueba que todos los espectadores interpreten la película igual. Conviene leer reseñas de distintas perspectivas y acudir a fuentes históricas para los datos sobre Lorca, sin tratar la ficción como una biografía documental.
 `
   },
   {
@@ -301,6 +321,16 @@ Algunas publicaciones han difundido versiones sobre la presencia de Roca Rey jun
 ## Qué actualizaciones serían relevantes
 
 Una actualización real sería una declaración directa de Tana Rivera o Roca Rey, una aclaración pública sobre la ruptura o información fiable y atribuida que cambie lo conocido. Repetir una especulación con un titular distinto no añade hechos nuevos. Si no hay nuevas declaraciones, el artículo debe seguir describiendo la ruptura como una noticia comunicada por los medios y las palabras de Francisco Rivera como declaraciones atribuidas.
+
+## Por qué la prudencia también mejora la información de entretenimiento
+
+Una noticia sobre una ruptura puede responder a preguntas razonables del público sin invadir la intimidad de los protagonistas. La base verificable aquí son las declaraciones atribuidas a Francisco Rivera y la información periodística sobre el final de la relación. Los motivos detallados, las conversaciones privadas y la posibilidad de una nueva pareja requieren confirmación independiente. Si no existe, no deben presentarse como hechos.
+
+La cobertura de celebridades suele convertir indicios ambiguos en relatos cerrados: una fotografía se interpreta como prueba, una ausencia como señal o un comentario de terceros como confirmación. Esas inferencias pueden viralizarse, pero siguen siendo hipótesis. La redacción debe explicar quién sostiene cada versión y qué evidencia aporta, o dejarla fuera si no es relevante.
+
+## Qué debe aportar una actualización
+
+Una actualización útil tendría una declaración directa de Tana Rivera o Andrés Roca Rey, o información fiable que cambie el estado conocido de la relación. Repetir rumores no mejora la noticia. Si los protagonistas deciden mantener la discreción, ese límite debe respetarse y el artículo puede seguir centrado en las declaraciones públicas que ya se han producido.
 `
   }
 ]
