@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_4 } from '../lib/actualidad-trending-2026-batch-4'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_3 } from '../lib/actualidad-trending-2026-batch-3'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_2 } from '../lib/actualidad-trending-2026-batch-2'
 import { TOPTRENDS_ARTICLES } from '../lib/toptrends-articles'
@@ -15,6 +16,9 @@ import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'sergio-rico-asalto-casa-sevilla-familia-octubre-2026',
+  'beso-pedro-sanchez-begona-gomez-imagen-viral-octubre-2026',
+  'katrin-ortega-parauta-alcaldesa-deja-psoe-octubre-2026',
   'kim-jong-un-ultima-aparicion-rumores-salud-tensiones-corea-sur-octubre-2026',
   'ivan-espinosa-monteros-ultima-hora-justicia-elecciones-29n-octubre-2026',
   'cristian-dinamarca-primera-cena-estado-heredero-vietnam-octubre-2026',
