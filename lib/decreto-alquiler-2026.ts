@@ -12,7 +12,7 @@ export const ALQUILER_DECRETO_2026_ARTICLES: Article[] = [
     id: 12,
     title: 'Cómo afecta el nuevo decreto de vivienda a arrendadores y arrendatarios: todas las claves',
     slug: 'decreto-vivienda-2026-arrendadores-arrendatarios',
-    category: 'economia',
+    category: 'toptrends',
     excerpt: 'El Real Decreto-ley 26/2026 cambia las reglas del alquiler para propietarios e inquilinos: límite del 2% a la subida de la renta hasta final de 2027, prórroga extraordinaria de dos años, regulación del alquiler de temporada y por habitaciones y nuevas bonificaciones en el IRPF. Repasamos qué gana y qué pierde cada parte.',
     content: `El Real Decreto-ley 26/2026, de 29 de septiembre, ha modificado las reglas del alquiler de vivienda en España de forma sustancial. Y lo hace con dos destinatarios muy distintos: quienes alquilan un piso para vivir, y quienes lo alquilan para ingresar una renta. Este artículo repasa, punto por punto, qué cambia para cada parte, y señala qué gana y qué pierde cada una.
 
