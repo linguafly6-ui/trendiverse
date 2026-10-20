@@ -102,6 +102,12 @@ La reunión también puede tener un efecto simbólico en la relación entre diri
 ## Cómo distinguir una declaración de un acuerdo
 
 Una declaración conjunta resume posiciones; un memorando puede expresar una intención de colaboración; un convenio formal suele identificar obligaciones, participantes y mecanismos de seguimiento. El nombre exacto del instrumento importa. Si el encuentro no generó documentos o medidas específicas, el artículo debe decirlo y no completar la noticia con resultados hipotéticos. Las reacciones de partidos distintos pueden mostrar el debate, pero deben atribuirse y contrastarse con los anuncios originales.
+
+## Qué debería incluir una rendición de cuentas posterior
+
+Si de la reunión surgen compromisos, el seguimiento periodístico debe volver a ellos semanas o meses después. Una declaración de intención se convierte en resultado cuando puede verificarse que se ejecutó: existe un convenio, se abrió un programa, se asignó presupuesto o se publicaron indicadores. La fecha y el organismo responsable permiten distinguir una promesa de una medida efectiva.
+
+Si no se anunciaron medidas concretas, la noticia debe conservar su dimensión política y simbólica sin atribuirle consecuencias económicas no demostradas. Este criterio permite comparar encuentros institucionales con una misma vara y evita que el análisis dependa exclusivamente de las declaraciones más llamativas de cada dirigente.
 `
   },
   {
@@ -209,6 +215,12 @@ Las primeras comparecencias pueden marcar el tono, aunque no bastan para conclui
 ## Por qué importa precisar el tipo de portavocía
 
 En política se utilizan títulos similares para funciones distintas: portavoz de un grupo parlamentario, portavoz de una ejecutiva, responsable de comunicación o portavoz de campaña. Confundirlos puede atribuir al cargo competencias que no tiene. La noticia debe identificar el órgano que realiza el nombramiento y enlazar, si está disponible, la comunicación oficial correspondiente. Si hay un cambio formal posterior, se incorpora con fecha y explicación.
+
+## La diferencia entre comunicación política y decisiones de partido
+
+Una portavoz puede explicar una decisión, defenderla ante preguntas y presentar el argumento de su organización, pero la aprobación formal de una medida corresponde al órgano competente. Por eso, las declaraciones de Torró deben leerse junto con los documentos y decisiones que explique. La portavoz es una fuente directa sobre lo que declara el partido en esa comparecencia, pero no sustituye a una resolución formal cuando la cuestión depende de un órgano colegiado.
+
+Para seguir su actividad, conviene guardar las fechas de sus comparecencias y contrastar las posiciones expresadas con las votaciones y los comunicados posteriores. Así se puede valorar si existe continuidad, rectificación o cambio de prioridades sin basarse únicamente en la impresión de una intervención aislada.
 `
   },
   {
