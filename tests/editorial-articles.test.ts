@@ -11,6 +11,9 @@ import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'revolut-no-funciona-caida-20-octubre-2026',
+  'getafe-rayo-vallecano-1-1-cronica-jornada-9-2026',
+  'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026',
   'alex-sola-detenido-accidente-positivo-alcohol',
   'bateria-externa-philips-action',
   'brasil-segunda-vuelta-lula-flavio-bolsonaro-25-octubre-2026',
@@ -237,7 +240,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'mejores-mascarillas-faciales-amazon-espana-2026')
+  assert.equal(slugs[0], 'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'toptrends')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
