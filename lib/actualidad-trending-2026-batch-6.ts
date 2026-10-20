@@ -114,6 +114,10 @@ Una nueva versión debe indicar qué dato cambió, quién lo confirmó y en qué
 El interés por una persona conocida puede aumentar tras su muerte, pero eso no convierte todos los aspectos de su vida en material que deba difundirse. Una biografía informativa puede describir su trabajo, su presencia pública y los hechos que medios fiables han confirmado, al tiempo que evita detalles médicos o familiares no comunicados. La ausencia de una causa pública no es una invitación a deducirla; es un límite que debe mantenerse hasta que exista una fuente fiable.
 
 Si se publican nuevas declaraciones de su entorno, conviene atribuirlas y conservar el contexto. Un comunicado familiar, una entrevista y una información basada en fuentes anónimas no tienen el mismo nivel de confirmación. Indicar quién proporciona cada dato ayuda al lector a evaluar la noticia y permite corregirla si la información cambia.
+
+## Criterios para compartir la noticia con respeto
+
+Antes de reenviar una publicación sobre el fallecimiento, comprueba si enlaza con una fuente identificable y si distingue hechos confirmados de información pendiente. Evita compartir imágenes invasivas, rumores sobre la causa o datos personales que no aporten contexto. La rapidez no debe desplazar a la precisión: una actualización breve y atribuida es más útil que una explicación extensa basada en conjeturas.
 `
   },
   {
@@ -343,6 +347,10 @@ Una actualización útil tendría una declaración directa de Tana Rivera o Andr
 La información principal es que Europa Press recogió declaraciones de Francisco Rivera sobre la ruptura de su hija. Las afirmaciones adicionales sobre motivos, reconciliación o una posible nueva pareja necesitan una confirmación separada. Es importante no convertir un comentario atribuido a un tercero en una declaración de Tana Rivera o Roca Rey, ni presentar una interpretación de redes como una decisión anunciada por ellos.
 
 La crónica social puede explicar el contexto familiar y profesional, pero debe evitar asumir que el parentesco concede conocimiento completo de una relación. Los protagonistas pueden tener perspectivas distintas y elegir no compartirlas. Si no hay declaraciones nuevas, la noticia no debe rellenarse con conjeturas: debe mantener claro qué se dijo públicamente y qué sigue sin conocerse.
+
+## La importancia de atribuir cada versión
+
+Cuando un dato procede de una entrevista, debe quedar claro quién habló y en qué medio se recogieron sus palabras. Cuando procede de una fuente indirecta, debe describirse como tal. Esa atribución permite que el lector distinga las declaraciones de Francisco Rivera de lo que puedan publicar otros medios sobre Tana o Roca Rey. La cobertura puede actualizarse si los protagonistas hablan, pero no debe anticipar esa declaración ni dar por hecho que llegará.
 `
   }
 ]
