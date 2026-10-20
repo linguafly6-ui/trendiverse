@@ -48,18 +48,13 @@ function pageSource(name: string) {
 }
 
 test('segunda-mano pages load products through getSecondHandProducts()', () => {
-  for (const file of ['page.tsx', '[categoria]/page.tsx']) {
-    const source = pageSource(file)
-    assert.match(source, /getSecondHandProducts\(\)/, file)
-    assert.doesNotMatch(source, /getSecondHandMetrics\(/, file)
-    assert.doesNotMatch(source, /usedPrice:\s*\d/, file)
-  }
   const hub = pageSource('page.tsx')
-  assert.match(hub, /secondHandProductsByCategory\(c\.slug, products\)/)
-  assert.match(hub, /secondHandWatchlist\(products\)/)
+  assert.match(hub, /redirect\('\/articles\/category\/toptrends'\)/)
   const category = pageSource('[categoria]/page.tsx')
+  assert.match(category, /getSecondHandProducts\(\)/)
+  assert.doesNotMatch(category, /getSecondHandMetrics\(/)
+  assert.doesNotMatch(category, /usedPrice:\s*\d/)
   assert.match(category, /secondHandProductsByCategory\(category\.slug, await getSecondHandProducts\(\)\)/)
-  assert.match(hub, /listingsForSecondHandRoute\(product\.slug\)/)
   assert.match(category, /listingsForSecondHandRoute\(product\.slug\)/)
   const gaming = SECOND_HAND_PRODUCTS.find((product) => product.slug === 'nintendo-switch')
   assert.match(gaming?.summary ?? '', /OLED/)
