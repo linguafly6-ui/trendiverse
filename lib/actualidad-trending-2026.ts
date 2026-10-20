@@ -75,7 +75,19 @@ No compartas claves ni códigos de un solo uso. Accede a Revolut por la aplicaci
 
 ## Conclusión
 
-La tendencia «Revolut no funciona» se explica por una incidencia de disponibilidad que afectó a operaciones esenciales y coincidió con problemas de infraestructura en la nube. La prioridad del cliente es no duplicar transacciones, consultar el estado oficial, proteger sus credenciales y revisar los movimientos después de la recuperación. Este artículo refleja información disponible el 20 de octubre de 2026; si la empresa publica nuevas actualizaciones, deben prevalecer sobre cualquier resumen anterior.`
+La tendencia «Revolut no funciona» se explica por una incidencia de disponibilidad que afectó a operaciones esenciales y coincidió con problemas de infraestructura en la nube. La prioridad del cliente es no duplicar transacciones, consultar el estado oficial, proteger sus credenciales y revisar los movimientos después de la recuperación. Este artículo refleja información disponible el 20 de octubre de 2026; si la empresa publica nuevas actualizaciones, deben prevalecer sobre cualquier resumen anterior.
+## Qué diferencia una caída general de un problema con una cuenta concreta
+
+Una incidencia general puede explicar que una aplicación no cargue o que varias funciones fallen, pero no todas las incidencias individuales tienen el mismo origen. Si el servicio parece haberse recuperado y una persona sigue sin acceder, conviene revisar los avisos de la compañía y utilizar los canales oficiales para comprobar si hay un bloqueo específico. No se debe concluir que existe fraude solo porque la aplicación no responda, ni descartar un cargo desconocido únicamente porque hubo una caída general.
+
+Cuando la plataforma vuelva a funcionar, revisa el historial de transacciones, los pagos pendientes y las notificaciones. Anota importe, fecha, destinatario y referencia de cualquier operación dudosa. Si aparece un cargo no reconocido, utiliza el procedimiento oficial de disputa o bloqueo de tarjeta. No publiques capturas con números de cuenta, saldos, identificadores de operación o datos personales.
+
+## Por qué importa la comunicación durante una interrupción
+
+Una comunicación útil debe aclarar qué servicios están afectados, si la incidencia está confirmada, qué acciones se están realizando y cuándo se publicará la siguiente actualización. En servicios financieros, la incertidumbre puede llevar a repetir operaciones o confiar en mensajes fraudulentos. La empresa financiera y el proveedor de infraestructura pueden compartir responsabilidades técnicas, pero el cliente necesita una explicación comprensible del servicio que utiliza.
+
+La recuperación puede producirse por fases. Que el inicio de sesión vuelva a funcionar no garantiza que todas las transferencias o pagos se procesen con normalidad al mismo tiempo. Por eso, los avisos deben revisarse con fecha y hora, y cada operación debe confirmarse en el historial antes de repetirla. La estabilidad se evalúa por el conjunto de funciones, no solo por la pantalla principal.
+`
   },
   {
     id: 802,
@@ -168,7 +180,19 @@ En la [ficha oficial de LaLiga](https://www.laliga.com/partido/temporada-2026-20
 
 ## Conclusión
 
-El Getafe-Rayo Vallecano es tendencia por un derbi reciente que terminó 1-1 y tuvo una secuencia decisiva: el Rayo marcó primero, el Getafe se quedó con diez y aun así encontró el empate. El marcador deja un punto para cada equipo y preguntas sobre disciplina, gestión de la ventaja y eficacia ofensiva. La ficha de LaLiga es la referencia principal para los datos del partido; la valoración de su impacto en la clasificación debe hacerse con la tabla actualizada.`
+El Getafe-Rayo Vallecano es tendencia por un derbi reciente que terminó 1-1 y tuvo una secuencia decisiva: el Rayo marcó primero, el Getafe se quedó con diez y aun así encontró el empate. El marcador deja un punto para cada equipo y preguntas sobre disciplina, gestión de la ventaja y eficacia ofensiva. La ficha de LaLiga es la referencia principal para los datos del partido; la valoración de su impacto en la clasificación debe hacerse con la tabla actualizada.
+## Qué dice un empate y qué no permite concluir
+
+Un 1-1 reparte un punto a cada equipo, pero el marcador no resume por sí solo el desarrollo del encuentro. Para valorar el resultado hay que mirar cómo llegaron los goles, las ocasiones, la capacidad de cada equipo para sostener la ventaja y los cambios realizados durante el partido. Las estadísticas pueden ayudar, aunque deben interpretarse con contexto: tener más posesión no significa necesariamente crear más ocasiones claras, y un mayor número de disparos no indica siempre mejor calidad de remate.
+
+En una crónica rigurosa, los hechos verificables —marcador, autores de los goles, minutos, tarjetas y sustituciones— deben distinguirse de la valoración táctica. Si no hay datos oficiales suficientes para una métrica, no se debe inventar. Las declaraciones de los entrenadores pueden explicar decisiones, pero reflejan su perspectiva y deben atribuirse como opiniones.
+
+## Cómo interpretar la clasificación tras la jornada
+
+Un punto puede tener un valor distinto según la posición de partida, los resultados de los rivales y el calendario. Para determinar el efecto en la tabla hay que consultar la clasificación actualizada, no inferirlo solo del resultado. La diferencia de goles, los partidos pendientes y los criterios de desempate también pueden ser relevantes a medida que avanza la competición.
+
+El empate tampoco permite predecir con seguridad el siguiente encuentro. Una evaluación más útil identifica qué aspectos puede mantener cada equipo y qué problemas deberá corregir, sin convertir una actuación en una tendencia de toda la temporada. Las conclusiones deportivas deben apoyarse en varios partidos y no solo en el último marcador.
+`
   },
   {
     id: 803,
@@ -270,6 +294,55 @@ El CSV registra los términos de búsqueda, pero no demuestra que todos los usua
 
 El 20 de octubre de 2026, el Gobierno anunció un paquete de medidas sociales que incluye nuevas situaciones especiales de incapacidad temporal y cambios para facilitar el reconocimiento de parejas de hecho a efectos de pensión de viudedad, además de otras mejoras de protección. La noticia es tendencia porque plantea dudas inmediatas sobre derechos y trámites. La respuesta segura es identificar la prestación concreta, revisar la norma oficial y confirmar los requisitos antes de iniciar una solicitud o asumir que un expediente previo cambia automáticamente.
 
-*Actualizado el 20 de octubre de 2026 con la nota oficial del Ministerio. Verifica el texto legal y las instrucciones vigentes antes de tomar decisiones sobre una prestación.*`
+*Actualizado el 20 de octubre de 2026 con la nota oficial del Ministerio. Verifica el texto legal y las instrucciones vigentes antes de tomar decisiones sobre una prestación.*
+## Incapacidad temporal: qué significa la protección anunciada y cómo se calcula
+
+La nota oficial del Ministerio del 20 de octubre de 2026 describe dos situaciones especiales de incapacidad temporal (IT): la derivada de una patología limitante asociada al trastorno menopáusico que impida trabajar y la de mujeres trabajadoras víctimas de violencia de género cuando las lesiones les impidan desempeñar su actividad. No basta con estar en la menopausia ni con haber sufrido violencia para que la prestación se reconozca automáticamente. En la modalidad vinculada a la menopausia, el anuncio alude a síntomas incapacitantes asociados a un diagnóstico y a una codificación concreta. La valoración médica y la emisión de la baja corresponden a los profesionales y organismos competentes.
+
+El cambio económico anunciado es que estas dos situaciones tendrán mayor protección que la incapacidad temporal común desde el día siguiente a la baja y no exigirán periodo previo de cotización. Según el Ministerio, el día de la baja se percibe el salario a cargo de la empresa; desde el día siguiente, la prestación la abona la Seguridad Social. La cuantía anunciada es el 60 % de la base reguladora hasta el día 20 y el 75 % a partir de entonces. Estos porcentajes se aplican a una base de cálculo, no necesariamente al salario neto que la persona recibe habitualmente. Por eso, no debe afirmarse que la nómina será exactamente el 60 % o el 75 % del ingreso mensual.
+
+La base reguladora se calcula conforme a las reglas de la prestación y las cotizaciones aplicables. En la incapacidad temporal común, la Seguridad Social explica que la base diaria suele partir de la base de cotización por contingencias comunes del mes anterior y se divide por los días que correspondan, con reglas particulares según el tipo de salario, contrato y situación de alta. No debe trasladarse automáticamente esa fórmula a una modalidad especial sin comprobar la norma específica y las instrucciones que la desarrollen. También hay que distinguir el subsidio legal de los complementos que un convenio colectivo o contrato pueda añadir.
+
+En la baja ordinaria por enfermedad común o accidente no laboral, el subsidio contributivo suele comenzar el cuarto día; se aplica el 60 % de la base reguladora entre los días 4 y 20 y el 75 % desde el día 21, con responsabilidades de pago que varían según el tramo. El anuncio del 20 de octubre establece para las dos nuevas situaciones especiales un inicio de la protección desde el día siguiente y elimina el requisito de carencia. No se deben generalizar estas reglas a todas las bajas: cada situación puede tener requisitos propios.
+
+### Ejemplo orientativo para entender los porcentajes
+
+Si, únicamente a efectos didácticos, la base reguladora diaria de un caso fuera de 50 euros, el 60 % equivaldría a 30 euros al día y el 75 % a 37,50 euros. No es un cálculo de nómina real: no incluye retenciones, complementos empresariales, particularidades de cotización ni las reglas definitivas aplicables al expediente. Sirve para ilustrar que el porcentaje se multiplica por una base de referencia y no directamente por el sueldo neto. Para saber la cuantía individual hay que consultar la base reguladora que figure en el expediente y la modalidad exacta reconocida.
+
+### Documentación, confidencialidad y trámites
+
+La documentación dependerá de la causa de la baja y de las instrucciones sanitarias y administrativas. Puede incluir los partes médicos correspondientes e informes que acrediten la situación cubierta. Antes de remitir documentos, conviene consultar al servicio público de salud, a la mutua cuando tenga competencias en el proceso o al INSS según el trámite. No se debe enviar información clínica sensible por canales no seguros ni facilitar a la empresa datos médicos que no sean necesarios para la gestión laboral.
+
+En los casos relacionados con violencia de género, la confidencialidad y la seguridad son especialmente importantes. La prestación no elimina la necesidad de proteger los datos personales ni obliga a difundir detalles íntimos. Si existe riesgo inmediato, la prioridad es la seguridad y el acceso a servicios especializados; la gestión económica debe realizarse por canales adecuados y seguros.
+
+## Pensión de viudedad para parejas de hecho: alcance y límites del cambio
+
+El Ministerio anunció que, si la pareja de hecho tiene hijos en común, se elimina el requisito de presentar el registro formal de constitución de la pareja: bastaría con la existencia de hijos comunes y la acreditación de convivencia, en los términos de la norma. Se trata de una modificación concreta de la forma de acreditar la relación, no de la eliminación de todos los requisitos de la pensión de viudedad.
+
+El derecho a viudedad depende de condiciones legales que pueden incluir la relación con la persona fallecida, la situación de cotización del causante y las circunstancias familiares. Por tanto, tener hijos en común no garantiza por sí solo la concesión. Hay que comprobar qué prueba de convivencia se admite, qué condiciones adicionales se mantienen y cómo se aplica la modificación al expediente concreto.
+
+La nota también anuncia un plazo de un año para que personas cuya pareja falleció antes del cambio puedan solicitar la prestación, siempre que cumplan los requisitos. Esto significa que no conviene descartar automáticamente un caso por la fecha del fallecimiento, pero tampoco que todas las solicitudes antiguas vayan a aprobarse. Es necesario confirmar el inicio del plazo, los documentos admitidos y el procedimiento previsto. El Ministerio señala que la prestación tendrá efectos desde el mes siguiente a la presentación de la solicitud, de modo que retrasar la consulta puede tener consecuencias económicas.
+
+### Pasos prácticos para una pareja superviviente
+
+Reúne los documentos que acrediten convivencia e hijos comunes, junto con los certificados de identidad y defunción que se requieran. Consulta el trámite oficial y verifica que la norma esté vigente y que exista una guía actualizada. Si hubo una denegación anterior, no asumas que queda anulada automáticamente: pregunta si procede una nueva solicitud, revisión o procedimiento específico. Conserva los justificantes y fechas de presentación. Si la decisión afecta a ingresos o plazos, busca orientación oficial o asesoramiento profesional.
+
+## Otras medidas del paquete social
+
+La reforma anunciada también contempla mejoras en la prestación por cuidado de menores afectados por cáncer u otra enfermedad grave (CUME). El Ministerio indica que se amplía la protección en determinados casos cuando la persona causante supera los 26 años y tiene dependencia de grado III o discapacidad igual o superior al 65 %. También contempla que cónyuges o parejas de hecho queden incluidos en los supuestos descritos y que ambos progenitores puedan percibir la prestación de forma alternativa o simultánea, conforme a los requisitos legales. La nota cifra el subsidio en el 50 % de la base reguladora usada para la incapacidad temporal por contingencias profesionales, sin depender del porcentaje de reducción de jornada. Cada condición debe verificarse en el texto normativo.
+
+En materia de orfandad, la nota señala una mejora cuando el fallecimiento de la mujer se haya producido por violencia contra la mujer, con una cuantía equivalente al doble del salario mínimo interprofesional vigente. También menciona incrementos de determinadas pensiones extraordinarias por actos de terrorismo y cambios para equiparar indemnizaciones en los supuestos descritos. Son reglas específicas y no deben extrapolarse a cualquier pensión de orfandad o prestación por fallecimiento.
+
+El paquete incluye además la extensión del subsidio especial por nacimiento y cuidado del menor al Régimen Especial de los Trabajadores del Mar, con la ampliación a 19 semanas que recoge el anuncio, y cambios en el Fondo de Garantía del Pago de Alimentos. El anticipo máximo por beneficiario aumenta de 100 a 300 euros mensuales y el periodo máximo deja de limitarse a 18 meses para extenderse hasta que se extinga la obligación alimenticia, con el límite de los 18 años del beneficiario, según la comunicación ministerial.
+
+## Qué está confirmado y qué falta por comprobar
+
+A fecha del anuncio, el Ministerio ha comunicado que el Consejo de Ministros aprobó un Real Decreto-ley y ha resumido sus principales medidas. La nota de prensa no reemplaza el articulado publicado en el BOE ni resuelve todos los detalles de aplicación. Antes de presentar cada medida como definitivamente disponible hay que comprobar el número y fecha de la norma, su entrada en vigor, las disposiciones transitorias, los requisitos de acreditación y el tratamiento de solicitudes anteriores. En prestaciones sociales, la fecha de los hechos, la fecha de solicitud y las reglas transitorias pueden cambiar el resultado.
+
+Fuentes oficiales:
+- [Ministerio de Inclusión: medidas aprobadas el 20 de octubre de 2026](https://www.inclusion.gob.es/w/el-gobierno-aprueba-nuevas-medidas-de-mejora-de-la-accion-protectora-de-la-seguridad-social-y-de-otras-normas-sociales%C2%A0)
+- [Seguridad Social: información sobre incapacidad temporal](https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/43384/44673/44674)
+- [Seguridad Social: trámites de incapacidad temporal](https://prestaciones.seg-social.es/prestaciones-enfermedades-accidentes/incapacidad-temporal.html)
+`
   }
 ]
