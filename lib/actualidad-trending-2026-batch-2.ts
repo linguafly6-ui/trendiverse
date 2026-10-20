@@ -342,23 +342,5 @@ La mayoría absoluta es una cifra parlamentaria, no una forma de describir autom
 - [Congreso de los Diputados: procedimiento de investidura](https://www.congreso.es/es/notas-de-prensa?_notasprensa_mvcPath=detalle&_notasprensa_notaId=45649&p_p_id=notasprensa&p_p_lifecycle=0&p_p_mode=view&p_p_state=normal)
 - [AS: sondeos y escenarios electorales](https://as.com/actualidad/politica/quien-ganara-las-elecciones-generales-esto-dice-la-encuesta-de-gad3-y-abre-una-puerta-a-pedro-sanchez-f202610-n/)
 `
-## Cómo se construye un legado deportivo más allá de los títulos
-
-La trayectoria de una persona vinculada al pádel no se mide únicamente por los resultados competitivos. En deportes con comunidades locales muy activas, también importa el trabajo de formación, la organización de clubes, la relación con jugadores jóvenes y la contribución a que una disciplina gane presencia en una región. Para atribuir cada uno de esos méritos a Gustavo Oliva hacen falta referencias concretas; no sería correcto convertir una descripción general del deporte en un logro biográfico que las fuentes no documentan.
-
-El pádel ha crecido gracias a una combinación de instalaciones accesibles, competición amateur, escuelas, circuitos profesionales y difusión en redes. Esa expansión ha generado figuras conocidas a escala nacional y referentes con influencia más localizada. La importancia de estos últimos puede estar muy ligada a una comunidad específica, de modo que las noticias de su fallecimiento suscitan reacciones de personas que compartieron pista, entrenamientos o proyectos. El alcance de esas reacciones no siempre se refleja en las estadísticas de los circuitos profesionales.
-
-## Qué información debe confirmarse en una noticia de fallecimiento
-
-La cobertura de una muerte debe priorizar la confirmación del fallecimiento, la identidad, la edad si está documentada y la trayectoria pública que pueda acreditarse. La causa de la muerte, las circunstancias familiares y otros datos sensibles no deben añadirse si no hay una fuente fiable que los confirme. En caso de que las primeras noticias sean escuetas, es preferible reconocer que la información disponible es limitada y actualizar el artículo cuando haya un comunicado o una fuente adicional.
-
-También es importante distinguir entre una condolencia, un recuerdo personal y una declaración institucional. Un mensaje de un compañero puede mostrar el afecto que despertaba, pero no prueba por sí solo detalles sobre su carrera. Para reconstruir su trayectoria, la mejor base son los perfiles de clubes o federaciones, los registros de competición, las entrevistas y los testimonios atribuidos. La información de redes puede orientar la búsqueda, aunque necesita contexto antes de incorporarse como dato.
-
-## El papel de los clubes y las comunidades locales
-
-Los clubes deportivos suelen conservar parte de la memoria de una disciplina: fotografías, resultados, carteles de torneos y testimonios de quienes participaron en sus actividades. Si se publican homenajes a Oliva, esos materiales pueden ayudar a precisar fechas y contribuciones, siempre con permiso cuando se trate de contenidos privados y comprobando que la identificación sea correcta. Una necrológica completa no necesita inflar el palmarés; puede explicar con precisión qué significó la persona para su entorno.
-
-El interés de búsqueda tras una noticia de este tipo también puede ser una oportunidad para dar visibilidad a la comunidad deportiva. Eso exige separar el homenaje de la información verificable y evitar atribuir logros sin registro. La forma más respetuosa de recordar a un referente es documentar lo que hizo y dejar claro qué aspectos siguen pendientes de confirmación.
-
   }
 ]
