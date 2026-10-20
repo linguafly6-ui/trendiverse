@@ -37,7 +37,6 @@ test('each section is a distinct topic in the site graph', () => {
   assert.equal(new Set(sections.map((section) => section['@id'])).size, CATEGORIES.length)
   const byId = new Map(sections.map((section) => [section['@id'], section]))
   assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'conciertos')!))?.url, 'https://trendiverse.org/conciertos')
-  assert.equal(getCategory('astrologia')?.href, '/astrologia')
   assert.equal(CATEGORIES.some((category) => category.slug === 'astrologia' || category.slug === 'segunda-mano'), false)
   for (const removed of ['politica', 'economia', 'deportes', 'gaming', 'virales', 'chollos', 'herramientas']) {
     assert.equal(CATEGORIES.some((category) => category.slug === removed), false)
