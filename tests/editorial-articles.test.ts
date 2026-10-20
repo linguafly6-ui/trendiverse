@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_3 } from '../lib/actualidad-trending-2026-batch-3'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_2 } from '../lib/actualidad-trending-2026-batch-2'
 import { TOPTRENDS_ARTICLES } from '../lib/toptrends-articles'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
@@ -14,6 +15,9 @@ import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'kim-jong-un-ultima-aparicion-rumores-salud-tensiones-corea-sur-octubre-2026',
+  'ivan-espinosa-monteros-ultima-hora-justicia-elecciones-29n-octubre-2026',
+  'cristian-dinamarca-primera-cena-estado-heredero-vietnam-octubre-2026',
   'cafeina-cuanto-es-demasiado-efectos-sueno-recomendaciones-2026',
   'muere-gustavo-oliva-referente-padel-catalan-trayectoria-legado',
   'mayoria-absoluta-espana-176-escanos-encuestas-elecciones-2026',
