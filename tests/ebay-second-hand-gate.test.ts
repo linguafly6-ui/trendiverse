@@ -192,11 +192,11 @@ test('segunda mano stays priceless when a verified fixture is offered to the car
 
   const products = await getSecondHandProducts()
   for (const item of products) assert.equal(item.metrics.usedPrice, null, item.slug)
-  for (const file of ['page.tsx', '[categoria]/page.tsx']) {
-    const source = readFileSync(new URL(`../app/segunda-mano/${file}`, import.meta.url), 'utf8')
-    assert.match(source, /getSecondHandProducts\(\)/, file)
-    assert.doesNotMatch(source, /fetch\s*\(|api\.ebay\.com|searchByEpid|getItem/, file)
-  }
+  const retiredHub = readFileSync(new URL('../app/segunda-mano/page.tsx', import.meta.url), 'utf8')
+  assert.match(retiredHub, /redirect\('\/articles\/category\/toptrends'\)/)
+  const categoryPage = readFileSync(new URL('../app/segunda-mano/[categoria]/page.tsx', import.meta.url), 'utf8')
+  assert.match(categoryPage, /getSecondHandProducts\(\)/)
+  assert.doesNotMatch(categoryPage, /fetch\s*\(|api\.ebay\.com|searchByEpid|getItem/)
   const gate = readFileSync(new URL('../lib/ebay-second-hand-gate.ts', import.meta.url), 'utf8')
   const code = gate.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
   assert.doesNotMatch(code, /\bfetch\s*\(|process\.env|searchByEpid|getItem\(/)
