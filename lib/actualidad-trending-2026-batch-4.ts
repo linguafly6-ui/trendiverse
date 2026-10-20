@@ -111,6 +111,12 @@ También hay que respetar que los familiares decidan cuánto desean contar. Una 
 Las primeras informaciones pueden basarse en una denuncia o en declaraciones de los afectados; después pueden aparecer datos confirmados por la Policía o por un juzgado. Cada fase tiene un nivel distinto de certeza. La detención de una persona no equivale a una condena, y la apertura de diligencias no demuestra por sí sola que todas las versiones difundidas sean correctas. El lenguaje debe reflejar esa diferencia y evitar señalar culpables antes de que exista una resolución.
 
 Para actualizar la noticia, conviene registrar la fecha de cada novedad, identificar a la fuente y explicar qué cambia respecto a la información anterior. Si no hay novedades verificables, es mejor mantener claro que el caso sigue bajo investigación que rellenar el artículo con especulaciones sobre móviles o sospechosos.
+
+## Cómo seguir las novedades sin amplificar rumores
+
+En un caso que afecta a una persona conocida, las publicaciones de redes pueden multiplicarse antes de que exista información oficial. Es importante comprobar si una novedad procede de una autoridad, una declaración directa o un medio que identifique sus fuentes. Las versiones anónimas y las fotografías sin contexto no deben presentarse como pruebas. Si el caso avanza judicialmente, cada etapa debe describirse con precisión y respetando la presunción de inocencia.
+
+El artículo debe actualizarse cuando haya un dato verificable que cambie lo conocido: una comunicación oficial, una resolución judicial o una declaración atribuida. Si no aparece información nueva, repetir hipótesis no aporta contexto y puede perjudicar a terceros. La prudencia no resta interés a la noticia; ayuda a que el lector sepa qué está confirmado y qué sigue bajo investigación.
 `
   },
   {
