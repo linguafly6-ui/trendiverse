@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const GUARDIOLA_ARTICLE_2026: Article = {
   id: 365,
-  category: 'deportes',
+  category: 'tecnologia',
   title: 'Pep Guardiola: últimas noticias de su vuelta al Etihad y el fallo del City',
   slug: 'pep-guardiola-ultimas-noticias-vuelta-etihad',
   excerpt: 'A 8 de octubre de 2026, Pep Guardiola, sin equipo, tiene previsto volver al Etihad el 14 de octubre ante el PSG, según ESPN. El City apeló el fallo. La sanción no está fijada.',
