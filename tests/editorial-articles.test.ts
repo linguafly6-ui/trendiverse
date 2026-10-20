@@ -254,7 +254,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'cristian-dinamarca-primera-cena-estado-heredero-vietnam-octubre-2026')
+  assert.equal(slugs[0], 'katrin-ortega-parauta-alcaldesa-deja-psoe-octubre-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'actualidad')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -324,7 +324,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
+  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
 })
 
 
