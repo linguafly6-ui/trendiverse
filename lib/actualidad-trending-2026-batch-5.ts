@@ -112,6 +112,10 @@ Si no se anunciaron medidas concretas, la noticia debe conservar su dimensión p
 ## La clave para no exagerar el alcance del encuentro
 
 La importancia política de una reunión puede ser real aunque no genere un acuerdo formal, pero ambas cosas deben describirse con palabras diferentes. El contexto ideológico explica parte de la atención mediática; los compromisos verificables requieren documentos o anuncios concretos. Si no hay medidas ejecutables identificadas, la conclusión debe limitarse al encuentro y a su significado político, dejando abiertas las consecuencias futuras.
+
+## Qué debe comprobarse si aparecen anuncios posteriores
+
+Si después del encuentro se comunica una iniciativa, conviene comprobar quién la ejecutará, qué competencia tiene, si existe un documento público y cuál es el calendario previsto. Un anuncio político puede ser relevante sin que su aplicación sea inmediata. El seguimiento debe distinguir el compromiso expresado, el instrumento formal y el resultado alcanzado, y actualizar el artículo solo cuando exista información verificable que cambie la situación.
 `
   },
   {
