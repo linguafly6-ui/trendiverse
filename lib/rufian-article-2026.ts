@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const RUFIAN_ARTICLE_2026: Article = {
   id: 361,
-  category: 'politica',
+  category: 'toptrends',
   title: 'Gabriel Rufián: últimas noticias de su candidatura de ERC para el 29N',
   slug: 'rufian-erc-ultimas-noticias-candidato-29n',
   excerpt: 'A 8 de octubre de 2026, Rufián no confirma si encabezará ERC el 29N. Junqueras lo defiende, el partido estudia un plan B y el plazo interno vence el domingo.',
