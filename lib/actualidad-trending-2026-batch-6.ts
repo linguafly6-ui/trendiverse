@@ -108,6 +108,12 @@ El contexto médico exige una cautela adicional. Un diagnóstico previo no expli
 ## Qué puede aportar una actualización responsable
 
 Una nueva versión debe indicar qué dato cambió, quién lo confirmó y en qué fecha. Si una familia decide no comunicar más información, el artículo puede mantenerse limitado a lo conocido. No es necesario responder a cada rumor ni reproducir teorías de redes para demostrar que se está siguiendo la noticia. La ausencia de una explicación pública también es un dato que debe respetarse.
+
+## Una biografía responsable no necesita especular
+
+El interés por una persona conocida puede aumentar tras su muerte, pero eso no convierte todos los aspectos de su vida en material que deba difundirse. Una biografía informativa puede describir su trabajo, su presencia pública y los hechos que medios fiables han confirmado, al tiempo que evita detalles médicos o familiares no comunicados. La ausencia de una causa pública no es una invitación a deducirla; es un límite que debe mantenerse hasta que exista una fuente fiable.
+
+Si se publican nuevas declaraciones de su entorno, conviene atribuirlas y conservar el contexto. Un comunicado familiar, una entrevista y una información basada en fuentes anónimas no tienen el mismo nivel de confirmación. Indicar quién proporciona cada dato ayuda al lector a evaluar la noticia y permite corregirla si la información cambia.
 `
   },
   {
@@ -331,6 +337,12 @@ La cobertura de celebridades suele convertir indicios ambiguos en relatos cerrad
 ## Qué debe aportar una actualización
 
 Una actualización útil tendría una declaración directa de Tana Rivera o Andrés Roca Rey, o información fiable que cambie el estado conocido de la relación. Repetir rumores no mejora la noticia. Si los protagonistas deciden mantener la discreción, ese límite debe respetarse y el artículo puede seguir centrado en las declaraciones públicas que ya se han producido.
+
+## Qué puede afirmarse con las fuentes disponibles
+
+La información principal es que Europa Press recogió declaraciones de Francisco Rivera sobre la ruptura de su hija. Las afirmaciones adicionales sobre motivos, reconciliación o una posible nueva pareja necesitan una confirmación separada. Es importante no convertir un comentario atribuido a un tercero en una declaración de Tana Rivera o Roca Rey, ni presentar una interpretación de redes como una decisión anunciada por ellos.
+
+La crónica social puede explicar el contexto familiar y profesional, pero debe evitar asumir que el parentesco concede conocimiento completo de una relación. Los protagonistas pueden tener perspectivas distintas y elegir no compartirlas. Si no hay declaraciones nuevas, la noticia no debe rellenarse con conjeturas: debe mantener claro qué se dijo públicamente y qué sigue sin conocerse.
 `
   }
 ]
