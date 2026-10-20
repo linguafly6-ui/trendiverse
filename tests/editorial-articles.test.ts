@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_5 } from '../lib/actualidad-trending-2026-batch-5'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_4 } from '../lib/actualidad-trending-2026-batch-4'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_3 } from '../lib/actualidad-trending-2026-batch-3'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_2 } from '../lib/actualidad-trending-2026-batch-2'
@@ -16,6 +17,9 @@ import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
 
 const EXPECTED_SLUGS = [
+  'ayuso-javier-milei-reunion-madrid-octubre-2026',
+  'rebeca-torro-nueva-portavoz-psoe-octubre-2026',
+  'melani-olivares-secretos-rodaje-aida-embarazo-carmen-machi-2026',
   'sergio-rico-asalto-casa-sevilla-familia-octubre-2026',
   'beso-pedro-sanchez-begona-gomez-imagen-viral-octubre-2026',
   'katrin-ortega-parauta-alcaldesa-deja-psoe-octubre-2026',
@@ -220,7 +224,7 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
+  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026', 'mejores-gafas-inteligencia-artificial-amazon-espana-2026', 'mejores-colagenos-amazon-espana-2026', 'mejores-mascarillas-pelo-amazon-espana-2026', 'mejores-mascarillas-faciales-amazon-espana-2026'].includes(slug)).sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
@@ -254,7 +258,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'katrin-ortega-parauta-alcaldesa-deja-psoe-octubre-2026')
+  assert.equal(slugs[0], 'melani-olivares-secretos-rodaje-aida-embarazo-carmen-machi-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'actualidad')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -305,7 +309,12 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok((await search('Bercovich')).includes('premios-nacionales-musica-2026-laura-vega-cecilia-bercovich'))
   assert.ok((await search('nanofabricación')).includes('csic-barcelona-area-nanofabricacion-cuantica-imb-cnm'))
 
-  const trending = await getArticles({ trending: true, limit: 50 })
+  const trending: Article[] = []
+  for (let offset = 0; ; offset += 50) {
+    const page = await getArticles({ trending: true, limit: 50, offset })
+    trending.push(...page)
+    if (page.length < 50) break
+  }
   assert.ok(trending.every((a) => a.trending))
   assert.ok(trending.some((a) => a.slug === 'newer-d1-article'))
   assert.ok(trending.some((a) => a.slug === 'kim-jong-un-ultima-aparicion-rumores-salud-tensiones-corea-sur-octubre-2026'))
@@ -324,7 +333,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
+  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)).size)
 })
 
 
