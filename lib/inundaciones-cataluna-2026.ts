@@ -10,7 +10,7 @@ export const INUNDACIONES_CATALUNA_2026_ARTICLES: Article[] = [
     id: 8,
     title: 'Inundaciones en Cataluña en octubre de 2026: alerta roja, comarcas afectadas y recomendaciones',
     slug: 'inundaciones-cataluna-octubre-2026-alerta-recomendaciones',
-    category: 'virales',
+    category: 'toptrends',
     excerpt: 'Cataluña encadena varios días de lluvias torrenciales en octubre de 2026, con avisos rojos, la alarma ES-Alert activada en varias comarcas y más de 280 litros por metro cuadrado. Repasamos qué ha pasado, qué zonas se han visto afectadas y qué hacer durante un episodio de lluvias extremas.',
     content: `Cataluña ha vivido a comienzos de octubre de 2026 uno de los episodios de lluvias torrenciales más intensos de los últimos años. En pocos días se han encadenado avisos rojos, alertas masivas a los teléfonos móviles, inundaciones en núcleos urbanos y varias víctimas mortales, sobre un terreno que ya estaba empapado de jornadas anteriores. Este artículo repasa qué ha ocurrido, qué comarcas se han visto afectadas, hasta cuándo se esperan lluvias y qué recomiendan las autoridades hacer en una situación así.
 
