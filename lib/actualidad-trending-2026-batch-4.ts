@@ -99,6 +99,18 @@ La información sobre seguridad de una vivienda también puede afectar a familia
 Las noticias sobre robos y agresiones suelen generar publicaciones que identifican supuestos sospechosos, reproducen imágenes sin contexto o atribuyen motivos sin pruebas. Compartirlas puede perjudicar a personas inocentes y entorpecer la investigación. Antes de dar por cierta una versión, comprueba si procede de un medio identificable, si cita fuentes oficiales y si otros medios solventes han confirmado el dato.
 
 Si aparecen novedades judiciales, hay que distinguir entre detención, investigación, acusación y condena: son fases diferentes y no significan lo mismo. La presunción de inocencia debe mantenerse en la redacción. Una actualización responsable explicará qué ha comunicado la autoridad y qué aspectos continúan pendientes, sin presentar una hipótesis como resolución definitiva.
+
+## La seguridad de las personas afectadas debe estar por delante del detalle morboso
+
+La cobertura de un posible asalto a una vivienda puede informar sobre la investigación sin divulgar detalles que aumenten el riesgo para los residentes. No es necesario describir accesos, horarios habituales, sistemas de seguridad ni la distribución de una casa. Esos datos pueden parecer atractivos para el lector, pero no ayudan a entender el avance del caso y pueden comprometer la privacidad o la seguridad de terceros.
+
+También hay que respetar que los familiares decidan cuánto desean contar. Una declaración pública sobre el estado de una persona puede ser relevante, pero no autoriza a reconstruir aspectos íntimos que no se han comunicado. Si la investigación afecta a menores o a personas que no son figuras públicas, la prudencia debe ser todavía mayor.
+
+## Diferenciar investigación policial, proceso judicial y resolución
+
+Las primeras informaciones pueden basarse en una denuncia o en declaraciones de los afectados; después pueden aparecer datos confirmados por la Policía o por un juzgado. Cada fase tiene un nivel distinto de certeza. La detención de una persona no equivale a una condena, y la apertura de diligencias no demuestra por sí sola que todas las versiones difundidas sean correctas. El lenguaje debe reflejar esa diferencia y evitar señalar culpables antes de que exista una resolución.
+
+Para actualizar la noticia, conviene registrar la fecha de cada novedad, identificar a la fuente y explicar qué cambia respecto a la información anterior. Si no hay novedades verificables, es mejor mantener claro que el caso sigue bajo investigación que rellenar el artículo con especulaciones sobre móviles o sospechosos.
 `
   },
   {
@@ -204,6 +216,18 @@ También hay que distinguir una imagen auténtica de un contexto correcto. Una f
 ## Qué aporta una cobertura útil
 
 La noticia debe explicar por qué se ha difundido la imagen, cuál es el contexto verificable y qué afirmaciones no se pueden demostrar. No es necesario repetir comentarios ofensivos ni especular sobre una relación personal. Si los protagonistas no han hecho declaraciones, ese silencio no confirma ninguna interpretación. La mejor actualización será la que aporte una fuente original o una aclaración verificable.
+
+## Viralidad, política y límites de la interpretación
+
+Una imagen puede convertirse en un símbolo para distintos grupos sin que todos compartan la misma lectura. Algunos usuarios la interpretan como una escena cotidiana; otros la convierten en argumento político o en motivo de crítica. Esa diversidad explica la conversación, pero no prueba que una interpretación concreta sea correcta. La redacción debe describir la imagen y el contexto que pueda comprobarse, y atribuir las opiniones a quienes las formulan.
+
+El número de publicaciones, comentarios o reproducciones indica circulación digital, no necesariamente apoyo o rechazo mayoritario. Los algoritmos pueden amplificar contenidos que generan controversia y hacer que una escena parezca omnipresente durante unas horas. Sin datos representativos, no debe decirse que «España piensa» de una manera determinada basándose en reacciones virales.
+
+## Un método breve de verificación antes de compartir
+
+Comprueba la fecha original, la cuenta o medio que difundió primero la imagen, el evento al que pertenece y si hay una secuencia más amplia. Busca si medios independientes han identificado el contexto. Si solo circula una captura sin procedencia clara, evita afirmaciones sobre cuándo ocurrió o qué intención tenía. La autenticidad visual y la interpretación del contexto son dos comprobaciones distintas.
+
+Una cobertura útil no necesita reproducir insultos ni especular sobre la vida privada de los protagonistas. Explica por qué la imagen se volvió tendencia, qué hechos se conocen y qué no se puede deducir de una fotografía aislada. Si aparece una fuente original que aclara la fecha o el contexto, esa información sí justifica una actualización.
 `
   },
   {
@@ -314,6 +338,16 @@ Málaga Hoy informó de que contempla concurrir con una candidatura llamada Unid
 ### ¿Qué ocurrió en las elecciones municipales de 2023?
 Según la cobertura citada, el PSOE obtuvo los siete concejales de la corporación y Ortega logró alrededor del 88% de los votos.
 
-**Actualización editorial:** artículo basado en informaciones publicadas el 20 de octubre de 2026. Se atribuyen a la alcaldesa sus declaraciones sobre los motivos de la salida y se separan de las consecuencias institucionales que aún deban formalizarse.`
+**Actualización editorial:** artículo basado en informaciones publicadas el 20 de octubre de 2026. Se atribuyen a la alcaldesa sus declaraciones sobre los motivos de la salida y se separan de las consecuencias institucionales que aún deban formalizarse.
+## Qué datos municipales permiten comprobar las consecuencias
+
+Para valorar el efecto institucional de una salida de partido, la referencia principal es la composición oficial del pleno municipal y los acuerdos adoptados en sesión. Hay que comprobar cuántos concejales tiene cada grupo, si la alcaldesa conserva apoyos suficientes y si se ha anunciado formalmente algún cambio en el equipo de gobierno. Las declaraciones de los partidos ayudan a entender el conflicto, pero las votaciones y los documentos municipales permiten verificar sus consecuencias.
+
+También conviene diferenciar una decisión personal de una decisión del grupo político. La salida de afiliación, la expulsión de un partido, la renuncia a un grupo municipal y el paso a la condición de concejala no adscrita pueden tener efectos diferentes. No deben tratarse como sinónimos sin comprobar qué ha ocurrido en el caso concreto.
+
+## Cómo seguir la noticia con rigor
+
+Las próximas señales serán las actas del pleno, las declaraciones completas de la alcaldesa y del partido, y cualquier cambio formal en las delegaciones o en la composición de los grupos. Si no hay una decisión institucional nueva, la noticia sigue siendo la ruptura política anunciada y sus posibles implicaciones, no una caída automática del gobierno local. La escala nacional de la tendencia no debe exagerar el alcance de un caso municipal.
+`
   }
 ]
