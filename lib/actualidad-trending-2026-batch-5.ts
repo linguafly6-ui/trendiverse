@@ -108,6 +108,10 @@ Una declaración conjunta resume posiciones; un memorando puede expresar una int
 Si de la reunión surgen compromisos, el seguimiento periodístico debe volver a ellos semanas o meses después. Una declaración de intención se convierte en resultado cuando puede verificarse que se ejecutó: existe un convenio, se abrió un programa, se asignó presupuesto o se publicaron indicadores. La fecha y el organismo responsable permiten distinguir una promesa de una medida efectiva.
 
 Si no se anunciaron medidas concretas, la noticia debe conservar su dimensión política y simbólica sin atribuirle consecuencias económicas no demostradas. Este criterio permite comparar encuentros institucionales con una misma vara y evita que el análisis dependa exclusivamente de las declaraciones más llamativas de cada dirigente.
+
+## La clave para no exagerar el alcance del encuentro
+
+La importancia política de una reunión puede ser real aunque no genere un acuerdo formal, pero ambas cosas deben describirse con palabras diferentes. El contexto ideológico explica parte de la atención mediática; los compromisos verificables requieren documentos o anuncios concretos. Si no hay medidas ejecutables identificadas, la conclusión debe limitarse al encuentro y a su significado político, dejando abiertas las consecuencias futuras.
 `
   },
   {
@@ -221,6 +225,10 @@ En política se utilizan títulos similares para funciones distintas: portavoz d
 Una portavoz puede explicar una decisión, defenderla ante preguntas y presentar el argumento de su organización, pero la aprobación formal de una medida corresponde al órgano competente. Por eso, las declaraciones de Torró deben leerse junto con los documentos y decisiones que explique. La portavoz es una fuente directa sobre lo que declara el partido en esa comparecencia, pero no sustituye a una resolución formal cuando la cuestión depende de un órgano colegiado.
 
 Para seguir su actividad, conviene guardar las fechas de sus comparecencias y contrastar las posiciones expresadas con las votaciones y los comunicados posteriores. Así se puede valorar si existe continuidad, rectificación o cambio de prioridades sin basarse únicamente en la impresión de una intervención aislada.
+
+## Cómo comprobar si cambia la línea del partido
+
+La forma más fiable de comprobar un cambio de estrategia es comparar declaraciones con propuestas escritas, votaciones y decisiones posteriores. Un nuevo rostro puede modificar el estilo de comunicación sin cambiar el programa, o puede acompañar una reorganización más amplia; solo los hechos posteriores permiten distinguir ambas posibilidades. Por eso conviene evitar predicciones categóricas a partir del nombramiento aislado.
 `
   },
   {
