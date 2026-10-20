@@ -177,7 +177,7 @@ test('a match article is a news piece about a sports event in deportes', () => {
   assert.equal(politicsNews.about, undefined)
   assert.equal(politicsNews.isPartOf, undefined)
   assert.equal(nodes(politics, 'SportsEvent').length, 0)
-  assert.notEqual((politicsNews.about as Node)['@id'], (news.about as Node[])[0]['@id'])
+  assert.equal(news.about && (news.about as Node[]).some((item) => item['@id'] === topicId('deportes')), false)
 })
 
 test('topic clusters and tools stay inside their section', () => {
