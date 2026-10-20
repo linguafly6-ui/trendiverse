@@ -23,6 +23,21 @@ const TOPIC_SAME_AS: Record<string, string> = {
   vivienda: 'https://es.wikipedia.org/wiki/Vivienda_en_Espa%C3%B1a',
 }
 
+const SIGN_SAME_AS: Record<string, string> = {
+  aries: 'https://es.wikipedia.org/wiki/Aries_(astrolog%C3%ADa)',
+  tauro: 'https://es.wikipedia.org/wiki/Tauro_(astrolog%C3%ADa)',
+  geminis: 'https://es.wikipedia.org/wiki/G%C3%A9minis_(astrolog%C3%ADa)',
+  cancer: 'https://es.wikipedia.org/wiki/C%C3%A1ncer_(astrolog%C3%ADa)',
+  leo: 'https://es.wikipedia.org/wiki/Leo_(astrolog%C3%ADa)',
+  virgo: 'https://es.wikipedia.org/wiki/Virgo_(astrolog%C3%ADa)',
+  libra: 'https://es.wikipedia.org/wiki/Libra_(astrolog%C3%ADa)',
+  escorpio: 'https://es.wikipedia.org/wiki/Escorpio_(astrolog%C3%ADa)',
+  sagitario: 'https://es.wikipedia.org/wiki/Sagitario_(astrolog%C3%ADa)',
+  capricornio: 'https://es.wikipedia.org/wiki/Capricornio_(astrolog%C3%ADa)',
+  acuario: 'https://es.wikipedia.org/wiki/Acuario_(astrolog%C3%ADa)',
+  piscis: 'https://es.wikipedia.org/wiki/Piscis_(astrolog%C3%ADa)',
+}
+
 /** Cada artista de la agenda tiene un tipo cerrado. Un nombre nuevo tiene que entrar aquí. */
 const ACTS: Record<string, 'person' | 'group' | 'festival'> = {
   JAZZMADRID: 'festival',
@@ -156,6 +171,342 @@ export function siteGraph() {
     publisher(),
     ...CATEGORIES.map((category) => topicNode(category.slug)),
     ...CATEGORIES.map((category) => sectionNode(category)),
+  ])
+}
+
+/** Título y descripción con la palabra clave «entradas + artista + ciudad» delante. */
+export function concertMeta(concert: Concert): { title: string; description: string } {
+  const full = `Entradas ${concert.artist} en ${concert.city}`
+  const title = full.length <= 46 ? full : `Entradas ${concert.artist} ${concert.city}`
+  const tickets = ticketsFor(concert)
+  const sale = tickets.state === 'abierta' ? 'a la venta en' : tickets.state === 'agotadas' ? 'agotadas en' : 'en'
+  const description = truncateWords(`Entradas ${concert.artist} en ${concert.city}: ${concert.when}, ${concert.venue}. ${cap(sale)} ${tickets.name}. ${concert.detail}`, 155)
+  return { title, description }
+}
+
+function cap(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+/** Estado de la venta en una frase, para la ficha y sus preguntas frecuentes. */
+export function concertSaleAnswer(concert: Concert): string {
+  const tickets = ticketsFor(concert)
+  if (tickets.state === 'abierta') return `Sí. ${tickets.name} tiene la venta abierta para esta cita; el botón de la ficha lleva a esa página oficial. Los precios y las zonas se consultan allí, porque cambian según la fase de venta.`
+  if (tickets.state === 'agotadas') return `${tickets.name} las marca como agotadas. Si se liberan localidades, aparecerán en esa misma página oficial; evita la reventa no autorizada.`
+  if (tickets.state === 'cerrada') return `Todavía no. En ${tickets.name} esta cita no tiene la venta abierta; la página oficial es donde se anunciará la fecha de salida.`
+  return `La página oficial de la cita es la de ${tickets.name}. Allí se consulta si hay venta abierta para cada noche.`
+}
+
+function eventName(concert: Concert): string {
+  if (actKind(concert.artist) === 'festival') {
+    return concert.title.toLowerCase().includes(concert.artist.toLowerCase()) ? concert.title : `${concert.artist}: ${concert.title}`
+  }
+  if (concert.title === 'Concierto') return `${concert.artist} en ${concert.city}`
+  return `${concert.artist}: ${concert.title}`
+}
+
+export function eventNode(concert: Concert) {
+  const kind = actKind(concert.artist)
+  const node: Record<string, unknown> = {
+    '@type': kind === 'festival' ? 'Festival' : 'MusicEvent',
+    '@id': eventId(concert),
+    name: eventName(concert),
+    description: concert.detail,
+    url: concertUrl(concert.id),
+    inLanguage: 'es-ES',
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: concert.venue,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: concert.city,
+        addressCountry: 'ES',
+      },
+    },
+    isPartOf: { '@id': sectionId(getCategory('conciertos')!) },
+  }
+  if (!concert.datesPending) {
+    node.startDate = concert.start
+    if (concert.end) node.endDate = concert.end
+  }
+  if (kind !== 'festival') {
+    node.performer = {
+      '@type': kind === 'person' ? 'Person' : 'MusicGroup',
+      name: concert.artist,
+    }
+  }
+  const tickets = ticketsFor(concert)
+  const offer: Record<string, unknown> = {
+    '@type': 'Offer',
+    url: tickets.url,
+    seller: { '@type': 'Organization', name: tickets.name },
+  }
+  if (tickets.state === 'abierta') offer.availability = 'https://schema.org/InStock'
+  if (tickets.state === 'agotadas') offer.availability = 'https://schema.org/SoldOut'
+  node.offers = offer
+  return node
+}
+
+function itemList(nodes: { id: string; url: string; name: string }[]) {
+  return {
+    '@type': 'ItemList',
+    numberOfItems: nodes.length,
+    itemListElement: nodes.map((node, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: node.name,
+      url: node.url,
+      item: { '@id': node.id },
+    })),
+  }
+}
+
+export function concertSectionGraph(concerts: Concert[], indexable = true) {
+  const category = getCategory('conciertos')!
+  const url = sectionUrl(category)
+  const events = concerts.map(eventNode)
+  const list = itemList(events.map((event) => ({
+    id: String(event['@id']),
+    url: String(event.url),
+    name: String(event.name),
+  })))
+  const page = indexable
+    ? sectionNode(category, list)
+    : {
+      '@type': 'CollectionPage',
+      '@id': `${url}#vista`,
+      url,
+      name: category.seoTitle,
+      inLanguage: 'es-ES',
+      about: { '@id': topicId('conciertos') },
+      mainEntity: list,
+    }
+  return graph([
+    topicNode('conciertos'),
+    page,
+    ...events,
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Conciertos', url },
+    ]),
+  ])
+}
+
+export function concertFaqs(concert: Concert) {
+  const confirmed = concert.tier === 'confirmado'
+  return [
+    {
+      q: `¿Dónde comprar entradas para ${concert.artist} en ${concert.city}?`,
+      a: ticketNote(concert),
+    },
+    {
+      q: `¿Están a la venta las entradas de ${concert.artist} en ${concert.city}?`,
+      a: concertSaleAnswer(concert),
+    },
+    {
+      q: `¿Cuándo es ${concert.artist} en ${concert.city}?`,
+      a: concert.datesPending
+        ? `${concert.when}. Los días concretos de esa cita todavía no están cerrados.`
+        : concert.when,
+    },
+    {
+      q: `¿Dónde es ${concert.artist} en ${concert.city}?`,
+      a: `${concert.venue}, ${concert.city}.`,
+    },
+    {
+      q: `¿De dónde sale la ficha de ${concert.artist}?`,
+      a: confirmed
+        ? `De ${concert.sourceName}. La página enlaza esa fuente.`
+        : `De un listado de entradas (${concert.sourceName}). Conviene confirmar hora y recinto en la taquilla antes de ir.`,
+    },
+  ]
+}
+
+export function concertPageGraph(concert: Concert) {
+  const category = getCategory('conciertos')!
+  const url = concertUrl(concert.id)
+  const meta = concertMeta(concert)
+  const faqs = concertFaqs(concert)
+  return graph([
+    topicNode('conciertos'),
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: meta.title,
+      description: meta.description,
+      inLanguage: 'es-ES',
+      isPartOf: { '@id': sectionId(category) },
+      about: { '@id': topicId('conciertos') },
+      mainEntity: { '@id': eventId(concert) },
+    },
+    eventNode(concert),
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Conciertos', url: sectionUrl(category) },
+      { name: concert.artist, url },
+    ]),
+  ])
+}
+
+/**
+ * Artículo de un signo para una semana. `datedUrl` indica si la página canónica es la fechada
+ * (semanas pasadas o futuras) o la de la semana en curso (/astrologia/{signo}).
+ */
+export function horoscopeArticle(week: HoroscopeWeek, sign: SignReading, datedUrl = false) {
+  const category = getCategory('astrologia')!
+  const urlWeek = datedUrl ? week : undefined
+  return {
+    '@type': 'Article',
+    '@id': horoscopeId(sign.slug, urlWeek),
+    headline: signHeading(week, sign),
+    description: signSeoDescription(week, sign),
+    articleBody: sign.general,
+    datePublished: week.start,
+    temporalCoverage: `${week.start}/${week.end}`,
+    inLanguage: 'es-ES',
+    genre: 'Horóscopo',
+    keywords: `horóscopo, ${sign.name}, horóscopo ${sign.name} ${week.shortLabel}, astrología, ${sign.element}`,
+    articleSection: category.name,
+    author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
+    publisher: publisher(),
+    isPartOf: { '@id': sectionId(category) },
+    mainEntityOfPage: signUrl(sign.slug, urlWeek),
+    about: {
+      '@type': 'Thing',
+      '@id': `${SITE_URL}/#signo-${sign.slug}`,
+      name: sign.name,
+      alternateName: `Horóscopo de ${sign.name}`,
+      description: `${sign.name}: ${sign.element}, ${sign.modality}, ${sign.dates}. Semana del ${week.label}.`,
+      sameAs: SIGN_SAME_AS[sign.slug],
+    },
+  }
+}
+
+export function astrologySectionGraph(week: HoroscopeWeek, datedUrl = false) {
+  const category = getCategory('astrologia')!
+  const url = datedUrl ? weekUrl(week) : sectionUrl(category)
+  const articles = week.signs.map((sign) => horoscopeArticle(week, sign, datedUrl))
+  const entries = week.signs.map((sign, index) => ({
+    id: String(articles[index]['@id']),
+    url: signUrl(sign.slug, datedUrl ? week : undefined),
+    name: String(articles[index].headline),
+  }))
+  if (!datedUrl) entries.push(...ASTROLOGY_GUIDES.map((guide) => ({
+    id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
+    url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
+    name: guide.title,
+  })))
+  const crumbs = [
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Astrología', url: sectionUrl(category) },
+  ]
+  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url })
+  return graph([
+    topicNode('astrologia'),
+    sectionNode(category, itemList(entries)),
+    ...articles,
+    breadcrumb(url, crumbs),
+  ])
+}
+
+export function astrologyGuideGraph(guide: AstrologyGuide) {
+  const url = `${SITE_URL}${astrologyGuidePath(guide.slug)}`
+  return graph([
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: guide.title,
+      description: guide.description,
+      articleBody: astrologyGuideBody(guide),
+      datePublished: guide.updated,
+      dateModified: guide.updated,
+      inLanguage: 'es-ES',
+      genre: 'Guía de astrología',
+      articleSection: 'Astrología',
+      author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
+      publisher: publisher(),
+      mainEntityOfPage: url,
+      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
+      about: { '@type': 'Thing', name: guide.title.split(':')[0] },
+      citation: astrologyGuideSources(guide).map((source) => source.url),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: guide.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: plainAstrologyText(faq.a) },
+      })),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
+      { name: 'Guías', url: `${SITE_URL}/astrologia/guias` },
+      { name: guide.title.split(':')[0], url },
+    ]),
+  ])
+}
+
+export function astrologyLibraryGraph() {
+  const url = `${SITE_URL}/astrologia/guias`
+  return graph([
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: 'Guías de astrología',
+      inLanguage: 'es-ES',
+      about: { '@id': topicId('astrologia') },
+      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
+      mainEntity: itemList(ASTROLOGY_GUIDES.map((guide) => ({
+        id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
+        url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
+        name: guide.title,
+      }))),
+    },
+    breadcrumb(url, [
+      { name: 'Inicio', url: SITE_URL },
+      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
+      { name: 'Guías', url },
+    ]),
+  ])
+}
+
+export function horoscopePageGraph(week: HoroscopeWeek, sign: SignReading, faqs: { q: string; a: string }[], datedUrl = false) {
+  const category = getCategory('astrologia')!
+  const url = signUrl(sign.slug, datedUrl ? week : undefined)
+  const crumbs = [
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Astrología', url: sectionUrl(category) },
+  ]
+  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url: weekUrl(week) })
+  crumbs.push({ name: sign.name, url })
+  return graph([
+    topicNode('astrologia'),
+    horoscopeArticle(week, sign, datedUrl),
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+    breadcrumb(url, crumbs),
   ])
 }
 
