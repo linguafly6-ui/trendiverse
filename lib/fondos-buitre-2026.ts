@@ -11,7 +11,7 @@ export const FONDOS_BUITRE_2026_ARTICLES: Article[] = [
     id: 11,
     title: 'Fondos buitre en 2026: quién no puede comprar vivienda y desde cuándo',
     slug: 'fondos-buitre-2026-decreto-vivienda',
-    category: 'economia',
+    category: 'toptrends',
     excerpt: 'El decreto de vivienda prohíbe a los fondos buitre y a los propietarios de más de 10 viviendas comprar por debajo del 70% del valor de tasación. Qué se considera compra especulativa, las excepciones y qué implica para inversores y vendedores.',
     content: `Los fondos buitre han vuelto al centro del debate público en España. En apenas una semana, el Gobierno ha aprobado, derogado y vuelto a aprobar un paquete normativo que limita sus compras de vivienda, y lo ha extendido a los grandes propietarios particulares. Este artículo se centra en lo que afecta a quien compra e invierte: qué operaciones quedan prohibidas, a quién se aplica y qué excepciones existen.
 
