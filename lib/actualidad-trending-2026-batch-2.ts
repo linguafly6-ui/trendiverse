@@ -224,6 +224,24 @@ En los servicios públicos de salud y en organizaciones sanitarias reconocidas. 
 ## Conclusión
 
 Gustavo Oliva ha sido recordado por su trayectoria en el pádel catalán y por la carta de despedida que compartió durante la fase final de su enfermedad. Su fallecimiento explica el aumento de búsquedas sobre el pádel en España el 20 de octubre de 2026. Más allá de la noticia, su mensaje ha vuelto a poner en primer plano la prevención y el valor de las revisiones médicas. La manera más respetuosa de mantener su legado es contar los hechos con precisión, reconocer su aportación al deporte y convertir la conversación sobre salud en una invitación a consultar información sanitaria fiable, sin culpa ni alarmismo.
+
+## Cómo se construye un legado deportivo más allá de los títulos
+
+La trayectoria de una persona vinculada al pádel no se mide únicamente por los resultados competitivos. En deportes con comunidades locales activas, también importa la formación, la organización de clubes, la relación con jugadores jóvenes y la contribución a que una disciplina gane presencia en una región. Para atribuir cada mérito a Gustavo Oliva hacen falta referencias concretas; no sería correcto convertir una descripción general del deporte en un logro biográfico que las fuentes no documenten.
+
+El pádel ha crecido gracias a instalaciones accesibles, competición amateur, escuelas, circuitos profesionales y difusión en redes. Esa expansión ha generado figuras conocidas a escala nacional y referentes con influencia local. La importancia de estos últimos puede estar ligada a una comunidad específica, de modo que una noticia sobre su fallecimiento suscita reacciones de personas que compartieron pista, entrenamientos o proyectos. El alcance de esas reacciones no siempre se refleja en las estadísticas de los circuitos profesionales.
+
+## Qué debe confirmarse en una noticia de fallecimiento
+
+La cobertura debe priorizar la confirmación del fallecimiento, la identidad, la edad si está documentada y la trayectoria pública que pueda acreditarse. La causa de la muerte, las circunstancias familiares y otros datos sensibles no deben añadirse si no existe una fuente fiable. Si las primeras noticias son escuetas, es preferible reconocer que la información disponible es limitada y actualizar el artículo cuando haya un comunicado o una fuente adicional.
+
+También es importante distinguir entre una condolencia, un recuerdo personal y una declaración institucional. Un mensaje de un compañero puede mostrar el afecto que despertaba, pero no prueba por sí solo detalles sobre su carrera. Para reconstruir su trayectoria, la mejor base son perfiles de clubes o federaciones, registros de competición, entrevistas y testimonios atribuidos. Las publicaciones de redes pueden orientar la búsqueda, aunque necesitan contexto antes de incorporarse como dato.
+
+## El papel de clubes y comunidades locales
+
+Los clubes deportivos conservan parte de la memoria de una disciplina: fotografías, resultados, carteles de torneos y testimonios de quienes participaron. Si se publican homenajes a Oliva, esos materiales pueden ayudar a precisar fechas y contribuciones, siempre que se compruebe la identificación y se respeten los permisos cuando el contenido no sea público. Una necrológica completa no necesita inflar el palmarés; puede explicar con precisión qué significó la persona para su entorno.
+
+La forma más respetuosa de recordar a un referente es documentar lo que hizo y dejar claro qué aspectos siguen pendientes de confirmación. El interés de búsqueda también puede dar visibilidad a la comunidad deportiva, pero el homenaje y la información verificable deben mantenerse diferenciados.
 `
   },
   {

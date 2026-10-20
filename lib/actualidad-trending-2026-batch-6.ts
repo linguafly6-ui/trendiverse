@@ -80,7 +80,45 @@ Conviene seguir medios que atribuyan la información y cualquier comunicado dire
 ## Fuentes
 - [AS — información sobre el fallecimiento de Sahara Ray](https://as.com/tikitakas/famosos/muere-la-modelo-sahara-ray-a-los-34-anos-f202610-n/)
 
-**Nota editorial:** esta pieza refleja las informaciones disponibles en la fecha de publicación. Los detalles no confirmados se presentan como tales y no se especula sobre la causa de la muerte.`
+**Nota editorial:** esta pieza refleja las informaciones disponibles en la fecha de publicación. Los detalles no confirmados se presentan como tales y no se especula sobre la causa de la muerte.
+## Cómo distinguir los datos confirmados de los rumores
+
+En una noticia de fallecimiento, la responsabilidad editorial es separar el hecho comunicado de los detalles que todavía no se conocen. Las informaciones del 20 de octubre atribuyeron la noticia a medios que citaban a TMZ; esa atribución no equivale a disponer de un comunicado médico o de una explicación oficial de las circunstancias. Si posteriormente aparece una confirmación directa, el artículo puede actualizarse, pero hasta entonces la ausencia de detalles no autoriza a completar los huecos con hipótesis.
+
+Que una persona haya hablado en el pasado de una enfermedad no demuestra que esa enfermedad explique su muerte. Una relación causal requiere información médica fiable y explícita; no puede deducirse por proximidad temporal, comentarios de terceros o una búsqueda viral. Repetir una conjetura tampoco la convierte en un hecho. Por eso, la causa del fallecimiento no se atribuye aquí sin confirmación.
+
+## Su carrera más allá de la notoriedad mediática
+
+La trayectoria de Sahara Ray permite hablar de la intersección entre modelaje, diseño y marca personal. En la moda de baño, la imagen es una parte visible del producto, pero detrás de una marca hay decisiones sobre diseño, materiales, producción, fotografía, distribución y comunicación. La información periodística disponible no permite cuantificar con rigor las ventas, el tamaño del equipo o los resultados económicos de Sahara Ray Swim. Es mejor describir su actividad sin inventar cifras.
+
+La visibilidad digital puede acercar a una diseñadora a un público internacional, aunque el número de seguidores no demuestra por sí solo la viabilidad económica de un negocio. Alcance, ventas e ingresos son indicadores distintos. Los titulares sobre la vida sentimental tampoco describen por completo su identidad profesional.
+
+## Por qué reaparecen historias antiguas y cómo actualizar la noticia
+
+Cuando se difunde un fallecimiento, los buscadores suelen mostrar fotografías, entrevistas y episodios de años anteriores. La relación de Ray con Justin Bieber en 2016 reaparece porque ya formaba parte de la cobertura internacional, pero un titular antiguo no es necesariamente una novedad. Antes de compartir contenido conviene comprobar la fecha original y si se presenta como reciente algo que ocurrió hace años.
+
+Una actualización sustancial debería basarse en un comunicado de la familia o sus representantes, una declaración atribuible o información de un medio solvente que identifique sus fuentes. Cualquier dato nuevo sobre la causa de la muerte debe describirse con atribución clara y sin ir más allá de lo confirmado. La privacidad de los familiares merece consideración: la curiosidad pública no hace necesario difundir imágenes invasivas ni especulaciones.
+
+## Cómo evitar que una noticia de duelo se convierta en desinformación
+
+Durante las primeras horas de una noticia de fallecimiento, las redes pueden mezclar datos correctos, fotografías antiguas y afirmaciones sin fuente. Antes de publicar una actualización hay que comprobar la fecha del material, la identidad de quien lo difunde y si la afirmación aparece en una fuente periodística fiable o en un comunicado directo. Si la información no se ha confirmado, debe decirse de forma explícita y no utilizar un titular que sugiera certeza.
+
+El contexto médico exige una cautela adicional. Un diagnóstico previo no explica automáticamente un fallecimiento posterior y no debe usarse para inferir una causa. Solo una confirmación fiable permite establecer ese vínculo. Esta regla protege tanto la precisión informativa como la privacidad de la persona y de su familia. El artículo puede explicar la trayectoria pública sin entrar en detalles que no estén documentados.
+
+## Qué puede aportar una actualización responsable
+
+Una nueva versión debe indicar qué dato cambió, quién lo confirmó y en qué fecha. Si una familia decide no comunicar más información, el artículo puede mantenerse limitado a lo conocido. No es necesario responder a cada rumor ni reproducir teorías de redes para demostrar que se está siguiendo la noticia. La ausencia de una explicación pública también es un dato que debe respetarse.
+
+## Una biografía responsable no necesita especular
+
+El interés por una persona conocida puede aumentar tras su muerte, pero eso no convierte todos los aspectos de su vida en material que deba difundirse. Una biografía informativa puede describir su trabajo, su presencia pública y los hechos que medios fiables han confirmado, al tiempo que evita detalles médicos o familiares no comunicados. La ausencia de una causa pública no es una invitación a deducirla; es un límite que debe mantenerse hasta que exista una fuente fiable.
+
+Si se publican nuevas declaraciones de su entorno, conviene atribuirlas y conservar el contexto. Un comunicado familiar, una entrevista y una información basada en fuentes anónimas no tienen el mismo nivel de confirmación. Indicar quién proporciona cada dato ayuda al lector a evaluar la noticia y permite corregirla si la información cambia.
+
+## Criterios para compartir la noticia con respeto
+
+Antes de reenviar una publicación sobre el fallecimiento, comprueba si enlaza con una fuente identificable y si distingue hechos confirmados de información pendiente. Evita compartir imágenes invasivas, rumores sobre la causa o datos personales que no aporten contexto. La rapidez no debe desplazar a la precisión: una actualización breve y atribuida es más útil que una explicación extensa basada en conjeturas.
+`
   },
   {
     id: 817,
@@ -168,7 +206,35 @@ En la fecha de publicación, la película está en salas españolas. La disponib
 - [20minutos — actualización de taquilla, 20 de octubre de 2026](https://www.20minutos.es/cinemania/noticias/bola-negra-taquilla-4-millones-espectadores-30-millones-euros_7050460_0.html)
 - [Movistar Plus+ — información oficial de la película](https://www.movistarplus.es/comunicacion/notas-de-prensa/la-bola-negra-de-javier-calvo-y-javier-ambrossi-una-pelicula-original-movistar-plus-se-estrenara-en-cines-el-2-de-octubre-de-2026/)
 
-**Nota editorial:** las cifras de taquilla incluyen datos publicados en fechas distintas y algunos son provisionales. Se mantienen atribuidos a cada medio para evitar presentar estimaciones como cifras finales.`
+**Nota editorial:** las cifras de taquilla incluyen datos publicados en fechas distintas y algunos son provisionales. Se mantienen atribuidos a cada medio para evitar presentar estimaciones como cifras finales.
+## Cómo leer las cifras de taquilla sin confundir recaudación y rentabilidad
+
+Las cifras publicadas sobre *La bola negra* varían según el día de corte y la actualización de los datos. El País informó de 28,6 millones de euros y más de cuatro millones de entradas; 20minutos publicó después una cifra provisional de 29,5 millones y 4,1 millones de espectadores. No hay contradicción necesaria: la recaudación aumenta conforme se venden nuevas entradas y las estimaciones pueden ajustarse. Una noticia rigurosa debe conservar la fecha y atribuir cada cifra a su fuente.
+
+La recaudación en taquilla tampoco equivale al beneficio neto. La taquilla bruta se reparte entre exhibidores y otros agentes según los acuerdos aplicables, y la producción tiene costes de desarrollo, rodaje, promoción y distribución. Sin cifras públicas completas sobre presupuesto y gastos no es posible calcular el beneficio real. El dato sólido es la posición destacada del filme en la clasificación española de 2026 recogida por las fuentes, no una conclusión económica que los datos disponibles no permiten.
+
+## La adaptación libre y el diálogo con la memoria cultural
+
+La relación con Federico García Lorca da a la película un marco histórico y literario, pero no la convierte en reconstrucción documental. La obra inacabada que inspira el título sirve como punto de partida para una narración propia. El espectador puede reconocer preguntas sobre deseo, identidad, exclusión y memoria, pero los personajes y las situaciones dramáticas pertenecen al universo de la película salvo que una fuente independiente confirme su base histórica.
+
+Esta diferencia importa porque la ficción histórica genera búsquedas que mezclan preguntas sobre el argumento con preguntas sobre lo que realmente ocurrió. Es razonable consultar biografías y estudios sobre Lorca para conocer el contexto; no lo es utilizar el argumento como prueba de hechos históricos. La obra artística puede abrir una conversación sobre el pasado sin sustituir a la investigación.
+
+## Dónde verla y cómo seguir la recepción
+
+La disponibilidad cambia según ciudad, cine y fecha. Una ficha de producción o un anuncio de estreno no garantiza que una sala concreta tenga sesiones o entradas disponibles. Antes de desplazarse, consulta la cartelera y comprueba la versión, el idioma, los subtítulos y las condiciones de compra. La llegada a una plataforma de streaming es una ventana distinta de la exhibición en salas; la participación de una plataforma en la producción no implica disponibilidad inmediata en su catálogo.
+
+Las opiniones críticas y la taquilla son medidas diferentes. Una película puede convocar a mucho público y generar lecturas críticas diversas; la recaudación no resuelve por sí sola si la obra funciona artística o emocionalmente. Para formarse una opinión, conviene leer reseñas de medios distintos y distinguir análisis argumentado de comentarios virales o fragmentos descontextualizados.
+
+## Qué mirar en las próximas semanas para medir su recorrido
+
+La evolución de una película en taquilla se entiende mejor con series de datos que con una cifra aislada. Importan la recaudación del fin de semana, el descenso o mantenimiento respecto al anterior, el número de salas y la competencia de nuevos estrenos. Una cifra acumulada alta muestra el resultado alcanzado hasta una fecha, pero no predice por sí sola cuánto tiempo seguirá en cartelera.
+
+Las comparaciones históricas requieren el mismo criterio: películas estrenadas en periodos distintos pueden tener diferente número de salas, precios de entradas y condiciones de distribución. Si se afirma que una película ocupa una posición histórica, hay que indicar la clasificación y la fecha de corte que utiliza la fuente. Esto evita que una cifra provisional se presente como un récord definitivo.
+
+## Cómo separar el debate cultural de la conversación comercial
+
+La relación con Lorca, la representación de identidades y la recepción del público son dimensiones distintas de la taquilla. Un gran resultado comercial puede ampliar el debate, pero no reemplaza la crítica ni prueba que todos los espectadores interpreten la película igual. Conviene leer reseñas de distintas perspectivas y acudir a fuentes históricas para los datos sobre Lorca, sin tratar la ficción como una biografía documental.
+`
   },
   {
     id: 818,
@@ -249,6 +315,42 @@ La noticia original de Europa Press recoge las declaraciones atribuidas a Franci
 - [Europa Press — Francisco Rivera confirma la ruptura de Tana y Roca Rey, 19 de octubre de 2026](https://www.europapress.es/chance/gente/noticia-francisco-rivera-confirma-ruptura-tana-roca-rey-revela-hija-20261019142335.html)
 - [Cadena Dial — información sobre la ruptura y rumores posteriores](https://www.cadenadial.com/2026/roca-rey-relacionado-con-una-joven-de-pamplona-tras-su-ruptura-con-tana-rivera-los-detalles-que-ha-ofrecido-alberto-guzman-466146.html)
 
-**Nota editorial:** las declaraciones de Francisco Rivera se atribuyen a la cobertura de Europa Press. Las informaciones sobre posibles nuevas relaciones o motivos privados no se presentan como hechos confirmados por los protagonistas.`
+**Nota editorial:** las declaraciones de Francisco Rivera se atribuyen a la cobertura de Europa Press. Las informaciones sobre posibles nuevas relaciones o motivos privados no se presentan como hechos confirmados por los protagonistas.
+## Qué significa confirmar una ruptura y qué no permite concluir
+
+En esta noticia hay que diferenciar la confirmación del final de la relación de las explicaciones sobre sus motivos. Europa Press recogió declaraciones de Francisco Rivera sobre la ruptura de su hija y sobre cómo la veía en ese momento. Esa intervención permite informar de que el padre se pronunció públicamente, pero no sustituye a una declaración de Tana Rivera o Andrés Roca Rey sobre sus decisiones personales. Tampoco permite reconstruir conversaciones privadas que no se han hecho públicas.
+
+En la crónica social, un titular puede comprimir una entrevista y dar la impresión de que se han confirmado más detalles de los que contiene. Para leerla con precisión, conviene acudir al texto original, comprobar qué frases se atribuyen a la persona entrevistada y separar esas palabras de la interpretación del periodista. Los comentarios posteriores en televisión o redes deben identificarse como versiones de terceros, no como hechos probados.
+
+## Privacidad y rumores sobre una posible nueva relación
+
+Tana Rivera pertenece a una familia conocida y Roca Rey desarrolla una carrera pública en el toreo. Eso explica el interés de los medios, pero no elimina la diferencia entre su actividad pública y su vida íntima. Una relación sentimental puede generar atención sin que sus protagonistas estén obligados a detallar sus motivos o próximos pasos. La ausencia de declaraciones no confirma ni desmiente rumores.
+
+Algunas publicaciones han difundido versiones sobre la presencia de Roca Rey junto a otra mujer después de la ruptura. La existencia de esas publicaciones es un dato sobre la cobertura, no una confirmación de que exista una nueva pareja. Para sostener esa afirmación haría falta una confirmación directa o una información periodística sólida que explique sus fuentes. Una fotografía, una coincidencia en un lugar o una publicación en redes no bastan para establecerlo.
+
+## Qué actualizaciones serían relevantes
+
+Una actualización real sería una declaración directa de Tana Rivera o Roca Rey, una aclaración pública sobre la ruptura o información fiable y atribuida que cambie lo conocido. Repetir una especulación con un titular distinto no añade hechos nuevos. Si no hay nuevas declaraciones, el artículo debe seguir describiendo la ruptura como una noticia comunicada por los medios y las palabras de Francisco Rivera como declaraciones atribuidas.
+
+## Por qué la prudencia también mejora la información de entretenimiento
+
+Una noticia sobre una ruptura puede responder a preguntas razonables del público sin invadir la intimidad de los protagonistas. La base verificable aquí son las declaraciones atribuidas a Francisco Rivera y la información periodística sobre el final de la relación. Los motivos detallados, las conversaciones privadas y la posibilidad de una nueva pareja requieren confirmación independiente. Si no existe, no deben presentarse como hechos.
+
+La cobertura de celebridades suele convertir indicios ambiguos en relatos cerrados: una fotografía se interpreta como prueba, una ausencia como señal o un comentario de terceros como confirmación. Esas inferencias pueden viralizarse, pero siguen siendo hipótesis. La redacción debe explicar quién sostiene cada versión y qué evidencia aporta, o dejarla fuera si no es relevante.
+
+## Qué debe aportar una actualización
+
+Una actualización útil tendría una declaración directa de Tana Rivera o Andrés Roca Rey, o información fiable que cambie el estado conocido de la relación. Repetir rumores no mejora la noticia. Si los protagonistas deciden mantener la discreción, ese límite debe respetarse y el artículo puede seguir centrado en las declaraciones públicas que ya se han producido.
+
+## Qué puede afirmarse con las fuentes disponibles
+
+La información principal es que Europa Press recogió declaraciones de Francisco Rivera sobre la ruptura de su hija. Las afirmaciones adicionales sobre motivos, reconciliación o una posible nueva pareja necesitan una confirmación separada. Es importante no convertir un comentario atribuido a un tercero en una declaración de Tana Rivera o Roca Rey, ni presentar una interpretación de redes como una decisión anunciada por ellos.
+
+La crónica social puede explicar el contexto familiar y profesional, pero debe evitar asumir que el parentesco concede conocimiento completo de una relación. Los protagonistas pueden tener perspectivas distintas y elegir no compartirlas. Si no hay declaraciones nuevas, la noticia no debe rellenarse con conjeturas: debe mantener claro qué se dijo públicamente y qué sigue sin conocerse.
+
+## La importancia de atribuir cada versión
+
+Cuando un dato procede de una entrevista, debe quedar claro quién habló y en qué medio se recogieron sus palabras. Cuando procede de una fuente indirecta, debe describirse como tal. Esa atribución permite que el lector distinga las declaraciones de Francisco Rivera de lo que puedan publicar otros medios sobre Tana o Roca Rey. La cobertura puede actualizarse si los protagonistas hablan, pero no debe anticipar esa declaración ni dar por hecho que llegará.
+`
   }
 ]
