@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const UNIVERSIDADES_PRIVADAS_2026: Article = {
   id: 364,
-  category: 'politica',
+  category: 'toptrends',
   title: 'Decreto de universidades privadas: el Supremo lo anula y el Gobierno prepara otra norma',
   slug: 'decreto-universidades-privadas-supremo-anula',
   excerpt: 'El 8 de octubre de 2026 el Supremo anula el Real Decreto 905/2025 de universidades. El fallo es de procedimiento. El Gobierno de Diana Morant prepara otra norma.',
