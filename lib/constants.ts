@@ -21,8 +21,6 @@ export const CATEGORIES: CategoryInfo[] = [
   { slug: 'toptrends', name: 'TopTrends', short: 'TopTrends', icon: '⭐', color: '#7C3AED', seoTitle: 'TopTrends: comparativas y guías de compra', description: 'Comparativas y guías de compra de productos en tendencia: hogar, cocina, fitness y tecnología, con criterios claros para comparar antes de comprar.' },
   { slug: 'hogar', name: 'Hogar', short: 'Hogar', icon: '🏠', color: '#0F766E', seoTitle: 'Ofertas de hogar, decoración y tecnología', description: 'Ofertas y guías para el hogar: muebles, decoración, iluminación, textiles y tecnología para comparar precios y condiciones antes de comprar.' },
   { slug: 'conciertos', name: 'Conciertos & Festivales', short: 'Conciertos', icon: '🎤', color: '#BE123C', seoTitle: 'Entradas conciertos España: agenda 2026-27', description: 'Entradas para conciertos y festivales en España: lo que queda de 2026 y las citas ya fechadas para 2027, con el enlace oficial de compra y la fuente de cada anuncio.', href: '/conciertos' },
-  { slug: 'astrologia', name: 'Astrología & Horóscopo', short: 'Astrología', icon: '✨', color: '#312E81', seoTitle: 'Astrología: horóscopos, ascendente y Luna', description: 'Horóscopos semanales y guías de ascendente, signo lunar, carta natal, eclipses, fases de la Luna y Mercurio retrógrado, con referencias y límites.', href: '/astrologia' },
-  { slug: 'segunda-mano', name: 'Segunda mano', short: 'Segunda mano', icon: '♻️', color: '#0D9488', seoTitle: 'Segunda mano: tendencias y oportunidades', description: 'Descubre qué productos de segunda mano están ganando popularidad, qué categorías están en tendencia y qué oportunidades merece la pena vigilar.', href: '/segunda-mano' },
 ]
 
 export interface TopicInfo {
