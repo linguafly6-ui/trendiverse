@@ -11,7 +11,7 @@ export const runtime = 'edge'
 
 export const metadata: Metadata = {
   title: 'Noticias, actualidad y guías por categoría',
-    description: 'Explora las noticias y guías de TrendiVerse por política, economía, deportes, tecnología, gaming, coches, virales, herramientas, chollos, conciertos y astrología.',
+    description: 'Explora las noticias y guías de TrendiVerse por actualidad, política, economía, deportes, tecnología, gaming, coches, virales, herramientas, chollos y conciertos.',
   alternates: { canonical: `${SITE_URL}/articles` },
   robots: { index: true, follow: true },
   openGraph: {
@@ -41,7 +41,7 @@ export default async function ArticlesPage() {
         <header>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Noticias, actualidad y guías</h1>
           <p className="mt-3 max-w-3xl leading-relaxed text-slate-600 dark:text-slate-400">
-            Un índice de contenidos de TrendiVerse organizado por temas. Consulta actualidad y análisis de política y economía, tecnología, deportes, gaming, coches, virales, herramientas, chollos, conciertos y astrología.
+            Un índice de contenidos de TrendiVerse organizado por temas. Consulta noticias de actualidad y análisis de política y economía, tecnología, deportes, gaming, coches, virales, herramientas, chollos y conciertos.
           </p>
         </header>
 
