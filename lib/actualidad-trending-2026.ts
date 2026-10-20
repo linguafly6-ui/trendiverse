@@ -99,6 +99,12 @@ Las personas que usan una cuenta digital como cuenta principal pueden necesitar 
 Los estafadores pueden enviar mensajes que imitan avisos de la entidad y afirman que la cuenta quedará bloqueada si no se confirma la identidad. Una señal de alerta es que pidan el PIN, la contraseña, códigos de un solo uso o que se instale un programa para «recuperar» el acceso. No compartas esos datos, ni siquiera con alguien que diga trabajar en soporte. Accede al servicio desde la aplicación oficial o escribe la dirección manualmente, y reporta los mensajes sospechosos a través de los canales legítimos.
 
 Si has facilitado credenciales por error, actúa desde un dispositivo seguro, cambia la contraseña si el servicio lo permite, revisa sesiones y movimientos y contacta con la entidad por un canal oficial. No utilices números telefónicos o enlaces incluidos en el mensaje sospechoso. Una incidencia de infraestructura y un intento de phishing pueden coincidir temporalmente, pero son fenómenos distintos y requieren respuestas diferentes.
+
+## Qué hacer si la incidencia afecta a un comercio o a un viaje
+
+Si el pago falla en una tienda, hotel o transporte, pide confirmación antes de volver a intentarlo. Un terminal puede mostrar un error aunque la solicitud haya llegado a la entidad, y repetir el pago sin comprobarlo puede provocar una retención o un cargo duplicado. Conserva el recibo, consulta el movimiento cuando el servicio esté disponible y contacta con el comercio y con la entidad por vías oficiales si el importe aparece más de una vez. En un viaje, guarda también la referencia de la reserva y comprueba las condiciones del proveedor antes de cancelar o comprar de nuevo.
+
+No compartas con el comercio ni con personas que te contacten de forma inesperada los códigos de seguridad de tu cuenta. La gestión de un pago fallido no requiere revelar contraseñas ni instalar aplicaciones. Si un establecimiento no puede verificar la operación, utiliza un medio alternativo seguro si lo tienes disponible y resuelve después la transacción inicial con la documentación conservada.
 `
   },
   {
@@ -216,6 +222,12 @@ Los goles son momentos decisivos, pero también importa lo que ocurre después. 
 La posesión, los disparos, los córners y las recuperaciones describen aspectos diferentes. La posesión puede ser estéril si no genera ocasiones; los disparos pueden llegar desde posiciones poco favorables; los córners no garantizan peligro. Las métricas avanzadas, como los goles esperados, también dependen de modelos y proveedores concretos. Si se citan, deben atribuirse a una fuente y no presentarse como una verdad absoluta sobre la calidad del equipo.
 
 La evaluación más sólida combina marcador, momentos clave y contexto competitivo. Un empate puede ser positivo para un equipo que remontó o insuficiente para otro que necesitaba ganar, pero esa interpretación depende de los objetivos y de la tabla en ese momento. Sin ese contexto, es más preciso explicar el resultado que adjudicarle consecuencias definitivas.
+
+## El valor del punto depende del calendario y de los objetivos
+
+Para juzgar si el empate es un buen resultado para Getafe o Rayo Vallecano, hay que compararlo con su situación en la clasificación, los partidos recientes y la dificultad de los próximos compromisos. Un punto puede sostener una racha o frenar una caída, pero no cambia automáticamente la trayectoria de una temporada. La lectura debe apoyarse en la tabla vigente y no en predicciones realizadas a partir de un solo encuentro.
+
+También es útil revisar si las ocasiones llegaron por juego elaborado, transición rápida o acciones a balón parado, siempre que el material del partido permita sostener esa descripción. Las conclusiones tácticas deben explicarse con ejemplos concretos, no con etiquetas generales como «mereció ganar» sin explicar por qué. La crónica combina el resultado confirmado con una valoración que debe dejar claro qué es dato y qué es análisis.
 `
   },
   {
