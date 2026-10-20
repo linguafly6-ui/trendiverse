@@ -238,7 +238,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
   assert.equal(slugs[0], 'mejores-mascarillas-faciales-amazon-espana-2026')
-  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'virales')
+  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'toptrends')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
   }
@@ -364,13 +364,13 @@ test('fashion category has six substantive, discoverable articles', async () => 
 })
 
 
-test('gaming trends category has five substantive, SEO/GEO-ready articles', async () => {
+test('gaming trend articles are classified under technology', async () => {
   assert.equal(GAMING_TENDENCIAS_ARTICLES.length, 5)
   assert.equal(new Set(GAMING_TENDENCIAS_ARTICLES.map((a) => a.id)).size, 5)
   const categories = new Set(CATEGORIES.map((c) => c.slug))
-  assert.ok(categories.has('gaming'))
+  assert.ok(categories.has('tecnologia'))
   for (const article of GAMING_TENDENCIAS_ARTICLES) {
-    assert.equal(article.category, 'gaming')
+    assert.equal(article.category, 'tecnologia')
     assert.ok(article.excerpt && article.excerpt.length <= 200, article.slug + ' excerpt')
     assert.match(article.content ?? '', /## Preguntas frecuentes/, article.slug + ' FAQ')
     assert.ok((article.content ?? '').length > 2500, article.slug + ' substantive content')
@@ -380,7 +380,7 @@ test('gaming trends category has five substantive, SEO/GEO-ready articles', asyn
     }
   }
   setEnvResolverForTests(() => ({}))
-  const categoryArticles = await getArticles({ category: 'gaming', limit: 10 })
+  const categoryArticles = await getArticles({ category: 'tecnologia', limit: 10 })
   assert.equal(categoryArticles.length, 5)
   assert.ok(GAMING_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })
