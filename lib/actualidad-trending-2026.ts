@@ -87,6 +87,18 @@ Cuando la plataforma vuelva a funcionar, revisa el historial de transacciones, l
 Una comunicación útil debe aclarar qué servicios están afectados, si la incidencia está confirmada, qué acciones se están realizando y cuándo se publicará la siguiente actualización. En servicios financieros, la incertidumbre puede llevar a repetir operaciones o confiar en mensajes fraudulentos. La empresa financiera y el proveedor de infraestructura pueden compartir responsabilidades técnicas, pero el cliente necesita una explicación comprensible del servicio que utiliza.
 
 La recuperación puede producirse por fases. Que el inicio de sesión vuelva a funcionar no garantiza que todas las transferencias o pagos se procesen con normalidad al mismo tiempo. Por eso, los avisos deben revisarse con fecha y hora, y cada operación debe confirmarse en el historial antes de repetirla. La estabilidad se evalúa por el conjunto de funciones, no solo por la pantalla principal.
+
+## Qué conviene hacer con pagos pendientes, nóminas y gastos urgentes
+
+Si la incidencia coincide con un gasto urgente, conviene priorizar la continuidad del pago sin perder el control de las operaciones. Antes de usar otra tarjeta o enviar una transferencia alternativa, revisa si el primer intento aparece como pendiente, rechazado o completado. Si no se puede consultar el estado, conserva la hora y el importe y evita hacer varios intentos idénticos seguidos. Cuando el servicio vuelva, comprueba si hay cargos duplicados y utiliza el procedimiento oficial para reclamar si fuera necesario.
+
+Las personas que usan una cuenta digital como cuenta principal pueden necesitar efectivo, una tarjeta física o una cuenta alternativa. Este episodio sirve como recordatorio general de continuidad financiera: mantener más de un medio de pago cuando sea posible, guardar teléfonos y referencias importantes fuera de una única aplicación y no depender de una sola vía de acceso para resolver una urgencia. No significa que todas las personas deban mantener varias cuentas ni que una caída implique un riesgo permanente; se trata de evaluar las necesidades propias y los posibles inconvenientes de depender de una única plataforma.
+
+## Cómo reconocer intentos de fraude aprovechando la caída
+
+Los estafadores pueden enviar mensajes que imitan avisos de la entidad y afirman que la cuenta quedará bloqueada si no se confirma la identidad. Una señal de alerta es que pidan el PIN, la contraseña, códigos de un solo uso o que se instale un programa para «recuperar» el acceso. No compartas esos datos, ni siquiera con alguien que diga trabajar en soporte. Accede al servicio desde la aplicación oficial o escribe la dirección manualmente, y reporta los mensajes sospechosos a través de los canales legítimos.
+
+Si has facilitado credenciales por error, actúa desde un dispositivo seguro, cambia la contraseña si el servicio lo permite, revisa sesiones y movimientos y contacta con la entidad por un canal oficial. No utilices números telefónicos o enlaces incluidos en el mensaje sospechoso. Una incidencia de infraestructura y un intento de phishing pueden coincidir temporalmente, pero son fenómenos distintos y requieren respuestas diferentes.
 `
   },
   {
@@ -192,6 +204,18 @@ En una crónica rigurosa, los hechos verificables —marcador, autores de los go
 Un punto puede tener un valor distinto según la posición de partida, los resultados de los rivales y el calendario. Para determinar el efecto en la tabla hay que consultar la clasificación actualizada, no inferirlo solo del resultado. La diferencia de goles, los partidos pendientes y los criterios de desempate también pueden ser relevantes a medida que avanza la competición.
 
 El empate tampoco permite predecir con seguridad el siguiente encuentro. Una evaluación más útil identifica qué aspectos puede mantener cada equipo y qué problemas deberá corregir, sin convertir una actuación en una tendencia de toda la temporada. Las conclusiones deportivas deben apoyarse en varios partidos y no solo en el último marcador.
+
+## Qué aspectos tácticos conviene revisar en la crónica
+
+El análisis del partido debe separar el dibujo inicial de los ajustes que se hicieron durante el encuentro. La formación anunciada antes del inicio no siempre describe cómo defendió cada equipo en todas las fases: la presión puede adelantarse o replegarse, los extremos pueden cerrar por dentro y los laterales pueden ocupar alturas distintas según el marcador. Para afirmar que un equipo dominó una zona o corrigió un problema, conviene apoyarse en acciones observables, estadísticas fiables o declaraciones de los entrenadores.
+
+Los goles son momentos decisivos, pero también importa lo que ocurre después. Un equipo que marca primero puede proteger la ventaja o seguir buscando el segundo; el rival puede cambiar su altura de presión o introducir jugadores para ganar amplitud. El empate final indica que ninguno sostuvo una ventaja definitiva, pero no permite concluir por sí solo que el partido fuera equilibrado en todas sus fases. Esa valoración requiere revisar ocasiones claras, secuencias de juego y el contexto de cada gol.
+
+## Cómo usar las estadísticas sin exagerar
+
+La posesión, los disparos, los córners y las recuperaciones describen aspectos diferentes. La posesión puede ser estéril si no genera ocasiones; los disparos pueden llegar desde posiciones poco favorables; los córners no garantizan peligro. Las métricas avanzadas, como los goles esperados, también dependen de modelos y proveedores concretos. Si se citan, deben atribuirse a una fuente y no presentarse como una verdad absoluta sobre la calidad del equipo.
+
+La evaluación más sólida combina marcador, momentos clave y contexto competitivo. Un empate puede ser positivo para un equipo que remontó o insuficiente para otro que necesitaba ganar, pero esa interpretación depende de los objetivos y de la tabla en ese momento. Sin ese contexto, es más preciso explicar el resultado que adjudicarle consecuencias definitivas.
 `
   },
   {
