@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CATEGORIES, TOPICS } from '../lib/constants'
+import { CATEGORIES, getCategory, TOPICS } from '../lib/constants'
 import { concertById, concertsFor } from '../lib/concerts'
 import { weekBySlug } from '../lib/astrology'
 import { liveMatchForSlug } from '../lib/laliga-jornada-8-2026'
@@ -39,7 +39,8 @@ test('each section is a distinct topic in the site graph', () => {
   assert.equal(new Set(sections.map((section) => section['@id'])).size, CATEGORIES.length)
   const byId = new Map(sections.map((section) => [section['@id'], section]))
   assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'conciertos')!))?.url, 'https://trendiverse.org/conciertos')
-  assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'astrologia')!))?.url, 'https://trendiverse.org/astrologia')
+  assert.equal(getCategory('astrologia')?.href, '/astrologia')
+  assert.equal(CATEGORIES.some((category) => category.slug === 'astrologia' || category.slug === 'segunda-mano'), false)
   for (const removed of ['politica', 'economia', 'deportes', 'gaming', 'virales', 'chollos', 'herramientas']) {
     assert.equal(CATEGORIES.some((category) => category.slug === removed), false)
   }
