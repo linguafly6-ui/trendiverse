@@ -272,7 +272,7 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok(!chollos.some((a) => ['politica', 'economia', 'deportes', 'gaming', 'virales', 'chollos', 'herramientas'].includes(a.category)))
 
   const tecnologia = (await getArticles({ category: 'tecnologia', limit: 50 })).map((a) => a.slug)
-  assert.ok(tecnologia.includes(EXPECTED_SLUGS[7]))
+  assert.ok(tecnologia.includes('newer-d1-article'))
 
   const search = async (q: string) => (await getArticles({ q, limit: 50 })).map((a) => a.slug)
   assert.ok((await search('Rufián')).includes('rufian-erc-ultimas-noticias-candidato-29n'))
