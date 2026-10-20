@@ -28,7 +28,9 @@ function dedupeBySlug<T extends { slug: string }>(list: T[]): T[] {
   return list.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)))
 }
 
-export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES,...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...PREDICCION_TECNOLOGICA_2031_ARTICLES, ...TECNOLOGIA_2026_ARTICLES, ...SEGURIDAD_ELECTRICA_BANO_ARTICLES, ...SEMANA_MUNDIAL_ESPACIO_2026_ARTICLES, ...NOMINA_2027_MEI_ARTICLES, ...FONDOS_BUITRE_2026_ARTICLES, ...ALQUILER_DECRETO_2026_ARTICLES, ...INUNDACIONES_CATALUNA_2026_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
+const BUNDLED_EDITORIAL_ARTICLES = [...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES]
+
+export const SAMPLE_ARTICLES: Article[] = dedupeBySlug([...BUNDLED_EDITORIAL_ARTICLES, ...PREDICCION_TECNOLOGICA_2031_ARTICLES, ...TECNOLOGIA_2026_ARTICLES, ...SEGURIDAD_ELECTRICA_BANO_ARTICLES, ...SEMANA_MUNDIAL_ESPACIO_2026_ARTICLES, ...NOMINA_2027_MEI_ARTICLES, ...FONDOS_BUITRE_2026_ARTICLES, ...ALQUILER_DECRETO_2026_ARTICLES, ...INUNDACIONES_CATALUNA_2026_ARTICLES, ...EVENEPOEL_ARTICLES, ...GIRONA_MALLORCA_ARTICLES, ...PORTUGAL_NORUEGA_ARTICLES, ...BARCELONA_REAL_MADRID_ARTICLES, ...IPHONE_ARTICLES, ...AUDI_ARTICLES, ...EXTRA_ARTICLES, ...BASE_SAMPLE_ARTICLES])
 
 interface Env {
   DB?: D1Database
@@ -89,7 +91,7 @@ function byRecency(x: Article, y: Article): number {
 
 // Bundled editorial records take precedence over D1 rows with the same slug.
 function mergeWithEditorial(rows: Article[]): Article[] {
-  return dedupeBySlug([...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...rows])
+  return dedupeBySlug([...BUNDLED_EDITORIAL_ARTICLES, ...rows])
 }
 
 export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
@@ -114,7 +116,7 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   }
   // Fetch enough D1 rows from the top so that, after bundled records are merged in and
   // duplicates removed, the requested page is still exact.
-  const fetchLimit = offset + limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length
+  const fetchLimit = offset + limit + BUNDLED_EDITORIAL_ARTICLES.length
   const sql = `SELECT * FROM articles ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
     ORDER BY published_at DESC LIMIT ?`
   params.push(fetchLimit)
@@ -130,14 +132,14 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
   if (!DB) return [...SAMPLE_ARTICLES].sort((a, b) => b.views - a.views).slice(0, limit)
-  const rows = await cached(`top:${limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length}`, 300, async () =>
-    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + TOPTRENDS_ARTICLES.length + EDITORIAL_ARTICLES.length).all<Article>()).results
+  const rows = await cached(`top:${limit + BUNDLED_EDITORIAL_ARTICLES.length}`, 300, async () =>
+    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + BUNDLED_EDITORIAL_ARTICLES.length).all<Article>()).results
   )
   return mergeWithEditorial(rows).sort((a, b) => b.views - a.views || byRecency(a, b)).slice(0, limit)
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const bundled = [...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].find((a) => a.slug === slug)
+  const bundled = BUNDLED_EDITORIAL_ARTICLES.find((a) => a.slug === slug)
   if (bundled) return bundled
   const { DB } = await getEnv()
   if (!DB) return SAMPLE_ARTICLES.find((a) => a.slug === slug) ?? null
@@ -178,11 +180,7 @@ export async function getAllArticleSlugs(): Promise<{ slug: string; published_at
   if (!DB) return SAMPLE_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at }))
   const rows = (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
   return dedupeBySlug([
-    ...TOPTRENDS_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
-    ...EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
-    ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
-    ...MODA_TENDENCIAS_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
-    ...GAMING_TENDENCIAS_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
+    ...BUNDLED_EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
     ...rows,
   ])
 }
