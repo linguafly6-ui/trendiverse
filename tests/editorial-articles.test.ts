@@ -6,6 +6,7 @@ import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
+import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_7 } from '../lib/actualidad-trending-2026-batch-7'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_6 } from '../lib/actualidad-trending-2026-batch-6'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_5 } from '../lib/actualidad-trending-2026-batch-5'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_4 } from '../lib/actualidad-trending-2026-batch-4'
@@ -19,6 +20,9 @@ import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTes
 
 const EXPECTED_SLUGS = [
   'sahara-ray-muere-34-anos-modelo-australiana-octubre-2026',
+  'terremoto-espana-como-consultar-magnitud-epicentro-avisos-2026',
+  'tribunal-cuentas-causa-1-o-archivo-amnistia-octubre-2026',
+  'festivos-noviembre-2026-lunes-2-todos-los-santos-comunidades',
   'la-bola-negra-pelicula-los-javis-trama-reparto-taquilla-2026',
   'francisco-rivera-tana-roca-rey-ruptura-octubre-2026',
   'ayuso-javier-milei-reunion-madrid-octubre-2026',
@@ -228,7 +232,7 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 test.afterEach(() => setEnvResolverForTests(null))
 
 test('editorial records are valid and unique', () => {
-  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
+  const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_7, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026', 'mejores-gafas-inteligencia-artificial-amazon-espana-2026', 'mejores-colagenos-amazon-espana-2026', 'mejores-mascarillas-pelo-amazon-espana-2026', 'mejores-mascarillas-faciales-amazon-espana-2026'].includes(slug)).sort())
   assert.equal(new Set(EDITORIAL_ARTICLES.map((a) => a.id)).size, EDITORIAL_ARTICLES.length)
   const cats = new Set(CATEGORIES.map((c) => c.slug))
