@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CATEGORIES, getCategory, TOPICS } from '../lib/constants'
+import { CATEGORIES, TOPICS } from '../lib/constants'
 import { concertById, concertsFor } from '../lib/concerts'
 import { liveMatchForSlug } from '../lib/laliga-jornada-8-2026'
 import {
