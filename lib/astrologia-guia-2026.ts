@@ -1,10 +1,9 @@
 import type { Article } from './types'
-import { ASTRO_GUIDE_SLUG } from './astrology'
 
 export const ASTROLOGIA_GUIA_2026: Article = {
   id: 376,
   title: 'Cómo leemos el horóscopo: astrología tropical y el cielo de esta semana',
-  slug: ASTRO_GUIDE_SLUG,
+  slug: 'como-leemos-el-horoscopo-astrologia-tropical',
   category: 'toptrends',
   excerpt:
     'Cómo está hecho el horóscopo de TrendiVerse: zodiaco tropical, casas desde el signo solar y el cielo real del 8 al 14 de octubre, con la luna nueva en Libra.',

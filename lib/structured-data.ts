@@ -4,9 +4,6 @@ import { CATEGORIES, getCategory, SITE_NAME, SITE_URL, type CategoryInfo, type T
 import type { LiveFixtureRef } from './laliga-jornada-8-2026'
 import { truncateWords } from './seo-overrides'
 import type { Article, Tool } from './types'
-import { signHeading, signSeoDescription, type HoroscopeWeek, type SignReading } from './astrology'
-import { SECOND_HAND_CATEGORIES, SECOND_HAND_PATH, SECOND_HAND_SEO, secondHandCategoryPath, type SecondHandCategory } from './second-hand'
-import { ASTROLOGY_GUIDES, astrologyGuideBody, astrologyGuidePath, astrologyGuideSources, plainAstrologyText, type AstrologyGuide } from './astrology-guides'
 
 export const websiteId = `${SITE_URL}/#website`
 export const organizationId = `${SITE_URL}/#organization`
@@ -16,7 +13,6 @@ const SECTION_SAME_AS: Record<string, string> = {
   politica: 'https://es.wikipedia.org/wiki/Pol%C3%ADtica_de_Espa%C3%B1a',
   economia: 'https://es.wikipedia.org/wiki/Econom%C3%ADa_de_Espa%C3%B1a',
   deportes: 'https://es.wikipedia.org/wiki/Deporte_en_Espa%C3%B1a',
-  astrologia: 'https://es.wikipedia.org/wiki/Astrolog%C3%ADa',
 }
 
 const TOPIC_SAME_AS: Record<string, string> = {
@@ -105,19 +101,6 @@ export function eventId(concert: Concert): string {
   return `${concertUrl(concert.id)}#event`
 }
 
-/** URL de la lectura de un signo: la semana en curso vive en /astrologia/{signo}; las demás, con su fecha. */
-export function signUrl(slug: string, week?: HoroscopeWeek): string {
-  return week ? `${SITE_URL}/astrologia/${slug}/${week.slug}` : `${SITE_URL}/astrologia/${slug}`
-}
-
-export function weekUrl(week?: HoroscopeWeek): string {
-  return week ? `${SITE_URL}/astrologia/semana/${week.slug}` : `${SITE_URL}/astrologia`
-}
-
-export function horoscopeId(slug: string, week?: HoroscopeWeek): string {
-  return `${signUrl(slug, week)}#horoscopo`
-}
-
 function graph(nodes: object[]) {
   return { '@context': 'https://schema.org', '@graph': nodes }
 }
@@ -180,7 +163,7 @@ export function siteGraph() {
       name: SITE_NAME,
       url: SITE_URL,
       inLanguage: 'es-ES',
-      description: 'Medio en español con secciones de tecnología, coches, moda, tendencias, hogar, conciertos, astrología y segunda mano.',
+      description: 'Medio en español con secciones de tecnología, coches, moda, tendencias, hogar y conciertos.',
       publisher: { '@id': organizationId },
       about: CATEGORIES.map((category) => ({ '@id': topicId(category.slug) })),
       hasPart: CATEGORIES.map((category) => ({ '@id': sectionId(category) })),
@@ -381,152 +364,6 @@ export function concertPageGraph(concert: Concert) {
  * Artículo de un signo para una semana. `datedUrl` indica si la página canónica es la fechada
  * (semanas pasadas o futuras) o la de la semana en curso (/astrologia/{signo}).
  */
-export function horoscopeArticle(week: HoroscopeWeek, sign: SignReading, datedUrl = false) {
-  const category = getCategory('astrologia')!
-  const urlWeek = datedUrl ? week : undefined
-  return {
-    '@type': 'Article',
-    '@id': horoscopeId(sign.slug, urlWeek),
-    headline: signHeading(week, sign),
-    description: signSeoDescription(week, sign),
-    articleBody: sign.general,
-    datePublished: week.start,
-    temporalCoverage: `${week.start}/${week.end}`,
-    inLanguage: 'es-ES',
-    genre: 'Horóscopo',
-    keywords: `horóscopo, ${sign.name}, horóscopo ${sign.name} ${week.shortLabel}, astrología, ${sign.element}`,
-    articleSection: category.name,
-    author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
-    publisher: publisher(),
-    isPartOf: { '@id': sectionId(category) },
-    mainEntityOfPage: signUrl(sign.slug, urlWeek),
-    about: {
-      '@type': 'Thing',
-      '@id': `${SITE_URL}/#signo-${sign.slug}`,
-      name: sign.name,
-      alternateName: `Horóscopo de ${sign.name}`,
-      description: `${sign.name}: ${sign.element}, ${sign.modality}, ${sign.dates}. Semana del ${week.label}.`,
-      sameAs: SIGN_SAME_AS[sign.slug],
-    },
-  }
-}
-
-export function astrologySectionGraph(week: HoroscopeWeek, datedUrl = false) {
-  const category = getCategory('astrologia')!
-  const url = datedUrl ? weekUrl(week) : sectionUrl(category)
-  const articles = week.signs.map((sign) => horoscopeArticle(week, sign, datedUrl))
-  const entries = week.signs.map((sign, index) => ({
-    id: String(articles[index]['@id']),
-    url: signUrl(sign.slug, datedUrl ? week : undefined),
-    name: String(articles[index].headline),
-  }))
-  if (!datedUrl) entries.push(...ASTROLOGY_GUIDES.map((guide) => ({
-    id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
-    url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
-    name: guide.title,
-  })))
-  const crumbs = [
-    { name: 'Inicio', url: SITE_URL },
-    { name: 'Astrología', url: sectionUrl(category) },
-  ]
-  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url })
-  return graph([
-    topicNode('astrologia'),
-    sectionNode(category, itemList(entries)),
-    ...articles,
-    breadcrumb(url, crumbs),
-  ])
-}
-
-export function astrologyGuideGraph(guide: AstrologyGuide) {
-  const url = `${SITE_URL}${astrologyGuidePath(guide.slug)}`
-  return graph([
-    {
-      '@type': 'Article',
-      '@id': `${url}#article`,
-      headline: guide.title,
-      description: guide.description,
-      articleBody: astrologyGuideBody(guide),
-      datePublished: guide.updated,
-      dateModified: guide.updated,
-      inLanguage: 'es-ES',
-      genre: 'Guía de astrología',
-      articleSection: 'Astrología',
-      author: { '@type': 'Organization', '@id': editorialTeamId, name: 'Equipo Editorial', url: `${SITE_URL}/autor/equipo-editorial` },
-      publisher: publisher(),
-      mainEntityOfPage: url,
-      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
-      about: { '@type': 'Thing', name: guide.title.split(':')[0] },
-      citation: astrologyGuideSources(guide).map((source) => source.url),
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': `${url}#faq`,
-      mainEntity: guide.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: { '@type': 'Answer', text: plainAstrologyText(faq.a) },
-      })),
-    },
-    breadcrumb(url, [
-      { name: 'Inicio', url: SITE_URL },
-      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
-      { name: 'Guías', url: `${SITE_URL}/astrologia/guias` },
-      { name: guide.title.split(':')[0], url },
-    ]),
-  ])
-}
-
-export function astrologyLibraryGraph() {
-  const url = `${SITE_URL}/astrologia/guias`
-  return graph([
-    {
-      '@type': 'CollectionPage',
-      '@id': `${url}#webpage`,
-      url,
-      name: 'Guías de astrología',
-      inLanguage: 'es-ES',
-      about: { '@id': topicId('astrologia') },
-      isPartOf: { '@id': sectionId(getCategory('astrologia')!) },
-      mainEntity: itemList(ASTROLOGY_GUIDES.map((guide) => ({
-        id: `${SITE_URL}${astrologyGuidePath(guide.slug)}#article`,
-        url: `${SITE_URL}${astrologyGuidePath(guide.slug)}`,
-        name: guide.title,
-      }))),
-    },
-    breadcrumb(url, [
-      { name: 'Inicio', url: SITE_URL },
-      { name: 'Astrología', url: `${SITE_URL}/astrologia` },
-      { name: 'Guías', url },
-    ]),
-  ])
-}
-
-export function horoscopePageGraph(week: HoroscopeWeek, sign: SignReading, faqs: { q: string; a: string }[], datedUrl = false) {
-  const category = getCategory('astrologia')!
-  const url = signUrl(sign.slug, datedUrl ? week : undefined)
-  const crumbs = [
-    { name: 'Inicio', url: SITE_URL },
-    { name: 'Astrología', url: sectionUrl(category) },
-  ]
-  if (datedUrl) crumbs.push({ name: `Semana del ${week.shortLabel}`, url: weekUrl(week) })
-  crumbs.push({ name: sign.name, url })
-  return graph([
-    topicNode('astrologia'),
-    horoscopeArticle(week, sign, datedUrl),
-    {
-      '@type': 'FAQPage',
-      '@id': `${url}#faq`,
-      mainEntity: faqs.map((item) => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a },
-      })),
-    },
-    breadcrumb(url, crumbs),
-  ])
-}
-
 export function categoryArchiveGraph(category: CategoryInfo, articles: Article[]) {
   const archiveUrl = `${SITE_URL}/articles/category/${category.slug}`
   const isHub = !category.href
@@ -753,30 +590,3 @@ export function currentConcerts(): Concert[] {
   return concertsFor()
 }
 
-export function secondHandGraph(category?: SecondHandCategory) {
-  const url = `${SITE_URL}${category ? secondHandCategoryPath(category.slug) : SECOND_HAND_PATH}`
-  const home = `${SITE_URL}${SECOND_HAND_PATH}`
-  return graph([
-    {
-      '@type': 'CollectionPage',
-      '@id': `${url}#webpage`,
-      url,
-      name: category ? category.seoTitle : SECOND_HAND_SEO.h1,
-      description: category ? category.intro : SECOND_HAND_SEO.description,
-      inLanguage: 'es-ES',
-      isPartOf: { '@id': sectionId(getCategory('segunda-mano')!) },
-      ...(category ? {} : {
-        mainEntity: itemList(SECOND_HAND_CATEGORIES.map((c) => ({
-          id: `${SITE_URL}${secondHandCategoryPath(c.slug)}#webpage`,
-          url: `${SITE_URL}${secondHandCategoryPath(c.slug)}`,
-          name: c.name,
-        }))),
-      }),
-    },
-    breadcrumb(url, [
-      { name: 'Inicio', url: SITE_URL },
-      { name: 'Segunda mano', url: home },
-      ...(category ? [{ name: category.name, url }] : []),
-    ]),
-  ])
-}

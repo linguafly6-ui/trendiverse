@@ -1,8 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CATEGORIES, getCategory, TOPICS } from '../lib/constants'
+import { CATEGORIES, TOPICS } from '../lib/constants'
 import { concertById, concertsFor } from '../lib/concerts'
-import { weekBySlug } from '../lib/astrology'
 import { liveMatchForSlug } from '../lib/laliga-jornada-8-2026'
 import {
   actKind,
@@ -12,7 +11,6 @@ import {
   concertPageGraph,
   concertSectionGraph,
   eventNode,
-  horoscopeArticle,
   sectionId,
   siteGraph,
   toolGraph,
@@ -39,7 +37,6 @@ test('each section is a distinct topic in the site graph', () => {
   assert.equal(new Set(sections.map((section) => section['@id'])).size, CATEGORIES.length)
   const byId = new Map(sections.map((section) => [section['@id'], section]))
   assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'conciertos')!))?.url, 'https://trendiverse.org/conciertos')
-  assert.equal(getCategory('astrologia')?.href, '/astrologia')
   assert.equal(CATEGORIES.some((category) => category.slug === 'astrologia' || category.slug === 'segunda-mano'), false)
   for (const removed of ['politica', 'economia', 'deportes', 'gaming', 'virales', 'chollos', 'herramientas']) {
     assert.equal(CATEGORIES.some((category) => category.slug === removed), false)
@@ -108,33 +105,6 @@ test('each concert is its own event and pending dates stay undated', () => {
   assert.equal(event['@id'], 'https://trendiverse.org/conciertos/oasis-barcelona-2027#event')
   assert.equal((event.performer as Node).name, 'Oasis')
   assert.equal((event.location as Node).name !== undefined, true)
-})
-
-test('each horoscope sign is a separate article about that sign, per week', () => {
-  const week = weekBySlug('semana-8-14-octubre-2026')!
-  const articles = week.signs.map((sign) => horoscopeArticle(week, sign))
-  assert.equal(new Set(articles.map((article) => article['@id'])).size, 12)
-  assert.equal(new Set(articles.map((article) => article.about['@id'])).size, 12)
-  const libra = articles.find((article) => article.about.name === 'Libra')!
-  const escorpio = articles.find((article) => article.about.name === 'Escorpio')!
-  assert.equal(libra['@type'], 'Article')
-  assert.equal(libra.genre, 'Horóscopo')
-  assert.equal(libra.temporalCoverage, '2026-10-08/2026-10-14')
-  assert.equal(libra.mainEntityOfPage, 'https://trendiverse.org/astrologia/libra')
-  assert.notEqual(libra.about['@id'], escorpio.about['@id'])
-  assert.notEqual(libra.about['@id'], topicId('astrologia'))
-  assert.match(String(libra.about.sameAs), /Libra_/)
-  assert.equal(libra.articleBody, week.signs.find((sign) => sign.slug === 'libra')!.general)
-  assert.ok(libra.articleBody.length > 100)
-
-  const next = weekBySlug('semana-15-21-octubre-2026')!
-  const aries = next.signs.find((sign) => sign.slug === 'aries')!
-  const dated = horoscopeArticle(next, aries, true)
-  assert.equal(dated.temporalCoverage, '2026-10-15/2026-10-21')
-  assert.equal(dated.mainEntityOfPage, 'https://trendiverse.org/astrologia/aries/semana-15-21-octubre-2026')
-  assert.equal(dated.headline, 'Horóscopo de Aries del 15 al 21 de octubre de 2026')
-  assert.match(String(dated.keywords), /horóscopo Aries 15 al 21 de octubre/)
-  assert.notEqual(dated['@id'], horoscopeArticle(next, aries)['@id'])
 })
 
 test('a match article is a news piece about a sports event in deportes', () => {

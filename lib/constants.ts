@@ -24,11 +24,6 @@ export const CATEGORIES: CategoryInfo[] = [
 ]
 
 
-const RETIRED_CATEGORIES: CategoryInfo[] = [
-  { slug: 'astrologia', name: 'Astrología & Horóscopo', short: 'Astrología', icon: '✨', color: '#312E81', seoTitle: 'Astrología: horóscopos, ascendente y Luna', description: 'Horóscopos semanales y guías de ascendente, signo lunar, carta natal, eclipses, fases de la Luna y Mercurio retrógrado, con referencias y límites.', href: '/astrologia' },
-  { slug: 'segunda-mano', name: 'Segunda mano', short: 'Segunda mano', icon: '♻️', color: '#0D9488', seoTitle: 'Segunda mano: tendencias y oportunidades', description: 'Descubre qué productos de segunda mano están ganando popularidad, qué categorías están en tendencia y qué oportunidades merece la pena vigilar.', href: '/segunda-mano' },
-]
-
 export interface TopicInfo {
   slug: string
   name: string
@@ -46,5 +41,5 @@ export const TOPICS: TopicInfo[] = [
   { slug: 'vivienda', name: 'Vivienda', seoTitle: 'Vivienda: precios, alquiler e hipotecas', description: 'Noticias y guías sobre vivienda, alquiler, hipotecas, precios y cambios normativos que afectan a los hogares.', query: 'vivienda' },
 ]
 
-export const getCategory = (slug: string) => CATEGORIES.find((c) => c.slug === slug) ?? RETIRED_CATEGORIES.find((c) => c.slug === slug)
+export const getCategory = (slug: string) => CATEGORIES.find((c) => c.slug === slug)
 export const getTopic = (slug: string) => TOPICS.find((t) => t.slug === slug)

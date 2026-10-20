@@ -1,9 +1,8 @@
 import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
 import { JORNADA_9_SEO } from './laliga-jornada-9-2026'
 import { CONCIERTOS_AGENDA_SEO } from './conciertos-agenda-2026'
-import { CONCERTS_GUIDE_SLUG } from './concerts'
 import { ASTROLOGIA_GUIA_SEO } from './astrologia-guia-2026'
-import { ASTRO_GUIDE_SLUG } from './astrology'
+import { CONCERTS_GUIDE_SLUG } from './concerts'
 
 /**
  * Títulos y descripciones SEO por artículo, independientes del título visible.
@@ -25,7 +24,6 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
     description: 'Guía de mancuernas ajustables y fijas para casa: peso, seguridad, espacio, tipos de ajuste y qué revisar antes de comprar en Amazon.',
   },
   [CONCERTS_GUIDE_SLUG]: CONCIERTOS_AGENDA_SEO,
-  [ASTRO_GUIDE_SLUG]: ASTROLOGIA_GUIA_SEO,
   ...JORNADA_8_SEO,
   ...JORNADA_9_SEO,
   'pep-guardiola-ultimas-noticias-vuelta-etihad': {
