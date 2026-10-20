@@ -309,7 +309,12 @@ test('D1-bound: category, search and trending semantics', async () => {
   assert.ok((await search('Bercovich')).includes('premios-nacionales-musica-2026-laura-vega-cecilia-bercovich'))
   assert.ok((await search('nanofabricación')).includes('csic-barcelona-area-nanofabricacion-cuantica-imb-cnm'))
 
-  const trending = await getArticles({ trending: true, limit: 200 })
+  const trending: Article[] = []
+  for (let offset = 0; ; offset += 50) {
+    const page = await getArticles({ trending: true, limit: 50, offset })
+    trending.push(...page)
+    if (page.length < 50) break
+  }
   assert.ok(trending.every((a) => a.trending))
   assert.ok(trending.some((a) => a.slug === 'newer-d1-article'))
   assert.ok(trending.some((a) => a.slug === 'kim-jong-un-ultima-aparicion-rumores-salud-tensiones-corea-sur-octubre-2026'))
