@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const PENSIONES_SEGURIDAD_SOCIAL_2026: Article = {
   id: 362,
-  category: 'economia',
+  category: 'toptrends',
   title: 'Pensiones y Seguridad Social: qué cambia en 2027 y qué ya está en vigor',
   slug: 'pensiones-seguridad-social-novedades-2027',
   excerpt: 'A 8 de octubre de 2026, Saiz garantiza la subida de las pensiones por ley. El porcentaje de 2027 se sabrá el 15 de diciembre. También cambian la edad, el cálculo y la jubilación flexible.',
