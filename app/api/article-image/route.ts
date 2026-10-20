@@ -12,9 +12,7 @@ const PALETTES: Record<string, { bg: string; ink: string; accent: string; accent
   moda: { bg: '#fdf2f8', ink: '#831843', accent: '#db2777', accent2: '#fbcfe8' },
   hogar: { bg: '#faf5ee', ink: '#6b4934', accent: '#b77952', accent2: '#e7d4b5' },
   chollos: { bg: '#fff7ed', ink: '#7c2d12', accent: '#f97316', accent2: '#fed7aa' },
-  astrologia: { bg: '#eef2ff', ink: '#312e81', accent: '#6366f1', accent2: '#c7d2fe' },
   conciertos: { bg: '#fff1f2', ink: '#881337', accent: '#be123c', accent2: '#fecdd3' },
-  'segunda-mano': { bg: '#f0fdfa', ink: '#134e4a', accent: '#0d9488', accent2: '#99f6e4' },
 }
 const xml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;')
 const hash = (value: string) => Array.from(value).reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7)
@@ -28,9 +26,7 @@ function motif(category: string, seed: number, accent: string, accent2: string, 
   if (category === 'tecnologia' || category === 'empresas-que-transforman') return `<rect x="700" y="215" width="255" height="245" rx="30" fill="${accent2}"/><rect x="735" y="250" width="185" height="165" rx="18" fill="${accent}"/><path d="M765 335l35 35 80-90" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M810 460v45m-50 0h100" stroke="${ink}" stroke-width="12" stroke-linecap="round"/>`
   if (category === 'moda') return `<path d="M760 220l60-24 48 30 65-30 62 30-35 90-38-16 20 190H750l20-190-38 16z" fill="${accent}"/><path d="M820 196q20 54 48 30q30 24 48-30" fill="none" stroke="${accent2}" stroke-width="10"/>`
   if (category === 'economia' || category === 'chollos') return `<rect x="690" y="365" width="65" height="105" rx="10" fill="${accent2}"/><rect x="780" y="310" width="65" height="160" rx="10" fill="${accent}"/><rect x="870" y="250" width="65" height="220" rx="10" fill="${accent2}"/><path d="M680 300l90-55 70 20 100-95" fill="none" stroke="${ink}" stroke-width="12" stroke-linecap="round"/><path d="M915 170h25v25" fill="none" stroke="${ink}" stroke-width="12" stroke-linecap="round"/>`
-  if (category === 'astrologia') return `<circle cx="835" cy="335" r="125" fill="${accent2}"/><circle cx="880" cy="300" r="112" fill="${accent}"/><circle cx="905" cy="265" r="112" fill="${accent2}"/><g fill="${ink}"><circle cx="720" cy="230" r="6"/><circle cx="975" cy="240" r="8"/><circle cx="950" cy="440" r="5"/><circle cx="705" cy="405" r="7"/></g>`
   if (category === 'conciertos') return `<path d="M705 400V265l115-55v190m0-120l115-55v175m0-90l80-40v120" fill="none" stroke="${accent}" stroke-width="18" stroke-linejoin="round"/><circle cx="705" cy="420" r="25" fill="${accent2}"/><circle cx="820" cy="420" r="25" fill="${accent2}"/><circle cx="935" cy="390" r="25" fill="${accent2}"/>`
-  if (category === 'segunda-mano') return `<path d="M835 220l-125 70 50 85 125-70z" fill="${accent}"/><path d="M760 375l-70 45 50 80 80-45z" fill="${accent2}"/><path d="M870 305l100 60-50 85-100-60z" fill="${ink}"/>`
   return `<circle cx="835" cy="335" r="120" fill="${accent2}"/><circle cx="835" cy="335" r="82" fill="${accent}"/><path d="M790 335h90m-45-45v90" stroke="#fff" stroke-width="12" stroke-linecap="round"/>`
 }
 
