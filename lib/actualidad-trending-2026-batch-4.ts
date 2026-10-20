@@ -287,53 +287,5 @@ Málaga Hoy informó de que contempla concurrir con una candidatura llamada Unid
 Según la cobertura citada, el PSOE obtuvo los siete concejales de la corporación y Ortega logró alrededor del 88% de los votos.
 
 **Actualización editorial:** artículo basado en informaciones publicadas el 20 de octubre de 2026. Se atribuyen a la alcaldesa sus declaraciones sobre los motivos de la salida y se separan de las consecuencias institucionales que aún deban formalizarse.`
-## Qué se sabe y qué debe esperar a la investigación
-
-En una noticia sobre un presunto asalto a una vivienda hay que diferenciar los datos comunicados por las personas afectadas, la información policial confirmada y las hipótesis sobre la autoría o el móvil. La existencia de una denuncia o de una investigación no equivale a que una persona concreta haya sido declarada culpable. Hasta que las autoridades o los tribunales confirmen los hechos, conviene usar fórmulas como «presunto asalto» y atribuir los detalles a la fuente que los publica.
-
-La información sobre seguridad de una vivienda también puede afectar a familiares que no han elegido tener exposición pública. Por ese motivo, no es necesario difundir direcciones, rutinas, sistemas de alarma ni detalles que puedan facilitar nuevos riesgos. El interés periodístico está en lo que ocurrió, en la evolución de la investigación y en las declaraciones verificables, no en convertir la intimidad del domicilio en un mapa público.
-
-## Qué hacer si se recibe información no confirmada en redes
-
-Las noticias sobre robos y agresiones suelen generar publicaciones que identifican supuestos sospechosos, reproducen imágenes sin contexto o atribuyen motivos sin pruebas. Compartirlas puede perjudicar a personas inocentes y entorpecer la investigación. Antes de dar por cierta una versión, comprueba si procede de un medio identificable, si cita a fuentes oficiales y si otros medios solventes han confirmado el dato.
-
-Si aparecen novedades judiciales, hay que distinguir entre detención, investigación, acusación y condena: son fases diferentes y no significan lo mismo. La presunción de inocencia debe mantenerse en la redacción. Una actualización responsable explicará qué ha comunicado la autoridad y qué aspectos continúan pendientes, sin presentar una hipótesis como resolución definitiva.
-
-## Cómo debe actualizarse el caso
-
-La información más relevante será una comunicación de la Policía o de la autoridad judicial, una declaración directa de la familia o un avance procesal confirmado. Los cambios deben llevar fecha y atribución clara. Si no hay novedades verificadas, es preferible reconocer que la investigación continúa a repetir rumores con palabras distintas.
-
-## Por qué una imagen viral no siempre cuenta toda la historia
-
-Una fotografía puede convertirse en tendencia por el contexto político de las personas que aparecen en ella, pero una imagen fija no explica por sí sola lo que sucedió antes o después, ni demuestra una intención política. Para interpretar una escena viral conviene comprobar quién la publicó primero, cuándo se tomó, si existe una secuencia completa y si el pie de foto describe correctamente el momento. Una captura aislada puede circular años después como si fuera actual.
-
-En el caso de Pedro Sánchez y Begoña Gómez, la relevancia pública de sus nombres hace que una imagen de carácter personal reciba atención política. Aun así, deben separarse el hecho visual —lo que realmente muestra la fotografía— y las interpretaciones que distintos usuarios proyectan sobre ella. Una lectura partidista no es un dato comprobado y una reacción en redes no representa necesariamente la opinión general.
-
-## Cómo verificar la procedencia y la fecha
-
-La comprobación básica consiste en localizar la publicación original, comparar la imagen con versiones de mayor calidad y revisar si medios fiables han identificado el evento y la fecha. Si no se conoce el origen, la redacción debe decirlo. No conviene atribuir una imagen a un acto concreto solo porque coincida con la agenda de una persona pública.
-
-También es importante no confundir una imagen auténtica con un contexto correcto. Una fotografía puede ser real y estar acompañada por una descripción falsa o engañosa. Las herramientas de búsqueda inversa ayudan a localizar copias anteriores, pero la conclusión requiere contraste editorial y no solo una coincidencia visual.
-
-## Qué aporta una cobertura útil
-
-La noticia debe explicar por qué la imagen se ha difundido, cuál es el contexto verificable y qué afirmaciones no se pueden demostrar. No es necesario repetir comentarios ofensivos ni especular sobre una relación personal. Si los protagonistas no han hecho declaraciones, ese silencio no confirma ninguna de las interpretaciones que circulan. La mejor actualización será la que aporte una fuente original o una aclaración verificable, no la que aumente el tono del titular.
-
-## Qué implica que una alcaldesa deje un partido
-
-Cuando una alcaldesa abandona el partido con el que concurrió a las elecciones, conviene distinguir la afiliación política, la pertenencia al grupo municipal y la continuidad en el cargo. Son cuestiones relacionadas, pero no idénticas. La salida de una formación no implica automáticamente que la alcaldesa pierda la alcaldía: el efecto institucional depende de su situación en el pleno, de los acuerdos municipales y de las reglas aplicables a una eventual moción de censura o sustitución.
-
-En municipios pequeños, las relaciones entre grupos pueden tener un efecto especialmente visible porque unos pocos concejales pueden cambiar la mayoría. Aun así, el resultado no debe darse por hecho hasta revisar la composición del pleno y las declaraciones oficiales de los grupos. La aritmética política es comprobable; las motivaciones personales o internas requieren atribución a quien las explique.
-
-## Qué información permite entender el conflicto
-
-Para comprender una ruptura política local, la secuencia de hechos importa: cuándo se anunció la salida, qué argumentos dio la alcaldesa, cómo respondió el partido y qué posición adoptaron los concejales. Si existe una resolución orgánica o una decisión municipal, conviene citarla directamente. Los comentarios de rivales políticos pueden aportar contexto sobre el debate, pero deben presentarse como reacciones interesadas, no como una descripción neutral de las causas.
-
-También conviene comprobar el nombre oficial del municipio, los resultados electorales anteriores y la distribución de concejales. Ese contexto ayuda a entender la relevancia institucional sin exagerar el alcance nacional de un conflicto local. Que una noticia se vuelva tendencia no significa necesariamente que cambie el equilibrio político de toda una comunidad autónoma.
-
-## Qué seguir en los próximos días
-
-Los indicadores verificables son la composición del grupo municipal, las votaciones en el pleno, la posible condición de concejala no adscrita y los acuerdos que se sometan a votación. Si hay un cambio de gobierno, debe explicarse con el documento o la sesión correspondiente. Hasta entonces, es más exacto informar de la decisión anunciada y de sus posibles consecuencias, no presentarlas como consumadas.
-
   }
 ]
