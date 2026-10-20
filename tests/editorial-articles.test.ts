@@ -5,6 +5,7 @@ import { join } from 'node:path'
 import type { Article } from '../lib/types'
 import { CATEGORIES } from '../lib/constants'
 import { EDITORIAL_ARTICLES } from '../lib/editorial-articles'
+import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
 import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transforman-2026'
 import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
 import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
@@ -240,7 +241,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026')
+  assert.equal(slugs[0], 'getafe-rayo-vallecano-1-1-cronica-jornada-9-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'toptrends')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
@@ -310,7 +311,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, EXPECTED_SLUGS.length)
+  assert.equal(slugs.length, new Set([...EDITORIAL_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...ACTUALIDAD_TRENDING_ARTICLES_2026].map((a) => a.slug)).size)
 })
 
 
