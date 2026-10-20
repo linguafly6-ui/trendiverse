@@ -1,6 +1,7 @@
 import { JORNADA_8_SEO } from './laliga-jornada-8-2026'
 import { JORNADA_9_SEO } from './laliga-jornada-9-2026'
 import { CONCIERTOS_AGENDA_SEO } from './conciertos-agenda-2026'
+import { ASTROLOGIA_GUIA_SEO } from './astrologia-guia-2026'
 import { CONCERTS_GUIDE_SLUG } from './concerts'
 
 /**
