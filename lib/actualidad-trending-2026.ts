@@ -8,8 +8,8 @@ export const ACTUALIDAD_TRENDING_ARTICLES_2026: Article[] = [
     slug: 'revolut-no-funciona-caida-20-octubre-2026',
     category: 'actualidad',
     excerpt: 'Revolut registró problemas para acceder a cuentas, pagar y transferir dinero durante una incidencia de infraestructura en la nube. Qué se sabe y cómo actuar con seguridad.',
-    image_url: '/images/articles/revolut-caida-octubre-2026.svg',
-    thumbnail_url: '/images/articles/revolut-caida-octubre-2026-thumb.svg',
+    image_url: '/images/articles/novedades-tecnologia-2026.svg',
+    thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-20T13:30:00.000Z',
     content: `# Revolut no funciona hoy: qué ha pasado con la caída del 20 de octubre de 2026
@@ -83,8 +83,8 @@ La tendencia «Revolut no funciona» se explica por una incidencia de disponibil
     slug: 'getafe-rayo-vallecano-1-1-cronica-jornada-9-2026',
     category: 'actualidad',
     excerpt: 'El derbi madrileño terminó 1-1 en el Coliseum: Álvaro García adelantó al Rayo y Martín Satriano empató para el Getafe, que jugó con diez desde la primera parte.',
-    image_url: '/images/articles/getafe-rayo-actualidad-2026.svg',
-    thumbnail_url: '/images/articles/getafe-rayo-actualidad-2026-thumb.svg',
+    image_url: '/images/articles/getafe-rayo-laliga-jornada-9-2026.svg',
+    thumbnail_url: '/images/articles/getafe-rayo-laliga-jornada-9-2026-thumb.svg',
     read_time_minutes: 7, views: 0, trending: 1,
     published_at: '2026-10-20T13:35:00.000Z',
     content: `# Getafe 1-1 Rayo Vallecano: resultado, goles y por qué es tendencia
@@ -176,8 +176,8 @@ El Getafe-Rayo Vallecano es tendencia por un derbi reciente que terminó 1-1 y t
     slug: 'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026',
     category: 'actualidad',
     excerpt: 'El Consejo de Ministros anunció cambios en la protección social: nuevas situaciones especiales de incapacidad temporal y facilidades para reconocer parejas de hecho a efectos de viudedad.',
-    image_url: '/images/articles/incapacidad-temporal-viudedad-octubre-2026.svg',
-    thumbnail_url: '/images/articles/incapacidad-temporal-viudedad-octubre-2026-thumb.svg',
+    image_url: '/images/articles/pensiones-seguridad-social-novedades-2027.svg',
+    thumbnail_url: '/images/articles/pensiones-seguridad-social-novedades-2027-thumb.svg',
     read_time_minutes: 9, views: 0, trending: 1,
     published_at: '2026-10-20T13:40:00.000Z',
     content: `# Incapacidad temporal y pensión de viudedad: nuevas medidas sociales del 20 de octubre
