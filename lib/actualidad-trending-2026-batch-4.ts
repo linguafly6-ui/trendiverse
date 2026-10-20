@@ -87,7 +87,37 @@ Algunos medios lo sitúan en un contexto de otros robos en la zona, pero eso no 
 ### ¿Por qué es tendencia Sergio Rico?
 Por la difusión de la noticia sobre el asalto y la preocupación generada al conocerse que ocurrió mientras la familia estaba dentro de la vivienda.
 
-**Actualización editorial:** artículo basado en la información publicada el 20 de octubre de 2026. Los detalles de una investigación abierta pueden cambiar; las afirmaciones no confirmadas oficialmente se atribuyen a las fuentes periodísticas citadas.`
+**Actualización editorial:** artículo basado en la información publicada el 20 de octubre de 2026. Los detalles de una investigación abierta pueden cambiar; las afirmaciones no confirmadas oficialmente se atribuyen a las fuentes periodísticas citadas.
+## Qué se sabe y qué debe esperar a la investigación
+
+En una noticia sobre un presunto asalto a una vivienda hay que diferenciar los datos comunicados por las personas afectadas, la información policial confirmada y las hipótesis sobre la autoría o el móvil. La existencia de una denuncia o de una investigación no equivale a que una persona concreta haya sido declarada culpable. Hasta que las autoridades o los tribunales confirmen los hechos, conviene usar fórmulas como «presunto asalto» y atribuir los detalles a la fuente que los publica.
+
+La información sobre seguridad de una vivienda también puede afectar a familiares que no han elegido tener exposición pública. No es necesario difundir direcciones, rutinas, sistemas de alarma ni detalles que puedan facilitar nuevos riesgos. El interés periodístico está en lo ocurrido, en la evolución de la investigación y en las declaraciones verificables, no en convertir la intimidad del domicilio en un mapa público.
+
+## Cómo tratar las versiones que circulan en redes
+
+Las noticias sobre robos y agresiones suelen generar publicaciones que identifican supuestos sospechosos, reproducen imágenes sin contexto o atribuyen motivos sin pruebas. Compartirlas puede perjudicar a personas inocentes y entorpecer la investigación. Antes de dar por cierta una versión, comprueba si procede de un medio identificable, si cita fuentes oficiales y si otros medios solventes han confirmado el dato.
+
+Si aparecen novedades judiciales, hay que distinguir entre detención, investigación, acusación y condena: son fases diferentes y no significan lo mismo. La presunción de inocencia debe mantenerse en la redacción. Una actualización responsable explicará qué ha comunicado la autoridad y qué aspectos continúan pendientes, sin presentar una hipótesis como resolución definitiva.
+
+## La seguridad de las personas afectadas debe estar por delante del detalle morboso
+
+La cobertura de un posible asalto a una vivienda puede informar sobre la investigación sin divulgar detalles que aumenten el riesgo para los residentes. No es necesario describir accesos, horarios habituales, sistemas de seguridad ni la distribución de una casa. Esos datos pueden parecer atractivos para el lector, pero no ayudan a entender el avance del caso y pueden comprometer la privacidad o la seguridad de terceros.
+
+También hay que respetar que los familiares decidan cuánto desean contar. Una declaración pública sobre el estado de una persona puede ser relevante, pero no autoriza a reconstruir aspectos íntimos que no se han comunicado. Si la investigación afecta a menores o a personas que no son figuras públicas, la prudencia debe ser todavía mayor.
+
+## Diferenciar investigación policial, proceso judicial y resolución
+
+Las primeras informaciones pueden basarse en una denuncia o en declaraciones de los afectados; después pueden aparecer datos confirmados por la Policía o por un juzgado. Cada fase tiene un nivel distinto de certeza. La detención de una persona no equivale a una condena, y la apertura de diligencias no demuestra por sí sola que todas las versiones difundidas sean correctas. El lenguaje debe reflejar esa diferencia y evitar señalar culpables antes de que exista una resolución.
+
+Para actualizar la noticia, conviene registrar la fecha de cada novedad, identificar a la fuente y explicar qué cambia respecto a la información anterior. Si no hay novedades verificables, es mejor mantener claro que el caso sigue bajo investigación que rellenar el artículo con especulaciones sobre móviles o sospechosos.
+
+## Cómo seguir las novedades sin amplificar rumores
+
+En un caso que afecta a una persona conocida, las publicaciones de redes pueden multiplicarse antes de que exista información oficial. Es importante comprobar si una novedad procede de una autoridad, una declaración directa o un medio que identifique sus fuentes. Las versiones anónimas y las fotografías sin contexto no deben presentarse como pruebas. Si el caso avanza judicialmente, cada etapa debe describirse con precisión y respetando la presunción de inocencia.
+
+El artículo debe actualizarse cuando haya un dato verificable que cambie lo conocido: una comunicación oficial, una resolución judicial o una declaración atribuida. Si no aparece información nueva, repetir hipótesis no aporta contexto y puede perjudicar a terceros. La prudencia no resta interés a la noticia; ayuda a que el lector sepa qué está confirmado y qué sigue bajo investigación.
+`
   },
   {
     id: 811,
@@ -176,7 +206,35 @@ No necesariamente. Las visualizaciones y comentarios miden circulación e intera
 ### ¿Cuándo son las próximas elecciones generales?
 La convocatoria recogida en las noticias de contexto sitúa las elecciones el 29 de noviembre de 2026.
 
-**Actualización editorial:** artículo basado en cobertura publicada entre el 17 y el 20 de octubre de 2026. Se distinguen los hechos observables de las interpretaciones sobre la intención de los partidos y el posible efecto electoral.`
+**Actualización editorial:** artículo basado en cobertura publicada entre el 17 y el 20 de octubre de 2026. Se distinguen los hechos observables de las interpretaciones sobre la intención de los partidos y el posible efecto electoral.
+## Por qué una imagen viral no cuenta necesariamente toda la historia
+
+Una fotografía puede convertirse en tendencia por el contexto político de las personas que aparecen en ella, pero una imagen fija no explica por sí sola qué sucedió antes o después ni demuestra una intención política. Para interpretarla conviene comprobar quién la publicó primero, cuándo se tomó, si existe una secuencia completa y si el pie de foto describe correctamente el momento. Una captura aislada puede circular años después como si fuera actual.
+
+La relevancia pública de Pedro Sánchez y Begoña Gómez hace que una imagen personal reciba atención política. Aun así, deben separarse el hecho visual —lo que realmente muestra la fotografía— y las interpretaciones que distintos usuarios proyectan sobre ella. Una lectura partidista no es un dato comprobado y una reacción en redes no representa necesariamente la opinión general.
+
+## Cómo verificar la procedencia y la fecha
+
+La comprobación básica consiste en localizar la publicación original, comparar la imagen con versiones de mayor calidad y revisar si medios fiables han identificado el evento y la fecha. Si no se conoce el origen, la redacción debe decirlo. No conviene atribuir una imagen a un acto concreto solo porque coincida con la agenda pública de una persona.
+
+También hay que distinguir una imagen auténtica de un contexto correcto. Una fotografía puede ser real y estar acompañada por una descripción falsa o engañosa. Las herramientas de búsqueda inversa ayudan a localizar copias anteriores, pero la conclusión requiere contraste editorial y no solo una coincidencia visual.
+
+## Qué aporta una cobertura útil
+
+La noticia debe explicar por qué se ha difundido la imagen, cuál es el contexto verificable y qué afirmaciones no se pueden demostrar. No es necesario repetir comentarios ofensivos ni especular sobre una relación personal. Si los protagonistas no han hecho declaraciones, ese silencio no confirma ninguna interpretación. La mejor actualización será la que aporte una fuente original o una aclaración verificable.
+
+## Viralidad, política y límites de la interpretación
+
+Una imagen puede convertirse en un símbolo para distintos grupos sin que todos compartan la misma lectura. Algunos usuarios la interpretan como una escena cotidiana; otros la convierten en argumento político o en motivo de crítica. Esa diversidad explica la conversación, pero no prueba que una interpretación concreta sea correcta. La redacción debe describir la imagen y el contexto que pueda comprobarse, y atribuir las opiniones a quienes las formulan.
+
+El número de publicaciones, comentarios o reproducciones indica circulación digital, no necesariamente apoyo o rechazo mayoritario. Los algoritmos pueden amplificar contenidos que generan controversia y hacer que una escena parezca omnipresente durante unas horas. Sin datos representativos, no debe decirse que «España piensa» de una manera determinada basándose en reacciones virales.
+
+## Un método breve de verificación antes de compartir
+
+Comprueba la fecha original, la cuenta o medio que difundió primero la imagen, el evento al que pertenece y si hay una secuencia más amplia. Busca si medios independientes han identificado el contexto. Si solo circula una captura sin procedencia clara, evita afirmaciones sobre cuándo ocurrió o qué intención tenía. La autenticidad visual y la interpretación del contexto son dos comprobaciones distintas.
+
+Una cobertura útil no necesita reproducir insultos ni especular sobre la vida privada de los protagonistas. Explica por qué la imagen se volvió tendencia, qué hechos se conocen y qué no se puede deducir de una fotografía aislada. Si aparece una fuente original que aclara la fecha o el contexto, esa información sí justifica una actualización.
+`
   },
   {
     id: 812,
@@ -286,6 +344,16 @@ Málaga Hoy informó de que contempla concurrir con una candidatura llamada Unid
 ### ¿Qué ocurrió en las elecciones municipales de 2023?
 Según la cobertura citada, el PSOE obtuvo los siete concejales de la corporación y Ortega logró alrededor del 88% de los votos.
 
-**Actualización editorial:** artículo basado en informaciones publicadas el 20 de octubre de 2026. Se atribuyen a la alcaldesa sus declaraciones sobre los motivos de la salida y se separan de las consecuencias institucionales que aún deban formalizarse.`
+**Actualización editorial:** artículo basado en informaciones publicadas el 20 de octubre de 2026. Se atribuyen a la alcaldesa sus declaraciones sobre los motivos de la salida y se separan de las consecuencias institucionales que aún deban formalizarse.
+## Qué datos municipales permiten comprobar las consecuencias
+
+Para valorar el efecto institucional de una salida de partido, la referencia principal es la composición oficial del pleno municipal y los acuerdos adoptados en sesión. Hay que comprobar cuántos concejales tiene cada grupo, si la alcaldesa conserva apoyos suficientes y si se ha anunciado formalmente algún cambio en el equipo de gobierno. Las declaraciones de los partidos ayudan a entender el conflicto, pero las votaciones y los documentos municipales permiten verificar sus consecuencias.
+
+También conviene diferenciar una decisión personal de una decisión del grupo político. La salida de afiliación, la expulsión de un partido, la renuncia a un grupo municipal y el paso a la condición de concejala no adscrita pueden tener efectos diferentes. No deben tratarse como sinónimos sin comprobar qué ha ocurrido en el caso concreto.
+
+## Cómo seguir la noticia con rigor
+
+Las próximas señales serán las actas del pleno, las declaraciones completas de la alcaldesa y del partido, y cualquier cambio formal en las delegaciones o en la composición de los grupos. Si no hay una decisión institucional nueva, la noticia sigue siendo la ruptura política anunciada y sus posibles implicaciones, no una caída automática del gobierno local. La escala nacional de la tendencia no debe exagerar el alcance de un caso municipal.
+`
   }
 ]
