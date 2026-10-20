@@ -180,7 +180,7 @@ export function siteGraph() {
       name: SITE_NAME,
       url: SITE_URL,
       inLanguage: 'es-ES',
-      description: 'Medio en español con secciones separadas de política, economía, deportes, tecnología, gaming, coches, virales, herramientas, chollos, conciertos y astrología.',
+      description: 'Medio en español con secciones de tecnología, coches, moda, tendencias, hogar, conciertos, astrología y segunda mano.',
       publisher: { '@id': organizationId },
       about: CATEGORIES.map((category) => ({ '@id': topicId(category.slug) })),
       hasPart: CATEGORIES.map((category) => ({ '@id': sectionId(category) })),
@@ -728,10 +728,8 @@ export function articleGraph(input: {
 }
 
 export function toolGraph(tool: Tool) {
-  const category = getCategory('herramientas')!
   const url = `${SITE_URL}/tools/${encodeURIComponent(tool.slug)}`
   return graph([
-    topicNode('herramientas'),
     {
       '@type': 'WebApplication',
       '@id': `${url}#app`,
@@ -740,13 +738,12 @@ export function toolGraph(tool: Tool) {
       url,
       applicationCategory: 'UtilitiesApplication',
       inLanguage: 'es-ES',
-      isPartOf: { '@id': sectionId(category) },
-      about: { '@id': topicId('herramientas') },
+      isPartOf: { '@id': websiteId },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
     },
     breadcrumb(url, [
       { name: 'Inicio', url: SITE_URL },
-      { name: category.name, url: sectionUrl(category) },
+      { name: 'Herramientas online', url },
       { name: tool.title, url },
     ]),
   ])

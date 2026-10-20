@@ -40,7 +40,9 @@ test('each section is a distinct topic in the site graph', () => {
   const byId = new Map(sections.map((section) => [section['@id'], section]))
   assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'conciertos')!))?.url, 'https://trendiverse.org/conciertos')
   assert.equal(byId.get(sectionId(CATEGORIES.find((c) => c.slug === 'astrologia')!))?.url, 'https://trendiverse.org/astrologia')
-  assert.notEqual(topicId('politica'), topicId('deportes'))
+  for (const removed of ['politica', 'economia', 'deportes', 'gaming', 'virales', 'chollos', 'herramientas']) {
+    assert.equal(CATEGORIES.some((category) => category.slug === removed), false)
+  }
   for (const category of CATEGORIES) assert.ok(category.seoTitle.length <= 46, category.slug)
 })
 
@@ -158,8 +160,9 @@ test('a match article is a news piece about a sports event in deportes', () => {
   })
   const news = nodes(graph, 'NewsArticle')[0]
   const match = nodes(graph, 'SportsEvent')[0]
-  assert.equal(news.articleSection, 'Deportes')
-  assert.equal(news.isPartOf && (news.isPartOf as Node)['@id'], sectionId(CATEGORIES.find((c) => c.slug === 'deportes')!))
+  assert.equal(news.articleSection, undefined)
+  assert.equal(news.isPartOf, undefined)
+  assert.equal(match.isPartOf, undefined)
   assert.equal(match.startDate, '2026-10-09T21:00:00+02:00')
   assert.equal((match.location as Node).name, 'La Rosaleda')
   assert.equal((match.homeTeam as Node).name, 'Málaga')
@@ -171,9 +174,10 @@ test('a match article is a news piece about a sports event in deportes', () => {
     faqItems: [],
   })
   const politicsNews = nodes(politics, 'NewsArticle')[0]
-  assert.equal((politicsNews.about as Node)['@id'], topicId('politica'))
+  assert.equal(politicsNews.about, undefined)
+  assert.equal(politicsNews.isPartOf, undefined)
   assert.equal(nodes(politics, 'SportsEvent').length, 0)
-  assert.notEqual((politicsNews.about as Node)['@id'], (news.about as Node[])[0]['@id'])
+  assert.equal(news.about && (news.about as Node[]).some((item) => item['@id'] === topicId('deportes')), false)
 })
 
 test('topic clusters and tools stay inside their section', () => {
@@ -183,12 +187,12 @@ test('topic clusters and tools stay inside their section', () => {
   const about = nodes(topic, 'Thing')[0]
   assert.equal(about['@id'], 'https://trendiverse.org/#cluster-vivienda')
   assert.notEqual(about['@id'], topicId('politica'))
-  assert.equal((page.isPartOf as Node)['@id'], sectionId(CATEGORIES.find((c) => c.slug === 'politica')!))
+  assert.equal((page.isPartOf as Node)['@id'], 'https://trendiverse.org/#website')
   assert.match(String(about.sameAs), /Vivienda_en_Espa/)
 
   const tool: Tool = { id: 1, title: 'Conversor', slug: 'conversor', description: 'Convierte unidades.', type: 'unit', config: null }
   const app = nodes(toolGraph(tool), 'WebApplication')[0]
   assert.equal(app['@type'], 'WebApplication')
-  assert.equal((app.isPartOf as Node)['@id'], sectionId(CATEGORIES.find((c) => c.slug === 'herramientas')!))
+  assert.equal((app.isPartOf as Node)['@id'], 'https://trendiverse.org/#website')
   assert.equal((app.offers as Node).price, '0')
 })

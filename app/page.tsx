@@ -29,7 +29,7 @@ export default async function Home() {
         <p className="mt-2 max-w-4xl leading-relaxed text-slate-600 dark:text-slate-400">
           En TrendiVerse reunimos actualidad política y económica, tecnología, deportes y tendencias, junto con guías prácticas, gaming, herramientas online, ofertas seleccionadas, una agenda de conciertos en España y un horóscopo semanal.
         </p>
-        <Link href="/articles/category/politica" className="mt-3 inline-flex font-semibold text-brand-violet underline decoration-violet-300 underline-offset-4">
+        <Link href="/articles/category/toptrends" className="mt-3 inline-flex font-semibold text-brand-violet underline decoration-violet-300 underline-offset-4">
           Explorar política española y actualidad
         </Link>
       </section>

@@ -100,7 +100,7 @@ export const EVENEPOEL_ARTICLES: Article[] = [
     id: 22,
     title: 'Evenepoel cierra la colección: los seis oros del ciclismo y la victoria de Liubliana',
     slug: 'evenepoel-seis-oros-ciclismo-liubliana',
-    category: 'deportes',
+    category: 'toptrends',
     excerpt: 'Remco Evenepoel se proclama campeón de Europa de ruta en Liubliana y completa los seis oros posibles: olímpico, mundial y europeo, en ruta y contrarreloj. Un logro histórico sin precedentes.',
     content,
     image_url: '/images/articles/evenepoel-seis-oros.svg',

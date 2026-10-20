@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const SANCHEZ_ARTICLE_2026: Article = {
   id: 363,
-  category: 'politica',
+  category: 'toptrends',
   title: 'Pedro Sánchez: últimas noticias de la convocatoria del 29N y la vivienda',
   slug: 'pedro-sanchez-ultimas-noticias-29n',
   excerpt: 'A 8 de octubre de 2026, Sánchez ya convocó el 29N y rehízo los decretos de vivienda. La precampaña arranca el sábado en Dos Hermanas y el domingo en Ponferrada.',

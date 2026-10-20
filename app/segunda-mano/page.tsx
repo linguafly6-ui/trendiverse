@@ -114,7 +114,7 @@ export default async function SecondHandPage() {
           ))}
         </dl>
         <p className="mt-4 text-sm text-slate-500">
-          Más ideas de compra en <Link href="/articles/category/chollos" className="font-semibold text-brand-violet underline underline-offset-4">chollos y descuentos</Link>.
+          Más ideas de compra en <Link href="/articles/category/toptrends" className="font-semibold text-brand-violet underline underline-offset-4">chollos y descuentos</Link>.
         </p>
       </section>
     </div>

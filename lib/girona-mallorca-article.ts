@@ -164,7 +164,7 @@ export const GIRONA_MALLORCA_ARTICLES: Article[] = [
     id: 21,
     title: 'Girona vs Mallorca: horario, alineaciones, pronóstico y dónde ver el partido',
     slug: 'girona-mallorca-laliga-hypermotion',
-    category: 'deportes',
+    category: 'toptrends',
     excerpt: 'Guía completa del Girona vs Mallorca de LaLiga Hypermotion 2026/27: horario, alineaciones probables, jugadores clave, historial, clasificación y dónde verlo en directo.',
     content,
     image_url: '/images/articles/girona-mallorca.svg',

@@ -146,7 +146,7 @@ export const BARCELONA_REAL_MADRID_ARTICLES: Article[] = [
     id: 13,
     title: 'Barcelona 7-0 Real Madrid femenino: Claudia Pina firma una goleada histórica',
     slug: 'barcelona-real-madrid-femenino-7-0',
-    category: 'deportes',
+    category: 'toptrends',
     excerpt: 'El Barcelona venció 7-0 al Real Madrid en la Liga F el 4 de octubre de 2026. Claudia Pina marcó cuatro goles y los 40.533 espectadores fueron récord de la Liga F.',
     content,
     image_url: '/images/articles/barcelona-real-madrid-femenino.svg',

@@ -11,7 +11,7 @@ export const NOMINA_2027_MEI_ARTICLES: Article[] = [
     id: 10,
     title: 'La nómina cambia en enero de 2027: qué te descontarán para las pensiones y cuánto supone',
     slug: 'nomina-enero-2027-mei-pensiones',
-    category: 'economia',
+    category: 'toptrends',
     excerpt: 'La aportación del trabajador al Mecanismo de Equidad Intergeneracional sube del 0,15% al 0,17% a partir del 1 de enero de 2027. Te explicamos qué es el MEI, cuánto supone en la práctica según tu base de cotización y dónde verlo en tu nómina.',
     content: `A partir del 1 de enero de 2027, la primera nómina del año llegará con un aumento en una de las cotizaciones que se descuentan al trabajador. La aportación del empleado al Mecanismo de Equidad Intergeneracional (MEI) sube del 0,15% al 0,17% de la base de cotización. Te explicamos qué es exactamente, cuánto dinero supone en la práctica y por qué sube.
 

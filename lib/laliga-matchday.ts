@@ -350,7 +350,7 @@ export function buildMatchday(cfg: MatchdayConfig): Matchday {
   const fixtures = cfg.fixtures
   const articles: Article[] = fixtures.map((fx) => ({
     id: fx.id,
-    category: 'deportes',
+    category: 'toptrends',
     title: `Entradas ${fx.home.name}-${fx.away.name}: dónde comprarlas, horario y previa de LaLiga`,
     slug: fx.slug,
     excerpt: excerptWithTickets(fx),

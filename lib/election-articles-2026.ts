@@ -4,7 +4,7 @@ import type { Article } from './types'
 export const ELECTION_ARTICLES_2026: Article[] = [
   {
     "id": 350,
-    "category": "politica",
+    "category": "toptrends",
     "title": "Frente Amplio: qué partidos lo forman, quién lo liderará y qué propone para el 29N",
     "slug": "frente-amplio-espana-partidos-candidato-programa-29n",
     "excerpt": "Qué se sabe del Frente Amplio para el 29N: partidos impulsores, candidato, programa, calendario y las decisiones que quedan pendientes.",
@@ -18,7 +18,7 @@ export const ELECTION_ARTICLES_2026: Article[] = [
   },
   {
     "id": 351,
-    "category": "politica",
+    "category": "toptrends",
     "title": "Cómo se reparten los escaños en España: cuánto pesa tu voto en cada provincia",
     "slug": "como-se-reparten-escanos-voto-provincia-29n",
     "excerpt": "Guía para entender el reparto de escaños en las elecciones del 29N: provincias, método D’Hondt, umbral del 3 % y ejemplos sencillos.",
@@ -32,7 +32,7 @@ export const ELECTION_ARTICLES_2026: Article[] = [
   },
   {
     "id": 352,
-    "category": "politica",
+    "category": "toptrends",
     "title": "Vivienda y elecciones 29N: cómo comparar las propuestas de los partidos",
     "slug": "vivienda-elecciones-29n-comparar-propuestas-partidos",
     "excerpt": "Guía para comparar las propuestas de vivienda del 29N: alquiler, oferta, vivienda pública, competencias, financiación y resultados medibles.",
