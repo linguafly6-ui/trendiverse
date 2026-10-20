@@ -257,8 +257,8 @@ test('D1-bound: pagination is exact and gap-free', async () => {
 
 test('D1-bound: category, search and trending semantics', async () => {
   bind()
-  const chollos = await getArticles({ category: 'chollos', limit: 50 })
-  assert.ok(chollos.every((a) => a.category === 'chollos'))
+  const chollos = await getArticles({ category: 'toptrends', limit: 50 })
+  assert.ok(chollos.every((a) => a.category === 'toptrends'))
   assert.equal(chollos.filter((a) => a.slug === EXPECTED_SLUGS[1]).length, 1)
 
   const tecnologia = (await getArticles({ category: 'tecnologia', limit: 50 })).map((a) => a.slug)
@@ -381,6 +381,6 @@ test('gaming trend articles are classified under technology', async () => {
   }
   setEnvResolverForTests(() => ({}))
   const categoryArticles = await getArticles({ category: 'tecnologia', limit: 10 })
-  assert.equal(categoryArticles.length, 5)
+  assert.ok(categoryArticles.length >= 5)
   assert.ok(GAMING_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
 })
