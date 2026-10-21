@@ -546,5 +546,99 @@ Para entender el alcance de la derrota, lo más útil es combinar el marcador co
 - [UEFA](https://www.uefa.com/uefachampionsleague/)
 
 **Nota editorial:** el marcador, los autores y los minutos de los goles se han contrastado con las fichas oficiales de los clubes. Las valoraciones tácticas son análisis editorial y no sustituyen las declaraciones de los entrenadores ni los datos estadísticos completos.`
+},
+{
+id: 830,
+title: 'Incapacidad temporal en 2026: nuevas bajas especiales, cuánto se cobra y cuándo entran en vigor',
+slug: 'incapacidad-temporal-nuevas-bajas-especiales-cuanto-se-cobra-2026',
+category: 'actualidad',
+excerpt: 'El Real Decreto-ley 31/2026 incorpora nuevos supuestos de incapacidad temporal vinculados a la menopausia incapacitante y a lesiones por violencia de género. Fechas, requisitos y prestación.',
+image_url: '/images/articles/pensiones-seguridad-social-novedades-2027.svg',
+thumbnail_url: '/images/articles/pensiones-seguridad-social-novedades-2027-thumb.svg',
+read_time_minutes: 10, views: 0, trending: 1,
+published_at: '2026-10-21T09:30:00.000Z',
+content: `# Incapacidad temporal en 2026: nuevas bajas especiales, cuánto se cobra y cuándo entran en vigor
+
+La incapacidad temporal vuelve a ser una de las búsquedas destacadas en España después de la publicación en el BOE, el 21 de octubre de 2026, del Real Decreto-ley 31/2026, aprobado el día anterior. La norma incorpora nuevas situaciones especiales de incapacidad temporal y modifica otras medidas de protección social. Para quien trabaja y necesita una baja, las dudas principales son prácticas: qué supuestos nuevos se reconocen, desde cuándo se aplican, si hace falta cotización previa y cómo se calcula la prestación.
+
+**La novedad principal:** se crean dos supuestos especiales de incapacidad temporal relacionados con un trastorno menopáusico secundario codificado y con lesiones derivadas de violencia de género que impidan trabajar. No se trata de que cualquier síntoma o cualquier circunstancia dé derecho automáticamente a una prestación: deben cumplirse las condiciones legales y sanitarias aplicables.
+
+Fuentes primarias: [Real Decreto-ley 31/2026 en el BOE](https://boe.es/diario_boe/txt.php?id=BOE-A-2026-21872) y [resumen oficial del Consejo de Ministros](https://www.lamoncloa.gob.es/consejodeministros/resumenes/Paginas/2026/201026-rueda-prensa-ministros.aspx).
+
+## Qué cambia en la incapacidad temporal
+
+La norma modifica la regulación de las situaciones determinantes de incapacidad temporal en la Ley General de la Seguridad Social. A las situaciones especiales ya existentes se incorporan dos nuevos supuestos, con el objetivo de dar cobertura específica a situaciones de salud y vulnerabilidad que pueden impedir temporalmente el trabajo.
+
+### 1. Trastorno menopáusico incapacitante
+
+La norma contempla el trastorno menopáusico secundario codificado cuando la situación de salud impide trabajar y se cumplen los requisitos médicos y legales. No debe interpretarse como una baja automática por menopausia: el supuesto se refiere a una condición incapacitante contemplada expresamente por la ley y debe ser acreditada a través de los cauces sanitarios correspondientes.
+
+### 2. Lesiones derivadas de violencia de género
+
+También se reconoce una situación especial para mujeres trabajadoras víctimas de violencia de género cuando las lesiones sufridas les impidan desempeñar su actividad laboral y reciban la asistencia sanitaria requerida. La finalidad es que la protección económica no dependa de un periodo mínimo previo de cotización en estos supuestos especiales.
+
+Si una persona cree que puede estar incluida, debe consultar con el servicio público de salud y los organismos competentes. La documentación necesaria puede variar en función de la causa y de las instrucciones aplicables; no conviene enviar informes sensibles por canales no oficiales.
+
+## Cuándo entran en vigor las nuevas reglas
+
+El BOE publicó el Real Decreto-ley 31/2026 el 21 de octubre de 2026. No todas las medidas del paquete social comienzan a producir efectos en la misma fecha. La información difundida por EFE indica que los cambios en las prestaciones por incapacidad temporal empiezan a operar el **1 de diciembre de 2026**. Otras medidas del decreto tienen calendarios diferentes, por lo que no debe trasladarse esa fecha a todas las prestaciones incluidas en la norma.
+
+La fecha de publicación, la entrada en vigor general y la fecha específica de efectos de una disposición no siempre coinciden. Si la solicitud o la baja se sitúa cerca de una fecha de transición, conviene leer la disposición correspondiente del BOE y confirmar el criterio operativo con la Seguridad Social o el servicio de salud.
+
+Fuente de contexto sobre el calendario: [EFE: cuándo entran en vigor las mejoras de prestaciones sociales](https://efe.com/economia/2026-10-21/mejoras-prestaciones-sociales-trabajadores-familias-entran-vigor-hoy/).
+
+## Cuánto se cobra en estos nuevos supuestos
+
+Según el resumen oficial del Gobierno, para las dos nuevas situaciones especiales la prestación económica se calcula aplicando el **60 % de la base reguladora** y, a partir del día 20, el **75 %**. La protección se inicia desde el día siguiente a la baja y no se exige un periodo mínimo previo de cotización para acceder a estos supuestos especiales, de acuerdo con la explicación oficial.
+
+Es importante entender la diferencia entre base reguladora y salario neto. El porcentaje no se aplica necesariamente al dinero que llega cada mes a la cuenta bancaria: la base reguladora se calcula según las reglas de cotización y la situación laboral. Además, un convenio colectivo puede contemplar complementos, por lo que dos personas con salarios parecidos podrían percibir cantidades diferentes.
+
+### Ejemplo orientativo
+
+Si una base reguladora diaria fuese de 50 euros, el 60 % equivaldría a 30 euros al día y el 75 % a 37,50 euros. Es solo un ejemplo matemático, no una estimación de nómina individual: no incluye retenciones, complementos, reglas específicas del expediente ni posibles particularidades contractuales.
+
+## ¿En qué se diferencia de una baja común?
+
+La incapacidad temporal por enfermedad común y las situaciones especiales tienen reglas distintas sobre el inicio del subsidio, los requisitos y la responsabilidad del pago. En una baja ordinaria por enfermedad común, el subsidio contributivo suele comenzar el cuarto día; se aplica normalmente el 60 % de la base reguladora entre los días 4 y 20 y el 75 % desde el día 21, conforme a las condiciones generales. En los nuevos supuestos especiales, el Gobierno ha explicado una protección desde el día siguiente a la baja y sin carencia mínima.
+
+No debe concluirse que todas las bajas médicas cambian de la misma manera. La regla aplicable depende de la causa, del régimen de Seguridad Social, de la fecha y de las condiciones que recoge la norma.
+
+## Qué hacer si crees que puedes tener derecho
+
+1. **Confirma el supuesto legal.** Comprueba si la situación encaja en la modalidad especial descrita en la norma; no basta con que el problema de salud esté relacionado de forma general con la menopausia o con una situación de violencia.
+2. **Consulta con los profesionales sanitarios.** La valoración clínica y la emisión de la baja deben realizarse por los cauces correspondientes.
+3. **Revisa la fecha aplicable.** Ten en cuenta que el calendario específico de los cambios en incapacidad temporal señala el 1 de diciembre de 2026.
+4. **Pregunta por la documentación.** Consulta al servicio público de salud, a la entidad gestora o a la mutua cuando corresponda; no des por supuesto que todas las modalidades exigen los mismos documentos.
+5. **Guarda justificantes y comunicaciones.** Conserva los partes, informes y resoluciones, y utiliza canales oficiales para compartir datos médicos.
+6. **Solicita orientación individual si hay dudas económicas.** La cuantía depende de la base reguladora y de las circunstancias del expediente.
+
+## Otras medidas sociales aprobadas junto con la reforma
+
+El Real Decreto-ley 31/2026 incluye más cambios que las nuevas situaciones de incapacidad temporal. Entre ellos figuran ajustes en la prestación por cuidado de menores afectados por cáncer u otra enfermedad grave, medidas relacionadas con pensiones de viudedad para determinadas parejas de hecho, y mejoras de protección para familiares de víctimas del terrorismo y menores en situaciones de impago de alimentos. Cada medida tiene requisitos y fechas propios.
+
+Por eso, no conviene utilizar un artículo general sobre incapacidad temporal para decidir sobre una pensión de viudedad o una prestación de cuidados. Son figuras diferentes y deben consultarse por separado, atendiendo al texto legal y a la información de la Seguridad Social.
+
+## Preguntas frecuentes
+
+### ¿La menopausia da derecho automáticamente a una baja?
+No. La norma contempla un supuesto especial vinculado a un trastorno menopáusico secundario codificado que resulte incapacitante. Deben cumplirse las condiciones legales y sanitarias aplicables.
+
+### ¿Hace falta haber cotizado un mínimo para estas dos nuevas situaciones?
+El resumen oficial indica que estos dos supuestos especiales no exigen un periodo mínimo previo de cotización. Para confirmar la aplicación al caso concreto, consulta el texto legal y los organismos competentes.
+
+### ¿Cuándo empiezan a aplicarse los cambios de incapacidad temporal?
+Según la información publicada sobre el calendario del decreto, los cambios específicos en incapacidad temporal comienzan a producir efectos el 1 de diciembre de 2026. Otras medidas del paquete tienen fechas distintas.
+
+### ¿Cobraré el 60 % o el 75 % de mi sueldo neto?
+No necesariamente. Los porcentajes se aplican a la base reguladora que corresponda, no de forma automática al salario neto. Los complementos de convenio y las circunstancias laborales pueden cambiar la cantidad final.
+
+### ¿Dónde puedo comprobar los requisitos?
+Consulta el [texto del Real Decreto-ley 31/2026 en el BOE](https://boe.es/diario_boe/txt.php?id=BOE-A-2026-21872), la Seguridad Social y el servicio público de salud que corresponda. Este artículo ofrece información general, no determina el derecho individual a una prestación.
+
+## Conclusión
+
+El Real Decreto-ley 31/2026 incorpora dos nuevas situaciones especiales de incapacidad temporal y establece una protección específica para las personas que cumplan sus requisitos. La novedad no significa que toda baja médica cambie ni que el derecho se reconozca automáticamente: importan el supuesto legal, la valoración sanitaria, la fecha de efectos y la base reguladora. La referencia definitiva es el BOE, junto con las instrucciones oficiales que desarrollen su aplicación.
+
+*Información revisada el 21 de octubre de 2026 a partir del BOE, La Moncloa y EFE. Comprueba posibles actualizaciones oficiales antes de iniciar un trámite.*`
 }
 ]
