@@ -236,14 +236,14 @@ También es útil revisar si las ocasiones llegaron por juego elaborado, transic
   },
   {
     id: 803,
-    title: 'Incapacidad temporal y pensión de viudedad: nuevas medidas sociales del 20 de octubre',
+    title: 'Incapacidad temporal y pensión de viudedad: nuevas bajas, cuantías y fechas clave de 2026',
     slug: 'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026',
     category: 'actualidad',
-    excerpt: 'El Consejo de Ministros anunció cambios en la protección social: nuevas situaciones especiales de incapacidad temporal y facilidades para reconocer parejas de hecho a efectos de viudedad.',
+    excerpt: 'El Real Decreto-ley 31/2026 añade dos situaciones especiales de incapacidad temporal, cambia reglas de viudedad y amplía otras prestaciones. Requisitos, cuantías y fechas de aplicación.',
     image_url: '/images/articles/pensiones-seguridad-social-novedades-2027.svg',
     thumbnail_url: '/images/articles/pensiones-seguridad-social-novedades-2027-thumb.svg',
-    read_time_minutes: 9, views: 0, trending: 1,
-    published_at: '2026-10-20T13:40:00.000Z',
+    read_time_minutes: 12, views: 0, trending: 1,
+    published_at: '2026-10-21T09:30:00.000Z',
     content: `# Incapacidad temporal y pensión de viudedad: nuevas medidas sociales del 20 de octubre
 
 Las búsquedas sobre **incapacidad temporal** y **pensión de viudedad** han ganado relevancia en España tras la aprobación, el 20 de octubre de 2026, de un Real Decreto-ley con medidas de mejora de la protección social. Entre los cambios anunciados por el Ministerio de Inclusión, Seguridad Social y Migraciones figuran nuevas situaciones especiales de incapacidad temporal vinculadas al trastorno menopáusico y a mujeres trabajadoras víctimas de violencia de género, además de facilitar el reconocimiento de parejas de hecho para acceder a la pensión de viudedad.
@@ -324,6 +324,19 @@ La primera referencia para el anuncio es el [Ministerio de Inclusión, Seguridad
 ### ¿Este artículo determina si tengo derecho a una prestación?
 No. Resume el anuncio general del Gobierno y no sustituye la evaluación de un expediente individual. Los requisitos dependen de las circunstancias personales y de la normativa vigente.
 
+## Actualización del 21 de octubre: la norma ya está publicada en el BOE
+
+Desde la publicación inicial de esta noticia, el Real Decreto-ley 31/2026 se ha publicado en el Boletín Oficial del Estado con referencia **BOE-A-2026-21872**. Por tanto, ya no hablamos solo de un anuncio del Consejo de Ministros: la norma publicada es la referencia legal para interpretar el alcance y las fechas de cada medida.
+
+En relación con la incapacidad temporal, el calendario difundido por EFE señala que los cambios específicos de IT empiezan a producir efectos el **1 de diciembre de 2026**. No debe confundirse esa fecha con la publicación del decreto, ni aplicarse automáticamente a todas las demás medidas sociales incluidas en él. Cada disposición puede tener un calendario propio.
+
+El resumen oficial concreta que los dos nuevos supuestos especiales se refieren al trastorno menopáusico secundario codificado que resulte incapacitante y a lesiones derivadas de violencia de género que impidan trabajar. Para ambos se describe una protección desde el día siguiente a la baja, con prestación calculada al 60 % de la base reguladora y al 75 % a partir del día 20, sin periodo mínimo previo de cotización. Los porcentajes se aplican a la base reguladora, no necesariamente al salario neto. La valoración médica, los requisitos de acreditación y la situación individual deben verificarse por los cauces oficiales.
+
+**Fuentes primarias y calendario:**
+- [BOE: Real Decreto-ley 31/2026, de 20 de octubre](https://boe.es/diario_boe/txt.php?id=BOE-A-2026-21872)
+- [La Moncloa: resumen del Consejo de Ministros del 20 de octubre](https://www.lamoncloa.gob.es/consejodeministros/resumenes/Paginas/2026/201026-rueda-prensa-ministros.aspx)
+- [EFE: fechas de entrada en vigor de las mejoras sociales, 21 de octubre](https://efe.com/economia/2026-10-21/mejoras-prestaciones-sociales-trabajadores-familias-entran-vigor-hoy/)
+
 ## Por qué esta noticia concentra búsquedas
 
 Las consultas sobre incapacidad temporal y viudedad combinan actualidad y necesidad práctica. Una reforma social puede influir en los ingresos, los derechos y los trámites de personas que ya están en una situación vulnerable. La audiencia quiere saber qué ha cambiado, a quién afecta y qué debe hacer ahora.
@@ -334,7 +347,7 @@ El CSV registra los términos de búsqueda, pero no demuestra que todos los usua
 
 El 20 de octubre de 2026, el Gobierno anunció un paquete de medidas sociales que incluye nuevas situaciones especiales de incapacidad temporal y cambios para facilitar el reconocimiento de parejas de hecho a efectos de pensión de viudedad, además de otras mejoras de protección. La noticia es tendencia porque plantea dudas inmediatas sobre derechos y trámites. La respuesta segura es identificar la prestación concreta, revisar la norma oficial y confirmar los requisitos antes de iniciar una solicitud o asumir que un expediente previo cambia automáticamente.
 
-*Actualizado el 20 de octubre de 2026 con la nota oficial del Ministerio. Verifica el texto legal y las instrucciones vigentes antes de tomar decisiones sobre una prestación.*
+*Actualizado el 21 de octubre de 2026 con el texto del BOE y el calendario publicado. Verifica las instrucciones administrativas vigentes antes de iniciar un trámite.*
 ## Incapacidad temporal: qué significa la protección anunciada y cómo se calcula
 
 La nota oficial del Ministerio del 20 de octubre de 2026 describe dos situaciones especiales de incapacidad temporal (IT): la derivada de una patología limitante asociada al trastorno menopáusico que impida trabajar y la de mujeres trabajadoras víctimas de violencia de género cuando las lesiones les impidan desempeñar su actividad. No basta con estar en la menopausia ni con haber sufrido violencia para que la prestación se reconozca automáticamente. En la modalidad vinculada a la menopausia, el anuncio alude a síntomas incapacitantes asociados a un diagnóstico y a una codificación concreta. La valoración médica y la emisión de la baja corresponden a los profesionales y organismos competentes.
