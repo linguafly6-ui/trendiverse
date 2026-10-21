@@ -279,7 +279,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   const slugs = all.map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
-  assert.equal(slugs[0], 'dana-adam-inundaciones-valencia-alicante-balance-ayudas-octubre-2026')
+  assert.equal(slugs[0], 'bizum-limites-errores-estafas-como-protegerse-2026')
   assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'actualidad')
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
