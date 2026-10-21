@@ -243,7 +243,7 @@ También es útil revisar si las ocasiones llegaron por juego elaborado, transic
     image_url: '/images/articles/pensiones-seguridad-social-novedades-2027.svg',
     thumbnail_url: '/images/articles/pensiones-seguridad-social-novedades-2027-thumb.svg',
     read_time_minutes: 12, views: 0, trending: 1,
-    published_at: '2026-10-21T09:30:00.000Z',
+    published_at: '2026-10-20T13:40:00.000Z',
     content: `# Incapacidad temporal y pensión de viudedad: nuevas medidas sociales del 20 de octubre
 
 Las búsquedas sobre **incapacidad temporal** y **pensión de viudedad** han ganado relevancia en España tras la aprobación, el 20 de octubre de 2026, de un Real Decreto-ley con medidas de mejora de la protección social. Entre los cambios anunciados por el Ministerio de Inclusión, Seguridad Social y Migraciones figuran nuevas situaciones especiales de incapacidad temporal vinculadas al trastorno menopáusico y a mujeres trabajadoras víctimas de violencia de género, además de facilitar el reconocimiento de parejas de hecho para acceder a la pensión de viudedad.
