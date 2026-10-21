@@ -11,7 +11,7 @@ export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_12: Article[] = [
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 9, views: 0, trending: 1,
     published_at: '2026-10-21T14:30:00.000Z',
-    content: \`# Vulnerabilidades críticas en PHP: qué versiones actualizar y cómo proteger una web
+    content: `# Vulnerabilidades críticas en PHP: qué versiones actualizar y cómo proteger una web
 
 El equipo de PHP ha publicado el 21 de octubre de 2026 actualizaciones de seguridad para corregir dos vulnerabilidades críticas identificadas como **CVE-2026-109618** y **CVE-2026-109619**. Los avisos oficiales señalan que los fallos podrían permitir ejecución remota de código sin autenticación en determinados escenarios. Para quien administra una web, la prioridad es identificar qué versión se ejecuta, instalar una versión corregida y comprobar que el cambio ha llegado también a los servidores de producción.
 
@@ -28,7 +28,7 @@ El anuncio oficial enumera versiones de mantenimiento que corrigen los fallos en
 
 La versión apropiada depende de la rama que use cada proyecto. No se debe actualizar a ciegas a una rama mayor ni instalar paquetes descargados de sitios no oficiales. Consulta la página de seguridad de PHP y el sistema de paquetes o panel de alojamiento que utilice tu infraestructura.
 
-El aviso del equipo de PHP considera que el riesgo es especialmente alto en algunas configuraciones de Apache con \`mod_php\`. Eso no sustituye una revisión técnica de la instalación: el impacto concreto depende de la versión, el modo de ejecución y la configuración del servidor.
+El aviso del equipo de PHP considera que el riesgo es especialmente alto en algunas configuraciones de Apache con `mod_php`. Eso no sustituye una revisión técnica de la instalación: el impacto concreto depende de la versión, el modo de ejecución y la configuración del servidor.
 
 ## Qué debe hacer una empresa o administrador
 
@@ -84,7 +84,7 @@ No necesariamente. La vulnerabilidad indica riesgo, no confirma una intrusión. 
 - [CERT-EU: Security Advisory 2026-018](https://cert.europa.eu/publications/security-advisories/2026-018)
 - [Palo Alto Networks Unit 42: análisis de las CVE](https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/)
 
-**Nota editorial:** las versiones afectadas y las mitigaciones deben verificarse en los avisos de PHP y CERT-EU, que pueden actualizarse conforme avance el análisis técnico.\`
+**Nota editorial:** las versiones afectadas y las mitigaciones deben verificarse en los avisos de PHP y CERT-EU, que pueden actualizarse conforme avance el análisis técnico.`
   },
   {
     id: 832,
@@ -96,7 +96,7 @@ No necesariamente. La vulnerabilidad indica riesgo, no confirma una intrusión. 
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-21T14:31:00.000Z',
-    content: \`# Anthropic pierde 80.700 millones de dólares sobre el papel: qué revelan sus cuentas
+    content: `# Anthropic pierde 80.700 millones de dólares sobre el papel: qué revelan sus cuentas
 
 Anthropic, la empresa de inteligencia artificial responsable de Claude, aparece en el centro de la actualidad financiera después de que informaciones basadas en un borrador de folleto para una posible salida a Bolsa revelaran pérdidas netas de **80.700 millones de dólares en el primer semestre de 2026**. La cifra impresiona, pero necesita contexto: una parte muy importante no corresponde a dinero gastado en operaciones durante esos seis meses, sino a ajustes contables vinculados al valor de instrumentos de financiación.
 
@@ -162,7 +162,7 @@ Una concentración alta puede hacer que los ingresos sean más sensibles a la p�
 - [EL PAÍS: las pérdidas de Anthropic antes de su posible salida a Bolsa](https://elpais.com/economia/2026-10-20/anthropic-registra-unas-perdidas-historicas-de-80000000000-millones-de-dolares-antes-de-su-salida-a-bolsa.html)
 - [Europa Press: pérdidas de Anthropic en el primer semestre de 2026](https://www.europapress.es/economia/noticia-anthropic-perdio-casi-72000-millones-primera-mitad-2026-20261021113424.html)
 
-**Nota editorial:** las cifras proceden de información periodística sobre un borrador de folleto. Deben actualizarse si se publica documentación oficial posterior o si cambian los planes de la empresa.\`
+**Nota editorial:** las cifras proceden de información periodística sobre un borrador de folleto. Deben actualizarse si se publica documentación oficial posterior o si cambian los planes de la empresa.`
   },
   {
     id: 833,
@@ -174,7 +174,7 @@ Una concentración alta puede hacer que los ingresos sean más sensibles a la p�
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-21T14:32:00.000Z',
-    content: \`# Ayudas por los incendios de Extremadura: qué recoge el decreto publicado en el BOE
+    content: `# Ayudas por los incendios de Extremadura: qué recoge el decreto publicado en el BOE
 
 El Boletín Oficial del Estado ha publicado el 21 de octubre de 2026 el **Decreto-ley 5/2026, de 1 de septiembre**, de Extremadura, que establece ayudas extraordinarias y otras medidas para recuperar las zonas afectadas por los incendios forestales del verano y reforzar la prevención. La publicación oficial permite consultar el texto completo, pero no significa que todas las ayudas se concedan automáticamente ni que exista un único procedimiento para todos los afectados.
 
@@ -231,6 +231,6 @@ No debe asumirse una cantidad universal. Las cuantías y condiciones se determin
 - [BOE: Decreto-ley 5/2026, de 1 de septiembre, de Extremadura](https://www.boe.es/buscar/doc.php?id=BOE-A-2026-21876)
 - [Junta de Extremadura](https://www.juntaex.es/)
 
-**Nota editorial:** antes de solicitar una ayuda, verifica los artículos concretos, los plazos y las instrucciones administrativas vigentes. Este artículo no sustituye la lectura del texto oficial ni una resolución de elegibilidad.\`
+**Nota editorial:** antes de solicitar una ayuda, verifica los artículos concretos, los plazos y las instrucciones administrativas vigentes. Este artículo no sustituye la lectura del texto oficial ni una resolución de elegibilidad.`
   }
 ]
