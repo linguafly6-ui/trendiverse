@@ -28,7 +28,7 @@ El anuncio oficial enumera versiones de mantenimiento que corrigen los fallos en
 
 La versión apropiada depende de la rama que use cada proyecto. No se debe actualizar a ciegas a una rama mayor ni instalar paquetes descargados de sitios no oficiales. Consulta la página de seguridad de PHP y el sistema de paquetes o panel de alojamiento que utilice tu infraestructura.
 
-El aviso del equipo de PHP considera que el riesgo es especialmente alto en algunas configuraciones de Apache con `mod_php`. Eso no sustituye una revisión técnica de la instalación: el impacto concreto depende de la versión, el modo de ejecución y la configuración del servidor.
+El aviso del equipo de PHP considera que el riesgo es especialmente alto en algunas configuraciones de Apache con \`mod_php\`. Eso no sustituye una revisión técnica de la instalación: el impacto concreto depende de la versión, el modo de ejecución y la configuración del servidor.
 
 ## Qué debe hacer una empresa o administrador
 
