@@ -396,6 +396,15 @@ Fuentes oficiales:
 - [Ministerio de Inclusión: medidas aprobadas el 20 de octubre de 2026](https://www.inclusion.gob.es/w/el-gobierno-aprueba-nuevas-medidas-de-mejora-de-la-accion-protectora-de-la-seguridad-social-y-de-otras-normas-sociales%C2%A0)
 - [Seguridad Social: información sobre incapacidad temporal](https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/43384/44673/44674)
 - [Seguridad Social: trámites de incapacidad temporal](https://prestaciones.seg-social.es/prestaciones-enfermedades-accidentes/incapacidad-temporal.html)
+
+
+## Publicación en el BOE y fechas de aplicación: qué confirma la norma
+
+El Real Decreto-ley 31/2026 fue publicado en el BOE el 21 de octubre de 2026. La publicación oficial permite comprobar el texto legal y evita depender únicamente del resumen de prensa del Consejo de Ministros. La norma no aplica todas sus medidas en una única fecha: su disposición final establece que algunas modificaciones producen efectos desde el día siguiente a la publicación, otras desde el primer día del mes siguiente y otras desde el primer día del segundo mes siguiente. Por ello, para cada prestación hay que revisar la disposición concreta que la modifica y su regla de entrada en vigor.
+
+En particular, no debe interpretarse el anuncio de nuevas situaciones especiales de incapacidad temporal como una ampliación general a cualquier baja médica, ni el cambio relativo a parejas de hecho como una eliminación de todos los requisitos de la pensión de viudedad. La fecha del hecho causante, la documentación de convivencia, las condiciones de cotización y las disposiciones transitorias pueden determinar el resultado.
+
+La fuente principal para verificar la redacción y las fechas es el [Real Decreto-ley 31/2026 publicado en el BOE](https://www.boe.es/buscar/doc.php?id=BOE-A-2026-21872). Antes de iniciar un trámite, comprueba además las instrucciones actualizadas de la Seguridad Social y no te bases solo en titulares o resúmenes.
 `
   }
 ]
