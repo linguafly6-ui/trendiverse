@@ -255,7 +255,16 @@ La idea clave es no extrapolar una alerta local a todo el país ni interpretar u
 - [RTVC: previsión del tiempo en Canarias para el 21 de octubre](https://rtvc.es/tiempo-canarias-21-octubre-2026/)
 - [Cadena SER Canarias: lluvias intensas en El Hierro e inestabilidad en el archipiélago](https://cadenaser.com/canarias/2026/10/21/el-hierro-registra-un-episodio-de-lluvias-intensas-mientras-la-inestabilidad-seguira-afectando-a-canarias-ser-las-palmas/)
 
-**Nota editorial:** la previsión describe la situación publicada para el 21 de octubre de 2026. Para decisiones inmediatas deben consultarse los avisos locales actualizados.`
+**Nota editorial:** la previsión describe la situación publicada para el 21 de octubre de 2026. Para decisiones inmediatas deben consultarse los avisos locales actualizados.
+
+## Actualización meteorológica del 21 de octubre: frente atlántico, viento y Canarias
+
+La actualización publicada por RTVE a partir de la previsión de AEMET para el miércoles 21 de octubre apunta a una situación desigual: más estabilidad en buena parte de la Península y Baleares, lluvias en la cornisa cantábrica y los Pirineos, rachas muy fuertes en el litoral cantábrico, el Ampurdán y el bajo Ebro, y chubascos que pueden ser localmente fuertes en Canarias por la influencia de una DANA. La previsión cambia por horas y municipios; no debe interpretarse como un pronóstico uniforme para todo el país.
+
+Antes de viajar o realizar actividades al aire libre, consulta los avisos y mapas oficiales de AEMET para tu localidad. El viento fuerte puede afectar a la conducción, las actividades marítimas y los objetos expuestos, incluso en zonas donde no se esperan lluvias importantes.
+
+Fuente de actualización: [AEMET, mapas de frentes](https://www.aemet.es/es/eltiempo/prediccion/mapa_frentes) y [RTVE, previsión del tiempo del 21 de octubre de 2026](https://www.rtve.es/noticias/20261021/tiempo-hoy-espana-21-octubre/17275192.shtml).
+`
 },
 {
 id:824,
@@ -545,6 +554,15 @@ Para entender el alcance de la derrota, lo más útil es combinar el marcador co
 - [Reuters: crónica del PSG 4-2 Barcelona](https://www.reuters.com/sports/soccer/psg-sink-barcelona-six-goal-thriller-liverpool-man-city-win-2026-10-20/)
 - [UEFA](https://www.uefa.com/uefachampionsleague/)
 
-**Nota editorial:** el marcador, los autores y los minutos de los goles se han contrastado con las fichas oficiales de los clubes. Las valoraciones tácticas son análisis editorial y no sustituyen las declaraciones de los entrenadores ni los datos estadísticos completos.`
+**Nota editorial:** el marcador, los autores y los minutos de los goles se han contrastado con las fichas oficiales de los clubes. Las valoraciones tácticas son análisis editorial y no sustituyen las declaraciones de los entrenadores ni los datos estadísticos completos.
+
+## Parte médico posterior al PSG–Barcelona: la lesión de Kvaratskhelia
+
+La noticia deportiva posterior al encuentro es el parte médico de Khvicha Kvaratskhelia. RTVE informó el 21 de octubre de que el extremo del PSG sufrió una rotura del ligamento cruzado anterior de la rodilla derecha y estará varios meses de baja; el club indicó que será intervenido en los próximos días. El mismo partido dejó otras dos bajas para el equipo parisino: Ousmane Dembélé, que estará varias semanas de tratamiento por una lesión muscular, y Marquinhos, que también deberá tratarse durante las próximas semanas. El alcance de estas ausencias y los plazos deben actualizarse cuando el club publique nueva información.
+
+Esta lesión cambia la lectura de las consecuencias del 4-2: además del resultado y los goles, el PSG afronta un problema importante de disponibilidad de plantilla. No se debe dar una fecha exacta de regreso sin una previsión médica oficial.
+
+Fuente de actualización: [RTVE/ EFE, parte médico de Kvaratskhelia, 21 de octubre de 2026](https://www.rtve.es/deportes/20261021/psg-barcelona-champions-league-lesion-kvaratskhelia/17276415.shtml).
+`
 }
 ]
