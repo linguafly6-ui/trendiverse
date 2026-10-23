@@ -12,7 +12,7 @@ export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_3: Article[] = [
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 10, views: 0, trending: 1,
     published_at: '2026-10-20T16:00:00.000Z',
-    content: `# Kim Jong-un: rumores sobre su salud, última aparición y tensión con Corea del Sur
+    content: `# Kim Jong-un: rumores sobre su salud y tensión con Corea
 
 **Kim Jong-un** se situó entre las tendencias de búsqueda en España el 20 de octubre de 2026, después de que circularan en redes sociales rumores sin verificar sobre su estado de salud. La información disponible ese día apuntaba en sentido contrario a algunas de esas publicaciones: los medios estatales norcoreanos difundieron imágenes de una aparición pública del dirigente en una exposición de ropa y calzado, celebrada el lunes y comunicada al día siguiente. La noticia también llega en un momento de tensión entre Corea del Norte y Corea del Sur.
 
@@ -128,7 +128,7 @@ Kim Jong-un se convirtió en tendencia por rumores no verificados sobre su salud
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 10, views: 0, trending: 1,
     published_at: '2026-10-20T16:05:00.000Z',
-    content: `# Iván Espinosa de los Monteros: última hora judicial y decisión sobre las elecciones del 29-N
+    content: `# Iván Espinosa de los Monteros: claves judiciales del 29-N
 
 Iván Espinosa de los Monteros volvió a situarse en el foco de la actualidad española los días 19 y 20 de octubre de 2026 por dos asuntos diferentes. Por un lado, el Tribunal Superior de Justicia de Madrid (TSJM) desestimó cuatro recursos relacionados con sanciones de la Agencia Tributaria por una operación inmobiliaria en la que también aparece Rocío Monasterio. Por otro, el exdirigente de Vox había anunciado que no concurriría a las elecciones generales previstas para el 29 de noviembre, al considerar que una candidatura propia podría dividir el voto de la derecha.
 
@@ -236,7 +236,7 @@ Iván Espinosa de los Monteros volvió a la actualidad por una combinación de n
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 10, views: 0, trending: 1,
     published_at: '2026-10-20T16:10:00.000Z',
-    content: `# Cristián de Dinamarca debuta en una cena de Estado: qué ocurrió y qué significa para la Corona
+    content: `# Cristián de Dinamarca debuta en una cena de Estado
 
 El príncipe **Cristián de Dinamarca**, heredero al trono danés, fue uno de los nombres más buscados en España el 20 de octubre de 2026 después de participar por primera vez en una cena de Estado en calidad de heredero. La velada tuvo lugar el lunes 19 de octubre en el palacio de Christiansborg, en Copenhague, dentro de la visita oficial del presidente de Vietnam, Tô Lâm, y de su esposa, Ngô Phương Ly. El acto marcó un nuevo paso visible en la incorporación del joven príncipe a las responsabilidades públicas de la monarquía.
 
