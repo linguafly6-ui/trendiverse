@@ -4,7 +4,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_2026: Article[] = [
   {
     id: 801,
-    title: 'Revolut no funciona hoy: qué ha pasado con la caída del 20 de octubre de 2026',
+    title: 'Revolut no funciona: caída del 20 de octubre de 2026',
     slug: 'revolut-no-funciona-caida-20-octubre-2026',
     category: 'actualidad',
     excerpt: 'Revolut registró problemas para acceder a cuentas, pagar y transferir dinero durante una incidencia de infraestructura en la nube. Qué se sabe y cómo actuar con seguridad.',
@@ -236,7 +236,7 @@ También es útil revisar si las ocasiones llegaron por juego elaborado, transic
   },
   {
     id: 803,
-    title: 'Incapacidad temporal y pensión de viudedad: nuevas bajas, cuantías y fechas clave de 2026',
+    title: 'Incapacidad temporal y viudedad: claves de 2026',
     slug: 'incapacidad-temporal-pension-viudedad-nuevas-medidas-octubre-2026',
     category: 'actualidad',
     excerpt: 'El Real Decreto-ley 31/2026 añade dos situaciones especiales de incapacidad temporal, cambia reglas de viudedad y amplía otras prestaciones. Requisitos, cuantías y fechas de aplicación.',
