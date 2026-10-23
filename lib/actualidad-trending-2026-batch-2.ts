@@ -4,7 +4,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_2: Article[] = [
   {
     id: 804,
-    title: 'Cafeína: cuánto es demasiado, efectos, sueño y recomendaciones para consumirla',
+    title: 'Cafeína: dosis, efectos y recomendaciones',
     slug: 'cafeina-cuanto-es-demasiado-efectos-sueno-recomendaciones-2026',
     category: 'actualidad',
     excerpt: 'La cafeína es tendencia en España: repasamos sus efectos, cuánto contienen café y bebidas energéticas, cómo influye en el sueño y qué recomiendan EFSA y AESAN.',
@@ -130,7 +130,7 @@ La cafeína puede aumentar temporalmente el estado de alerta, pero el efecto dep
   },
   {
     id: 805,
-    title: 'Muere Gustavo Oliva, referente del pádel catalán: trayectoria y legado deportivo',
+    title: 'Muere Gustavo Oliva, referente del pádel catalán',
     slug: 'muere-gustavo-oliva-referente-padel-catalan-trayectoria-legado',
     category: 'actualidad',
     excerpt: 'Gustavo Oliva, exjugador y entrenador de pádel, falleció a los 58 años. Repasamos su trayectoria y el mensaje de prevención que acompañó sus últimos días.',
@@ -246,7 +246,7 @@ La forma más respetuosa de recordar a un referente es documentar lo que hizo y 
   },
   {
     id: 806,
-    title: 'Mayoría absoluta en España: cuántos escaños hacen falta y qué dicen las encuestas',
+    title: 'Mayoría absoluta en España: escaños necesarios',
     slug: 'mayoria-absoluta-espana-176-escanos-encuestas-elecciones-2026',
     category: 'actualidad',
     excerpt: 'La mayoría absoluta vuelve al debate político antes de las elecciones del 29 de noviembre de 2026. Qué significa, cómo funciona la investidura y por qué las encuestas no son resultados.',
