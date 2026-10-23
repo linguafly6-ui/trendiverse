@@ -4,7 +4,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_3: Article[] = [
   {
     id: 807,
-    title: 'Kim Jong-un: rumores sobre su salud, última aparición y tensión con Corea del Sur',
+    title: 'Kim Jong-un: rumores sobre su salud y tensión con Corea',
     slug: 'kim-jong-un-ultima-aparicion-rumores-salud-tensiones-corea-sur-octubre-2026',
     category: 'actualidad',
     excerpt: 'Kim Jong-un se convirtió en tendencia tras circular rumores no verificados sobre su salud. Esto es lo que se sabe de su aparición pública y del contexto diplomático en la península coreana.',
@@ -120,7 +120,7 @@ Kim Jong-un se convirtió en tendencia por rumores no verificados sobre su salud
   },
   {
     id: 808,
-    title: 'Iván Espinosa de los Monteros: última hora judicial y decisión sobre las elecciones del 29-N',
+    title: 'Iván Espinosa de los Monteros: claves judiciales del 29-N',
     slug: 'ivan-espinosa-monteros-ultima-hora-justicia-elecciones-29n-octubre-2026',
     category: 'actualidad',
     excerpt: 'La actualidad de Iván Espinosa de los Monteros combina su renuncia a concurrir a las elecciones del 29 de noviembre y nuevas resoluciones judiciales sobre sanciones fiscales. Qué se sabe y qué queda pendiente.',
@@ -228,7 +228,7 @@ Iván Espinosa de los Monteros volvió a la actualidad por una combinación de n
   },
   {
     id: 809,
-    title: 'Cristián de Dinamarca debuta en una cena de Estado: qué ocurrió y qué significa para la Corona',
+    title: 'Cristián de Dinamarca debuta en una cena de Estado',
     slug: 'cristian-dinamarca-primera-cena-estado-heredero-vietnam-octubre-2026',
     category: 'actualidad',
     excerpt: 'El príncipe Cristián de Dinamarca participó por primera vez en una cena de Estado como heredero, durante la visita del presidente vietnamita. Contexto, protocolo y su papel institucional.',
