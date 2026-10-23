@@ -128,7 +128,7 @@ Si después del encuentro se comunica una iniciativa, conviene comprobar quién 
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 9, views: 0, trending: 1,
     published_at: '2026-10-20T18:01:00.000Z',
-    content: `# Rebeca Torró, nueva portavoz del PSOE: por qué sustituye a Montse Mínguez
+    content: `# Rebeca Torró, nueva portavoz del PSOE: las claves
 
 **Rebeca Torró** se convirtió en tendencia tras ser nombrada nueva portavoz del PSOE el 17 de octubre de 2026. La secretaria de Organización del partido asume el puesto después de la dimisión de Montse Mínguez, en un momento de tensión política marcado por la campaña para las elecciones generales del 29 de noviembre y por la controversia relacionada con los negocios inmobiliarios de la pareja de la anterior portavoz.
 
@@ -245,7 +245,7 @@ La forma más fiable de comprobar un cambio de estrategia es comparar declaracio
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 9, views: 0, trending: 1,
     published_at: '2026-10-20T18:02:00.000Z',
-    content: `# Melani Olivares vuelve a ser tendencia al contar secretos del rodaje de Aída
+    content: `# Melani Olivares revela secretos del rodaje de Aída
 
 La actriz **Melani Olivares**, conocida por interpretar a Paz Bermejo en la serie *Aída*, volvió a las búsquedas el 20 de octubre de 2026 tras compartir anécdotas sobre la producción y el reparto de la comedia. Una entrevista reciente reabrió el interés por cómo se rodaba la serie, cómo se gestionó el embarazo de la actriz y qué recuerda del momento en que Carmen Machi dejó la ficción.
 
