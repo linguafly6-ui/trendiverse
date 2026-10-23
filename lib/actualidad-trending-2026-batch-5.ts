@@ -120,7 +120,7 @@ Si después del encuentro se comunica una iniciativa, conviene comprobar quién 
   },
   {
     id: 814,
-    title: 'Rebeca Torró, nueva portavoz del PSOE: por qué sustituye a Montse Mínguez',
+    title: 'Rebeca Torró, nueva portavoz del PSOE: las claves',
     slug: 'rebeca-torro-nueva-portavoz-psoe-octubre-2026',
     category: 'actualidad',
     excerpt: 'Rebeca Torró asume la portavocía del PSOE tras la dimisión de Montse Mínguez. Qué cambia en la dirección socialista, cuál es el contexto y qué papel tendrá en la campaña.',
@@ -237,7 +237,7 @@ La forma más fiable de comprobar un cambio de estrategia es comparar declaracio
   },
   {
     id: 815,
-    title: 'Melani Olivares vuelve a ser tendencia al contar secretos del rodaje de Aída',
+    title: 'Melani Olivares revela secretos del rodaje de Aída',
     slug: 'melani-olivares-secretos-rodaje-aida-embarazo-carmen-machi-2026',
     category: 'actualidad',
     excerpt: 'La actriz Melani Olivares ha recuperado anécdotas del rodaje de Aída, desde cómo se ocultó su embarazo hasta las tensiones que rodearon la salida de Carmen Machi. Esto contó en su entrevista reciente.',
