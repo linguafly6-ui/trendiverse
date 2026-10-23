@@ -3,7 +3,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_8: Article[] = [
 {
 id:822,
-title:'Milei en España: qué dijo sobre llegar a fin de mes y por qué vuelve a ser noticia',
+title:'Milei en España: sus declaraciones sobre llegar a fin de mes',
 slug:'milei-espana-declaraciones-llegar-fin-mes-octubre-2026',
 category:'actualidad',
 excerpt:'Javier Milei visita Madrid y sus declaraciones sobre las familias que no llegan a fin de mes reabren el debate sobre inflación, salarios, pobreza y ajuste público.',
@@ -121,7 +121,7 @@ La noticia seguirá evolucionando si aparecen nuevas declaraciones, cambios en l
 },
 {
 id:823,
-title:'Masa de aire en España: qué tiempo hará hoy, dónde lloverá y qué zonas tendrán viento fuerte',
+title:'Tiempo en España: lluvias y viento por la masa de aire',
 slug:'masa-aire-espana-tiempo-hoy-21-octubre-2026',
 category:'actualidad',
 excerpt:'La previsión del 21 de octubre apunta a más estabilidad en buena parte de España, lluvias en el norte, rachas muy fuertes de viento y chubascos con tormenta en Canarias.',
@@ -268,7 +268,7 @@ Fuente de actualización: [AEMET, mapas de frentes](https://www.aemet.es/es/elti
 },
 {
 id:824,
-title:'Vasco da Gama 1-3 Boca Juniors: goles, remontada y pase a la final de la Sudamericana',
+title:'Vasco da Gama 1-3 Boca Juniors: goles y remontada',
 slug:'vasco-da-gama-boca-juniors-1-3-goles-final-sudamericana-2026',
 category:'actualidad',
 excerpt:'Boca Juniors ganó 1-3 en Maracaná, remontó la eliminatoria y jugará la final de la Copa Sudamericana 2026 tras un gol decisivo de Leandro Paredes en el minuto 88.',
@@ -403,7 +403,7 @@ El encuentro mostró la diferencia entre el resultado de un partido y el global 
 },
 {
 id:825,
-title:'PSG 4-2 Barcelona: goles, resumen y claves de la derrota azulgrana en Champions',
+title:'PSG 4-2 Barcelona: goles y claves de la derrota',
 slug:'psg-barcelona-4-2-goles-resumen-champions-octubre-2026',
 category:'actualidad',
 excerpt:'El PSG derrotó 4-2 al Barcelona en París en la tercera jornada de Champions. Doué, Hernández, Vitinha y Fabián Ruiz marcaron para los locales.',
