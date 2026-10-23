@@ -2,7 +2,7 @@ import type { Article } from './types'
 
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_7: Article[] = [
 {
-id:819,title:'Terremoto en España: cómo consultar magnitud, epicentro y avisos oficiales',slug:'terremoto-espana-como-consultar-magnitud-epicentro-avisos-2026',category:'actualidad',
+id:819,title:'Terremoto en España: consulta magnitud y avisos',slug:'terremoto-espana-como-consultar-magnitud-epicentro-avisos-2026',category:'actualidad',
 excerpt:'La búsqueda de “terremoto” no identifica por sí sola un seísmo concreto. Aprende a consultar el catálogo del IGN y a interpretar sus datos.',
 image_url:'/images/articles/novedades-tecnologia-2026.svg',thumbnail_url:'/images/articles/novedades-tecnologia-2026.svg',read_time_minutes:6,views:0,trending:1,published_at:'2026-10-20T18:35:00.000Z',
 content:`# Terremoto en España: cómo consultar magnitud, epicentro y avisos oficiales
