@@ -121,7 +121,7 @@ El artículo debe actualizarse cuando haya un dato verificable que cambie lo con
   },
   {
     id: 811,
-    title: 'El beso de Pedro Sánchez y Begoña Gómez: la imagen viral y la polémica política',
+    title: 'El beso de Sánchez y Begoña Gómez: polémica viral',
     slug: 'beso-pedro-sanchez-begona-gomez-imagen-viral-octubre-2026',
     category: 'actualidad',
     excerpt: 'El beso de Pedro Sánchez y Begoña Gómez en un acto del PSOE se viralizó y provocó respuestas cruzadas entre partidos. Contexto, reacciones y claves para entender su impacto político.',
@@ -238,7 +238,7 @@ Una cobertura útil no necesita reproducir insultos ni especular sobre la vida p
   },
   {
     id: 812,
-    title: 'Katrin Ortega y Parauta: por qué la alcaldesa deja el PSOE y qué puede pasar ahora',
+    title: 'Katrin Ortega deja el PSOE: claves del caso Parauta',
     slug: 'katrin-ortega-parauta-alcaldesa-deja-psoe-octubre-2026',
     category: 'actualidad',
     excerpt: 'La alcaldesa de Parauta, Katrin Ortega, y dos concejales han solicitado la baja del PSOE. Claves de la decisión, su mayoría municipal y el futuro político del municipio malagueño.',
