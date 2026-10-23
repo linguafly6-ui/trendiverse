@@ -790,7 +790,7 @@ Comprueba la talla, la versión exacta, el estado de ruedas y frenos, el funcion
 
 No hay un modelo ganador para todo el mundo. La Rockrider Explore 500, Trek Marlin 5, Orbea Onna, Specialized Rockhopper, Giant Talon y Cube Aim son opciones a comparar para montaña recreativa. La Triban RC 500 y la Van Rysel EDR AF se orientan a carretera, mientras que la Trek FX 2 y la Orbea Carpe encajan mejor con ciudad y ejercicio. Antes de comprar, confirma la versión disponible, prueba la talla y calcula el presupuesto completo. La comodidad, la seguridad y el mantenimiento importan tanto como el precio inicial.`
 
-const bicicletasElectricasContent = `# Las 10 mejores bicicletas eléctricas de 2026: comparativa y guía de compra
+const bicicletasElectricasContent = `# Las 10 mejores bicicletas eléctricas de 2026
 
 Las **mejores bicicletas eléctricas** no son necesariamente las que anuncian más autonomía o más potencia. La elección depende del tipo de trayecto, el desnivel, el peso que puedes manejar, la facilidad para cargar la batería y el servicio técnico disponible. Una bicicleta eléctrica urbana necesita comodidad y accesorios prácticos; una e-MTB requiere motor, batería, frenos y suspensiones adecuados al terreno; una plegable prioriza el tamaño y la facilidad de transporte.
 
@@ -999,7 +999,7 @@ Además del mantenimiento habitual de frenos, neumáticos, cadena y transmisión
 
 Para ciudad, compara Orbea Kemen, Specialized Turbo Vado, ENGWE P275 SE y Moma E-Bike 28 Pro. Para montaña, revisa Trek Powerfly, Orbea Rise y Rockrider E-EXPL 100; para rutas mixtas y equipaje, Cube Kathmandu Hybrid puede encajar, mientras que Canyon Grizl:ON está orientada al gravel eléctrico. ENGWE Engine Pro 2.0 exige especial atención al peso, el plegado y la conformidad legal de la versión. Antes de comprar, confirma las especificaciones actuales, prueba la talla y averigua cómo gestionar garantía y reparaciones. Una buena e-bike es la que cubre tu recorrido real con seguridad y soporte a largo plazo.`
 
-const ordenadoresContent = `# Los 10 mejores ordenadores en Amazon España (2026): comparativa y guía de compra
+const ordenadoresContent = `# Los 10 mejores ordenadores en Amazon 2026 de compra
 
 Elegir uno de los **mejores ordenadores en Amazon España** exige algo más que comparar el procesador o buscar el precio más bajo. Un portátil para estudiar, un equipo ligero para trabajar, un ordenador para editar vídeo y un PC gaming tienen prioridades diferentes. También importa la memoria, el almacenamiento, la pantalla, la refrigeración, la garantía y quién vende realmente el producto.
 
@@ -1222,7 +1222,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
   TECLADOS_AMAZON_ARTICLE,
   {
     id: 91001,
-    title: 'Las 10 mejores freidoras de aire en Amazon España (2026): comparativa y guía',
+    title: 'Las 10 mejores freidoras de aire Amazon 2026',
     slug: 'mejores-freidoras-aire-amazon-espana-2026',
     category: 'toptrends',
     excerpt: 'Comparamos 10 freidoras de aire para diferentes cocinas y presupuestos. Descubre qué capacidad, tipo de cesta y funciones revisar antes de comprar en Amazon España.',
@@ -1236,7 +1236,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
   },
   {
     id: 91002,
-    title: 'Las 10 mejores mancuernas para entrenar en casa (2026): comparativa y guía de compra',
+    title: 'Las 10 mejores mancuernas para casa en 2026',
     slug: 'mejores-mancuernas-entrenar-casa-2026',
     category: 'toptrends',
     excerpt: 'Guía de compra de mancuernas ajustables y fijas para entrenar en casa: rangos de peso, cierres, espacio, seguridad y modelos para distintos presupuestos.',
