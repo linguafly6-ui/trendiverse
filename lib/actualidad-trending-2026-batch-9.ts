@@ -3,7 +3,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_9: Article[] = [
   {
     id: 826,
-    title: 'Ley de nietos: qué ocurre con el voto de los españoles residentes en el extranjero',
+    title: 'Ley de nietos: voto de españoles en el extranjero',
     slug: 'ley-nietos-voto-espanoles-extranjero-constitucional-octubre-2026',
     category: 'actualidad',
     excerpt: 'El Constitucional estudia el recurso sobre el derecho al voto de ciudadanos nacionalizados por la ley de nietos. Claves del conflicto, plazos y qué está confirmado.',
