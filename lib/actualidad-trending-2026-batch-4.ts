@@ -129,7 +129,7 @@ El artículo debe actualizarse cuando haya un dato verificable que cambie lo con
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-20T17:01:00.000Z',
-    content: `# El beso de Pedro Sánchez y Begoña Gómez: la imagen viral y la polémica política
+    content: `# El beso de Sánchez y Begoña Gómez: polémica viral
 
 El beso de **Pedro Sánchez y Begoña Gómez** se convirtió en una de las imágenes políticas más comentadas en España en octubre de 2026. La escena, difundida durante un acto del PSOE, saltó de la cobertura del mitin a las redes sociales y dio pie a mensajes de apoyo, memes y respuestas de adversarios políticos. La tendencia «beso Pedro Sánchez» refleja cómo un instante personal puede adquirir una lectura electoral cuando ocurre en plena precampaña.
 
@@ -246,7 +246,7 @@ Una cobertura útil no necesita reproducir insultos ni especular sobre la vida p
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-20T17:02:00.000Z',
-    content: `# Katrin Ortega y Parauta: por qué la alcaldesa deja el PSOE y qué puede pasar ahora
+    content: `# Katrin Ortega deja el PSOE: claves del caso Parauta
 
 La alcaldesa de **Parauta (Málaga), Katrin Ortega**, se convirtió en tendencia el 20 de octubre de 2026 tras conocerse que había solicitado la baja como militante del PSOE. La decisión también afecta a otros dos concejales del equipo municipal, Juan Jesús Sánchez y Adelaida Becerra. El movimiento llama la atención por el respaldo electoral que obtuvo Ortega en 2023 y por el peso que la localidad tiene en la política de la Serranía de Ronda.
 
