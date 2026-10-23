@@ -11,7 +11,7 @@ export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_9: Article[] = [
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 8, views: 0, trending: 1,
     published_at: '2026-10-21T07:34:00.000Z',
-    content: `# Ley de nietos: qué ocurre con el voto de los españoles residentes en el extranjero
+    content: `# Ley de nietos: voto de españoles en el extranjero
 
 La llamada **ley de nietos** vuelve a la actualidad por la controversia sobre el derecho al voto de ciudadanos que obtuvieron la nacionalidad española mediante la Ley de Memoria Democrática y viven fuera de España. La discusión judicial se centra en su inclusión en el censo electoral y en el alcance de las decisiones adoptadas durante el procedimiento. No todas las personas nacionalizadas por esta vía se encuentran necesariamente en la misma situación administrativa.
 
