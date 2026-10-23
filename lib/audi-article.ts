@@ -117,7 +117,7 @@ Si estás pensando en comprar un coche nuevo, lo más recomendable es probar var
 export const AUDI_ARTICLES: Article[] = [
   {
     id: 11,
-    title: 'Últimas novedades de Audi 2026: nuevos modelos, eléctricos, tecnología y Fórmula 1',
+    title: 'Audi 2026: nuevos modelos, eléctricos y tecnología',
     slug: 'novedades-audi-2026',
     category: 'coches',
     excerpt: 'Repasamos las últimas novedades de Audi: eléctricos Q6 e-tron y A6 e-tron, nuevos A5 y Q5, tecnología, Concept C y su debut en la Fórmula 1.',
