@@ -1250,7 +1250,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
   },
   {
     id: 91003,
-    title: 'Las 10 mejores bicicletas de 2026: comparativa y guía de compra',
+    title: 'Las 10 mejores bicicletas de 2026',
     slug: 'mejores-bicicletas-2026',
     category: 'toptrends',
     excerpt: 'Comparamos diez bicicletas de montaña, carretera, ciudad y fitness para ayudarte a elegir según tu terreno, talla, presupuesto y necesidades de mantenimiento.',
@@ -1264,7 +1264,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
   },
   {
     id: 91005,
-    title: 'Los 10 mejores ordenadores en Amazon España (2026): comparativa y guía',
+    title: 'Los 10 mejores ordenadores en Amazon 2026',
     slug: 'mejores-ordenadores-amazon-espana-2026',
     category: 'toptrends',
     excerpt: 'Comparamos diez ordenadores para estudiar, trabajar, jugar y montar un escritorio compacto, con consejos para revisar RAM, SSD, pantalla, garantía y vendedor en Amazon España.',
@@ -1278,7 +1278,7 @@ export const TOPTRENDS_ARTICLES: Article[] = [
   },
   {
     id: 91004,
-    title: 'Las 10 mejores bicicletas eléctricas de 2026: comparativa y guía de compra',
+    title: 'Las 10 mejores bicicletas eléctricas de 2026',
     slug: 'mejores-bicicletas-electricas-2026',
     category: 'toptrends',
     excerpt: 'Guía de compra de bicicletas eléctricas urbanas, MTB, trekking y gravel: autonomía real, motor, batería, peso, normativa española y servicio técnico.',
