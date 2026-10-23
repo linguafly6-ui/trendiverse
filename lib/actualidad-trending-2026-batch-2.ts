@@ -12,7 +12,7 @@ export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_2: Article[] = [
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 11, views: 0, trending: 1,
     published_at: '2026-10-20T15:10:00.000Z',
-    content: `# Cafeína: cuánto es demasiado, efectos, sueño y recomendaciones para consumirla
+    content: `# Cafeína: dosis, efectos y recomendaciones
 
 La búsqueda de **cafeína** figura entre las tendencias españolas del 20 de octubre de 2026, con un volumen indicado de más de 20.000 consultas. El término puede responder a varias necesidades: saber cuánta cafeína tiene un café, entender por qué cuesta dormir después de tomarlo, comparar bebidas energéticas o conocer los límites de consumo que han evaluado las autoridades sanitarias. En lugar de reducir la cuestión a una cifra universal, conviene considerar la dosis, la hora, el peso, la sensibilidad individual y todas las fuentes que se consumen durante el día.
 
@@ -138,7 +138,7 @@ La cafeína puede aumentar temporalmente el estado de alerta, pero el efecto dep
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 10, views: 0, trending: 1,
     published_at: '2026-10-20T15:15:00.000Z',
-    content: `# Muere Gustavo Oliva, referente del pádel catalán: trayectoria y legado deportivo
+    content: `# Muere Gustavo Oliva, referente del pádel catalán
 
 La muerte de **Gustavo Oliva**, jugador y entrenador vinculado al pádel catalán, se convirtió en una de las tendencias deportivas en España el 20 de octubre de 2026. Oliva falleció el lunes 19 de octubre a los 58 años, tras una enfermedad oncológica avanzada. En los días previos había compartido una carta de despedida en redes sociales, en la que agradecía el apoyo de sus seres queridos y animaba a no descuidar las revisiones médicas.
 
@@ -254,7 +254,7 @@ La forma más respetuosa de recordar a un referente es documentar lo que hizo y 
     thumbnail_url: '/images/articles/novedades-tecnologia-2026.svg',
     read_time_minutes: 10, views: 0, trending: 1,
     published_at: '2026-10-20T15:20:00.000Z',
-    content: `# Mayoría absoluta en España: cuántos escaños hacen falta y qué dicen las encuestas
+    content: `# Mayoría absoluta en España: escaños necesarios
 
 La expresión **«mayoría absoluta»** se situó entre las tendencias de España el 20 de octubre de 2026, en un contexto marcado por la convocatoria de elecciones generales para el 29 de noviembre y la publicación de sondeos con escenarios distintos. La expresión aparece a menudo en titulares, pero puede tener significados diferentes según se hable de una votación parlamentaria, una investidura o la mayoría de concejales en un ayuntamiento.
 
