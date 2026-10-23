@@ -3,7 +3,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_12: Article[] = [
   {
     id: 831,
-    title: 'Vulnerabilidades críticas en PHP: qué versiones actualizar y cómo proteger una web',
+    title: 'PHP: vulnerabilidades críticas y versiones que actualizar',
     slug: 'vulnerabilidades-php-cve-2026-109618-109619-actualizar',
     category: 'actualidad',
     excerpt: 'PHP ha publicado parches para dos fallos críticos que podrían permitir ejecución remota de código. Versiones corregidas, pasos de actualización y medidas para administradores.',
@@ -88,7 +88,7 @@ No necesariamente. La vulnerabilidad indica riesgo, no confirma una intrusión. 
   },
   {
     id: 832,
-    title: 'Anthropic pierde 80.700 millones de dólares sobre el papel: qué revelan sus cuentas',
+    title: 'Anthropic pierde 80.700 millones en valoración: las claves',
     slug: 'anthropic-perdidas-80700-millones-ingresos-ia-2026',
     category: 'actualidad',
     excerpt: 'El borrador de folleto de Anthropic refleja pérdidas extraordinarias en el primer semestre, en gran parte por ajustes contables, junto con un fuerte crecimiento de ingresos y un enorme gasto en infraestructura.',
@@ -166,7 +166,7 @@ Una concentración alta puede hacer que los ingresos sean más sensibles a la p�
   },
   {
     id: 833,
-    title: 'Ayudas por los incendios de Extremadura: qué recoge el decreto publicado en el BOE',
+    title: 'Ayudas por incendios en Extremadura: claves del decreto',
     slug: 'ayudas-incendios-extremadura-2026-decreto-boe-requisitos',
     category: 'actualidad',
     excerpt: 'El BOE publica el decreto extremeño de ayudas para recuperar zonas afectadas por los incendios del verano de 2026. Repasamos los sectores afectados, los daños contemplados y cómo comprobar los requisitos.',
