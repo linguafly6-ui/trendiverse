@@ -3,7 +3,7 @@ import type { Article } from './types'
 export const ACTUALIDAD_TRENDING_ARTICLES_BATCH_10: Article[] = [
   {
     id: 828,
-    title: 'Trump acusa a España de no actuar ante la crisis migratoria de Ceuta: qué se sabe',
+    title: 'Trump acusa a España por la crisis migratoria de Ceuta',
     slug: 'trump-espana-crisis-migratoria-ceuta-declaraciones-octubre-2026',
     category: 'actualidad',
     excerpt: 'Donald Trump usó la entrada masiva en Ceuta para criticar la política migratoria española. Contrastamos sus declaraciones con los datos publicados y el contexto europeo.',
@@ -88,7 +88,7 @@ La forma más rigurosa de entender la controversia es distinguir entre el cruce 
   },
   {
     id: 829,
-    title: 'DANA Adam: balance de las inundaciones, daños y recuperación en Valencia y Alicante',
+    title: 'DANA Adam: daños e inundaciones en Valencia y Alicante',
     slug: 'dana-adam-inundaciones-valencia-alicante-balance-ayudas-octubre-2026',
     category: 'actualidad',
     excerpt: 'La DANA Adam deja lluvias excepcionales, evacuaciones y daños en el litoral valenciano y alicantino. Qué se sabe del balance, las carreteras y las ayudas anunciadas.',
