@@ -122,7 +122,7 @@ Antes de reenviar una publicación sobre el fallecimiento, comprueba si enlaza c
   },
   {
     id: 817,
-    title: 'La bola negra: de qué trata la película de Los Javis y por qué arrasa en taquilla',
+    title: 'La bola negra: trama y éxito de la película de Los Javis',
     slug: 'la-bola-negra-pelicula-los-javis-trama-reparto-taquilla-2026',
     category: 'actualidad',
     excerpt: 'La película de Javier Calvo y Javier Ambrossi se ha convertido en uno de los grandes éxitos españoles de 2026. Trama, reparto, relación con Lorca y cifras de taquilla publicadas.',
@@ -238,7 +238,7 @@ La relación con Lorca, la representación de identidades y la recepción del p�
   },
   {
     id: 818,
-    title: 'Francisco Rivera habla de Tana y Roca Rey: qué ha confirmado sobre la ruptura',
+    title: 'Francisco Rivera habla de Tana y Roca Rey',
     slug: 'francisco-rivera-tana-roca-rey-ruptura-octubre-2026',
     category: 'actualidad',
     excerpt: 'Francisco Rivera ha hablado sobre la ruptura de su hija Tana Rivera y el torero Andrés Roca Rey. Qué dijo, qué se ha publicado y qué aspectos de su vida privada siguen sin confirmar.',
