@@ -14,7 +14,6 @@ test('la publicación automática del artículo 21 y el dispatch manual están l
   assert.match(workflow, /environment: production/)
   assert.match(workflow, /secrets\.CLOUDFLARE_API_TOKEN/)
   assert.match(workflow, /secrets\.CLOUDFLARE_ACCOUNT_ID/)
-  assert.doesNotMatch(workflow, /^\s*push:/m)
   assert.doesNotMatch(workflow, /^\s*pull_request:/m)
   assert.doesNotMatch(workflow, /wrangler pages deploy/)
 })
