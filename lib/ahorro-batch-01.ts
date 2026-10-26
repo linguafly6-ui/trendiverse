@@ -6,7 +6,7 @@ export const AHORRO_BATCH_01_ARTICLES: Article[] = [
     id: 301,
     title: 'Cómo ahorrar dinero cada mes: plan práctico para empezar',
     slug: 'como-ahorrar-dinero-cada-mes',
-    category: 'Ahorro y finanzas personales',
+    category: 'ahorro',
     excerpt: 'Una guía práctica para organizar tus ingresos, detectar gastos que puedes reducir y crear un hábito de ahorro mensual realista, incluso si tu presupuesto es ajustado o tus ingresos cambian.',
     image_url: '/images/article-placeholder.svg',
     thumbnail_url: '/images/article-placeholder.svg',
