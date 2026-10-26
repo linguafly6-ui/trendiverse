@@ -27,7 +27,7 @@ test('article image endpoint escapes untrusted title and uses fallback palette f
 })
 
 
-test('article image helper uses vector SVG fallback for the blank electricity-saving hero', async () => {
+test('article image helper selects the high-quality WebP for the electricity-saving hero', async () => {
   const { articleImageUrl } = await import('../lib/article-images')
   const url = articleImageUrl({
     slug: 'como-ahorrar-electricidad-en-casa-sin-obras',
@@ -36,7 +36,7 @@ test('article image helper uses vector SVG fallback for the blank electricity-sa
     image_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
     thumbnail_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
   })
-  assert.equal(url, '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg')
+  assert.equal(url, '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp')
 })
 
 test('article image helper prefers a stored HTTPS article image over the generic fallback', async () => {
