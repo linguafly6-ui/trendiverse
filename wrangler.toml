@@ -3,17 +3,11 @@ compatibility_date = "2024-10-04"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# D1 is optional for local/demo mode. The app falls back to sample data when no DB binding is present.
-
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "trendiverse-db"
-# database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-# migrations_dir = "migrations"
-
-# [[kv_namespaces]]
-# binding = "CACHE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+[[d1_databases]]
+binding = "DB"
+database_name = "trendiverse-preview"
+database_id = "2bb04eb3-9f3f-40b3-a6ed-b1f58dc9107f"
+migrations_dir = "migrations"
 
 [vars]
 ENVIRONMENT = "production"

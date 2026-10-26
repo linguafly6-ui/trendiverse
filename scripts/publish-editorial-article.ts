@@ -6,7 +6,7 @@ import { extname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { SAMPLE_ARTICLES } from '../lib/db'
 
-const DATABASE = 'trendiverse-db'
+const DATABASE = 'trendiverse-preview'
 const BUCKET = process.env.R2_BUCKET ?? 'trendiverse-articles'
 const PUBLIC_BASE_URL = (process.env.R2_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 const ROOT = process.cwd()
