@@ -36,8 +36,7 @@ test('article image helper uses vector SVG fallback for the blank electricity-sa
     image_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
     thumbnail_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
   })
-  assert.ok(url.startsWith('/api/article-image?'))
-  assert.ok(url.includes('slug=como-ahorrar-electricidad-en-casa-sin-obras'))
+  assert.equal(url, '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg')
 })
 
 test('article image helper prefers a stored HTTPS article image over the generic fallback', async () => {
