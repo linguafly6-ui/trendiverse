@@ -14,7 +14,7 @@ test('el artículo 21 del plan editorial tiene metadatos y contenido completos',
   assert.ok(article.title)
   assert.ok(article.excerpt)
   assert.ok(article.content)
-  assert.ok(article.content.trim().split(/\\s+/).length >= 2000, 'el artículo debe superar 2.000 palabras')
+  assert.ok(article.content.trim().split(/\s+/).length >= 2000, 'el artículo debe superar 2.000 palabras')
   assert.equal(article.image_url, '/images/article-placeholder.svg')
   assert.equal(article.thumbnail_url, '/images/article-placeholder.svg')
   assert.ok(article.read_time_minutes && article.read_time_minutes > 0)
