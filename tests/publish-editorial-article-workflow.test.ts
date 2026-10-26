@@ -8,6 +8,8 @@ const script = readFileSync(join(process.cwd(), 'scripts/publish-editorial-artic
 
 test('la publicación editorial es manual y solo desde main', () => {
   assert.match(workflow, /workflow_dispatch:/)
+  assert.match(workflow, /push:/)
+  assert.match(workflow, /lib\\/seo-batch-04\\.ts/)
   assert.match(workflow, /github\.ref == 'refs\/heads\/main'/)
   assert.match(workflow, /environment: production/)
   assert.match(workflow, /secrets\.CLOUDFLARE_API_TOKEN/)
