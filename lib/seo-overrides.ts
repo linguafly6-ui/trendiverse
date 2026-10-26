@@ -64,6 +64,10 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
     title: 'Calendario Black Friday y ofertas otoño 2026',
     description: 'Fechas de las ofertas de otoño, el 11.11 y el Black Friday 2026, y qué categorías bajan más en cada momento de la temporada.',
   },
+  'que-frutas-y-verduras-son-de-temporada-en-invierno': {
+    title: 'Frutas y verduras de invierno: calendario',
+    description: 'Qué frutas y verduras son de temporada en diciembre, enero y febrero en España. Calendario orientativo, conservación y recetas sencillas.',
+  },
   'guia-analisis-chollos-ecommerce-espana-2026': {
     title: 'Dónde comprar barato online en 2026',
     description: 'Amazon, PcComponentes, AliExpress Plaza, MediaMarkt y El Corte Inglés: dónde ahorrar según la categoría y cómo saber si un descuento es real.',
