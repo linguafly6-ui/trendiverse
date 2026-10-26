@@ -11,6 +11,7 @@ import { SEO_BATCH_02_ARTICLES } from '../lib/seo-batch-02'
 import { SEO_BATCH_03_ARTICLES } from '../lib/seo-batch-03'
 import { SEO_BATCH_04_ARTICLES } from '../lib/seo-batch-04'
 import { SEO_BATCH_05_ARTICLES } from '../lib/seo-batch-05'
+import { AHORRO_BATCH_01_ARTICLES } from '../lib/ahorro-batch-01'
 import { ACTUALIDAD_TRENDING_ARTICLES_2026 } from '../lib/actualidad-trending-2026'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_12 } from '../lib/actualidad-trending-2026-batch-12'
 import { ACTUALIDAD_TRENDING_ARTICLES_BATCH_11 } from '../lib/actualidad-trending-2026-batch-11'
@@ -369,7 +370,7 @@ test('empty D1 still serves editorial content', async () => {
   setEnvResolverForTests(() => ({ DB: db as never }))
   const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_12, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_11, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_10, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_9, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_8, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_7, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...OCTOBER_2026_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...SEO_BATCH_01_ARTICLES, ...SEO_BATCH_02_ARTICLES, ...SEO_BATCH_03_ARTICLES, ...SEO_BATCH_04_ARTICLES, ...SEO_BATCH_05_ARTICLES].map((a) => a.slug)).size)
+  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_12, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_11, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_10, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_9, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_8, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_7, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...OCTOBER_2026_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...SEO_BATCH_01_ARTICLES, ...SEO_BATCH_02_ARTICLES, ...SEO_BATCH_03_ARTICLES, ...SEO_BATCH_04_ARTICLES, ...SEO_BATCH_05_ARTICLES, ...AHORRO_BATCH_01_ARTICLES].map((a) => a.slug)).size)
 })
 
 
@@ -446,4 +447,13 @@ test('gaming trend articles are classified under technology', async () => {
   const categoryArticles = await getArticles({ category: 'tecnologia', limit: 10 })
   assert.ok(categoryArticles.length >= 5)
   assert.ok(GAMING_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
+})
+
+
+test('ahorro SEO batch 01 has a complete long-form article and unique slug', () => {
+  assert.equal(AHORRO_BATCH_01_ARTICLES.length, 1)
+  const article = AHORRO_BATCH_01_ARTICLES[0]
+  assert.equal(article.slug, 'como-ahorrar-dinero-cada-mes')
+  assert.ok(article.title && article.excerpt && article.category)
+  assert.ok((article.content.match(/\\b[\\p{L}\\p{N}]+\\b/gu) ?? []).length >= 2000)
 })
