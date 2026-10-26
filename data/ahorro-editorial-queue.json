@@ -6,7 +6,8 @@
     "keyword": "cómo ahorrar dinero cada mes",
     "cluster": "Ahorro básico y métodos",
     "intent": "Informativa / práctica",
-    "angle": "Media: añadir ejemplos verificables y contexto España"
+    "angle": "Media: añadir ejemplos verificables y contexto España",
+    "alreadyBundled": true
   },
   {
     "id": 2,
