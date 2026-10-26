@@ -1,0 +1,4502 @@
+[
+  {
+    "id": 1,
+    "title": "Cómo ahorrar dinero cada mes",
+    "slug": "como-ahorrar-dinero-cada-mes",
+    "keyword": "cómo ahorrar dinero cada mes",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 2,
+    "title": "Cómo empezar a ahorrar desde cero",
+    "slug": "como-empezar-a-ahorrar-desde-cero",
+    "keyword": "cómo empezar a ahorrar desde cero",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 3,
+    "title": "Cómo ahorrar con pocos ingresos",
+    "slug": "como-ahorrar-con-pocos-ingresos",
+    "keyword": "cómo ahorrar con pocos ingresos",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 4,
+    "title": "Cómo ahorrar dinero rápido sin endeudarse",
+    "slug": "como-ahorrar-dinero-rapido-sin-endeudarse",
+    "keyword": "cómo ahorrar dinero rápido sin endeudarse",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 5,
+    "title": "Métodos de ahorro que funcionan",
+    "slug": "metodos-de-ahorro-que-funcionan",
+    "keyword": "métodos de ahorro que funcionan",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 6,
+    "title": "Regla 50 30 20 para organizar el dinero",
+    "slug": "regla-50-30-20-para-organizar-el-dinero",
+    "keyword": "regla 50 30 20 para organizar el dinero",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 7,
+    "title": "Método de los sobres para ahorrar",
+    "slug": "metodo-de-los-sobres-para-ahorrar",
+    "keyword": "método de los sobres para ahorrar",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 8,
+    "title": "Reto de ahorro de 30 días",
+    "slug": "reto-de-ahorro-de-30-dias",
+    "keyword": "reto de ahorro de 30 días",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 9,
+    "title": "Reto de ahorro de 52 semanas",
+    "slug": "reto-de-ahorro-de-52-semanas",
+    "keyword": "reto de ahorro de 52 semanas",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 10,
+    "title": "Cómo crear el hábito de ahorrar",
+    "slug": "como-crear-el-habito-de-ahorrar",
+    "keyword": "cómo crear el hábito de ahorrar",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 11,
+    "title": "Cuánto dinero debería ahorrar al mes",
+    "slug": "cuanto-dinero-deberia-ahorrar-al-mes",
+    "keyword": "cuánto dinero debería ahorrar al mes",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 12,
+    "title": "Qué porcentaje del sueldo ahorrar",
+    "slug": "que-porcentaje-del-sueldo-ahorrar",
+    "keyword": "qué porcentaje del sueldo ahorrar",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 13,
+    "title": "Cómo ahorrar sin dejar de vivir",
+    "slug": "como-ahorrar-sin-dejar-de-vivir",
+    "keyword": "cómo ahorrar sin dejar de vivir",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 14,
+    "title": "Cómo ahorrar cuando los gastos son altos",
+    "slug": "como-ahorrar-cuando-los-gastos-son-altos",
+    "keyword": "cómo ahorrar cuando los gastos son altos",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 15,
+    "title": "Cómo ahorrar si cobro a final de mes",
+    "slug": "como-ahorrar-si-cobro-a-final-de-mes",
+    "keyword": "cómo ahorrar si cobro a final de mes",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 16,
+    "title": "Cómo ahorrar con ingresos variables",
+    "slug": "como-ahorrar-con-ingresos-variables",
+    "keyword": "cómo ahorrar con ingresos variables",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 17,
+    "title": "Cómo ahorrar siendo mileurista",
+    "slug": "como-ahorrar-siendo-mileurista",
+    "keyword": "cómo ahorrar siendo mileurista",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 18,
+    "title": "Cómo ahorrar dinero en pareja",
+    "slug": "como-ahorrar-dinero-en-pareja",
+    "keyword": "cómo ahorrar dinero en pareja",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 19,
+    "title": "Cómo ahorrar viviendo solo",
+    "slug": "como-ahorrar-viviendo-solo",
+    "keyword": "cómo ahorrar viviendo solo",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 20,
+    "title": "Cómo ahorrar si tengo hijos",
+    "slug": "como-ahorrar-si-tengo-hijos",
+    "keyword": "cómo ahorrar si tengo hijos",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 21,
+    "title": "Errores comunes al intentar ahorrar",
+    "slug": "errores-comunes-al-intentar-ahorrar",
+    "keyword": "errores comunes al intentar ahorrar",
+    "cluster": "Ahorro básico y métodos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 22,
+    "title": "Cómo hacer un presupuesto familiar mensual",
+    "slug": "como-hacer-un-presupuesto-familiar-mensual",
+    "keyword": "cómo hacer un presupuesto familiar mensual",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 23,
+    "title": "Plantilla de presupuesto mensual para casa",
+    "slug": "plantilla-de-presupuesto-mensual-para-casa",
+    "keyword": "plantilla de presupuesto mensual para casa",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 24,
+    "title": "Cómo controlar los gastos diarios",
+    "slug": "como-controlar-los-gastos-diarios",
+    "keyword": "cómo controlar los gastos diarios",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 25,
+    "title": "Cómo identificar gastos hormiga",
+    "slug": "como-identificar-gastos-hormiga",
+    "keyword": "cómo identificar gastos hormiga",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 26,
+    "title": "Cómo reducir gastos fijos mensuales",
+    "slug": "como-reducir-gastos-fijos-mensuales",
+    "keyword": "cómo reducir gastos fijos mensuales",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 27,
+    "title": "Cómo organizar las cuentas del hogar",
+    "slug": "como-organizar-las-cuentas-del-hogar",
+    "keyword": "cómo organizar las cuentas del hogar",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 28,
+    "title": "Presupuesto mensual con sueldo de 1000 euros",
+    "slug": "presupuesto-mensual-con-sueldo-de-1000-euros",
+    "keyword": "presupuesto mensual con sueldo de 1000 euros",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 29,
+    "title": "Presupuesto mensual con sueldo de 1500 euros",
+    "slug": "presupuesto-mensual-con-sueldo-de-1500-euros",
+    "keyword": "presupuesto mensual con sueldo de 1500 euros",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 30,
+    "title": "Presupuesto mensual con sueldo de 2000 euros",
+    "slug": "presupuesto-mensual-con-sueldo-de-2000-euros",
+    "keyword": "presupuesto mensual con sueldo de 2000 euros",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 31,
+    "title": "Cómo repartir el sueldo al cobrar",
+    "slug": "como-repartir-el-sueldo-al-cobrar",
+    "keyword": "cómo repartir el sueldo al cobrar",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 32,
+    "title": "Cómo revisar los gastos bancarios",
+    "slug": "como-revisar-los-gastos-bancarios",
+    "keyword": "cómo revisar los gastos bancarios",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 33,
+    "title": "Aplicaciones para controlar gastos personales",
+    "slug": "aplicaciones-para-controlar-gastos-personales",
+    "keyword": "aplicaciones para controlar gastos personales",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 34,
+    "title": "Excel para controlar gastos e ingresos",
+    "slug": "excel-para-controlar-gastos-e-ingresos",
+    "keyword": "excel para controlar gastos e ingresos",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 35,
+    "title": "Cómo llevar un registro de gastos en efectivo",
+    "slug": "como-llevar-un-registro-de-gastos-en-efectivo",
+    "keyword": "cómo llevar un registro de gastos en efectivo",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 36,
+    "title": "Cómo hacer un presupuesto si los ingresos cambian",
+    "slug": "como-hacer-un-presupuesto-si-los-ingresos-cambian",
+    "keyword": "cómo hacer un presupuesto si los ingresos cambian",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 37,
+    "title": "Cómo planificar gastos anuales",
+    "slug": "como-planificar-gastos-anuales",
+    "keyword": "cómo planificar gastos anuales",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 38,
+    "title": "Cómo crear un calendario de pagos",
+    "slug": "como-crear-un-calendario-de-pagos",
+    "keyword": "cómo crear un calendario de pagos",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 39,
+    "title": "Cómo separar gastos necesarios y caprichos",
+    "slug": "como-separar-gastos-necesarios-y-caprichos",
+    "keyword": "cómo separar gastos necesarios y caprichos",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 40,
+    "title": "Cómo reducir compras impulsivas",
+    "slug": "como-reducir-compras-impulsivas",
+    "keyword": "cómo reducir compras impulsivas",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 41,
+    "title": "Cómo revisar las suscripciones que pago",
+    "slug": "como-revisar-las-suscripciones-que-pago",
+    "keyword": "cómo revisar las suscripciones que pago",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 42,
+    "title": "Presupuesto familiar con dos sueldos",
+    "slug": "presupuesto-familiar-con-dos-sueldos",
+    "keyword": "presupuesto familiar con dos sueldos",
+    "cluster": "Presupuesto y control de gastos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 43,
+    "title": "Cómo ahorrar en la cesta de la compra",
+    "slug": "como-ahorrar-en-la-cesta-de-la-compra",
+    "keyword": "cómo ahorrar en la cesta de la compra",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 44,
+    "title": "Cómo hacer una lista de la compra económica",
+    "slug": "como-hacer-una-lista-de-la-compra-economica",
+    "keyword": "cómo hacer una lista de la compra económica",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 45,
+    "title": "Menú semanal barato para ahorrar dinero",
+    "slug": "menu-semanal-barato-para-ahorrar-dinero",
+    "keyword": "menú semanal barato para ahorrar dinero",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 46,
+    "title": "Cómo planificar comidas para gastar menos",
+    "slug": "como-planificar-comidas-para-gastar-menos",
+    "keyword": "cómo planificar comidas para gastar menos",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 47,
+    "title": "Cómo comparar precios por kilo en el supermercado",
+    "slug": "como-comparar-precios-por-kilo-en-el-supermercado",
+    "keyword": "cómo comparar precios por kilo en el supermercado",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 48,
+    "title": "Marcas blancas que ayudan a ahorrar en la compra",
+    "slug": "marcas-blancas-que-ayudan-a-ahorrar-en-la-compra",
+    "keyword": "marcas blancas que ayudan a ahorrar en la compra",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 49,
+    "title": "Cómo ahorrar comprando productos de temporada",
+    "slug": "como-ahorrar-comprando-productos-de-temporada",
+    "keyword": "cómo ahorrar comprando productos de temporada",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 50,
+    "title": "Cómo evitar el desperdicio de comida en casa",
+    "slug": "como-evitar-el-desperdicio-de-comida-en-casa",
+    "keyword": "cómo evitar el desperdicio de comida en casa",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 51,
+    "title": "Cómo aprovechar las sobras de forma segura",
+    "slug": "como-aprovechar-las-sobras-de-forma-segura",
+    "keyword": "cómo aprovechar las sobras de forma segura",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 52,
+    "title": "Cómo congelar alimentos para ahorrar dinero",
+    "slug": "como-congelar-alimentos-para-ahorrar-dinero",
+    "keyword": "cómo congelar alimentos para ahorrar dinero",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 53,
+    "title": "Cómo ahorrar en productos de limpieza",
+    "slug": "como-ahorrar-en-productos-de-limpieza",
+    "keyword": "cómo ahorrar en productos de limpieza",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 54,
+    "title": "Cómo ahorrar en pañales y productos para bebés",
+    "slug": "como-ahorrar-en-panales-y-productos-para-bebes",
+    "keyword": "cómo ahorrar en pañales y productos para bebés",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 55,
+    "title": "Cómo ahorrar en comida para mascotas",
+    "slug": "como-ahorrar-en-comida-para-mascotas",
+    "keyword": "cómo ahorrar en comida para mascotas",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 56,
+    "title": "Cómo comprar al por mayor sin gastar de más",
+    "slug": "como-comprar-al-por-mayor-sin-gastar-de-mas",
+    "keyword": "cómo comprar al por mayor sin gastar de más",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 57,
+    "title": "Cómo aprovechar ofertas sin comprar de más",
+    "slug": "como-aprovechar-ofertas-sin-comprar-de-mas",
+    "keyword": "cómo aprovechar ofertas sin comprar de más",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 58,
+    "title": "Cómo planificar la compra mensual de alimentos",
+    "slug": "como-planificar-la-compra-mensual-de-alimentos",
+    "keyword": "cómo planificar la compra mensual de alimentos",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 59,
+    "title": "Cómo ahorrar en desayunos y meriendas",
+    "slug": "como-ahorrar-en-desayunos-y-meriendas",
+    "keyword": "cómo ahorrar en desayunos y meriendas",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 60,
+    "title": "Recetas económicas para toda la semana",
+    "slug": "recetas-economicas-para-toda-la-semana",
+    "keyword": "recetas económicas para toda la semana",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 61,
+    "title": "Cómo reducir el gasto en bebidas y café",
+    "slug": "como-reducir-el-gasto-en-bebidas-y-cafe",
+    "keyword": "cómo reducir el gasto en bebidas y café",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 62,
+    "title": "Cómo ahorrar en comida para una familia numerosa",
+    "slug": "como-ahorrar-en-comida-para-una-familia-numerosa",
+    "keyword": "cómo ahorrar en comida para una familia numerosa",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 63,
+    "title": "Cómo comparar supermercados por precio",
+    "slug": "como-comparar-supermercados-por-precio",
+    "keyword": "cómo comparar supermercados por precio",
+    "cluster": "Compra, supermercado y alimentación",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 64,
+    "title": "Cómo ahorrar en la factura de la luz",
+    "slug": "como-ahorrar-en-la-factura-de-la-luz",
+    "keyword": "cómo ahorrar en la factura de la luz",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 65,
+    "title": "Cómo reducir el consumo eléctrico en casa",
+    "slug": "como-reducir-el-consumo-electrico-en-casa",
+    "keyword": "cómo reducir el consumo eléctrico en casa",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 66,
+    "title": "Cómo ahorrar electricidad en invierno",
+    "slug": "como-ahorrar-electricidad-en-invierno",
+    "keyword": "cómo ahorrar electricidad en invierno",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 67,
+    "title": "Cómo ahorrar electricidad en verano",
+    "slug": "como-ahorrar-electricidad-en-verano",
+    "keyword": "cómo ahorrar electricidad en verano",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 68,
+    "title": "Qué electrodomésticos gastan más luz",
+    "slug": "que-electrodomesticos-gastan-mas-luz",
+    "keyword": "qué electrodomésticos gastan más luz",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 69,
+    "title": "Cómo ahorrar usando la lavadora",
+    "slug": "como-ahorrar-usando-la-lavadora",
+    "keyword": "cómo ahorrar usando la lavadora",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 70,
+    "title": "Cómo ahorrar con el lavavajillas",
+    "slug": "como-ahorrar-con-el-lavavajillas",
+    "keyword": "cómo ahorrar con el lavavajillas",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 71,
+    "title": "Cómo ahorrar con el frigorífico",
+    "slug": "como-ahorrar-con-el-frigorifico",
+    "keyword": "cómo ahorrar con el frigorífico",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 72,
+    "title": "Cómo ahorrar usando el horno",
+    "slug": "como-ahorrar-usando-el-horno",
+    "keyword": "cómo ahorrar usando el horno",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 73,
+    "title": "Cómo reducir el consumo del aire acondicionado",
+    "slug": "como-reducir-el-consumo-del-aire-acondicionado",
+    "keyword": "cómo reducir el consumo del aire acondicionado",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 74,
+    "title": "Cómo ahorrar con la calefacción eléctrica",
+    "slug": "como-ahorrar-con-la-calefaccion-electrica",
+    "keyword": "cómo ahorrar con la calefacción eléctrica",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 75,
+    "title": "Cómo ajustar el termostato para ahorrar",
+    "slug": "como-ajustar-el-termostato-para-ahorrar",
+    "keyword": "cómo ajustar el termostato para ahorrar",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 76,
+    "title": "Cómo interpretar la factura eléctrica",
+    "slug": "como-interpretar-la-factura-electrica",
+    "keyword": "cómo interpretar la factura eléctrica",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 77,
+    "title": "Cómo saber si tengo la potencia contratada adecuada",
+    "slug": "como-saber-si-tengo-la-potencia-contratada-adecuada",
+    "keyword": "cómo saber si tengo la potencia contratada adecuada",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 78,
+    "title": "Cómo comparar tarifas de luz para ahorrar",
+    "slug": "como-comparar-tarifas-de-luz-para-ahorrar",
+    "keyword": "cómo comparar tarifas de luz para ahorrar",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 79,
+    "title": "Qué significa discriminación horaria en la luz",
+    "slug": "que-significa-discriminacion-horaria-en-la-luz",
+    "keyword": "qué significa discriminación horaria en la luz",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 80,
+    "title": "Cómo aprovechar las horas valle",
+    "slug": "como-aprovechar-las-horas-valle",
+    "keyword": "cómo aprovechar las horas valle",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 81,
+    "title": "Cómo ahorrar con bombillas LED",
+    "slug": "como-ahorrar-con-bombillas-led",
+    "keyword": "cómo ahorrar con bombillas LED",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 82,
+    "title": "Cómo detectar aparatos en modo espera",
+    "slug": "como-detectar-aparatos-en-modo-espera",
+    "keyword": "cómo detectar aparatos en modo espera",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 83,
+    "title": "Cómo ahorrar energía en una segunda vivienda",
+    "slug": "como-ahorrar-energia-en-una-segunda-vivienda",
+    "keyword": "cómo ahorrar energía en una segunda vivienda",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 84,
+    "title": "Cómo reducir el consumo del termo eléctrico",
+    "slug": "como-reducir-el-consumo-del-termo-electrico",
+    "keyword": "cómo reducir el consumo del termo eléctrico",
+    "cluster": "Ahorro energético y electricidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 85,
+    "title": "Cómo ahorrar agua en casa",
+    "slug": "como-ahorrar-agua-en-casa",
+    "keyword": "cómo ahorrar agua en casa",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 86,
+    "title": "Cómo reducir la factura del agua",
+    "slug": "como-reducir-la-factura-del-agua",
+    "keyword": "cómo reducir la factura del agua",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 87,
+    "title": "Cómo ahorrar agua en la ducha",
+    "slug": "como-ahorrar-agua-en-la-ducha",
+    "keyword": "cómo ahorrar agua en la ducha",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 88,
+    "title": "Cómo detectar fugas de agua en casa",
+    "slug": "como-detectar-fugas-de-agua-en-casa",
+    "keyword": "cómo detectar fugas de agua en casa",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 89,
+    "title": "Cómo ahorrar agua al poner la lavadora",
+    "slug": "como-ahorrar-agua-al-poner-la-lavadora",
+    "keyword": "cómo ahorrar agua al poner la lavadora",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 90,
+    "title": "Cómo ahorrar agua en el jardín",
+    "slug": "como-ahorrar-agua-en-el-jardin",
+    "keyword": "cómo ahorrar agua en el jardín",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 91,
+    "title": "Cómo reducir el consumo de agua caliente",
+    "slug": "como-reducir-el-consumo-de-agua-caliente",
+    "keyword": "cómo reducir el consumo de agua caliente",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 92,
+    "title": "Cómo ahorrar gas en invierno",
+    "slug": "como-ahorrar-gas-en-invierno",
+    "keyword": "cómo ahorrar gas en invierno",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 93,
+    "title": "Cómo ahorrar en la factura del gas",
+    "slug": "como-ahorrar-en-la-factura-del-gas",
+    "keyword": "cómo ahorrar en la factura del gas",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 94,
+    "title": "Cómo ajustar la calefacción de gas para ahorrar",
+    "slug": "como-ajustar-la-calefaccion-de-gas-para-ahorrar",
+    "keyword": "cómo ajustar la calefacción de gas para ahorrar",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 95,
+    "title": "Cómo purgar radiadores para mejorar la eficiencia",
+    "slug": "como-purgar-radiadores-para-mejorar-la-eficiencia",
+    "keyword": "cómo purgar radiadores para mejorar la eficiencia",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 96,
+    "title": "Cómo aislar ventanas sin hacer obras",
+    "slug": "como-aislar-ventanas-sin-hacer-obras",
+    "keyword": "cómo aislar ventanas sin hacer obras",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 97,
+    "title": "Cómo evitar pérdidas de calor en casa",
+    "slug": "como-evitar-perdidas-de-calor-en-casa",
+    "keyword": "cómo evitar pérdidas de calor en casa",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 98,
+    "title": "Cómo ahorrar en una vivienda mal aislada",
+    "slug": "como-ahorrar-en-una-vivienda-mal-aislada",
+    "keyword": "cómo ahorrar en una vivienda mal aislada",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 99,
+    "title": "Cómo ahorrar energía en un piso antiguo",
+    "slug": "como-ahorrar-energia-en-un-piso-antiguo",
+    "keyword": "cómo ahorrar energía en un piso antiguo",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 100,
+    "title": "Cómo ahorrar en una casa unifamiliar",
+    "slug": "como-ahorrar-en-una-casa-unifamiliar",
+    "keyword": "cómo ahorrar en una casa unifamiliar",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 101,
+    "title": "Cómo elegir electrodomésticos eficientes",
+    "slug": "como-elegir-electrodomesticos-eficientes",
+    "keyword": "cómo elegir electrodomésticos eficientes",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 102,
+    "title": "Qué etiqueta energética consume menos",
+    "slug": "que-etiqueta-energetica-consume-menos",
+    "keyword": "qué etiqueta energética consume menos",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 103,
+    "title": "Cuándo compensa cambiar un electrodoméstico",
+    "slug": "cuando-compensa-cambiar-un-electrodomestico",
+    "keyword": "cuándo compensa cambiar un electrodoméstico",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 104,
+    "title": "Cómo ahorrar con un calentador eficiente",
+    "slug": "como-ahorrar-con-un-calentador-eficiente",
+    "keyword": "cómo ahorrar con un calentador eficiente",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 105,
+    "title": "Cómo reducir la humedad sin gastar demasiado",
+    "slug": "como-reducir-la-humedad-sin-gastar-demasiado",
+    "keyword": "cómo reducir la humedad sin gastar demasiado",
+    "cluster": "Agua, gas y eficiencia del hogar",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 106,
+    "title": "Cómo ahorrar gasolina al conducir",
+    "slug": "como-ahorrar-gasolina-al-conducir",
+    "keyword": "cómo ahorrar gasolina al conducir",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 107,
+    "title": "Cómo reducir el consumo de combustible del coche",
+    "slug": "como-reducir-el-consumo-de-combustible-del-coche",
+    "keyword": "cómo reducir el consumo de combustible del coche",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 108,
+    "title": "Cómo comparar precios de gasolina cerca de mí",
+    "slug": "como-comparar-precios-de-gasolina-cerca-de-mi",
+    "keyword": "cómo comparar precios de gasolina cerca de mí",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 109,
+    "title": "Cómo ahorrar en el seguro del coche",
+    "slug": "como-ahorrar-en-el-seguro-del-coche",
+    "keyword": "cómo ahorrar en el seguro del coche",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 110,
+    "title": "Cómo ahorrar en el mantenimiento del coche",
+    "slug": "como-ahorrar-en-el-mantenimiento-del-coche",
+    "keyword": "cómo ahorrar en el mantenimiento del coche",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 111,
+    "title": "Cuándo sale más barato repostar gasolina",
+    "slug": "cuando-sale-mas-barato-repostar-gasolina",
+    "keyword": "cuándo sale más barato repostar gasolina",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 112,
+    "title": "Cómo ahorrar usando transporte público",
+    "slug": "como-ahorrar-usando-transporte-publico",
+    "keyword": "cómo ahorrar usando transporte público",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 113,
+    "title": "Abono transporte o billetes sueltos qué compensa",
+    "slug": "abono-transporte-o-billetes-sueltos-que-compensa",
+    "keyword": "abono transporte o billetes sueltos qué compensa",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 114,
+    "title": "Cómo ahorrar dinero yendo al trabajo",
+    "slug": "como-ahorrar-dinero-yendo-al-trabajo",
+    "keyword": "cómo ahorrar dinero yendo al trabajo",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 115,
+    "title": "Cómo compartir coche para reducir gastos",
+    "slug": "como-compartir-coche-para-reducir-gastos",
+    "keyword": "cómo compartir coche para reducir gastos",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 116,
+    "title": "Cómo ahorrar en viajes por carretera",
+    "slug": "como-ahorrar-en-viajes-por-carretera",
+    "keyword": "cómo ahorrar en viajes por carretera",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 117,
+    "title": "Cómo reducir el consumo de un coche híbrido",
+    "slug": "como-reducir-el-consumo-de-un-coche-hibrido",
+    "keyword": "cómo reducir el consumo de un coche híbrido",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 118,
+    "title": "Cómo ahorrar con un coche eléctrico",
+    "slug": "como-ahorrar-con-un-coche-electrico",
+    "keyword": "cómo ahorrar con un coche eléctrico",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 119,
+    "title": "Coste de cargar un coche eléctrico en casa",
+    "slug": "coste-de-cargar-un-coche-electrico-en-casa",
+    "keyword": "coste de cargar un coche eléctrico en casa",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 120,
+    "title": "Cómo ahorrar en aparcamiento urbano",
+    "slug": "como-ahorrar-en-aparcamiento-urbano",
+    "keyword": "cómo ahorrar en aparcamiento urbano",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 121,
+    "title": "Cómo ahorrar en peajes",
+    "slug": "como-ahorrar-en-peajes",
+    "keyword": "cómo ahorrar en peajes",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 122,
+    "title": "Cómo gastar menos en taxis y VTC",
+    "slug": "como-gastar-menos-en-taxis-y-vtc",
+    "keyword": "cómo gastar menos en taxis y VTC",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 123,
+    "title": "Cómo mantener los neumáticos para consumir menos",
+    "slug": "como-mantener-los-neumaticos-para-consumir-menos",
+    "keyword": "cómo mantener los neumáticos para consumir menos",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 124,
+    "title": "Cómo planificar rutas para gastar menos combustible",
+    "slug": "como-planificar-rutas-para-gastar-menos-combustible",
+    "keyword": "cómo planificar rutas para gastar menos combustible",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 125,
+    "title": "Cómo ahorrar en el transporte escolar",
+    "slug": "como-ahorrar-en-el-transporte-escolar",
+    "keyword": "cómo ahorrar en el transporte escolar",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 126,
+    "title": "Bicicleta o transporte público para ahorrar",
+    "slug": "bicicleta-o-transporte-publico-para-ahorrar",
+    "keyword": "bicicleta o transporte público para ahorrar",
+    "cluster": "Transporte, coche y movilidad",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 127,
+    "title": "Cómo ahorrar para comprar una vivienda",
+    "slug": "como-ahorrar-para-comprar-una-vivienda",
+    "keyword": "cómo ahorrar para comprar una vivienda",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 128,
+    "title": "Cuánto ahorrar para la entrada de un piso",
+    "slug": "cuanto-ahorrar-para-la-entrada-de-un-piso",
+    "keyword": "cuánto ahorrar para la entrada de un piso",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 129,
+    "title": "Cómo ahorrar para la entrada de una hipoteca",
+    "slug": "como-ahorrar-para-la-entrada-de-una-hipoteca",
+    "keyword": "cómo ahorrar para la entrada de una hipoteca",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 130,
+    "title": "Gastos de comprar una vivienda en España",
+    "slug": "gastos-de-comprar-una-vivienda-en-espana",
+    "keyword": "gastos de comprar una vivienda en España",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 131,
+    "title": "Cómo ahorrar en los gastos de una mudanza",
+    "slug": "como-ahorrar-en-los-gastos-de-una-mudanza",
+    "keyword": "cómo ahorrar en los gastos de una mudanza",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 132,
+    "title": "Cómo ahorrar en el alquiler de un piso",
+    "slug": "como-ahorrar-en-el-alquiler-de-un-piso",
+    "keyword": "cómo ahorrar en el alquiler de un piso",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 133,
+    "title": "Cómo negociar el precio del alquiler",
+    "slug": "como-negociar-el-precio-del-alquiler",
+    "keyword": "cómo negociar el precio del alquiler",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 134,
+    "title": "Cómo compartir piso para ahorrar",
+    "slug": "como-compartir-piso-para-ahorrar",
+    "keyword": "cómo compartir piso para ahorrar",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 135,
+    "title": "Cómo reducir los gastos de comunidad",
+    "slug": "como-reducir-los-gastos-de-comunidad",
+    "keyword": "cómo reducir los gastos de comunidad",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 136,
+    "title": "Cómo ahorrar en el seguro de hogar",
+    "slug": "como-ahorrar-en-el-seguro-de-hogar",
+    "keyword": "cómo ahorrar en el seguro de hogar",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 137,
+    "title": "Cómo ahorrar en reformas de una vivienda",
+    "slug": "como-ahorrar-en-reformas-de-una-vivienda",
+    "keyword": "cómo ahorrar en reformas de una vivienda",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 138,
+    "title": "Reformar o mudarse qué opción cuesta menos",
+    "slug": "reformar-o-mudarse-que-opcion-cuesta-menos",
+    "keyword": "reformar o mudarse qué opción cuesta menos",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 139,
+    "title": "Cómo ahorrar en muebles para una casa",
+    "slug": "como-ahorrar-en-muebles-para-una-casa",
+    "keyword": "cómo ahorrar en muebles para una casa",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 140,
+    "title": "Cómo amueblar un piso con poco presupuesto",
+    "slug": "como-amueblar-un-piso-con-poco-presupuesto",
+    "keyword": "cómo amueblar un piso con poco presupuesto",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 141,
+    "title": "Cómo ahorrar en una vivienda de alquiler",
+    "slug": "como-ahorrar-en-una-vivienda-de-alquiler",
+    "keyword": "cómo ahorrar en una vivienda de alquiler",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 142,
+    "title": "Cómo ahorrar si tengo hipoteca",
+    "slug": "como-ahorrar-si-tengo-hipoteca",
+    "keyword": "cómo ahorrar si tengo hipoteca",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 143,
+    "title": "Amortizar hipoteca o ahorrar qué conviene",
+    "slug": "amortizar-hipoteca-o-ahorrar-que-conviene",
+    "keyword": "amortizar hipoteca o ahorrar qué conviene",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 144,
+    "title": "Cómo calcular el coste total de una hipoteca",
+    "slug": "como-calcular-el-coste-total-de-una-hipoteca",
+    "keyword": "cómo calcular el coste total de una hipoteca",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 145,
+    "title": "Cómo ahorrar en los gastos de compraventa",
+    "slug": "como-ahorrar-en-los-gastos-de-compraventa",
+    "keyword": "cómo ahorrar en los gastos de compraventa",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 146,
+    "title": "Cómo ahorrar para una segunda vivienda",
+    "slug": "como-ahorrar-para-una-segunda-vivienda",
+    "keyword": "cómo ahorrar para una segunda vivienda",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 147,
+    "title": "Cómo ahorrar para independizarse",
+    "slug": "como-ahorrar-para-independizarse",
+    "keyword": "cómo ahorrar para independizarse",
+    "cluster": "Vivienda, alquiler e hipoteca",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 148,
+    "title": "Qué es una cuenta de ahorro",
+    "slug": "que-es-una-cuenta-de-ahorro",
+    "keyword": "qué es una cuenta de ahorro",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 149,
+    "title": "Cuenta de ahorro o cuenta corriente diferencias",
+    "slug": "cuenta-de-ahorro-o-cuenta-corriente-diferencias",
+    "keyword": "cuenta de ahorro o cuenta corriente diferencias",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 150,
+    "title": "Cómo elegir una cuenta remunerada",
+    "slug": "como-elegir-una-cuenta-remunerada",
+    "keyword": "cómo elegir una cuenta remunerada",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 151,
+    "title": "Cómo comparar cuentas de ahorro por TAE",
+    "slug": "como-comparar-cuentas-de-ahorro-por-tae",
+    "keyword": "cómo comparar cuentas de ahorro por TAE",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 152,
+    "title": "Qué significa TAE en una cuenta de ahorro",
+    "slug": "que-significa-tae-en-una-cuenta-de-ahorro",
+    "keyword": "qué significa TAE en una cuenta de ahorro",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 153,
+    "title": "Qué diferencia hay entre TIN y TAE",
+    "slug": "que-diferencia-hay-entre-tin-y-tae",
+    "keyword": "qué diferencia hay entre TIN y TAE",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 154,
+    "title": "Cómo calcular los intereses de una cuenta de ahorro",
+    "slug": "como-calcular-los-intereses-de-una-cuenta-de-ahorro",
+    "keyword": "cómo calcular los intereses de una cuenta de ahorro",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 155,
+    "title": "Qué es un depósito a plazo fijo",
+    "slug": "que-es-un-deposito-a-plazo-fijo",
+    "keyword": "qué es un depósito a plazo fijo",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 156,
+    "title": "Cuenta remunerada o depósito a plazo qué conviene",
+    "slug": "cuenta-remunerada-o-deposito-a-plazo-que-conviene",
+    "keyword": "cuenta remunerada o depósito a plazo qué conviene",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 157,
+    "title": "Cómo elegir un depósito bancario",
+    "slug": "como-elegir-un-deposito-bancario",
+    "keyword": "cómo elegir un depósito bancario",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 158,
+    "title": "Qué pasa si cancelo un depósito antes de tiempo",
+    "slug": "que-pasa-si-cancelo-un-deposito-antes-de-tiempo",
+    "keyword": "qué pasa si cancelo un depósito antes de tiempo",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 159,
+    "title": "Cómo saber si un banco está autorizado en España",
+    "slug": "como-saber-si-un-banco-esta-autorizado-en-espana",
+    "keyword": "cómo saber si un banco está autorizado en España",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 160,
+    "title": "Qué cubre el Fondo de Garantía de Depósitos",
+    "slug": "que-cubre-el-fondo-de-garantia-de-depositos",
+    "keyword": "qué cubre el Fondo de Garantía de Depósitos",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 161,
+    "title": "Cuánto dinero está protegido en una cuenta bancaria",
+    "slug": "cuanto-dinero-esta-protegido-en-una-cuenta-bancaria",
+    "keyword": "cuánto dinero está protegido en una cuenta bancaria",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 162,
+    "title": "Cómo repartir ahorros entre varios bancos",
+    "slug": "como-repartir-ahorros-entre-varios-bancos",
+    "keyword": "cómo repartir ahorros entre varios bancos",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 163,
+    "title": "Qué comisiones revisar en una cuenta de ahorro",
+    "slug": "que-comisiones-revisar-en-una-cuenta-de-ahorro",
+    "keyword": "qué comisiones revisar en una cuenta de ahorro",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 164,
+    "title": "Cómo abrir una cuenta de ahorro para un menor",
+    "slug": "como-abrir-una-cuenta-de-ahorro-para-un-menor",
+    "keyword": "cómo abrir una cuenta de ahorro para un menor",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 165,
+    "title": "Cuenta de ahorro para niños cómo funciona",
+    "slug": "cuenta-de-ahorro-para-ninos-como-funciona",
+    "keyword": "cuenta de ahorro para niños cómo funciona",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 166,
+    "title": "Cómo ahorrar para un objetivo a corto plazo",
+    "slug": "como-ahorrar-para-un-objetivo-a-corto-plazo",
+    "keyword": "cómo ahorrar para un objetivo a corto plazo",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 167,
+    "title": "Dónde guardar el fondo de emergencia",
+    "slug": "donde-guardar-el-fondo-de-emergencia",
+    "keyword": "dónde guardar el fondo de emergencia",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 168,
+    "title": "Qué diferencia hay entre ahorro e inversión",
+    "slug": "que-diferencia-hay-entre-ahorro-e-inversion",
+    "keyword": "qué diferencia hay entre ahorro e inversión",
+    "cluster": "Cuentas, depósitos y productos de ahorro",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 169,
+    "title": "Ahorro o inversión qué hacer primero",
+    "slug": "ahorro-o-inversion-que-hacer-primero",
+    "keyword": "ahorro o inversión qué hacer primero",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 170,
+    "title": "Cómo empezar a invertir después de ahorrar",
+    "slug": "como-empezar-a-invertir-despues-de-ahorrar",
+    "keyword": "cómo empezar a invertir después de ahorrar",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 171,
+    "title": "Cuánto dinero tener antes de invertir",
+    "slug": "cuanto-dinero-tener-antes-de-invertir",
+    "keyword": "cuánto dinero tener antes de invertir",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 172,
+    "title": "Qué es el interés compuesto y cómo funciona",
+    "slug": "que-es-el-interes-compuesto-y-como-funciona",
+    "keyword": "qué es el interés compuesto y cómo funciona",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 173,
+    "title": "Cómo afecta la inflación a los ahorros",
+    "slug": "como-afecta-la-inflacion-a-los-ahorros",
+    "keyword": "cómo afecta la inflación a los ahorros",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 174,
+    "title": "Cómo diversificar el dinero ahorrado",
+    "slug": "como-diversificar-el-dinero-ahorrado",
+    "keyword": "cómo diversificar el dinero ahorrado",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 175,
+    "title": "Qué es el riesgo en una inversión",
+    "slug": "que-es-el-riesgo-en-una-inversion",
+    "keyword": "qué es el riesgo en una inversión",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 176,
+    "title": "Diferencias entre depósito y fondo de inversión",
+    "slug": "diferencias-entre-deposito-y-fondo-de-inversion",
+    "keyword": "diferencias entre depósito y fondo de inversión",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 177,
+    "title": "Qué diferencia hay entre renta fija y renta variable",
+    "slug": "que-diferencia-hay-entre-renta-fija-y-renta-variable",
+    "keyword": "qué diferencia hay entre renta fija y renta variable",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 178,
+    "title": "Cómo fijar objetivos financieros a largo plazo",
+    "slug": "como-fijar-objetivos-financieros-a-largo-plazo",
+    "keyword": "cómo fijar objetivos financieros a largo plazo",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 179,
+    "title": "Cómo organizar el ahorro a corto medio y largo plazo",
+    "slug": "como-organizar-el-ahorro-a-corto-medio-y-largo-plazo",
+    "keyword": "cómo organizar el ahorro a corto medio y largo plazo",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 180,
+    "title": "Qué perfil de riesgo tengo como ahorrador",
+    "slug": "que-perfil-de-riesgo-tengo-como-ahorrador",
+    "keyword": "qué perfil de riesgo tengo como ahorrador",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 181,
+    "title": "Cómo invertir sin confundir rentabilidad y seguridad",
+    "slug": "como-invertir-sin-confundir-rentabilidad-y-seguridad",
+    "keyword": "cómo invertir sin confundir rentabilidad y seguridad",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 182,
+    "title": "Qué significa liquidez en un producto financiero",
+    "slug": "que-significa-liquidez-en-un-producto-financiero",
+    "keyword": "qué significa liquidez en un producto financiero",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 183,
+    "title": "Cómo comparar comisiones de inversión",
+    "slug": "como-comparar-comisiones-de-inversion",
+    "keyword": "cómo comparar comisiones de inversión",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 184,
+    "title": "Qué es un fondo indexado explicado para principiantes",
+    "slug": "que-es-un-fondo-indexado-explicado-para-principiantes",
+    "keyword": "qué es un fondo indexado explicado para principiantes",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 185,
+    "title": "Qué es un plan de pensiones y cómo funciona",
+    "slug": "que-es-un-plan-de-pensiones-y-como-funciona",
+    "keyword": "qué es un plan de pensiones y cómo funciona",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 186,
+    "title": "Cómo preparar las finanzas antes de invertir",
+    "slug": "como-preparar-las-finanzas-antes-de-invertir",
+    "keyword": "cómo preparar las finanzas antes de invertir",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 187,
+    "title": "Cómo evitar fraudes de inversión con promesas de rentabilidad",
+    "slug": "como-evitar-fraudes-de-inversion-con-promesas-de-rentabilidad",
+    "keyword": "cómo evitar fraudes de inversión con promesas de rentabilidad",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 188,
+    "title": "Cómo comprobar si una entidad financiera está regulada",
+    "slug": "como-comprobar-si-una-entidad-financiera-esta-regulada",
+    "keyword": "cómo comprobar si una entidad financiera está regulada",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 189,
+    "title": "Qué hacer con los ahorros que no necesito ahora",
+    "slug": "que-hacer-con-los-ahorros-que-no-necesito-ahora",
+    "keyword": "qué hacer con los ahorros que no necesito ahora",
+    "cluster": "Inversión básica y planificación patrimonial",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 190,
+    "title": "Cómo ahorrar dinero si tengo deudas",
+    "slug": "como-ahorrar-dinero-si-tengo-deudas",
+    "keyword": "cómo ahorrar dinero si tengo deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 191,
+    "title": "Cómo organizar el presupuesto para pagar deudas",
+    "slug": "como-organizar-el-presupuesto-para-pagar-deudas",
+    "keyword": "cómo organizar el presupuesto para pagar deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 192,
+    "title": "Qué pagar primero si tengo varias deudas",
+    "slug": "que-pagar-primero-si-tengo-varias-deudas",
+    "keyword": "qué pagar primero si tengo varias deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 193,
+    "title": "Método bola de nieve para pagar deudas",
+    "slug": "metodo-bola-de-nieve-para-pagar-deudas",
+    "keyword": "método bola de nieve para pagar deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 194,
+    "title": "Método avalancha para pagar deudas",
+    "slug": "metodo-avalancha-para-pagar-deudas",
+    "keyword": "método avalancha para pagar deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 195,
+    "title": "Cómo reducir los intereses de un préstamo",
+    "slug": "como-reducir-los-intereses-de-un-prestamo",
+    "keyword": "cómo reducir los intereses de un préstamo",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 196,
+    "title": "Cómo ahorrar evitando pagar intereses de más",
+    "slug": "como-ahorrar-evitando-pagar-intereses-de-mas",
+    "keyword": "cómo ahorrar evitando pagar intereses de más",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 197,
+    "title": "Cómo comparar préstamos por TAE",
+    "slug": "como-comparar-prestamos-por-tae",
+    "keyword": "cómo comparar préstamos por TAE",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 198,
+    "title": "Cómo salir del ciclo de pagar con tarjeta de crédito",
+    "slug": "como-salir-del-ciclo-de-pagar-con-tarjeta-de-credito",
+    "keyword": "cómo salir del ciclo de pagar con tarjeta de crédito",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 199,
+    "title": "Cómo evitar el sobreendeudamiento familiar",
+    "slug": "como-evitar-el-sobreendeudamiento-familiar",
+    "keyword": "cómo evitar el sobreendeudamiento familiar",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 200,
+    "title": "Cómo recuperar el ahorro después de una deuda",
+    "slug": "como-recuperar-el-ahorro-despues-de-una-deuda",
+    "keyword": "cómo recuperar el ahorro después de una deuda",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 201,
+    "title": "Cómo negociar cuotas si no llego a fin de mes",
+    "slug": "como-negociar-cuotas-si-no-llego-a-fin-de-mes",
+    "keyword": "cómo negociar cuotas si no llego a fin de mes",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 202,
+    "title": "Cómo reducir gastos antes de pedir un préstamo",
+    "slug": "como-reducir-gastos-antes-de-pedir-un-prestamo",
+    "keyword": "cómo reducir gastos antes de pedir un préstamo",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 203,
+    "title": "Cómo crear un fondo de emergencia mientras pago deudas",
+    "slug": "como-crear-un-fondo-de-emergencia-mientras-pago-deudas",
+    "keyword": "cómo crear un fondo de emergencia mientras pago deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 204,
+    "title": "Cómo usar la tarjeta de crédito sin perder el control",
+    "slug": "como-usar-la-tarjeta-de-credito-sin-perder-el-control",
+    "keyword": "cómo usar la tarjeta de crédito sin perder el control",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 205,
+    "title": "Cómo evitar microcréditos caros",
+    "slug": "como-evitar-microcreditos-caros",
+    "keyword": "cómo evitar microcréditos caros",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 206,
+    "title": "Qué revisar antes de reunificar deudas",
+    "slug": "que-revisar-antes-de-reunificar-deudas",
+    "keyword": "qué revisar antes de reunificar deudas",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 207,
+    "title": "Cómo priorizar facturas cuando falta dinero",
+    "slug": "como-priorizar-facturas-cuando-falta-dinero",
+    "keyword": "cómo priorizar facturas cuando falta dinero",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 208,
+    "title": "Cómo preparar un plan para salir de números rojos",
+    "slug": "como-preparar-un-plan-para-salir-de-numeros-rojos",
+    "keyword": "cómo preparar un plan para salir de números rojos",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 209,
+    "title": "Cómo ahorrar después de un impago",
+    "slug": "como-ahorrar-despues-de-un-impago",
+    "keyword": "cómo ahorrar después de un impago",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 210,
+    "title": "Cómo evitar comisiones por descubierto",
+    "slug": "como-evitar-comisiones-por-descubierto",
+    "keyword": "cómo evitar comisiones por descubierto",
+    "cluster": "Deudas, crédito y recuperación financiera",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 211,
+    "title": "Cómo ahorrar dinero en pareja sin discutir",
+    "slug": "como-ahorrar-dinero-en-pareja-sin-discutir",
+    "keyword": "cómo ahorrar dinero en pareja sin discutir",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 212,
+    "title": "Cómo dividir gastos en pareja de forma justa",
+    "slug": "como-dividir-gastos-en-pareja-de-forma-justa",
+    "keyword": "cómo dividir gastos en pareja de forma justa",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 213,
+    "title": "Cuenta conjunta o cuentas separadas para ahorrar",
+    "slug": "cuenta-conjunta-o-cuentas-separadas-para-ahorrar",
+    "keyword": "cuenta conjunta o cuentas separadas para ahorrar",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 214,
+    "title": "Cómo ahorrar para tener un bebé",
+    "slug": "como-ahorrar-para-tener-un-bebe",
+    "keyword": "cómo ahorrar para tener un bebé",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 215,
+    "title": "Cómo preparar un presupuesto para la llegada de un hijo",
+    "slug": "como-preparar-un-presupuesto-para-la-llegada-de-un-hijo",
+    "keyword": "cómo preparar un presupuesto para la llegada de un hijo",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 216,
+    "title": "Cómo ahorrar en gastos de guardería",
+    "slug": "como-ahorrar-en-gastos-de-guarderia",
+    "keyword": "cómo ahorrar en gastos de guardería",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 217,
+    "title": "Cómo ahorrar en ropa infantil",
+    "slug": "como-ahorrar-en-ropa-infantil",
+    "keyword": "cómo ahorrar en ropa infantil",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 218,
+    "title": "Cómo ahorrar en material escolar",
+    "slug": "como-ahorrar-en-material-escolar",
+    "keyword": "cómo ahorrar en material escolar",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 219,
+    "title": "Cómo ahorrar en la vuelta al cole",
+    "slug": "como-ahorrar-en-la-vuelta-al-cole",
+    "keyword": "cómo ahorrar en la vuelta al cole",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 220,
+    "title": "Cómo planificar el gasto de actividades extraescolares",
+    "slug": "como-planificar-el-gasto-de-actividades-extraescolares",
+    "keyword": "cómo planificar el gasto de actividades extraescolares",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 221,
+    "title": "Cómo enseñar a los niños a ahorrar",
+    "slug": "como-ensenar-a-los-ninos-a-ahorrar",
+    "keyword": "cómo enseñar a los niños a ahorrar",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 222,
+    "title": "Cómo explicar el dinero a los niños según su edad",
+    "slug": "como-explicar-el-dinero-a-los-ninos-segun-su-edad",
+    "keyword": "cómo explicar el dinero a los niños según su edad",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 223,
+    "title": "Hucha o cuenta bancaria para niños qué elegir",
+    "slug": "hucha-o-cuenta-bancaria-para-ninos-que-elegir",
+    "keyword": "hucha o cuenta bancaria para niños qué elegir",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 224,
+    "title": "Cómo ahorrar en celebraciones familiares",
+    "slug": "como-ahorrar-en-celebraciones-familiares",
+    "keyword": "cómo ahorrar en celebraciones familiares",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 225,
+    "title": "Cómo ahorrar en cumpleaños infantiles",
+    "slug": "como-ahorrar-en-cumpleanos-infantiles",
+    "keyword": "cómo ahorrar en cumpleaños infantiles",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 226,
+    "title": "Cómo ahorrar en Navidad en familia",
+    "slug": "como-ahorrar-en-navidad-en-familia",
+    "keyword": "cómo ahorrar en Navidad en familia",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 227,
+    "title": "Cómo reducir los gastos de una familia numerosa",
+    "slug": "como-reducir-los-gastos-de-una-familia-numerosa",
+    "keyword": "cómo reducir los gastos de una familia numerosa",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 228,
+    "title": "Cómo ahorrar si soy familia monoparental",
+    "slug": "como-ahorrar-si-soy-familia-monoparental",
+    "keyword": "cómo ahorrar si soy familia monoparental",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 229,
+    "title": "Cómo organizar el ahorro para vacaciones familiares",
+    "slug": "como-organizar-el-ahorro-para-vacaciones-familiares",
+    "keyword": "cómo organizar el ahorro para vacaciones familiares",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 230,
+    "title": "Cómo ahorrar para los estudios de los hijos",
+    "slug": "como-ahorrar-para-los-estudios-de-los-hijos",
+    "keyword": "cómo ahorrar para los estudios de los hijos",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 231,
+    "title": "Cómo hablar de dinero en pareja",
+    "slug": "como-hablar-de-dinero-en-pareja",
+    "keyword": "cómo hablar de dinero en pareja",
+    "cluster": "Ahorro en pareja, familia e hijos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 232,
+    "title": "Cómo ahorrar con un salario mínimo",
+    "slug": "como-ahorrar-con-un-salario-minimo",
+    "keyword": "cómo ahorrar con un salario mínimo",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 233,
+    "title": "Cómo ahorrar con 1000 euros al mes",
+    "slug": "como-ahorrar-con-1000-euros-al-mes",
+    "keyword": "cómo ahorrar con 1000 euros al mes",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 234,
+    "title": "Cómo ahorrar con 1200 euros al mes",
+    "slug": "como-ahorrar-con-1200-euros-al-mes",
+    "keyword": "cómo ahorrar con 1200 euros al mes",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 235,
+    "title": "Cómo ahorrar con 1500 euros al mes",
+    "slug": "como-ahorrar-con-1500-euros-al-mes",
+    "keyword": "cómo ahorrar con 1500 euros al mes",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 236,
+    "title": "Cómo ahorrar con 1800 euros al mes",
+    "slug": "como-ahorrar-con-1800-euros-al-mes",
+    "keyword": "cómo ahorrar con 1800 euros al mes",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 237,
+    "title": "Cómo ahorrar con 2000 euros al mes",
+    "slug": "como-ahorrar-con-2000-euros-al-mes",
+    "keyword": "cómo ahorrar con 2000 euros al mes",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 238,
+    "title": "Cómo ahorrar con un sueldo variable",
+    "slug": "como-ahorrar-con-un-sueldo-variable",
+    "keyword": "cómo ahorrar con un sueldo variable",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 239,
+    "title": "Cómo ahorrar si trabajo por cuenta propia",
+    "slug": "como-ahorrar-si-trabajo-por-cuenta-propia",
+    "keyword": "cómo ahorrar si trabajo por cuenta propia",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 240,
+    "title": "Cómo ahorrar siendo autónomo con ingresos irregulares",
+    "slug": "como-ahorrar-siendo-autonomo-con-ingresos-irregulares",
+    "keyword": "cómo ahorrar siendo autónomo con ingresos irregulares",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 241,
+    "title": "Cómo ahorrar durante el primer empleo",
+    "slug": "como-ahorrar-durante-el-primer-empleo",
+    "keyword": "cómo ahorrar durante el primer empleo",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 242,
+    "title": "Cómo ahorrar si soy estudiante universitario",
+    "slug": "como-ahorrar-si-soy-estudiante-universitario",
+    "keyword": "cómo ahorrar si soy estudiante universitario",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 243,
+    "title": "Cómo ahorrar mientras estudio y trabajo",
+    "slug": "como-ahorrar-mientras-estudio-y-trabajo",
+    "keyword": "cómo ahorrar mientras estudio y trabajo",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 244,
+    "title": "Cómo ahorrar al empezar a vivir solo",
+    "slug": "como-ahorrar-al-empezar-a-vivir-solo",
+    "keyword": "cómo ahorrar al empezar a vivir solo",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 245,
+    "title": "Cómo ahorrar a los 20 años",
+    "slug": "como-ahorrar-a-los-20-anos",
+    "keyword": "cómo ahorrar a los 20 años",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 246,
+    "title": "Cómo ahorrar a los 30 años",
+    "slug": "como-ahorrar-a-los-30-anos",
+    "keyword": "cómo ahorrar a los 30 años",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 247,
+    "title": "Cómo ahorrar a los 40 años",
+    "slug": "como-ahorrar-a-los-40-anos",
+    "keyword": "cómo ahorrar a los 40 años",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 248,
+    "title": "Cómo ahorrar a los 50 años",
+    "slug": "como-ahorrar-a-los-50-anos",
+    "keyword": "cómo ahorrar a los 50 años",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 249,
+    "title": "Cómo ahorrar antes de tener hijos",
+    "slug": "como-ahorrar-antes-de-tener-hijos",
+    "keyword": "cómo ahorrar antes de tener hijos",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 250,
+    "title": "Cómo ahorrar después de un divorcio",
+    "slug": "como-ahorrar-despues-de-un-divorcio",
+    "keyword": "cómo ahorrar después de un divorcio",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 251,
+    "title": "Cómo ahorrar tras perder el empleo",
+    "slug": "como-ahorrar-tras-perder-el-empleo",
+    "keyword": "cómo ahorrar tras perder el empleo",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 252,
+    "title": "Cómo reorganizar el ahorro después de una subida salarial",
+    "slug": "como-reorganizar-el-ahorro-despues-de-una-subida-salarial",
+    "keyword": "cómo reorganizar el ahorro después de una subida salarial",
+    "cluster": "Ahorro según ingresos y etapas vitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 253,
+    "title": "Cómo empezar a ahorrar para la jubilación",
+    "slug": "como-empezar-a-ahorrar-para-la-jubilacion",
+    "keyword": "cómo empezar a ahorrar para la jubilación",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 254,
+    "title": "Cuánto ahorrar al mes para la jubilación",
+    "slug": "cuanto-ahorrar-al-mes-para-la-jubilacion",
+    "keyword": "cuánto ahorrar al mes para la jubilación",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 255,
+    "title": "Cómo calcular cuánto dinero necesitaré al jubilarme",
+    "slug": "como-calcular-cuanto-dinero-necesitare-al-jubilarme",
+    "keyword": "cómo calcular cuánto dinero necesitaré al jubilarme",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 256,
+    "title": "Ahorro para la jubilación a los 30 años",
+    "slug": "ahorro-para-la-jubilacion-a-los-30-anos",
+    "keyword": "ahorro para la jubilación a los 30 años",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 257,
+    "title": "Ahorro para la jubilación a los 40 años",
+    "slug": "ahorro-para-la-jubilacion-a-los-40-anos",
+    "keyword": "ahorro para la jubilación a los 40 años",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 258,
+    "title": "Ahorro para la jubilación a los 50 años",
+    "slug": "ahorro-para-la-jubilacion-a-los-50-anos",
+    "keyword": "ahorro para la jubilación a los 50 años",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 259,
+    "title": "Cómo complementar la pensión pública",
+    "slug": "como-complementar-la-pension-publica",
+    "keyword": "cómo complementar la pensión pública",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 260,
+    "title": "Qué diferencia hay entre ahorro para jubilación y pensión",
+    "slug": "que-diferencia-hay-entre-ahorro-para-jubilacion-y-pension",
+    "keyword": "qué diferencia hay entre ahorro para jubilación y pensión",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 261,
+    "title": "Cómo comparar planes de pensiones por comisiones",
+    "slug": "como-comparar-planes-de-pensiones-por-comisiones",
+    "keyword": "cómo comparar planes de pensiones por comisiones",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 262,
+    "title": "Qué preguntas hacer antes de contratar un plan de pensiones",
+    "slug": "que-preguntas-hacer-antes-de-contratar-un-plan-de-pensiones",
+    "keyword": "qué preguntas hacer antes de contratar un plan de pensiones",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 263,
+    "title": "Cómo organizar el ahorro cuando faltan diez años para jubilarse",
+    "slug": "como-organizar-el-ahorro-cuando-faltan-diez-anos-para-jubilarse",
+    "keyword": "cómo organizar el ahorro cuando faltan diez años para jubilarse",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 264,
+    "title": "Cómo ahorrar si tengo lagunas de cotización",
+    "slug": "como-ahorrar-si-tengo-lagunas-de-cotizacion",
+    "keyword": "cómo ahorrar si tengo lagunas de cotización",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 265,
+    "title": "Cómo planificar gastos durante la jubilación",
+    "slug": "como-planificar-gastos-durante-la-jubilacion",
+    "keyword": "cómo planificar gastos durante la jubilación",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 266,
+    "title": "Cómo calcular un presupuesto de jubilación",
+    "slug": "como-calcular-un-presupuesto-de-jubilacion",
+    "keyword": "cómo calcular un presupuesto de jubilación",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 267,
+    "title": "Cómo proteger el fondo de emergencia al jubilarme",
+    "slug": "como-proteger-el-fondo-de-emergencia-al-jubilarme",
+    "keyword": "cómo proteger el fondo de emergencia al jubilarme",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 268,
+    "title": "Cómo organizar el ahorro tras jubilarse",
+    "slug": "como-organizar-el-ahorro-tras-jubilarse",
+    "keyword": "cómo organizar el ahorro tras jubilarse",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 269,
+    "title": "Cómo ahorrar para cuidar a familiares mayores",
+    "slug": "como-ahorrar-para-cuidar-a-familiares-mayores",
+    "keyword": "cómo ahorrar para cuidar a familiares mayores",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 270,
+    "title": "Cómo preparar un colchón financiero para imprevistos de salud",
+    "slug": "como-preparar-un-colchon-financiero-para-imprevistos-de-salud",
+    "keyword": "cómo preparar un colchón financiero para imprevistos de salud",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 271,
+    "title": "Cómo hablar de planificación financiera con padres mayores",
+    "slug": "como-hablar-de-planificacion-financiera-con-padres-mayores",
+    "keyword": "cómo hablar de planificación financiera con padres mayores",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 272,
+    "title": "Qué es la longevidad financiera y cómo prepararse",
+    "slug": "que-es-la-longevidad-financiera-y-como-prepararse",
+    "keyword": "qué es la longevidad financiera y cómo prepararse",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 273,
+    "title": "Cómo revisar los gastos al pasar a la jubilación",
+    "slug": "como-revisar-los-gastos-al-pasar-a-la-jubilacion",
+    "keyword": "cómo revisar los gastos al pasar a la jubilación",
+    "cluster": "Jubilación y ahorro a largo plazo",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 274,
+    "title": "Cómo ahorrar para viajar",
+    "slug": "como-ahorrar-para-viajar",
+    "keyword": "cómo ahorrar para viajar",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 275,
+    "title": "Cómo ahorrar para unas vacaciones de verano",
+    "slug": "como-ahorrar-para-unas-vacaciones-de-verano",
+    "keyword": "cómo ahorrar para unas vacaciones de verano",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 276,
+    "title": "Cómo viajar barato sin renunciar a lo importante",
+    "slug": "como-viajar-barato-sin-renunciar-a-lo-importante",
+    "keyword": "cómo viajar barato sin renunciar a lo importante",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 277,
+    "title": "Cómo ahorrar en vuelos",
+    "slug": "como-ahorrar-en-vuelos",
+    "keyword": "cómo ahorrar en vuelos",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 278,
+    "title": "Cómo ahorrar en hoteles",
+    "slug": "como-ahorrar-en-hoteles",
+    "keyword": "cómo ahorrar en hoteles",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 279,
+    "title": "Cómo comparar el coste de alojarse en hotel o apartamento",
+    "slug": "como-comparar-el-coste-de-alojarse-en-hotel-o-apartamento",
+    "keyword": "cómo comparar el coste de alojarse en hotel o apartamento",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 280,
+    "title": "Cómo ahorrar en viajes en familia",
+    "slug": "como-ahorrar-en-viajes-en-familia",
+    "keyword": "cómo ahorrar en viajes en familia",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 281,
+    "title": "Cómo ahorrar en escapadas de fin de semana",
+    "slug": "como-ahorrar-en-escapadas-de-fin-de-semana",
+    "keyword": "cómo ahorrar en escapadas de fin de semana",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 282,
+    "title": "Cómo crear un presupuesto de viaje",
+    "slug": "como-crear-un-presupuesto-de-viaje",
+    "keyword": "cómo crear un presupuesto de viaje",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 283,
+    "title": "Cómo ahorrar en comidas durante las vacaciones",
+    "slug": "como-ahorrar-en-comidas-durante-las-vacaciones",
+    "keyword": "cómo ahorrar en comidas durante las vacaciones",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 284,
+    "title": "Cómo ahorrar en equipaje y extras de aerolíneas",
+    "slug": "como-ahorrar-en-equipaje-y-extras-de-aerolineas",
+    "keyword": "cómo ahorrar en equipaje y extras de aerolíneas",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 285,
+    "title": "Cómo evitar gastos ocultos al reservar un viaje",
+    "slug": "como-evitar-gastos-ocultos-al-reservar-un-viaje",
+    "keyword": "cómo evitar gastos ocultos al reservar un viaje",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 286,
+    "title": "Cómo ahorrar para un concierto o festival",
+    "slug": "como-ahorrar-para-un-concierto-o-festival",
+    "keyword": "cómo ahorrar para un concierto o festival",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 287,
+    "title": "Cómo ahorrar en entradas de ocio",
+    "slug": "como-ahorrar-en-entradas-de-ocio",
+    "keyword": "cómo ahorrar en entradas de ocio",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 288,
+    "title": "Cómo ahorrar en cine y plataformas de entretenimiento",
+    "slug": "como-ahorrar-en-cine-y-plataformas-de-entretenimiento",
+    "keyword": "cómo ahorrar en cine y plataformas de entretenimiento",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 289,
+    "title": "Cómo organizar un fondo para vacaciones anuales",
+    "slug": "como-organizar-un-fondo-para-vacaciones-anuales",
+    "keyword": "cómo organizar un fondo para vacaciones anuales",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 290,
+    "title": "Cómo ahorrar para comprar un ordenador",
+    "slug": "como-ahorrar-para-comprar-un-ordenador",
+    "keyword": "cómo ahorrar para comprar un ordenador",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 291,
+    "title": "Cómo ahorrar para cambiar de móvil",
+    "slug": "como-ahorrar-para-cambiar-de-movil",
+    "keyword": "cómo ahorrar para cambiar de móvil",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 292,
+    "title": "Cómo ahorrar para comprar un electrodoméstico",
+    "slug": "como-ahorrar-para-comprar-un-electrodomestico",
+    "keyword": "cómo ahorrar para comprar un electrodoméstico",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 293,
+    "title": "Cómo decidir si reparar o comprar nuevo para ahorrar",
+    "slug": "como-decidir-si-reparar-o-comprar-nuevo-para-ahorrar",
+    "keyword": "cómo decidir si reparar o comprar nuevo para ahorrar",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 294,
+    "title": "Cómo ahorrar en regalos durante todo el año",
+    "slug": "como-ahorrar-en-regalos-durante-todo-el-ano",
+    "keyword": "cómo ahorrar en regalos durante todo el año",
+    "cluster": "Viajes, ocio y compras grandes",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 295,
+    "title": "Cómo ahorrar cancelando suscripciones que no uso",
+    "slug": "como-ahorrar-cancelando-suscripciones-que-no-uso",
+    "keyword": "cómo ahorrar cancelando suscripciones que no uso",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 296,
+    "title": "Cómo revisar cuánto gasto en plataformas de streaming",
+    "slug": "como-revisar-cuanto-gasto-en-plataformas-de-streaming",
+    "keyword": "cómo revisar cuánto gasto en plataformas de streaming",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 297,
+    "title": "Compartir suscripciones de forma legal y segura",
+    "slug": "compartir-suscripciones-de-forma-legal-y-segura",
+    "keyword": "compartir suscripciones de forma legal y segura",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 298,
+    "title": "Cómo ahorrar en la factura del móvil",
+    "slug": "como-ahorrar-en-la-factura-del-movil",
+    "keyword": "cómo ahorrar en la factura del móvil",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 299,
+    "title": "Cómo comparar tarifas de fibra y móvil",
+    "slug": "como-comparar-tarifas-de-fibra-y-movil",
+    "keyword": "cómo comparar tarifas de fibra y móvil",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 300,
+    "title": "Cómo ahorrar en internet en casa",
+    "slug": "como-ahorrar-en-internet-en-casa",
+    "keyword": "cómo ahorrar en internet en casa",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 301,
+    "title": "Cómo reducir el coste de las aplicaciones de pago",
+    "slug": "como-reducir-el-coste-de-las-aplicaciones-de-pago",
+    "keyword": "cómo reducir el coste de las aplicaciones de pago",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 302,
+    "title": "Cómo evitar compras dentro de aplicaciones",
+    "slug": "como-evitar-compras-dentro-de-aplicaciones",
+    "keyword": "cómo evitar compras dentro de aplicaciones",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 303,
+    "title": "Cómo ahorrar en videojuegos",
+    "slug": "como-ahorrar-en-videojuegos",
+    "keyword": "cómo ahorrar en videojuegos",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 304,
+    "title": "Cómo ahorrar en servicios digitales para estudiantes",
+    "slug": "como-ahorrar-en-servicios-digitales-para-estudiantes",
+    "keyword": "cómo ahorrar en servicios digitales para estudiantes",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 305,
+    "title": "Cómo reducir comisiones de pagos online",
+    "slug": "como-reducir-comisiones-de-pagos-online",
+    "keyword": "cómo reducir comisiones de pagos online",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 306,
+    "title": "Cómo evitar renovaciones automáticas no deseadas",
+    "slug": "como-evitar-renovaciones-automaticas-no-deseadas",
+    "keyword": "cómo evitar renovaciones automáticas no deseadas",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 307,
+    "title": "Cómo encontrar gastos recurrentes en el banco",
+    "slug": "como-encontrar-gastos-recurrentes-en-el-banco",
+    "keyword": "cómo encontrar gastos recurrentes en el banco",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 308,
+    "title": "Cómo ahorrar en almacenamiento en la nube",
+    "slug": "como-ahorrar-en-almacenamiento-en-la-nube",
+    "keyword": "cómo ahorrar en almacenamiento en la nube",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 309,
+    "title": "Cómo ahorrar en software para autónomos",
+    "slug": "como-ahorrar-en-software-para-autonomos",
+    "keyword": "cómo ahorrar en software para autónomos",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 310,
+    "title": "Alternativas gratuitas a programas de pago para ahorrar",
+    "slug": "alternativas-gratuitas-a-programas-de-pago-para-ahorrar",
+    "keyword": "alternativas gratuitas a programas de pago para ahorrar",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 311,
+    "title": "Cómo protegerse de estafas al buscar ofertas online",
+    "slug": "como-protegerse-de-estafas-al-buscar-ofertas-online",
+    "keyword": "cómo protegerse de estafas al buscar ofertas online",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 312,
+    "title": "Cómo comparar el coste anual de servicios digitales",
+    "slug": "como-comparar-el-coste-anual-de-servicios-digitales",
+    "keyword": "cómo comparar el coste anual de servicios digitales",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 313,
+    "title": "Cómo ahorrar en llamadas al extranjero",
+    "slug": "como-ahorrar-en-llamadas-al-extranjero",
+    "keyword": "cómo ahorrar en llamadas al extranjero",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 314,
+    "title": "Cómo reducir el gasto en datos móviles",
+    "slug": "como-reducir-el-gasto-en-datos-moviles",
+    "keyword": "cómo reducir el gasto en datos móviles",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 315,
+    "title": "Cómo ahorrar en dispositivos tecnológicos reacondicionados",
+    "slug": "como-ahorrar-en-dispositivos-tecnologicos-reacondicionados",
+    "keyword": "cómo ahorrar en dispositivos tecnológicos reacondicionados",
+    "cluster": "Suscripciones, tecnología y servicios digitales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 316,
+    "title": "Cómo ahorrar en impuestos legalmente en España",
+    "slug": "como-ahorrar-en-impuestos-legalmente-en-espana",
+    "keyword": "cómo ahorrar en impuestos legalmente en España",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 317,
+    "title": "Qué gastos puedo deducir si soy autónomo",
+    "slug": "que-gastos-puedo-deducir-si-soy-autonomo",
+    "keyword": "qué gastos puedo deducir si soy autónomo",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 318,
+    "title": "Cómo revisar el borrador de la renta para no pagar de más",
+    "slug": "como-revisar-el-borrador-de-la-renta-para-no-pagar-de-mas",
+    "keyword": "cómo revisar el borrador de la renta para no pagar de más",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 319,
+    "title": "Qué documentos guardar para la declaración de la renta",
+    "slug": "que-documentos-guardar-para-la-declaracion-de-la-renta",
+    "keyword": "qué documentos guardar para la declaración de la renta",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 320,
+    "title": "Cómo comparar el coste real de una ayuda o subvención",
+    "slug": "como-comparar-el-coste-real-de-una-ayuda-o-subvencion",
+    "keyword": "cómo comparar el coste real de una ayuda o subvención",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 321,
+    "title": "Ayudas para mejorar la eficiencia energética de la vivienda",
+    "slug": "ayudas-para-mejorar-la-eficiencia-energetica-de-la-vivienda",
+    "keyword": "ayudas para mejorar la eficiencia energética de la vivienda",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 322,
+    "title": "Cómo consultar ayudas públicas para familias",
+    "slug": "como-consultar-ayudas-publicas-para-familias",
+    "keyword": "cómo consultar ayudas públicas para familias",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 323,
+    "title": "Cómo ahorrar en gastos bancarios conociendo mis derechos",
+    "slug": "como-ahorrar-en-gastos-bancarios-conociendo-mis-derechos",
+    "keyword": "cómo ahorrar en gastos bancarios conociendo mis derechos",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 324,
+    "title": "Qué derechos tengo al cancelar un servicio",
+    "slug": "que-derechos-tengo-al-cancelar-un-servicio",
+    "keyword": "qué derechos tengo al cancelar un servicio",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 325,
+    "title": "Cómo reclamar una comisión bancaria indebida",
+    "slug": "como-reclamar-una-comision-bancaria-indebida",
+    "keyword": "cómo reclamar una comisión bancaria indebida",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 326,
+    "title": "Cómo comparar ofertas sin caer en publicidad engañosa",
+    "slug": "como-comparar-ofertas-sin-caer-en-publicidad-enganosa",
+    "keyword": "cómo comparar ofertas sin caer en publicidad engañosa",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 327,
+    "title": "Cómo detectar descuentos falsos en rebajas",
+    "slug": "como-detectar-descuentos-falsos-en-rebajas",
+    "keyword": "cómo detectar descuentos falsos en rebajas",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 328,
+    "title": "Cómo ahorrar al comprar online de forma segura",
+    "slug": "como-ahorrar-al-comprar-online-de-forma-segura",
+    "keyword": "cómo ahorrar al comprar online de forma segura",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 329,
+    "title": "Qué revisar en la letra pequeña de una oferta",
+    "slug": "que-revisar-en-la-letra-pequena-de-una-oferta",
+    "keyword": "qué revisar en la letra pequeña de una oferta",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 330,
+    "title": "Cómo evitar microcréditos para gastos puntuales",
+    "slug": "como-evitar-microcreditos-para-gastos-puntuales",
+    "keyword": "cómo evitar microcréditos para gastos puntuales",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 331,
+    "title": "Cómo reclamar un recibo incorrecto",
+    "slug": "como-reclamar-un-recibo-incorrecto",
+    "keyword": "cómo reclamar un recibo incorrecto",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 332,
+    "title": "Cómo comprobar si una entidad financiera está registrada",
+    "slug": "como-comprobar-si-una-entidad-financiera-esta-registrada",
+    "keyword": "cómo comprobar si una entidad financiera está registrada",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 333,
+    "title": "Cómo evitar estafas que prometen ayudas económicas",
+    "slug": "como-evitar-estafas-que-prometen-ayudas-economicas",
+    "keyword": "cómo evitar estafas que prometen ayudas económicas",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Informativa / práctica",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 334,
+    "title": "Cómo ahorrar en seguros comparando coberturas",
+    "slug": "como-ahorrar-en-seguros-comparando-coberturas",
+    "keyword": "cómo ahorrar en seguros comparando coberturas",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 335,
+    "title": "Cómo revisar las condiciones de renovación de un seguro",
+    "slug": "como-revisar-las-condiciones-de-renovacion-de-un-seguro",
+    "keyword": "cómo revisar las condiciones de renovación de un seguro",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 336,
+    "title": "Cómo comparar tarifas sin fijarse solo en el precio",
+    "slug": "como-comparar-tarifas-sin-fijarse-solo-en-el-precio",
+    "keyword": "cómo comparar tarifas sin fijarse solo en el precio",
+    "cluster": "Impuestos, ayudas y derechos del consumidor",
+    "intent": "Comercial / comparación",
+    "angle": "Alta: revisar con fuente oficial y experto; no prometer rentabilidades ni resultados"
+  },
+  {
+    "id": 337,
+    "title": "Cómo ahorrar dinero siendo autónomo",
+    "slug": "como-ahorrar-dinero-siendo-autonomo",
+    "keyword": "cómo ahorrar dinero siendo autónomo",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 338,
+    "title": "Cómo hacer un presupuesto mensual para autónomos",
+    "slug": "como-hacer-un-presupuesto-mensual-para-autonomos",
+    "keyword": "cómo hacer un presupuesto mensual para autónomos",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 339,
+    "title": "Cómo crear un fondo de emergencia para autónomos",
+    "slug": "como-crear-un-fondo-de-emergencia-para-autonomos",
+    "keyword": "cómo crear un fondo de emergencia para autónomos",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 340,
+    "title": "Cómo separar las finanzas personales y del negocio",
+    "slug": "como-separar-las-finanzas-personales-y-del-negocio",
+    "keyword": "cómo separar las finanzas personales y del negocio",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 341,
+    "title": "Cómo ahorrar en gastos fijos de una pequeña empresa",
+    "slug": "como-ahorrar-en-gastos-fijos-de-una-pequena-empresa",
+    "keyword": "cómo ahorrar en gastos fijos de una pequeña empresa",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 342,
+    "title": "Cómo reducir el coste de herramientas digitales para autónomos",
+    "slug": "como-reducir-el-coste-de-herramientas-digitales-para-autonomos",
+    "keyword": "cómo reducir el coste de herramientas digitales para autónomos",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 343,
+    "title": "Cómo comparar cuentas bancarias para autónomos",
+    "slug": "como-comparar-cuentas-bancarias-para-autonomos",
+    "keyword": "cómo comparar cuentas bancarias para autónomos",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 344,
+    "title": "Cómo controlar el flujo de caja de un pequeño negocio",
+    "slug": "como-controlar-el-flujo-de-caja-de-un-pequeno-negocio",
+    "keyword": "cómo controlar el flujo de caja de un pequeño negocio",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 345,
+    "title": "Cómo planificar impuestos para evitar sorpresas",
+    "slug": "como-planificar-impuestos-para-evitar-sorpresas",
+    "keyword": "cómo planificar impuestos para evitar sorpresas",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 346,
+    "title": "Cómo ahorrar en suministros de una oficina pequeña",
+    "slug": "como-ahorrar-en-suministros-de-una-oficina-pequena",
+    "keyword": "cómo ahorrar en suministros de una oficina pequeña",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 347,
+    "title": "Cómo reducir el gasto energético de un comercio",
+    "slug": "como-reducir-el-gasto-energetico-de-un-comercio",
+    "keyword": "cómo reducir el gasto energético de un comercio",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 348,
+    "title": "Cómo ahorrar en envíos para una tienda online",
+    "slug": "como-ahorrar-en-envios-para-una-tienda-online",
+    "keyword": "cómo ahorrar en envíos para una tienda online",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 349,
+    "title": "Cómo negociar precios con proveedores para ahorrar",
+    "slug": "como-negociar-precios-con-proveedores-para-ahorrar",
+    "keyword": "cómo negociar precios con proveedores para ahorrar",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 350,
+    "title": "Cómo reducir gastos de software empresarial",
+    "slug": "como-reducir-gastos-de-software-empresarial",
+    "keyword": "cómo reducir gastos de software empresarial",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 351,
+    "title": "Cómo presupuestar meses de baja facturación",
+    "slug": "como-presupuestar-meses-de-baja-facturacion",
+    "keyword": "cómo presupuestar meses de baja facturación",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 352,
+    "title": "Cómo crear una reserva para el IVA y el IRPF",
+    "slug": "como-crear-una-reserva-para-el-iva-y-el-irpf",
+    "keyword": "cómo crear una reserva para el IVA y el IRPF",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 353,
+    "title": "Cómo ahorrar en seguros profesionales",
+    "slug": "como-ahorrar-en-seguros-profesionales",
+    "keyword": "cómo ahorrar en seguros profesionales",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 354,
+    "title": "Cómo revisar comisiones de cobro con tarjeta",
+    "slug": "como-revisar-comisiones-de-cobro-con-tarjeta",
+    "keyword": "cómo revisar comisiones de cobro con tarjeta",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 355,
+    "title": "Cómo ahorrar en material de oficina",
+    "slug": "como-ahorrar-en-material-de-oficina",
+    "keyword": "cómo ahorrar en material de oficina",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 356,
+    "title": "Cómo reducir costes sin perjudicar la calidad del servicio",
+    "slug": "como-reducir-costes-sin-perjudicar-la-calidad-del-servicio",
+    "keyword": "cómo reducir costes sin perjudicar la calidad del servicio",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 357,
+    "title": "Cómo calcular el coste real de contratar a un empleado",
+    "slug": "como-calcular-el-coste-real-de-contratar-a-un-empleado",
+    "keyword": "cómo calcular el coste real de contratar a un empleado",
+    "cluster": "Ahorro para autónomos y pequeños negocios",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 358,
+    "title": "Calculadora de ahorro mensual",
+    "slug": "calculadora-de-ahorro-mensual",
+    "keyword": "calculadora de ahorro mensual",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 359,
+    "title": "Simulador de ahorro con aportaciones mensuales",
+    "slug": "simulador-de-ahorro-con-aportaciones-mensuales",
+    "keyword": "simulador de ahorro con aportaciones mensuales",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 360,
+    "title": "Calculadora de interés compuesto para ahorrar",
+    "slug": "calculadora-de-interes-compuesto-para-ahorrar",
+    "keyword": "calculadora de interés compuesto para ahorrar",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 361,
+    "title": "Calculadora de objetivo de ahorro",
+    "slug": "calculadora-de-objetivo-de-ahorro",
+    "keyword": "calculadora de objetivo de ahorro",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 362,
+    "title": "Calculadora de fondo de emergencia",
+    "slug": "calculadora-de-fondo-de-emergencia",
+    "keyword": "calculadora de fondo de emergencia",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 363,
+    "title": "Plantilla Excel de ahorro mensual",
+    "slug": "plantilla-excel-de-ahorro-mensual",
+    "keyword": "plantilla Excel de ahorro mensual",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 364,
+    "title": "Plantilla de presupuesto familiar gratis",
+    "slug": "plantilla-de-presupuesto-familiar-gratis",
+    "keyword": "plantilla de presupuesto familiar gratis",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 365,
+    "title": "Hoja de cálculo para gastos diarios",
+    "slug": "hoja-de-calculo-para-gastos-diarios",
+    "keyword": "hoja de cálculo para gastos diarios",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 366,
+    "title": "Plantilla para controlar suscripciones",
+    "slug": "plantilla-para-controlar-suscripciones",
+    "keyword": "plantilla para controlar suscripciones",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 367,
+    "title": "Calculadora de ahorro energético en casa",
+    "slug": "calculadora-de-ahorro-energetico-en-casa",
+    "keyword": "calculadora de ahorro energético en casa",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 368,
+    "title": "Calculadora de coste por kilómetro del coche",
+    "slug": "calculadora-de-coste-por-kilometro-del-coche",
+    "keyword": "calculadora de coste por kilómetro del coche",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 369,
+    "title": "Calculadora de ahorro para la entrada de una vivienda",
+    "slug": "calculadora-de-ahorro-para-la-entrada-de-una-vivienda",
+    "keyword": "calculadora de ahorro para la entrada de una vivienda",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 370,
+    "title": "Calculadora de presupuesto para vacaciones",
+    "slug": "calculadora-de-presupuesto-para-vacaciones",
+    "keyword": "calculadora de presupuesto para vacaciones",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 371,
+    "title": "Simulador de ahorro con regla 50 30 20",
+    "slug": "simulador-de-ahorro-con-regla-50-30-20",
+    "keyword": "simulador de ahorro con regla 50 30 20",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 372,
+    "title": "Reto de ahorro imprimible de 52 semanas",
+    "slug": "reto-de-ahorro-imprimible-de-52-semanas",
+    "keyword": "reto de ahorro imprimible de 52 semanas",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 373,
+    "title": "Plantilla de sobres de ahorro para imprimir",
+    "slug": "plantilla-de-sobres-de-ahorro-para-imprimir",
+    "keyword": "plantilla de sobres de ahorro para imprimir",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 374,
+    "title": "Tabla para ahorrar 1000 euros",
+    "slug": "tabla-para-ahorrar-1000-euros",
+    "keyword": "tabla para ahorrar 1000 euros",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 375,
+    "title": "Tabla para ahorrar 5000 euros",
+    "slug": "tabla-para-ahorrar-5000-euros",
+    "keyword": "tabla para ahorrar 5000 euros",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 376,
+    "title": "Tabla para ahorrar 10000 euros",
+    "slug": "tabla-para-ahorrar-10000-euros",
+    "keyword": "tabla para ahorrar 10000 euros",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 377,
+    "title": "Calculadora de cuánto ahorrar según el sueldo",
+    "slug": "calculadora-de-cuanto-ahorrar-segun-el-sueldo",
+    "keyword": "calculadora de cuánto ahorrar según el sueldo",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Herramienta / acción",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 378,
+    "title": "Comparador de cuenta remunerada por TAE",
+    "slug": "comparador-de-cuenta-remunerada-por-tae",
+    "keyword": "comparador de cuenta remunerada por TAE",
+    "cluster": "Calculadoras, plantillas y herramientas",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 379,
+    "title": "Cómo ahorrar en enero después de Navidad",
+    "slug": "como-ahorrar-en-enero-despues-de-navidad",
+    "keyword": "cómo ahorrar en enero después de Navidad",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 380,
+    "title": "Cómo recuperar el presupuesto después de las vacaciones",
+    "slug": "como-recuperar-el-presupuesto-despues-de-las-vacaciones",
+    "keyword": "cómo recuperar el presupuesto después de las vacaciones",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 381,
+    "title": "Cómo ahorrar en la cuesta de enero",
+    "slug": "como-ahorrar-en-la-cuesta-de-enero",
+    "keyword": "cómo ahorrar en la cuesta de enero",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 382,
+    "title": "Cómo ahorrar en San Valentín",
+    "slug": "como-ahorrar-en-san-valentin",
+    "keyword": "cómo ahorrar en San Valentín",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 383,
+    "title": "Cómo ahorrar en Semana Santa",
+    "slug": "como-ahorrar-en-semana-santa",
+    "keyword": "cómo ahorrar en Semana Santa",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 384,
+    "title": "Cómo ahorrar durante las vacaciones de verano",
+    "slug": "como-ahorrar-durante-las-vacaciones-de-verano",
+    "keyword": "cómo ahorrar durante las vacaciones de verano",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 385,
+    "title": "Cómo ahorrar en la vuelta al cole",
+    "slug": "como-ahorrar-en-la-vuelta-al-cole-385",
+    "keyword": "cómo ahorrar en la vuelta al cole",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 386,
+    "title": "Cómo ahorrar en Halloween",
+    "slug": "como-ahorrar-en-halloween",
+    "keyword": "cómo ahorrar en Halloween",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 387,
+    "title": "Cómo ahorrar en Black Friday sin compras impulsivas",
+    "slug": "como-ahorrar-en-black-friday-sin-compras-impulsivas",
+    "keyword": "cómo ahorrar en Black Friday sin compras impulsivas",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 388,
+    "title": "Cómo ahorrar en Cyber Monday de forma segura",
+    "slug": "como-ahorrar-en-cyber-monday-de-forma-segura",
+    "keyword": "cómo ahorrar en Cyber Monday de forma segura",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 389,
+    "title": "Cómo ahorrar en Navidad con un presupuesto",
+    "slug": "como-ahorrar-en-navidad-con-un-presupuesto",
+    "keyword": "cómo ahorrar en Navidad con un presupuesto",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 390,
+    "title": "Cómo ahorrar en regalos de Reyes",
+    "slug": "como-ahorrar-en-regalos-de-reyes",
+    "keyword": "cómo ahorrar en regalos de Reyes",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 391,
+    "title": "Cómo ahorrar en las comidas navideñas",
+    "slug": "como-ahorrar-en-las-comidas-navidenas",
+    "keyword": "cómo ahorrar en las comidas navideñas",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 392,
+    "title": "Cómo ahorrar en bodas durante la temporada alta",
+    "slug": "como-ahorrar-en-bodas-durante-la-temporada-alta",
+    "keyword": "cómo ahorrar en bodas durante la temporada alta",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 393,
+    "title": "Cómo preparar el presupuesto de las vacaciones de verano",
+    "slug": "como-preparar-el-presupuesto-de-las-vacaciones-de-verano",
+    "keyword": "cómo preparar el presupuesto de las vacaciones de verano",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 394,
+    "title": "Cómo ahorrar en la revisión anual de seguros",
+    "slug": "como-ahorrar-en-la-revision-anual-de-seguros",
+    "keyword": "cómo ahorrar en la revisión anual de seguros",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 395,
+    "title": "Cómo planificar gastos anuales para que no sorprendan",
+    "slug": "como-planificar-gastos-anuales-para-que-no-sorprendan",
+    "keyword": "cómo planificar gastos anuales para que no sorprendan",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 396,
+    "title": "Cómo ahorrar en la renovación de contratos al empezar el año",
+    "slug": "como-ahorrar-en-la-renovacion-de-contratos-al-empezar-el-ano",
+    "keyword": "cómo ahorrar en la renovación de contratos al empezar el año",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 397,
+    "title": "Cómo organizar un calendario anual de ahorro",
+    "slug": "como-organizar-un-calendario-anual-de-ahorro",
+    "keyword": "cómo organizar un calendario anual de ahorro",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 398,
+    "title": "Cómo preparar el fondo de gastos escolares",
+    "slug": "como-preparar-el-fondo-de-gastos-escolares",
+    "keyword": "cómo preparar el fondo de gastos escolares",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 399,
+    "title": "Cómo ahorrar durante periodos de inflación alta",
+    "slug": "como-ahorrar-durante-periodos-de-inflacion-alta",
+    "keyword": "cómo ahorrar durante periodos de inflación alta",
+    "cluster": "Ahorro estacional y eventos del año",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 400,
+    "title": "Por qué gasto más de lo que quiero",
+    "slug": "por-que-gasto-mas-de-lo-que-quiero",
+    "keyword": "por qué gasto más de lo que quiero",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 401,
+    "title": "Cómo dejar de comprar por impulso",
+    "slug": "como-dejar-de-comprar-por-impulso",
+    "keyword": "cómo dejar de comprar por impulso",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 402,
+    "title": "Cómo ahorrar sin sentir que me privo de todo",
+    "slug": "como-ahorrar-sin-sentir-que-me-privo-de-todo",
+    "keyword": "cómo ahorrar sin sentir que me privo de todo",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 403,
+    "title": "Cómo cambiar hábitos para gastar menos",
+    "slug": "como-cambiar-habitos-para-gastar-menos",
+    "keyword": "cómo cambiar hábitos para gastar menos",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 404,
+    "title": "Cómo distinguir necesidades de deseos al comprar",
+    "slug": "como-distinguir-necesidades-de-deseos-al-comprar",
+    "keyword": "cómo distinguir necesidades de deseos al comprar",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 405,
+    "title": "Cómo evitar gastar por aburrimiento",
+    "slug": "como-evitar-gastar-por-aburrimiento",
+    "keyword": "cómo evitar gastar por aburrimiento",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 406,
+    "title": "Cómo ahorrar cuando las compras me dan satisfacción",
+    "slug": "como-ahorrar-cuando-las-compras-me-dan-satisfaccion",
+    "keyword": "cómo ahorrar cuando las compras me dan satisfacción",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 407,
+    "title": "Cómo hablar de dinero sin vergüenza",
+    "slug": "como-hablar-de-dinero-sin-verguenza",
+    "keyword": "cómo hablar de dinero sin vergüenza",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 408,
+    "title": "Cómo mantener la motivación para ahorrar",
+    "slug": "como-mantener-la-motivacion-para-ahorrar",
+    "keyword": "cómo mantener la motivación para ahorrar",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 409,
+    "title": "Cómo recuperarme de un mes de gastos excesivos",
+    "slug": "como-recuperarme-de-un-mes-de-gastos-excesivos",
+    "keyword": "cómo recuperarme de un mes de gastos excesivos",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 410,
+    "title": "Cómo establecer límites de gasto personales",
+    "slug": "como-establecer-limites-de-gasto-personales",
+    "keyword": "cómo establecer límites de gasto personales",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 411,
+    "title": "Cómo evitar compararme con el nivel de vida de otros",
+    "slug": "como-evitar-compararme-con-el-nivel-de-vida-de-otros",
+    "keyword": "cómo evitar compararme con el nivel de vida de otros",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 412,
+    "title": "Cómo crear reglas personales para comprar menos",
+    "slug": "como-crear-reglas-personales-para-comprar-menos",
+    "keyword": "cómo crear reglas personales para comprar menos",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 413,
+    "title": "Cómo esperar 24 horas antes de una compra",
+    "slug": "como-esperar-24-horas-antes-de-una-compra",
+    "keyword": "cómo esperar 24 horas antes de una compra",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 414,
+    "title": "Cómo reducir el gasto emocional",
+    "slug": "como-reducir-el-gasto-emocional",
+    "keyword": "cómo reducir el gasto emocional",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 415,
+    "title": "Cómo celebrar avances de ahorro sin gastar mucho",
+    "slug": "como-celebrar-avances-de-ahorro-sin-gastar-mucho",
+    "keyword": "cómo celebrar avances de ahorro sin gastar mucho",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 416,
+    "title": "Cómo afrontar gastos inesperados sin pánico financiero",
+    "slug": "como-afrontar-gastos-inesperados-sin-panico-financiero",
+    "keyword": "cómo afrontar gastos inesperados sin pánico financiero",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 417,
+    "title": "Cómo crear hábitos de consumo consciente",
+    "slug": "como-crear-habitos-de-consumo-consciente",
+    "keyword": "cómo crear hábitos de consumo consciente",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 418,
+    "title": "Cómo ahorrar en pareja sin convertirlo en conflicto",
+    "slug": "como-ahorrar-en-pareja-sin-convertirlo-en-conflicto",
+    "keyword": "cómo ahorrar en pareja sin convertirlo en conflicto",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 419,
+    "title": "Cómo explicar decisiones de ahorro a la familia",
+    "slug": "como-explicar-decisiones-de-ahorro-a-la-familia",
+    "keyword": "cómo explicar decisiones de ahorro a la familia",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 420,
+    "title": "Cómo identificar pequeños gastos repetidos",
+    "slug": "como-identificar-pequenos-gastos-repetidos",
+    "keyword": "cómo identificar pequeños gastos repetidos",
+    "cluster": "Psicología del dinero y hábitos de consumo",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 421,
+    "title": "Cómo ahorrar reutilizando objetos en casa",
+    "slug": "como-ahorrar-reutilizando-objetos-en-casa",
+    "keyword": "cómo ahorrar reutilizando objetos en casa",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 422,
+    "title": "Cómo ahorrar reparando en vez de reemplazar",
+    "slug": "como-ahorrar-reparando-en-vez-de-reemplazar",
+    "keyword": "cómo ahorrar reparando en vez de reemplazar",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 423,
+    "title": "Cómo comprar de segunda mano de forma segura",
+    "slug": "como-comprar-de-segunda-mano-de-forma-segura",
+    "keyword": "cómo comprar de segunda mano de forma segura",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 424,
+    "title": "Cómo ahorrar intercambiando ropa y objetos",
+    "slug": "como-ahorrar-intercambiando-ropa-y-objetos",
+    "keyword": "cómo ahorrar intercambiando ropa y objetos",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 425,
+    "title": "Cómo reducir residuos y gastos domésticos",
+    "slug": "como-reducir-residuos-y-gastos-domesticos",
+    "keyword": "cómo reducir residuos y gastos domésticos",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 426,
+    "title": "Cómo ahorrar con productos reutilizables",
+    "slug": "como-ahorrar-con-productos-reutilizables",
+    "keyword": "cómo ahorrar con productos reutilizables",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 427,
+    "title": "Cómo crear un hogar de bajo consumo",
+    "slug": "como-crear-un-hogar-de-bajo-consumo",
+    "keyword": "cómo crear un hogar de bajo consumo",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 428,
+    "title": "Cómo ahorrar con un huerto doméstico",
+    "slug": "como-ahorrar-con-un-huerto-domestico",
+    "keyword": "cómo ahorrar con un huerto doméstico",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 429,
+    "title": "Cómo reducir el desperdicio alimentario y el gasto",
+    "slug": "como-reducir-el-desperdicio-alimentario-y-el-gasto",
+    "keyword": "cómo reducir el desperdicio alimentario y el gasto",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 430,
+    "title": "Cómo ahorrar usando una biblioteca pública",
+    "slug": "como-ahorrar-usando-una-biblioteca-publica",
+    "keyword": "cómo ahorrar usando una biblioteca pública",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 431,
+    "title": "Cómo ahorrar compartiendo herramientas con vecinos",
+    "slug": "como-ahorrar-compartiendo-herramientas-con-vecinos",
+    "keyword": "cómo ahorrar compartiendo herramientas con vecinos",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 432,
+    "title": "Cómo reducir el gasto en agua embotellada",
+    "slug": "como-reducir-el-gasto-en-agua-embotellada",
+    "keyword": "cómo reducir el gasto en agua embotellada",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 433,
+    "title": "Cómo ahorrar con recipientes reutilizables",
+    "slug": "como-ahorrar-con-recipientes-reutilizables",
+    "keyword": "cómo ahorrar con recipientes reutilizables",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 434,
+    "title": "Cómo reparar ropa para alargar su vida útil",
+    "slug": "como-reparar-ropa-para-alargar-su-vida-util",
+    "keyword": "cómo reparar ropa para alargar su vida útil",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 435,
+    "title": "Cómo ahorrar limpiando con productos básicos",
+    "slug": "como-ahorrar-limpiando-con-productos-basicos",
+    "keyword": "cómo ahorrar limpiando con productos básicos",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 436,
+    "title": "Cómo comparar el coste por uso de un producto",
+    "slug": "como-comparar-el-coste-por-uso-de-un-producto",
+    "keyword": "cómo comparar el coste por uso de un producto",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 437,
+    "title": "Cómo decidir si una compra sostenible compensa económicamente",
+    "slug": "como-decidir-si-una-compra-sostenible-compensa-economicamente",
+    "keyword": "cómo decidir si una compra sostenible compensa económicamente",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 438,
+    "title": "Cómo ahorrar con electrodomésticos reparables",
+    "slug": "como-ahorrar-con-electrodomesticos-reparables",
+    "keyword": "cómo ahorrar con electrodomésticos reparables",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 439,
+    "title": "Cómo alargar la vida útil de los dispositivos electrónicos",
+    "slug": "como-alargar-la-vida-util-de-los-dispositivos-electronicos",
+    "keyword": "cómo alargar la vida útil de los dispositivos electrónicos",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 440,
+    "title": "Cómo vender objetos que ya no uso para ahorrar",
+    "slug": "como-vender-objetos-que-ya-no-uso-para-ahorrar",
+    "keyword": "cómo vender objetos que ya no uso para ahorrar",
+    "cluster": "Ahorro y economía doméstica sostenible",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 441,
+    "title": "Cómo crear un fondo de emergencia desde cero",
+    "slug": "como-crear-un-fondo-de-emergencia-desde-cero",
+    "keyword": "cómo crear un fondo de emergencia desde cero",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 442,
+    "title": "Cuánto dinero guardar para imprevistos",
+    "slug": "cuanto-dinero-guardar-para-imprevistos",
+    "keyword": "cuánto dinero guardar para imprevistos",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 443,
+    "title": "Dónde guardar el dinero del fondo de emergencia",
+    "slug": "donde-guardar-el-dinero-del-fondo-de-emergencia",
+    "keyword": "dónde guardar el dinero del fondo de emergencia",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 444,
+    "title": "Cómo ahorrar para una reparación urgente del coche",
+    "slug": "como-ahorrar-para-una-reparacion-urgente-del-coche",
+    "keyword": "cómo ahorrar para una reparación urgente del coche",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 445,
+    "title": "Cómo ahorrar para gastos veterinarios",
+    "slug": "como-ahorrar-para-gastos-veterinarios",
+    "keyword": "cómo ahorrar para gastos veterinarios",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 446,
+    "title": "Cómo preparar un colchón financiero ante desempleo",
+    "slug": "como-preparar-un-colchon-financiero-ante-desempleo",
+    "keyword": "cómo preparar un colchón financiero ante desempleo",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 447,
+    "title": "Cómo ahorrar para una operación o gasto médico previsto",
+    "slug": "como-ahorrar-para-una-operacion-o-gasto-medico-previsto",
+    "keyword": "cómo ahorrar para una operación o gasto médico previsto",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 448,
+    "title": "Cómo crear un fondo para gastos anuales",
+    "slug": "como-crear-un-fondo-para-gastos-anuales",
+    "keyword": "cómo crear un fondo para gastos anuales",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 449,
+    "title": "Cómo ahorrar para una mudanza inesperada",
+    "slug": "como-ahorrar-para-una-mudanza-inesperada",
+    "keyword": "cómo ahorrar para una mudanza inesperada",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 450,
+    "title": "Cómo ahorrar para cambiar de trabajo",
+    "slug": "como-ahorrar-para-cambiar-de-trabajo",
+    "keyword": "cómo ahorrar para cambiar de trabajo",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 451,
+    "title": "Cómo ahorrar para estudiar una oposición",
+    "slug": "como-ahorrar-para-estudiar-una-oposicion",
+    "keyword": "cómo ahorrar para estudiar una oposición",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 452,
+    "title": "Cómo ahorrar para un máster o formación",
+    "slug": "como-ahorrar-para-un-master-o-formacion",
+    "keyword": "cómo ahorrar para un máster o formación",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 453,
+    "title": "Cómo ahorrar para emprender un negocio",
+    "slug": "como-ahorrar-para-emprender-un-negocio",
+    "keyword": "cómo ahorrar para emprender un negocio",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 454,
+    "title": "Cómo ahorrar para una boda",
+    "slug": "como-ahorrar-para-una-boda",
+    "keyword": "cómo ahorrar para una boda",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 455,
+    "title": "Cómo ahorrar para una reforma concreta",
+    "slug": "como-ahorrar-para-una-reforma-concreta",
+    "keyword": "cómo ahorrar para una reforma concreta",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 456,
+    "title": "Cómo dividir una meta grande en objetivos mensuales",
+    "slug": "como-dividir-una-meta-grande-en-objetivos-mensuales",
+    "keyword": "cómo dividir una meta grande en objetivos mensuales",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 457,
+    "title": "Cómo ahorrar si tengo varios objetivos a la vez",
+    "slug": "como-ahorrar-si-tengo-varios-objetivos-a-la-vez",
+    "keyword": "cómo ahorrar si tengo varios objetivos a la vez",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 458,
+    "title": "Qué objetivo de ahorro priorizar primero",
+    "slug": "que-objetivo-de-ahorro-priorizar-primero",
+    "keyword": "qué objetivo de ahorro priorizar primero",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 459,
+    "title": "Cómo mantener el ahorro cuando aparece un imprevisto",
+    "slug": "como-mantener-el-ahorro-cuando-aparece-un-imprevisto",
+    "keyword": "cómo mantener el ahorro cuando aparece un imprevisto",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 460,
+    "title": "Cómo reconstruir el fondo de emergencia después de usarlo",
+    "slug": "como-reconstruir-el-fondo-de-emergencia-despues-de-usarlo",
+    "keyword": "cómo reconstruir el fondo de emergencia después de usarlo",
+    "cluster": "Emergencias, metas y objetivos concretos",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 461,
+    "title": "Cómo ahorrar en el seguro de salud sin perder cobertura necesaria",
+    "slug": "como-ahorrar-en-el-seguro-de-salud-sin-perder-cobertura-necesaria",
+    "keyword": "cómo ahorrar en el seguro de salud sin perder cobertura necesaria",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 462,
+    "title": "Cómo comparar seguros de hogar para ahorrar",
+    "slug": "como-comparar-seguros-de-hogar-para-ahorrar",
+    "keyword": "cómo comparar seguros de hogar para ahorrar",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 463,
+    "title": "Cómo ahorrar en el seguro de vida",
+    "slug": "como-ahorrar-en-el-seguro-de-vida",
+    "keyword": "cómo ahorrar en el seguro de vida",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 464,
+    "title": "Cómo revisar duplicidades entre seguros",
+    "slug": "como-revisar-duplicidades-entre-seguros",
+    "keyword": "cómo revisar duplicidades entre seguros",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 465,
+    "title": "Cómo comparar franquicias y coberturas de un seguro",
+    "slug": "como-comparar-franquicias-y-coberturas-de-un-seguro",
+    "keyword": "cómo comparar franquicias y coberturas de un seguro",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 466,
+    "title": "Cómo ahorrar en gastos de farmacia legalmente",
+    "slug": "como-ahorrar-en-gastos-de-farmacia-legalmente",
+    "keyword": "cómo ahorrar en gastos de farmacia legalmente",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 467,
+    "title": "Cómo reducir el coste de gafas y lentillas",
+    "slug": "como-reducir-el-coste-de-gafas-y-lentillas",
+    "keyword": "cómo reducir el coste de gafas y lentillas",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 468,
+    "title": "Cómo ahorrar en tratamientos dentales planificados",
+    "slug": "como-ahorrar-en-tratamientos-dentales-planificados",
+    "keyword": "cómo ahorrar en tratamientos dentales planificados",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 469,
+    "title": "Cómo comparar tarifas de gimnasios",
+    "slug": "como-comparar-tarifas-de-gimnasios",
+    "keyword": "cómo comparar tarifas de gimnasios",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 470,
+    "title": "Cómo ahorrar en actividades deportivas",
+    "slug": "como-ahorrar-en-actividades-deportivas",
+    "keyword": "cómo ahorrar en actividades deportivas",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 471,
+    "title": "Cómo reducir gastos de peluquería y cuidado personal",
+    "slug": "como-reducir-gastos-de-peluqueria-y-cuidado-personal",
+    "keyword": "cómo reducir gastos de peluquería y cuidado personal",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 472,
+    "title": "Cómo ahorrar en ropa de trabajo",
+    "slug": "como-ahorrar-en-ropa-de-trabajo",
+    "keyword": "cómo ahorrar en ropa de trabajo",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 473,
+    "title": "Cómo planificar gastos de salud anuales",
+    "slug": "como-planificar-gastos-de-salud-anuales",
+    "keyword": "cómo planificar gastos de salud anuales",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 474,
+    "title": "Cómo ahorrar en servicios para mascotas",
+    "slug": "como-ahorrar-en-servicios-para-mascotas",
+    "keyword": "cómo ahorrar en servicios para mascotas",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 475,
+    "title": "Cómo comparar seguros de viaje",
+    "slug": "como-comparar-seguros-de-viaje",
+    "keyword": "cómo comparar seguros de viaje",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 476,
+    "title": "Cómo revisar el coste de un seguro al renovar",
+    "slug": "como-revisar-el-coste-de-un-seguro-al-renovar",
+    "keyword": "cómo revisar el coste de un seguro al renovar",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 477,
+    "title": "Cómo evitar pagar por coberturas que no necesito",
+    "slug": "como-evitar-pagar-por-coberturas-que-no-necesito",
+    "keyword": "cómo evitar pagar por coberturas que no necesito",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 478,
+    "title": "Cómo ahorrar en fisioterapia y bienestar sin arriesgar la salud",
+    "slug": "como-ahorrar-en-fisioterapia-y-bienestar-sin-arriesgar-la-salud",
+    "keyword": "cómo ahorrar en fisioterapia y bienestar sin arriesgar la salud",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 479,
+    "title": "Cómo planificar el gasto en gafas para la familia",
+    "slug": "como-planificar-el-gasto-en-gafas-para-la-familia",
+    "keyword": "cómo planificar el gasto en gafas para la familia",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 480,
+    "title": "Cómo ahorrar en productos de cuidado personal",
+    "slug": "como-ahorrar-en-productos-de-cuidado-personal",
+    "keyword": "cómo ahorrar en productos de cuidado personal",
+    "cluster": "Ahorro en seguros, salud y gastos personales",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 481,
+    "title": "Comprar nuevo o reacondicionado qué sale más barato",
+    "slug": "comprar-nuevo-o-reacondicionado-que-sale-mas-barato",
+    "keyword": "comprar nuevo o reacondicionado qué sale más barato",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 482,
+    "title": "Alquilar o comprar herramientas qué compensa",
+    "slug": "alquilar-o-comprar-herramientas-que-compensa",
+    "keyword": "alquilar o comprar herramientas qué compensa",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 483,
+    "title": "Reparar o sustituir un electrodoméstico qué cuesta menos",
+    "slug": "reparar-o-sustituir-un-electrodomestico-que-cuesta-menos",
+    "keyword": "reparar o sustituir un electrodoméstico qué cuesta menos",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 484,
+    "title": "Marca blanca o marca conocida qué compensa",
+    "slug": "marca-blanca-o-marca-conocida-que-compensa",
+    "keyword": "marca blanca o marca conocida qué compensa",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 485,
+    "title": "Comprar en oferta o esperar qué conviene",
+    "slug": "comprar-en-oferta-o-esperar-que-conviene",
+    "keyword": "comprar en oferta o esperar qué conviene",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 486,
+    "title": "Pagar anual o mensual qué sale más barato",
+    "slug": "pagar-anual-o-mensual-que-sale-mas-barato",
+    "keyword": "pagar anual o mensual qué sale más barato",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 487,
+    "title": "Tarifa fija o variable cómo comparar el coste",
+    "slug": "tarifa-fija-o-variable-como-comparar-el-coste",
+    "keyword": "tarifa fija o variable cómo comparar el coste",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 488,
+    "title": "Cuenta remunerada o depósito cómo comparar",
+    "slug": "cuenta-remunerada-o-deposito-como-comparar",
+    "keyword": "cuenta remunerada o depósito cómo comparar",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 489,
+    "title": "Amortizar deuda o ahorrar qué priorizar",
+    "slug": "amortizar-deuda-o-ahorrar-que-priorizar",
+    "keyword": "amortizar deuda o ahorrar qué priorizar",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 490,
+    "title": "Comprar coche o usar carsharing qué cuesta menos",
+    "slug": "comprar-coche-o-usar-carsharing-que-cuesta-menos",
+    "keyword": "comprar coche o usar carsharing qué cuesta menos",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 491,
+    "title": "Coche eléctrico o gasolina coste total de uso",
+    "slug": "coche-electrico-o-gasolina-coste-total-de-uso",
+    "keyword": "coche eléctrico o gasolina coste total de uso",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 492,
+    "title": "Abono mensual o billetes sueltos qué sale más barato",
+    "slug": "abono-mensual-o-billetes-sueltos-que-sale-mas-barato",
+    "keyword": "abono mensual o billetes sueltos qué sale más barato",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 493,
+    "title": "Menú semanal o comprar cada día qué ahorra más",
+    "slug": "menu-semanal-o-comprar-cada-dia-que-ahorra-mas",
+    "keyword": "menú semanal o comprar cada día qué ahorra más",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 494,
+    "title": "Comprar a granel o envasado qué sale mejor",
+    "slug": "comprar-a-granel-o-envasado-que-sale-mejor",
+    "keyword": "comprar a granel o envasado qué sale mejor",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 495,
+    "title": "Segunda mano o nuevo cómo comparar el coste total",
+    "slug": "segunda-mano-o-nuevo-como-comparar-el-coste-total",
+    "keyword": "segunda mano o nuevo cómo comparar el coste total",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 496,
+    "title": "Reparar ropa o comprar nueva qué compensa",
+    "slug": "reparar-ropa-o-comprar-nueva-que-compensa",
+    "keyword": "reparar ropa o comprar nueva qué compensa",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 497,
+    "title": "Vivienda eficiente o barata de comprar qué valorar",
+    "slug": "vivienda-eficiente-o-barata-de-comprar-que-valorar",
+    "keyword": "vivienda eficiente o barata de comprar qué valorar",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 498,
+    "title": "Bombilla LED o tradicional cuánto se ahorra",
+    "slug": "bombilla-led-o-tradicional-cuanto-se-ahorra",
+    "keyword": "bombilla LED o tradicional cuánto se ahorra",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Informativa / práctica",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 499,
+    "title": "Calefacción individual o centralizada cómo comparar costes",
+    "slug": "calefaccion-individual-o-centralizada-como-comparar-costes",
+    "keyword": "calefacción individual o centralizada cómo comparar costes",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  },
+  {
+    "id": 500,
+    "title": "Pagar con débito o crédito cómo controlar gastos",
+    "slug": "pagar-con-debito-o-credito-como-controlar-gastos",
+    "keyword": "pagar con débito o crédito cómo controlar gastos",
+    "cluster": "Comparativas y decisiones de compra",
+    "intent": "Comercial / comparación",
+    "angle": "Media: añadir ejemplos verificables y contexto España"
+  }
+]
