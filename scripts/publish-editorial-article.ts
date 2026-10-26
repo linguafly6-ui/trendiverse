@@ -140,8 +140,11 @@ export async function publishArticle(slug: string): Promise<void> {
     }
     const columns = Object.keys(fields)
     const values = Object.values(fields).map(sqlString)
-    const updates = columns.filter((column) => column !== 'slug').map((column) => `${column} = excluded.${column}`).join(', ')
-    const sql = `INSERT INTO articles (${columns.join(', ')}) VALUES (${values.join(', ')}) ON CONFLICT(slug) DO UPDATE SET ${updates};`
+    const updates = columns
+      .filter((column) => column !== 'slug')
+      .map((column) => column + ' = excluded.' + column)
+      .join(', ')
+    const sql = 'INSERT INTO articles (' + columns.join(', ') + ') VALUES (' + values.join(', ') + ') ON CONFLICT(slug) DO UPDATE SET ' + updates + ';'
     const sqlPath = join(tempDir, 'upsert-article.sql')
     writeFileSync(sqlPath, sql, 'utf8')
 
