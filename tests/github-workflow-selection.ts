@@ -120,6 +120,7 @@ function evaluateIf(expression: string, event: GithubEvent): boolean {
   const pushMain = "github.event_name == 'push' && github.ref == 'refs/heads/main'"
   const workflowRunPushMain = "github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'main'"
   if (normalized === pushMain) return event.type === 'push' && event.branch === 'main'
+  if (normalized === dispatchMain) return event.type === 'workflow_dispatch'
   if (normalized === workflowRunPushMain) {
     return event.type === 'workflow_run'
       && event.conclusion === 'success'
