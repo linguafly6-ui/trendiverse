@@ -26,6 +26,20 @@ test('article image endpoint escapes untrusted title and uses fallback palette f
   assert.ok(svg.includes('TRENDIVERSE · UNKNOWN'))
 })
 
+
+test('article image helper uses vector SVG fallback for the blank electricity-saving hero', async () => {
+  const { articleImageUrl } = await import('../lib/article-images')
+  const url = articleImageUrl({
+    slug: 'como-ahorrar-electricidad-en-casa-sin-obras',
+    title: 'Cómo ahorrar electricidad en casa sin hacer obras: guía práctica',
+    category: 'hogar',
+    image_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
+    thumbnail_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp',
+  })
+  assert.ok(url.startsWith('/api/article-image?'))
+  assert.ok(url.includes('slug=como-ahorrar-electricidad-en-casa-sin-obras'))
+})
+
 test('article image helper prefers a stored HTTPS article image over the generic fallback', async () => {
   const { articleImageUrl } = await import('../lib/article-images')
   const url = articleImageUrl({
