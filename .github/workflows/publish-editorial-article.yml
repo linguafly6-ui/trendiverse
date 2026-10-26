@@ -1,6 +1,11 @@
 name: Publish approved editorial article to D1 and R2
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/seo-batch-04.ts"
   workflow_dispatch:
     inputs:
       slug:
@@ -17,7 +22,7 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -38,7 +43,7 @@ jobs:
       - name: Publish and verify D1 + R2
         run: npx tsx scripts/publish-editorial-article.ts "$ARTICLE_SLUG"
         env:
-          ARTICLE_SLUG: ${{ inputs.slug }}
+          ARTICLE_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'que-frutas-y-verduras-son-de-temporada-en-invierno' }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_BUCKET: trendiverse-articles
