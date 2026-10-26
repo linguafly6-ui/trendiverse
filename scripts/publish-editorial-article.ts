@@ -27,7 +27,7 @@ function runWrangler(args: string[]): string {
     const details = error && typeof error === 'object' && 'stderr' in error
       ? String((error as { stderr?: Buffer }).stderr ?? '').trim()
       : ''
-    throw new Error(`wrangler ${args.join(' ')} falló${details ? `: ${details}` : ''}`)
+    throw new Error('wrangler ' + args.join(' ') + ' falló' + (details ? ': ' + details : ''))
   }
 }
 
