@@ -12,8 +12,8 @@ export const SEO_BATCH_01_ARTICLES: Article[] = [
     slug: 'como-ahorrar-electricidad-en-casa-sin-obras',
     category: 'hogar',
     excerpt: 'Medidas prácticas para reducir el consumo eléctrico en casa sin reformas: iluminación, electrodomésticos, climatización, hábitos y seguimiento del gasto.',
-    image_url: '/api/article-image?slug=como-ahorrar-electricidad-en-casa-sin-obras&title=Ahorro%20de%20electricidad&category=hogar',
-    thumbnail_url: '/api/article-image?slug=como-ahorrar-electricidad-en-casa-sin-obras&title=Ahorro%20de%20electricidad&category=hogar',
+    image_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg',
+    thumbnail_url: '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg',
     read_time_minutes: 12, views: 0, trending: 0, published_at: '2026-10-26T10:00:00.000Z',
     content: `# Cómo ahorrar electricidad en casa sin hacer obras: guía práctica
 
