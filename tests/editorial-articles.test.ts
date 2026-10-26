@@ -455,5 +455,5 @@ test('ahorro SEO batch 01 has a complete long-form article and unique slug', () 
   const article = AHORRO_BATCH_01_ARTICLES[0]
   assert.equal(article.slug, 'como-ahorrar-dinero-cada-mes')
   assert.ok(article.title && article.excerpt && article.category)
-  assert.ok((article.content.match(/\\b[\\p{L}\\p{N}]+\\b/gu) ?? []).length >= 2000)
+  assert.ok((article.content.match(/\b[\p{L}\p{N}]+\b/gu) ?? []).length >= 2000)
 })
