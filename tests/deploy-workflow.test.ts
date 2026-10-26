@@ -72,10 +72,14 @@ test('un push a otra rama no selecciona ningún job', () => {
   assert.deepEqual(selectJobs(workflows, pushOther), [])
 })
 
-test('pull_request_target, workflow_dispatch, workflow_run y schedule no están habilitados', () => {
+test('solo el publicador editorial permite dispatch manual; no se habilitan otros disparadores', () => {
+  const dispatch = selectJobs(workflows, { type: 'workflow_dispatch' })
+  assert.deepEqual(dispatch.map((item) => `${item.workflowPath}:${item.job.id}`), ['publish-editorial-article.yml:publish'])
+  assert.equal(jobUsesProductionSecrets(dispatch[0].job), true)
+  assert.equal(jobDeploysPages(dispatch[0].job), false)
+
   for (const event of [
     { type: 'pull_request_target', baseBranch: 'main' },
-    { type: 'workflow_dispatch' },
     { type: 'workflow_run', triggeringEvent: 'pull_request', headBranch: 'cursor/example-53d6', conclusion: 'success' },
     { type: 'workflow_run', triggeringEvent: 'push', headBranch: 'main', conclusion: 'success' },
     { type: 'schedule' },
