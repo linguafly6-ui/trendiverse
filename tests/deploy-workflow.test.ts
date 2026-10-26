@@ -35,6 +35,7 @@ test('un push a main selecciona el despliegue después de lint, tests y build', 
   assert.equal(deploy.workflowPath, 'deploy.yml')
   assert.equal(deploy.job.id, 'deploy')
   assert.equal(deployStepFollowsChecks(deploy.job), true)
+  assert.equal(selectJobs(workflows, pushMain).some((item) => item.workflowPath === 'publish-editorial-article.yml' && item.job.id === 'publish'), true)
   assert.equal(jobUsesProductionSecrets(deploy.job), true)
   assert.equal(selected.some((item) => item.workflowPath === 'ci.yml' && item.job.id === 'ci'), false)
 })
