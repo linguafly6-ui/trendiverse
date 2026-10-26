@@ -8,12 +8,6 @@ type ArticleImageSource = Pick<Article, 'slug' | 'title' | 'category'> & Partial
  * be verified separately; a publicly reachable URL alone does not grant reuse rights.
  */
 export function articleImageUrl(article: ArticleImageSource): string {
-  // Pin the energy-saving guide to its first-party editorial asset even when an older
-  // article record in D1 still contains the generated /api/article-image fallback.
-  if (article.slug === 'como-ahorrar-electricidad-en-casa-sin-obras') {
-    return '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg'
-  }
-
   for (const candidate of [article.image_url, article.thumbnail_url]) {
     if (!candidate) continue
 
