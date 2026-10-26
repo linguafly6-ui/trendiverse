@@ -16,12 +16,19 @@ function sqlString(value: string): string {
 }
 
 function runWrangler(args: string[]): string {
-  return execFileSync('npx', ['wrangler', ...args], {
-    cwd: ROOT,
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'pipe'],
-    env: process.env,
-  })
+  try {
+    return execFileSync('npx', ['wrangler', ...args], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: process.env,
+    })
+  } catch (error) {
+    const details = error && typeof error === 'object' && 'stderr' in error
+      ? String((error as { stderr?: Buffer }).stderr ?? '').trim()
+      : ''
+    throw new Error(`wrangler ${args.join(' ')} falló${details ? `: ${details}` : ''}`)
+  }
 }
 
 function contentTypeFor(path: string, fallback = 'application/octet-stream'): string {
