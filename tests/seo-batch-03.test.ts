@@ -32,6 +32,6 @@ test('el segundo bloque editorial contiene diez artículos completos', () => {
 
 test('los diez artículos nuevos se resuelven por slug en el catálogo', () => {
   for (const slug of expectedSlugs) {
-    assert.equal(getArticleBySlug(slug)?.slug, slug)
+    assert.equal((await getArticleBySlug(slug))?.slug, slug)
   }
 })
