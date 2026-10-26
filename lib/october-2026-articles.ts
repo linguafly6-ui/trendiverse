@@ -8,8 +8,8 @@ export const OCTOBER_2026_ARTICLES: Article[] = [
     slug: 'ayudas-auto-plus-coches-electricos-2026-requisitos-plazo',
     category: 'coches',
     excerpt: 'Consulta quién puede solicitar las ayudas Auto+ 2026 para coches eléctricos, los importes máximos, los requisitos y el plazo oficial.',
-    image_url: '/images/articles/ayudas-auto-plus-2026.svg',
-    thumbnail_url: '/images/articles/ayudas-auto-plus-2026.svg',
+    image_url: '/api/article-image?slug=ayudas-auto-plus-coches-electricos-2026-requisitos-plazo&title=Ayudas%20Auto%2B%202026&category=coches',
+    thumbnail_url: '/api/article-image?slug=ayudas-auto-plus-coches-electricos-2026-requisitos-plazo&title=Ayudas%20Auto%2B%202026&category=coches',
     read_time_minutes: 7, views: 0, trending: 0, published_at: '2026-10-26T08:00:00.000Z',
     content: `# Ayudas Auto+ 2026: requisitos, importes y plazo para pedirlas
 
