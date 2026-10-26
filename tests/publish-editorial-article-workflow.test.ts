@@ -6,10 +6,10 @@ import test from 'node:test'
 const workflow = readFileSync(join(process.cwd(), '.github/workflows/publish-editorial-article.yml'), 'utf8')
 const script = readFileSync(join(process.cwd(), 'scripts/publish-editorial-article.ts'), 'utf8')
 
-test('la publicación editorial es manual y solo desde main', () => {
+test('la publicación automática del artículo 21 y el dispatch manual están limitados a main', () => {
   assert.match(workflow, /workflow_dispatch:/)
   assert.match(workflow, /push:/)
-  assert.match(workflow, /lib\\/seo-batch-04\\.ts/)
+  assert.ok(workflow.includes('"lib/seo-batch-04.ts"'))
   assert.match(workflow, /github\.ref == 'refs\/heads\/main'/)
   assert.match(workflow, /environment: production/)
   assert.match(workflow, /secrets\.CLOUDFLARE_API_TOKEN/)
