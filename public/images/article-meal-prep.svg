@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Cómo preparar comidas para varios días</title>
+<desc id="desc">Ilustración editorial de recipientes de comida preparada con verduras, arroz y legumbres</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0fdf4"/><stop offset="1" stop-color="#fef3c7"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".94"/><stop offset="1" stop-color="#dbeafe" stop-opacity=".78"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="1040" cy="95" r="160" fill="#bbf7d0" opacity=".7"/><circle cx="1080" cy="560" r="220" fill="#fde68a" opacity=".5"/>
+<text x="74" y="90" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#166534">TRENDIVERSE · COCINA PRÁCTICA</text>
+<text x="74" y="174" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#14532d">Comidas listas</text>
+<text x="74" y="232" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#14532d">para varios días</text>
+<text x="76" y="278" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#365314">Planifica · conserva · disfruta</text>
+<g transform="translate(530 235)">
+  <ellipse cx="270" cy="265" rx="280" ry="42" fill="#365314" opacity=".13"/>
+  <g transform="translate(10 15) rotate(-7 120 120)">
+    <rect x="0" y="0" width="235" height="210" rx="26" fill="url(#glass)" stroke="#64748b" stroke-width="5"/>
+    <rect x="8" y="8" width="219" height="26" rx="12" fill="#bbf7d0" stroke="#64748b" stroke-width="3"/>
+    <path d="M16 95 Q58 52 118 76 T219 84 L219 192 Q118 210 16 190Z" fill="#fef3c7"/>
+    <g fill="#f97316"><circle cx="47" cy="75" r="18"/><circle cx="92" cy="108" r="14"/><circle cx="180" cy="76" r="19"/></g>
+    <g fill="#16a34a"><ellipse cx="66" cy="150" rx="28" ry="14" transform="rotate(-28 66 150)"/><ellipse cx="160" cy="145" rx="33" ry="16" transform="rotate(22 160 145)"/><ellipse cx="120" cy="65" rx="23" ry="12" transform="rotate(-15 120 65)"/></g>
+  </g>
+  <g transform="translate(260 70) rotate(6 120 120)">
+    <rect x="0" y="0" width="235" height="210" rx="26" fill="url(#glass)" stroke="#64748b" stroke-width="5"/>
+    <rect x="8" y="8" width="219" height="26" rx="12" fill="#bfdbfe" stroke="#64748b" stroke-width="3"/>
+    <path d="M16 90 Q75 64 120 92 T219 80 L219 192 Q118 210 16 190Z" fill="#fde68a"/>
+    <g fill="#a16207"><circle cx="43" cy="66" r="9"/><circle cx="74" cy="102" r="8"/><circle cx="118" cy="70" r="9"/><circle cx="162" cy="105" r="8"/><circle cx="195" cy="64" r="9"/><circle cx="95" cy="145" r="8"/><circle cx="175" cy="155" r="9"/></g>
+    <g fill="#15803d"><path d="M35 145q20-35 38 0q-18 25-38 0"/><path d="M132 122q20-35 38 0q-18 25-38 0"/><path d="M65 176q20-35 38 0q-18 25-38 0"/></g>
+  </g>
+</g>
+<rect x="74" y="510" width="345" height="54" rx="27" fill="#166534"/>
+<text x="102" y="545" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#ffffff">GUÍA PRÁCTICA · 12 MIN</text>
+</svg>
