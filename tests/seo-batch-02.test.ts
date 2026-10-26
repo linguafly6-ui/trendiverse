@@ -23,7 +23,7 @@ test('SEO batch 02 contains the ten first editorial topics', () => {
 test('SEO batch 02 articles exceed 2,000 words and have complete metadata', () => {
   for (const article of SEO_BATCH_02_ARTICLES) {
     assert.ok(article.content, `${article.slug} should have content`)
-    assert.ok(article.content.trim().split(/\\s+/).length >= 2000, `${article.slug} should contain at least 2,000 words`)
+    assert.ok(article.content.trim().split(/\s+/).length >= 2000, `${article.slug} should contain at least 2,000 words`)
     assert.ok(article.title && article.excerpt && article.published_at, `${article.slug} should have metadata`)
   }
 })
