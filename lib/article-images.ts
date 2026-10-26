@@ -8,6 +8,20 @@ type ArticleImageSource = Pick<Article, 'slug' | 'title' | 'category'> & Partial
  * be verified separately; a publicly reachable URL alone does not grant reuse rights.
  */
 export function articleImageUrl(article: ArticleImageSource): string {
+  // Temporary vector fallback for the article whose static WebP is rendering blank
+  // in production. Keep the rest of the catalogue on its configured images.
+  if (
+    article.slug === 'como-ahorrar-electricidad-en-casa-sin-obras' &&
+    [article.image_url, article.thumbnail_url].some((url) => url?.endsWith('/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp'))
+  ) {
+    const params = new URLSearchParams({
+      slug: article.slug,
+      title: article.title,
+      category: article.category,
+    })
+    return `/api/article-image?${params.toString()}`
+  }
+
   for (const candidate of [article.image_url, article.thumbnail_url]) {
     if (!candidate) continue
 
