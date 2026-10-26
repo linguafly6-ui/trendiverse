@@ -21,6 +21,10 @@ function workflowInput(name: string): string | undefined {
 const title = process.env.ARTICLE_TITLE?.trim() || workflowInput('title')
 const slug = process.env.ARTICLE_SLUG?.trim() || workflowInput('slug')
 const model = process.env.WORKERS_AI_MODEL ?? '@cf/meta/llama-3.3-70b-instruct-fp8-fast'
+const keyword = process.env.ARTICLE_KEYWORD?.trim() ?? ''
+const cluster = process.env.ARTICLE_CLUSTER?.trim() ?? 'Ahorro'
+const angle = process.env.ARTICLE_ANGLE?.trim() ?? 'Guía práctica y diferenciada para España'
+const intent = process.env.ARTICLE_INTENT?.trim() ?? 'Informativa / práctica'
 const database = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const bucket = process.env.R2_BUCKET ?? 'trendiverse-articles'
 const baseUrl = (process.env.R2_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
@@ -52,7 +56,7 @@ async function main() {
     body: JSON.stringify({
       messages: [
         { role: 'system', content: 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content". El contenido debe ser un artículo original en español de España, útil, bien estructurado con Markdown, al menos 2200 palabras, sin inventar estadísticas ni fuentes, sin consejos financieros personalizados. Incluye limitaciones, ejemplos claramente hipotéticos y una sección final de fuentes oficiales pertinentes como enlaces solo cuando conozcas URLs fiables. No incluyas texto fuera del JSON.' },
-        { role: 'user', content: `Redacta el artículo cuyo H1 exacto es: ${title}. El slug es ${slug}. Categoría: ahorro. Evita repetir el título de forma mecánica, usa encabezados concretos, explica pasos accionables y añade preguntas frecuentes útiles. No afirmes que se han consultado datos en tiempo real.` }
+        { role: 'user', content: `Redacta el artículo cuyo H1 exacto es: ${title}. El slug es ${slug}. Categoría: ahorro. Cluster SEO: ${cluster}. Intención: ${intent}. Keyword principal: ${keyword || title}. Diferenciación editorial: ${angle}. Incluye la keyword de forma natural, sin keyword stuffing. Evita repetir el título de forma mecánica, usa encabezados concretos, explica pasos accionables, ejemplos hipotéticos claros y preguntas frecuentes útiles. Para afirmaciones legales, fiscales o sobre tarifas, indica que deben comprobarse en fuentes oficiales y no inventes enlaces. No afirmes que se han consultado datos en tiempo real.` }
       ],
       max_tokens: 8192,
       temperature: 0.45
