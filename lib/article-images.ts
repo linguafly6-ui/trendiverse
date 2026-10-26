@@ -32,10 +32,7 @@ export function articleImageUrl(article: ArticleImageSource): string {
     }
   }
 
-  const params = new URLSearchParams({
-    slug: article.slug,
-    title: article.title,
-    category: article.category,
-  })
-  return `/api/article-image?${params.toString()}`
+  // Keep the fallback on a static public asset so it works on Cloudflare Pages
+  // static deployments, where request-time API routes may not be available.
+  return '/images/article-placeholder.svg'
 }
