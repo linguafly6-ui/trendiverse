@@ -121,8 +121,6 @@ Ahorrar electricidad sin hacer obras consiste en tomar decisiones informadas, no
 
 - Consulta las recomendaciones actualizadas del Instituto para la Diversificación y Ahorro de la Energía (IDAE) sobre eficiencia energética en el hogar.
 - Revisa las condiciones de tu tarifa y los datos de consumo disponibles en tu distribuidora o comercializadora.
-- Para cuestiones de seguridad eléctrica, climatización o agua caliente, sigue las instrucciones del fabricante y consulta a un profesional habilitado cuando corresponda.
-
-*Nota editorial: antes de publicar, ampliar con enlaces directos a páginas oficiales vigentes y revisar el recuento final de palabras. Esta versión es un borrador estructural y no debe marcarse como publicación final hasta superar el umbral editorial de 2.000 palabras.*`
+- Para cuestiones de seguridad eléctrica, climatización o agua caliente, sigue las instrucciones del fabricante y consulta a un profesional habilitado cuando corresponda.`
   }
 ]
