@@ -10,6 +10,7 @@ type QueueItem = {
   cluster: string
   intent: string
   angle: string
+  alreadyBundled?: boolean
 }
 
 function input(name: string, fallback: string): string {
@@ -41,10 +42,13 @@ function main(): void {
   if (queue.length !== 500 || queue.some((item, index) => item.id !== index + 1)) {
     throw new Error('La cola editorial debe contener exactamente 500 artículos con IDs consecutivos')
   }
-  const selected = queue.filter((item) => item.id >= startId).slice(0, batchSize)
-  if (!selected.length) throw new Error('No hay artículos en ese rango de la cola')
+  const selected = queue.filter((item) => item.id >= startId && !item.alreadyBundled).slice(0, batchSize)
+  if (!selected.length) throw new Error('No hay artículos pendientes en ese rango de la cola')
+  if (queue.some((item) => item.alreadyBundled)) {
+    console.log('Se omite el ID 1: su slug ya está presente en el catálogo editorial empaquetado; se conserva esa versión para evitar duplicados.')
+  }
 
-  console.log(`Lote editorial: IDs ${selected[0].id}–${selected[selected.length - 1].id} (${selected.length} artículos)`)
+  console.log(`Lote editorial: IDs ${selected[0].id}–${selected[selected.length - 1].id} (${selected.length} artículos nuevos)`)
   for (const item of selected) {
     console.log(`\n[ahorro ${item.id}/500] Generando y publicando: ${item.title} (${item.slug})`)
     try {
