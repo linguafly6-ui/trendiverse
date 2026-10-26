@@ -146,7 +146,7 @@ export async function publishArticle(slug: string): Promise<void> {
     writeFileSync(sqlPath, sql, 'utf8')
 
     console.log(`Guardando artículo en D1: ${DATABASE}`)
-    runWrangler(['d1', 'execute', DATABASE, '--remote', `--file=${sqlPath}'])
+    runWrangler(['d1', 'execute', DATABASE, '--remote', `--file=${sqlPath}`])
 
     const verifySql = `SELECT slug, title, image_url, thumbnail_url FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`
     const output = runWrangler(['d1', 'execute', DATABASE, '--remote', '--json', `--command=${verifySql}`])
