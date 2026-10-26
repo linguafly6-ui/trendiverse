@@ -8,10 +8,9 @@ type ArticleImageSource = Pick<Article, 'slug' | 'title' | 'category'> & Partial
  * be verified separately; a publicly reachable URL alone does not grant reuse rights.
  */
 export function articleImageUrl(article: ArticleImageSource): string {
-  // Use the purpose-built 1200x630 editorial SVG for this article instead of the
-  // WebP that appeared blank in production. SVG scales cleanly at every screen size.
+  // Use the high-quality raster hero image for this article.
   if (article.slug === 'como-ahorrar-electricidad-en-casa-sin-obras') {
-    return '/images/como-ahorrar-electricidad-en-casa-sin-obras.svg'
+    return '/images/como-ahorrar-electricidad-en-casa-sin-obras-hq.webp'
   }
 
   for (const candidate of [article.image_url, article.thumbnail_url]) {
