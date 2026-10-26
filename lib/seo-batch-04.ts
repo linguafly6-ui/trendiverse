@@ -1,6 +1,6 @@
 import type { Article } from './types'
 
-/** Artículo 21 de la hoja editorial de 500 temas. La demanda SEO debe validarse antes de interpretar el rendimiento. */
+/** Artículo 21 de la hoja editorial de 500 temas. La demanda SEO debe validarse antes de interpretar el rendimiento; tras aprobar cambios en main se sincroniza con D1 y R2. */
 export const SEO_BATCH_04_ARTICLES: Article[] = [
   {
     id: 299,

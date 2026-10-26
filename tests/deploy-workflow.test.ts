@@ -35,6 +35,7 @@ test('un push a main selecciona el despliegue después de lint, tests y build', 
   assert.equal(deploy.workflowPath, 'deploy.yml')
   assert.equal(deploy.job.id, 'deploy')
   assert.equal(deployStepFollowsChecks(deploy.job), true)
+  assert.equal(selectJobs(workflows, pushMain).some((item) => item.workflowPath === 'publish-editorial-article.yml' && item.job.id === 'publish'), true)
   assert.equal(jobUsesProductionSecrets(deploy.job), true)
   assert.equal(selected.some((item) => item.workflowPath === 'ci.yml' && item.job.id === 'ci'), false)
 })
@@ -72,10 +73,14 @@ test('un push a otra rama no selecciona ningún job', () => {
   assert.deepEqual(selectJobs(workflows, pushOther), [])
 })
 
-test('pull_request_target, workflow_dispatch, workflow_run y schedule no están habilitados', () => {
+test('solo el publicador editorial permite dispatch manual; no se habilitan otros disparadores', () => {
+  const dispatch = selectJobs(workflows, { type: 'workflow_dispatch' })
+  assert.deepEqual(dispatch.map((item) => `${item.workflowPath}:${item.job.id}`), ['publish-editorial-article.yml:publish'])
+  assert.equal(jobUsesProductionSecrets(dispatch[0].job), true)
+  assert.equal(jobDeploysPages(dispatch[0].job), false)
+
   for (const event of [
     { type: 'pull_request_target', baseBranch: 'main' },
-    { type: 'workflow_dispatch' },
     { type: 'workflow_run', triggeringEvent: 'pull_request', headBranch: 'cursor/example-53d6', conclusion: 'success' },
     { type: 'workflow_run', triggeringEvent: 'push', headBranch: 'main', conclusion: 'success' },
     { type: 'schedule' },

@@ -116,10 +116,14 @@ function jobMatches(job: WorkflowJob, event: GithubEvent): boolean {
 }
 
 function evaluateIf(expression: string, event: GithubEvent): boolean {
-  const normalized = expression.replace(/\s+/g, ' ').trim()
+  const normalized = expression.replace(/^\$\{\{\s*/, '').replace(/\s*\}\}$/, '').replace(/\s+/g, ' ').trim()
   const pushMain = "github.event_name == 'push' && github.ref == 'refs/heads/main'"
+  const dispatchMain = "github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'"
+  const branchMain = "github.ref == 'refs/heads/main'"
   const workflowRunPushMain = "github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'main'"
   if (normalized === pushMain) return event.type === 'push' && event.branch === 'main'
+  if (normalized === dispatchMain) return event.type === 'workflow_dispatch'
+  if (normalized === branchMain) return event.type === 'workflow_dispatch' || (event.type === 'push' && event.branch === 'main')
   if (normalized === workflowRunPushMain) {
     return event.type === 'workflow_run'
       && event.conclusion === 'success'
