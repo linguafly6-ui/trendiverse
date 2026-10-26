@@ -19,7 +19,7 @@ test('la publicación automática del artículo 21 y el dispatch manual están l
 })
 
 test('el publicador sube y verifica R2 antes de guardar y verificar D1', () => {
-  assert.match(script, /wrangler.*r2.*object.*put|\['r2', 'object', 'put'/s)
+  assert.match(script, /wrangler[\s\S]*r2[\s\S]*object[\s\S]*put|\['r2', 'object', 'put'/)
   assert.match(script, /\['r2', 'object', 'get'/)
   assert.match(script, /createHash\('sha256'\)/)
   assert.match(script, /ON CONFLICT\(slug\) DO UPDATE SET/)
