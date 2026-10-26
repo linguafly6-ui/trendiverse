@@ -1,7 +1,11 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
+  workflow_dispatch:
 
 # Serialize CI and deployment so only one build runs at a time.
 concurrency:
