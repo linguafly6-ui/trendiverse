@@ -4,8 +4,22 @@ import { resolve } from 'node:path'
 
 const accountId = process.env.CLOUDFLARE_ACCOUNT_ID
 const apiToken = process.env.CLOUDFLARE_API_TOKEN
-const title = process.env.ARTICLE_TITLE?.trim()
-const slug = process.env.ARTICLE_SLUG?.trim()
+function workflowInput(name: string): string | undefined {
+  const eventPath = process.env.GITHUB_EVENT_PATH
+  if (!eventPath) return undefined
+  try {
+    const event = JSON.parse(readFileSync(eventPath, 'utf8')) as {
+      inputs?: Record<string, unknown>
+    }
+    const value = event.inputs?.[name]
+    return typeof value === 'string' ? value.trim() : undefined
+  } catch {
+    return undefined
+  }
+}
+
+const title = process.env.ARTICLE_TITLE?.trim() || workflowInput('title')
+const slug = process.env.ARTICLE_SLUG?.trim() || workflowInput('slug')
 const model = process.env.WORKERS_AI_MODEL ?? '@cf/meta/llama-3.3-70b-instruct-fp8-fast'
 const database = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const bucket = process.env.R2_BUCKET ?? 'trendiverse-articles'
