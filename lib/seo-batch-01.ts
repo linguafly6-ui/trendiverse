@@ -122,7 +122,7 @@ Ahorrar electricidad sin hacer obras consiste en tomar decisiones informadas, no
 - Consulta las recomendaciones actualizadas del Instituto para la Diversificación y Ahorro de la Energía (IDAE) sobre eficiencia energética en el hogar.
 - Revisa las condiciones de tu tarifa y los datos de consumo disponibles en tu distribuidora o comercializadora.
 - Para cuestiones de seguridad eléctrica, climatización o agua caliente, sigue las instrucciones del fabricante y consulta a un profesional habilitado cuando corresponda.`
-  }
+  },
   {
     id: 1202,
     title: "Cómo leer la factura de la luz: guía para entender cada concepto",
