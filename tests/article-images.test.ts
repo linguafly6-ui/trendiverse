@@ -84,5 +84,5 @@ test('article image helper rejects non-HTTPS external URLs and unsafe local path
     image_url: 'http://example.org/image.jpg',
     thumbnail_url: '/../private/image.svg',
   })
-  assert.ok(url.startsWith('/api/article-image?'))
+  assert.equal(url, '/images/article-placeholder.svg')
 })
