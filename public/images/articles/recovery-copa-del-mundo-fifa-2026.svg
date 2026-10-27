@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Copa del Mundo 2026</title><desc id="desc">Fútbol internacional</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101b35"/><stop offset="1" stop-color="#304c75"/></linearGradient><linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8be0cf"/><stop offset="1" stop-color="#ffc978"/></linearGradient></defs>
+<rect width="1200" height="630" rx="0" fill="url(#bg)"/><circle cx="1000" cy="95" r="230" fill="#ffffff" opacity=".05"/><circle cx="1040" cy="540" r="260" fill="#ffffff" opacity=".045"/><path d="M0 500 Q300 390 580 510 T1200 460 V630 H0Z" fill="#0a1327" opacity=".45"/>
+<g transform="translate(760 130)"><rect x="0" y="0" width="300" height="300" rx="44" fill="url(#accent)" opacity=".96"/><circle cx="150" cy="150" r="94" fill="#14213b" opacity=".95"/>
+<circle cx="150" cy="150" r="86" fill="#f4f7fa"/><path d="M150 102 L181 124 L169 160 H131 L119 124Z" fill="#14213b"/><path d="M150 102 L150 65 M181 124 L218 111 M169 160 L192 195 M131 160 L108 195 M119 124 L82 111" stroke="#14213b" stroke-width="8" fill="none"/>
+</g>
+<text x="72" y="95" fill="#8be0cf" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" letter-spacing="5">TRENDIVERSE · GUÍA EDITORIAL</text>
+<text x="72" y="245" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="52" font-weight="700">Copa del Mundo 2026</text>
+<text x="74" y="300" fill="#d7e2f1" font-family="Arial,Helvetica,sans-serif" font-size="27">Fútbol internacional</text>
+<rect x="72" y="350" width="120" height="6" rx="3" fill="#ffc978"/><text x="72" y="565" fill="#d7e2f1" opacity=".75" font-family="Arial,Helvetica,sans-serif" font-size="18">Información clara para estar al día</text>
+</svg>
