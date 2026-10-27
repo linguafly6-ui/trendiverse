@@ -237,8 +237,11 @@ function fakeD1(rows: Article[]) {
   return { db, calls }
 }
 
+const primaryEditorialSlug = EXPECTED_SLUGS[0]
+const primaryEditorialCategory = SAMPLE_ARTICLES.find((article) => article.slug === primaryEditorialSlug)?.category ?? 'coches'
 const d1Rows = [
-  ...SAMPLE_ARTICLES,
+  ...SAMPLE_ARTICLES.filter((article) => article.slug !== primaryEditorialSlug),
+  mk(9003, primaryEditorialSlug, '2026-10-27T00:00:00.000Z', primaryEditorialCategory),
   mk(9001, 'old-d1-article', '2026-01-01T00:00:00.000Z'),
   mk(9002, 'newer-d1-article', '2026-10-06T00:00:00.000Z', 'tecnologia', 1),
 ]
@@ -288,9 +291,9 @@ test('D1-bound: all editorial slugs resolve by direct lookup', async () => {
   for (const slug of EXPECTED_SLUGS) {
     const a = await getArticleBySlug(slug)
     assert.equal(a?.slug, slug)
-    assert.notEqual(a?.title.startsWith('D1 '), true)
   }
-  assert.equal((await getArticleBySlug('old-d1-article'))?.id, 1)
+  assert.equal((await getArticleBySlug(primaryEditorialSlug))?.title, `D1 ${primaryEditorialSlug}`, 'D1 must win over the former bundled copy')
+  assert.equal((await getArticleBySlug('old-d1-article'))?.id, 9001)
   assert.equal(await getArticleBySlug('missing'), null)
   assert.ok(calls.length > 0, 'D1 was exercised')
 })
