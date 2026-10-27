@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: read
+  actions: write
 
 concurrency:
   group: trendiverse-publish-supplements-prewritten
@@ -40,12 +41,19 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
       - name: Publish prepared batch without Workers AI
+        id: publish
         run: npx tsx scripts/publish-supplements-prewritten-batch.ts
         env:
-          AUTO_NEXT_BATCH: ${{ github.event_name == 'push' }}
+          AUTO_NEXT_BATCH: ${{ github.event_name == 'push' || inputs.batch_number == 0 }}
           BATCH_NUMBER: ${{ inputs.batch_number || '1' }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_BUCKET: trendiverse-articles
           R2_PUBLIC_BASE_URL: https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev
           D1_DATABASE: trendiverse-preview
+
+      - name: Queue next batch if articles were published
+        if: ${{ steps.publish.outputs.published_count != '0' }}
+        run: gh workflow run publish-supplements-prewritten-batch.yml --ref main -f batch_number=0
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
