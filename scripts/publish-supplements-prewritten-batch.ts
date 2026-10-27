@@ -35,11 +35,16 @@ function main() {
   if (!auto && (!Number.isInteger(batch) || batch < 1 || batch > 50)) throw new Error('BATCH_NUMBER debe estar entre 1 y 50')
   const plan = JSON.parse(readFileSync(resolve('data/suplementos-editorial-plan.json'),'utf8')) as Item[]
   if (plan.length !== 500 || plan.some((x,i)=>x.id!==i+1)) throw new Error('Plan de suplementos inválido')
-  const available = plan.filter(x=>x.id>=6 && existsSync(resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)))
+  const available = plan.filter(x=>{
+    const file=resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)
+    if (x.id<6 || !existsSync(file)) return false
+    if (!auto) return true
+    try { return (JSON.parse(readFileSync(file,'utf8')) as Draft).editorialBatchReady===true } catch { return false }
+  })
   const start = auto ? 6 : 6 + (batch-1)*20
-  const selected = auto ? available : available.filter(x=>x.id>=start&&x.id<start+20)
+  const selected = auto ? available.slice(0,20) : available.filter(x=>x.id>=start&&x.id<start+20)
   if (selected.length===0) throw new Error('No hay borradores preparados para este lote')
-  console.log(auto ? 'Publicación automática: se buscarán hasta 20 artículos preparados aún no publicados' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
+  console.log(auto ? 'Publicación automática: se procesarán hasta 20 borradores marcados editorialBatchReady' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
   const published:number[]=[]; const skipped:number[]=[]
   for (const item of selected) {
     if (auto && published.length>=20) break
