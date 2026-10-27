@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "data/supplements-drafts/**"
+      - "data/supplements-drafts/25.json"
   workflow_dispatch:
     inputs:
       batch_number:
