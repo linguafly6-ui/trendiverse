@@ -70,5 +70,27 @@
         "Como punto de partida, prioriza una alimentación variada, un plan de actividad adecuado a tu situación y el consejo sanitario cuando corresponda. Utiliza fuentes transparentes, evita promesas absolutas y no confundas una explicación plausible con una garantía. Si el tema de {{title}} afecta a una condición médica o a un síntoma persistente, busca orientación profesional en lugar de depender solo de un artículo. Una decisión razonable puede incluir un suplemento, una alternativa alimentaria o ninguna intervención adicional, según el caso."
       ]
     }
+  ],
+  "extras": [
+    {
+      "heading": "Aplicación concreta de esta guía",
+      "body": "El valor práctico de «{{title}}» consiste en ayudar a responder una pregunta concreta: {{focus}} Esa pregunta debe mantenerse separada de otras cuestiones relacionadas que puedan aparecer en publicidad o redes. Una explicación general puede aclarar términos y opciones, pero no determina por sí sola qué debe hacer cada persona. Para trasladar la información a la vida diaria, empieza por identificar qué dato te falta, comprueba si la fuente ofrece una respuesta directa y anota qué incertidumbres quedan abiertas. Si el texto no permite responder una cuestión individual, lo responsable es reconocer ese límite y buscar una fuente sanitaria adecuada."
+    },
+    {
+      "heading": "Ejemplo hipotético para contextualizar",
+      "body": "Imagina a una persona que encuentra un consejo sobre «{{title}}» y quiere aplicarlo de inmediato. Antes de hacerlo, revisa su alimentación habitual, sus objetivos y las circunstancias que podrían cambiar la decisión. Después compara el consejo con la etiqueta del producto y con fuentes independientes. Si hay una condición médica, alergia o medicación relevante, la decisión debe revisarse con un profesional. Este ejemplo no es una recomendación individual ni demuestra que una opción funcione; ilustra una forma ordenada de evaluar información y evitar que una experiencia ajena se convierta automáticamente en una regla universal."
+    },
+    {
+      "heading": "Cómo comparar alternativas con criterio",
+      "body": "Al comparar alternativas relacionadas con «{{title}}», no te fijes únicamente en la cantidad destacada en el envase. Valora el contenido real por porción, el coste, los ingredientes añadidos, la facilidad de uso y la posibilidad de cubrir la necesidad mediante alimentos habituales. Una alternativa puede ser más cómoda, pero otra aportar mayor variedad nutricional o ajustarse mejor a las preferencias. No hay que asumir que el producto más concentrado es siempre el más adecuado. Si la comparación depende de una enfermedad o de una dieta prescrita, pide orientación individual antes de sustituir lo recomendado."
+    },
+    {
+      "heading": "Errores de interpretación que conviene evitar",
+      "body": "Un error frecuente al leer sobre «{{title}}» es convertir una posibilidad en una garantía. También es fácil confundir una explicación fisiológica con una prueba de beneficio, o atribuir un cambio a un suplemento cuando se han modificado a la vez entrenamiento, dieta y descanso. Otro error consiste en aplicar a todo el mundo resultados obtenidos en un grupo concreto. Para evitarlo, comprueba la población estudiada, la duración, el resultado medido y las limitaciones descritas por los autores. Si una página omite esos datos y promete resultados rápidos, busca una fuente más transparente."
+    },
+    {
+      "heading": "Lista de comprobación antes de decidir",
+      "body": "Antes de tomar una decisión relacionada con «{{title}}», comprueba estos puntos: identifica la necesidad real; revisa si tu alimentación ya la cubre; lee todos los ingredientes y advertencias; calcula el coste por porción; contrasta las promesas con fuentes independientes; y valora alergias, enfermedades o medicamentos que puedan importar. Si una respuesta sigue sin estar clara, no la rellenes con una suposición. Guarda el nombre del producto y una imagen legible de la etiqueta para poder consultarla. Reevalúa la elección si cambian tu salud, tus objetivos o tu alimentación, y no continúes por el mero hecho de haber comprado el envase."
+    }
   ]
 }
