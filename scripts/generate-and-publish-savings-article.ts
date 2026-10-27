@@ -25,6 +25,8 @@ const keyword = process.env.ARTICLE_KEYWORD?.trim() ?? ''
 const cluster = process.env.ARTICLE_CLUSTER?.trim() ?? 'Ahorro'
 const angle = process.env.ARTICLE_ANGLE?.trim() ?? 'Guía práctica y diferenciada para España'
 const intent = process.env.ARTICLE_INTENT?.trim() ?? 'Informativa / práctica'
+const category = process.env.ARTICLE_CATEGORY?.trim() ?? 'ahorro'
+const editorialNote = process.env.ARTICLE_EDITORIAL_NOTE?.trim() ?? ''
 const database = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const bucket = process.env.R2_BUCKET ?? 'trendiverse-articles'
 const baseUrl = (process.env.R2_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
@@ -111,8 +113,8 @@ async function main() {
     headers: { Authorization: `Bearer ${apiToken}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       messages: [
-        { role: 'system', content: 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content". El contenido debe ser un artículo original en español de España, útil, bien estructurado con Markdown, al menos 2200 palabras, sin inventar estadísticas ni fuentes, sin consejos financieros personalizados. Incluye limitaciones, ejemplos claramente hipotéticos y una sección final de fuentes oficiales pertinentes como enlaces solo cuando conozcas URLs fiables. No incluyas texto fuera del JSON.' },
-        { role: 'user', content: `Redacta el artículo cuyo H1 exacto es: ${title}. El slug es ${slug}. Categoría: ahorro. Cluster SEO: ${cluster}. Intención: ${intent}. Keyword principal: ${keyword || title}. Diferenciación editorial: ${angle}. Incluye la keyword de forma natural, sin keyword stuffing. Evita repetir el título de forma mecánica, usa encabezados concretos, explica pasos accionables, ejemplos hipotéticos claros y preguntas frecuentes útiles. Para afirmaciones legales, fiscales o sobre tarifas, indica que deben comprobarse en fuentes oficiales y no inventes enlaces. No afirmes que se han consultado datos en tiempo real.` }
+        { role: 'system', content: category === 'suplementos' ? 'Eres un redactor editorial español especializado en información sanitaria basada en evidencia. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content". Redacta un artículo original en español de España, bien estructurado con Markdown, al menos 2200 palabras. No diagnostiques, no prescribas ni prometas resultados; no inventes estudios, estadísticas, citas ni enlaces. Distingue evidencia sólida, limitada e incierta; explica riesgos, efectos adversos, interacciones y grupos que requieren valoración profesional cuando corresponda. No recomiendes iniciar, suspender ni cambiar dosis de suplementos o medicamentos. Prioriza organismos sanitarios, revisiones sistemáticas y fuentes científicas reconocidas; incluye enlaces solo si conoces URLs fiables. No incluyas texto fuera del JSON.' : 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content". El contenido debe ser un artículo original en español de España, útil, bien estructurado con Markdown, al menos 2200 palabras, sin inventar estadísticas ni fuentes, sin consejos financieros personalizados. Incluye limitaciones, ejemplos claramente hipotéticos y una sección final de fuentes oficiales pertinentes como enlaces solo cuando conozcas URLs fiables. No incluyas texto fuera del JSON.' },
+        { role: 'user', content: `Redacta el artículo cuyo H1 exacto es: ${title}. El slug es ${slug}. Categoría: ${category}. Cluster SEO: ${cluster}. Intención: ${intent}. Keyword principal: ${keyword || title}. Diferenciación editorial: ${angle}. Nota editorial: ${editorialNote || 'Contenido informativo y riguroso.'}. Incluye la keyword de forma natural, sin keyword stuffing. Evita repetir el título de forma mecánica, usa encabezados concretos y preguntas frecuentes útiles. ${category === 'suplementos' ? 'Trata el tema con enfoque de seguridad sanitaria: diferencia evidencia y marketing, aclara incertidumbres, evita afirmaciones causales no demostradas, dosis universales y recomendaciones médicas individualizadas. Explica cuándo consultar a un profesional sanitario y posibles interacciones o grupos de riesgo relevantes. No presentes el suplemento como sustituto de tratamientos ni de una dieta variada.' : 'Explica pasos accionables y ejemplos hipotéticos claros. Para afirmaciones legales, fiscales o sobre tarifas, indica que deben comprobarse en fuentes oficiales y no inventes enlaces. No afirmes que se han consultado datos en tiempo real.'}` }
       ],
       max_tokens: 8192,
       temperature: 0.45
@@ -171,7 +173,7 @@ async function main() {
   const fields = {
     title: article.title,
     slug,
-    category: 'ahorro',
+    category,
     content: article.content,
     excerpt: article.excerpt,
     image_url: imageUrl,
