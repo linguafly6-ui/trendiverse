@@ -1,0 +1,75 @@
+name: Publish supplement editorial batch (20 articles)
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_number:
+        description: "Lote del plan (1–25; cada lote cubre 20 artículos)"
+        required: true
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+          - "6"
+          - "7"
+          - "8"
+          - "9"
+          - "10"
+          - "11"
+          - "12"
+          - "13"
+          - "14"
+          - "15"
+          - "16"
+          - "17"
+          - "18"
+          - "19"
+          - "20"
+          - "21"
+          - "22"
+          - "23"
+          - "24"
+          - "25"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trendiverse-publish-supplements
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 360
+    steps:
+      - name: Checkout approved main revision
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Generate and publish 20 supplement articles
+        run: npx tsx scripts/generate-supplements-batch.ts
+        env:
+          BATCH_NUMBER: ${{ inputs.batch_number }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_BUCKET: trendiverse-articles
+          R2_PUBLIC_BASE_URL: https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev
+          D1_DATABASE: trendiverse-preview
+          WORKERS_AI_MODEL: "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
