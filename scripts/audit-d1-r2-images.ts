@@ -48,7 +48,9 @@ async function main() {
     'd1', 'execute', database, '--remote', '--json',
     '--command=SELECT slug, title, image_url, thumbnail_url FROM articles ORDER BY slug;',
   ])
-  const jsonStart = raw.search(/[\\[{]/)\n  if (jsonStart < 0) throw new Error('Wrangler no devolvió JSON para auditar D1')\n  const rows = collectRows(JSON.parse(raw.slice(jsonStart)))
+  const jsonStart = raw.search(/[\\[{]/)
+  if (jsonStart < 0) throw new Error('Wrangler no devolvió JSON para auditar D1')
+  const rows = collectRows(JSON.parse(raw.slice(jsonStart)))
   if (!rows.length) throw new Error('La consulta de D1 no devolvió artículos; se cancela la auditoría')
 
   const issues: Record<string, unknown>[] = []
