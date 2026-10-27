@@ -108,21 +108,15 @@ function byRecency(x: Article, y: Article): number {
   return d || x.slug.localeCompare(y.slug)
 }
 
-// Bundled editorial records take precedence over D1 rows with the same slug.
-function mergeWithEditorial(rows: Article[]): Article[] {
-  return dedupeBySlug([...BUNDLED_EDITORIAL_ARTICLES, ...rows])
-}
+// D1 is the sole runtime source of article content. The bundled records are retained
+// only as a one-time migration source in scripts/sync-embedded-articles-to-d1.ts.
 
 export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   const limit = Math.min(Math.max(opts.limit ?? 12, 1), 50)
   const offset = Math.max(opts.offset ?? 0, 0)
   const { DB } = await getEnv()
 
-  if (!DB) {
-    const list = SAMPLE_ARTICLES.filter((x) => matchesQuery(x, opts))
-    list.sort(byRecency)
-    return list.slice(offset, offset + limit)
-  }
+  if (!DB) return []
 
   const where: string[] = []
   const params: unknown[] = []
@@ -133,9 +127,7 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
     const like = `%${opts.q.replace(/[\\%_]/g, '\\$&')}%`
     params.push(like, like)
   }
-  // Fetch enough D1 rows from the top so that, after bundled records are merged in and
-  // duplicates removed, the requested page is still exact.
-  const fetchLimit = offset + limit + BUNDLED_EDITORIAL_ARTICLES.length
+  const fetchLimit = offset + limit
   const sql = `SELECT * FROM articles ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
     ORDER BY published_at DESC LIMIT ?`
   params.push(fetchLimit)
@@ -143,25 +135,20 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   const rows = opts.q
     ? await run()
     : await cached(`articles:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${fetchLimit}`, 60, run)
-  const merged = mergeWithEditorial(rows).filter((x) => matchesQuery(x, opts))
-  merged.sort(byRecency)
-  return merged.slice(offset, offset + limit)
+  return rows.filter((x) => matchesQuery(x, opts)).slice(offset, offset + limit)
 }
 
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
-  if (!DB) return [...SAMPLE_ARTICLES].sort((a, b) => b.views - a.views).slice(0, limit)
-  const rows = await cached(`top:${limit + BUNDLED_EDITORIAL_ARTICLES.length}`, 300, async () =>
-    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit + BUNDLED_EDITORIAL_ARTICLES.length).all<Article>()).results
+  if (!DB) return []
+  return cached(`top:${limit}`, 300, async () =>
+    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit).all<Article>()).results
   )
-  return mergeWithEditorial(rows).sort((a, b) => b.views - a.views || byRecency(a, b)).slice(0, limit)
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const bundled = BUNDLED_EDITORIAL_ARTICLES.find((a) => a.slug === slug)
-  if (bundled) return bundled
   const { DB } = await getEnv()
-  if (!DB) return SAMPLE_ARTICLES.find((a) => a.slug === slug) ?? null
+  if (!DB) return null
   return (await DB.prepare('SELECT * FROM articles WHERE slug = ?').bind(slug).first<Article>()) ?? null
 }
 
@@ -196,10 +183,6 @@ export async function getRelatedArticles(article: Article, limit = 4): Promise<A
 // All article slugs (no pagination limit) for the sitemap.
 export async function getAllArticleSlugs(): Promise<{ slug: string; published_at: string }[]> {
   const { DB } = await getEnv()
-  if (!DB) return SAMPLE_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at }))
-  const rows = (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
-  return dedupeBySlug([
-    ...BUNDLED_EDITORIAL_ARTICLES.map((a) => ({ slug: a.slug, published_at: a.published_at })),
-    ...rows,
-  ])
+  if (!DB) return []
+  return (await DB.prepare('SELECT slug, published_at FROM articles ORDER BY published_at DESC').all<{ slug: string; published_at: string }>()).results
 }
