@@ -41,8 +41,8 @@ jobs:
       - name: Resolve prepared article and editorial metadata
         shell: bash
         run: |
-          if [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
-            ARTICLE_FILE="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -E '^data/supplements-publish-now/[0-9]+\.json$' | head -n 1)"
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            ARTICLE_FILE="$(git diff-tree --root --no-commit-id --name-only -r "$GITHUB_SHA" | grep -E '^data/supplements-publish-now/[0-9]+\.json$' | head -n 1)"
           else
             ARTICLE_FILE="data/supplements-publish-now/${{ inputs.article_id }}.json"
           fi
