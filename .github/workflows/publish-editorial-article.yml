@@ -13,9 +13,9 @@ on:
         required: false
         type: string
       mode:
-        description: "Tipo de publicación"
+        description: "Tipo de publicación (batch para generar y publicar artículos de ahorro)"
         required: false
-        default: publish
+        default: batch
         type: choice
         options:
           - publish
@@ -28,12 +28,12 @@ on:
       start_id:
         description: "ID inicial de la cola editorial (1–500)"
         required: false
-        default: 1
+        default: 5
         type: number
       batch_size:
         description: "Artículos secuenciales por ejecución (1–5)"
         required: false
-        default: 1
+        default: 5
         type: number
 
 permissions:
