@@ -11,6 +11,24 @@ function runWrangler(args:string[]):string {
 function wordCount(value:string):number {
   return value.match(/[\p{L}\p{N}]+/gu)?.length ?? 0
 }
+function findArticleRow(value:unknown, slug:string):Record<string,unknown>|undefined {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found=findArticleRow(item,slug)
+      if (found) return found
+    }
+    return undefined
+  }
+  if (value && typeof value==='object') {
+    const obj=value as Record<string,unknown>
+    if (obj.slug===slug && typeof obj.content==='string') return obj
+    for (const child of Object.values(obj)) {
+      const found=findArticleRow(child,slug)
+      if (found) return found
+    }
+  }
+  return undefined
+}
 function main() {
   const auto = process.env.AUTO_NEXT_BATCH === 'true'
   const batch = Number(process.env.BATCH_NUMBER ?? '1')
@@ -33,9 +51,19 @@ function main() {
     }
     if (words < 2000) throw new Error(`Borrador ${item.id} rechazado: ${words} palabras; mínimo obligatorio 2000. No se publicará ningún artículo corto.`)
     console.log(`[${item.id}/500] Borrador validado: ${words} palabras`)
-    const q = `SELECT slug FROM articles WHERE slug = '${item.slug.replace(/'/g,"''")}' AND title = '${item.title.replace(/'/g,"''")}' AND LENGTH(content) >= 15000 LIMIT 1;`
-    const existing = runWrangler(['d1','execute',process.env.D1_DATABASE ?? 'trendiverse-preview','--remote','--json',`--command=${q}`])
-    if (existing.includes(item.slug)) { console.log(`[${item.id}/500] Ya existe con contenido extenso en D1; se omite: ${item.slug}`); skipped.push(item.id); continue }
+    const q = `SELECT slug, title, content, image_url FROM articles WHERE slug = '${item.slug.replace(/'/g,"''")}' LIMIT 1;`
+    const existingRaw = runWrangler(['d1','execute',process.env.D1_DATABASE ?? 'trendiverse-preview','--remote','--json',`--command=${q}`])
+    let existingArticle:Record<string,unknown>|undefined
+    try { existingArticle=findArticleRow(JSON.parse(existingRaw),item.slug) } catch { /* Treat unreadable verification as not verified; safely republish. */ }
+    const storedWords = typeof existingArticle?.content==='string' ? wordCount(existingArticle.content) : 0
+    const storedTitle = typeof existingArticle?.title==='string' ? existingArticle.title.trim() : ''
+    const storedImage = typeof existingArticle?.image_url==='string' ? existingArticle.image_url.trim() : ''
+    if (existingArticle && storedTitle===item.title && storedWords>=2000 && storedImage.startsWith('https://')) {
+      console.log(`[${item.id}/500] Ya existe en D1 con título, imagen y ${storedWords} palabras; se omite: ${item.slug}`)
+      skipped.push(item.id)
+      continue
+    }
+    if (existingArticle) console.log(`[${item.id}/500] Registro incompleto: ${storedWords} palabras; se actualizará desde el borrador aprobado.`)
     console.log(`[${item.id}/500] Publicando borrador preparado: ${item.title}`)
     execFileSync('npx',['tsx','scripts/generate-and-publish-savings-article.ts'],{stdio:'inherit',env:{...process.env,ARTICLE_TITLE:item.title,ARTICLE_SLUG:item.slug,ARTICLE_KEYWORD:item.keyword,ARTICLE_CLUSTER:item.cluster,ARTICLE_INTENT:item.intent,ARTICLE_ANGLE:item.angle,ARTICLE_EDITORIAL_NOTE:item.editorialNote,ARTICLE_CATEGORY:'suplementos',ARTICLE_SOURCE_FILE:file}})
     published.push(item.id)
