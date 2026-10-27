@@ -45,6 +45,51 @@ function wordCount(value: string): number {
   return value.match(/[\p{L}\p{N}]+/gu)?.length ?? 0
 }
 
+
+function parseModelJson(raw: string): { title?: string; excerpt?: string; content?: string } {
+  // Model responses sometimes contain literal newlines/tabs inside the JSON content string.
+  // Escape only raw control characters inside strings; preserve existing JSON escapes.
+  const start = raw.indexOf('{')
+  const end = raw.lastIndexOf('}')
+  if (start < 0 || end <= start) fail('Workers AI no devolvió un objeto JSON reconocible')
+  const source = raw.slice(start, end + 1)
+  let output = ''
+  let inString = false
+  let escaped = false
+  for (let i = 0; i < source.length; i++) {
+    const ch = source[i]
+    const code = ch.charCodeAt(0)
+    if (inString) {
+      if (escaped) {
+        output += ch
+        escaped = false
+      } else if (ch === String.fromCharCode(92)) {
+        output += ch
+        escaped = true
+      } else if (ch === '"') {
+        output += ch
+        inString = false
+      } else if (code < 0x20) {
+        if (code === 10) output += String.fromCharCode(92) + 'n'
+        else if (code === 13) output += String.fromCharCode(92) + 'r'
+        else if (code === 9) output += String.fromCharCode(92) + 't'
+        else output += String.fromCharCode(92) + 'u' + code.toString(16).padStart(4, '0')
+      } else {
+        output += ch
+      }
+    } else {
+      output += ch
+      if (ch === '"') inString = true
+    }
+  }
+  try {
+    return JSON.parse(output) as { title?: string; excerpt?: string; content?: string }
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error)
+    fail('Workers AI devolvió JSON malformado incluso tras normalizar saltos de línea: ' + reason)
+  }
+}
+
 async function main() {
   if (!accountId || !apiToken) fail('Faltan CLOUDFLARE_ACCOUNT_ID o CLOUDFLARE_API_TOKEN')
   if (!title || !slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) fail('ARTICLE_TITLE y ARTICLE_SLUG son obligatorios; el slug debe ser válido')
@@ -67,8 +112,7 @@ async function main() {
   const raw = payload.result?.response
   if (!payload.success || !raw) fail('Workers AI no devolvió una respuesta válida')
 
-  const cleaned = raw.replace(/^\s*```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '')
-  const article = JSON.parse(cleaned) as { title?: string; excerpt?: string; content?: string }
+  const article = parseModelJson(raw)
   if (!article.title || !article.excerpt || !article.content) fail('La respuesta generada no contiene título, extracto y contenido')
   const words = wordCount(article.content)
   if (words < 2000) fail(`Artículo rechazado: ${words} palabras; mínimo 2000`)
