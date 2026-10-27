@@ -45,3 +45,32 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Smoke test live article API and public R2 image
+        shell: bash
+        run: |
+          set -euo pipefail
+          api_url="https://trendiverse.pages.dev/api/articles?limit=3"
+          response="$(curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$api_url")"
+          node -e '
+            const payload = JSON.parse(process.argv[1]);
+            if (!Array.isArray(payload.articles) || payload.articles.length === 0) {
+              console.error("La API pública no devuelve artículos desde D1.");
+              process.exit(1);
+            }
+            for (const article of payload.articles) {
+              if (!article.slug || !article.title || !article.content) {
+                console.error("La API pública devuelve un artículo incompleto.");
+                process.exit(1);
+              }
+            }
+            console.log(JSON.stringify({
+              success: true,
+              endpoint: "https://trendiverse.pages.dev/api/articles?limit=3",
+              articlesChecked: payload.articles.length,
+              slugs: payload.articles.map(article => article.slug)
+            }));
+          ' "$response"
+          image_url="https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev/articles/el-colageno-polvo-capsulas-o-comprimidos.svg"
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 --output /dev/null "$image_url"
+          echo "R2_PUBLIC_IMAGE_OK $image_url"
