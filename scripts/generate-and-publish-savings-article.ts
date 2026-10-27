@@ -49,28 +49,24 @@ function wordCount(value: string): number {
 
 
 function parseModelJson(raw: string): { title?: string; excerpt?: string; content?: string } {
-  // Workers AI can emit raw control characters or invalid backslash escapes inside JSON strings.
-  // Normalize those cases without changing valid JSON escapes or escaped quotes.
   const start = raw.indexOf('{')
   const end = raw.lastIndexOf('}')
   if (start < 0 || end <= start) fail('Workers AI no devolvió un objeto JSON reconocible')
   const source = raw.slice(start, end + 1)
   let output = ''
   let inString = false
+
   for (let i = 0; i < source.length; i++) {
     const ch = source[i]
     const code = source.charCodeAt(i)
+
     if (!inString) {
       output += ch
       if (ch === '"') inString = true
       continue
     }
-    if (ch === '"') {
-      output += ch
-      inString = false
-      continue
-    }
-    if (ch === String.fromCharCode(92)) {
+
+    if (ch === '\\') {
       const next = source[i + 1]
       if (next && '"\\/bfnrt'.includes(next)) {
         output += ch + next
@@ -82,24 +78,42 @@ function parseModelJson(raw: string): { title?: string; excerpt?: string; conten
         i += 5
         continue
       }
-      // Treat an invalid backslash as a literal backslash in the model's text.
-      output += String.fromCharCode(92) + String.fromCharCode(92)
+      // Preserve a stray backslash as literal text rather than invalid JSON syntax.
+      output += '\\\\'
       continue
     }
+
+    if (ch === '"') {
+      // Some model responses contain unescaped quotation marks inside prose.
+      // A JSON string ends only when the next non-space character is a structural delimiter.
+      let nextIndex = i + 1
+      while (nextIndex < source.length && /\s/.test(source[nextIndex])) nextIndex++
+      const next = source[nextIndex]
+      if (next === ':' || next === ',' || next === '}' || next === ']' || nextIndex >= source.length) {
+        output += ch
+        inString = false
+      } else {
+        output += '\\"'
+      }
+      continue
+    }
+
     if (code < 0x20) {
-      if (code === 10) output += String.fromCharCode(92) + 'n'
-      else if (code === 13) output += String.fromCharCode(92) + 'r'
-      else if (code === 9) output += String.fromCharCode(92) + 't'
-      else output += String.fromCharCode(92) + 'u' + code.toString(16).padStart(4, '0')
+      if (code === 10) output += '\\n'
+      else if (code === 13) output += '\\r'
+      else if (code === 9) output += '\\t'
+      else output += '\\u' + code.toString(16).padStart(4, '0')
       continue
     }
+
     output += ch
   }
+
   try {
     return JSON.parse(output) as { title?: string; excerpt?: string; content?: string }
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error)
-    fail('Workers AI devolvió JSON malformado incluso tras normalizar escapes y saltos de línea: ' + reason)
+    fail('Workers AI devolvió JSON malformado incluso tras normalizar comillas, escapes y saltos de línea: ' + reason)
   }
 }
 
