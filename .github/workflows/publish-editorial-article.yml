@@ -28,7 +28,7 @@ on:
       start_id:
         description: "ID inicial de la cola editorial (1–500)"
         required: false
-        default: 5
+        default: 6
         type: number
       batch_size:
         description: "Artículos secuenciales por ejecución (1–5)"
