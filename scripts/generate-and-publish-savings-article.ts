@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -152,7 +153,7 @@ async function main() {
 
   article = parseModelJson(raw)
   if (!article.title || !article.excerpt || !article.content) fail('La respuesta generada no contiene título, extracto y contenido')
-  let words = wordCount(article.content)
+  words = wordCount(article.content)
   const extraSections = category === 'suplementos' ? [
     'Qué dice la evidencia científica disponible, cómo valorar la calidad de los estudios y qué incertidumbres siguen abiertas.',
     'Seguridad del suplemento: efectos adversos conocidos, factores que pueden aumentar riesgos y cuándo consultar a un profesional sanitario.',
@@ -201,6 +202,11 @@ async function main() {
   const objectKey = `articles/${slug}.svg`
   const imageUrl = `${baseUrl}/${objectKey}`
   runWrangler(['r2', 'object', 'put', `${bucket}/${objectKey}`, `--file=${imagePath}`, '--content-type=image/svg+xml'])
+  const r2VerificationPath = resolve(`/tmp/trendiverse-r2-verify-${slug}.svg`)
+  runWrangler(['r2', 'object', 'get', `${bucket}/${objectKey}`, `--file=${r2VerificationPath}`])
+  const sourceImageHash = createHash('sha256').update(readFileSync(imagePath)).digest('hex')
+  const storedImageHash = createHash('sha256').update(readFileSync(r2VerificationPath)).digest('hex')
+  if (sourceImageHash !== storedImageHash) fail('La verificación SHA-256 de la imagen en R2 no coincide; se cancela la publicación en D1')
 
   const publishedAt = new Date().toISOString()
   const readTime = Math.max(1, Math.ceil(words / 220))
