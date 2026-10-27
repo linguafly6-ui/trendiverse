@@ -3,7 +3,7 @@ import { appendFileSync, existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 type Item = { id:number; title:string; slug:string; keyword:string; cluster:string; intent:string; angle:string; editorialNote:string }
-type Draft = { title?:string; excerpt?:string; content?:string; category?:string; editorialBatchReady?:boolean }
+type Draft = { title?:string; excerpt?:string; content?:string; category?:string; editorialBatchReady?:boolean; refreshPublishedArticle?:boolean }
 
 function runWrangler(args:string[]):string {
   return execFileSync('npx',['wrangler',...args],{encoding:'utf8',stdio:['ignore','pipe','pipe']})
@@ -63,12 +63,16 @@ function main() {
     const storedWords = typeof existingArticle?.content==='string' ? wordCount(existingArticle.content) : 0
     const storedTitle = typeof existingArticle?.title==='string' ? existingArticle.title.trim() : ''
     const storedImage = typeof existingArticle?.image_url==='string' ? existingArticle.image_url.trim() : ''
-    if (existingArticle && storedTitle===item.title && storedWords>=2000 && storedImage.startsWith('https://')) {
-      console.log(`[${item.id}/500] Ya existe en D1 con título, imagen y ${storedWords} palabras; se omite: ${item.slug}`)
+    const storedContent = typeof existingArticle?.content === 'string' ? existingArticle.content.trim() : ''
+    const draftContent = (draft.content ?? '').trim()
+    const exactContentMatch = storedContent.length > 0 && storedContent === draftContent
+    if (existingArticle && storedTitle===item.title && storedWords>=2000 && storedImage.startsWith('https://') && (exactContentMatch || draft.refreshPublishedArticle !== true)) {
+      console.log(`[${item.id}/500] Ya existe en D1 con título, imagen y ${storedWords} palabras; ${exactContentMatch ? 'el contenido coincide' : 'no se ha solicitado actualización editorial'}, se omite: ${item.slug}`)
       skipped.push(item.id)
       continue
     }
-    if (existingArticle) console.log(`[${item.id}/500] Registro incompleto: ${storedWords} palabras; se actualizará desde el borrador aprobado.`)
+    if (existingArticle && draft.refreshPublishedArticle === true) console.log(`[${item.id}/500] Actualización editorial solicitada; se reemplazará el contenido existente desde el borrador aprobado.`)
+    else if (existingArticle) console.log(`[${item.id}/500] Registro incompleto: ${storedWords} palabras; se actualizará desde el borrador aprobado.`)
     console.log(`[${item.id}/500] Publicando borrador preparado: ${item.title}`)
     execFileSync('npx',['tsx','scripts/generate-and-publish-savings-article.ts'],{stdio:'inherit',env:{...process.env,ARTICLE_TITLE:item.title,ARTICLE_SLUG:item.slug,ARTICLE_KEYWORD:item.keyword,ARTICLE_CLUSTER:item.cluster,ARTICLE_INTENT:item.intent,ARTICLE_ANGLE:item.angle,ARTICLE_EDITORIAL_NOTE:item.editorialNote,ARTICLE_CATEGORY:'suplementos',ARTICLE_SOURCE_FILE:file}})
     published.push(item.id)
