@@ -372,12 +372,12 @@ test('D1-bound: sitemap data has all editorial slugs plus D1 rows, deduped', asy
   assert.equal(new Set(slugs).size, slugs.length)
 })
 
-test('empty D1 still serves editorial content', async () => {
+test('empty D1 does not fall back to bundled editorial content', async () => {
   const { db } = fakeD1([])
   setEnvResolverForTests(() => ({ DB: db as never }))
-  const slugs = (await collectAllFeedArticles()).map((a) => a.slug)
-  for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
-  assert.equal(slugs.length, new Set([...ACTUALIDAD_TRENDING_ARTICLES_BATCH_12, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_11, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_10, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_9, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_8, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_7, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...TOPTRENDS_ARTICLES, ...EDITORIAL_ARTICLES, ...OCTOBER_2026_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES, ...SEO_BATCH_01_ARTICLES, ...SEO_BATCH_02_ARTICLES, ...SEO_BATCH_03_ARTICLES, ...SEO_BATCH_04_ARTICLES, ...SEO_BATCH_05_ARTICLES, ...AHORRO_BATCH_01_ARTICLES].map((a) => a.slug)).size)
+  assert.deepEqual(await collectAllFeedArticles(), [])
+  assert.deepEqual(await getAllArticleSlugs(), [])
+  assert.equal(await getArticleBySlug(EXPECTED_SLUGS[0]), null)
 })
 
 
@@ -407,7 +407,7 @@ test('Empresas que transforman articles are valid and discoverable', async () =>
       assert.ok(img && existsSync(join(process.cwd(), 'public', img)), a.slug + ' image ' + img)
     }
   }
-  setEnvResolverForTests(() => ({}))
+  bind()
   const categoryArticles = await getArticles({ category: 'empresas-que-transforman', limit: 10 })
   assert.equal(categoryArticles.length, 10)
   assert.ok(EMPRESAS_QUE_TRANSFORMAN_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
@@ -428,7 +428,7 @@ test('fashion category has six substantive, discoverable articles', async () => 
       assert.ok(img && existsSync(join(process.cwd(), 'public', img)), article.slug + ' image ' + img)
     }
   }
-  setEnvResolverForTests(() => ({}))
+  bind()
   const categoryArticles = await getArticles({ category: 'moda', limit: 10 })
   assert.equal(categoryArticles.length, 8)
   assert.ok(MODA_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
@@ -450,7 +450,7 @@ test('gaming trend articles are classified under technology', async () => {
       assert.ok(img && existsSync(join(process.cwd(), 'public', img)), article.slug + ' image ' + img)
     }
   }
-  setEnvResolverForTests(() => ({}))
+  bind()
   const categoryArticles = await getArticles({ category: 'tecnologia', limit: 10 })
   assert.ok(categoryArticles.length >= 5)
   assert.ok(GAMING_TENDENCIAS_ARTICLES.every((a) => categoryArticles.some((x) => x.slug === a.slug)))
