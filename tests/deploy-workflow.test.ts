@@ -78,6 +78,7 @@ test('solo los publicadores editoriales aprobados permiten dispatch manual; no s
   assert.deepEqual(dispatch.map((item) => `${item.workflowPath}:${item.job.id}`), [
     'publish-editorial-article.yml:publish',
     'publish-supplements-batch.yml:publish',
+    'publish-supplements-prewritten-batch.yml:publish',
   ])
   assert.equal(dispatch.every((item) => jobUsesProductionSecrets(item.job)), true)
   assert.equal(dispatch.some((item) => jobDeploysPages(item.job)), false)
