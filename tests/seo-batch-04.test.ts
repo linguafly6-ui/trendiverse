@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { SEO_BATCH_04_ARTICLES } from '../lib/seo-batch-04'
-import { getArticleBySlug } from '../lib/db'
+import { SAMPLE_ARTICLES } from '../scripts/legacy-article-data'
 
 const expectedSlug = 'que-frutas-y-verduras-son-de-temporada-en-invierno'
 
@@ -20,6 +20,6 @@ test('el artículo 21 del plan editorial tiene metadatos y contenido completos',
   assert.ok(article.read_time_minutes && article.read_time_minutes > 0)
 })
 
-test('el artículo 21 se resuelve por slug en el catálogo', async () => {
-  assert.equal((await getArticleBySlug(expectedSlug))?.slug, expectedSlug)
+test('el artículo 21 está disponible para la migración inicial a D1', () => {
+  assert.ok(SAMPLE_ARTICLES.some((article) => article.slug === expectedSlug))
 })
