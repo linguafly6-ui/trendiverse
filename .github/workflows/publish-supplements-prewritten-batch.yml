@@ -1,11 +1,16 @@
 name: Publish prepared supplement articles (10 per batch)
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/supplements-drafts/**"
   workflow_dispatch:
     inputs:
       batch_number:
-        description: "Lote de 10 artículos preparados (lote 1 = IDs 6–15)"
-        required: true
+        description: "Lote manual de 10 artículos preparados (opcional)"
+        required: false
         default: "1"
         type: number
 
@@ -37,7 +42,8 @@ jobs:
       - name: Publish prepared batch without Workers AI
         run: npx tsx scripts/publish-supplements-prewritten-batch.ts
         env:
-          BATCH_NUMBER: ${{ inputs.batch_number }}
+          AUTO_NEXT_BATCH: ${{ github.event_name == 'push' }}
+          BATCH_NUMBER: ${{ inputs.batch_number || '1' }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_BUCKET: trendiverse-articles
