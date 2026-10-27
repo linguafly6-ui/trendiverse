@@ -579,6 +579,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: "Sigue las instrucciones del envase y las recomendaciones clínicas si el suplemento forma parte de un tratamiento. Si tomas medicamentos con horarios específicos o tienes enfermedad renal, consulta antes de cambiar la pauta.",
     followup: "Elige un momento que puedas mantener y observa si aparecen molestias digestivas. Si el objetivo es mejorar el sueño o aliviar calambres persistentes, revisa también otras causas posibles con un profesional.",
     evidence: "Para afirmar que una hora es mejor, los estudios tendrían que comparar directamente horarios similares y medir resultados relevantes. Los datos sobre el magnesio en general no prueban una franja horaria óptima para todos."
+  },
+  'dosis-del-magnesio-como-interpretar-las-recomendaciones': {
+    excerpt: "Las etiquetas pueden mostrar el peso del compuesto o el magnesio elemental. Aprende a distinguirlos antes de comparar cantidades o pautas.",
+    focus: "Para interpretar una cifra, busca cuánto magnesio elemental aporta la porción y no confundas esa cantidad con el peso total de la sal. La formulación y el objetivo de uso también influyen en cómo se interpreta la etiqueta.",
+    safety: "No aumentes la dosis para tratar síntomas por tu cuenta. Si tienes enfermedad renal, tomas medicación o te han indicado magnesio por una razón clínica, consulta antes de cambiar la cantidad.",
+    followup: "Anota el compuesto, la cantidad de magnesio elemental por toma y cualquier otro producto que lo contenga. Si la recomendación procede de un profesional, confirma la duración y el seguimiento.",
+    evidence: "Las pautas varían según la finalidad y el compuesto utilizado. Una cantidad de un estudio o de un producto no constituye una recomendación universal para todas las personas."
+  },
+  'quien-deberia-evitar-el-magnesio': {
+    excerpt: "La enfermedad renal, algunos tratamientos y la suma de varios suplementos pueden cambiar el riesgo de tomar magnesio adicional.",
+    focus: "Aunque el magnesio es esencial, eso no significa que todo el mundo necesite un suplemento. La función renal, los medicamentos y el magnesio que ya aportan otros productos son factores relevantes antes de añadirlo.",
+    safety: "Si tienes función renal reducida, consulta antes de tomar suplementos de magnesio, ya que puede aumentar el riesgo de acumulación. No lo uses para tratar síntomas persistentes sin valorar otras causas.",
+    followup: "Reúne las etiquetas de suplementos, antiácidos o laxantes que utilices, porque algunos también aportan magnesio. Un profesional puede revisar el total y comprobar si realmente hace falta añadir otro producto.",
+    evidence: "Los datos de adultos sanos no se aplican automáticamente a personas con enfermedad renal o tratamientos complejos. La seguridad depende de la dosis, la formulación y el contexto clínico."
+  },
+  'interacciones-del-magnesio-con-medicamentos': {
+    excerpt: "El magnesio puede interferir con la absorción de algunos medicamentos. El horario y el fármaco concreto deben revisarse con un profesional.",
+    focus: "El punto clave no es solo la cantidad de magnesio, sino cuándo se toma respecto a determinados medicamentos. Algunos fármacos requieren separar las tomas, y las instrucciones varían según el medicamento.",
+    safety: "No cambies el horario de un tratamiento por tu cuenta. Pregunta al médico o farmacéutico cómo espaciar el magnesio si tomas antibióticos, medicamentos para la tiroides u otros fármacos con instrucciones específicas.",
+    followup: "Lleva el nombre y la dosis de cada medicamento junto con la etiqueta del suplemento. Incluye también antiácidos y laxantes, que pueden contener magnesio sin que se identifique como suplemento principal.",
+    evidence: "Las interacciones se deben comprobar para cada medicamento y formulación. No es seguro dar un intervalo horario único sin saber qué tratamiento se está utilizando."
+  },
+  'como-elegir-un-suplemento-del-magnesio-de-calidad': {
+    excerpt: "Compara la cantidad de magnesio elemental, el tipo de compuesto, los ingredientes y la transparencia del etiquetado antes de comprar.",
+    focus: "La etiqueta debe permitir identificar el compuesto de magnesio y cuánto magnesio elemental aporta por porción. Revisa además los ingredientes añadidos y si las afirmaciones del frontal se corresponden con información verificable.",
+    safety: "Desconfía de promesas de curar enfermedades o de resultados garantizados para el sueño y los calambres. Si tienes enfermedad renal o tomas medicamentos, consulta antes de elegir una fórmula.",
+    followup: "Compara dos productos con la misma base: magnesio elemental por porción y coste por esa cantidad. Comprueba lote, fecha de consumo preferente y si los controles de calidad anunciados explican qué se ha analizado.",
+    evidence: "Un certificado puede referirse a criterios concretos de calidad, pero no demuestra que necesites el suplemento ni que cumpla todas las promesas publicitarias."
+  },
+  'el-magnesio-polvo-capsulas-o-comprimidos': {
+    excerpt: "Polvo, cápsulas y comprimidos difieren en facilidad de uso, tamaño de porción e ingredientes. La cantidad elemental es la comparación clave.",
+    focus: "El formato influye en cómo se prepara y mide la toma, pero no basta para juzgar la calidad. Compara el magnesio elemental por porción, el compuesto utilizado y los excipientes de cada presentación.",
+    safety: "Lee las instrucciones y ten en cuenta las dificultades para tragar comprimidos o medir polvo con precisión. Si tienes enfermedad renal o una pauta médica, no cambies de formato sin revisar la cantidad total.",
+    followup: "Calcula el coste por la misma cantidad de magnesio elemental y comprueba cuántas cápsulas o medidas se necesitan. Considera también el sabor, la tolerancia digestiva y la facilidad para seguir las instrucciones.",
+    evidence: "No asumas que dos presentaciones son equivalentes solo porque indiquen el mismo mineral. La cantidad elemental, el compuesto y los demás ingredientes pueden diferir."
+  },
+  'cuanto-tarda-en-hacer-efecto-el-magnesio': {
+    excerpt: "El tiempo para notar cambios depende de la causa del síntoma, la ingesta inicial y el motivo por el que se usa el suplemento.",
+    focus: "No existe un plazo universal para notar efectos del magnesio. Corregir una ingesta insuficiente es distinto de esperar mejoras en el sueño o los calambres cuando no se ha identificado una carencia.",
+    safety: "Si los síntomas son intensos, persistentes o empeoran, no esperes a que el suplemento haga efecto para buscar orientación sanitaria. Evita aumentar la dosis sin conocer la causa.",
+    followup: "Define qué cambio estás intentando observar y revisa con un profesional si tiene sentido usar magnesio para ese objetivo. Considera la dieta, los medicamentos y otras posibles causas del síntoma.",
+    evidence: "Los estudios difieren en la situación inicial de los participantes, el compuesto, la dosis y el resultado medido. Un plazo promocional no garantiza una respuesta personal."
+  },
+  'que-pasa-si-dejas-de-tomar-el-magnesio': {
+    excerpt: "Dejar un suplemento de magnesio no equivale a retirar un medicamento. El resultado depende de la dieta y de la razón por la que se tomaba.",
+    focus: "El magnesio no se considera una sustancia que genere dependencia. Al dejarlo, lo importante es si la alimentación sigue cubriendo las necesidades y si el producto se utilizaba por una indicación clínica concreta.",
+    safety: "Si te lo han indicado para tratar una situación médica o como parte de un plan supervisado, consulta antes de modificarlo. No suspendas otros tratamientos por confundirlos con un suplemento.",
+    followup: "Revisa las fuentes alimentarias y los otros productos que aportan magnesio. Si el suplemento no tenía una indicación clara, pregunta si es necesario mantenerlo en vez de sustituirlo automáticamente por otra marca.",
+    evidence: "La evolución de los síntomas tras dejar un producto varía según la causa inicial y la dieta. No puede predecirse un efecto rebote universal por el simple hecho de interrumpir el suplemento."
+  },
+  'alimentos-ricos-en-el-magnesio-frente-a-suplementos': {
+    excerpt: "Frutos secos, semillas, legumbres y cereales integrales aportan magnesio. Compara primero la dieta con la necesidad real de suplementar.",
+    focus: "El magnesio se encuentra en alimentos como semillas, frutos secos, legumbres y cereales integrales, además de otros productos de una dieta variada. Los suplementos son una opción concentrada, no la única forma de obtenerlo.",
+    safety: "Si tienes una enfermedad que requiere ajustar la dieta o sigues indicaciones clínicas específicas, revisa los cambios con un profesional. No tomes dosis altas para compensar una dieta desequilibrada sin evaluar la situación.",
+    followup: "Observa qué fuentes aparecen habitualmente en tus comidas y si puedes incorporarlas de forma sostenible. Si consideras un suplemento, calcula cuánto aporta junto con otros productos que ya utilizas.",
+    evidence: "La utilidad de suplementar depende de la ingesta total y de la situación individual. Que un mineral sea esencial no demuestra que una dosis extra mejore el bienestar de quien ya consume suficiente."
+  },
+  'deficiencia-del-magnesio-senales-y-evaluacion': {
+    excerpt: "Calambres, cansancio y otros síntomas no bastan por sí solos para diagnosticar falta de magnesio. La evaluación requiere contexto clínico.",
+    focus: "Los síntomas que se asocian en internet con el magnesio pueden tener muchas causas. La valoración depende de la historia clínica, la alimentación, los medicamentos y, cuando corresponde, pruebas solicitadas por un profesional.",
+    safety: "No te autodiagnostiques ni uses dosis elevadas para tratar calambres, debilidad o palpitaciones sin evaluación. Si aparecen síntomas intensos o nuevos, busca orientación sanitaria de forma adecuada a su gravedad.",
+    followup: "Anota los síntomas, cuándo comenzaron, los medicamentos y suplementos que tomas y cualquier cambio en la dieta. Esa información facilita una evaluación más útil que guiarse por una lista genérica de señales.",
+    evidence: "Los síntomas inespecíficos no son pruebas diagnósticas de deficiencia. La interpretación de análisis y la necesidad de suplementación dependen del contexto clínico."
+  },
+  'el-magnesio-en-dietas-vegetarianas-y-veganas': {
+    excerpt: "Legumbres, semillas, frutos secos y cereales integrales pueden contribuir al aporte de magnesio en dietas vegetarianas y veganas.",
+    focus: "El magnesio se encuentra en numerosos alimentos vegetales, por lo que una dieta vegetariana o vegana variada puede aportar fuentes relevantes. La suficiencia depende de la selección y cantidad de alimentos, no solo de la etiqueta dietética.",
+    safety: "Si tienes síntomas persistentes, una enfermedad crónica o una dieta muy restrictiva, consulta antes de añadir suplementos. Ten en cuenta que algunos productos enriquecidos y mezclas pueden aportar minerales adicionales.",
+    followup: "Incluye fuentes vegetales como semillas, frutos secos, legumbres y cereales integrales de forma que encajen con tus preferencias. Si eliges un suplemento, revisa el magnesio elemental y la cantidad total que ya recibes.",
+    evidence: "La adecuación nutricional depende de la dieta completa y de las necesidades individuales. No debe asumirse que todas las personas vegetarianas o veganas necesitan magnesio suplementario."
+  },
+  'el-magnesio-durante-el-embarazo-y-la-lactancia': {
+    excerpt: "Durante el embarazo y la lactancia, revisa la necesidad real, la cantidad total y los demás ingredientes con un profesional sanitario.",
+    focus: "Las necesidades nutricionales pueden cambiar durante el embarazo y la lactancia, pero eso no significa que cualquier suplemento de magnesio sea necesario. Importan la dieta, la formulación y la situación individual.",
+    safety: "No empieces ni aumentes un suplemento durante el embarazo o la lactancia sin comentarlo con el profesional que lleva tu atención. Revisa también vitaminas prenatales, antiácidos u otros productos que puedan aportar magnesio.",
+    followup: "Lleva la etiqueta completa a la consulta y pregunta si el producto es necesario y cómo encaja con otros suplementos o medicamentos. Evita combinar fórmulas sin revisar cantidades repetidas.",
+    evidence: "La información general sobre magnesio no sustituye una recomendación individual para embarazo o lactancia. La dosis y la necesidad deben interpretarse en el contexto sanitario concreto."
+  },
+  'el-magnesio-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: "La función renal, la dieta, la medicación y los productos de uso habitual son claves al valorar magnesio en personas mayores.",
+    focus: "En personas mayores conviene revisar no solo la alimentación, sino también la función renal, los cambios de apetito y los medicamentos que se toman. Algunos productos de uso común pueden aportar magnesio adicional.",
+    safety: "Si hay enfermedad renal, polimedicación o síntomas nuevos, consulta antes de incorporar un suplemento. Evita tratar por tu cuenta el cansancio o los calambres como si fueran necesariamente una carencia mineral.",
+    followup: "Haz una lista de medicamentos, antiácidos, laxantes y suplementos y lleva las etiquetas a la consulta. Una revisión del conjunto ayuda a detectar duplicaciones y a decidir si hace falta cambiar algo.",
+    evidence: "Los resultados en adultos sanos no se trasladan automáticamente a personas mayores con enfermedades o varios tratamientos. La decisión debe considerar la situación clínica individual."
+  },
+  'mitos-sobre-el-magnesio-que-es-verdad-y-que-no': {
+    excerpt: "¿El magnesio siempre mejora el sueño o elimina los calambres? Repasamos afirmaciones frecuentes y por qué el contexto importa.",
+    focus: "Que el magnesio participe en funciones musculares y nerviosas no demuestra que tomar más mejore cualquier calambre, problema de sueño o sensación de cansancio. La ingesta inicial y la causa del síntoma importan.",
+    safety: "Evita las promesas absolutas y el uso de dosis altas para tratar síntomas sin evaluar. La enfermedad renal y algunos medicamentos hacen especialmente importante consultar antes de suplementar.",
+    followup: "Ante una afirmación, pregunta qué población se estudió, qué compuesto se utilizó y qué resultado se midió. Distingue corregir una ingesta insuficiente de añadir un suplemento sin necesidad identificada.",
+    evidence: "La evidencia puede variar entre objetivos y formulaciones. Un resultado en un grupo específico no prueba que el magnesio funcione igual para todas las personas o síntomas."
+  },
+  'como-leer-la-etiqueta-del-magnesio': {
+    excerpt: "Comprueba el compuesto, el magnesio elemental por toma, los ingredientes añadidos y las advertencias antes de comparar productos.",
+    focus: "La etiqueta puede mostrar tanto el nombre y peso del compuesto como la cantidad de magnesio elemental. Para saber qué aporta realmente una porción, identifica la cifra elemental y revisa el tamaño de la toma.",
+    safety: "Si tienes enfermedad renal o tomas medicamentos, no elijas la dosis solo por el frontal del envase. Comprueba además si antiácidos, laxantes o multivitamínicos que utilizas ya contienen magnesio.",
+    followup: "Compara productos con la misma unidad de magnesio elemental por porción y revisa los ingredientes adicionales, las instrucciones y la fecha. No confundas miligramos del compuesto con miligramos del mineral elemental.",
+    evidence: "La etiqueta permite conocer la composición declarada, pero no demuestra que el producto sea necesario o que mejore un síntoma concreto. Evalúa por separado composición, calidad y eficacia."
+  },
+  'preguntas-frecuentes-sobre-el-magnesio-guia-para-principiantes': {
+    excerpt: "Qué hace el magnesio, qué revisar en una etiqueta, cuándo puede ser útil un suplemento y qué precauciones conviene conocer.",
+    focus: "Para empezar, diferencia el papel esencial del magnesio de la pregunta de si necesitas tomarlo en forma de suplemento. La dieta, la situación de salud y el motivo de uso cambian la respuesta.",
+    safety: "Si tienes enfermedad renal, tomas medicación, estás embarazada o en lactancia, consulta antes de añadir un producto. Los síntomas persistentes merecen una evaluación y no deben atribuirse automáticamente a una carencia.",
+    followup: "Lee la cantidad de magnesio elemental, el compuesto y las advertencias del envase. Revisa también otros suplementos o medicamentos que puedan aportar el mineral antes de decidir.",
+    evidence: "Las respuestas generales sirven para orientarse, pero no sustituyen una evaluación individual. Comprueba qué objetivo y qué población respalda cualquier afirmación de beneficio."
+  },
+  'que-es-la-vitamina-d-y-para-que-sirve': {
+    excerpt: "La vitamina D ayuda a regular el calcio y contribuye a la salud ósea. Aprende de dónde se obtiene y cuándo conviene valorar su aporte.",
+    focus: "La vitamina D participa en la absorción del calcio y el mantenimiento de los huesos, además de otras funciones fisiológicas. La exposición solar, los alimentos y los suplementos contribuyen de manera distinta al estado de vitamina D.",
+    safety: "No tomes dosis altas por tu cuenta: el exceso de vitamina D puede causar problemas por elevar demasiado el calcio. Si tienes una enfermedad, tomas medicación o sospechas una deficiencia, consulta antes de iniciar un suplemento.",
+    followup: "Revisa las fuentes alimentarias, los suplementos que ya utilizas y los factores personales que puedan influir en tu situación. Un profesional puede decidir si hace falta una evaluación o una pauta específica.",
+    evidence: "La importancia biológica de la vitamina D no significa que suplementar beneficie a todas las personas por igual. Distingue corregir una deficiencia de tomar dosis extra sin una necesidad identificada."
+  },
+  'beneficios-de-la-vitamina-d-que-dice-la-evidencia': {
+    excerpt: "La vitamina D es esencial para la salud ósea, pero los beneficios de suplementar dependen del estado inicial y del resultado que se estudie.",
+    focus: "La evidencia debe separar la prevención o corrección de una deficiencia de las afirmaciones sobre otros resultados, como inmunidad, ánimo o bienestar general. No todos los objetivos cuentan con el mismo respaldo.",
+    safety: "No uses vitamina D como tratamiento único para síntomas persistentes ni aumentes la dosis para buscar un beneficio adicional. El exceso puede ser perjudicial, por lo que conviene revisar otros suplementos y las indicaciones clínicas.",
+    followup: "Busca qué población se estudió, si tenía niveles bajos al inicio y qué resultado se midió. Esos detalles ayudan a distinguir un beneficio en una situación concreta de una promesa válida para todo el mundo.",
+    evidence: "Los resultados varían según el estado inicial, la dosis, la duración y el objetivo. La evidencia sobre salud ósea o deficiencia no demuestra automáticamente beneficios para todas las afirmaciones comerciales."
+  },
+  'efectos-secundarios-de-la-vitamina-d': {
+    excerpt: "El exceso de vitamina D puede elevar el calcio en sangre. Revisa la dosis total y los síntomas que requieren atención sanitaria.",
+    focus: "La vitamina D es liposoluble y un exceso por suplementación puede acumularse y causar hipercalcemia. El riesgo suele relacionarse con cantidades demasiado altas o con la combinación inadvertida de varios productos.",
+    safety: "No combines suplementos de vitamina D en dosis altas sin orientación. Náuseas persistentes, vómitos, sed intensa, micción frecuente o confusión requieren valoración sanitaria, especialmente si existe posibilidad de exceso.",
+    followup: "Suma la vitamina D de multivitamínicos, gotas y otros productos y comprueba la unidad indicada en cada etiqueta. Si sospechas una dosis excesiva, contacta con un profesional sanitario en vez de intentar compensarla por tu cuenta.",
+    evidence: "El riesgo depende de la cantidad total, la duración y las características personales. La seguridad de una dosis indicada en un contexto clínico no debe extrapolarse a cualquier uso prolongado."
+  },
+  'como-tomar-la-vitamina-d-correctamente': {
+    excerpt: "La forma de uso y la cantidad dependen del producto y de la necesidad individual. Aprende a leer unidades y evitar duplicar dosis.",
+    focus: "La vitamina D puede declararse en microgramos o unidades internacionales, por lo que conviene comprobar la unidad y la cantidad por toma. Sigue las instrucciones del producto y no sumes dosis de distintas fórmulas sin revisar el total.",
+    safety: "No utilices dosis altas para corregir síntomas sin evaluación. Si tienes una condición médica, tomas medicamentos o te han indicado vitamina D tras una prueba, confirma la pauta y el seguimiento con el profesional sanitario.",
+    followup: "Anota la cantidad por dosis, la frecuencia y los otros productos que contienen vitamina D o calcio. Si el suplemento se indicó por una deficiencia, pregunta cuándo y cómo se revisará la respuesta.",
+    evidence: "Las pautas dependen de si se busca cubrir necesidades generales o tratar una deficiencia. Una pauta terapéutica supervisada no equivale a una recomendación para todo el mundo."
+  },
+  'cuando-tomar-la-vitamina-d-manana-o-noche': {
+    excerpt: "No hay una hora universal para la vitamina D. La regularidad, las instrucciones del producto y la forma de tomarlo son más prácticas que reglas rígidas.",
+    focus: "La vitamina D suele tomarse siguiendo las instrucciones del producto y puede resultar práctico hacerlo con una comida. No hay que asumir que tomarla por la mañana o por la noche garantice un beneficio superior en todas las personas.",
+    safety: "Prioriza la pauta que te hayan indicado y evita cambiar la cantidad para compensar una toma olvidada sin revisar las instrucciones. Si tienes un tratamiento pautado o una condición médica, consulta antes de modificarlo.",
+    followup: "Elige un momento que puedas mantener de forma constante y comprueba si la etiqueta recomienda tomarlo con alimentos. Revisa además los demás productos que utilizas para evitar duplicar vitamina D.",
+    evidence: "Para afirmar que una hora es mejor, hacen falta comparaciones directas que midan resultados relevantes. Los datos sobre la función de la vitamina D no prueban por sí solos un horario óptimo universal."
   }
 }
 
