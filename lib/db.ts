@@ -51,12 +51,6 @@ function matchesQuery(x: Article, opts: ArticleQuery): boolean {
   return true
 }
 
-// Newest first; ties broken by slug so ordering is stable across sources.
-function byRecency(x: Article, y: Article): number {
-  const d = (+new Date(y.published_at) || 0) - (+new Date(x.published_at) || 0)
-  return d || x.slug.localeCompare(y.slug)
-}
-
 // D1 is the sole runtime source of article content. The bundled records are retained
 // only as a one-time migration source in scripts/sync-embedded-articles-to-d1.ts.
 
