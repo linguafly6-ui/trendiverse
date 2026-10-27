@@ -118,7 +118,10 @@ async function main() {
   const extraSections = [
     'Método paso a paso para organizar ingresos y gastos, con una plantilla explicada en texto y un ejemplo hipotético mensual.',
     'Cómo crear un fondo de emergencia, fijar objetivos realistas y automatizar el ahorro con alternativas según distintas situaciones.',
-    'Errores frecuentes, cómo adaptar el plan ante imprevistos y preguntas frecuentes detalladas.'
+    'Errores frecuentes, cómo adaptar el plan ante imprevistos y preguntas frecuentes detalladas.',
+    'Estrategias adicionales para situaciones reales distintas, con pasos claros y ejemplos hipotéticos que no repitan lo anterior.',
+    'Cómo mantener el hábito durante varios meses, revisar resultados y ajustar objetivos cuando cambian los ingresos o gastos.',
+    'Casos prácticos hipotéticos, alternativas cuando el método principal no funciona y respuestas ampliadas a dudas habituales.'
   ]
   for (let i = 0; words < 2200 && i < extraSections.length; i++) {
     const continuation = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`, {
