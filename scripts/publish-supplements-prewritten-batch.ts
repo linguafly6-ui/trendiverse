@@ -48,7 +48,7 @@ function main() {
   // In automatic mode, explicit editorial refreshes take precedence over ordinary prepared drafts.
   // This prevents an unrelated later batch from being published when a historical batch is being refreshed.
   const selected = auto
-    ? (refreshItems.length > 0 ? refreshItems.sort((a,b)=>a.id-b.id).slice(0,20) : [...readyItems].sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id))
+    ? (refreshItems.length > 0 ? refreshItems.sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id) : [...readyItems].sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id))
     : plan.filter(x=>x.id>=start&&x.id<start+20 && existsSync(resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)))
   if (selected.length===0) throw new Error('No hay borradores preparados para este lote')
   console.log(auto ? 'Publicación automática: se procesarán hasta 20 borradores marcados editorialBatchReady' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
