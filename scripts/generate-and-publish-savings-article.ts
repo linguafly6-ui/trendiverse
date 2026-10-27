@@ -128,7 +128,14 @@ async function main() {
   const article = parseModelJson(raw)
   if (!article.title || !article.excerpt || !article.content) fail('La respuesta generada no contiene título, extracto y contenido')
   let words = wordCount(article.content)
-  const extraSections = [
+  const extraSections = category === 'suplementos' ? [
+    'Qué dice la evidencia científica disponible, cómo valorar la calidad de los estudios y qué incertidumbres siguen abiertas.',
+    'Seguridad del suplemento: efectos adversos conocidos, factores que pueden aumentar riesgos y cuándo consultar a un profesional sanitario.',
+    'Interacciones, precauciones en embarazo, lactancia, enfermedades o medicación cuando sean relevantes para este suplemento.',
+    'Cómo interpretar el etiquetado, la composición, las declaraciones de salud y los controles de calidad sin convertirlo en una recomendación de compra.',
+    'Alternativas alimentarias y hábitos relacionados, explicando cuándo la suplementación no está justificada y evitando promesas de resultados.',
+    'Preguntas frecuentes basadas en evidencia, señales de marketing engañoso y fuentes sanitarias fiables para seguir investigando.'
+  ] : [
     'Método paso a paso para organizar ingresos y gastos, con una plantilla explicada en texto y un ejemplo hipotético mensual.',
     'Cómo crear un fondo de emergencia, fijar objetivos realistas y automatizar el ahorro con alternativas según distintas situaciones.',
     'Errores frecuentes, cómo adaptar el plan ante imprevistos y preguntas frecuentes detalladas.',
@@ -143,7 +150,7 @@ async function main() {
       body: JSON.stringify({
         messages: [
           { role: 'system', content: 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content".' },
-          { role: 'user', content: `Artículo: "${title}". Escribe SOLO una sección nueva de 650 a 850 palabras en Markdown. Tema: ${extraSections[i]} No repitas ideas ya cubiertas. Usa pasos concretos y ejemplos hipotéticos, sin inventar estadísticas ni fuentes. Devuelve JSON con title exactamente "${title}", excerpt breve y content con solo la sección, sin H1 ni introducción repetida. Texto ya escrito para evitar duplicados:\\n\\n${article.content.slice(-5000)}` }
+          { role: 'user', content: `Artículo: "${title}". Categoría: ${category}. Escribe SOLO una sección nueva de 650 a 850 palabras en Markdown. Tema: ${extraSections[i]} No repitas ideas ya cubiertas. ${category === 'suplementos' ? 'Mantén enfoque sanitario basado en evidencia; no inventes estudios, cifras, dosis ni enlaces; distingue incertidumbres, explica riesgos pertinentes y no des recomendaciones médicas individualizadas.' : 'Usa pasos concretos y ejemplos hipotéticos, sin inventar estadísticas ni fuentes.'} Devuelve JSON con title exactamente "${title}", excerpt breve y content con solo la sección, sin H1 ni introducción repetida. Texto ya escrito para evitar duplicados:\\n\\n${article.content.slice(-5000)}` }
         ],
         max_tokens: 4096,
         temperature: 0.45
