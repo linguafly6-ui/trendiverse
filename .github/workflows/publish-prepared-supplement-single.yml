@@ -6,12 +6,6 @@ on:
       - main
     paths:
       - "data/supplements-publish-now/**"
-  workflow_dispatch:
-    inputs:
-      article_id:
-        description: "ID del artículo preparado (81–100)"
-        required: true
-        type: number
 
 permissions:
   contents: read
