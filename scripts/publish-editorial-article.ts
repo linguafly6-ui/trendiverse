@@ -43,16 +43,33 @@ function contentTypeFor(path: string, fallback = 'application/octet-stream'): st
   }
 }
 
-async function resolveImage(articleImageUrl: string, tempDir: string): Promise<{ path: string; contentType: string; extension: string }> {
+const IMAGE_FALLBACKS: Record<string, string> = {
+  'ahorrar-energia-casa-invierno-medidas-eficaces': 'public/images/articles/recovery-ahorrar-energia-casa-invierno-medidas-eficaces.svg',
+  'ayudas-auto-plus-coches-electricos-2026-requisitos-plazo': 'public/images/articles/recovery-ayudas-auto-plus-coches-electricos-2026-requisitos-plazo.svg',
+  'como-leer-la-factura-de-la-luz': 'public/images/articles/recovery-como-leer-la-factura-de-la-luz.svg',
+  'copa-del-mundo-fifa-2026': 'public/images/articles/recovery-copa-del-mundo-fifa-2026.svg',
+  'puntos-recarga-coche-electrico-espana-datos-2026': 'public/images/articles/recovery-puntos-recarga-coche-electrico-espana-datos-2026.svg',
+  'reglamento-ia-ue-agosto-2026-transparencia-obligaciones': 'public/images/articles/recovery-reglamento-ia-ue-agosto-2026-transparencia-obligaciones.svg',
+  'tendencias-moda-otono-invierno-2026-2027-como-llevarlas': 'public/images/articles/recovery-tendencias-moda-otono-invierno-2026-2027-como-llevarlas.svg',
+}
+
+async function resolveImage(articleImageUrl: string, tempDir: string, slug: string): Promise<{ path: string; contentType: string; extension: string }> {
   if (articleImageUrl.startsWith('/')) {
     const publicRoot = resolve(ROOT, 'public')
     const path = resolve(publicRoot, articleImageUrl.slice(1))
-    if (!path.startsWith(publicRoot + '/') || !existsSync(path)) {
-      throw new Error(`No se encuentra el archivo de imagen local: ${articleImageUrl}`)
+    let resolvedPath = path
+    if (!resolvedPath.startsWith(publicRoot + '/') || !existsSync(resolvedPath)) {
+      const fallback = IMAGE_FALLBACKS[slug]
+      if (!fallback) throw new Error(`No se encuentra el archivo de imagen local: ${articleImageUrl}`)
+      resolvedPath = resolve(ROOT, fallback)
+      if (!resolvedPath.startsWith(publicRoot + '/') || !existsSync(resolvedPath)) {
+        throw new Error(`No se encuentra la imagen alternativa para ${slug}: ${fallback}`)
+      }
+      console.log(`Usando ilustración editorial alternativa para ${slug}: ${fallback}`)
     }
-    const extension = extname(path).toLowerCase()
+    const extension = extname(resolvedPath).toLowerCase()
     if (!extension) throw new Error('La imagen local no tiene extensión reconocible')
-    return { path, contentType: contentTypeFor(path), extension }
+    return { path: resolvedPath, contentType: contentTypeFor(resolvedPath), extension }
   }
 
   const remoteUrl = new URL(articleImageUrl)
@@ -114,7 +131,7 @@ export async function publishArticle(slug: string): Promise<void> {
 
   const tempDir = mkdtempSync(join(tmpdir(), 'trendiverse-publish-'))
   try {
-    const image = await resolveImage(article.image_url ?? '', tempDir)
+    const image = await resolveImage(article.image_url ?? '', tempDir, slug)
     const objectKey = `articles/${slug}${image.extension}`
     const publicImageUrl = `${PUBLIC_BASE_URL}/${objectKey}`
 
