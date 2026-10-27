@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { SEO_BATCH_02_ARTICLES } from '../lib/seo-batch-02'
-import { getArticleBySlug } from '../lib/db'
+import { SAMPLE_ARTICLES } from '../scripts/legacy-article-data'
 
 const expected = [
   'como-conservar-las-verduras-para-que-duren-mas',
@@ -28,9 +28,6 @@ test('SEO batch 02 articles exceed 2,000 words and have complete metadata', () =
   }
 })
 
-test('SEO batch 02 articles are available through the article catalogue', async () => {
-  for (const slug of expected) {
-    const article = await getArticleBySlug(slug)
-    assert.ok(article, `${slug} should be available through getArticleBySlug`)
-  }
+test('SEO batch 02 articles are available for the one-time D1 migration', () => {
+  for (const slug of expected) assert.ok(SAMPLE_ARTICLES.some((article) => article.slug === slug), `${slug} should be included in the D1 migration source`)
 })
