@@ -260,6 +260,13 @@ async function collectAllFeedArticles(): Promise<Article[]> {
 
 test.afterEach(() => setEnvResolverForTests(null))
 
+test('runtime does not serve article content from bundled files when D1 is unavailable', async () => {
+  setEnvResolverForTests(() => ({}))
+  assert.equal(await getArticleBySlug(EXPECTED_SLUGS[0]), null)
+  assert.deepEqual(await getArticles({ limit: 10 }), [])
+  assert.deepEqual(await getAllArticleSlugs(), [])
+})
+
 test('editorial records are valid and unique', () => {
   const editorialSlugs = [...ACTUALIDAD_TRENDING_ARTICLES_BATCH_12, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_11, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_10, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_9, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_8, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_7, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_6, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_5, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_4, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_3, ...ACTUALIDAD_TRENDING_ARTICLES_BATCH_2, ...ACTUALIDAD_TRENDING_ARTICLES_2026, ...EDITORIAL_ARTICLES, ...OCTOBER_2026_ARTICLES, ...EMPRESAS_QUE_TRANSFORMAN_ARTICLES, ...MODA_TENDENCIAS_ARTICLES, ...GAMING_TENDENCIAS_ARTICLES].map((a) => a.slug)
   assert.deepEqual(editorialSlugs.sort(), EXPECTED_SLUGS.filter((slug) => !['mejores-freidoras-aire-amazon-espana-2026', 'mejores-mancuernas-entrenar-casa-2026', 'mejores-bicicletas-2026', 'mejores-bicicletas-electricas-2026', 'mejores-ordenadores-amazon-espana-2026', 'mejores-teclados-ordenador-amazon-espana-2026', 'mejores-gafas-inteligencia-artificial-amazon-espana-2026', 'mejores-colagenos-amazon-espana-2026', 'mejores-mascarillas-pelo-amazon-espana-2026', 'mejores-mascarillas-faciales-amazon-espana-2026'].includes(slug)).sort())
