@@ -859,6 +859,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: "Si recibes un tratamiento pautado por una deficiencia, sigue la frecuencia indicada y consulta antes de modificarla. No retrases una evaluación médica de cansancio o debilidad confiando solo en cambiar la hora de una vitamina.",
     followup: "Elige un momento fácil de mantener siempre que sea compatible con las instrucciones de la presentación. Si notas cambios en el sueño o molestias, coméntalos con un profesional y revisa también otros factores.",
     evidence: "Para afirmar que una hora es superior, hacen falta estudios que comparen directamente horarios y resultados relevantes. Las funciones de la B12 no prueban por sí solas una ventana horaria óptima."
+  },
+  'dosis-de-la-vitamina-b12-como-interpretar-las-recomendaciones': {
+    excerpt: 'La cantidad adecuada de B12 depende de la edad, la alimentación, la absorción y el motivo de uso. Compara unidades y presentación antes de interpretar la etiqueta.',
+    focus: 'Distingue la cantidad declarada por comprimido de la pauta indicada para prevenir o tratar una deficiencia. Las necesidades habituales y el tratamiento de una carencia no son equivalentes.',
+    safety: 'Si tienes síntomas compatibles con deficiencia, problemas de absorción, embarazo o tomas medicación de forma habitual, consulta antes de ajustar la dosis por tu cuenta.',
+    followup: 'Lleva a la consulta la etiqueta y, si existen, los resultados analíticos. Pregunta si necesitas prevención, confirmación diagnóstica o tratamiento y seguimiento.',
+    evidence: 'Las pautas estudiadas dependen de la causa de la deficiencia, la vía de administración y la respuesta individual. No conviertas una dosis comercial en una recomendación universal.'
+  },
+  'quien-deberia-evitar-la-vitamina-b12': {
+    excerpt: 'No todas las personas necesitan evitar la B12, pero algunas requieren valoración para elegir la presentación y el seguimiento adecuados.',
+    focus: 'La decisión depende de la causa de uso, la absorción, los antecedentes y otros tratamientos. Evitarla sin motivo puede ser tan poco útil como tomarla sin una necesidad clara.',
+    safety: 'No uses el suplemento como sustituto de una evaluación si aparecen hormigueos, problemas de equilibrio, cansancio persistente u otros síntomas. Consulta especialmente si hay una enfermedad que afecta a la absorción.',
+    followup: 'Antes de empezar, aclara con un profesional si existe una deficiencia confirmada, un factor de riesgo alimentario o una razón clínica para suplementar.',
+    evidence: 'La seguridad y la utilidad deben valorarse según el contexto. Los datos de personas sanas no responden por sí solos a todas las situaciones clínicas.'
+  },
+  'interacciones-de-la-vitamina-b12-con-medicamentos': {
+    excerpt: 'Algunos medicamentos pueden alterar la absorción o el estado de vitamina B12. La importancia depende del fármaco, la duración del tratamiento y los factores personales.',
+    focus: 'La revisión debe considerar tanto los medicamentos prescritos como otros suplementos. No todos los usos simultáneos representan una interacción directa ni requieren la misma respuesta.',
+    safety: 'No suspendas ni cambies una medicación por tu cuenta. Si tomas tratamientos prolongados o tienes síntomas, pregunta si conviene valorar la B12 mediante evaluación clínica.',
+    followup: 'Prepara una lista actualizada de medicamentos, dosis y duración para el médico o farmacéutico, junto con cualquier suplemento que ya uses.',
+    evidence: 'Las interacciones se deben confirmar para el medicamento y la situación concretos. No es correcto generalizar a partir de una posible asociación.'
+  },
+  'como-elegir-un-suplemento-de-la-vitamina-b12-de-calidad': {
+    excerpt: 'Al elegir B12, revisa la cantidad por unidad, la forma declarada, los ingredientes añadidos y la claridad de las instrucciones. Un envase llamativo no garantiza mejor resultado.',
+    focus: 'Compara la dosis real, la presentación y el número de unidades por envase. La metilcobalamina y la cianocobalamina son formas distintas, pero el nombre por sí solo no demuestra superioridad para todas las personas.',
+    safety: 'Si se está tratando una deficiencia, no cambies de presentación ni de pauta sin comprobar que el producto encaja con el plan clínico. Revisa también alérgenos y excipientes.',
+    followup: 'Guarda el etiquetado y el número de lote, y comprueba que el fabricante identifica claramente la composición y las instrucciones.',
+    evidence: 'La calidad de fabricación, la forma química y la eficacia clínica son cuestiones diferentes. Evita deducir beneficios superiores únicamente de una afirmación publicitaria.'
+  },
+  'la-vitamina-b12-polvo-capsulas-o-comprimidos': {
+    excerpt: 'La B12 se comercializa en comprimidos, cápsulas, gotas y otras presentaciones. La opción adecuada depende de la pauta, la tolerancia y la facilidad de uso.',
+    focus: 'Compara la cantidad de B12 por unidad y las instrucciones específicas de cada formato. Las presentaciones no siempre son equivalentes en concentración ni modo de administración.',
+    safety: 'Si tienes dificultades para tragar, problemas de absorción o un tratamiento pautado, consulta antes de sustituir una presentación por otra.',
+    followup: 'Valora el coste por cantidad declarada, la facilidad para seguir la pauta y la compatibilidad con las instrucciones del producto.',
+    evidence: 'No asumas que una presentación se absorbe mejor para todo el mundo. La elección debe apoyarse en la indicación y en evidencia pertinente para esa vía.'
+  },
+  'cuanto-tarda-en-hacer-efecto-la-vitamina-b12': {
+    excerpt: 'El tiempo para notar cambios tras corregir una deficiencia de B12 varía según la causa, la intensidad y el tiempo de evolución. No todos los síntomas mejoran al mismo ritmo.',
+    focus: 'Distingue la corrección de resultados analíticos de la recuperación de síntomas. Algunos problemas pueden necesitar seguimiento y no deben evaluarse solo por cómo te sientes unos días después.',
+    safety: 'No retrases la consulta si aparecen síntomas neurológicos, empeoran o persisten pese al tratamiento. Sigue la pauta prescrita y acuerda cuándo revisar la respuesta.',
+    followup: 'Pregunta qué señales deben vigilarse y cuándo realizar el seguimiento. Si no notas mejoría, informa al profesional en lugar de aumentar la cantidad por tu cuenta.',
+    evidence: 'El tiempo de respuesta depende de la causa y del resultado evaluado. Los estudios no permiten prometer un plazo único para todas las personas.'
+  },
+  'que-pasa-si-dejas-de-tomar-la-vitamina-b12': {
+    excerpt: 'Dejar la B12 puede ser irrelevante para algunas personas y arriesgado para otras, especialmente si existe una deficiencia, una dieta con fuentes limitadas o un problema de absorción.',
+    focus: 'Antes de interrumpirla, identifica por qué se indicó: prevención dietética, mantenimiento o tratamiento. Esa razón determina si puede dejarse o si hace falta una alternativa.',
+    safety: 'No suspendas un tratamiento pautado para una deficiencia sin consultarlo. Los síntomas neurológicos o la sospecha de recaída requieren evaluación, no solo reiniciar un producto comercial.',
+    followup: 'Revisa con el profesional el motivo inicial, los resultados disponibles y si la causa que originó la deficiencia sigue presente.',
+    evidence: 'La necesidad de continuar depende de la causa y de si se ha corregido. No se puede extrapolar la experiencia de una persona a todas las demás.'
+  },
+  'alimentos-ricos-en-la-vitamina-b12-frente-a-suplementos': {
+    excerpt: 'La B12 se encuentra de forma natural sobre todo en alimentos de origen animal y en productos enriquecidos. La selección de alimentos depende del patrón dietético y de su etiquetado.',
+    focus: 'Pescado, carne, huevos y lácteos pueden aportar B12 en distintas cantidades; algunas bebidas vegetales y cereales están enriquecidos. Comprueba la etiqueta: no todos los productos vegetales la contienen.',
+    safety: 'Si sigues una dieta vegana, no confíes en alimentos vegetales no enriquecidos como fuente fiable de B12. Consulta cómo cubrir las necesidades y mantener un aporte constante.',
+    followup: 'Compara las cantidades declaradas por ración y la frecuencia real de consumo. En dietas restrictivas, planifica el aporte con orientación profesional si es necesario.',
+    evidence: 'La presencia de B12 depende del alimento y de si está enriquecido. Las listas genéricas de alimentos no sustituyen la comprobación del etiquetado.'
+  },
+  'deficiencia-de-la-vitamina-b12-senales-y-evaluacion': {
+    excerpt: 'La deficiencia de B12 puede producir alteraciones hematológicas y neurológicas, pero síntomas como el cansancio tienen muchas causas y no bastan para diagnosticarla.',
+    focus: 'La evaluación puede incluir historia dietética, medicamentos, factores de absorción, análisis de sangre y pruebas adicionales según el caso. Un solo síntoma no confirma una carencia.',
+    safety: 'Consulta pronto si aparecen hormigueos persistentes, alteraciones del equilibrio, debilidad marcada o cambios cognitivos. No retrases la evaluación confiando solo en un suplemento.',
+    followup: 'Anota síntomas, dieta, medicamentos y antecedentes digestivos para facilitar la valoración. Pregunta qué pruebas son apropiadas y cómo interpretar los resultados.',
+    evidence: 'La interpretación de los análisis depende del contexto clínico y puede requerir pruebas complementarias. Evita diagnosticar o descartar una deficiencia a partir de un único dato aislado.'
+  },
+  'la-vitamina-b12-en-dietas-vegetarianas-y-veganas': {
+    excerpt: 'Las dietas veganas no aportan de forma fiable B12 natural salvo alimentos enriquecidos; por eso es importante planificar una fuente constante y adecuada.',
+    focus: 'Revisa si los productos vegetales que consumes están fortificados y qué cantidad de B12 aporta la ración. No todos los fermentados, algas o alimentos vegetales son fuentes fiables.',
+    safety: 'Si estás embarazada, en lactancia, planificando un embarazo o alimentas a un menor con dieta vegana, consulta para asegurar un aporte suficiente y seguimiento apropiado.',
+    followup: 'Haz una lista de alimentos enriquecidos y suplementos utilizados, con su frecuencia, y revisa si la estrategia cubre tus necesidades de forma constante.',
+    evidence: 'La planificación de B12 en dietas veganas está relacionada con la fiabilidad de las fuentes. No se debe asumir que una dieta variada de plantas cubre automáticamente esta vitamina.'
+  },
+  'la-vitamina-b12-durante-el-embarazo-y-la-lactancia': {
+    excerpt: 'Durante el embarazo y la lactancia, la B12 es importante para la salud materna e infantil, y la evaluación debe considerar dieta, absorción y antecedentes.',
+    focus: 'La necesidad de suplementación depende del aporte habitual y de posibles factores de riesgo. Los productos combinados pueden incluir otros ingredientes que conviene revisar.',
+    safety: 'Consulta con el equipo sanitario, especialmente si sigues una dieta vegana o vegetariana, tienes problemas de absorción o una deficiencia diagnosticada. No ajustes un tratamiento sin seguimiento.',
+    followup: 'Lleva la etiqueta del producto y explica tu patrón alimentario y los suplementos prenatales que utilizas para evitar duplicidades.',
+    evidence: 'Las recomendaciones para embarazo y lactancia deben basarse en guías específicas y situación individual, no extrapolarse sin más de estudios en adultos no gestantes.'
+  },
+  'la-vitamina-b12-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: 'En adultos mayores, la B12 merece atención por cambios en la absorción, la alimentación y el uso de determinados medicamentos. La edad por sí sola no confirma una deficiencia.',
+    focus: 'La evaluación considera síntomas, dieta, antecedentes, medicamentos y análisis pertinentes. No todo cansancio o problema de memoria se explica por falta de B12.',
+    safety: 'Si hay hormigueos, cambios de equilibrio, pérdida de apetito o anemia, consulta para investigar la causa. No atribuyas automáticamente los síntomas al envejecimiento.',
+    followup: 'Revisa con un profesional los medicamentos habituales, la dieta y si está indicado controlar el estado de B12.',
+    evidence: 'La prevalencia y las causas de deficiencia varían entre poblaciones. La edad puede ser un factor de riesgo, pero no reemplaza la evaluación clínica.'
+  },
+  'mitos-sobre-la-vitamina-b12-que-es-verdad-y-que-no': {
+    excerpt: 'La B12 ayuda a prevenir o tratar problemas relacionados con su deficiencia, pero no es un estimulante universal ni garantiza más energía cuando el aporte ya es suficiente.',
+    focus: 'Separa las funciones conocidas de la vitamina de las promesas comerciales. La utilidad de suplementar depende de la necesidad, la absorción y el objetivo real.',
+    safety: 'No uses B12 para aplazar la evaluación de fatiga, hormigueos u otros síntomas persistentes. Una dosis alta no sustituye el diagnóstico de la causa.',
+    followup: 'Comprueba si existe un factor de riesgo o una deficiencia confirmada antes de elegir un producto por reclamos de energía o bienestar.',
+    evidence: 'Los beneficios demostrados para corregir una deficiencia no implican que dosis adicionales mejoren el rendimiento de todas las personas.'
+  },
+  'como-leer-la-etiqueta-de-la-vitamina-b12': {
+    excerpt: 'La etiqueta de B12 debe indicar la cantidad por unidad, la forma del ingrediente, los demás componentes y las instrucciones de uso.',
+    focus: 'Comprueba las unidades —por ejemplo, microgramos— y distingue la cantidad por comprimido de la porción recomendada. Revisa también otros productos que puedan contener B12.',
+    safety: 'Si sigues tratamiento por una deficiencia, verifica con el profesional que el producto y la pauta corresponden a lo indicado. Revisa excipientes si tienes alergias o intolerancias.',
+    followup: 'Compara envases usando la misma unidad y comprueba el lote, la fecha y la información del fabricante antes de decidir.',
+    evidence: 'El etiquetado informa de la composición declarada, pero no demuestra por sí mismo que necesites el producto ni que una forma sea superior en todos los casos.'
+  },
+  'preguntas-frecuentes-sobre-la-vitamina-b12-guia-para-principiantes': {
+    excerpt: 'Para valorar si necesitas B12, empieza por tu alimentación, posibles problemas de absorción, medicamentos y motivo de uso. No todas las personas necesitan la misma pauta.',
+    focus: 'Las preguntas clave son qué fuente utilizas, qué cantidad declara el producto y si hay una deficiencia confirmada o un factor de riesgo. El objetivo cambia la estrategia.',
+    safety: 'Si tienes síntomas persistentes o un diagnóstico previo, consulta antes de iniciar, cambiar o suspender el suplemento. No uses la etiqueta como sustituto de un plan de tratamiento.',
+    followup: 'Anota tu patrón alimentario y los suplementos actuales; esa información puede orientar una conversación más útil con el profesional sanitario.',
+    evidence: 'La prevención, el tratamiento y el mantenimiento son situaciones distintas. La pauta apropiada depende de la causa y del seguimiento necesario.'
+  },
+  'que-es-el-omega-3-y-para-que-sirve': {
+    excerpt: 'El omega-3 agrupa ácidos grasos como EPA y DHA, presentes sobre todo en pescados grasos, y ALA, que se encuentra en algunas fuentes vegetales. No son formas idénticas.',
+    focus: 'Distingue EPA y DHA de ALA al leer un suplemento. El aceite de pescado, el aceite de algas y las fuentes vegetales tienen composiciones diferentes y no deben compararse solo por el volumen del envase.',
+    safety: 'Consulta antes de usar dosis altas si tomas anticoagulantes, tienes una enfermedad crónica, estás embarazada o tienes una intervención programada.',
+    followup: 'Comprueba la cantidad de EPA y DHA por porción, no solo los miligramos totales de aceite. Identifica también la fuente y las instrucciones del producto.',
+    evidence: 'Los efectos investigados dependen del ácido graso, la dosis, la población y el resultado. No todos los productos etiquetados como omega-3 son equivalentes.'
+  },
+  'beneficios-del-omega-3-que-dice-la-evidencia': {
+    excerpt: 'Los omega-3 participan en funciones normales del organismo, pero los beneficios de suplementarlos dependen del objetivo y de la situación nutricional y clínica.',
+    focus: 'Separa los beneficios de consumir pescado dentro de una dieta equilibrada de los efectos estudiados para cápsulas concretas. La evidencia no respalda todas las promesas comerciales.',
+    safety: 'No uses suplementos para sustituir tratamientos indicados ni para tratar una enfermedad sin supervisión. Si tomas medicación o tienes una condición clínica, consulta antes de usar dosis elevadas.',
+    followup: 'Define el objetivo de uso y revisa si tu alimentación ya aporta fuentes de omega-3. Un profesional puede ayudarte a valorar si el suplemento tiene sentido.',
+    evidence: 'La evidencia varía por desenlace y población; un resultado favorable en un contexto no demuestra un beneficio general para todas las personas.'
+  },
+  'efectos-secundarios-del-omega-3': {
+    excerpt: 'Los efectos adversos más habituales de los suplementos de omega-3 pueden incluir molestias digestivas o sabor a pescado; el riesgo depende del producto y la cantidad.',
+    focus: 'Valora la tolerancia junto con los ingredientes, la forma de administración y la cantidad de EPA y DHA. Los productos combinados pueden añadir otros componentes.',
+    safety: 'Consulta antes de usar dosis altas si tomas anticoagulantes o antiagregantes, tienes antecedentes médicos relevantes o vas a someterte a una intervención. Busca atención si aparece una reacción grave.',
+    followup: 'Registra el producto, la cantidad y cuándo aparecen las molestias; revisa con un profesional si conviene cambiar la presentación o suspenderlo.',
+    evidence: 'Los efectos adversos observados dependen de la dosis y de la formulación. No extrapoles automáticamente resultados de un producto a todos los suplementos de omega-3.'
+  },
+  'como-tomar-el-omega-3-correctamente': {
+    excerpt: 'La forma de tomar omega-3 depende de las instrucciones del producto, la cantidad de EPA y DHA y la tolerancia digestiva. No existe una pauta única para todo el mundo.',
+    focus: 'Comprueba la cantidad por cápsula y por porción, y si la etiqueta recomienda tomarlo con comida. No confundas los miligramos de aceite total con los de EPA y DHA.',
+    safety: 'Consulta antes de ajustar cantidades o combinar varios productos, especialmente si tomas medicamentos que afectan a la coagulación o tienes una enfermedad crónica.',
+    followup: 'Revisa la dosis declarada y las indicaciones del fabricante con el profesional que te aconseje; evita duplicar ingredientes entre productos.',
+    evidence: 'Las dosis estudiadas dependen del objetivo y del tipo de omega-3. Una pauta usada en investigación no debe convertirse automáticamente en recomendación personal.'
+  },
+  'cuando-tomar-el-omega-3-manana-o-noche': {
+    excerpt: 'No hay una hora universal que haga más eficaz al omega-3. La regularidad, la tolerancia y las instrucciones de la presentación suelen ser más prácticas que una regla de mañana o noche.',
+    focus: 'Si la etiqueta aconseja tomarlo con alimentos, elige una comida que facilite seguir la pauta y tolerar el producto. No asumas que el horario por sí solo cambia los beneficios.',
+    safety: 'Si tienes una pauta médica, tomas anticoagulantes o utilizas dosis altas, consulta antes de modificar la frecuencia o el momento de toma.',
+    followup: 'Escoge un momento compatible con las instrucciones y tu rutina, y anota cualquier molestia para comentarla si persiste.',
+    evidence: 'Para afirmar que un horario es superior hacen falta comparaciones directas de horarios y resultados relevantes. La función del omega-3 no establece por sí sola una hora óptima.'
   }
 }
 
