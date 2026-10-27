@@ -41,7 +41,8 @@ export function articleExcerpt(article: Pick<Article, 'category' | 'title' | 'co
     .map(plainText)
     .filter((text) => text.length >= 75 && !/^(esta guía|este artículo|el objetivo de esta guía|no sustituye|en esta guía)/i.test(text))
   const titleNormalized = article.title.toLocaleLowerCase('es')
-  const distinct = candidates.find((text) => text.toLocaleLowerCase('es') !== titleNormalized)
+  // The first paragraph is usually the shared editorial introduction; prefer the next substantive paragraph.
+  const distinct = candidates.slice(1).find((text) => text.toLocaleLowerCase('es') !== titleNormalized) ?? candidates[0]
   return distinct ? shorten(distinct, 155) : article.excerpt
 }
 
