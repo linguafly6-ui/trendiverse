@@ -299,6 +299,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: "Si tienes una pauta nutricional por enfermedad o necesidades especiales, sigue la orientación individual en vez de aplicar reglas generales de horario. Si el batido nocturno te produce molestias, prueba otra hora o revisa los ingredientes.",
     followup: "Piensa en qué momento del día te resulta más difícil comer suficiente proteína y valora si el polvo resuelve ese problema. La constancia y la ingesta total suelen ser más relevantes que acertar con una ventana horaria exacta.",
     evidence: "Los estudios sobre el momento de la proteína deben interpretarse junto con la ingesta diaria, el entrenamiento y la duración. No demuestran que exista una hora única que funcione mejor para todas las personas."
+  },
+  'dosis-de-la-proteina-vegetal-en-polvo-como-interpretar-las-recomendaciones': {
+    excerpt: "La porción de polvo no equivale siempre a la cantidad de proteína. Aprende a comparar gramos, mezclas vegetales y necesidades de la dieta.",
+    focus: "Mira primero la proteína por ración y la fuente principal —guisante, soja, arroz u otra—, no solo el peso del cacito. Las mezclas pueden incluir aromas, espesantes y otros ingredientes que cambian el peso total.",
+    safety: "No conviertas una cifra de un estudio deportivo en una pauta para todo el mundo. Si tienes enfermedad renal, una dieta terapéutica, embarazo o necesidades nutricionales específicas, acuerda el aporte total con un profesional sanitario.",
+    followup: "Para valorar el producto, anota la proteína por ración, el tamaño de la porción y cuánto aportan tus comidas habituales. Así podrás decidir si el polvo cubre una necesidad real o solo añade una toma más.",
+    evidence: "Los estudios difieren en la fuente vegetal, la cantidad, la duración y la dieta de base. Antes de trasladar sus resultados, comprueba qué producto se investigó y qué resultado se midió."
+  },
+  'quien-deberia-evitar-la-proteina-vegetal-en-polvo': {
+    excerpt: "Alergias a soja, guisante u otros ingredientes y ciertas condiciones médicas requieren revisar la fórmula antes de usarla.",
+    focus: "«Vegetal» no significa que un producto esté libre de alérgenos. Las fórmulas pueden contener soja, legumbres, aromas, edulcorantes u otros componentes, y la tolerancia depende de la composición concreta.",
+    safety: "Si tienes una alergia alimentaria diagnosticada, comprueba los ingredientes y las advertencias de contaminación cruzada antes de consumirlo. Con enfermedad renal, embarazo, lactancia o una dieta clínica, consulta antes de añadir una fuente concentrada de proteína.",
+    followup: "Guarda una foto de la lista de ingredientes y del apartado de alérgenos. Si aparecen hinchazón de labios o lengua, dificultad respiratoria o desmayo tras tomarlo, busca atención urgente.",
+    evidence: "La tolerancia y la seguridad no pueden inferirse solo por el origen vegetal. Los datos sobre una proteína concreta no garantizan que todas las mezclas comerciales sean adecuadas para cada persona."
+  },
+  'interacciones-de-la-proteina-vegetal-en-polvo-con-medicamentos': {
+    excerpt: "No existe una interacción universal para todos los polvos vegetales. Revisa ingredientes, dieta prescrita y horario de medicación con un profesional.",
+    focus: "Un polvo proteico suele funcionar como alimento concentrado, pero puede modificar la dieta prescrita o añadir minerales y otros ingredientes. Por eso conviene revisar el producto completo, no solo su nombre comercial.",
+    safety: "No cambies horarios ni suspendas medicamentos por tu cuenta para incorporar un batido. Si tomas medicación con instrucciones relacionadas con comidas o sigues una dieta terapéutica, pregunta al médico o farmacéutico sobre el producto específico.",
+    followup: "Lleva el envase o una foto legible de la etiqueta y la lista de tus medicamentos a la consulta. Incluye también otros suplementos y productos enriquecidos para que la revisión tenga en cuenta el conjunto.",
+    evidence: "Las afirmaciones sobre interacciones requieren datos del ingrediente y del medicamento concretos. No deduzcas que existe una interacción —ni que no existe— a partir de estudios generales sobre proteínas vegetales."
+  },
+  'como-elegir-un-suplemento-de-la-proteina-vegetal-en-polvo-de-calidad': {
+    excerpt: "Compara la fuente vegetal, la proteína por ración, los alérgenos y los controles de calidad antes de decidirte.",
+    focus: "Empieza por identificar si el producto se basa en soja, guisante, arroz u otra fuente, y revisa los gramos de proteína por porción. Después comprueba los ingredientes añadidos, la información del fabricante y las advertencias.",
+    safety: "Desconfía de promesas de tratar enfermedades o transformar el cuerpo sin cambios de alimentación y entrenamiento. Si tienes alergias, no des por segura una mezcla porque se anuncie como «natural» o «plant-based».",
+    followup: "Compara productos usando la misma medida: proteína por 100 gramos y por ración, además del coste por cantidad de proteína. Revisa lote, fecha de consumo preferente y si los análisis independientes anunciados son verificables.",
+    evidence: "Un control de calidad puede aportar información sobre determinados contaminantes o composición, pero no demuestra que el suplemento sea necesario ni que produzca resultados excepcionales."
+  },
+  'la-proteina-vegetal-en-polvo-polvo-capsulas-o-comprimidos': {
+    excerpt: "El polvo permite aportar una cantidad considerable por toma; cápsulas y comprimidos pueden requerir muchas unidades para igualarla.",
+    focus: "En proteína vegetal, el polvo suele ser el formato más práctico para aportar varios gramos en una toma. Las cápsulas y comprimidos pueden contener cantidades pequeñas, así que conviene calcular cuántas unidades harían falta para igualar una ración.",
+    safety: "Revisa excipientes, alérgenos, tamaño de las unidades e instrucciones del fabricante. Si tienes dificultades para tragar comprimidos o sigues restricciones dietéticas, prioriza un formato que puedas utilizar con seguridad.",
+    followup: "Compara el coste por 20 gramos de proteína —o por la cantidad que indique la etiqueta—, no por número de cápsulas ni por tamaño del bote. Considera también el sabor, la preparación y la facilidad para medir la porción.",
+    evidence: "La presentación comercial no determina por sí sola el efecto. Para comparar productos, importa la cantidad y composición de proteína realmente consumida y el contexto de la dieta."
+  },
+  'cuanto-tarda-en-hacer-efecto-la-proteina-vegetal-en-polvo': {
+    excerpt: "Tomar proteína aumenta la ingesta de inmediato, pero los cambios físicos dependen de la dieta, el entrenamiento y el tiempo.",
+    focus: "Conviene separar el hecho inmediato de consumir proteína de los objetivos a medio plazo, como recuperación o cambios en masa muscular. No hay un plazo fijo en el que todo el mundo deba notar un resultado visible.",
+    safety: "La debilidad persistente, la pérdida de peso involuntaria o el cansancio no prueban que falte proteína. Si estos síntomas continúan, busca una evaluación en vez de aumentar suplementos sin conocer la causa.",
+    followup: "Observa la rutina durante varias semanas y ten en cuenta comidas, entrenamiento, descanso y recuperación. Un cambio puntual en el peso o las sensaciones de un día no permite juzgar si el producto es eficaz.",
+    evidence: "Los ensayos pueden usar fuentes vegetales distintas, diferentes cantidades y programas de ejercicio. Comprueba la duración, los participantes y el resultado medido antes de aplicar las conclusiones a tu caso."
+  },
+  'que-pasa-si-dejas-de-tomar-la-proteina-vegetal-en-polvo': {
+    excerpt: "Dejar el batido no implica perder progresos de golpe: importa cómo cubres la proteína y la energía con el resto de la alimentación.",
+    focus: "La proteína vegetal en polvo no genera dependencia. Si dejas de tomarla, el efecto nutricional dependerá de si las comidas siguen aportando suficiente proteína y energía para tus necesidades.",
+    safety: "Si el producto forma parte de un plan nutricional indicado por un profesional, consulta antes de modificarlo. Si lo usabas por comodidad, revisa la dieta completa para que la retirada no reduzca sin querer tu ingesta total.",
+    followup: "Piensa en fuentes que encajen con tus preferencias, como legumbres, tofu, tempeh, soja, frutos secos y cereales. No es obligatorio sustituir un polvo por otro: la decisión depende de lo que ya comes.",
+    evidence: "Los cambios en fuerza o composición corporal dependen de muchos factores y no se pueden atribuir solo a retirar un suplemento. Distingue los estudios sobre ingesta total de los que evalúan una formulación específica."
+  },
+  'alimentos-ricos-en-la-proteina-vegetal-en-polvo-frente-a-suplementos': {
+    excerpt: "Legumbres, tofu, tempeh, frutos secos y cereales aportan proteína sin necesidad de recurrir siempre a un polvo.",
+    focus: "La proteína vegetal en polvo concentra ingredientes derivados de plantas, pero la alimentación cotidiana ofrece muchas fuentes proteicas: lentejas, garbanzos, alubias, soja, tofu, tempeh, frutos secos y algunos cereales.",
+    safety: "La elección debe considerar alergias, tolerancia digestiva, preferencias y necesidades médicas. Si sigues una dieta terapéutica o tienes una enfermedad que exige ajustar nutrientes, revisa los cambios con el profesional que te atiende.",
+    followup: "Antes de comprar un suplemento, mira qué aportan tus comidas habituales y qué momentos te resultan difíciles. Una comida preparada o una opción sencilla de legumbres puede ser igual de práctica para algunas personas.",
+    evidence: "Los polvos facilitan consumir proteína concentrada, pero no son automáticamente superiores a los alimentos. La comparación debe tener en cuenta la dieta total, la variedad y los objetivos concretos."
+  },
+  'deficiencia-de-la-proteina-vegetal-en-polvo-senales-y-evaluacion': {
+    excerpt: "No existe una carencia clínica de «proteína en polvo». La evaluación se centra en la ingesta total y el estado nutricional.",
+    focus: "La proteína vegetal en polvo es una forma de aportar proteína, no un nutriente separado cuya ausencia produzca una deficiencia específica. Lo relevante es la cantidad total de proteína y energía, la variedad de la dieta y el contexto de salud.",
+    safety: "La pérdida de peso involuntaria, la debilidad persistente o los cambios importantes de apetito merecen valoración clínica. No interpretes esos síntomas como prueba de que necesitas un polvo vegetal concreto.",
+    followup: "Si te preocupa tu alimentación, anota de forma orientativa qué comes y cualquier cambio de apetito o peso, sin sacar conclusiones de un solo día. Un profesional puede decidir si hace falta una evaluación nutricional.",
+    evidence: "La desnutrición y la ingesta insuficiente se evalúan con contexto clínico y dietético. Los ensayos deportivos sobre suplementos no son pruebas diagnósticas de una deficiencia."
+  },
+  'la-proteina-vegetal-en-polvo-en-dietas-vegetarianas-y-veganas': {
+    excerpt: "Puede ser una opción práctica, pero no es imprescindible: compara mezclas y prioriza la variedad de fuentes vegetales.",
+    focus: "Los polvos vegetales pueden encajar en dietas vegetarianas y veganas, aunque no son un requisito para comer suficiente proteína. La soja, las legumbres, el tofu, el tempeh, los frutos secos y los cereales también contribuyen al aporte diario.",
+    safety: "Comprueba la fuente principal y los alérgenos, especialmente en mezclas de varias proteínas. Si tienes necesidades clínicas, embarazo, lactancia o dudas sobre la suficiencia de tu dieta, solicita orientación individual.",
+    followup: "Elige el producto por composición, sabor, precio y utilidad real, no solo porque lleve una etiqueta vegana. Considera primero si tus comidas habituales ya cubren las necesidades y qué variedad puedes mantener a largo plazo.",
+    evidence: "Las fuentes vegetales difieren en composición y digestibilidad, pero la adecuación depende de la cantidad total y de la variedad dietética. No todos los productos vegetales son equivalentes entre sí."
+  },
+  'la-proteina-vegetal-en-polvo-durante-el-embarazo-y-la-lactancia': {
+    excerpt: "Durante el embarazo y la lactancia, revisa la fórmula completa y consulta antes de incorporar mezclas deportivas o ingredientes añadidos.",
+    focus: "Que la proteína proceda de plantas no garantiza que cualquier mezcla comercial sea adecuada en embarazo o lactancia. Importan la seguridad de los ingredientes, los aditivos y las necesidades nutricionales individuales.",
+    safety: "No empieces un suplemento deportivo durante el embarazo o la lactancia sin comentarlo con tu profesional sanitario. Revisa especialmente mezclas con hierbas, estimulantes, vitaminas añadidas o ingredientes cuya seguridad no esté clara.",
+    followup: "Si te han recomendado aumentar la proteína, pregunta si puede cubrirse con alimentos o si existe una razón concreta para usar un suplemento. Lleva la etiqueta completa a la consulta.",
+    evidence: "Los estudios en adultos deportistas no establecen por sí solos la seguridad de todas las mezclas durante el embarazo o la lactancia. La falta de datos específicos no debe presentarse como prueba de seguridad."
+  },
+  'la-proteina-vegetal-en-polvo-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: "El apetito, la facilidad para comer, la actividad y la salud renal influyen en si un batido resulta útil en personas mayores.",
+    focus: "Un polvo proteico puede resultar práctico si cuesta cubrir las necesidades con las comidas, pero conviene valorar primero el apetito, la capacidad para masticar y tragar, la actividad física y el estado nutricional.",
+    safety: "Si hay enfermedad renal, dificultad para tragar, pérdida de peso involuntaria o una dieta prescrita, consulta antes de añadir proteína concentrada. Comprueba también la tolerancia y los ingredientes del producto.",
+    followup: "Observa si el batido complementa las comidas o acaba sustituyendo alimentos variados. Ante fragilidad o pérdida de fuerza, una valoración nutricional y funcional ayuda más que elegir por publicidad.",
+    evidence: "Los resultados dependen de la edad, el estado nutricional, la fuente proteica y el ejercicio. No supongas que todas las personas mayores necesitan el mismo aporte o se benefician del mismo producto."
+  },
+  'mitos-sobre-la-proteina-vegetal-en-polvo-que-es-verdad-y-que-no': {
+    excerpt: "¿Las proteínas vegetales son siempre incompletas? ¿Un polvo es imprescindible para ganar músculo? Revisamos los matices de la evidencia.",
+    focus: "Las proteínas vegetales no son todas iguales, pero tampoco puede juzgarse una dieta por un único ingrediente aislado. La variedad de alimentos y la ingesta total importan más que una etiqueta que prometa una solución sencilla.",
+    safety: "Evita las afirmaciones absolutas, tanto las promesas de resultados garantizados como el alarmismo. Si tienes una condición médica o una necesidad nutricional específica, las decisiones deben adaptarse a tu caso.",
+    followup: "Ante una afirmación, pregunta qué fuente vegetal se estudió, con qué se comparó y qué resultado se midió. Las experiencias personales y los mensajes de marketing no bastan para establecer una regla general.",
+    evidence: "Los ensayos de soja, guisante, arroz o mezclas no son automáticamente intercambiables. Revisa el diseño y la población antes de extrapolar los resultados a cualquier producto vegetal."
+  },
+  'como-leer-la-etiqueta-de-la-proteina-vegetal-en-polvo': {
+    excerpt: "Identifica la fuente vegetal, los gramos de proteína por ración, los alérgenos y los ingredientes añadidos antes de comparar envases.",
+    focus: "El frontal del envase puede destacar el peso total del polvo, pero la tabla nutricional ayuda a ver cuánta proteína aporta una porción. Busca además la fuente principal, los ingredientes, los alérgenos y las instrucciones de uso.",
+    safety: "Si tienes alergia a soja, legumbres u otros ingredientes, comprueba la declaración de alérgenos y las advertencias del fabricante. El término «vegetal» no garantiza que la fórmula sea adecuada para todas las personas.",
+    followup: "Compara productos por proteína por 100 gramos y por ración, y revisa si incluyen edulcorantes, fibras o mezclas adicionales. Comprueba lote, fecha de consumo preferente y que las instrucciones sean claras.",
+    evidence: "La etiqueta permite conocer la composición declarada, pero no demuestra necesidad ni eficacia. Los sellos o certificados solo informan sobre los criterios concretos que verifican."
+  },
+  'preguntas-frecuentes-sobre-la-proteina-vegetal-en-polvo-guia-para-principiantes': {
+    excerpt: "Qué contiene, cómo elegir una mezcla, si hace falta tomarla y qué alternativas alimentarias considerar antes de comprar.",
+    focus: "Empieza por definir por qué te interesa el polvo: comodidad, preferencias veganas, entrenamiento o dificultad para llegar a la proteína habitual. La utilidad depende de la dieta y no todo el mundo necesita suplementar.",
+    safety: "Si tienes alergias alimentarias, enfermedad renal, embarazo, lactancia o una dieta terapéutica, consulta antes de incorporar un producto nuevo. Los síntomas persistentes requieren valorar su causa, no confiar solo en un batido.",
+    followup: "Revisa la fuente proteica, la cantidad por ración y la lista de ingredientes. Compara después con lo que ya comes y decide si el suplemento resuelve una necesidad práctica.",
+    evidence: "Las respuestas generales describen tendencias, no garantizan resultados individuales. Para valorar una afirmación, revisa el producto estudiado, la población y el resultado medido."
+  },
+  'que-es-el-colageno-y-para-que-sirve': {
+    excerpt: "El colágeno es una proteína estructural del cuerpo y los suplementos suelen aportar péptidos derivados de fuentes animales. Esto es lo que conviene saber.",
+    focus: "El colágeno forma parte de tejidos como piel, cartílago, tendones y huesos. Los suplementos suelen contener colágeno hidrolizado o péptidos, pero consumirlos no significa que se incorporen directamente al tejido que se desea mejorar.",
+    safety: "Revisa el origen del producto —por ejemplo, bovino, porcino, pescado u otras fuentes— si tienes alergias, restricciones dietéticas o motivos religiosos. Consulta antes de usarlo para tratar una enfermedad o si sigues una pauta médica específica.",
+    followup: "Antes de comprar, define el objetivo y revisa la etiqueta: tipo de colágeno, cantidad por ración, otros ingredientes y alérgenos. Ten en cuenta también que una alimentación suficiente y variada aporta los nutrientes necesarios para mantener los tejidos.",
+    evidence: "Los resultados deben evaluarse por objetivo y formulación. Un estudio sobre una preparación concreta no demuestra que todos los suplementos de colágeno produzcan el mismo efecto ni que sustituyan un tratamiento."
+  },
+  'beneficios-del-colageno-que-dice-la-evidencia': {
+    excerpt: "Los estudios sobre piel, articulaciones y otros objetivos no ofrecen una respuesta única. Separamos resultados preliminares de promesas comerciales.",
+    focus: "El colágeno se comercializa para objetivos distintos, como apariencia de la piel o molestias articulares. Cada objetivo requiere valorar estudios específicos y no debe suponerse que un resultado en un área se repita en otra.",
+    safety: "No uses el colágeno como sustituto de una evaluación médica ante dolor persistente, lesiones o cambios importantes en la piel. Revisa también el origen animal y los ingredientes añadidos si tienes alergias o restricciones alimentarias.",
+    followup: "Cuando evalúes un producto, busca qué formulación y cantidad se estudió, durante cuánto tiempo y qué resultado se midió. Evita decidir solo por testimonios, fotos promocionales o promesas de cambios rápidos.",
+    evidence: "La evidencia puede variar según la indicación, la calidad del ensayo y la preparación utilizada. Distingue resultados modestos o inciertos de afirmaciones de eficacia garantizada."
+  },
+  'efectos-secundarios-del-colageno': {
+    excerpt: "La tolerancia digestiva, el origen del colágeno y los ingredientes añadidos importan. Aprende qué señales no debes pasar por alto.",
+    focus: "Algunas personas pueden notar molestias digestivas o rechazo al sabor, y las fórmulas comerciales pueden incluir edulcorantes, aromas u otros componentes. No todas las molestias se deben necesariamente al colágeno en sí.",
+    safety: "Comprueba el origen del producto si tienes alergia al pescado u otras fuentes animales. Si aparece una reacción alérgica, suspende el producto; ante dificultad respiratoria, hinchazón de lengua o desmayo, busca atención urgente.",
+    followup: "Anota la marca, la composición y cuándo aparecieron los síntomas, y evita probar otra fórmula por tu cuenta si sospechas una alergia. Si las molestias persisten, consulta a un profesional sanitario.",
+    evidence: "La seguridad debe valorarse para la formulación y la población concretas. Que un ingrediente se venda como suplemento no significa que esté libre de efectos adversos o sea adecuado para todo el mundo."
+  },
+  'como-tomar-el-colageno-correctamente': {
+    excerpt: "La cantidad y la forma de uso dependen de la formulación. Aprende a seguir la etiqueta sin asumir que una dosis sirve para todos.",
+    focus: "Los suplementos de colágeno pueden presentarse en polvo, cápsulas o bebidas, y la cantidad por ración varía mucho. Sigue las instrucciones del producto concreto y evita combinar varias fórmulas sin calcular los ingredientes compartidos.",
+    safety: "No aumentes la cantidad para acelerar resultados ni lo utilices como tratamiento único para una enfermedad. Si estás embarazada, en lactancia, tomas medicación o tienes una condición médica, consulta antes de empezar.",
+    followup: "Comprueba cuántos gramos o miligramos aporta la porción, de qué fuente procede y si incorpora vitaminas, minerales u otros ingredientes. Mantén expectativas realistas y revisa si el uso encaja con tu objetivo.",
+    evidence: "Los estudios utilizan formulaciones y pautas distintas. Una cantidad empleada en una investigación no constituye automáticamente una recomendación universal para cualquier producto comercial."
+  },
+  'cuando-tomar-el-colageno-manana-o-noche': {
+    excerpt: "No hay una hora universal para el colágeno. La regularidad, la formulación y el objetivo importan más que elegir mañana o noche.",
+    focus: "Tomarlo en el desayuno o por la noche puede ser una cuestión de rutina y tolerancia. No hay que asumir que el cuerpo solo lo aprovecha en una franja horaria concreta sin evidencia específica para esa afirmación.",
+    safety: "Sigue las instrucciones de la etiqueta y las recomendaciones de tu profesional sanitario si el producto forma parte de un plan clínico. Si te causa molestias digestivas, revisa los ingredientes y considera consultarlo antes de cambiar la pauta.",
+    followup: "Elige un momento que puedas mantener sin complicar las comidas ni el descanso. Registra el producto y la cantidad que tomas, y evalúa el objetivo con expectativas realistas en vez de atribuir cada cambio a la hora de consumo.",
+    evidence: "Para valorar el horario, revisa si los estudios compararon directamente mañana y noche o solo estudiaron el uso general. La evidencia sobre una formulación no prueba que exista una hora óptima para todos."
   }
 }
 
