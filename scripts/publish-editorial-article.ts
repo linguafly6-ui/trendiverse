@@ -4,9 +4,8 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os'
 import { extname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { SAMPLE_ARTICLES } from '../lib/db'
 
-const DATABASE = 'trendiverse-preview'
+const DATABASE = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const BUCKET = process.env.R2_BUCKET ?? 'trendiverse-articles'
 const PUBLIC_BASE_URL = (process.env.R2_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
 const ROOT = process.cwd()
@@ -104,10 +103,13 @@ export async function publishArticle(slug: string): Promise<void> {
   if (!PUBLIC_BASE_URL.startsWith('https://')) throw new Error('R2_PUBLIC_BASE_URL debe ser una URL HTTPS pública')
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('Slug no válido')
 
-  const article = SAMPLE_ARTICLES.find((item) => item.slug === slug)
-  if (!article) throw new Error(`No hay ningún artículo empaquetado con el slug ${slug}`)
-  if (!article.title || !article.category || !article.content || !article.excerpt) {
-    throw new Error('El artículo no tiene título, categoría, contenido o extracto completo')
+  const sourceSql = `SELECT * FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`
+  const sourceRaw = runWrangler(['d1', 'execute', DATABASE, '--remote', '--json', `--command=${sourceSql}`])
+  const sourceRow = findArticleRow(extractJson(sourceRaw), slug)
+  if (!sourceRow) throw new Error(`El artículo ${slug} no existe en D1; primero debe guardarse en la base de datos`)
+  const article = sourceRow as Record<string, unknown>
+  if (typeof article.title !== 'string' || typeof article.category !== 'string' || typeof article.content !== 'string' || typeof article.excerpt !== 'string' || typeof article.image_url !== 'string') {
+    throw new Error('El registro de D1 no tiene título, categoría, contenido, extracto e imagen completos')
   }
 
   const tempDir = mkdtempSync(join(tmpdir(), 'trendiverse-publish-'))
@@ -126,17 +128,17 @@ export async function publishArticle(slug: string): Promise<void> {
     if (uploadedHash !== sourceHash) throw new Error('La verificación SHA-256 de la imagen en R2 no coincide')
 
     const fields = {
-      title: article.title,
-      slug: article.slug,
-      category: article.category,
-      content: article.content,
-      excerpt: article.excerpt,
+      title: article.title as string,
+      slug,
+      category: article.category as string,
+      content: article.content as string,
+      excerpt: article.excerpt as string,
       image_url: publicImageUrl,
       thumbnail_url: publicImageUrl,
       read_time_minutes: String(article.read_time_minutes ?? 1),
       views: String(article.views ?? 0),
       trending: String(Number(Boolean(article.trending))),
-      published_at: article.published_at,
+      published_at: String(article.published_at ?? new Date().toISOString()),
     }
     const columns = Object.keys(fields)
     const values = Object.values(fields).map(sqlString)
@@ -151,10 +153,13 @@ export async function publishArticle(slug: string): Promise<void> {
     console.log(`Guardando artículo en D1: ${DATABASE}`)
     runWrangler(['d1', 'execute', DATABASE, '--remote', `--file=${sqlPath}`])
 
-    const verifySql = `SELECT slug, title, image_url, thumbnail_url FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`
+    const verifySql = `SELECT slug, title, content, image_url, thumbnail_url FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`
     const output = runWrangler(['d1', 'execute', DATABASE, '--remote', '--json', `--command=${verifySql}`])
     const row = findArticleRow(extractJson(output), slug)
     if (!row) throw new Error('D1 no devolvió el artículo tras el UPSERT')
+    if (row.title !== article.title || row.content !== article.content) {
+      throw new Error('El título o contenido almacenado en D1 cambió durante la publicación de la imagen')
+    }
     if (row.image_url !== publicImageUrl || row.thumbnail_url !== publicImageUrl) {
       throw new Error('D1 contiene el artículo, pero la URL de imagen no coincide con la imagen verificada en R2')
     }
