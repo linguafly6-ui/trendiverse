@@ -719,6 +719,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: "Prioriza la pauta que te hayan indicado y evita cambiar la cantidad para compensar una toma olvidada sin revisar las instrucciones. Si tienes un tratamiento pautado o una condición médica, consulta antes de modificarlo.",
     followup: "Elige un momento que puedas mantener de forma constante y comprueba si la etiqueta recomienda tomarlo con alimentos. Revisa además los demás productos que utilizas para evitar duplicar vitamina D.",
     evidence: "Para afirmar que una hora es mejor, hacen falta comparaciones directas que midan resultados relevantes. Los datos sobre la función de la vitamina D no prueban por sí solos un horario óptimo universal."
+  },
+  'dosis-de-la-vitamina-d-como-interpretar-las-recomendaciones': {
+    excerpt: "La vitamina D se expresa en microgramos o unidades internacionales. Aprende a leer ambas unidades y distinguir una pauta general de un tratamiento supervisado.",
+    focus: "La etiqueta puede expresar la vitamina D en microgramos (µg) o unidades internacionales (UI). Comprueba la unidad, la cantidad por toma y la frecuencia antes de comparar productos; no interpretes solo el número más grande del envase.",
+    safety: "No aumentes la dosis para acelerar resultados: el exceso puede elevar el calcio en sangre. Si te han diagnosticado una deficiencia, confirma la pauta y el seguimiento con un profesional sanitario.",
+    followup: "Anota la cantidad por toma, la frecuencia y la vitamina D que aportan otros productos. Si la dosis se indicó tras una prueba, pregunta cuándo corresponde revisar la respuesta.",
+    evidence: "Las pautas de mantenimiento y las utilizadas para corregir una deficiencia no son intercambiables. Una cantidad estudiada en un contexto clínico no constituye una recomendación universal."
+  },
+  'quien-deberia-evitar-la-vitamina-d': {
+    excerpt: "Algunas enfermedades, tratamientos y la suma de varios suplementos hacen necesaria una revisión antes de añadir vitamina D.",
+    focus: "La vitamina D es importante, pero suplementar sin valorar el contexto puede ser innecesario o arriesgado. La historia clínica, otros suplementos y ciertos trastornos que afectan al calcio cambian la evaluación.",
+    safety: "Si tienes enfermedad renal, niveles altos de calcio, antecedentes de determinados trastornos metabólicos o tomas medicación habitual, consulta antes de iniciar dosis suplementarias. No uses dosis altas por tu cuenta.",
+    followup: "Lleva una lista de medicamentos y suplementos, con las cantidades de vitamina D y calcio que contienen. Así se puede revisar el aporte total y decidir si hace falta una pauta concreta.",
+    evidence: "La seguridad depende de la dosis, el estado inicial y las condiciones de salud. Los resultados de adultos sanos no se deben extrapolar automáticamente a personas con enfermedades específicas."
+  },
+  'interacciones-de-la-vitamina-d-con-medicamentos': {
+    excerpt: "Algunos medicamentos pueden alterar el metabolismo de la vitamina D o el equilibrio del calcio. La revisión debe centrarse en tu tratamiento concreto.",
+    focus: "Las interacciones no se limitan a que un producto se tome a la misma hora que otro: algunos tratamientos pueden influir en la absorción, el metabolismo de la vitamina D o los niveles de calcio.",
+    safety: "No suspendas ni ajustes medicamentos para incorporar vitamina D. Si tomas tratamientos de forma habitual o tienes una enfermedad crónica, pide al médico o farmacéutico que revise el producto y la dosis.",
+    followup: "Lleva el nombre del medicamento, la dosis y la etiqueta completa del suplemento. Incluye productos con calcio y multivitamínicos para que se valore el conjunto.",
+    evidence: "La relevancia de una interacción depende del medicamento, la cantidad y el contexto clínico. Evita aplicar una recomendación genérica a todos los tratamientos."
+  },
+  'como-elegir-un-suplemento-de-la-vitamina-d-de-calidad': {
+    excerpt: "Compara la cantidad por dosis, la unidad, la forma de vitamina D y la claridad del etiquetado antes de elegir un producto.",
+    focus: "Una etiqueta útil identifica la forma de vitamina D, la cantidad por toma, las unidades y los ingredientes adicionales. La presentación atractiva o la promesa de alta potencia no demuestra que esa cantidad sea necesaria para ti.",
+    safety: "Desconfía de promesas de prevenir o tratar múltiples enfermedades sin matices. Si tienes una condición médica o tomas otros productos con vitamina D o calcio, consulta antes de elegir una dosis alta.",
+    followup: "Compara la cantidad por toma y por envase, revisa lote y fecha, y comprueba si hay otros ingredientes activos. Si se anuncian controles independientes, verifica qué aspectos evalúan realmente.",
+    evidence: "Los controles de calidad pueden aportar información sobre composición, pero no demuestran que el suplemento sea necesario ni que todas sus afirmaciones estén respaldadas."
+  },
+  'la-vitamina-d-polvo-capsulas-o-comprimidos': {
+    excerpt: "Gotas, cápsulas, comprimidos y otras presentaciones pueden aportar dosis distintas. Compara unidades, facilidad de uso y composición, no solo el formato.",
+    focus: "La vitamina D aparece en gotas, cápsulas, comprimidos y preparados combinados. El formato importa para medir y seguir la pauta, pero hay que comparar la cantidad por toma y los ingredientes de cada producto.",
+    safety: "Sigue las instrucciones exactas del envase, sobre todo en preparados líquidos donde el número de gotas por dosis puede variar. Si necesitas una pauta clínica, no sustituyas una presentación por otra sin confirmar la equivalencia.",
+    followup: "Comprueba la cantidad por gota, cápsula o comprimido y revisa si el producto combina vitamina D con calcio u otros nutrientes. Elige un formato que puedas medir y utilizar correctamente.",
+    evidence: "No asumas que distintas presentaciones son equivalentes sin comparar la dosis y la formulación. La facilidad de uso no demuestra superioridad clínica."
+  },
+  'cuanto-tarda-en-hacer-efecto-la-vitamina-d': {
+    excerpt: "El tiempo depende del nivel inicial, la dosis y el motivo del tratamiento. Sentirse igual no confirma por sí solo que el suplemento no funcione.",
+    focus: "El cambio en el estado de vitamina D no siempre se nota como una sensación inmediata. La respuesta depende del nivel inicial, la pauta y la absorción, y se evalúa de forma distinta según el motivo por el que se indicó.",
+    safety: "No aumentes la cantidad porque no notes cambios en pocos días. Si persisten síntomas o te han tratado una deficiencia, sigue el plan de seguimiento recomendado en lugar de valorar el resultado solo por sensaciones.",
+    followup: "Confirma cuándo corresponde revisar el estado de vitamina D si el suplemento se indicó por una deficiencia. Anota la pauta y evita añadir otros productos con la misma vitamina sin revisar el total.",
+    evidence: "Los tiempos de respuesta varían según la situación inicial y el protocolo. Los plazos anunciados en publicidad no garantizan una respuesta personal ni sustituyen el seguimiento clínico."
+  },
+  'que-pasa-si-dejas-de-tomar-la-vitamina-d': {
+    excerpt: "Al dejar la vitamina D, el estado nutricional depende de las reservas, la dieta y otros factores. Si fue un tratamiento indicado, consulta antes de interrumpirlo.",
+    focus: "La vitamina D no genera una retirada como la de ciertos medicamentos. Sin embargo, si se utilizaba para corregir una deficiencia o por una indicación médica, dejarla puede cambiar el plan necesario para mantener niveles adecuados.",
+    safety: "Si te la indicaron tras una prueba o por una condición clínica, no cambies la pauta sin hablar con el profesional que la recomendó. No suspendas otros tratamientos al confundirlos con un suplemento.",
+    followup: "Revisa por qué empezaste a tomarla, qué cantidad usabas y si existen fuentes adicionales en la dieta o en otros productos. Pregunta si necesitas seguimiento antes de decidir si la interrumpes.",
+    evidence: "No hay una respuesta única tras dejar un suplemento; depende del estado inicial y de la razón de uso. No debe prometerse que los niveles se mantendrán o caerán en un plazo fijo."
+  },
+  'alimentos-ricos-en-la-vitamina-d-frente-a-suplementos': {
+    excerpt: "Pescado azul, huevos y alimentos enriquecidos pueden aportar vitamina D. Compara la dieta con la necesidad individual antes de suplementar.",
+    focus: "La vitamina D está presente en algunos alimentos, como pescados grasos y yema de huevo, y puede añadirse a productos enriquecidos. La cantidad alimentaria varía, así que conviene mirar las etiquetas y el patrón dietético completo.",
+    safety: "No intentes corregir una deficiencia diagnosticada solo cambiando la dieta sin consultar el plan indicado. Si tienes necesidades clínicas específicas, revisa las opciones con un profesional sanitario.",
+    followup: "Anota las fuentes que consumes habitualmente y comprueba si los alimentos enriquecidos indican vitamina D en la etiqueta. Si consideras suplementar, suma lo que aportan otros productos para evitar duplicaciones.",
+    evidence: "Los alimentos contribuyen al aporte, pero la utilidad de un suplemento depende del estado inicial y de la situación individual. No se puede asumir que una misma estrategia cubra las necesidades de todo el mundo."
+  },
+  'deficiencia-de-la-vitamina-d-senales-y-evaluacion': {
+    excerpt: "El cansancio y las molestias musculares tienen muchas causas. La deficiencia de vitamina D se valora con contexto clínico y, cuando procede, una prueba específica.",
+    focus: "Los síntomas atribuidos a la vitamina D son inespecíficos y no bastan para confirmar una deficiencia. La evaluación depende de los factores de riesgo, la historia clínica y la indicación de medir el nivel en sangre.",
+    safety: "No tomes dosis altas como prueba para ver si desaparecen los síntomas. Si hay dolor óseo, debilidad importante o molestias persistentes, solicita una evaluación sanitaria en lugar de autodiagnosticarte.",
+    followup: "Anota los síntomas, cuánto tiempo llevan presentes, los medicamentos y suplementos que tomas y cualquier factor de riesgo relevante. Un profesional decidirá si corresponde una prueba y cómo interpretar el resultado.",
+    evidence: "Las listas de síntomas en internet no son criterios diagnósticos. La interpretación de una prueba y la necesidad de tratamiento dependen del contexto clínico."
+  },
+  'la-vitamina-d-en-dietas-vegetarianas-y-veganas': {
+    excerpt: "Las fuentes alimentarias de vitamina D pueden ser limitadas en dietas vegetarianas y veganas. Revisa alimentos enriquecidos y necesidades individuales.",
+    focus: "Algunas fuentes habituales de vitamina D son de origen animal, aunque existen alimentos enriquecidos y suplementos aptos para distintas preferencias. En productos veganos conviene comprobar la forma utilizada y el etiquetado.",
+    safety: "Si sigues una dieta vegana, estás embarazada o tienes factores de riesgo de deficiencia, consulta si necesitas revisar tu aporte. No asumas que todos los suplementos son de origen vegetal o que una dosis alta es mejor.",
+    followup: "Comprueba qué alimentos enriquecidos consumes y busca productos que declaren claramente su origen. Si utilizas un suplemento, revisa la cantidad por toma y evita duplicarla con multivitamínicos.",
+    evidence: "La adecuación depende de la dieta, la exposición solar, los factores personales y el estado inicial. No todas las personas vegetarianas o veganas necesitan la misma pauta."
+  },
+  'la-vitamina-d-durante-el-embarazo-y-la-lactancia': {
+    excerpt: "Durante el embarazo y la lactancia, la vitamina D debe valorarse según la dieta, los factores de riesgo y las recomendaciones sanitarias individuales.",
+    focus: "Las necesidades durante el embarazo y la lactancia requieren considerar tanto la alimentación como los suplementos prenatales u otros productos ya utilizados. No todas las fórmulas comerciales tienen la misma composición.",
+    safety: "No inicies dosis altas ni combines varios productos con vitamina D sin consultarlo con el profesional que lleva tu atención. Revisa también el calcio y otros ingredientes de los preparados prenatales.",
+    followup: "Lleva la etiqueta de todos los suplementos a la consulta y pregunta si el aporte es adecuado para tu situación. Si te han indicado una pauta concreta, confirma cómo y cuándo se revisará.",
+    evidence: "Las recomendaciones generales no sustituyen una valoración individual durante el embarazo o la lactancia. La necesidad y la dosis dependen del contexto sanitario y de las recomendaciones locales."
+  },
+  'la-vitamina-d-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: "La edad, la salud ósea, la exposición solar, la dieta y los tratamientos pueden influir en la valoración de vitamina D en personas mayores.",
+    focus: "En personas mayores, la evaluación debe considerar la alimentación, la movilidad, la exposición solar, el estado óseo y las enfermedades presentes. No conviene decidir una dosis solo por la edad.",
+    safety: "Si hay enfermedad renal, niveles de calcio alterados, polimedicación o antecedentes de caídas, consulta antes de empezar o aumentar vitamina D. Revisa los otros suplementos para evitar cantidades duplicadas.",
+    followup: "Prepara una lista de medicamentos y suplementos, y comenta cualquier caída, fractura o cambio de movilidad con un profesional. Pregunta si la medición o suplementación está indicada para tu caso.",
+    evidence: "Los estudios en personas mayores pueden diferir según su estado inicial y sus condiciones de salud. No se debe asumir que todas las personas mayores obtendrán el mismo beneficio de suplementar."
+  },
+  'mitos-sobre-la-vitamina-d-que-es-verdad-y-que-no': {
+    excerpt: "¿Más vitamina D significa mejor salud? Repasamos la diferencia entre corregir una deficiencia y tomar dosis extra sin necesidad.",
+    focus: "La vitamina D es esencial, pero eso no significa que cantidades cada vez mayores aporten beneficios adicionales. La pregunta clave es si existe una necesidad concreta y qué resultado se ha demostrado para la población estudiada.",
+    safety: "Evita las megadosis y las promesas de prevenir múltiples enfermedades. El exceso puede causar hipercalcemia, por lo que cualquier pauta elevada debe tener una razón clara y supervisión apropiada.",
+    followup: "Ante una afirmación, revisa qué población se estudió, qué dosis se usó y qué resultado se midió. Distingue los beneficios de corregir una deficiencia de los reclamos generales de bienestar.",
+    evidence: "La evidencia varía por objetivo y estado inicial. Un beneficio en personas con niveles bajos no prueba que suplementar en dosis altas mejore la salud de todo el mundo."
+  },
+  'como-leer-la-etiqueta-de-la-vitamina-d': {
+    excerpt: "Aprende a distinguir microgramos y unidades internacionales, calcular la cantidad por toma y detectar vitamina D repetida en otros productos.",
+    focus: "La etiqueta puede expresar la dosis en microgramos o unidades internacionales. Comprueba la cantidad por cápsula, gota o porción y lee la frecuencia de uso, además de los ingredientes adicionales.",
+    safety: "No combines multivitamínicos, gotas y otros productos sin sumar primero la vitamina D total. Si te han indicado una dosis terapéutica o tienes una condición médica, confirma la interpretación de la etiqueta con un profesional.",
+    followup: "Anota la unidad, la cantidad por toma, el tamaño de la porción y otros productos que uses. Revisa también lote, fecha e instrucciones de conservación si aparecen en el envase.",
+    evidence: "La etiqueta permite comparar la cantidad declarada, pero no demuestra que esa dosis sea necesaria para ti. La composición del producto y la indicación clínica son cuestiones distintas."
+  },
+  'preguntas-frecuentes-sobre-la-vitamina-d-guia-para-principiantes': {
+    excerpt: "Qué hace la vitamina D, de dónde se obtiene, qué unidades aparecen en la etiqueta y cuándo conviene consultar sobre un suplemento.",
+    focus: "Para empezar, diferencia la función de la vitamina D de la pregunta de si necesitas suplementarla. La dieta, la exposición solar, los factores de riesgo y las indicaciones clínicas pueden cambiar la respuesta.",
+    safety: "No tomes dosis altas por cuenta propia ni combines varios productos con vitamina D sin revisar el total. Si sospechas una deficiencia o tienes una condición médica, consulta para valorar si hace falta una prueba.",
+    followup: "Lee la etiqueta y revisa los productos que ya utilizas antes de comprar otro. Si te han indicado vitamina D, pregunta cuál es el objetivo y qué seguimiento corresponde.",
+    evidence: "Las respuestas generales ayudan a orientarse, pero no predicen resultados personales. Comprueba la población y el objetivo que respaldan las afirmaciones sobre beneficios."
+  },
+  'que-es-la-vitamina-b12-y-para-que-sirve': {
+    excerpt: "La vitamina B12 contribuye a la formación de glóbulos rojos y al funcionamiento del sistema nervioso. Descubre sus fuentes y quién puede necesitar especial atención.",
+    focus: "La vitamina B12 participa en la formación de glóbulos rojos y el funcionamiento neurológico. Se encuentra de forma natural sobre todo en alimentos de origen animal y también en algunos productos enriquecidos o suplementos.",
+    safety: "Una deficiencia puede causar problemas neurológicos o anemia y no siempre se corrige solo por mejorar la dieta. Si tienes hormigueo, debilidad persistente o sospechas una carencia, solicita evaluación en vez de autodiagnosticarte.",
+    followup: "Revisa las fuentes de B12 de tu dieta, los alimentos enriquecidos y los factores que pueden afectar a su absorción. Si sigues una dieta vegana o tienes un problema digestivo diagnosticado, consulta qué estrategia de aporte es adecuada.",
+    evidence: "La función esencial de la B12 no significa que dosis extra mejoren la energía en personas que ya tienen niveles suficientes. Distingue corregir una deficiencia de buscar beneficios no demostrados."
+  },
+  'beneficios-de-la-vitamina-b12-que-dice-la-evidencia': {
+    excerpt: "La B12 es esencial, pero suplementarla no garantiza más energía si no existe una deficiencia. Revisamos qué beneficios están bien establecidos.",
+    focus: "El beneficio más claro de la vitamina B12 es prevenir o corregir una deficiencia y sus consecuencias. Las afirmaciones sobre energía, concentración o rendimiento deben valorarse según el estado inicial y la evidencia específica.",
+    safety: "No uses B12 como sustituto de evaluar cansancio persistente, cambios cognitivos u otros síntomas. Si sospechas una deficiencia, una valoración profesional ayuda a identificar la causa y el tratamiento adecuado.",
+    followup: "Al valorar un producto, pregunta qué beneficio promete y para qué población existe evidencia. Revisa si la investigación estudió personas con deficiencia o personas con niveles adecuados al inicio.",
+    evidence: "Los resultados en personas con déficit no prueban que suplementar mejore la energía de quienes ya reciben suficiente B12. La formulación y la indicación también importan."
+  },
+  'efectos-secundarios-de-la-vitamina-b12': {
+    excerpt: "La vitamina B12 suele tolerarse bien, pero la fórmula, la vía de administración y la situación individual pueden importar.",
+    focus: "La B12 suele presentar buena tolerancia, aunque algunas personas pueden experimentar molestias o reacciones relacionadas con la formulación. Las presentaciones orales y las inyectables no deben tratarse como idénticas en su uso.",
+    safety: "Si aparece una reacción alérgica, suspende el producto y busca atención urgente ante dificultad respiratoria o hinchazón de lengua. Si tienes síntomas persistentes o una pauta médica, consulta antes de cambiar la presentación o la cantidad.",
+    followup: "Comprueba la forma de B12, la dosis y los ingredientes adicionales del producto. Si recibes inyecciones o tratamiento por una deficiencia diagnosticada, comenta los efectos adversos con el profesional que lo indicó.",
+    evidence: "La tolerancia depende de la formulación y de la persona. Que una vitamina sea hidrosoluble no significa que todos los productos o vías de administración estén libres de riesgos."
+  },
+  'como-tomar-la-vitamina-b12-correctamente': {
+    excerpt: "La forma de tomar B12 depende de la presentación y de si se busca cubrir necesidades o tratar una deficiencia diagnosticada.",
+    focus: "La B12 puede encontrarse en comprimidos, gotas, productos sublinguales y preparados inyectables. La elección depende de la situación clínica, la absorción y las instrucciones del producto, no de que una presentación se anuncie como más potente.",
+    safety: "Si tienes una deficiencia diagnosticada, anemia o síntomas neurológicos, sigue el plan profesional y no sustituyas una pauta prescrita por un producto de venta libre sin consultarlo.",
+    followup: "Revisa la cantidad por dosis, la frecuencia y la forma de B12 indicada en la etiqueta. Si sigues una dieta vegana o tomas medicamentos que pueden afectar a la absorción, pregunta qué estrategia de aporte y seguimiento conviene.",
+    evidence: "Las pautas de mantenimiento y las utilizadas para tratar una deficiencia pueden ser diferentes. No conviertas la dosis de un producto o ensayo en una recomendación universal."
+  },
+  'cuando-tomar-la-vitamina-b12-manana-o-noche': {
+    excerpt: "No existe una hora obligatoria para la B12 en todas las personas. La presentación, la pauta y la constancia importan más que una regla general.",
+    focus: "La hora de toma suele depender de las instrucciones del producto y de la rutina personal. No debe asumirse que tomar B12 por la mañana garantiza más energía ni que hacerlo por la noche sea necesariamente perjudicial.",
+    safety: "Si recibes un tratamiento pautado por una deficiencia, sigue la frecuencia indicada y consulta antes de modificarla. No retrases una evaluación médica de cansancio o debilidad confiando solo en cambiar la hora de una vitamina.",
+    followup: "Elige un momento fácil de mantener siempre que sea compatible con las instrucciones de la presentación. Si notas cambios en el sueño o molestias, coméntalos con un profesional y revisa también otros factores.",
+    evidence: "Para afirmar que una hora es superior, hacen falta estudios que comparen directamente horarios y resultados relevantes. Las funciones de la B12 no prueban por sí solas una ventana horaria óptima."
   }
 }
 
