@@ -36,13 +36,13 @@ function main() {
   const plan = JSON.parse(readFileSync(resolve('data/suplementos-editorial-plan.json'),'utf8')) as Item[]
   if (plan.length !== 500 || plan.some((x,i)=>x.id!==i+1)) throw new Error('Plan de suplementos inválido')
   const available = plan.filter(x=>x.id>=6 && existsSync(resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)))
-  const start = auto ? 6 : 6 + (batch-1)*10
-  const selected = auto ? available : available.filter(x=>x.id>=start&&x.id<start+10)
+  const start = auto ? 6 : 6 + (batch-1)*20
+  const selected = auto ? available : available.filter(x=>x.id>=start&&x.id<start+20)
   if (selected.length===0) throw new Error('No hay borradores preparados para este lote')
-  console.log(auto ? 'Publicación automática: se buscarán hasta 10 artículos preparados aún no publicados' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+9,500)}`)
+  console.log(auto ? 'Publicación automática: se buscarán hasta 20 artículos preparados aún no publicados' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
   const published:number[]=[]; const skipped:number[]=[]
   for (const item of selected) {
-    if (auto && published.length>=10) break
+    if (auto && published.length>=20) break
     const file = resolve(`data/supplements-drafts/${String(item.id).padStart(2,'0')}.json`)
     const draft = JSON.parse(readFileSync(file,'utf8')) as Draft
     const words = wordCount(draft.content ?? '')
@@ -69,7 +69,7 @@ function main() {
     published.push(item.id)
     console.log(`[${item.id}/500] Publicación verificada por el publicador`)
   }
-  console.log(JSON.stringify({success:true,mode:auto?'auto-next-10':'manual',published,skipped,totalPlanned:500}))
+  console.log(JSON.stringify({success:true,mode:auto?'auto-next-20':'manual',published,skipped,totalPlanned:500}))
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_count=${published.length}\n`, 'utf8')
 }
 try { main() } catch(e) { console.error(e instanceof Error?e.message:String(e)); process.exitCode=1 }

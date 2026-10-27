@@ -1,4 +1,4 @@
-name: Publish prepared supplement articles (10 per batch)
+name: Publish prepared supplement articles (20 per batch)
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       batch_number:
-        description: "Lote manual de 10 artículos preparados (opcional)"
+        description: "Lote manual de 20 artículos preparados (opcional)"
         required: false
         default: "1"
         type: number
@@ -53,7 +53,7 @@ jobs:
           D1_DATABASE: trendiverse-preview
 
       - name: Queue next batch if articles were published
-        if: ${{ steps.publish.outputs.published_count == '10' }}
+        if: ${{ steps.publish.outputs.published_count == '20' }}
         run: gh workflow run publish-supplements-prewritten-batch.yml --ref main -f batch_number=0
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
