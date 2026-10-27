@@ -47,46 +47,57 @@ function wordCount(value: string): number {
 
 
 function parseModelJson(raw: string): { title?: string; excerpt?: string; content?: string } {
-  // Model responses sometimes contain literal newlines/tabs inside the JSON content string.
-  // Escape only raw control characters inside strings; preserve existing JSON escapes.
+  // Workers AI can emit raw control characters or invalid backslash escapes inside JSON strings.
+  // Normalize those cases without changing valid JSON escapes or escaped quotes.
   const start = raw.indexOf('{')
   const end = raw.lastIndexOf('}')
   if (start < 0 || end <= start) fail('Workers AI no devolvió un objeto JSON reconocible')
   const source = raw.slice(start, end + 1)
   let output = ''
   let inString = false
-  let escaped = false
   for (let i = 0; i < source.length; i++) {
     const ch = source[i]
-    const code = ch.charCodeAt(0)
-    if (inString) {
-      if (escaped) {
-        output += ch
-        escaped = false
-      } else if (ch === String.fromCharCode(92)) {
-        output += ch
-        escaped = true
-      } else if (ch === '"') {
-        output += ch
-        inString = false
-      } else if (code < 0x20) {
-        if (code === 10) output += String.fromCharCode(92) + 'n'
-        else if (code === 13) output += String.fromCharCode(92) + 'r'
-        else if (code === 9) output += String.fromCharCode(92) + 't'
-        else output += String.fromCharCode(92) + 'u' + code.toString(16).padStart(4, '0')
-      } else {
-        output += ch
-      }
-    } else {
+    const code = source.charCodeAt(i)
+    if (!inString) {
       output += ch
       if (ch === '"') inString = true
+      continue
     }
+    if (ch === '"') {
+      output += ch
+      inString = false
+      continue
+    }
+    if (ch === String.fromCharCode(92)) {
+      const next = source[i + 1]
+      if (next && '"\\/bfnrt'.includes(next)) {
+        output += ch + next
+        i++
+        continue
+      }
+      if (next === 'u' && /^[0-9a-fA-F]{4}$/.test(source.slice(i + 2, i + 6))) {
+        output += source.slice(i, i + 6)
+        i += 5
+        continue
+      }
+      // Treat an invalid backslash as a literal backslash in the model's text.
+      output += String.fromCharCode(92) + String.fromCharCode(92)
+      continue
+    }
+    if (code < 0x20) {
+      if (code === 10) output += String.fromCharCode(92) + 'n'
+      else if (code === 13) output += String.fromCharCode(92) + 'r'
+      else if (code === 9) output += String.fromCharCode(92) + 't'
+      else output += String.fromCharCode(92) + 'u' + code.toString(16).padStart(4, '0')
+      continue
+    }
+    output += ch
   }
   try {
     return JSON.parse(output) as { title?: string; excerpt?: string; content?: string }
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error)
-    fail('Workers AI devolvió JSON malformado incluso tras normalizar saltos de línea: ' + reason)
+    fail('Workers AI devolvió JSON malformado incluso tras normalizar escapes y saltos de línea: ' + reason)
   }
 }
 
