@@ -73,11 +73,14 @@ test('un push a otra rama no selecciona ningún job', () => {
   assert.deepEqual(selectJobs(workflows, pushOther), [])
 })
 
-test('solo el publicador editorial permite dispatch manual; no se habilitan otros disparadores', () => {
+test('solo los publicadores editoriales aprobados permiten dispatch manual; no se habilitan otros disparadores', () => {
   const dispatch = selectJobs(workflows, { type: 'workflow_dispatch' })
-  assert.deepEqual(dispatch.map((item) => `${item.workflowPath}:${item.job.id}`), ['publish-editorial-article.yml:publish'])
-  assert.equal(jobUsesProductionSecrets(dispatch[0].job), true)
-  assert.equal(jobDeploysPages(dispatch[0].job), false)
+  assert.deepEqual(dispatch.map((item) => `${item.workflowPath}:${item.job.id}`), [
+    'publish-editorial-article.yml:publish',
+    'publish-supplements-batch.yml:publish',
+  ])
+  assert.equal(dispatch.every((item) => jobUsesProductionSecrets(item.job)), true)
+  assert.equal(dispatch.some((item) => jobDeploysPages(item.job)), false)
 
   for (const event of [
     { type: 'pull_request_target', baseBranch: 'main' },
