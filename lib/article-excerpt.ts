@@ -1,10 +1,10 @@
 import type { Article } from './types'
 function shorten(value: string, max = 155): string {
-  const text = value.trim().replace(/\\s+/g, ' ')
+  const text = value.trim().replace(/\s+/g, ' ')
   if (text.length <= max) return text
   const cut = text.slice(0, max - 1)
   const lastSpace = cut.lastIndexOf(' ')
-  return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[\\s,.;:—-]+$/, '')}…`
+  return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[\s,.;:—-]+$/, '')}…`
 }
 
 function plainText(value: string): string {
