@@ -42,7 +42,7 @@ function main() {
     try { return (JSON.parse(readFileSync(file,'utf8')) as Draft).editorialBatchReady===true } catch { return false }
   })
   const start = auto ? 6 : 6 + (batch-1)*20
-  const selected = auto ? available.slice(0,20) : available.filter(x=>x.id>=start&&x.id<start+20)
+  const selected = auto ? [...available].sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id) : available.filter(x=>x.id>=start&&x.id<start+20)
   if (selected.length===0) throw new Error('No hay borradores preparados para este lote')
   console.log(auto ? 'Publicación automática: se procesarán hasta 20 borradores marcados editorialBatchReady' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
   const published:number[]=[]; const skipped:number[]=[]
