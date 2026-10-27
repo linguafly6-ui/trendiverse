@@ -1,4 +1,5 @@
 import type { Article, Deal, Tool } from './types'
+import { withArticleExcerpt } from './article-excerpt'
 
 interface Env {
   DB?: D1Database
@@ -78,21 +79,22 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   const rows = opts.q
     ? await run()
     : await cached(`d1-articles:v2:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${fetchLimit}`, 30, run)
-  return rows.filter((x) => matchesQuery(x, opts)).slice(offset, offset + limit)
+  return rows.filter((x) => matchesQuery(x, opts)).slice(offset, offset + limit).map(withArticleExcerpt)
 }
 
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
   if (!DB) return []
   return cached(`d1-top:v2:${limit}`, 30, async () =>
-    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit).all<Article>()).results
+    (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit).all<Article>()).results.map(withArticleExcerpt)
   )
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const { DB } = await getEnv()
   if (!DB) return null
-  return (await DB.prepare('SELECT * FROM articles WHERE slug = ?').bind(slug).first<Article>()) ?? null
+  const article = (await DB.prepare('SELECT * FROM articles WHERE slug = ?').bind(slug).first<Article>()) ?? null
+  return article ? withArticleExcerpt(article) : null
 }
 
 export async function getDeals(limit = 10): Promise<Deal[]> {
