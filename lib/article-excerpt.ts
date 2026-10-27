@@ -999,6 +999,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: 'Si tienes una pauta médica, tomas anticoagulantes o utilizas dosis altas, consulta antes de modificar la frecuencia o el momento de toma.',
     followup: 'Escoge un momento compatible con las instrucciones y tu rutina, y anota cualquier molestia para comentarla si persiste.',
     evidence: 'Para afirmar que un horario es superior hacen falta comparaciones directas de horarios y resultados relevantes. La función del omega-3 no establece por sí sola una hora óptima.'
+  },
+  'dosis-del-omega-3-como-interpretar-las-recomendaciones': {
+    excerpt: 'La cantidad de omega-3 se interpreta según los miligramos de EPA y DHA, el objetivo y el producto concreto; no basta con mirar el aceite total del envase.',
+    focus: 'Distingue la cantidad total de aceite de la suma de EPA y DHA. Los suplementos varían mucho en concentración, por lo que el número de cápsulas no permite comparar dosis por sí solo.',
+    safety: 'Consulta antes de usar cantidades elevadas si tomas medicación, tienes una enfermedad crónica, estás embarazada o tienes una intervención programada. No ajustes una pauta médica por tu cuenta.',
+    followup: 'Lleva la etiqueta y el motivo de uso a una consulta para revisar la cantidad real de EPA y DHA y si el producto es apropiado.',
+    evidence: 'Los estudios usan formulaciones, cantidades y objetivos distintos. No conviertas la dosis de un ensayo en una recomendación universal.'
+  },
+  'quien-deberia-evitar-el-omega-3': {
+    excerpt: 'El omega-3 no es adecuado para todo el mundo en cualquier cantidad. La evaluación depende de la medicación, las condiciones médicas, el producto y el objetivo de uso.',
+    focus: 'La alergia a pescado o marisco, los antecedentes médicos y los ingredientes añadidos pueden influir en la elección. Las opciones a base de algas tampoco deben darse por adecuadas sin revisar su etiqueta.',
+    safety: 'Pide orientación profesional si tomas anticoagulantes o antiagregantes, tienes trastornos de sangrado, una enfermedad crónica o una cirugía próxima. En embarazo y lactancia, revisa la fuente y la formulación.',
+    followup: 'Comprueba la fuente del omega-3, los alérgenos declarados y la cantidad de EPA y DHA antes de comparar alternativas.',
+    evidence: 'La seguridad depende de la dosis y del contexto individual; no puede decidirse únicamente por la categoría general «omega-3».'
+  },
+  'interacciones-del-omega-3-con-medicamentos': {
+    excerpt: 'Al revisar posibles interacciones, importa conocer la cantidad de EPA y DHA y todos los medicamentos que se utilizan, no solo el nombre del suplemento.',
+    focus: 'Los posibles efectos sobre la coagulación merecen especial atención en personas que toman anticoagulantes o antiagregantes. La valoración también debe incluir otros ingredientes del producto.',
+    safety: 'No suspendas medicamentos ni cambies su dosis para incorporar omega-3. Si tomas tratamientos habituales o tienes una intervención prevista, consulta con tu médico o farmacéutico.',
+    followup: 'Prepara una lista actualizada de medicamentos y una foto de la etiqueta, incluida la cantidad de EPA y DHA por porción.',
+    evidence: 'Las interacciones dependen de la formulación, la dosis y el tratamiento concomitante. Evita extrapolar una advertencia general a todos los casos.'
+  },
+  'como-elegir-un-suplemento-del-omega-3-de-calidad': {
+    excerpt: 'Para valorar la calidad de un omega-3, compara EPA y DHA por porción, fuente, ingredientes, conservación y controles verificables; no te guíes solo por el reclamo frontal.',
+    focus: 'Comprueba si procede de pescado, kril o algas, qué cantidad de cada ácido graso aporta y si incluye otros ingredientes. El total de aceite no equivale a la cantidad de omega-3 activos.',
+    safety: 'Revisa alérgenos, instrucciones de conservación y posibles ingredientes añadidos si tienes restricciones médicas. Desconfía de promesas de curar o prevenir enfermedades sin respaldo.',
+    followup: 'Compara dos etiquetas con la misma base de cálculo y busca información clara del fabricante sobre composición, lote y control de calidad.',
+    evidence: 'Un sello de calidad no demuestra por sí solo un beneficio clínico. La pureza declarada, la composición y la eficacia son aspectos distintos.'
+  },
+  'el-omega-3-polvo-capsulas-o-comprimidos': {
+    excerpt: 'El omega-3 suele venderse en cápsulas blandas y líquidos; el formato influye en la comodidad, pero no determina por sí solo la concentración ni la calidad.',
+    focus: 'Compara los miligramos de EPA y DHA por porción, el tamaño de la toma y las condiciones de conservación. Un líquido puede requerir medir la cantidad con cuidado y seguir instrucciones específicas.',
+    safety: 'Revisa alérgenos y excipientes en cualquier presentación. Si tienes dificultades para tragar, alergias o una pauta médica, consulta antes de sustituir un formato por otro.',
+    followup: 'Calcula el coste por cantidad de EPA y DHA y ten en cuenta el tamaño de porción y la facilidad de conservación.',
+    evidence: 'No hay una presentación universalmente superior. La comparación debe considerar composición, tolerancia, estabilidad y evidencia pertinente.'
+  },
+  'cuanto-tarda-en-hacer-efecto-el-omega-3': {
+    excerpt: 'Los cambios asociados al consumo de omega-3 no tienen un plazo único. Dependen del resultado que se evalúe, la alimentación inicial y la cantidad utilizada.',
+    focus: 'Distingue los cambios en indicadores biológicos de los efectos que una persona puede notar. No percibir una sensación inmediata no permite concluir que el producto funcione o no funcione.',
+    safety: 'No uses la ausencia de cambios subjetivos como motivo para aumentar la cantidad por tu cuenta. Si lo tomas por una indicación clínica, acuerda con el profesional cómo evaluar la respuesta.',
+    followup: 'Define de antemano qué resultado se pretende valorar y en qué momento revisar si el suplemento sigue teniendo sentido.',
+    evidence: 'Los ensayos difieren en duración, formulación y resultados. No es apropiado prometer una fecha concreta para notar beneficios.'
+  },
+  'que-pasa-si-dejas-de-tomar-el-omega-3': {
+    excerpt: 'Dejar un suplemento de omega-3 no tiene el mismo significado para todas las personas: depende de la dieta, del motivo de uso y de si forma parte de un plan clínico.',
+    focus: 'Si lo tomabas para complementar la alimentación, revisa qué fuentes de omega-3 quedan en tu dieta. Si se indicó como parte de un tratamiento, la decisión debe revisarse con el profesional responsable.',
+    safety: 'No suspendas un producto prescrito o recomendado para una condición clínica sin consultar. Tampoco sustituyas un tratamiento médico por alimentos o suplementos sin orientación.',
+    followup: 'Repasa el motivo inicial, los alimentos que consumes y cualquier indicación clínica antes de decidir si mantenerlo o dejarlo.',
+    evidence: 'Los efectos de interrumpirlo dependen del contexto y del resultado de interés; no se pueden generalizar a todas las personas.'
+  },
+  'alimentos-ricos-en-el-omega-3-frente-a-suplementos': {
+    excerpt: 'Pescados grasos como sardina, salmón y caballa aportan EPA y DHA; semillas y nueces aportan ALA, que el organismo convierte de forma limitada en EPA y DHA.',
+    focus: 'Distingue las fuentes marinas de las vegetales y recuerda que no aportan necesariamente las mismas formas de omega-3. La frecuencia de consumo y el patrón dietético completo también importan.',
+    safety: 'Si tienes alergia a pescado, sigues una dieta terapéutica o estás embarazada, consulta cómo elegir fuentes seguras y adecuadas. Comprueba las recomendaciones locales sobre especies y contaminantes.',
+    followup: 'Revisa qué fuentes aparecen de forma habitual en tus comidas y compara su aporte con el objetivo que te hayas planteado antes de comprar un suplemento.',
+    evidence: 'La alimentación puede aportar omega-3 sin necesidad de un producto para todo el mundo. La conveniencia de suplementar depende de la dieta y del objetivo específico.'
+  },
+  'deficiencia-del-omega-3-senales-y-evaluacion': {
+    excerpt: 'La expresión «deficiencia de omega-3» no se identifica de forma fiable por un síntoma aislado. La evaluación considera la dieta, el contexto clínico y, cuando proceda, pruebas específicas.',
+    focus: 'La piel seca, el cansancio u otras molestias son inespecíficos y pueden tener muchas causas. No deben utilizarse por sí solos para concluir que falta omega-3.',
+    safety: 'Si tienes síntomas persistentes, pérdida de peso o una condición médica, consulta para investigar la causa en lugar de autodiagnosticarte y tomar dosis altas.',
+    followup: 'Registra las fuentes alimentarias que consumes y explica al profesional cualquier síntoma o cambio relevante; pregunta si existe motivo para realizar pruebas.',
+    evidence: 'No existe un conjunto de síntomas cotidianos que confirme por sí solo una deficiencia. La interpretación de pruebas debe hacerse según el contexto y el método utilizado.'
+  },
+  'el-omega-3-en-dietas-vegetarianas-y-veganas': {
+    excerpt: 'Las dietas vegetarianas y veganas pueden aportar ALA mediante lino, chía, nueces y algunos aceites; para EPA y DHA puede valorarse el aceite de microalgas.',
+    focus: 'Distingue el ALA vegetal de EPA y DHA. La conversión de ALA a las formas de cadena larga es limitada y variable, por lo que las fuentes no son directamente intercambiables.',
+    safety: 'Si estás embarazada, en lactancia o tienes una condición médica, consulta antes de seleccionar un suplemento. Revisa también posibles alérgenos y la composición de las fórmulas de algas.',
+    followup: 'Compara las fuentes vegetales habituales y, si consideras un producto de algas, revisa la cantidad declarada de EPA y DHA y las instrucciones.',
+    evidence: 'La elección depende del patrón dietético y de la forma de omega-3 que se busca aportar. No todas las fuentes vegetales tienen el mismo perfil.'
+  },
+  'el-omega-3-durante-el-embarazo-y-la-lactancia': {
+    excerpt: 'Durante el embarazo y la lactancia, la fuente y la composición del omega-3 importan tanto como la cantidad; no todos los productos son equivalentes.',
+    focus: 'El pescado puede aportar DHA y otros nutrientes, mientras que los suplementos varían en concentración y procedencia. Los productos combinados pueden contener vitaminas u otros ingredientes que requieren revisión.',
+    safety: 'Consulta con el equipo sanitario antes de elegir un suplemento, especialmente si tienes alergia, tomas medicación o usas productos de aceite de hígado de pescado que pueden aportar vitamina A.',
+    followup: 'Lleva la etiqueta completa a la consulta y pregunta qué fuente y cantidad son adecuadas según tu dieta y situación.',
+    evidence: 'La evidencia y las recomendaciones para embarazo y lactancia deben proceder de guías específicas; no extrapoles automáticamente estudios en otros adultos.'
+  },
+  'el-omega-3-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: 'En adultos mayores, la utilidad de un suplemento de omega-3 depende de la dieta, los objetivos, las enfermedades y la medicación habitual.',
+    focus: 'Revisa primero las fuentes alimentarias y el motivo concreto de uso. La edad por sí sola no demuestra que haga falta un suplemento ni que vaya a mejorar memoria o movilidad.',
+    safety: 'Si tomas anticoagulantes, tienes antecedentes de sangrado, enfermedades crónicas o una intervención próxima, consulta antes de usar dosis elevadas.',
+    followup: 'Lleva una lista de medicamentos y la etiqueta del producto a una revisión, especialmente si ya utilizas varios suplementos.',
+    evidence: 'Los estudios en personas mayores no muestran necesariamente el mismo resultado en todas las poblaciones ni para todos los desenlaces.'
+  },
+  'mitos-sobre-el-omega-3-que-es-verdad-y-que-no': {
+    excerpt: 'El omega-3 no es una solución universal para el corazón, el cerebro o las articulaciones. La evidencia depende de la formulación, la cantidad y el objetivo concreto.',
+    focus: 'Separa los beneficios de incluir pescado en una dieta equilibrada de los efectos de un suplemento específico. No todos los productos contienen cantidades comparables de EPA y DHA.',
+    safety: 'No sustituyas tratamientos prescritos por suplementos ni uses dosis elevadas por promesas comerciales. Consulta si tienes una enfermedad o tomas medicamentos que puedan interactuar.',
+    followup: 'Antes de comprar, define qué necesitas cubrir y comprueba si tu alimentación ya aporta fuentes de omega-3.',
+    evidence: 'Un resultado favorable en un estudio no prueba que todos los productos produzcan el mismo beneficio. Revisa población, dosis y resultado medido.'
+  },
+  'como-leer-la-etiqueta-del-omega-3': {
+    excerpt: 'La etiqueta del omega-3 debe permitir distinguir el aceite total de las cantidades de EPA y DHA, además de identificar ingredientes y advertencias.',
+    focus: 'Comprueba unidades por cápsula y por porción, fuente del aceite, ingredientes añadidos, alérgenos, lote y condiciones de conservación. No compares productos usando solo el peso total del aceite.',
+    safety: 'Si tomas medicación o tienes alergias, revisa advertencias y componentes adicionales con un profesional. No interpretes una etiqueta como autorización para usar dosis altas.',
+    followup: 'Compara dos etiquetas en una tabla sencilla con EPA, DHA, número de cápsulas por porción y coste por cantidad efectiva.',
+    evidence: 'La información de composición ayuda a comparar productos, pero no determina por sí sola si necesitas suplementación ni demuestra resultados clínicos.'
+  },
+  'preguntas-frecuentes-sobre-el-omega-3-guia-para-principiantes': {
+    excerpt: 'Para decidir si necesitas omega-3, empieza por la alimentación, el objetivo y la medicación habitual. La elección cambia según busques una fuente dietética o una formulación concreta.',
+    focus: 'Comprueba la cantidad de EPA y DHA, la fuente y los ingredientes añadidos. Pregúntate también si el producto cubre una necesidad real o duplica algo que ya tomas.',
+    safety: 'Consulta antes de usar dosis altas si tomas anticoagulantes, tienes una condición médica, estás embarazada o en lactancia. No sustituyas tratamientos por suplementos.',
+    followup: 'Lleva la etiqueta y una lista de otros suplementos o medicamentos a la consulta si necesitas una recomendación individual.',
+    evidence: 'No existe una única pauta válida para todo el mundo. La utilidad depende de la dieta, el objetivo, la formulación y el contexto clínico.'
+  },
+  'que-es-el-hierro-y-para-que-sirve': {
+    excerpt: 'El hierro es un mineral necesario para formar hemoglobina y transportar oxígeno. La necesidad de suplementarlo depende de la situación y no se deduce solo del cansancio.',
+    focus: 'Distingue el hierro presente en los alimentos del suplemento utilizado para prevenir o tratar una deficiencia. La dosis, la forma y la indicación deben interpretarse según el contexto.',
+    safety: 'No empieces hierro por tu cuenta si sospechas anemia; el exceso puede ser perjudicial y existen distintas causas de anemia. Busca valoración si tienes síntomas persistentes o sangrado.',
+    followup: 'Si te han recomendado hierro, pregunta qué motivo se está tratando, qué seguimiento está previsto y cómo se relaciona la pauta con tus análisis.',
+    evidence: 'El hierro es esencial, pero eso no significa que todas las personas necesiten suplementarlo. La evidencia sobre tratamiento depende de confirmar la causa y la deficiencia.'
+  },
+  'beneficios-del-hierro-que-dice-la-evidencia': {
+    excerpt: 'El hierro puede mejorar los problemas causados por una deficiencia confirmada, pero no es un energizante universal y no trata todas las formas de anemia.',
+    focus: 'Separa el beneficio de corregir la falta de hierro de los efectos en personas con niveles adecuados. El objetivo debe ser tratar la causa y recuperar valores apropiados, no tomar más por si acaso.',
+    safety: 'Evita la suplementación sin indicación, especialmente si hay antecedentes de sobrecarga de hierro o enfermedades relevantes. Si tienes fatiga persistente, consulta en vez de autotratarte.',
+    followup: 'Revisa con un profesional los análisis y la causa probable antes de elegir un suplemento o cambiar la pauta.',
+    evidence: 'Los beneficios dependen del estado de hierro inicial y del motivo clínico. No se puede asumir que añadir hierro mejore energía o rendimiento en personas sin deficiencia.'
+  },
+  'efectos-secundarios-del-hierro': {
+    excerpt: 'Los suplementos de hierro pueden causar molestias digestivas, como náuseas, estreñimiento o dolor abdominal. La tolerancia depende de la formulación y de la pauta.',
+    focus: 'La cantidad de hierro elemental y la presentación influyen en la comparación entre productos. Las heces oscuras pueden aparecer con el uso, pero otros síntomas requieren valoración.',
+    safety: 'Mantén el hierro fuera del alcance de los niños: una sobredosis puede ser muy peligrosa. Busca atención urgente ante una ingesta accidental importante o síntomas graves.',
+    followup: 'Si tienes molestias, consulta antes de cambiar la dosis, la frecuencia o la presentación; el profesional puede valorar alternativas y la necesidad de seguimiento.',
+    evidence: 'Los efectos adversos varían entre formulaciones y personas. No aumentes la cantidad para acelerar la respuesta ni ignores síntomas intensos.'
+  },
+  'como-tomar-el-hierro-correctamente': {
+    excerpt: 'La forma correcta de tomar hierro depende de la presentación, la indicación y la tolerancia. Sigue las instrucciones de la receta o del envase y no dupliques dosis olvidadas.',
+    focus: 'Comprueba cuánto hierro elemental aporta cada unidad y si las instrucciones indican tomarlo con alimentos o separado de ciertos productos. Calcio, té, café y algunos medicamentos pueden afectar a la absorción.',
+    safety: 'No empieces ni ajustes hierro sin valoración cuando no se ha confirmado la necesidad. Guarda el producto de forma segura y sigue las instrucciones específicas sobre interacciones.',
+    followup: 'Pregunta al farmacéutico cómo coordinar la toma con otros medicamentos y qué hacer si olvidas una dosis o tienes molestias digestivas.',
+    evidence: 'Las recomendaciones pueden variar según la formulación y el objetivo terapéutico. No existe una instrucción horaria única aplicable a todos los suplementos de hierro.'
+  },
+  'cuando-tomar-el-hierro-manana-o-noche': {
+    excerpt: 'No hay una hora universal para tomar hierro: importan la formulación, las instrucciones, la tolerancia y la coordinación con alimentos y medicamentos.',
+    focus: 'Algunas pautas recomiendan tomarlo separado de ciertos alimentos o bebidas, mientras que tomarlo con comida puede mejorar la tolerancia en determinados casos. Sigue las indicaciones específicas recibidas.',
+    safety: 'Consulta antes de modificar la pauta si tomas otros medicamentos o tienes una condición clínica. No aumentes la cantidad ni cambies el horario para compensar síntomas sin orientación.',
+    followup: 'Elige el horario que respete las instrucciones y sea sostenible, y confirma con el farmacéutico las separaciones necesarias respecto a tus otros medicamentos.',
+    evidence: 'La absorción y tolerancia dependen de la formulación y del contexto. La evidencia no respalda una única hora ideal para todas las personas.'
   }
 }
 
