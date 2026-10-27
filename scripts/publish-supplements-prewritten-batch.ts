@@ -35,14 +35,21 @@ function main() {
   if (!auto && (!Number.isInteger(batch) || batch < 1 || batch > 50)) throw new Error('BATCH_NUMBER debe estar entre 1 y 50')
   const plan = JSON.parse(readFileSync(resolve('data/suplementos-editorial-plan.json'),'utf8')) as Item[]
   if (plan.length !== 500 || plan.some((x,i)=>x.id!==i+1)) throw new Error('Plan de suplementos inválido')
-  const available = plan.filter(x=>{
+  const readyItems = plan.filter(x=>{
     const file=resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)
     if (x.id<6 || !existsSync(file)) return false
-    if (!auto) return true
     try { return (JSON.parse(readFileSync(file,'utf8')) as Draft).editorialBatchReady===true } catch { return false }
   })
+  const refreshItems = readyItems.filter(x=>{
+    const file=resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)
+    try { return (JSON.parse(readFileSync(file,'utf8')) as Draft).refreshPublishedArticle===true } catch { return false }
+  })
   const start = auto ? 6 : 6 + (batch-1)*20
-  const selected = auto ? [...available].sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id) : available.filter(x=>x.id>=start&&x.id<start+20)
+  // In automatic mode, explicit editorial refreshes take precedence over ordinary prepared drafts.
+  // This prevents an unrelated later batch from being published when a historical batch is being refreshed.
+  const selected = auto
+    ? (refreshItems.length > 0 ? refreshItems.sort((a,b)=>a.id-b.id).slice(0,20) : [...readyItems].sort((a,b)=>b.id-a.id).slice(0,20).sort((a,b)=>a.id-b.id))
+    : plan.filter(x=>x.id>=start&&x.id<start+20 && existsSync(resolve(`data/supplements-drafts/${String(x.id).padStart(2,'0')}.json`)))
   if (selected.length===0) throw new Error('No hay borradores preparados para este lote')
   console.log(auto ? 'Publicación automática: se procesarán hasta 20 borradores marcados editorialBatchReady' : `Publicación manual: lote ${batch}/50, IDs ${start}–${Math.min(start+19,500)}`)
   const published:number[]=[]; const skipped:number[]=[]
