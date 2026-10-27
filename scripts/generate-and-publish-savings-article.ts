@@ -138,7 +138,7 @@ async function main() {
     if (!continuationPayload.success || !continuationPayload.result?.response) fail('Workers AI no devolvió una ampliación válida')
     const section = parseModelJson(continuationPayload.result.response)
     if (!section.content) fail('La ampliación no contiene texto')
-    article.content += '\\n\\n' + section.content
+    article.content += '\n\n' + section.content
     words = wordCount(article.content)
     console.log(`Ampliación ${i + 1}: artículo acumulado de ${words} palabras.`)
   }
