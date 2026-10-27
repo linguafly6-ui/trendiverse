@@ -79,7 +79,7 @@ async function main() {
       }
       return null
     }))
-    issues.push(...results.filter((x): x is Record<string, unknown> => x !== null))
+    issues.push(...results.filter((x) => x !== null))
     console.log('Auditoría de imágenes: ' + Math.min(offset + batch.length, rows.length) + '/' + rows.length)
   }
 
