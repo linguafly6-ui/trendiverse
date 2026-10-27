@@ -1,11 +1,15 @@
 import { execFileSync } from 'node:child_process'
-import { appendFileSync } from 'node:fs'
-import { existsSync, readFileSync } from 'node:fs'
+import { appendFileSync, existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 type Item = { id:number; title:string; slug:string; keyword:string; cluster:string; intent:string; angle:string; editorialNote:string }
+type Draft = { title?:string; excerpt?:string; content?:string; category?:string; editorialBatchReady?:boolean }
+
 function runWrangler(args:string[]):string {
   return execFileSync('npx',['wrangler',...args],{encoding:'utf8',stdio:['ignore','pipe','pipe']})
+}
+function wordCount(value:string):number {
+  return value.match(/[\p{L}\p{N}]+/gu)?.length ?? 0
 }
 function main() {
   const auto = process.env.AUTO_NEXT_BATCH === 'true'
@@ -22,6 +26,13 @@ function main() {
   for (const item of selected) {
     if (auto && published.length>=10) break
     const file = resolve(`data/supplements-drafts/${String(item.id).padStart(2,'0')}.json`)
+    const draft = JSON.parse(readFileSync(file,'utf8')) as Draft
+    const words = wordCount(draft.content ?? '')
+    if (draft.title?.trim() !== item.title || !draft.excerpt?.trim() || !draft.content?.trim()) {
+      throw new Error(`Borrador ${item.id} inválido: título, extracto o contenido ausente/no coincidente`)
+    }
+    if (words < 2000) throw new Error(`Borrador ${item.id} rechazado: ${words} palabras; mínimo obligatorio 2000. No se publicará ningún artículo corto.`)
+    console.log(`[${item.id}/500] Borrador validado: ${words} palabras`)
     const q = `SELECT slug FROM articles WHERE slug = '${item.slug.replace(/'/g,"''")}' AND title = '${item.title.replace(/'/g,"''")}' AND LENGTH(content) >= 15000 LIMIT 1;`
     const existing = runWrangler(['d1','execute',process.env.D1_DATABASE ?? 'trendiverse-preview','--remote','--json',`--command=${q}`])
     if (existing.includes(item.slug)) { console.log(`[${item.id}/500] Ya existe con contenido extenso en D1; se omite: ${item.slug}`); skipped.push(item.id); continue }
