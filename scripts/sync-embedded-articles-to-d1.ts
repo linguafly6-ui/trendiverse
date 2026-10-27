@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { SAMPLE_ARTICLES } from '../lib/db'
+import { SAMPLE_ARTICLES } from './legacy-article-data'
 
 const database = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const batchSize = 5
