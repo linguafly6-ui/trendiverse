@@ -114,8 +114,35 @@ async function main() {
 
   const article = parseModelJson(raw)
   if (!article.title || !article.excerpt || !article.content) fail('La respuesta generada no contiene título, extracto y contenido')
-  const words = wordCount(article.content)
-  if (words < 2000) fail(`Artículo rechazado: ${words} palabras; mínimo 2000`)
+  let words = wordCount(article.content)
+  const extraSections = [
+    'Método paso a paso para organizar ingresos y gastos, con una plantilla explicada en texto y un ejemplo hipotético mensual.',
+    'Cómo crear un fondo de emergencia, fijar objetivos realistas y automatizar el ahorro con alternativas según distintas situaciones.',
+    'Errores frecuentes, cómo adaptar el plan ante imprevistos y preguntas frecuentes detalladas.'
+  ]
+  for (let i = 0; words < 2200 && i < extraSections.length; i++) {
+    const continuation = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [
+          { role: 'system', content: 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content".' },
+          { role: 'user', content: `Artículo: "${title}". Escribe SOLO una sección nueva de 650 a 850 palabras en Markdown. Tema: ${extraSections[i]} No repitas ideas ya cubiertas. Usa pasos concretos y ejemplos hipotéticos, sin inventar estadísticas ni fuentes. Devuelve JSON con title exactamente "${title}", excerpt breve y content con solo la sección, sin H1 ni introducción repetida. Texto ya escrito para evitar duplicados:\\n\\n${article.content.slice(-5000)}` }
+        ],
+        max_tokens: 4096,
+        temperature: 0.45
+      })
+    })
+    if (!continuation.ok) fail(`Workers AI devolvió HTTP ${continuation.status} al ampliar el artículo`)
+    const continuationPayload = await continuation.json() as { success?: boolean; result?: { response?: string } }
+    if (!continuationPayload.success || !continuationPayload.result?.response) fail('Workers AI no devolvió una ampliación válida')
+    const section = parseModelJson(continuationPayload.result.response)
+    if (!section.content) fail('La ampliación no contiene texto')
+    article.content += '\\n\\n' + section.content
+    words = wordCount(article.content)
+    console.log(`Ampliación ${i + 1}: artículo acumulado de ${words} palabras.`)
+  }
+  if (words < 2000) fail(`Artículo rechazado tras ampliaciones: ${words} palabras; mínimo 2000`)
   if (article.title.trim() !== title) fail('El H1 generado no coincide con el título de la cola editorial')
   if (article.content.length > 180000) fail('Artículo excede el límite preventivo de longitud')
 
