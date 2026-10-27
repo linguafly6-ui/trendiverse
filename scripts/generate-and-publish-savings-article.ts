@@ -189,7 +189,7 @@ async function main() {
     words = wordCount(article.content)
     console.log(`Ampliación ${i + 1}: artículo acumulado de ${words} palabras.`)
   }
-  if (words < (sourceFile ? 800 : 2000)) fail(`Artículo rechazado tras validación: ${words} palabras; mínimo ${sourceFile ? 1000 : 2000}`)
+  if (words < 2000) fail(`Artículo rechazado tras validación: ${words} palabras; mínimo obligatorio 2000`)
   }
 
   if (article.title.trim() !== title) fail('El H1 generado no coincide con el título de la cola editorial')
