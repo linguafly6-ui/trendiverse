@@ -83,14 +83,14 @@ export async function getArticles(opts: ArticleQuery = {}): Promise<Article[]> {
   const run = async () => (await DB.prepare(sql).bind(...params).all<Article>()).results
   const rows = opts.q
     ? await run()
-    : await cached(`articles:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${fetchLimit}`, 60, run)
+    : await cached(`d1-articles:v2:${opts.category ?? ''}:${opts.trending ? 1 : 0}:${fetchLimit}`, 30, run)
   return rows.filter((x) => matchesQuery(x, opts)).slice(offset, offset + limit)
 }
 
 export async function getTopArticles(limit = 5): Promise<Article[]> {
   const { DB } = await getEnv()
   if (!DB) return []
-  return cached(`top:${limit}`, 300, async () =>
+  return cached(`d1-top:v2:${limit}`, 30, async () =>
     (await DB.prepare('SELECT * FROM articles ORDER BY views DESC LIMIT ?').bind(limit).all<Article>()).results
   )
 }
