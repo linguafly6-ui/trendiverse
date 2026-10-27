@@ -44,12 +44,12 @@ function contentTypeFor(path: string, fallback = 'application/octet-stream'): st
 }
 
 const IMAGE_FALLBACKS: Record<string, string> = {
-  'ahorrar-energia-casa-invierno-medidas-eficaces': 'public/images/articles/recovery-ahorrar-energia-casa-invierno-medidas-eficaces.svg',
+  'ahorrar-energia-casa-invierno-medidas-eficaces': 'public/images/articles/editorial-fallback-02.svg',
   'ayudas-auto-plus-coches-electricos-2026-requisitos-plazo': 'public/images/articles/recovery-ayudas-auto-plus-coches-electricos-2026-requisitos-plazo.svg',
-  'como-leer-la-factura-de-la-luz': 'public/images/articles/recovery-como-leer-la-factura-de-la-luz.svg',
+  'como-leer-la-factura-de-la-luz': 'public/images/articles/editorial-fallback-02.svg',
   'copa-del-mundo-fifa-2026': 'public/images/articles/recovery-copa-del-mundo-fifa-2026.svg',
   'puntos-recarga-coche-electrico-espana-datos-2026': 'public/images/articles/recovery-puntos-recarga-coche-electrico-espana-datos-2026.svg',
-  'reglamento-ia-ue-agosto-2026-transparencia-obligaciones': 'public/images/articles/recovery-reglamento-ia-ue-agosto-2026-transparencia-obligaciones.svg',
+  'reglamento-ia-ue-agosto-2026-transparencia-obligaciones': 'public/images/articles/editorial-fallback-03.svg',
   'tendencias-moda-otono-invierno-2026-2027-como-llevarlas': 'public/images/articles/recovery-tendencias-moda-otono-invierno-2026-2027-como-llevarlas.svg',
 }
 
