@@ -131,6 +131,7 @@ async function main() {
     if (!article.title || !article.excerpt || !article.content) fail('El archivo fuente debe incluir title, excerpt y content')
     words = wordCount(article.content)
     console.log(`Artículo cargado desde archivo local: ${sourceFile} (${words} palabras)`)
+    if (category === 'suplementos' && words < 2000) fail(`Artículo de suplementos rechazado: ${words} palabras; mínimo obligatorio 2000`)
   } else {
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`, {
     method: 'POST',
