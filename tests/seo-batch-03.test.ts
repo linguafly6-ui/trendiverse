@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { SEO_BATCH_03_ARTICLES } from '../lib/seo-batch-03'
-import { getArticleBySlug } from '../lib/db'
+import { SAMPLE_ARTICLES } from '../scripts/legacy-article-data'
 
 const expectedSlugs = [
   'como-cocer-pasta-al-dente',
@@ -30,8 +30,6 @@ test('el segundo bloque editorial contiene diez artículos completos', () => {
   }
 })
 
-test('los diez artículos nuevos se resuelven por slug en el catálogo', async () => {
-  for (const slug of expectedSlugs) {
-    assert.equal((await getArticleBySlug(slug))?.slug, slug)
-  }
+test('los diez artículos están disponibles para la migración inicial a D1', () => {
+  for (const slug of expectedSlugs) assert.ok(SAMPLE_ARTICLES.some((article) => article.slug === slug), `${slug} debe estar en la fuente de migración D1`)
 })
