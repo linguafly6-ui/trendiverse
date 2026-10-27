@@ -1,5 +1,11 @@
 import type { Article } from './types'
-import { truncateWords } from './seo-overrides'
+function shorten(value: string, max = 155): string {
+  const text = value.trim().replace(/\\s+/g, ' ')
+  if (text.length <= max) return text
+  const cut = text.slice(0, max - 1)
+  const lastSpace = cut.lastIndexOf(' ')
+  return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[\\s,.;:—-]+$/, '')}…`
+}
 
 function plainText(value: string): string {
   return value
@@ -25,7 +31,7 @@ export function articleExcerpt(article: Pick<Article, 'category' | 'title' | 'co
     const match = /la pregunta práctica es\s+(.+)$/i.exec(text)
     if (match?.[1]) {
       const candidate = match[1].replace(/[«»]/g, '').trim()
-      if (candidate.length > 35) return truncateWords(candidate, 155)
+      if (candidate.length > 35) return shorten(candidate, 155)
     }
   }
 
@@ -36,7 +42,7 @@ export function articleExcerpt(article: Pick<Article, 'category' | 'title' | 'co
     .filter((text) => text.length >= 75 && !/^(esta guía|este artículo|el objetivo de esta guía|no sustituye|en esta guía)/i.test(text))
   const titleNormalized = article.title.toLocaleLowerCase('es')
   const distinct = candidates.find((text) => text.toLocaleLowerCase('es') !== titleNormalized)
-  return distinct ? truncateWords(distinct, 155) : article.excerpt
+  return distinct ? shorten(distinct, 155) : article.excerpt
 }
 
 export function withArticleExcerpt<T extends Article>(article: T): T {
