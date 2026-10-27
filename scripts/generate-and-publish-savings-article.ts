@@ -226,9 +226,27 @@ async function main() {
   writeFileSync(sqlPath, sql, 'utf8')
   runWrangler(['d1', 'execute', database, '--remote', `--file=${sqlPath}`])
 
-  const verify = runWrangler(['d1', 'execute', database, '--remote', '--json', `--command=SELECT slug, title, image_url FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`])
-  if (!verify.includes(slug) || !verify.includes(imageUrl)) fail('No se pudo verificar la fila publicada en D1')
-  console.log(JSON.stringify({ success: true, slug, words, database, bucket, imageUrl, verified: true }))
+  const verifyRaw = runWrangler(['d1', 'execute', database, '--remote', '--json', `--command=SELECT slug, title, content, image_url FROM articles WHERE slug = ${sqlString(slug)} LIMIT 1;`])
+  let verifiedRow: Record<string, unknown> | undefined
+  try {
+    const parsed: unknown = JSON.parse(verifyRaw)
+    const visit = (value: unknown): void => {
+      if (verifiedRow) return
+      if (Array.isArray(value)) { for (const item of value) visit(item); return }
+      if (value && typeof value === 'object') {
+        const row = value as Record<string, unknown>
+        if (row.slug === slug && typeof row.content === 'string') { verifiedRow = row; return }
+        for (const child of Object.values(row)) visit(child)
+      }
+    }
+    visit(parsed)
+  } catch { fail('No se pudo interpretar la verificación de la fila publicada en D1') }
+  if (!verifiedRow) fail('No se pudo verificar la fila publicada en D1')
+  const storedWords = wordCount(String(verifiedRow.content ?? ''))
+  if (verifiedRow.title !== title) fail('El título almacenado en D1 no coincide con el artículo solicitado')
+  if (verifiedRow.image_url !== imageUrl) fail('La imagen almacenada en D1 no coincide con el objeto subido a R2')
+  if (category === 'suplementos' && storedWords < 2000) fail(`Publicación rechazada en la verificación final: D1 almacena ${storedWords} palabras; mínimo obligatorio 2000`)
+  console.log(JSON.stringify({ success: true, slug, words, storedWords, database, bucket, imageUrl, verified: true }))
 }
 
 main().catch((error: unknown) => {
