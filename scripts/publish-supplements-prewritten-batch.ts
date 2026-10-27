@@ -21,9 +21,9 @@ function main() {
   for (const item of selected) {
     if (auto && published.length>=10) break
     const file = resolve(`data/supplements-drafts/${String(item.id).padStart(2,'0')}.json`)
-    const q = `SELECT slug FROM articles WHERE slug = '${item.slug.replace(/'/g,"''")}' AND title = '${item.title.replace(/'/g,"''")}' AND LENGTH(content) >= 800 LIMIT 1;`
+    const q = `SELECT slug FROM articles WHERE slug = '${item.slug.replace(/'/g,"''")}' AND title = '${item.title.replace(/'/g,"''")}' AND LENGTH(content) >= 15000 LIMIT 1;`
     const existing = runWrangler(['d1','execute',process.env.D1_DATABASE ?? 'trendiverse-preview','--remote','--json',`--command=${q}`])
-    if (existing.includes(item.slug)) { console.log(`[${item.id}/500] Ya existe con título y contenido completos en D1; se omite: ${item.slug}`); skipped.push(item.id); continue }
+    if (existing.includes(item.slug)) { console.log(`[${item.id}/500] Ya existe con contenido extenso en D1; se omite: ${item.slug}`); skipped.push(item.id); continue }
     console.log(`[${item.id}/500] Publicando borrador preparado: ${item.title}`)
     execFileSync('npx',['tsx','scripts/generate-and-publish-savings-article.ts'],{stdio:'inherit',env:{...process.env,ARTICLE_TITLE:item.title,ARTICLE_SLUG:item.slug,ARTICLE_KEYWORD:item.keyword,ARTICLE_CLUSTER:item.cluster,ARTICLE_INTENT:item.intent,ARTICLE_ANGLE:item.angle,ARTICLE_EDITORIAL_NOTE:item.editorialNote,ARTICLE_CATEGORY:'suplementos',ARTICLE_SOURCE_FILE:file}})
     published.push(item.id)
