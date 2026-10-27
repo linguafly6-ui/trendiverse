@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "lib/seo-batch-04.ts"
+      - "data/supplements-drafts/06.json"
   workflow_dispatch:
     inputs:
       slug:
@@ -89,8 +90,26 @@ jobs:
           D1_DATABASE: trendiverse-preview
           WORKERS_AI_MODEL: "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 
+      - name: Publish prepared supplement article without Workers AI
+        if: ${{ github.event_name == 'push' && (contains(github.event.head_commit.added, 'data/supplements-drafts/06.json') || contains(github.event.head_commit.modified, 'data/supplements-drafts/06.json')) }}
+        run: npx tsx scripts/generate-and-publish-savings-article.ts
+        env:
+          ARTICLE_TITLE: "Dosis de la creatina: cómo interpretar las recomendaciones"
+          ARTICLE_SLUG: dosis-de-la-creatina-como-interpretar-las-recomendaciones
+          ARTICLE_CATEGORY: suplementos
+          ARTICLE_CLUSTER: "Creatina y rendimiento físico"
+          ARTICLE_INTENT: "Interpretación de dosis: la creatina"
+          ARTICLE_KEYWORD: "dosis de la creatina"
+          ARTICLE_ANGLE: "No prescribir; explicar variabilidad, unidades, límites oficiales y consulta profesional."
+          ARTICLE_SOURCE_FILE: data/supplements-drafts/06.json
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_BUCKET: trendiverse-articles
+          R2_PUBLIC_BASE_URL: https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev
+          D1_DATABASE: trendiverse-preview
+
       - name: Publish and verify D1 + R2
-        if: ${{ github.event_name != 'workflow_dispatch' || (inputs.mode != 'generate' && inputs.mode != 'batch') }}
+        if: ${{ (github.event_name != 'workflow_dispatch' && !contains(github.event.head_commit.added, 'data/supplements-drafts/06.json') && !contains(github.event.head_commit.modified, 'data/supplements-drafts/06.json')) || (github.event_name == 'workflow_dispatch' && inputs.mode != 'generate' && inputs.mode != 'batch') }}
         run: npx tsx scripts/publish-editorial-article.ts "$ARTICLE_SLUG"
         env:
           ARTICLE_SLUG: ${{ github.event_name == 'workflow_dispatch' && inputs.slug || 'que-frutas-y-verduras-son-de-temporada-en-invierno' }}
