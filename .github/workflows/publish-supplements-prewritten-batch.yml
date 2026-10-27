@@ -1,0 +1,45 @@
+name: Publish prepared supplement articles (10 per batch)
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_number:
+        description: "Lote de 10 artículos preparados (lote 1 = IDs 6–15)"
+        required: true
+        default: "1"
+        type: number
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trendiverse-publish-supplements-prewritten
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 180
+    steps:
+      - name: Checkout approved main revision
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Publish prepared batch without Workers AI
+        run: npx tsx scripts/publish-supplements-prewritten-batch.ts
+        env:
+          BATCH_NUMBER: ${{ inputs.batch_number }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_BUCKET: trendiverse-articles
+          R2_PUBLIC_BASE_URL: https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev
+          D1_DATABASE: trendiverse-preview
