@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process'
+import { appendFileSync } from 'node:fs'
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
@@ -30,5 +31,6 @@ function main() {
     console.log(`[${item.id}/500] Publicación verificada por el publicador`)
   }
   console.log(JSON.stringify({success:true,mode:auto?'auto-next-10':'manual',published,skipped,totalPlanned:500}))
+  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_count=${published.length}\\n`, 'utf8')
 }
 try { main() } catch(e) { console.error(e instanceof Error?e.message:String(e)); process.exitCode=1 }
