@@ -439,6 +439,146 @@ const CREATINE_EDITORIAL: Record<string, Editorial> = {
     safety: "Sigue las instrucciones de la etiqueta y las recomendaciones de tu profesional sanitario si el producto forma parte de un plan clínico. Si te causa molestias digestivas, revisa los ingredientes y considera consultarlo antes de cambiar la pauta.",
     followup: "Elige un momento que puedas mantener sin complicar las comidas ni el descanso. Registra el producto y la cantidad que tomas, y evalúa el objetivo con expectativas realistas en vez de atribuir cada cambio a la hora de consumo.",
     evidence: "Para valorar el horario, revisa si los estudios compararon directamente mañana y noche o solo estudiaron el uso general. La evidencia sobre una formulación no prueba que exista una hora óptima para todos."
+  },
+  'dosis-del-colageno-como-interpretar-las-recomendaciones': {
+    excerpt: "Las cantidades varían según el tipo de colágeno y la formulación. Aprende a leer la etiqueta sin convertir una cifra comercial en una pauta universal.",
+    focus: "Las etiquetas pueden expresar la cantidad en gramos o miligramos y añadir otros componentes a la fórmula. Antes de comparar cifras, identifica el tipo de colágeno, el tamaño de la porción y si la cantidad se refiere al ingrediente principal o a toda la mezcla.",
+    safety: "No aumentes la cantidad por tu cuenta para acelerar resultados. Si tienes una condición médica, estás embarazada o en lactancia, o tomas medicación habitual, consulta antes de iniciar un suplemento nuevo.",
+    followup: "Anota el tipo de colágeno, la cantidad por porción y los ingredientes adicionales. Si un profesional te ha recomendado usarlo, confirma con él qué producto y objetivo se están considerando.",
+    evidence: "Los estudios pueden usar fuentes, formas y cantidades distintas. Una dosis empleada en un ensayo no se convierte automáticamente en recomendación universal para todas las marcas."
+  },
+  'quien-deberia-evitar-el-colageno': {
+    excerpt: "El origen animal, las alergias, los ingredientes añadidos y algunas situaciones clínicas hacen importante revisar el producto antes de usarlo.",
+    focus: "El colágeno suplementario suele proceder de fuentes animales, como pescado, bovino o porcino. La elección no depende solo del objetivo anunciado: también cuentan las alergias, las restricciones dietéticas y la composición completa.",
+    safety: "Si tienes alergia al pescado u otra fuente indicada en la etiqueta, no pruebes el producto sin verificar su seguridad. Durante el embarazo, la lactancia o si tienes una enfermedad crónica, consulta antes de añadir mezclas de suplementación.",
+    followup: "Comprueba la especie de origen, los alérgenos y todos los ingredientes. Si buscas tratar dolor persistente, una lesión o cambios cutáneos importantes, solicita evaluación sanitaria en vez de confiar solo en el suplemento.",
+    evidence: "Los resultados en adultos sanos no establecen automáticamente la seguridad o utilidad para personas con enfermedades específicas. Valora la evidencia según la población y la formulación estudiadas."
+  },
+  'interacciones-del-colageno-con-medicamentos': {
+    excerpt: "La composición del producto y tu tratamiento concreto importan más que las afirmaciones generales sobre interacciones con colágeno.",
+    focus: "El colágeno es un ingrediente proteico, pero muchos suplementos combinan péptidos con vitaminas, minerales, extractos o saborizantes. Por eso, cualquier revisión debe incluir la fórmula completa y no solo la palabra «colágeno».",
+    safety: "No suspendas ni cambies el horario de tus medicamentos para incorporar un suplemento. Si tomas medicación de forma habitual o tienes una condición crónica, consulta con tu farmacéutico o profesional sanitario con la etiqueta a mano.",
+    followup: "Lleva el nombre del producto, los ingredientes y la lista de medicamentos a la consulta. Incluye otros suplementos que uses, ya que podrían repetir vitaminas o minerales presentes en la fórmula.",
+    evidence: "Las interacciones deben evaluarse para ingredientes y fármacos concretos. No concluyas que una combinación es segura o peligrosa solo por información general sobre suplementos proteicos."
+  },
+  'como-elegir-un-suplemento-del-colageno-de-calidad': {
+    excerpt: "Compara la fuente, el tipo de colágeno, la cantidad por ración y los ingredientes añadidos antes de dejarte guiar por promesas de marketing.",
+    focus: "Una etiqueta útil identifica el origen, la forma del colágeno, la cantidad por porción y el resto de ingredientes. Comprueba también si las afirmaciones comerciales explican qué objetivo concreto pretenden abordar.",
+    safety: "Desconfía de promesas de curar enfermedades, eliminar arrugas o garantizar alivio del dolor. Si tienes alergias, revisa la fuente animal y los posibles alérgenos; «natural» no significa libre de riesgos.",
+    followup: "Compara la misma cantidad de ingrediente por ración y revisa el lote, la fecha y la información del fabricante. Si se anuncian pruebas independientes, comprueba qué analizan y qué aspectos dejan fuera.",
+    evidence: "Un certificado puede verificar criterios específicos de calidad, pero no demuestra por sí mismo que el producto sea necesario o que cumpla todas las promesas publicitarias."
+  },
+  'el-colageno-polvo-capsulas-o-comprimidos': {
+    excerpt: "El formato afecta a la comodidad y a la cantidad por toma. Compara gramos por porción y excipientes, no solo el tamaño del envase.",
+    focus: "El polvo suele permitir ajustar la cantidad con facilidad, mientras que las cápsulas o comprimidos aportan una cantidad limitada por unidad. Las bebidas listas para tomar pueden incluir ingredientes adicionales, así que conviene comparar la fórmula completa.",
+    safety: "Revisa el tamaño de las unidades, los excipientes y los alérgenos. Si te cuesta tragar comprimidos o debes limitar determinados ingredientes, elige el formato con ayuda profesional si tienes dudas.",
+    followup: "Calcula el coste por la misma cantidad de colágeno y comprueba cuántas cápsulas se necesitarían para alcanzar la porción declarada. Ten en cuenta también la facilidad de preparación y la tolerancia al sabor.",
+    evidence: "No hay que asumir que cápsulas, polvo y bebidas produzcan el mismo efecto solo porque anuncien el mismo ingrediente. La equivalencia depende de la formulación, la cantidad y la evidencia disponible."
+  },
+  'cuanto-tarda-en-hacer-efecto-el-colageno': {
+    excerpt: "Los posibles cambios dependen del objetivo, la formulación y el tiempo de uso. No existe un plazo garantizado que sirva para todas las personas.",
+    focus: "El colágeno se consume con objetivos diferentes, desde la apariencia de la piel hasta las molestias articulares. Cada resultado necesita medirse de forma distinta, y notar o no un cambio en pocos días no basta para juzgar el producto.",
+    safety: "No retrases la evaluación de dolor persistente, lesiones o cambios cutáneos importantes por esperar a que un suplemento haga efecto. Busca consejo sanitario si el problema continúa o empeora.",
+    followup: "Define de antemano qué resultado quieres observar y en qué periodo tendría sentido revisarlo. Evita cambiar varias cosas a la vez si intentas valorar el efecto y no interpretes variaciones normales como una prueba concluyente.",
+    evidence: "Los ensayos varían en duración, formulación, participantes y resultados medidos. Comprueba esos detalles antes de trasladar a tu caso el plazo anunciado en una publicidad."
+  },
+  'que-pasa-si-dejas-de-tomar-el-colageno': {
+    excerpt: "Dejar el suplemento no provoca una retirada conocida como la de ciertos medicamentos. Lo importante es por qué lo tomabas y qué resultado buscabas.",
+    focus: "El colágeno no se considera una sustancia que genere dependencia. Si dejas de tomarlo, no hay que asumir que aparecerá un efecto rebote; los cambios dependerán del objetivo, la evolución natural y otros factores.",
+    safety: "Si lo usabas por recomendación sanitaria dentro de un plan concreto, pregunta antes de modificar ese plan. No suspendas tratamientos indicados ni sustituyas la atención clínica por un suplemento.",
+    followup: "Revisa si el producto te aportaba un beneficio claro, si tolerabas bien la fórmula y si el coste compensa. Si no observas mejoras o los síntomas persisten, comenta alternativas con un profesional.",
+    evidence: "Los datos sobre el uso continuado no permiten predecir lo que ocurrirá a cada persona al dejarlo. Distingue la evolución del problema de salud del simple hecho de interrumpir el suplemento."
+  },
+  'alimentos-ricos-en-el-colageno-frente-a-suplementos': {
+    excerpt: "Caldo elaborado con huesos y tejidos animales puede contener gelatina y colágeno, pero la dieta también aporta los nutrientes necesarios para sintetizarlo.",
+    focus: "El colágeno se encuentra en tejidos animales y sus preparaciones, como gelatina o algunos caldos, pueden contener cantidades variables. El cuerpo también produce colágeno utilizando aminoácidos y nutrientes de una dieta suficiente y variada.",
+    safety: "No sustituyas comidas completas por caldos o suplementos como estrategia única. Si tienes restricciones dietéticas, alergias o una enfermedad que requiera ajustar la alimentación, revisa las opciones con un profesional.",
+    followup: "Compara el papel del producto con tu dieta habitual: alimentos proteicos, frutas, verduras y otras fuentes de nutrientes. No existe obligación de tomar colágeno en polvo para mantener una alimentación equilibrada.",
+    evidence: "La presencia de colágeno en un alimento no demuestra que consumirlo produzca el mismo efecto que una formulación estudiada. La evidencia depende de la preparación, la cantidad y el objetivo evaluado."
+  },
+  'deficiencia-del-colageno-senales-y-evaluacion': {
+    excerpt: "No hay una prueba casera sencilla que diagnostique una «deficiencia de colágeno». Los síntomas relacionados con piel o articulaciones pueden tener muchas causas.",
+    focus: "El colágeno es una proteína estructural del organismo, pero no suele evaluarse una supuesta carencia mediante un síntoma aislado. La valoración depende de la historia clínica, la exploración y la causa posible de las molestias.",
+    safety: "Dolor persistente, problemas de movilidad, heridas que no cicatrizan o cambios importantes en la piel merecen valoración profesional. No te autodiagnostiques ni uses suplementos como sustituto de pruebas indicadas.",
+    followup: "Anota cuándo comenzaron los síntomas, qué los empeora y qué otros cambios has notado. Esa información puede ayudar a la consulta mucho más que asumir que el problema se debe a falta de colágeno.",
+    evidence: "Los estudios sobre suplementos para objetivos concretos no constituyen pruebas diagnósticas de una deficiencia. Distingue las hipótesis biológicas de los criterios clínicos validados."
+  },
+  'el-colageno-en-dietas-vegetarianas-y-veganas': {
+    excerpt: "El colágeno suplementario convencional procede de animales y no es vegano. Revisa qué alternativas se anuncian y qué pueden aportar realmente.",
+    focus: "Los suplementos tradicionales de colágeno se obtienen de tejidos animales, por lo que no encajan en una dieta vegana. Algunos productos comercializados como «apoyo al colágeno» aportan nutrientes para su síntesis, pero no son colágeno animal.",
+    safety: "Lee con atención el origen y los ingredientes si sigues una dieta vegetariana o vegana, y comprueba si hay componentes animales añadidos. Si tienes una necesidad médica específica, consulta antes de sustituir una fuente de nutrientes por un producto comercial.",
+    followup: "Busca una alimentación variada que aporte suficiente proteína y nutrientes como vitamina C, en vez de confiar solo en un producto etiquetado como potenciador. Comprueba qué contiene realmente antes de comprarlo.",
+    evidence: "Los productos que aportan colágeno y los que aportan nutrientes para su síntesis son categorías distintas. No deben presentarse como equivalentes sin evidencia específica que respalde la afirmación."
+  },
+  'el-colageno-durante-el-embarazo-y-la-lactancia': {
+    excerpt: "En embarazo y lactancia, la evidencia sobre muchas mezclas de colágeno es limitada. Revisa todos los ingredientes con tu profesional sanitario.",
+    focus: "La seguridad de un suplemento no depende solo de que su ingrediente principal sea una proteína. Algunas fórmulas de colágeno incluyen vitaminas, minerales, hierbas u otros componentes que requieren una revisión independiente.",
+    safety: "No empieces un suplemento de colágeno durante el embarazo o la lactancia sin consultarlo con el profesional que lleva tu atención. Evita asumir que una fórmula deportiva o estética es segura por venderse sin receta.",
+    followup: "Lleva la etiqueta completa a la consulta y pregunta si hay una razón concreta para usar el producto o si basta con la alimentación habitual. No combines fórmulas sin revisar ingredientes repetidos.",
+    evidence: "Los datos en adultos sanos no establecen por sí solos la seguridad de todas las formulaciones durante embarazo o lactancia. La falta de estudios específicos debe comunicarse con claridad."
+  },
+  'el-colageno-en-adultos-mayores-que-tener-en-cuenta': {
+    excerpt: "El objetivo, la alimentación, la medicación y la salud general importan más que la edad por sí sola al valorar un suplemento de colágeno.",
+    focus: "En personas mayores, el colágeno puede anunciarse para piel o articulaciones, pero conviene concretar el problema y revisar primero la salud general, la dieta y los tratamientos existentes.",
+    safety: "Si hay enfermedad crónica, polimedicación, pérdida de peso involuntaria o dolor persistente, consulta antes de añadir el suplemento. No retrases una evaluación por probar productos para articulaciones o movilidad.",
+    followup: "Revisa el origen del colágeno, los ingredientes añadidos y el objetivo que pretendes evaluar. Si la dificultad es moverse o mantener la fuerza, una valoración funcional y un plan adaptado pueden ser más relevantes.",
+    evidence: "La edad, el estado de salud y la formulación pueden influir en los resultados. No des por hecho que todas las personas mayores se beneficiarán ni que los datos en adultos sanos sean directamente aplicables."
+  },
+  'mitos-sobre-el-colageno-que-es-verdad-y-que-no': {
+    excerpt: "¿El colágeno elimina las arrugas o regenera el cartílago? Revisamos qué afirmaciones están estudiadas y cuáles exageran los resultados.",
+    focus: "El colágeno tiene funciones estructurales en el cuerpo, pero eso no demuestra que ingerirlo se dirija de forma directa a una arruga o una articulación. Los efectos de un suplemento deben evaluarse por resultados clínicos concretos.",
+    safety: "Desconfía de promesas de curar enfermedades o garantizar cambios estéticos. Si tienes dolor o síntomas persistentes, no sustituyas una evaluación sanitaria por afirmaciones de marketing.",
+    followup: "Cuando leas una afirmación, busca el producto exacto, el grupo estudiado, el tiempo de seguimiento y el resultado medido. Los testimonios y las imágenes promocionales no sustituyen esa información.",
+    evidence: "La evidencia varía según la formulación y el objetivo. Un resultado favorable en un estudio pequeño no demuestra eficacia universal ni confirma todas las promesas que se hacen sobre el colágeno."
+  },
+  'como-leer-la-etiqueta-del-colageno': {
+    excerpt: "Identifica el origen, la cantidad por porción, los ingredientes añadidos y las advertencias para comparar suplementos de colágeno con criterio.",
+    focus: "La etiqueta debería permitir saber si el colágeno es hidrolizado, cuál es su origen y cuánta cantidad aporta una ración. Revisa también los ingredientes adicionales y si el producto contiene alérgenos.",
+    safety: "Si tienes alergias al pescado u otras fuentes animales, comprueba la procedencia y las advertencias. No uses declaraciones vagas como «belleza» o «articulaciones» como sustituto de información clara sobre composición.",
+    followup: "Compara la cantidad de colágeno por ración y por envase, además del coste, y revisa lote y fecha de consumo preferente. Si incluye vitaminas o minerales, suma su aporte con el de otros productos que uses.",
+    evidence: "La etiqueta informa de la composición declarada, pero no prueba que el suplemento vaya a lograr el resultado anunciado. Evalúa por separado la calidad del producto y la evidencia de eficacia."
+  },
+  'preguntas-frecuentes-sobre-el-colageno-guia-para-principiantes': {
+    excerpt: "Qué es el colágeno, qué tipos de suplementos existen, cómo leer la etiqueta y por qué los resultados dependen del objetivo.",
+    focus: "Antes de elegir un producto, concreta si buscas información sobre piel, articulaciones u otro objetivo. Las fórmulas, las pruebas disponibles y la manera de evaluar resultados pueden variar según esa finalidad.",
+    safety: "Revisa el origen animal y los ingredientes añadidos, especialmente si tienes alergias, una enfermedad crónica, embarazo o lactancia. Consulta si pretendes usar el suplemento para tratar síntomas o sustituir un tratamiento.",
+    followup: "Empieza por la etiqueta y por la razón práctica para usarlo; después compara la evidencia para ese objetivo concreto. No es obligatorio suplementar colágeno para llevar una dieta equilibrada.",
+    evidence: "Las preguntas generales ayudan a orientarse, pero no garantizan un resultado individual. Para valorar una afirmación concreta, comprueba la formulación, la población y el desenlace estudiado."
+  },
+  'que-es-el-magnesio-y-para-que-sirve': {
+    excerpt: "El magnesio es un mineral esencial implicado en funciones musculares, nerviosas y metabólicas. Aprende qué hace y cuándo un suplemento puede ser relevante.",
+    focus: "El magnesio participa en numerosas funciones del organismo, incluidas la actividad muscular y nerviosa y el metabolismo energético. Los suplementos son una de varias fuentes y no siempre son necesarios si la dieta ya cubre las necesidades.",
+    safety: "Las dosis elevadas de suplementos pueden causar molestias digestivas y el riesgo aumenta en personas con función renal reducida. Si tienes enfermedad renal, tomas medicamentos de forma habitual o quieres tratar síntomas persistentes, consulta antes de suplementarte.",
+    followup: "Revisa primero las fuentes alimentarias, la cantidad declarada por porción y el tipo de compuesto de magnesio. Si sospechas una deficiencia, solicita orientación sanitaria en vez de basarte solo en síntomas inespecíficos.",
+    evidence: "Que el magnesio tenga funciones esenciales no significa que suplementarlo mejore el rendimiento o el sueño en todas las personas. Distingue corregir una ingesta insuficiente de tomar más sin una necesidad identificada."
+  },
+  'beneficios-del-magnesio-que-dice-la-evidencia': {
+    excerpt: "El magnesio es necesario para el organismo, pero los beneficios de tomarlo como suplemento dependen de la necesidad y del resultado evaluado.",
+    focus: "Una cosa es que el cuerpo necesite magnesio y otra que una dosis extra mejore un síntoma en alguien que ya consume suficiente. La evidencia debe revisarse por objetivo, como corregir una carencia o evaluar una afirmación sobre sueño o calambres.",
+    safety: "No uses el suplemento como sustituto de estudiar síntomas persistentes ni aumentes la dosis porque el beneficio no aparezca rápido. Si tienes enfermedad renal o tomas medicación, consulta antes de empezar.",
+    followup: "Identifica qué beneficio se anuncia y busca estudios que midan ese resultado en una población comparable. Revisa también la cantidad de magnesio elemental, que no siempre equivale al peso total del compuesto.",
+    evidence: "Los resultados pueden variar según la ingesta inicial, la formulación, la dosis y la calidad de los ensayos. La evidencia de una indicación no demuestra beneficios para todas las demás."
+  },
+  'efectos-secundarios-del-magnesio': {
+    excerpt: "La diarrea y las molestias abdominales son efectos posibles de algunos suplementos de magnesio; la dosis y el compuesto importan.",
+    focus: "La tolerancia depende del tipo de sal, la cantidad de magnesio elemental y la sensibilidad individual. Algunos productos pueden tener efecto laxante, y tomar varias fórmulas a la vez puede aumentar la cantidad total sin darse cuenta.",
+    safety: "La enfermedad renal puede aumentar el riesgo de acumulación de magnesio, por lo que no conviene automedicarse en esa situación. Ante debilidad marcada, confusión, desmayo o dificultad respiratoria, busca atención urgente.",
+    followup: "Suma el magnesio procedente de todos los suplementos y medicamentos que uses y revisa las instrucciones del envase. Si aparecen molestias persistentes, consulta antes de aumentar la cantidad o cambiar a otra fórmula.",
+    evidence: "Los efectos adversos dependen de la dosis, la formulación y la situación clínica. No asumas que todos los compuestos se toleran igual ni que un producto sin receta está libre de riesgos."
+  },
+  'como-tomar-el-magnesio-correctamente': {
+    excerpt: "La cantidad adecuada depende de la dieta, el compuesto y las necesidades individuales. Aprende a revisar el magnesio elemental y las instrucciones.",
+    focus: "En la etiqueta puede aparecer el peso del compuesto y, por separado, la cantidad de magnesio elemental. Para comparar productos, identifica qué cifra se declara por porción y sigue las instrucciones específicas del envase.",
+    safety: "No aumentes la dosis para tratar calambres, cansancio o problemas de sueño sin valorar otras causas. Si tienes enfermedad renal, tomas medicación o necesitas un suplemento por indicación clínica, consulta antes de modificar la pauta.",
+    followup: "Comprueba cuánto aporta cada toma, si hay magnesio en otros productos y si el suplemento produce molestias digestivas. Si te lo han recomendado por una razón médica, confirma la duración y el seguimiento con el profesional.",
+    evidence: "Las pautas estudiadas no son intercambiables entre todas las sales ni para todas las personas. Distingue recomendaciones nutricionales generales de dosis terapéuticas supervisadas."
+  },
+  'cuando-tomar-el-magnesio-manana-o-noche': {
+    excerpt: "No hay una hora única para todo el mundo. La tolerancia, la formulación, las instrucciones y la razón de uso orientan el horario.",
+    focus: "Tomar magnesio por la mañana o por la noche suele ser una decisión práctica condicionada por el producto y la tolerancia. No hay que asumir que una hora concreta garantiza mejor sueño, menos calambres o mayor absorción en todos los casos.",
+    safety: "Sigue las instrucciones del envase y las recomendaciones clínicas si el suplemento forma parte de un tratamiento. Si tomas medicamentos con horarios específicos o tienes enfermedad renal, consulta antes de cambiar la pauta.",
+    followup: "Elige un momento que puedas mantener y observa si aparecen molestias digestivas. Si el objetivo es mejorar el sueño o aliviar calambres persistentes, revisa también otras causas posibles con un profesional.",
+    evidence: "Para afirmar que una hora es mejor, los estudios tendrían que comparar directamente horarios similares y medir resultados relevantes. Los datos sobre el magnesio en general no prueban una franja horaria óptima para todos."
   }
 }
 
