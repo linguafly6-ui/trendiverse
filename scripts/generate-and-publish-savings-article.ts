@@ -27,6 +27,7 @@ const angle = process.env.ARTICLE_ANGLE?.trim() ?? 'Guía práctica y diferencia
 const intent = process.env.ARTICLE_INTENT?.trim() ?? 'Informativa / práctica'
 const category = process.env.ARTICLE_CATEGORY?.trim() ?? 'ahorro'
 const editorialNote = process.env.ARTICLE_EDITORIAL_NOTE?.trim() ?? ''
+const sourceFile = process.env.ARTICLE_SOURCE_FILE?.trim()
 const database = process.env.D1_DATABASE ?? 'trendiverse-preview'
 const bucket = process.env.R2_BUCKET ?? 'trendiverse-articles'
 const baseUrl = (process.env.R2_PUBLIC_BASE_URL ?? '').replace(/\/$/, '')
@@ -122,7 +123,16 @@ async function main() {
   if (!title || !slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) fail('ARTICLE_TITLE y ARTICLE_SLUG son obligatorios; el slug debe ser válido')
   if (!baseUrl.startsWith('https://')) fail('R2_PUBLIC_BASE_URL debe ser HTTPS')
 
-  const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`, {
+  let article: { title?: string; excerpt?: string; content?: string }
+  let words = 0
+  if (sourceFile) {
+    const source = JSON.parse(readFileSync(resolve(sourceFile), 'utf8')) as { title?: string; excerpt?: string; content?: string }
+    article = source
+    if (!article.title || !article.excerpt || !article.content) fail('El archivo fuente debe incluir title, excerpt y content')
+    words = wordCount(article.content)
+    console.log(`Artículo cargado desde archivo local: ${sourceFile} (${words} palabras)`)
+  } else {
+    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model}`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiToken}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -139,7 +149,7 @@ async function main() {
   const raw = payload.result?.response
   if (!payload.success || !raw) fail('Workers AI no devolvió una respuesta válida')
 
-  const article = parseModelJson(raw)
+  article = parseModelJson(raw)
   if (!article.title || !article.excerpt || !article.content) fail('La respuesta generada no contiene título, extracto y contenido')
   let words = wordCount(article.content)
   const extraSections = category === 'suplementos' ? [
@@ -164,7 +174,7 @@ async function main() {
       body: JSON.stringify({
         messages: [
           { role: 'system', content: 'Eres un redactor editorial español riguroso. Devuelve exclusivamente JSON válido con las claves "title", "excerpt", "content".' },
-          { role: 'user', content: `Artículo: "${title}". Categoría: ${category}. Escribe SOLO una sección nueva de 650 a 850 palabras en Markdown. Tema: ${extraSections[i]} No repitas ideas ya cubiertas. ${category === 'suplementos' ? 'Mantén enfoque sanitario basado en evidencia; no inventes estudios, cifras, dosis ni enlaces; distingue incertidumbres, explica riesgos pertinentes y no des recomendaciones médicas individualizadas.' : 'Usa pasos concretos y ejemplos hipotéticos, sin inventar estadísticas ni fuentes.'} Devuelve JSON con title exactamente "${title}", excerpt breve y content con solo la sección, sin H1 ni introducción repetida. Texto ya escrito para evitar duplicados:\\n\\n${article.content.slice(-5000)}` }
+          { role: 'user', content: `Artículo: "${title}". Categoría: ${category}. Escribe SOLO una sección nueva de 650 a 850 palabras en Markdown. Tema: ${extraSections[i]} No repitas ideas ya cubiertas. ${category === 'suplementos' ? 'Mantén enfoque sanitario basado en evidencia; no inventes estudios, cifras, dosis ni enlaces; distingue incertidumbres, explica riesgos pertinentes y no des recomendaciones médicas individualizadas.' : 'Usa pasos concretos y ejemplos hipotéticos, sin inventar estadísticas ni fuentes.'} Devuelve JSON con title exactamente "${title}", excerpt breve y content con solo la sección, sin H1 ni introducción repetida. Texto ya escrito para evitar duplicados:\\n  \\n  ${article.content.slice(-5000)}` }
         ],
         max_tokens: 4096,
         temperature: 0.45
@@ -175,11 +185,13 @@ async function main() {
     if (!continuationPayload.success || !continuationPayload.result?.response) fail('Workers AI no devolvió una ampliación válida')
     const section = parseModelJson(continuationPayload.result.response)
     if (!section.content) fail('La ampliación no contiene texto')
-    article.content += '\n\n' + section.content
+    article.content += '\n  \n  ' + section.content
     words = wordCount(article.content)
     console.log(`Ampliación ${i + 1}: artículo acumulado de ${words} palabras.`)
   }
   if (words < 2000) fail(`Artículo rechazado tras ampliaciones: ${words} palabras; mínimo 2000`)
+  }
+
   if (article.title.trim() !== title) fail('El H1 generado no coincide con el título de la cola editorial')
   if (article.content.length > 180000) fail('Artículo excede el límite preventivo de longitud')
 
