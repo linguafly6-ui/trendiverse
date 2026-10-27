@@ -28,15 +28,9 @@ export default async function Home() {
         <p className="mt-2 max-w-4xl leading-relaxed text-slate-600 dark:text-slate-400">
           En TrendiVerse reunimos actualidad, tecnología, ciencia, innovación, tendencias y guías prácticas, junto con una agenda de conciertos en España.
         </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/articles/category/ahorro" className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-5 py-3 font-bold text-white shadow-sm transition hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
-            <span aria-hidden="true">💶</span>
-            Ver guías de ahorro y finanzas personales
-          </Link>
-          <Link href="/articles/category/toptrends" className="inline-flex items-center rounded-full border border-slate-300 px-4 py-3 font-semibold text-brand-violet transition hover:border-violet-500 dark:border-slate-700">
-            Explorar política española y actualidad
-          </Link>
-        </div>
+        <Link href="/articles/category/toptrends" className="mt-3 inline-flex font-semibold text-brand-violet underline decoration-violet-300 underline-offset-4">
+          Explorar política española y actualidad
+        </Link>
       </section>
       <ConcertsHub variant="strip" />
       <div className="grid gap-8 lg:grid-cols-10">
