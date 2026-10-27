@@ -1,0 +1,75 @@
+name: Publish prepared supplement article (D1 + R2)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/supplements-publish-now/**"
+  workflow_dispatch:
+    inputs:
+      article_id:
+        description: "ID del artículo preparado (81–100)"
+        required: true
+        type: number
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trendiverse-publish-prepared-supplement
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 30
+    steps:
+      - name: Checkout approved main revision
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Resolve prepared article and editorial metadata
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            ARTICLE_FILE="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -E '^data/supplements-publish-now/[0-9]+\.json$' | head -n 1)"
+          else
+            ARTICLE_FILE="data/supplements-publish-now/${{ inputs.article_id }}.json"
+          fi
+          test -n "$ARTICLE_FILE" && test -f "$ARTICLE_FILE" || { echo "No se encontró el archivo preparado: $ARTICLE_FILE"; exit 1; }
+          ID="$(basename "$ARTICLE_FILE" .json)"
+          jq -e --argjson id "$ID" '.[] | select(.id == $id)' data/suplementos-editorial-plan.json >/dev/null
+          echo "ARTICLE_SOURCE_FILE=$ARTICLE_FILE" >> "$GITHUB_ENV"
+          for FIELD in title slug keyword cluster intent angle editorialNote; do
+            VALUE="$(jq -r --argjson id "$ID" --arg field "$FIELD" '.[] | select(.id == $id) | .[$field]' data/suplementos-editorial-plan.json)"
+            case "$FIELD" in
+              title) OUT=ARTICLE_TITLE ;;
+              slug) OUT=ARTICLE_SLUG ;;
+              keyword) OUT=ARTICLE_KEYWORD ;;
+              cluster) OUT=ARTICLE_CLUSTER ;;
+              intent) OUT=ARTICLE_INTENT ;;
+              angle) OUT=ARTICLE_ANGLE ;;
+              editorialNote) OUT=ARTICLE_EDITORIAL_NOTE ;;
+            esac
+            printf '%s=%s\n' "$OUT" "$VALUE" >> "$GITHUB_ENV"
+          done
+          echo "Preparado para publicar el artículo editorial $ID: $ARTICLE_FILE"
+      - name: Publish prepared article to D1 and R2 without Workers AI
+        run: npx tsx scripts/generate-and-publish-savings-article.ts
+        env:
+          ARTICLE_CATEGORY: suplementos
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_BUCKET: trendiverse-articles
+          R2_PUBLIC_BASE_URL: https://pub-00a2ec9ac5c947ae8297dfc22e57718b.r2.dev
+          D1_DATABASE: trendiverse-preview
