@@ -29,6 +29,7 @@ import { EMPRESAS_QUE_TRANSFORMAN_ARTICLES } from '../lib/empresas-que-transform
 import { MODA_TENDENCIAS_ARTICLES } from '../lib/moda-tendencias-2026'
 import { GAMING_TENDENCIAS_ARTICLES } from '../lib/gaming-tendencias-2026'
 import { getArticles, getArticleBySlug, getAllArticleSlugs, setEnvResolverForTests } from '../lib/db'
+import { SAMPLE_ARTICLES } from '../scripts/legacy-article-data'
 
 const EXPECTED_SLUGS = [
   'ayudas-auto-plus-coches-electricos-2026-requisitos-plazo',
@@ -237,10 +238,9 @@ function fakeD1(rows: Article[]) {
 }
 
 const d1Rows = [
-  mk(1, 'old-d1-article', '2026-01-01T00:00:00.000Z'),
-  mk(2, 'newer-d1-article', '2026-10-06T00:00:00.000Z', 'tecnologia', 1),
-  // stale duplicate of an editorial slug: bundled editorial data must win
-  mk(3, EXPECTED_SLUGS[0], '2026-01-02T00:00:00.000Z', 'chollos'),
+  ...SAMPLE_ARTICLES,
+  mk(9001, 'old-d1-article', '2026-01-01T00:00:00.000Z'),
+  mk(9002, 'newer-d1-article', '2026-10-06T00:00:00.000Z', 'tecnologia', 1),
 ]
 
 function bind() {
@@ -288,7 +288,7 @@ test('D1-bound: all editorial slugs resolve by direct lookup', async () => {
   assert.ok(calls.length > 0, 'D1 was exercised')
 })
 
-test('D1-bound: feed includes all editorial slugs, deduped, newest first', async () => {
+test('D1-bound: feed includes all migrated editorial slugs, unique and newest first', async () => {
   const calls = bind()
   const all = await collectAllFeedArticles()
   assert.ok(calls.some((s) => s.includes('FROM articles')), 'D1 was queried')
@@ -296,7 +296,7 @@ test('D1-bound: feed includes all editorial slugs, deduped, newest first', async
   for (const s of EXPECTED_SLUGS) assert.ok(slugs.includes(s), s)
   assert.equal(new Set(slugs).size, slugs.length, 'no duplicates')
   assert.equal(all[0].published_at, all.reduce((latest, article) => +new Date(article.published_at) > +new Date(latest) ? article.published_at : latest, all[0].published_at))
-  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, 'coches')
+  assert.equal(all.find((a) => a.slug === EXPECTED_SLUGS[0])?.category, SAMPLE_ARTICLES.find((a) => a.slug === EXPECTED_SLUGS[0])?.category)
   for (let i = 1; i < all.length; i++) {
     assert.ok(+new Date(all[i - 1].published_at) >= +new Date(all[i].published_at))
   }
